@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta name="generator" content="HTML::TextToHTML v2.5201"/>
+</head>
+<body>
+<p>#/usr/bin/perl<br/>
+#<br/>
+use strict;<br/>
+use warnings;<br/>
+use Data::Dumper;<br/>
+use POSIX;
+</p>
+<p>open(FILES, "find -type f -print |") || die "Find Command Failed";
+my $num = 0;<br/>
+while(&lt;FILES&gt;) {
+</p><pre>
+        chomp;
+        my $filename="$_";
+        if ( $filename =~ m/^\.\/(\d+) .*?/ ) { 
+          $num = "$1";
+          print "$1\t$filename\n"; 
+        }
+        system("<a href="http://txt2html.sourceforge.net/">txt2html</a> --outfile $num.html '$filename'");
+</pre>
+<p>}<br/>
+close(FILES);
+</p>
+
+</body>
+</html>
