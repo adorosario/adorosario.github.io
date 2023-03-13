@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<sitemap>
+		<loc>https://www.urbe.cc/sitemap.xml</loc>
+		<lastmod>2022-10-06T02:00:11+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>https://resumido.cc/sitemap.xml</loc>
+		<lastmod>2023-02-18T18:15:19+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>https://resumido.cc/news-sitemap.xml</loc>
+		<lastmod>2023-02-18T18:15:19+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>https://resumido.cc/sitemap_index.xml</loc>
+		<lastmod>2023-02-18T18:15:19+00:00</lastmod>
+	</sitemap>
+	<url>
+		<loc>https://adorosario.github.io/resumido/resumido-transcripts.zip</loc>
+		<lastmod>2005-01-01</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.5</priority>
+	</url>
+</sitemapindex>
