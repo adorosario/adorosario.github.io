@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LevinBot</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+body {
+      font-family: Arial, sans-serif;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  height: 100px;
+  width: auto;
+}
+
+.header-menu {
+  float: right;
+  list-style-type: none;
+}
+
+.header-menu li {
+  display: inline;
+  padding: 0 10px;
+}
+
+.header-menu a {
+  color: #222;
+  text-decoration: none;
+}
+
+.header-menu a:hover {
+  color: #666;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#">
+	    <img src="1.png" alt="LevinBot Logo" class="logo">
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="#about">About</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+</header>
+
+<!-- Main Content -->
+<main class="container py-5">
+    <div id="customgpt_chat"></div>
+<script src="https://cdn.customgpt.ai/js/embed.js" width="100%" height="500px" p_id="516" p_key="a594da04d75bb3787bbeff96c6f05fec" div_id="customgpt_chat"></script>
+	</div>
+</main>
+
+<!-- About Page -->
+<section id="about" class="bg-light py-5">
+	<div class="container">
+		<h2 class="text-center mb-5">About LevinBot</h2>
+		<div class="row">
+			<div class="col-md-6 mb-4">
+				<p>LevinBot was developed by <a href="https://www.linkedin.com/in/rui-do-rosario-a73b4a178/">Rui Do Rosario</a> using <a href="https://customgpt.ai/">CustomGPT</a>, a ChatGPT-powered platform that lets businesses build chatbots with their own data. It has been trained on research papers and transcripts of talks from the Levin Lab, including most past papers (PDFs) and audio/video transcripts.</p>
+			</div>
+			<div class="col-md-6">
+				<ul class="list-group">
+					<li class="list-group-item"><strong>Developed by:</strong> Rui Do Rosario</li>
+					<li class="list-group-item"><strong>Training Model:</strong> CustomGPT</li>
+					<li class="list-group-item"><strong>Training Data:</strong> <a href="https://adorosario.github.io/LevinBot/sitemap.xml">Document List</a></li>
+                    <li class="list-group-item"><strong>Email:</strong> ruisdorosario [at] gmail [dot] com</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+	<!-- Footer -->
+	<footer class="bg-dark text-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-left">
+					<p>&copy; 2023 LevinBot. All Rights Reserved.</p>
+				</div>
+				<div class="col-md-6 text-center text-md-right">
+					<a href="#" class="mr-3"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE5yOaqnKaEhVh1M6woXj" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
