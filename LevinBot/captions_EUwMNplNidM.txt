@@ -1,0 +1,1700 @@
+">> STEPHEN KUEBLER: Hello and welcome to ""Ethically
+Speaking,"" a UCF interdisciplinary series"
+"on contemporary moral issues."
+"My name is Steve Kuebler, and I'm the organizer
+of this series."
+"I'm professor of chemistry and optics and
+founding associate director of the UCF Center"
+"for Ethics."
+"In this inaugural lecture we'll learn from
+Professor Michael Levin about how artificial"
+"life is becoming a reality and what the ethical
+implications are for our world."
+"Before we introduce Dr. Levin, I'd like to
+take a moment to tell you about this speaker"
+"series and how you can participate."
+"I have the pleasure of collaborating with
+Dr. Jonathan Beever who is associate professor"
+"of ethics and digital culture at UCF and founding
+director of our Center For Ethics."
+"Together we developed ""Ethically Speaking""
+to promote conversations about challenging"
+"issues of our time."
+"We encourage you to visit the center's website
+at ethiccenter.research.ucf.edu to learn more"
+"about our activities and to find out about
+other speakers in this series."
+"We'd also like to hear your feedback and your
+ideas for future talks in ""Ethically Speaking."""
+"Ethics is important to us at UCF, and that's
+clear from the long list of partners who co-sponsor"
+"this series."
+"All of us in this partnership hope you enjoy
+the discussions in ""Ethically Speaking,"" and"
+"we hope it cultivates understanding of how
+ethics provides frameworks for making better"
+"decisions, particularly when there are competing
+values."
+"Today's presentation is being recorded and
+links will be posted through the Center For"
+"Ethics so you can share it with others."
+"At the end of his presentation Dr. Levin will
+take questions, moderated by Dr. Beever."
+"You can submit questions using the
+Q&A box, and you can also up-vote questions"
+"that interest you."
+"Now we will turn to Dr. Will Crampton, UCF
+associate professor of biology, who will introduce"
+"our speaker."
+">> WILLIAM CRAMPTON: Thank you, Stephen, and
+good afternoon everybody."
+"It is a great pleasure to introduce today's
+speaker, Dr. Michael Levin."
+"It's also an honor for the biology department
+to co-sponsor this important talk series."
+"Dr. Levin is distinguished professor and Vannevar
+Bush professor of biology at Tufts University"
+"and also director of the Paul Allen Discovery
+Center and the Tufts Center for Regenerative"
+"and Developmental Biology."
+"Dr. Levin obtained dual bachelor's degrees
+in biology and computer science at Tufts University."
+"He then completed a doctoral degree in genetics
+at Harvard University as well as subsequent"
+"postdoctoral research in molecular embryology
+at the same institution."
+"Dr. Levin then held several prestigious academic
+positions including an associate professorship"
+"at Harvard before occupying his current position
+at Tufts in 2008."
+"Dr. Levin's research career has been enormously
+productive."
+"His publications have spanned the fields of
+developmental biology, biophysics and genetics"
+"and have been cited almost 20,000 times with
+an H factor of 75 and an astonishing I-10"
+"index of 256."
+"His work on the molecular genetic mechanisms
+that allow embryos to form left/right asymmetric"
+"body structures is on the journal Nature's
+list of 100 milestones of developmental biology"
+"of the 20th century."
+"One of the most exciting recent developments
+from Dr. Levin's research program, which we'll"
+"learn more about today, is the creation of
+a kind of artificial life in the form of microscopic"
+"programmable virtual creatures called xenobots."
+"Dr. Levin, the UCF community is delighted
+you could be with us today."
+"The floor is yours."
+">> MICHAEL LEVIN: Thank you very much for
+that introduction, and thank you for the opportunity"
+"to share these ideas with you all."
+"I am not a professional ethicist or philosopher,
+so my goal today is not to provide any answers"
+"or make any specific ethical claims, but what
+I do want to do is to go over some recent"
+"advances in bioengineering and regenerative
+medicine which I think have some very important"
+"implications for working out ethical principles
+going forward."
+"If anyone is interested in contacting me afterwards
+or you want to see the details T deep biology"
+"this is all based on, you can find me."
+"I would like to make explicit the lens with
+which I view the world because I think it's"
+"important to see these things be made clear."
+"I think that science is the best window we
+have on the world, and I think that what ought"
+"to be should be a very tightly coupled to
+our very possible picture of what is."
+"I think philosophy has to keep up with the
+science."
+"I also take a kind of engineering approach
+in my group where we study the natural world,"
+"but we believe that a mature understanding
+must encompass the space of the possible,"
+"not only whatever happens to be true right
+here and now, but actually all of the adjacent"
+"possible facts that could be made to be true
+as science moves forward."
+"So the main points that I would like to transmit
+today and hopefully discuss with you all are"
+these.
+"The first is that I would like new technologies
+to be evaluated from the perspective of opportunity"
+"cost of failing to improve life for all."
+"I will try to point out that evolution offers
+no support for the common assumption that"
+"our world is basically great and all we need
+to do is not to make it worse."
+"This is a common thing many people in ethics
+discussions of new biology ask, isn't it scary?"
+"What happens if this and that bad scenario
+takes place."
+"I think this absolutely has to be balanced
+with the idea that, no, we actually have an"
+"opportunity and a duty, a moral duty to improve
+the human condition with research."
+"This is a transition to an opportunity-based
+view as opposed to a purely risk-based view."
+"I'll talk about what it might mean for things
+to be natural or unnatural for ethics."
+"I'd like to view as how bioengineering as
+well as taking evolution seriously is going"
+"to demand a revision to very basic concepts
+that support theories of ethics."
+"All interesting qualities, intelligence, agency,
+responsibility and so on."
+"In fact, lie on a continuum, and we cannot
+ask which types of systems, these include"
+"living agents and new synthetic creatures
+are or are not intelligent, are or are not"
+"cognitive in various ways, but we need to
+ask what kind of cognition they have and how"
+much.
+"There are no binary categories supported by
+science."
+"I'll make the claim that we're out growing
+this very binary terminology of robot, machine,"
+"cognitive agent."
+"These binary terms are not serving us very
+well."
+"We need to move beyond them."
+"What I'd like to do in the first part is show
+a number of technologies that people have"
+"described as scary."
+"I hope I can show why they're, in fact, essential."
+"So one thing to realize is that pretty much
+all biomedical needs so everything with the"
+"exception of infectious disease, things like
+birth defects, traumatic injury, aging, cancer,"
+"degenerative disease, would be solved if we
+knew the answer to one question."
+"That question is how do we control what cellular
+collectives decide to build?"
+"So groups of living cells get together, they
+cooperate and build specific structures, complex"
+"organs, whole bodies."
+"If we knew how to tell them how to build specific
+things, healthy organs and so on, we could"
+"solve all these biomedical problems."
+"It would be an enormous advance."
+"The future of our field I like to illustrate
+with this which we call a anatomical compiler."
+"At some point in the future, what you ought
+to be able to do is sit down in front of the"
+"software and draw at the level of anatomy
+here in this schematic, not from the level"
+"of molecular pathways or those kind of details
+but draw the plant or animal that you want."
+"In this case we've drawn this three-headed
+flat worm you'll hear much more about flat"
+"worms shortly."
+"If we had a proper understanding of how cells
+decide what to build, we would be able to"
+"have a piece of software that would take this
+anatomical description, I want eyes over here,"
+"a third head and so on, and compile that into
+a set of instructions, a set of stimuli that"
+"would be given to cells that would build whatever
+you just drew."
+"Basically computer-aided design for living
+forms."
+"You should be able to create any living form
+you want, any organ of the body, any novel"
+"creature that's never existed before."
+"Now, I should point out we are nowhere near
+close to this general capability, although"
+"we have a few inroads here and there, but
+this general capability is still far away."
+"Let's take a look at why it's actually so
+far at this point."
+"We all start life as a single cell."
+"This is a fertilized egg."
+"This gives rise to one of these remarkably
+complex anatomies, quite reliably."
+"In fact, it's really important to understand
+how this works and it's important to know"
+"this is not simply a stem cell biology problem."
+"For example, this is a teratoma, a tumor that
+may have hair and skin and teeth and muscle"
+"and bone."
+"And what makes this different from one of
+these wonderfully anatomically normal animals"
+"is the three-dimensional structure is missing."
+"The individual stem cells created all the
+differentiated cells you want."
+"It has all the tissues."
+"But it's missing that large scale three-dimensional
+structure."
+"This here is a cross-section through the human
+torso."
+"You can see the incredible order, the complexity
+with all the tissues and organs in the right"
+"place, the right orientation, relationship
+with each other, right size and shape."
+"Where does all this pattern come from?"
+"Where is it specified?"
+"Everybody starts off as a collection of blastomeres,
+these early embryonic cells."
+"We can read genome and it says absolutely
+nothing about this directly."
+"The genome specifies proteins."
+"What's in the genome is specification of the
+micro level hardware that every cell gets"
+"to deploy."
+"The genome doesn't show any of this information
+directly."
+"So we still need to understand how does the
+hardware that's specified by the genome end"
+"up making these regular collectives that know
+what to make and when to stop growing."
+"As workers in regenerative medicine, we would
+like to know, if a piece of this is missing,"
+"how do we convince the cells to rebuild?"
+"As engineers, we say what's possible to build,
+can we get the same exact cells to build something"
+"completely different."
+"If so, how would we do that?"
+"So, single cells, in fact, are extremely competent."
+"What you're seeing is a single cell animal
+known as a lack mayor yeah."
+"There's no cell to cell communication."
+"Yet, it handles all of its physiological,
+behavioral, morphological and its metabolic"
+"needs at the level of a single cell, the scale
+of a single cell."
+"Remarkably when cells join together, they
+didn't lose this intelligence."
+"They, in fact, scaled it up and deployed it
+toward higher order goals"
+"Here is a tadpole, here are the eyes, the
+brain, the nostrils, the guts."
+"They need to become frogs."
+"They have to rearrange their face."
+"The jaw haves to come forward, the eyes have
+to move."
+"Everything has to move."
+"It was thought that in some way the genome
+provided a hard-wired set of movements for"
+"all these organs."
+"After all, all tadpoles look the same, all
+frogs look the same."
+"We made what's called Picasso tadpoles, the
+eyes are off, the jaws at an angle, eyes on"
+"top of the head."
+"Everything is in the wrong place."
+"What we discovered remarkably is these animals
+still make largely perfectly normal frogs"
+"because all of these organs move in novel
+paths, and sometimes, in fact, they move too"
+"far and have to double back to land in the
+correct orientation."
+"Everything keeps moving around until you get
+a correct frog."
+"That's when the system stops."
+"In fact, what the genetics gives you is a
+machine that's able to do this amazing error"
+"minimization scheme."
+"It's able to meet William James' definition
+of intelligence, being able to get to exactly"
+"the same goal by different means, despite
+starting off in the wrong configuration, it"
+"can still get to its goal through novel unexpected
+actions."
+"If we had a robotic swarm that was able to
+do this, we would certainly call it a kind"
+"of collective intelligence."
+"We'll come back to that momentarily."
+"That plasticity, that ability to get to the
+correct structure despite perturbations can"
+"be seen in the structure of the nervous system."
+"If we make a tadpole with no primary eyes,
+but we put an eye on its tail, these are real"
+"live animals."
+"We put an eye on the tail and use this device
+to ask if that animal can learn to see out"
+"of that eye."
+"In fact, they see perfectly well."
+"We can train them on visual queues."
+"This is the basis of sensory augmentation
+technology for humans."
+"This brain, which evolved for millions of
+years to use visual input from regions where"
+"the eyes should go, now finds itself in a
+novel configuration, where the eye is back"
+"here, connected to the spinal cord, not the
+brain."
+"It has no problem using that data for behavior."
+"The plasticity is incredible."
+"The ability to handle novelty in living tissue
+is amazing."
+"One of the things that our laboratory is doing
+is trying to understand how do we- how can"
+"we control these - how can we control these
+decisions that are made by multicellular collectives."
+"In controlling those decisions, how can we
+produce novel anatomies."
+"This is all part of trying to learn to control
+anatomy for various purposes."
+"You can see here a couple of examples."
+"Here are some two-headed flat worms."
+"This is a flat worm that normally only has
+one head."
+"We actually manipulated the electrical conversations
+that these cells are having with each other"
+"and they built a head with two animals."
+"It has exactly the normal genome, but the
+electrical conversations between those cells,"
+"we have manipulated them to say make two heads
+instead of one."
+"Similarly, here is a five-legged frog where
+we used light to change some of the signaling,"
+"the electrical signaling property of cells
+in the frog's face."
+"Actually we can induce the growth of a whole
+limb here."
+"You've seen a five-legged frog and some two-headed
+flat worms and a tadpole with an eye on its"
+tale.
+"About 50% of the phone calls I get suggest
+these bodies are new, they're different and"
+"they're a little disturbing."
+"People are used to things that are produced
+very slowly, by evolution over geological"
+"time scale."
+"This kind of thing makes people nervous."
+"These are very new anatomies."
+"One of the important things is that we not
+only have the opportunity to control anatomy,"
+"I'm going to claim we have an absolute moral
+responsibility to do so."
+"So here is some general statistics."
+"2 million people in the U.S. alone are living
+with loss of limb, and the mortality in the"
+"next five years after loss of limb can be
+80%."
+"10 million people die from cancer every year."
+"50 million Americans are affected with degenerative
+disease."
+"Every 4 1/2 minutes a baby is back and forth
+with a birth defect."
+"And a remarkable 77 billion land animals are
+slaughtered for food every year."
+"So this idea that our job in bioethics is
+to simply make sure we don't screw things"
+"up, this idea that basically everything is
+fine and we need to be careful that we don't"
+"make things worse is really I find extremely
+insufficient."
+"These incredible needs, this global suffering
+accounts for the other 50% of the calls that"
+"I get which is just an unbelievable range
+of human patience that require all sorts of"
+"solutions that we don't currently have."
+"So I think we need to focus on the opportunity
+cost of failing to live up to this moral imperative,"
+"to use science to improve life for everybody."
+"A lot of people will always ask - they ask
+me what keeps me up at night in terms of these"
+"wild technologies."
+"What keeps me up at night is the possibility
+of fail your to live up to our potential,"
+"to use the science that we have access to
+to make life better."
+"So I want to point out that - I wanted to
+dispel this idea that there's any necessary"
+"correlation between what's actually natural,
+meaning what was the result of the natural"
+"evolutionary process on earth and what actually
+is what we want to have happen."
+"This is the basic evolutionary process."
+"It's very simple."
+"The strategy is this, generate lots of offspring
+which resemble but not perfect copies of the"
+parents.
+"These are random errors due to changes in
+the genomes, and the offspring will compete"
+"for finite resources."
+"Only some will live to reproduce."
+"They do this again."
+"Generate more offspring, more random copies."
+"Some are better suited than others, and on
+and on this goes."
+"The important thing to note about this process
+is what it's guaranteed to optimize is the"
+"quantity of biomass that you'll observe in
+any environment."
+"That's all."
+"Nothing in this process optimizes for happiness,
+for well-being, for any of the things that"
+"we as moral creatures should care about."
+"All evolution optimizes for is biomass in
+any given environment."
+"I think this provides a really important lens
+on this question of what's natural, what's"
+"unnatural and what we ought to be doing."
+"There's nothing magic about what comes out
+of the process of evolution."
+"Nothing here is optimized for the things we
+find of value."
+"We should definitely be able to do better
+than randomness."
+"I want to show you examples of the things
+that may be within our reach."
+"Here is what might be possible."
+"This is a Mexican salamander that regenerates
+its limbs, eyes, jaws, portion of the brain,"
+"heart, tail including spinal cord, muscle,
+ovaries."
+"It basically looks like this."
+"If a limb is amputated or one of them bites
+off a limb, which they do to each other all"
+"the time, this system will continue to grow,
+and it will grow exactly what's needed and"
+"will stop when a correct salamander limb is
+formed."
+"This is one of the most critical areas of
+research right now is to figure out, first"
+"of all, how to start the process, but even
+more so, how does it know when to stop?"
+"How does it know that a correct salamander
+limb has formed?"
+"This is the kind of ability that is possible."
+"Evolution happens to have derived an animal
+like this, a complex vertebrate that does"
+"this, so we know this is possible."
+"In fact, here are the plenary."
+"Plenary are the champions of regeneration."
+"Even though it has all the same neuro transmitters
+that you and I have, they have this amazing"
+"ability, if they're cut into pieces, each
+piece will regenerate exactly what's missing,"
+"no more, no less, and give you a perfect little
+tiny worm."
+"In fact, that's how they reproduce."
+"They're so regenerative, they're actually
+immortal."
+"They have no life span limit that anybody
+has ever seen."
+"They appear to have conquered aging entirely."
+"So then having seen this and having seen the
+salamander, one wonders why is the human life"
+"span somewhere around eight decades, nine
+decades."
+"There's nothing magic about that number."
+"It could have been 12 or it could have been
+300, or we could have been immortal like these"
+"other animals."
+"There's nothing magical about the status quo."
+"It's our responsibility to try to improve
+it."
+"Humans have some regenerative ability."
+"Here even the ancient Greeks knew the human
+liver is highly regenerative."
+"Deer regenerate meters of bone, about a centimeter
+and a half per day."
+"All the limits on human repair capabilities
+are purely arbitrary."
+"They're the outcome of all kinds of basically
+satisfying decisions that evolution has made"
+"and kind of the meandering course of evolution's
+search through the space of possible outcomes"
+"in biology, is what we ended up with it."
+"It doesn't have to be that way."
+"There's absolutely nothing special about where
+we are."
+"Our duty is to control for better outcomes."
+"I want to show you what this looks like."
+"So this, of course, is the evolutionary process
+that I started out by telling you individual"
+"cells can learn to work together toward large
+scale goals."
+"Here is a goal."
+"Make a limb and then stop."
+"That process of scaling up the goal-directed
+activity of cells can actually break down."
+"The scope of the goals that these cellular
+collectives follow can shrink."
+"This is a terrible brain cancer called a Glioblastoma."
+"They are still very interested in single cell
+goals like proliferate, make many copies of"
+"yourself, go where life is good, take up nutrients
+and so on."
+"They're completely uninterested in the large
+scale goal of make a healthy liver or brain"
+"or limb."
+"It turns out that, if you work on this question
+of how is it that cells cooperate with each"
+"other in the first place, you can do things
+like this."
+"This is a tadpole injected with a human gene."
+"Even before the tumor becomes apparent, you
+can use voltage imaging - this is a way to"
+"map out the electrical activity in this tissue
+so you can see the electrical conversations"
+"the cells are having."
+"You can already see in this region these cells
+are going to disconnect from their neighbors,"
+"require a bizarre electrical state and basically
+uncouple from the network and treat the rest"
+"of the animals, external environment."
+"Once you understand this, you can try to gain
+control of that electrical process."
+"When we do - this is our work from a few years
+ago."
+"When you do this, despite the fact that this
+oncogene, there in fact doesn't need to be"
+"a tumor if you manage the bioelectrical state
+appropriately."
+"You can reconnect the cells and get them to
+work towards making things like normal skin,"
+"normal muscle."
+"So normalizing or preventing tumors, not chemotherapy
+to try to find the balance between not killing"
+"the patients and killing the tumor cells,
+but actually to normalize them."
+"That's one kind of advance."
+"This is a frog leg."
+"Frogs, unlike salamanders do not regenerate
+their leg."
+"Having lost a leg, 45 days later, there's
+basically nothing."
+"We've been able to come up with a treatment
+that triggers a bio electric state to tell"
+"the cells, build a leg here."
+"When you do that the leg starts to grow."
+"Just 24 hours of treatment with the bio electric
+drugs kick starts over a year of leg growth."
+"You can see the leg is both touch sensitive
+and motile and it grows for a long time."
+"We're now in efforts to transition to mammals,
+hopefully some day to humans with limb loss."
+"David Kaplan and myself are co-founders of
+Morphoceuticals, Inc."
+"That's a disclosure."
+"There are also ways to address brain defects
+or other types of birth defects."
+"So this is a normal tadpole."
+"This is an animal that either has a mutation
+in an important gene, like notch, or it's"
+"been exposed to alcohol or nicotine or one
+of many other kinds of teratogens."
+"You can see the forebrain is missing, the
+mid brain and forebrain is a bubble."
+"They lay there and do nothing."
+"It's a terrible birth defect."
+"What we can do now is, guided by computer
+models that we've created, we can actually"
+"provide very specific drug treatments with
+drugs that turn on and off the different electrical"
+"activities that the cells are using and convince
+them to make a brain of the appropriate shape"
+"and size."
+"When you do this here, you find you rescue
+the brain's shape, the gene expression in"
+"the brain and the behavior."
+"They get their IQs back to basically indistinguishable
+from normal."
+"We have the opportunity to use these technology
+and perfect them in these model systems."
+"Ultimately the goal is to use all of this
+for bio medicine, both in human and veterinary"
+"use to relieve the kind of suffering that
+is out there from all these cases."
+"So that was part one."
+"Part two of the talk, what I would like to
+stress is a couple of interesting concepts"
+"that are really brought on by advances in
+this technology."
+"The first one is the idea there's a continuum
+of agency."
+"That properties like intelligence and moral
+responsibility and memory, all these kinds"
+"of things, exist on a continuum."
+"They're not binary quantities."
+"I want to talk a little bit about the plasticity
+of individuals during their lifetime."
+"Then I want to show you some really novel
+beings that have never existed on earth before"
+"and we can talk about what that means for
+us."
+"The first thing is, when we talk about cognition,
+we don't only mean a full-blown, human-like"
+self-consciousness.
+"That's somewhere up here at the end."
+"But all the way down to very simple creatures,
+you see different kinds of cognitive capacities,"
+"so predictive or non-predictive, with feedback
+or without feedback, purposeful and non-purposeful,"
+"active and massive."
+"This is a very smooth kind of continuum where
+there are certain capabilities that emerge,"
+"but all along here there are different ways
+to be a cognitive creature in the world."
+"I want to show you a couple of examples."
+"This is a slime mold."
+"This slime mold - slime molds are uni cellular."
+"Even though it's huge, it's one cell."
+"What you'll see is it's going to solve the
+maze."
+"Here are oats over here, more oats over here."
+"It wants the shortest possible path to the
+oats so it doesn't waste energy elsewhere."
+"As soon as it's found the right path, it basically
+withdraws from all the other parts of the"
+"maze that are not part of the solution."
+"Here it is."
+"You can see here it's pulling away from regions
+it knows are not the right part of the maze,"
+"and it does this by virtue - you can see here
+the flows, these fascinating signals that"
+"flow through the structure of the slime mold."
+"You can see here it's a perfect solution."
+"This thing has solved the maze, found the
+exit, from the entrance to the exit."
+"It has the capacity for certain kinds of problem
+solving."
+"This is our work from a couple months ago."
+"Here it is."
+"It learns about its environment by tugging
+on the substrate, and it can feel there are"
+"three glass disks here instead of one."
+"It already in the first few hours of growth,
+it already has an internal map of its environment,"
+"and it will always outgrow towards the larger
+mass."
+"So it has the ability to probe its environment
+and make these simple kinds of decisions."
+"What's really critical to understand and what
+modern biology is telling us is that, if we"
+"take evolution seriously, there is no bright
+line separating any kind of - any kind of"
+"distinction between the cognitive capacities
+of creatures."
+"So people often ask a fish or something like
+this, is it conscious or does it have memories,"
+"does it have goals?"
+"This is a bad way of framing the question
+because it's not a binary category."
+"There are no binary categories here."
+"We are all part of a continuous ascent along
+this kind of structure, and all of these things"
+"should be asked in terms of what kind and
+how much."
+"So what kind of cognition, how much cognition,
+what is the internal world of any given creature."
+"There's no place to draw a bright line."
+"It's a little bit like the notion of being
+an adult."
+"There's a convenient fiction that society
+follows where, on your 18th birthday, bam,"
+"you cross over this line."
+"We all know nothing happens on that day."
+"It's a continuous growth."
+"This is actually true for all the things we're
+interested in."
+"There are no sharp lines."
+"We know this even - we've known this for a
+really long time."
+"Let's take a concept such as personal responsibility
+or something like this."
+"If you feel modern humans have it, all you
+have to do is walk backwards and ask yourself"
+"at what point - if you think it's a binary
+kind of quantity, at what point did you have"
+"an offspring that had it and parents that
+didn't, right?"
+"That's what you would be committed to if you
+thought there was some bright line it might"
+"be something that develops quickly compared
+to the geological time scale, but in terms"
+"of the biological, in terms of having parents
+that don't have some sort of cognitive capacity"
+"and offsprings that now do, biologically it's
+not viable."
+"So we have to understand all of these things
+are slowly and gradually changing from more"
+"primitive versions to the more complex."
+"People talk about sometimes the collective
+intelligence of ants, ant colonies."
+"It's important to recognize we're all collective
+intelligences."
+"We're all made of cells."
+"No creature can be a single, indivisible cognitive
+agent."
+"We're all made of parts."
+"Here is a single cell chasing after a bacterium."
+"I'll play it again."
+"This is a famous old movie of a single cell."
+"This is a human immune cell."
+"Our bodies are made of things like this."
+"Our brains, in fact, are a collection of neurons,
+of other cell types, specialized, but still"
+"individual cells."
+"And we are, and whatever moral, ethical, personal
+perspective you have looking outwards, you"
+"have memories, goals, a personality."
+"All of this is emergent from the collective
+activity of the cells that make you up."
+"In fact, those cells are - the tissues and
+organs in your body are, in fact, composed"
+"of cells which themselves are composed of
+sub cellular components that have their own"
+"dynamics of those of molecular components
+and so on."
+"So there's this massive multiscale type of
+architecture that biology uses where there"
+"are active processes at every level of organization
+and every scale that have their own local"
+"goal-directed activity and all of this somehow
+percolates upwards in ways that we still don't"
+understand.
+"Because we are all made of parts, this is
+why change does not have to be taking place"
+"on evolutionary time scales."
+"It can take place during the lifetime of an
+individual."
+"Here is an example we've known for a long
+time."
+"Here is a Caterpillar."
+"The Caterpillar has a brain that is perfectly
+suited to driving this soft bodied creature."
+"There are no bones."
+"So driving this kind of body is particularly
+interesting."
+"It crawls and it chews plants."
+"Then this has to transplant into a completely
+different hard body creature that will fly"
+"and drink nectar."
+"During metamorphosis, most of the brain is
+basically liquefied."
+"A lot of the neurons are broken down, the
+synaptic conditions are broken and a brand"
+"new brain is rebuilt."
+"So one can ask really interesting philosophical
+questions."
+"Is it the same creature?"
+"If your view of personal identity is the continuity
+of body structure, sort of that's the case."
+"Some of the cells are the same."
+"Some of the materials are the same, but many
+are not."
+"But if your view of personal identity is as
+contiguous memories, then this conserves identity"
+"because it turns out that the butterfly still
+remembers things that the caterpillar has"
+"learned, even though the brain is completely
+remodelled during this."
+"You can learn more about that here."
+"The brain of an agent can change radically,
+and one can wonder what is it like to be an"
+agent.
+"You can ask what's it like to be a caterpillar
+or butter flew, but more interestingly, what's"
+"it like to be a caterpillar changing into
+a butterfly."
+"In planarian, you can train them to where
+they get fed and then you amputate the whole"
+head.
+"The tail sits for a week."
+"It grows back a new brain and new head and
+still remembers the information."
+"That information is transferred from the rest
+of the body - I'm printed on the new brain."
+"If you think this is something weird that
+planarian and Caterpillars do, keep in mind"
+"lots of people are developing stem cell therapies
+for human degenerative disease in the brain."
+"So probably at some point soon we'll have
+human patients with 50, 60 years of memories,"
+"having chunks of their brain replaced by naive
+progeny of stem cells."
+"What happens to their personality, to their
+memories?"
+"No one knows."
+"This is not a philosophical oddity."
+"It's actually very important in terms of what
+is going to happen during these therapies."
+"I want to talk about now - all of this plasticity
+is building up to the following: The idea"
+"that the body can change, the brain can change,
+the mind can change."
+"To be appropriate, the different types of
+bodies."
+"There's this incredible plasticity of self-repair,
+dealing with novelty, behavioral novelty but"
+"also anatomical novelty."
+"These are the examples I've shown you."
+"One thing that's definitely happening is that
+we are leaving the garden of Eden in an important"
+"sense through a science of chimeric bioengineering."
+"This is a famous painting of Adam naming the
+animals in the garden of Eden."
+"At some point a couple centuries ago, what
+you could entertain was a world view in which"
+"there was a finite fixed number of animals."
+"They were distinct and you can name them and
+that was it."
+"This world view is crumbling because, as it
+turns out, we can readily - biology is very"
+"accessible to readily mixing contents of different
+creatures at different scales."
+"You could makes DNA, mix cells, transplant
+organisms, mix organisms together and make"
+"hybrid storms."
+"People knew this already, they knew you could
+mix the genetic material of a donkey and a"
+"horse and get something different."
+"We already had these kind of hybrids."
+"Now with chimeric buy other engineering, the
+opportunity to make different novel creatures"
+"has arose in a different way."
+"At any level of organization, at the level
+of molecules with Nano materials and smart"
+"materials, at the level of cells, individuals,
+colonies, we can replace any part of this"
+"with either organic, meaning evolved, or cybernetic
+or inorganic materials, we can replace any"
+"part of this."
+"This is now a wide range of - in addition
+to the normal kinds of humans and other animals"
+"and so on that are out there, there are now
+humans with intelligent appliances."
+"These might be neurotransmitter pumps and
+other things."
+"Humans with brain implants that control wheelchairs
+and other devices."
+"Lots and lots of different types of creatures."
+"Now I want to show you one example that we
+created."
+"This is collaborative work led in my group
+Douglas Blackeston."
+"My collaborator is Josh Barngard and his group."
+"We took skin cells, liberated them from a
+frog embryo."
+"We asked the question, without any further
+manipulation, no genomic editing of any kind,"
+"freed from the constraints of the embryo,
+what would they build, if anything?"
+"What would they do?"
+"What would these cells do?"
+"If they a chance to division their multicellularity."
+"They don't crawl off, don't make a flat mono
+layer."
+"They compact together and then they start
+this very interesting activity I'm going to"
+"show you."
+"Once they create this kind of body, they become
+what we call xenobots."
+"So xenobot is from two words, xenopus laevis
+and from the frog, and bio bot."
+"The way it's swimming along, it has hairs,
+cilia on the outer service."
+"Normally the cilia are there to redistribute
+mucous over the skin of the frog or the tadpole."
+"You can see they go in circles, they can go
+straight back and forth."
+"There's one patrolling."
+"Here is tracking data on a number of them."
+"These are interacting with each other."
+"This one is going on a circle, this one in
+a long trip around the petri dish, and this"
+"one is doing nothing."
+"One of the ways I sometimes do this talk is
+I show a lot of o videos what they're doing"
+"and I don't tell people what this is and I
+ask them to guess."
+"You would never guess this is a bunch of frog
+skin that has decided to form a new kind of"
+"proto creature."
+"Here is what they can do in a maze."
+"This is a water-filled maze."
+"There's no flow."
+"They're swimming along."
+"It takes the corner without having to bump
+into the wall."
+"Over here, internal dynamics kicks anywhere
+it decides to turn around and go back where"
+"it came from."
+"We'll run it again."
+"It goes forward, takes the corner, doesn't
+bump into anything and then turns around and"
+"comes back."
+"They have spontaneous behaviors."
+"Amazingly they can regenerate back to their
+original shape."
+"Here is a xenobot that was basically cut in
+half like this, and that hinge generates massive"
+"amounts of force through 180 degrees to pull
+the whole thing back into a more proper xenobot"
+shape.
+"Not only that, if we look at calcium signaling
+which is basically a readout for electrical"
+"activity, and here are two setting next to
+each other, we can see they're extremely active."
+"This is basically what a lot of brains - a
+zebra fish brain would look like."
+"It's brain-like activity."
+"Maybe they're in communication."
+"We don't know that yet."
+"This is just skin."
+"The incredible plasticity of the cells liberated
+from their normal environment to give rise"
+"to a proto animal that can reuse its various
+genome-specified hardware features to - in"
+"novel ways, in new circumstances as a new
+creature."
+"Why do we want to make these?"
+"First of all, there are applications for useful
+synthetic living machines."
+"If we can learn to control them, maybe they
+are scraping the plaque off your arteries"
+"or fixing up arthritic knee joints or finding
+tumor cells in your gut or bacteria."
+"So lots of synthetic living machines."
+"More importantly, I think, the system provides
+a kind of sand box for cracking the morphogenetic"
+"code, what is the software, what are the algorithms
+that allow these cells to join together in"
+"a new way, in a novel environment."
+"So really to understand why is their shape
+the way it is, their behavior the way it is?"
+"That gets us closer to the idea of an anatomical
+compiler."
+"We now understand how cellular collectives
+make decisions."
+"We can impact those decisions and grow a new
+heart or new leg."
+"The bigger philosophical question is this,
+where do their goals come from?"
+"In other words, they have primitive goals
+in the anatomical sense, meaning they make"
+"a specific functional structure."
+"They have certain behavioral repertories."
+"For millions of years, the ancestors were
+selected for the ability to do this or that."
+"This is just skin, selected to sit quietly
+on the outside of a tadpole and keep the pathogens"
+out.
+"If you sequence the genome, all you ever see
+is frog."
+"You don't see anything other than completely
+standard - "
+"where do the goals of this novel collective
+intelligence - again it's the collective intelligence"
+"because it's the product of lots of cells
+working together to do this, is critical."
+"Modern science and engineering is making tons
+of new collective intelligences."
+"These are called kilo bots and they can be
+programmed."
+"They'll do things - you can't predict them
+without knowing the rules of each individual"
+bot.
+"This is a kind of existential question for
+us going forward in society, you make internet"
+"of things and all these swarm robotics, what
+is the swarm going to try to do?"
+"What are the goals?"
+"Where do goals come from?"
+"It's a major unanswered question."
+"The ability to make these kind of things and
+observe the novel behaviors and structures"
+"that appear, are an important way for us to
+close this knowledge gap."
+"Just to finish up here with a couple of points,
+everything about biots, as I pointed out is"
+swappable.
+"Here is a system where the normal structure
+of brain, body, environment has been altered."
+"Here is a brain."
+"This happens to be a dish with some rat neurons
+in it."
+"But the signals of these neurons are processed
+by computer and fed into a flight simulator"
+game.
+"These cells are rewarded or punished based
+on how well the flight does."
+"If the plane crashes, they get electric shock
+and so on."
+"Sure enough, the neuro cells learn to fly
+the plane."
+"This is now their body, this is what they're
+able to do."
+"That plasticity, the ability to hybridize
+basically with virtual bodies, virtual environments"
+"is really important for the following reason."
+"Here is an example."
+"Here is a gentleman that has no biological
+arms, but he now has robotic arms that very"
+"much like the neurons you just saw flying
+the plane, now his neurons are able to drive"
+"these mechanical arms."
+"So the plasticity of these - these are called
+Hybrots, a set of neurons used to drive a"
+"neural body."
+"Their body is a vehicle."
+"This is telling us something very important."
+"This forms a continuum."
+"Here you have a human with a little bit of
+electronics in."
+"Let's say 95% human, 5% electronics."
+"You would say that's still a human being."
+"Here you have the opposite situation."
+"You have a robot with a few human cells cultured
+on top."
+"You would say that's 95% robotics and 5% human
+cells."
+"That's basically a machine."
+"The amazing thing is we can fill in any point
+along this continuum."
+"If you wanted something that was 50/50 or
+70/30, it can be filled in by a possible human"
+being.
+"This idea it's a human, a robot, a machine,
+this binary sense that we can make a sharp"
+"category simply doesn't exist anymore."
+"When one considers the true diversity of possible
+agents, you can imagine all the synthetics"
+"and the cyborgs and all these different things,
+it completely erodes these binary kinds of"
+"categories that we used to have."
+"In the olden day, you could knock on something
+and hear a metallic sound, you'd say that's"
+"a machine that came out of a factory, will
+perform in a predictably boring way."
+"Whereas, if you do that and it's soft and
+squishy, you'd say that's an evolved creature"
+"and I have to take care of it."
+"That distinction is being eroded."
+"What that means is, in the future, when we
+look at creatures in our environment and consider"
+"what moral and ethical responsibility we have
+for them, we will not be able to make those"
+"decisions based on what they look like and
+where they came from."
+"And this I think resonates with a lot of other
+progressive ideas where you simply can't decide"
+"what you owe something based on its origin
+story, whether it got here by evolution or"
+"design or some mixture of the two, and what
+it looks like."
+"We will have to be very, very cognizant of
+what kinds of minds these types of organisms"
+have.
+"Darwin at one point looked out into a river
+bank and he said - he was impressed by these"
+"endless forms most beautiful."
+"I want to point out that's basically - everything
+he saw in the living world, everything we"
+"see in the bio sphere is a tiny corner of
+this astronomical option space of creatures"
+"that could exist and are going to exist in
+our world."
+"We're going to be living side by side with
+all these different combinations of biological"
+"structures, designed machines and software."
+"All of these can be recombined readily."
+"Our strategy now is that we cannot fall back
+on this kind of simple criterion that people"
+"use in bioethics, in terms of - well, how
+much like a human brain is it?"
+"That's how we decide what moral protection
+something has."
+"Is it an invertebrate, a worm, a dog, what
+do we owe it?"
+"These categories are being blown up by the
+realization that biology is endlessly plastic"
+"and recombinable, and we need to develop a
+much deeper understanding of what it means"
+"to be a cognitive being, a machine."
+"We are all machines in a particular sense,
+and so on, and what we owe the various different"
+"types of creatures."
+"I want to close by summarizing what I've said."
+"There's new biology that allows us to make
+all kinds of unusual new creatures - it's"
+"not about the unknown creatures, it's forcing
+us to hold up a mirror to ourselves, confronting"
+"profound issues that have always been here,
+but obscured by the familiarity of standard"
+"animal and plant models."
+"The fact that zebra fish always make zebra
+fish."
+"These have ethical implications well beyond
+the simple questions of bio safety."
+"The familiar categories upon which ethics
+theories are built are basically crumbling."
+"The distinction between robot, machine, organism,
+they don't exist the way they used to."
+"They need to be replaced."
+"The young people in the audience will be living
+amongst a huge diversity of creatures with"
+"novel bodies and novel kinds of minds."
+"Their origin and physical appearance will
+not be reliable guides to the moral responsibilities"
+"that we owe them."
+"We need to develop new frameworks that simply
+don't exist yet."
+"Everything of interest to ethical considerations
+including memory, cognition, consciousness"
+"and so on, are on a continuum."
+"We must take evolution seriously, and whatever
+capacity a human might have that deserves"
+"certain kinds of moral considerations and
+responsibilities, you can trace that very"
+"smoothly all the way down to bacteria and
+beyond in increments that do not permit any"
+"kind of a sharp line with respect to almost
+anything interesting."
+"Evolution optimizes quantity, not quality."
+"I would argue we have an imperative to improve
+the status quo."
+"I think surely we can do better than random
+search."
+"More details here if anybody is interested
+in fuller treatments of all of these questions."
+"Here are some papers you might be interested
+in."
+"I want to thank the people who did a lot of
+this work."
+"These are the post docs and students in the
+lab."
+"I want to thank my collaborators, people who
+fund the research we do, of course, all the"
+"animals and model systems we work with."
+"I thank you very much for listening."
+"I'll take questions."
+">> JONATHAN BEEVER: Thank you, Dr. Levin."
+"That was great."
+"We call all give him a virtual round of applause
+in that awkward Zoomy kind of way."
+"We've got a lot of questions."
+"I notice, Dr. Levin, the questions are in
+two forms."
+"I want to start with what I'll call the technical
+and research ethics questions and expand out"
+"into the bigger-picture questions."
+"Folks can use the Q&A top adjust their questions
+if I'm misrepresenting anybody."
+"I'll start with a couple of these technical
+questions."
+"The first question was how did your team determine
+what amount of signaling was needed to regenerate"
+"a frog's limb?"
+">> MICHAEL LEVIN: Basically what we've been
+doing for years is trying to understand what"
+"kinds of signals drive the creation of body
+structures in the first place."
+"We observe embryonic development, all the
+signaling that goes on so we can track the"
+"electrical conversations, the chemical signals,
+we build computer models to see how do the"
+"conversations scale up to a larger type of
+goal."
+"No individual cell knows what a leg or finger
+is, but the collective does."
+"So what we found were some triggers, bio electric
+signals that basically triggered to the cells"
+"build the particular structure here."
+"We can make eyes, limbs, hearts and a couple
+of other things."
+"There's many things we don't know how to induce
+yet."
+"That's where it comes from, from a study of
+embryonic development."
+">> JONATHAN BEEVER: That's helpful."
+"Relatedly, another question about whether
+the frog's skin cells that create xenobots"
+"continue to lead to the same organisms, or
+is there a substantial differentiation every"
+"time you run the process?"
+"The question is do you end up with differently
+structured xenobots, each iteration?"
+">> MICHAEL LEVIN: Right."
+"It's interesting."
+"It's much like with any other aspect of biology,
+the large scale is very consistent."
+"So most xenobots look basically exactly the
+same at the large scale."
+"But they all have interesting individuality."
+"There's motion types, a huge range of different
+motion types, a huge range of different responses"
+"to different behaviors."
+"So lots of individuality."
+"That body type is a particular thing these
+cells like to make and it's quite consistent."
+">> JONATHAN BEEVER: Okay."
+"This next question comes from Professor of
+Chemistry Eloy Hernandez at UCF who asks how"
+"can you explain the apparent contradiction
+between evolution and the self-corrective"
+"process that you showed in the Picasso's tadpole
+example?"
+">> MICHAEL LEVIN: I didn't hear the second
+part of the question."
+">> JONATHAN BEEVER: Self-corrective process
+that you showed in Picasso's tadpole example."
+">> MICHAEL LEVIN: The idea is this, you can
+think about the process of evolution."
+"The most mysterious thing about it, certainly
+as I heard about it as a kid, it seemed wildly"
+implausible.
+"We all know if you're building something or
+writing computer code, random changes are"
+"much likely to make things worse, not better."
+"The question is how in a reasonable time frame
+do you get all these remarkable capacities"
+"that we see in the biological world."
+"What I think is absolutely required for that
+to actually work is an important degree of"
+"what we call multiscale competency, meaning
+that if the eye is off of where it needs to"
+"be, it is able, within limits, to sort of
+on its own, without any genetic instructions"
+"to the contrary, it's able to find where it
+needs to go."
+"That's part of what makes evolution work."
+"It means, if you had animals who are hard
+coded - and there are a few that - any time"
+"you had a mutation that would change something,
+everything else would fall to pieces."
+"If you had a mutation that moves the eye a
+little bit but maybe does something beneficial"
+"somewhere else, that animal would be dead."
+"The eyes wouldn't work."
+"The mouth wouldn't be in the right place,
+the animal would be dead and evolution couldn't"
+"reap the positive benefits of that mutation
+anywhere else."
+"The fact that these individual tissues and
+organs are self-correcting in anatomical space"
+"and physiological space, transcriptional space,
+they have a lot of capacity to make up for"
+"differences in their environment."
+"Some amazing examples I could give you where
+that means it acts as a buffer, means that"
+"evolution can explore all kinds of potential
+changes because things will try to get their"
+"job done even when their environment is different."
+"If the eye ends up on the tail, no big deal."
+"The optic nerve still knows how to find the
+closest large neuro fiber and synapse onto"
+it.
+"If information comes from the spinal cord,
+I can still use that."
+"It doesn't have to come through the optic
+nerve."
+"That plasticity I think is a crucial part
+of evolvability."
+"It's what makes the process so effective and
+rapid."
+">> JONATHAN BEEVER: Relatedly, John Weishampel,
+professor of biology here asks the question"
+"- he says fascinating research on understanding
+fundamental biology which may have myriad"
+"after applications, any thoughts on the mass
+extinction of species that evolved over the"
+"millennia versus the creation of novel organisms?"
+">> MICHAEL LEVIN: That's a great question."
+">> JONATHAN BEEVER: Now we're going bigger
+question."
+">> MICHAEL LEVIN: I don't have too much to
+say about extinction, but I will say one of"
+"the biggest issues with open questions of
+evolution is the so-called arrival of the"
+fittest.
+"I think we understand selection fairly well,
+and you can sort of see how the environment"
+"and competition would winnow out things that
+are suboptimal."
+"But where do body plans come from in the first
+place is a really interesting question."
+"One of the things that I think the work, for
+example, in the xenobots is telling us is"
+"that there are aspects of this that we simply
+do not understand."
+"Unlike every other creature on earth that
+I'm aware of, these things don't have a lengthy"
+"evolutionary backstory of selection towards
+their shape."
+"This thing basically put itself together in
+48 hours in front of our eyes under completely"
+"novel circumstances that in this lineage did
+not exist."
+"So the ability of - this novelty, the ability
+of, if something happens to the genome and"
+"now the mechanism is telling the system where
+the signaling molecule for where the eyes"
+"are supposed to go is in the wrong place or
+whatever, all of these are viable organisms."
+"That's the amazing part about this."
+"The frogs with the eyes on their tails, six-legged
+frogs, two-headed worms, all of these are"
+"completely viable."
+"They may not be ecologically competitive with
+others, but that's okay."
+"They're viable creatures."
+"There's this incredible variety of variability
+of living things."
+"That's important for the appearance of new
+species."
+"In fact, something I didn't have time to mention,
+but those two-headed worms are, in fact, a"
+"kind of new species."
+"If you cut them into pieces again, they continue
+to make two-headed animals."
+"Even though their genomes are completely normal,
+no changes to the genetics, the question of"
+"how many heads you have is actually stored
+in an electrical circuit that we've modified"
+"to make two-headed animals, that circuit has
+its own memory."
+"They'll continue to make two-headed worms
+in perpetuity as far as we can tell."
+"Is that the creation of a new species?"
+"I don't know."
+"Much like everything else I've shown you,
+it kind of erodes these classical definitions."
+"It's a permanent new line of animal."
+">> JONATHAN BEEVER: My brain is thinking about
+connections to the extinction debate and whether"
+"bringing back an extinct animal is the same
+thing as creating a new species."
+"Super interesting."
+"We've got maybe two more questions about the
+big picture biology things."
+"Then I'll ask you a couple of questions big
+picture about ethics specifically."
+"This comes from Mason Cash, a professor of
+philosophy who says you said there are no"
+"bright lines between different levels of cognitive
+sophistication."
+"But many argue there are really bright lines
+especially in cognition, responsibility, self-awareness"
+"caused by environmental factors like language."
+"A human child raised in a social world without
+human language, raised by wolves, lacking"
+"a history of development in that cognitively
+enhanced environment ends up with a dramatically"
+"different cognitive capacity."
+"So development of cognitive capacity relies
+on strong environmental factors like language"
+"that scaffold cognitive development."
+"Languages are ratcheted to help lock in learning
+and changes."
+"So the question is are you understanding the
+ways biological and evolutionary sculpted"
+"development has been fine-tuned by developing
+and/or evolving in a context that includes"
+"the requisite environmental scaffolding?"
+"Would it be possible to replicate that kind
+of development?"
+">> MICHAEL LEVIN: It's a good point."
+"I don't disagree with anything you said in
+the sense that, What I certainly don't mean"
+"is that there aren't great transitions."
+"There are qualitative leaps in cognitive capacity."
+"I showed you one possible ladder."
+"I totally agree that language is such and
+so on."
+"What I mean by no bright lines is that people
+often, when they're not careful, they often"
+"talk about these things as if they were binary
+categories."
+"The reason why that doesn't work is because
+what that asks you - certainly creatures with"
+"symbolic language are different than those
+without."
+"But what you're not going to find is a single
+point in evolution where, here were some parents"
+"that did not have feature X and then, bang,
+their offspring - here is the change and their"
+"offspring have full-blown language."
+"We don't find that."
+"Even though certain cognitive capacities might
+have evolved rapidly, rapidly is only rapid"
+"on the geological sometime scale."
+"If you look at the biology, many, many generations
+it takes."
+"There's nowhere where you can put a binary
+- that creature has it - doesn't have it and"
+"then the offspring do."
+"So that's all that I'm trying to put an emphasis
+on, that all of these things are - the biology"
+"is changing quite slowly, and the result is
+often - again, it only looks rapid on a geological"
+"time scale actually."
+"All of the changes are quite piecemeal."
+"That's why I think we have to be really careful,
+because whatever kinds of - let's say responsibilities"
+"or, in fact, privileges that we give to a
+particular kind of creature, we have to ask"
+"what do we think about very, very similar
+creatures which we can make or which already"
+"exist that are all in the space of that adjacent
+possible."
+"We don't - and that's really the thing, is
+that all of these things are not crisp categories."
+"They're all a cloud of other creatures that
+are similar to them in some ways, different"
+"in others, whether they've been modified or
+evolutionarily different."
+">> JONATHAN BEEVER: It seems like the sorts
+of questions and responses you're working"
+"with in terms of artificial organisms or artificial
+life mirror the same sort of work that's going"
+"on across lots of other species."
+"There's all kinds of interesting work on cephalopods
+and intelligence and cognition."
+"Same with like tree communication through
+chemical responses to predation, and all sorts"
+"of things."
+"Sort of seeing cognition, or whatever you'd
+like to call it, across this gray scale or"
+model.
+"It seems like you're coming to those same
+questions through the work on xenobots that"
+"other folks are coming to working on existing
+organisms."
+">> MICHAEL LEVIN: I think that's true."
+"So evolution is a slower version of what's
+being done in synthetic bioengineering."
+"Evolution has been telling us forever that
+these creatures are part of a slowly changing"
+"continuous lineage, right?"
+"We are just expanding that into - much more
+rapidly expanding it into multiple directions"
+"across the space of all possible creatures."
+">> JONATHAN BEEVER: Okay."
+"The last of the biology questions comes from
+Professor Will Crampton in biology who asks,"
+"Physicist Richard Feynman once said we can't
+make what we don't understand."
+"One things humans have never managed to do
+is make something living out of something"
+dead.
+"Your wonderful artificial xenobots are made
+from the cells a frog while Craig Venter's"
+"synthetic mycoplasma laboratorium was made
+by injecting a man-made genome into a bacterium"
+"stripped of its own genome."
+"In your opinion is it conceivable that humans
+at least in our lifetimes could create a truly"
+"synthetic self-replicating organism from scratch,
+one without parts made from other living organisms?"
+">> MICHAEL LEVIN: Yeah."
+"Well, the simple answer I would say is yes."
+"I think that's absolutely possible."
+"The deeper issue here is that, much like with
+many other terms that have been eroded by"
+"modern progress, I'm not exactly sure what
+living means anymore."
+"I'm not alone."
+"There are lots of people that work in exobiology
+and try to understand say, okay, if we were"
+"to examine other worlds, what is it that we're
+actually looking for to say, ah, that's life?"
+"There's lots of really interesting work on
+what's called meta materials and smart materials."
+"That - given that all of life is also a continuum,
+the bottom end of that continuum from bacteria"
+"and sort of lower down - I think melds very,
+very continuously into material science."
+"So figuring out where you'll put a line - I've
+heard this before and it drives me crazy,"
+"well, that's just physics."
+"Guess what?"
+"Everything is physics."
+"There are different kinds of physics exploited
+in different ways."
+"I think there's going to be a smooth gradation
+between things we always recognized as living"
+"and things that look like just physics."
+"There are amazing examples of oil droplets
+that also solve mazes."
+"I think those two fields are going to merge."
+">> JONATHAN BEEVER: We're short on time."
+"I want to ask two last question to wrap up."
+"One is very big picture."
+"This comes from Rabbi Sanford Olshansky who
+writes in the chat, you made no mention of"
+"religion from which most American western
+ethics is derived."
+"What should be the role of religion in determining
+the ethics of the modifications of typical"
+"life forms and the creation of new artificial
+life forms?"
+">> MICHAEL LEVIN: That's not a small question."
+Okay.
+"I'll take a stab at it."
+"So this is my belief, that whatever the role
+of religion is going to be, it absolutely"
+"has to be tied closely to what we understand
+about the natural world."
+"I think to the extent that religion is giving
+us useful frameworks for action, it has to"
+"be consistent with what we know."
+"And that's fine."
+"As far as I can see, there are many compatible
+ways to understand religious precepts in ways"
+"that are compatible with the science."
+"But I think all of it has to work together
+towards a kind of life-positive outcome."
+"How ever we interpret religious thought, I
+think it has to be in a way that is going"
+"to be for the benefit of society, and that
+means, to my way of thinking, that means it"
+"has to be firmly grounded in the reality of
+what we know."
+"So if there were religions that were to say
+- this is actually very interesting."
+"I, in fact, have an appointment next week
+to talk to the rabbi at Tufts about similar"
+issues.
+"I've worked with some Buddhists and so on,
+about the status of these various creatures."
+"Actually, if someone had a religion that said
+there are only X number of creatures and that's"
+"all that there are, that is clearly incorrect."
+"If we're going to have useful religious framework
+to guide our activity, it has to be brought"
+"up to date with what we now see as possible."
+"We have to take these creatures seriously."
+"We have to honor their ability to suffer and
+we have to modernize as much as necessary"
+"those ideas."
+">> JONATHAN BEEVER: Thank you."
+"I know that was a big question."
+"I want to circle back around, I wish we had
+more time, to what I took to be your central"
+"thesis, which is we've actually got a moral
+duty to improve the world through this type"
+"of research."
+">> MICHAEL LEVIN: I think so."
+">> JONATHAN BEEVER: As opposed to a risk-based
+view of technological development and scientific"
+progress.
+"But my mind - when you stated your thesis,
+my mind immediately went to all the litany"
+"of ethical missteps that we've taken in scientific
+development, both on biology end, but also"
+"on information systems and destructive systems,
+and you can go on and on."
+"I wonder if you could talk with us briefly
+again about that central thesis and how you"
+"see that - I don't know - risk-benefit analysis
+playing out."
+">> MICHAEL LEVIN: I think it's for sure true
+you have to do the risk-benefit analysis as"
+"much as possible."
+"It's hard because we often don't see all the
+implications of our work, for any specific"
+case.
+"I think it's essential to think about the
+possible misuses on all of this stuff."
+"If we take the 30,000-foot view and ask broadly
+how often is it the case that we would have"
+"been better off without scientific inquiry?"
+"I suppose this could be debated."
+"I'll give you my personal view."
+"It seems to me completely convincing that
+overall science is a good thing."
+"Much like anything else, we screw it up from
+time to time and misuse it in various ways."
+"But overall, I can't think of a pre-scientific
+time period - in fact any time period prior"
+"to now that I would like to live in versus
+now."
+"I know other people are more competent with
+me will have statistics about what it was"
+"like and how it was to live in these other
+areas in terms of violence, and just the ability"
+"- to me it's the ability to be more than the
+biology."
+"I think this gets back to the previous question."
+"Survival is fine, but the ability to actually
+live in the world where you have free time"
+"and the capacity - the freedom and the capacity
+to sort of explore and exploit your creative"
+"gifts so you're not spending all your day
+digging for roots."
+"How many tens of thousands of years of that
+do we really need?"
+"I think science lifts us up out of mere biology
+to sort of more exalted ways of being, and"
+"I think that's essential."
+"I think we are going to mess it up from time
+to time, and we have to do our best."
+"But I don't see any way -
+Especially with the medical suffering in particular."
+"People often will say to me, oh, that's too
+much."
+"I'll say, well, pick a point."
+"Because at some point putting a splint on
+a broken bone was maybe considered too much,"
+right?
+"Is that too much?"
+"Blood transfusions?"
+"I suppose some people think that's gone too
+far."
+"Now we have brain surgery, we have all these
+things."
+"I don't see any moral way to tell any of the
+people to call me to say my kid has this problem,"
+"I've got a spinal cord injury, I've lost a
+limb, I don't see any moral way to tell any"
+"of these people that we've decided enough
+is enough, we're going to stop here."
+"I think that's a complete non-starter in an
+ethical sense."
+">> JONATHAN BEEVER: Thank you very much."
+"There's endless questions we can talk about
+from concerns about justice and access to"
+"the sorts of technologies we're talking about."
+"I'm grateful, Dr. Levin for your time and
+to everybody for asking really excellent questions."
+"Thank you very much."
+"I'm going to turn things over to Dr. Kuebler
+to wrap things up."
+"Thank you again."
+">> MICHAEL LEVIN: Thank you very much."
+">> STEPHEN KUEBLER: Thank you Dr. Levin for
+an intriguing and thought-provoking presentation,"
+"and thank you participants for
+your outstanding questions."
+"A link to this presentation will be made available
+at the UCF Center for Ethics website so you"
+"can view the recording again and share it
+with others."
+"And there you can also find information on
+upcoming talks on Ethically Speaking."
+"Our next presentation will be on November
+4th, Dr. Bryan Cwik, Assistant Professor of"
+"Philosophy and University studies at Portland
+State University will give a taken titled"
+"""Biotechnology and Global Health: Lessons
+From the Covid-19 Pandemic."""
+"Do sign up by visiting our web page at ethicscenter.research.ucf.edu."
+"You'll also find information about the Center's
+other activities as well as contact information"
+"to provide feedback and ideas for future talks."
+"This series has come together with the help
+of many people."
+"I'd like to thank the Office of Instructional
+Resources for technical support, Nicole Wills"
+"Heather Gibson and Matt Dunn and the College
+of Arts and Humanities for promoting our event."
+"Dr. Will Crampton and Dr. Jonathan Beever
+for helping with introductions and Q&A."
+"This series has resulted through generous
+support from many UCF colleges, departments"
+"and units listed here."
+"I'd like to thank these partners and many
+individuals in those units - too numerous"
+"to list - who have helped bring this together."
+"Lastly, thank you for your participation,
+and we hope you'll join us for future presentations"
+"in Ethically Speaking."

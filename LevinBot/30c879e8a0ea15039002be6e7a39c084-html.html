@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:28px;font-family:Times;color:#ffffff;}
+	.ft11{font-size:45px;font-family:Times;color:#ffffff;}
+	.ft12{font-size:119px;font-family:Times;color:#ffffff;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:49px;left:177px;white-space:nowrap" class="ft10"><b>Emergence, Complexity and Computation&#160;&#160;ECC</b></p>
+<p style="position:absolute;top:304px;left:176px;white-space:nowrap" class="ft11">Andrew Adamatzky&#160;&#160;&#160;&#160;Editor</p>
+<p style="position:absolute;top:383px;left:170px;white-space:nowrap" class="ft12">Advances&#160;in</p>
+<p style="position:absolute;top:493px;left:170px;white-space:nowrap" class="ft12">Unconventional</p>
+<p style="position:absolute;top:602px;left:170px;white-space:nowrap" class="ft12">Computing</p>
+<p style="position:absolute;top:751px;left:176px;white-space:nowrap" class="ft11">Volume&#160;2:&#160;Prototypes,&#160;Models&#160;and</p>
+<p style="position:absolute;top:798px;left:176px;white-space:nowrap" class="ft11">Algorithms</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:25px;font-family:Times;color:#000000;}
+	.ft21{font-size:22px;font-family:Times;color:#000000;}
+	.ft22{font-size:15px;font-family:Times;color:#000000;}
+	.ft23{font-size:11px;font-family:Times;color:#808080;}
+	.ft24{font-size:15px;line-height:20px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:114px;left:173px;white-space:nowrap" class="ft20">Emergence,&#160;Complexity&#160;and&#160;Computation</p>
+<p style="position:absolute;top:191px;left:173px;white-space:nowrap" class="ft21">Volume&#160;23</p>
+<p style="position:absolute;top:279px;left:173px;white-space:nowrap" class="ft22">Series&#160;editors</p>
+<p style="position:absolute;top:311px;left:173px;white-space:nowrap" class="ft24">Ivan&#160;Zelinka,&#160;Technical&#160;University&#160;of&#160;Ostrava,&#160;Ostrava,&#160;Czech&#160;Republic<br/>e-mail:&#160;ivan.zelinka@vsb.cz</p>
+<p style="position:absolute;top:372px;left:173px;white-space:nowrap" class="ft24">Andrew&#160;Adamatzky,&#160;University&#160;of&#160;the&#160;West&#160;of&#160;England,&#160;Bristol,&#160;UK<br/>e-mail:&#160;adamatzky@gmail.com</p>
+<p style="position:absolute;top:434px;left:173px;white-space:nowrap" class="ft24">Guanrong&#160;Chen,&#160;City&#160;University&#160;of&#160;Hong&#160;Kong,&#160;Hong&#160;Kong,&#160;China<br/>e-mail:&#160;eegchen@cityu.edu.hk</p>
+<p style="position:absolute;top:496px;left:173px;white-space:nowrap" class="ft22">Editorial&#160;Board</p>
+<p style="position:absolute;top:527px;left:173px;white-space:nowrap" class="ft24">Ajith&#160;Abraham,&#160;MirLabs,&#160;USA<br/>Ana&#160;Lucia&#160;C.&#160;Bazzan,&#160;Universidade&#160;Federal&#160;do&#160;Rio&#160;Grande&#160;do&#160;Sul,&#160;Porto<br/>Alegre,&#160;RS,&#160;Brazil<br/>Juan&#160;C.&#160;Burguillo,&#160;University&#160;of&#160;Vigo,&#160;Spain<br/>Sergej&#160;Čelikovský,&#160;Academy&#160;of&#160;Sciences&#160;of&#160;the&#160;Czech&#160;Republic,&#160;Czech&#160;Republic<br/>Mohammed&#160;Chadli,&#160;University&#160;of&#160;Jules&#160;Verne,&#160;France<br/>Emilio&#160;Corchado,&#160;University&#160;of&#160;Salamanca,&#160;Spain<br/>Donald&#160;Davendra,&#160;Technical&#160;University&#160;of&#160;Ostrava,&#160;Czech&#160;Republic<br/>Andrew&#160;Ilachinski,&#160;Center&#160;for&#160;Naval&#160;Analyses,&#160;USA<br/>Jouni&#160;Lampinen,&#160;University&#160;of&#160;Vaasa,&#160;Finland<br/>Martin&#160;Middendorf,&#160;University&#160;of&#160;Leipzig,&#160;Germany<br/>Edward&#160;Ott,&#160;University&#160;of&#160;Maryland,&#160;USA<br/>Linqiang&#160;Pan,&#160;Huazhong&#160;University&#160;of&#160;Science&#160;and&#160;Technology,&#160;Wuhan,&#160;China<br/>Gheorghe&#160;Păun,&#160;Romanian&#160;Academy,&#160;Bucharest,&#160;Romania<br/>Hendrik&#160;Richter,&#160;HTWK&#160;Leipzig&#160;University&#160;of&#160;Applied&#160;Sciences,&#160;Germany<br/>Juan&#160;A.&#160;Rodriguez-Aguilar,&#160;IIIA-CSIC,&#160;Spain<br/>Otto&#160;Rössler,&#160;Institute&#160;of&#160;Physical&#160;and&#160;Theoretical&#160;Chemistry,&#160;Tübingen,&#160;Germany<br/>Vaclav&#160;Snasel,&#160;Technical&#160;University&#160;of&#160;Ostrava,&#160;Czech&#160;Republic<br/>Ivo&#160;Vondrák,&#160;Technical&#160;University&#160;of&#160;Ostrava,&#160;Czech&#160;Republic<br/>Hector&#160;Zenil,&#160;Karolinska&#160;Institute,&#160;Sweden</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft23">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:15px;font-family:Times;color:#000000;}
+	.ft31{font-size:11px;font-family:Times;color:#808080;}
+	.ft32{font-size:15px;line-height:20px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:118px;left:173px;white-space:nowrap" class="ft30">About&#160;this&#160;Series</p>
+<p style="position:absolute;top:158px;left:173px;white-space:nowrap" class="ft32">The&#160;Emergence,&#160;Complexity&#160;and&#160;Computation&#160;(ECC)&#160;series&#160;publishes&#160;new<br/>developments,&#160;advancements&#160;and&#160;selected&#160;topics&#160;in&#160;the&#160;ﬁelds&#160;of&#160;complexity,</p>
+<p style="position:absolute;top:200px;left:173px;white-space:nowrap" class="ft32">computation&#160;and&#160;emergence.&#160;The&#160;series&#160;focuses&#160;on&#160;all&#160;aspects&#160;of&#160;reality-based<br/>computation&#160;approaches&#160;from&#160;an&#160;interdisciplinary&#160;point&#160;of&#160;view&#160;especially&#160;from<br/>applied&#160;sciences,&#160;biology,&#160;physics,&#160;or&#160;chemistry.&#160;It&#160;presents&#160;new&#160;ideas&#160;and&#160;inter-<br/>disciplinary&#160;insight&#160;on&#160;the&#160;mutual&#160;intersection&#160;of&#160;subareas&#160;of&#160;computation,&#160;com-<br/>plexity&#160;and&#160;emergence&#160;and&#160;its&#160;impact&#160;and&#160;limits&#160;to&#160;any&#160;computing&#160;based&#160;on<br/>physical&#160;limits&#160;(thermodynamic&#160;and&#160;quantum&#160;limits,&#160;Bremermann’s&#160;limit,&#160;Seth<br/>Lloyd&#160;limits…)&#160;as&#160;well&#160;as&#160;algorithmic&#160;limits&#160;(Gödel’s&#160;proof&#160;and&#160;its&#160;impact&#160;on<br/>calculation,&#160;algorithmic&#160;complexity,&#160;the&#160;Chaitin’s&#160;Omega&#160;number&#160;and&#160;Kolmogorov<br/>complexity,&#160;non-traditional&#160;calculations&#160;like&#160;Turing&#160;machine&#160;process&#160;and&#160;its&#160;con-<br/>sequences,…)&#160;and&#160;limitations&#160;arising&#160;in&#160;artiﬁcial&#160;intelligence&#160;ﬁeld.&#160;The&#160;topics&#160;are</p>
+<p style="position:absolute;top:407px;left:173px;white-space:nowrap" class="ft32">(but&#160;not&#160;limited&#160;to)&#160;membrane&#160;computing,&#160;DNA&#160;computing,&#160;immune&#160;computing,<br/>quantum&#160;computing,&#160;swarm&#160;computing,&#160;analogic&#160;computing,&#160;chaos&#160;computing&#160;and<br/>computing&#160;on&#160;the&#160;edge&#160;of&#160;chaos,&#160;computational&#160;aspects&#160;of&#160;dynamics&#160;of&#160;complex<br/>systems&#160;(systems&#160;with&#160;self-organization,&#160;multiagent&#160;systems,&#160;cellular&#160;automata,<br/>artiﬁcial&#160;life,…),&#160;emergence&#160;of&#160;complex&#160;systems&#160;and&#160;its&#160;computational&#160;aspects,&#160;and</p>
+<p style="position:absolute;top:510px;left:173px;white-space:nowrap" class="ft32">agent&#160;based&#160;computation.&#160;The&#160;main&#160;aim&#160;of&#160;this&#160;series&#160;it&#160;to&#160;discuss&#160;the&#160;above<br/>mentioned&#160;topics&#160;from&#160;an&#160;interdisciplinary&#160;point&#160;of&#160;view&#160;and&#160;present&#160;new&#160;ideas<br/>coming&#160;from&#160;mutual&#160;intersection&#160;of&#160;classical&#160;as&#160;well&#160;as&#160;modern&#160;methods&#160;of&#160;com-<br/>putation.&#160;Within&#160;the&#160;scope&#160;of&#160;the&#160;series&#160;are&#160;monographs,&#160;lecture&#160;notes,&#160;selected<br/>contributions&#160;from&#160;specialized&#160;conferences&#160;and&#160;workshops,&#160;special&#160;contribution<br/>from&#160;international&#160;experts.</p>
+<p style="position:absolute;top:675px;left:173px;white-space:nowrap" class="ft30">More&#160;information&#160;about&#160;this&#160;series&#160;at&#160;http://www.springer.com/series/10624</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft31">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:25px;font-family:Times;color:#000000;}
+	.ft41{font-size:22px;font-family:Times;color:#000000;}
+	.ft42{font-size:46px;font-family:Times;color:#000000;}
+	.ft43{font-size:29px;font-family:Times;color:#000000;}
+	.ft44{font-size:53px;font-family:Times;color:#000000;}
+	.ft45{font-size:11px;font-family:Times;color:#808080;}
+	.ft46{font-size:25px;line-height:34px;font-family:Times;color:#000000;}
+	.ft47{font-size:46px;line-height:77px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:115px;left:173px;white-space:nowrap" class="ft46">Andrew&#160;Adamatzky<br/>Editor</p>
+<p style="position:absolute;top:262px;left:173px;white-space:nowrap" class="ft42">Advances&#160;in&#160;Unconventional</p>
+<p style="position:absolute;top:314px;left:173px;white-space:nowrap" class="ft47">Computing<br/>Volume&#160;2:&#160;Prototypes,&#160;Models</p>
+<p style="position:absolute;top:425px;left:173px;white-space:nowrap" class="ft43">and&#160;Algorithms</p>
+<p style="position:absolute;top:1011px;left:178px;white-space:nowrap" class="ft44">123</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft45">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:Times;color:#000000;}
+	.ft51{font-size:11px;font-family:Times;color:#000000;}
+	.ft52{font-size:11px;font-family:Times;color:#808080;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:118px;left:173px;white-space:nowrap" class="ft50">Editor</p>
+<p style="position:absolute;top:134px;left:173px;white-space:nowrap" class="ft50">Andrew&#160;Adamatzky</p>
+<p style="position:absolute;top:152px;left:173px;white-space:nowrap" class="ft50">Unconventional&#160;Computing&#160;Centre</p>
+<p style="position:absolute;top:169px;left:173px;white-space:nowrap" class="ft50">University&#160;of&#160;the&#160;West&#160;of&#160;England</p>
+<p style="position:absolute;top:186px;left:173px;white-space:nowrap" class="ft50">Bristol</p>
+<p style="position:absolute;top:203px;left:173px;white-space:nowrap" class="ft50">UK</p>
+<p style="position:absolute;top:652px;left:173px;white-space:nowrap" class="ft50">ISSN&#160;2194-7287</p>
+<p style="position:absolute;top:652px;left:399px;white-space:nowrap" class="ft50">ISSN&#160;2194-7295&#160;(electronic)</p>
+<p style="position:absolute;top:669px;left:173px;white-space:nowrap" class="ft50">Emergence,&#160;Complexity&#160;and&#160;Computation</p>
+<p style="position:absolute;top:686px;left:173px;white-space:nowrap" class="ft50">ISBN&#160;978-3-319-33920-7</p>
+<p style="position:absolute;top:686px;left:399px;white-space:nowrap" class="ft50">ISBN&#160;978-3-319-33921-4&#160;(eBook)</p>
+<p style="position:absolute;top:703px;left:173px;white-space:nowrap" class="ft50">DOI&#160;10.1007/978-3-319-33921-4</p>
+<p style="position:absolute;top:736px;left:173px;white-space:nowrap" class="ft51">Library&#160;of&#160;Congress&#160;Control&#160;Number:&#160;2016940327</p>
+<p style="position:absolute;top:767px;left:173px;white-space:nowrap" class="ft51">©</p>
+<p style="position:absolute;top:767px;left:188px;white-space:nowrap" class="ft51">Springer&#160;International&#160;Publishing&#160;Switzerland&#160;2017</p>
+<p style="position:absolute;top:782px;left:173px;white-space:nowrap" class="ft51">This&#160;work&#160;is&#160;subject&#160;to&#160;copyright.&#160;All&#160;rights&#160;are&#160;reserved&#160;by&#160;the&#160;Publisher,&#160;whether&#160;the&#160;whole&#160;or&#160;part</p>
+<p style="position:absolute;top:798px;left:173px;white-space:nowrap" class="ft51">of&#160;the&#160;material&#160;is&#160;concerned,&#160;speciﬁcally&#160;the&#160;rights&#160;of&#160;translation,&#160;reprinting,&#160;reuse&#160;of&#160;illustrations,</p>
+<p style="position:absolute;top:813px;left:173px;white-space:nowrap" class="ft51">recitation,&#160;broadcasting,&#160;reproduction&#160;on&#160;microﬁlms&#160;or&#160;in&#160;any&#160;other&#160;physical&#160;way,&#160;and&#160;transmission</p>
+<p style="position:absolute;top:829px;left:173px;white-space:nowrap" class="ft51">or&#160;information&#160;storage&#160;and&#160;retrieval,&#160;electronic&#160;adaptation,&#160;computer&#160;software,&#160;or&#160;by&#160;similar&#160;or&#160;dissimilar</p>
+<p style="position:absolute;top:844px;left:173px;white-space:nowrap" class="ft51">methodology&#160;now&#160;known&#160;or&#160;hereafter&#160;developed.</p>
+<p style="position:absolute;top:860px;left:173px;white-space:nowrap" class="ft51">The&#160;use&#160;of&#160;general&#160;descriptive&#160;names,&#160;registered&#160;names,&#160;trademarks,&#160;service&#160;marks,&#160;etc.&#160;in&#160;this</p>
+<p style="position:absolute;top:875px;left:173px;white-space:nowrap" class="ft51">publication&#160;does&#160;not&#160;imply,&#160;even&#160;in&#160;the&#160;absence&#160;of&#160;a&#160;speciﬁc&#160;statement,&#160;that&#160;such&#160;names&#160;are&#160;exempt&#160;from</p>
+<p style="position:absolute;top:891px;left:173px;white-space:nowrap" class="ft51">the&#160;relevant&#160;protective&#160;laws&#160;and&#160;regulations&#160;and&#160;therefore&#160;free&#160;for&#160;general&#160;use.</p>
+<p style="position:absolute;top:906px;left:173px;white-space:nowrap" class="ft51">The&#160;publisher,&#160;the&#160;authors&#160;and&#160;the&#160;editors&#160;are&#160;safe&#160;to&#160;assume&#160;that&#160;the&#160;advice&#160;and&#160;information&#160;in&#160;this</p>
+<p style="position:absolute;top:922px;left:173px;white-space:nowrap" class="ft51">book&#160;are&#160;believed&#160;to&#160;be&#160;true&#160;and&#160;accurate&#160;at&#160;the&#160;date&#160;of&#160;publication.&#160;Neither&#160;the&#160;publisher&#160;nor&#160;the</p>
+<p style="position:absolute;top:937px;left:173px;white-space:nowrap" class="ft51">authors&#160;or&#160;the&#160;editors&#160;give&#160;a&#160;warranty,&#160;express&#160;or&#160;implied,&#160;with&#160;respect&#160;to&#160;the&#160;material&#160;contained&#160;herein&#160;or</p>
+<p style="position:absolute;top:953px;left:173px;white-space:nowrap" class="ft51">for&#160;any&#160;errors&#160;or&#160;omissions&#160;that&#160;may&#160;have&#160;been&#160;made.</p>
+<p style="position:absolute;top:984px;left:173px;white-space:nowrap" class="ft51">Printed&#160;on&#160;acid-free&#160;paper</p>
+<p style="position:absolute;top:1015px;left:173px;white-space:nowrap" class="ft51">This&#160;Springer&#160;imprint&#160;is&#160;published&#160;by&#160;Springer&#160;Nature</p>
+<p style="position:absolute;top:1031px;left:173px;white-space:nowrap" class="ft51">The&#160;registered&#160;company&#160;is&#160;Springer&#160;International&#160;Publishing&#160;AG&#160;Switzerland</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft52">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:22px;font-family:Times;color:#131413;}
+	.ft61{font-size:25px;font-family:Times;color:#131413;}
+	.ft62{font-size:15px;font-family:Times;color:#131413;}
+	.ft63{font-size:15px;font-family:Times;color:#131413;}
+	.ft64{font-size:12px;font-family:Times;color:#131413;}
+	.ft65{font-size:19px;font-family:Times;color:#131413;}
+	.ft66{font-size:12px;font-family:Times;color:#131413;}
+	.ft67{font-size:11px;font-family:Times;color:#808080;}
+	.ft68{font-size:15px;line-height:21px;font-family:Times;color:#131413;}
+	.ft69{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+	.ft610{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:116px;left:172px;white-space:nowrap" class="ft60"><b>Chapter&#160;24</b></p>
+<p style="position:absolute;top:144px;left:172px;white-space:nowrap" class="ft61"><b>Computing&#160;a&#160;Worm:&#160;Reverse-Engineering</b></p>
+<p style="position:absolute;top:175px;left:172px;white-space:nowrap" class="ft61"><b>Planarian&#160;Regeneration</b></p>
+<p style="position:absolute;top:246px;left:172px;white-space:nowrap" class="ft62"><b>Daniel&#160;Lobo&#160;and&#160;Michael&#160;Levin</b></p>
+<p style="position:absolute;top:344px;left:172px;white-space:nowrap" class="ft69"><b>Abstract&#160;</b>In&#160;order&#160;to&#160;understand&#160;and&#160;control&#160;complex&#160;biological&#160;systems,&#160;we&#160;need<br/>to&#160;unravel&#160;the&#160;information&#160;processing&#160;and&#160;computations&#160;required&#160;to&#160;regulate&#160;their<br/>dynamics.&#160;The&#160;development&#160;of&#160;a&#160;complete&#160;organism&#160;from&#160;a&#160;single&#160;cell&#160;or&#160;the&#160;restora-<br/>tion&#160;of&#160;lost&#160;structures&#160;and&#160;body&#160;parts&#160;after&#160;amputations&#160;require&#160;the&#160;coordination&#160;of&#160;mil-<br/>lions&#160;of&#160;cells&#160;exchanging&#160;and&#160;processing&#160;information.&#160;Understanding&#160;these&#160;dynamic<br/>processes&#160;from&#160;the&#160;results&#160;of&#160;biological&#160;perturbation&#160;experiments&#160;represent&#160;an&#160;out-<br/>standing&#160;challenge&#160;due&#160;to&#160;the&#160;characteristic&#160;non-linear&#160;dynamics&#160;and&#160;feed-back&#160;loops<br/>of&#160;their&#160;molecular&#160;and&#160;biophysical&#160;regulatory&#160;mechanisms—an&#160;inverse&#160;problem&#160;with<br/>no&#160;analytical&#160;or&#160;computationally&#160;tractable&#160;solutions.&#160;To&#160;bridge&#160;the&#160;gap&#160;between<br/>molecular-level&#160;mechanistic&#160;data&#160;and&#160;systems-level&#160;outcomes,&#160;we&#160;have&#160;developed&#160;a<br/>computational&#160;methodology&#160;based&#160;on&#160;heuristic&#160;algorithms&#160;to&#160;automatically&#160;reverse-<br/>engineer&#160;dynamic&#160;regulatory&#160;networks&#160;directly&#160;from&#160;experimental&#160;results.&#160;Using&#160;this<br/>method,&#160;applied&#160;to&#160;problems&#160;of&#160;pattern&#160;regulation&#160;during&#160;metazoan&#160;regeneration,&#160;we<br/>inferred&#160;the&#160;first&#160;comprehensive&#160;regulatory&#160;network&#160;of&#160;planarian&#160;regeneration,&#160;capa-<br/>ble&#160;of&#160;explaining&#160;the&#160;most&#160;relevant&#160;experiments&#160;of&#160;anterior-posterior&#160;specification<br/>during&#160;regeneration.&#160;Here&#160;we&#160;summarize&#160;our&#160;results&#160;and&#160;study&#160;the&#160;dynamics&#160;of&#160;the<br/>inferred&#160;regulatory&#160;model,&#160;unraveling&#160;the&#160;information&#160;processing&#160;and&#160;computations<br/>required&#160;to&#160;regenerate&#160;a&#160;correct&#160;morphology.</p>
+<p style="position:absolute;top:880px;left:172px;white-space:nowrap" class="ft64">D.&#160;Lobo&#160;(</p>
+<p style="position:absolute;top:873px;left:229px;white-space:nowrap" class="ft65">B)</p>
+<p style="position:absolute;top:897px;left:172px;white-space:nowrap" class="ft610">Department&#160;of&#160;Biological&#160;Sciences,&#160;University&#160;of&#160;Maryland,&#160;Baltimore&#160;County,<br/>1000&#160;Hilltop&#160;Circle,&#160;Baltimore,&#160;MD&#160;21250,&#160;USA<br/>e-mail:&#160;lobo@umbc.edu</p>
+<p style="position:absolute;top:958px;left:172px;white-space:nowrap" class="ft610">M.&#160;Levin<br/>Department&#160;of&#160;Biology,&#160;Center&#160;for&#160;Regenerative&#160;and&#160;Developmental&#160;Biology,<br/>Tufts&#160;University,&#160;200&#160;Boston&#160;Avenue,&#160;Suite&#160;4600,&#160;Medford,&#160;MA&#160;02155,&#160;USA<br/>e-mail:&#160;michael.levin@tufts.edu</p>
+<p style="position:absolute;top:1040px;left:172px;white-space:nowrap" class="ft610">©&#160;Springer&#160;International&#160;Publishing&#160;Switzerland&#160;2017<br/>A.&#160;Adamatzky&#160;(ed.),&#160;<i>Advances&#160;in&#160;Unconventional&#160;Computing</i>,<br/>Emergence,&#160;Complexity&#160;and&#160;Computation&#160;23,<br/>DOI&#160;10.1007/978-3-319-33921-4_24</p>
+<p style="position:absolute;top:1040px;left:724px;white-space:nowrap" class="ft64">637</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft67">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:12px;font-family:Times;color:#131413;}
+	.ft71{font-size:18px;font-family:Times;color:#131413;}
+	.ft72{font-size:15px;font-family:Times;color:#131413;}
+	.ft73{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft74{font-size:11px;font-family:Times;color:#808080;}
+	.ft75{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft70">638</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft70">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:114px;left:172px;white-space:nowrap" class="ft71"><b>24.1&#160;Introduction</b></p>
+<p style="position:absolute;top:166px;left:172px;white-space:nowrap" class="ft75">The&#160;biochemical&#160;and&#160;biophysical&#160;mechanisms&#160;that&#160;control&#160;the&#160;development&#160;of&#160;pat-<br/>terns,&#160;shapes,&#160;and&#160;anatomical&#160;forms&#160;are&#160;among&#160;the&#160;most&#160;complex&#160;regulatory&#160;processes<br/>in&#160;biology.&#160;These&#160;mechanisms&#160;coordinate&#160;the&#160;information&#160;exchange&#160;and&#160;processing<br/>required&#160;by&#160;cells&#160;to&#160;produce,&#160;from&#160;a&#160;fertilized&#160;egg&#160;made&#160;of&#160;a&#160;single&#160;cell,&#160;the&#160;intricate<br/>morphologies&#160;and&#160;patterns&#160;characteristic&#160;of&#160;biological&#160;organisms.&#160;In&#160;general,&#160;these<br/>processes&#160;and&#160;regulations&#160;do&#160;not&#160;stop&#160;after&#160;maturity,&#160;but&#160;continue&#160;during&#160;the&#160;entire<br/>life-span&#160;to&#160;maintain&#160;a&#160;homeostatic&#160;state,&#160;replacing&#160;senescing&#160;cells,&#160;resisting&#160;tumori-<br/>genesis,&#160;and&#160;repairing&#160;injuries&#160;[66,&#160;67].&#160;Certain&#160;organisms&#160;can&#160;repair&#160;themselves&#160;to<br/>an&#160;extraordinary&#160;extent.&#160;Salamanders&#160;can&#160;regenerate&#160;a&#160;complete&#160;functional&#160;limb&#160;from<br/>a&#160;total&#160;amputation&#160;[13],&#160;also&#160;regenerating&#160;their&#160;eyes,&#160;jaws,&#160;tails,&#160;and&#160;portions&#160;of&#160;the<br/>brain.&#160;The&#160;champions&#160;of&#160;regeneration&#160;are&#160;planarian&#160;flatworms—complex&#160;bilaterians<br/>that&#160;can&#160;regenerate&#160;any&#160;body&#160;part&#160;from&#160;almost&#160;any&#160;amputated&#160;fragment&#160;[1],&#160;a&#160;process<br/>that&#160;can&#160;include&#160;the&#160;formation&#160;of&#160;a&#160;complete&#160;new&#160;brain,&#160;eyes,&#160;or&#160;any&#160;other&#160;missing<br/>organ&#160;or&#160;structure&#160;in&#160;the&#160;remaining&#160;tissue&#160;[80].&#160;Understanding&#160;the&#160;mechanisms&#160;gov-<br/>erning&#160;these&#160;regeneration&#160;abilities&#160;will&#160;pave&#160;the&#160;way&#160;for&#160;extraordinary&#160;biomedical<br/>and&#160;bioengineering&#160;applications.</p>
+<p style="position:absolute;top:497px;left:193px;white-space:nowrap" class="ft72">Currently,&#160;there&#160;is&#160;a&#160;vigorous&#160;scientific&#160;effort&#160;to&#160;unravel&#160;the&#160;key&#160;components&#160;gov-</p>
+<p style="position:absolute;top:518px;left:172px;white-space:nowrap" class="ft75">erning&#160;the&#160;regulation&#160;of&#160;regeneration.&#160;A&#160;huge&#160;and&#160;increasing&#160;dataset&#160;of&#160;perturbation<br/>experiments&#160;in&#160;the&#160;literature&#160;account&#160;for&#160;the&#160;discovered&#160;genes&#160;and&#160;signaling&#160;mole-<br/>cules&#160;that&#160;are&#160;necessary&#160;for&#160;the&#160;organism&#160;to&#160;regenerate&#160;a&#160;correct&#160;morphology&#160;or&#160;body<br/>part.&#160;These&#160;experiments&#160;show&#160;how&#160;a&#160;certain&#160;disturbance&#160;of&#160;a&#160;regulatory&#160;component<br/>during&#160;regeneration&#160;can&#160;result&#160;in&#160;an&#160;aberrant&#160;morphology&#160;differing&#160;from&#160;the&#160;wild<br/>type&#160;one,&#160;such&#160;as&#160;the&#160;regeneration&#160;of&#160;ectopic&#160;organs&#160;or&#160;a&#160;complete&#160;body&#160;region&#160;[73].<br/>In&#160;particular,&#160;in&#160;the&#160;case&#160;of&#160;planarians,&#160;the&#160;perturbation&#160;of&#160;regulatory&#160;key&#160;components<br/>can&#160;produce&#160;worms&#160;with&#160;double,&#160;triple,&#160;or&#160;quadruple&#160;heads,&#160;each&#160;of&#160;them&#160;including&#160;a<br/>complete&#160;brain,&#160;eyes,&#160;and&#160;any&#160;other&#160;characteristic&#160;[28,&#160;32,&#160;63,&#160;69,&#160;78].&#160;These&#160;results<br/>serve&#160;to&#160;identify&#160;the&#160;building&#160;blocks,&#160;such&#160;as&#160;specific&#160;genes,&#160;that&#160;are&#160;necessary&#160;to<br/>regenerate&#160;a&#160;complete&#160;and&#160;correct&#160;morphology.&#160;However,&#160;knowing&#160;the&#160;required&#160;pro-<br/>teins&#160;is&#160;not&#160;the&#160;same&#160;as&#160;understanding&#160;the&#160;dynamics&#160;that&#160;are&#160;sufficient&#160;to&#160;enable&#160;a<br/>chunk&#160;of&#160;tissue&#160;to&#160;re-scale&#160;itself&#160;and&#160;produce&#160;exactly&#160;the&#160;missing&#160;structures&#160;in&#160;their<br/>correct&#160;locations&#160;and&#160;orientations.&#160;In&#160;particular,&#160;the&#160;plethora&#160;of&#160;recent&#160;data&#160;on&#160;stem<br/>cell&#160;differentiation&#160;in&#160;planaria&#160;does&#160;not,&#160;in&#160;itself,&#160;provide&#160;information&#160;that&#160;enables<br/>one&#160;to&#160;directly&#160;derive&#160;large-scale&#160;anatomical&#160;patterning.&#160;The&#160;next&#160;step&#160;is&#160;thus&#160;to&#160;con-<br/>struct&#160;from&#160;these&#160;perturbation&#160;experiments&#160;a&#160;model&#160;of&#160;the&#160;mechanisms&#160;that&#160;explains<br/>these&#160;morphological&#160;outcomes—quantitative&#160;models&#160;that&#160;can&#160;put&#160;the&#160;components&#160;of<br/>the&#160;system&#160;together&#160;to&#160;explain&#160;and&#160;predict&#160;the&#160;known&#160;and&#160;unknown&#160;morphological<br/>outcomes&#160;under&#160;perturbations&#160;[42].</p>
+<p style="position:absolute;top:931px;left:193px;white-space:nowrap" class="ft72">In&#160;this&#160;context,&#160;a&#160;mechanism&#160;is&#160;understood&#160;not&#160;as&#160;the&#160;molecular&#160;details&#160;governing</p>
+<p style="position:absolute;top:952px;left:172px;white-space:nowrap" class="ft75">the&#160;interactions&#160;between&#160;specific&#160;proteins&#160;or&#160;genes,&#160;but&#160;as&#160;a&#160;model&#160;describing&#160;the<br/>larger&#160;picture&#160;of&#160;how&#160;the&#160;system&#160;can&#160;achieve&#160;targeted&#160;and&#160;controlled&#160;behaviors&#160;with<br/>the&#160;coordination&#160;of&#160;all&#160;its&#160;components&#160;[36].&#160;Among&#160;modeling&#160;approaches,&#160;dynamic<br/>models&#160;based&#160;on&#160;the&#160;mathematical&#160;theory&#160;of&#160;dynamical&#160;systems&#160;represents&#160;an&#160;ideal</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft74">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:12px;font-family:Times;color:#131413;}
+	.ft81{font-size:15px;font-family:Times;color:#131413;}
+	.ft82{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft83{font-size:18px;font-family:Times;color:#131413;}
+	.ft84{font-size:11px;font-family:Times;color:#808080;}
+	.ft85{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft80">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft80">639</p>
+<p style="position:absolute;top:118px;left:172px;white-space:nowrap" class="ft85">approach&#160;for&#160;the&#160;understanding&#160;of&#160;the&#160;dynamic&#160;mechanisms&#160;of&#160;complex&#160;biological<br/>processes&#160;including&#160;regeneration&#160;[17,&#160;23,&#160;57,&#160;59].&#160;Indeed,&#160;mathematical&#160;dynamic<br/>models&#160;based&#160;on&#160;differential&#160;equations&#160;can&#160;unambiguously&#160;define&#160;the&#160;relationships<br/>and&#160;characteristics&#160;of&#160;every&#160;component&#160;in&#160;the&#160;system,&#160;that&#160;is,&#160;the&#160;biological&#160;computa-<br/>tions&#160;that&#160;occur&#160;in&#160;the&#160;organism&#160;[60].&#160;However,&#160;despite&#160;the&#160;clear&#160;benefits&#160;of&#160;defining<br/>dynamic&#160;models&#160;of&#160;regulation,&#160;there&#160;is&#160;a&#160;lack&#160;of&#160;mathematical&#160;models&#160;with&#160;predic-<br/>tive&#160;ability&#160;in&#160;the&#160;biological&#160;sciences,&#160;precisely&#160;due&#160;to&#160;the&#160;difficulty&#160;to&#160;construct&#160;them<br/>from&#160;data&#160;[42].</p>
+<p style="position:absolute;top:283px;left:193px;white-space:nowrap" class="ft81">Indeed,&#160;the&#160;reverse-engineering&#160;of&#160;models&#160;directly&#160;from&#160;biological&#160;data&#160;represents</p>
+<p style="position:absolute;top:304px;left:172px;white-space:nowrap" class="ft85">an&#160;inverse&#160;problem,&#160;for&#160;which&#160;there&#160;are&#160;no&#160;analytical&#160;solutions&#160;[49].&#160;Instead,&#160;Artificial<br/>Intelligence&#160;methods&#160;have&#160;been&#160;a&#160;successful&#160;approach&#160;with&#160;a&#160;long&#160;tradition&#160;[31].<br/>Computational&#160;tools&#160;have&#160;been&#160;proposed&#160;and&#160;used&#160;for&#160;the&#160;reverse-engineering&#160;of<br/>mechanistic&#160;models&#160;from&#160;quantitative&#160;gene&#160;expression&#160;profiling&#160;data&#160;[4,&#160;10–12,&#160;14,<br/>24,&#160;27,&#160;30,&#160;55,&#160;61,&#160;86,&#160;90,&#160;94],&#160;time-series&#160;concentration&#160;data&#160;[22,&#160;65,&#160;83],&#160;and<br/>1-dimensional&#160;gene&#160;expression&#160;patterns&#160;[7,&#160;20,&#160;25,&#160;29,&#160;33,&#160;34,&#160;37,&#160;52,&#160;53,&#160;68,<br/>75–77].&#160;Here,&#160;we&#160;review&#160;a&#160;novel&#160;method&#160;for&#160;the&#160;reverse-engineering&#160;of&#160;dynamic<br/>models&#160;directly&#160;from&#160;the&#160;morphological&#160;results&#160;of&#160;perturbation&#160;experiments,&#160;and<br/>a&#160;proof&#160;of&#160;principle&#160;of&#160;its&#160;capabilities&#160;by&#160;automatically&#160;inferring&#160;a&#160;comprehensive<br/>dynamic&#160;regulatory&#160;network&#160;explaining&#160;the&#160;mechanisms&#160;of&#160;planarian&#160;regeneration,<br/>a&#160;fascinating&#160;problem&#160;intensely&#160;studied&#160;for&#160;over&#160;a&#160;century&#160;[62].</p>
+<p style="position:absolute;top:583px;left:172px;white-space:nowrap" class="ft83"><b>24.2&#160;The&#160;Computations&#160;of&#160;Planarian&#160;Regeneration</b></p>
+<p style="position:absolute;top:635px;left:172px;white-space:nowrap" class="ft85">Planarians&#160;are&#160;freshwater&#160;worms&#160;with&#160;a&#160;fairly&#160;complex&#160;morphology,&#160;including&#160;a&#160;true<br/>brain,&#160;two&#160;eyes,&#160;a&#160;nervous&#160;system&#160;with&#160;two&#160;ventral&#160;nerve&#160;cords,&#160;a&#160;musculature&#160;system,<br/>a&#160;branched&#160;stomach,&#160;and&#160;a&#160;pharynx&#160;for&#160;feeding&#160;[1,&#160;74,&#160;81];&#160;moreover,&#160;planarians&#160;are<br/>complex&#160;enough&#160;to&#160;learn&#160;basic&#160;tasks&#160;in&#160;the&#160;lab&#160;[19,&#160;85,&#160;91].&#160;Yet,&#160;despite&#160;their&#160;morpho-<br/>logical&#160;complexity,&#160;planarians&#160;are&#160;able&#160;to&#160;regenerate&#160;a&#160;complete&#160;body&#160;from&#160;almost<br/>any&#160;amputated&#160;piece,&#160;including&#160;any&#160;missing&#160;organ&#160;such&#160;as&#160;the&#160;brain,&#160;eyes,&#160;muscles&#160;or<br/>nerves&#160;and&#160;with&#160;the&#160;correct&#160;proportions&#160;for&#160;the&#160;new&#160;size&#160;(Fig.&#160;24.1).&#160;Indeed,&#160;planarian<br/>worms&#160;have&#160;an&#160;extraordinary&#160;capacity&#160;to&#160;remodel&#160;their&#160;morphologies,&#160;proportionally<br/>scaling&#160;down&#160;their&#160;bodies&#160;when&#160;starved,&#160;and&#160;restoring&#160;their&#160;original&#160;size&#160;when&#160;fed<br/>again&#160;[6,&#160;64].</p>
+<p style="position:absolute;top:842px;left:193px;white-space:nowrap" class="ft81">Much&#160;research&#160;has&#160;been&#160;done&#160;at&#160;the&#160;bench&#160;to&#160;understand&#160;the&#160;regeneration&#160;ability</p>
+<p style="position:absolute;top:862px;left:172px;white-space:nowrap" class="ft85">of&#160;planarians.&#160;Knock&#160;downs&#160;of&#160;certain&#160;genes&#160;by&#160;RNAi&#160;(RNA&#160;interference)&#160;or&#160;phar-<br/>macological&#160;interventions&#160;blocking&#160;the&#160;communication&#160;channels&#160;between&#160;cells&#160;(gap<br/>junctions)&#160;can&#160;alter&#160;the&#160;resultant&#160;morphology&#160;regenerated&#160;from&#160;an&#160;amputated&#160;worm<br/>fragment&#160;[40,&#160;74].&#160;For&#160;example,&#160;either&#160;by&#160;knocking&#160;down&#160;β-catenin&#160;or&#160;by&#160;block-<br/>ing&#160;the&#160;gap&#160;junctions&#160;with&#160;octanol,&#160;a&#160;trunk&#160;piece&#160;regenerates&#160;a&#160;double-headed&#160;worm:<br/>instead&#160;of&#160;a&#160;tail&#160;in&#160;the&#160;posterior&#160;end,&#160;the&#160;worm&#160;regenerates&#160;an&#160;ectopic&#160;head&#160;[28,&#160;32,&#160;58,<br/>63,&#160;69].&#160;Conversely,&#160;knocking&#160;down&#160;notum&#160;in&#160;a&#160;trunk&#160;piece&#160;results&#160;in&#160;the&#160;regeneration<br/>of&#160;a&#160;double&#160;tail&#160;worm:&#160;instead&#160;of&#160;a&#160;normal&#160;head&#160;in&#160;the&#160;anterior&#160;end,&#160;the&#160;worm&#160;regen-<br/>erates&#160;an&#160;ectopic&#160;tail&#160;[71].&#160;Similarly&#160;to&#160;these&#160;extraordinary&#160;perturbation&#160;experiments,</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft84">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:12px;font-family:Times;color:#131413;}
+	.ft91{font-size:12px;font-family:Times;color:#131413;}
+	.ft92{font-size:15px;font-family:Times;color:#131413;}
+	.ft93{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft94{font-size:11px;font-family:Times;color:#808080;}
+	.ft95{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft96{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft90">640</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft90">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:417px;left:172px;white-space:nowrap" class="ft95"><b>Fig.&#160;24.1&#160;</b>Planarian&#160;worms&#160;can&#160;regenerate&#160;a&#160;complete&#160;body&#160;from&#160;almost&#160;any&#160;amputated&#160;piece,<br/>including&#160;<b>a&#160;</b>a&#160;head&#160;fragment,&#160;<b>b&#160;</b>a&#160;tail&#160;fragment,&#160;and&#160;<b>c&#160;</b>a&#160;trunk&#160;fragment.&#160;Each&#160;fragment&#160;regenerates<br/>any&#160;missing&#160;body&#160;region&#160;or&#160;organ&#160;and&#160;remodel&#160;anything&#160;left&#160;correctly&#160;to&#160;the&#160;new&#160;proportions</p>
+<p style="position:absolute;top:511px;left:172px;white-space:nowrap" class="ft96">dozens&#160;of&#160;genes&#160;have&#160;been&#160;discovered&#160;as&#160;necessary&#160;for&#160;the&#160;correct&#160;regeneration&#160;of<br/>a&#160;wild&#160;type&#160;morphology;&#160;knocking&#160;them&#160;down&#160;individually&#160;or&#160;in&#160;combination&#160;with<br/>others&#160;alter&#160;the&#160;signaling&#160;mechanisms&#160;in&#160;the&#160;worm,&#160;producing&#160;a&#160;specific&#160;incorrect<br/>morphology&#160;(Fig.&#160;24.2).</p>
+<p style="position:absolute;top:594px;left:193px;white-space:nowrap" class="ft92">Despite&#160;the&#160;discovery&#160;of&#160;many&#160;necessary&#160;components&#160;for&#160;proper&#160;regeneration&#160;in</p>
+<p style="position:absolute;top:614px;left:172px;white-space:nowrap" class="ft96">planaria,&#160;a&#160;fundamental&#160;question&#160;still&#160;remains&#160;of&#160;how&#160;an&#160;amputated&#160;fragment&#160;is&#160;able<br/>to&#160;determine&#160;which&#160;body&#160;parts&#160;and&#160;regions&#160;are&#160;missing&#160;and&#160;need&#160;to&#160;be&#160;regenerated<br/>and&#160;which&#160;are&#160;remaining&#160;and&#160;need&#160;to&#160;be&#160;remodeled&#160;for&#160;the&#160;new&#160;size.&#160;Can&#160;we&#160;use&#160;the<br/>theory&#160;of&#160;computation&#160;to&#160;aid&#160;us&#160;in&#160;the&#160;understanding&#160;of&#160;the&#160;mechanisms&#160;necessary&#160;for<br/>regenerating&#160;a&#160;correct&#160;morphology?&#160;In&#160;contrast&#160;and&#160;complement&#160;to&#160;most&#160;molecular-<br/>genetic&#160;studies&#160;today,&#160;which&#160;focus&#160;on&#160;the&#160;material&#160;implementation&#160;of&#160;various&#160;model<br/>systems,&#160;we&#160;suggest&#160;it&#160;is&#160;imperative&#160;to&#160;understand&#160;the&#160;bigger&#160;picture&#160;of&#160;information<br/>flow&#160;and&#160;control&#160;at&#160;multiple&#160;levels&#160;of&#160;organization.&#160;To&#160;this&#160;end,&#160;Mitchell&#160;[60]&#160;proposed<br/>four&#160;questions&#160;that&#160;need&#160;to&#160;be&#160;answered&#160;in&#160;any&#160;biological&#160;computational&#160;system:</p>
+<p style="position:absolute;top:814px;left:173px;white-space:nowrap" class="ft96">1.&#160;How&#160;is&#160;information&#160;represented&#160;in&#160;the&#160;system?<br/>2.&#160;How&#160;is&#160;information&#160;read&#160;and&#160;written&#160;by&#160;the&#160;system?<br/>3.&#160;How&#160;is&#160;it&#160;processed?<br/>4.&#160;How&#160;does&#160;this&#160;information&#160;acquire&#160;function&#160;(or&#160;purpose,&#160;or&#160;meaning)?</p>
+<p style="position:absolute;top:911px;left:193px;white-space:nowrap" class="ft92">As&#160;an&#160;answer&#160;to&#160;the&#160;first&#160;question,&#160;the&#160;information&#160;in&#160;the&#160;planarian&#160;system&#160;is&#160;repre-</p>
+<p style="position:absolute;top:931px;left:172px;white-space:nowrap" class="ft96">sented&#160;at&#160;least&#160;at&#160;two&#160;levels&#160;[49].&#160;The&#160;first&#160;level&#160;of&#160;information&#160;consists&#160;in&#160;the&#160;genetic<br/>and&#160;epigenetic&#160;material&#160;derived&#160;from&#160;the&#160;planarian&#160;egg,&#160;which&#160;contains&#160;the&#160;informa-<br/>tion&#160;to&#160;develop&#160;a&#160;complete&#160;worm&#160;starting&#160;from&#160;a&#160;single&#160;cell.&#160;This&#160;information&#160;is&#160;stored<br/>as&#160;an&#160;indirect&#160;encoding&#160;in&#160;the&#160;genome:&#160;there&#160;is&#160;no&#160;direct&#160;correspondence&#160;between<br/>genes&#160;and&#160;the&#160;resultant&#160;morphology,&#160;instead&#160;a&#160;developmental&#160;process&#160;orchestrated&#160;by</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft94">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:12px;font-family:Times;color:#131413;}
+	.ft101{font-size:12px;font-family:Times;color:#131413;}
+	.ft102{font-size:15px;font-family:Times;color:#131413;}
+	.ft103{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft104{font-size:11px;font-family:Times;color:#808080;}
+	.ft105{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft106{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft100">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft100">641</p>
+<p style="position:absolute;top:565px;left:172px;white-space:nowrap" class="ft105"><b>Fig.&#160;24.2&#160;</b>Perturbation&#160;experiments&#160;of&#160;planarian&#160;regeneration&#160;to&#160;explain.&#160;<b>a&#160;</b>Control&#160;experiment&#160;(no<br/>perturbation).&#160;<b>b&#160;</b>Single&#160;genetic&#160;knock-downs&#160;(RNAi).&#160;<b>c&#160;</b>Double&#160;genetic&#160;knock-downs.&#160;<b>d&#160;</b>Pharma-<br/>cological&#160;perturbations&#160;altering&#160;physical&#160;properties&#160;of&#160;the&#160;organism</p>
+<p style="position:absolute;top:660px;left:172px;white-space:nowrap" class="ft106">the&#160;interactions&#160;between&#160;genes&#160;and&#160;their&#160;resultant&#160;physical&#160;products&#160;and&#160;forces&#160;build<br/>the&#160;emergent&#160;morphology&#160;[15,&#160;16,&#160;18,&#160;35,&#160;54].&#160;In&#160;addition,&#160;there&#160;exists&#160;a&#160;second&#160;level<br/>of&#160;information&#160;in&#160;an&#160;adult&#160;worm&#160;consisting&#160;in&#160;the&#160;maintained&#160;patterns&#160;of&#160;signaling<br/>molecules&#160;and&#160;physical&#160;properties&#160;(such&#160;as&#160;bioelectric&#160;gradients)&#160;that&#160;stores&#160;infor-<br/>mation&#160;used&#160;during&#160;regeneration.&#160;Indeed,&#160;perturbing&#160;these&#160;secondary&#160;patterns&#160;can<br/>produce&#160;different&#160;regeneration&#160;outcomes,&#160;such&#160;as&#160;double&#160;head&#160;or&#160;double&#160;tail&#160;worms,<br/>without&#160;changing&#160;the&#160;information&#160;stored&#160;in&#160;the&#160;genome&#160;[5,&#160;40,&#160;63].</p>
+<p style="position:absolute;top:805px;left:193px;white-space:nowrap" class="ft102">These&#160;two&#160;levels&#160;of&#160;information&#160;stored&#160;in&#160;the&#160;worm&#160;are&#160;read&#160;and&#160;written&#160;by&#160;the</p>
+<p style="position:absolute;top:825px;left:172px;white-space:nowrap" class="ft106">molecular&#160;machinery&#160;in&#160;the&#160;cell.&#160;Signaling&#160;molecules&#160;can&#160;act&#160;as&#160;transcription&#160;factors<br/>directly&#160;binding&#160;into&#160;the&#160;DNA&#160;molecule,&#160;as&#160;enzymes&#160;affecting&#160;and&#160;changing&#160;the&#160;state<br/>of&#160;other&#160;proteins,&#160;or&#160;as&#160;intercellular&#160;signaling&#160;attaching&#160;to&#160;membrane&#160;receptors.&#160;In<br/>addition,&#160;signaling&#160;molecules&#160;can&#160;alter&#160;the&#160;physical&#160;properties&#160;in&#160;the&#160;system,&#160;such<br/>as&#160;the&#160;membrane&#160;potential&#160;in&#160;the&#160;cell,&#160;which&#160;in&#160;turn&#160;can&#160;alter&#160;the&#160;location&#160;of&#160;other<br/>charged&#160;molecules&#160;[40].&#160;These&#160;molecular&#160;events&#160;also&#160;process&#160;the&#160;information&#160;stored<br/>in&#160;the&#160;worm,&#160;in&#160;the&#160;form&#160;of&#160;analog&#160;computations&#160;by&#160;chemical&#160;systems&#160;[21,&#160;88].</p>
+<p style="position:absolute;top:970px;left:193px;white-space:nowrap" class="ft102">Finally,&#160;the&#160;information&#160;stored&#160;in&#160;the&#160;genome&#160;together&#160;with&#160;the&#160;information&#160;stored</p>
+<p style="position:absolute;top:991px;left:172px;white-space:nowrap" class="ft106">in&#160;the&#160;patterns&#160;of&#160;signaling&#160;molecules&#160;and&#160;physical&#160;properties&#160;such&#160;as&#160;bioelectrical<br/>gradients&#160;acquire&#160;purpose&#160;by&#160;directing&#160;the&#160;production&#160;of&#160;specific&#160;structural&#160;proteins&#160;as</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft104">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:12px;font-family:Times;color:#131413;}
+	.ft111{font-size:15px;font-family:Times;color:#131413;}
+	.ft112{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft113{font-size:18px;font-family:Times;color:#131413;}
+	.ft114{font-size:11px;font-family:Times;color:#808080;}
+	.ft115{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft110">642</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft110">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:118px;left:172px;white-space:nowrap" class="ft115">well&#160;as&#160;the&#160;migration,&#160;mitosis,&#160;and&#160;apoptosis&#160;of&#160;cells,&#160;that,&#160;in&#160;turn,&#160;results&#160;in&#160;the&#160;regen-<br/>eration&#160;of&#160;a&#160;specific&#160;morphology.&#160;Importantly,&#160;the&#160;planarian&#160;worm&#160;contains&#160;along<br/>its&#160;body&#160;a&#160;crucial&#160;population&#160;of&#160;adult&#160;stem&#160;cells,&#160;called&#160;neoblasts&#160;[3,&#160;84,&#160;92,&#160;95].<br/>Neoblasts&#160;are&#160;the&#160;only&#160;cells&#160;in&#160;the&#160;worm&#160;that&#160;can&#160;divide,&#160;having&#160;the&#160;ability&#160;to&#160;auto-<br/>renew&#160;and&#160;to&#160;produce&#160;any&#160;other&#160;cell&#160;type&#160;in&#160;any&#160;tissue.&#160;The&#160;neoblasts&#160;are&#160;required<br/>both&#160;for&#160;regeneration&#160;and&#160;for&#160;morphostatic&#160;maintenance&#160;and&#160;on-going&#160;remodeling.<br/>Hence,&#160;it&#160;is&#160;clear&#160;that&#160;the&#160;signaling&#160;mechanisms&#160;dictating&#160;the&#160;morphology&#160;to&#160;regener-<br/>ate&#160;needs&#160;to&#160;communicate&#160;with&#160;the&#160;population&#160;of&#160;neoblasts,&#160;which&#160;then&#160;are&#160;instructed<br/>to&#160;produce&#160;the&#160;correct&#160;tissues&#160;in&#160;the&#160;correct&#160;locations.</p>
+<p style="position:absolute;top:304px;left:193px;white-space:nowrap" class="ft111">All&#160;these&#160;processes&#160;represent&#160;a&#160;complex&#160;information&#160;processing&#160;machinery&#160;based</p>
+<p style="position:absolute;top:325px;left:172px;white-space:nowrap" class="ft115">on&#160;non-linear&#160;interactions&#160;and&#160;feedback&#160;loops.&#160;Indeed,&#160;this&#160;complexity&#160;represents&#160;a<br/>barrier&#160;for&#160;the&#160;inference&#160;of&#160;the&#160;mechanisms&#160;that&#160;give&#160;rise&#160;to&#160;the&#160;correct&#160;(or&#160;incorrect<br/>under&#160;perturbations)&#160;morphologies&#160;from&#160;a&#160;dataset&#160;of&#160;experiments,&#160;an&#160;inverse&#160;prob-<br/>lem&#160;[72].&#160;Indeed,&#160;there&#160;are&#160;no&#160;computer&#160;program&#160;or&#160;analytical&#160;solution&#160;that&#160;can&#160;solve<br/>the&#160;general&#160;inverse&#160;problem&#160;[2,&#160;56].&#160;Instead,&#160;stochastic&#160;and&#160;heuristic&#160;methods&#160;are&#160;the<br/>usual&#160;methods&#160;to&#160;find&#160;solutions&#160;to&#160;inverse&#160;problems&#160;[8,&#160;9,&#160;26,&#160;39,&#160;51,&#160;82].&#160;In<br/>the&#160;next&#160;section,&#160;we&#160;present&#160;our&#160;heuristic&#160;approach&#160;for&#160;solving&#160;the&#160;inverse&#160;problem<br/>in&#160;planarian&#160;regeneration:&#160;an&#160;automated&#160;reverse-engineering&#160;method&#160;for&#160;discovering<br/>mechanistic&#160;models&#160;of&#160;planarian&#160;regeneration&#160;directly&#160;from&#160;experimental&#160;data.</p>
+<p style="position:absolute;top:562px;left:172px;white-space:nowrap" class="ft113"><b>24.3&#160;Reverse-Engineering&#160;Planarian&#160;Regeneration</b></p>
+<p style="position:absolute;top:614px;left:172px;white-space:nowrap" class="ft115">In&#160;order&#160;to&#160;find&#160;mechanistic&#160;models&#160;that&#160;can&#160;explain&#160;a&#160;dataset&#160;of&#160;morphological<br/>experiments,&#160;we&#160;have&#160;developed&#160;a&#160;computational&#160;method&#160;based&#160;on&#160;evolutionary<br/>computation&#160;to&#160;reverse-engineer&#160;mechanistic&#160;regulatory&#160;networks&#160;directly&#160;from&#160;mor-<br/>phological&#160;data&#160;[45].&#160;The&#160;computational&#160;system&#160;consists&#160;in&#160;three&#160;interconnected<br/>components:&#160;(1)&#160;a&#160;database&#160;based&#160;on&#160;a&#160;mathematical&#160;ontology&#160;curating&#160;the&#160;planarian<br/>experiments&#160;and&#160;their&#160;morphological&#160;outcomes,&#160;(2)&#160;a&#160;systems-level&#160;modeling&#160;and<br/>simulator&#160;framework&#160;to&#160;formulate&#160;and&#160;test&#160;regulatory&#160;models&#160;within&#160;virtual&#160;worms,<br/>and&#160;(3)&#160;a&#160;heuristic&#160;computational&#160;method&#160;to&#160;automatically&#160;reverse-engineer&#160;regula-<br/>tory&#160;networks.&#160;In&#160;our&#160;system,&#160;the&#160;heuristic&#160;method&#160;(3)&#160;generates&#160;candidate&#160;models,<br/>which&#160;are&#160;executed&#160;by&#160;cells&#160;in&#160;a&#160;simulated&#160;worm&#160;to&#160;which&#160;various&#160;experimental&#160;per-<br/>turbations&#160;are&#160;applied&#160;in&#160;silico&#160;(2).&#160;The&#160;results&#160;are&#160;tested&#160;against&#160;outcomes&#160;of&#160;known<br/>experiments&#160;in&#160;the&#160;database&#160;(1),&#160;providing&#160;feedback&#160;to&#160;guide&#160;the&#160;revision&#160;of&#160;candi-<br/>date&#160;models,&#160;in&#160;a&#160;cycle&#160;that&#160;leads&#160;to&#160;progressively&#160;more&#160;correct&#160;models.&#160;The&#160;resultant<br/>models&#160;can&#160;then&#160;be&#160;interrogated&#160;with&#160;respect&#160;to&#160;their&#160;structure&#160;and&#160;dynamics,&#160;and<br/>used&#160;to&#160;make&#160;testable&#160;predictions&#160;about&#160;novel&#160;experiments&#160;not&#160;yet&#160;in&#160;the&#160;database.</p>
+<p style="position:absolute;top:924px;left:193px;white-space:nowrap" class="ft111">Computational&#160;algorithms&#160;cannot&#160;process&#160;yet&#160;complex&#160;multidimensional&#160;scien-</p>
+<p style="position:absolute;top:945px;left:172px;white-space:nowrap" class="ft115">tific&#160;data,&#160;such&#160;as&#160;experimental&#160;procedures&#160;and&#160;resultant&#160;morphologies,&#160;directly&#160;from<br/>the&#160;papers&#160;published&#160;in&#160;the&#160;literature.&#160;Instead,&#160;in&#160;order&#160;to&#160;apply&#160;automated&#160;infer-<br/>ring&#160;methods,&#160;we&#160;need&#160;to&#160;curate&#160;first&#160;all&#160;the&#160;relevant&#160;data&#160;with&#160;formalisms&#160;and<br/>ontologies&#160;[87].&#160;To&#160;this&#160;end,&#160;we&#160;have&#160;created&#160;ontologies&#160;based&#160;on&#160;mathematical<br/>graphs&#160;[50]&#160;to&#160;specifically&#160;formalize&#160;planarian&#160;and&#160;limb&#160;regeneration&#160;experiments</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft114">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:12px;font-family:Times;color:#131413;}
+	.ft121{font-size:15px;font-family:Times;color:#131413;}
+	.ft122{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft123{font-size:12px;font-family:Times;color:#131413;}
+	.ft124{font-size:11px;font-family:Times;color:#808080;}
+	.ft125{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+	.ft126{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft120">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft120">643</p>
+<p style="position:absolute;top:118px;left:172px;white-space:nowrap" class="ft125">and&#160;curate&#160;centralized&#160;databases&#160;containing&#160;hundreds&#160;of&#160;experiments&#160;from&#160;the&#160;liter-<br/>ature&#160;[43,&#160;47].&#160;These&#160;databases&#160;can&#160;describe&#160;in&#160;an&#160;unambiguous&#160;and&#160;precise&#160;manner<br/>a&#160;large&#160;variety&#160;of&#160;different&#160;morphologies,&#160;including&#160;topological&#160;information,&#160;region<br/>characteristics,&#160;shapes,&#160;and&#160;overall&#160;sizes&#160;as&#160;well&#160;as&#160;organ&#160;locations&#160;and&#160;properties,<br/>and&#160;experimental&#160;procedures&#160;such&#160;as&#160;surgical&#160;amputations,&#160;cuts,&#160;grafts,&#160;as&#160;well&#160;as<br/>genetic&#160;and&#160;pharmacological&#160;treatments&#160;(Fig.&#160;24.3).&#160;These&#160;resources&#160;are&#160;not&#160;only<br/>valuable&#160;for&#160;applying&#160;automated&#160;methods,&#160;but&#160;any&#160;human&#160;scientist&#160;can&#160;also&#160;access,<br/>mine,&#160;and&#160;formalize&#160;new&#160;experiments&#160;with&#160;specific&#160;user-friendly&#160;software&#160;tools&#160;based<br/>on&#160;automatically-generated&#160;cartoon&#160;diagrams&#160;and&#160;drag-and-drop&#160;interfaces&#160;[44,&#160;46].</p>
+<p style="position:absolute;top:304px;left:193px;white-space:nowrap" class="ft121">A&#160;candidate&#160;model&#160;of&#160;planarian&#160;regeneration&#160;needs&#160;to&#160;be&#160;tested&#160;against&#160;the&#160;current</p>
+<p style="position:absolute;top:325px;left:172px;white-space:nowrap" class="ft125">knowledge&#160;of&#160;perturbation&#160;experiments,&#160;to&#160;evaluate&#160;if&#160;its&#160;predicted&#160;outcomes&#160;corre-<br/>spond&#160;to&#160;those&#160;obtained&#160;in&#160;vivo.&#160;For&#160;this,&#160;we&#160;implemented&#160;a&#160;system-level&#160;simulator<br/>of&#160;planarian&#160;regeneration&#160;that&#160;can&#160;take&#160;as&#160;input&#160;a&#160;regulatory&#160;model&#160;and&#160;a&#160;formalized<br/>experiment&#160;and&#160;perform&#160;the&#160;same&#160;experiment&#160;in&#160;silico&#160;according&#160;to&#160;the&#160;given&#160;model.<br/>A&#160;model&#160;is&#160;defined&#160;as&#160;a&#160;system&#160;of&#160;partial&#160;differential&#160;equations,&#160;which&#160;define&#160;the<br/>whole-body&#160;dynamics&#160;of&#160;the&#160;planarian&#160;worm&#160;(Fig.&#160;24.4).&#160;The&#160;simulator&#160;can&#160;perform<br/>in&#160;silico&#160;the&#160;same&#160;perturbations&#160;defined&#160;in&#160;the&#160;formal&#160;ontology&#160;defining&#160;the&#160;experi-<br/>ments,&#160;including&#160;surgical&#160;amputations,&#160;genetic&#160;knock-downs,&#160;and&#160;pharmacological<br/>drugs.&#160;Each&#160;product&#160;in&#160;the&#160;system&#160;represents&#160;the&#160;level&#160;of&#160;expression&#160;or&#160;activity,&#160;since<br/>some&#160;genes,&#160;like&#160;β-catenin,&#160;can&#160;be&#160;widely&#160;expressed&#160;in&#160;the&#160;organism,&#160;but&#160;only&#160;be<br/>active&#160;in&#160;the&#160;cell&#160;nucleus&#160;of&#160;certain&#160;areas&#160;of&#160;the&#160;worm&#160;in&#160;response&#160;to&#160;a&#160;signaling<br/>event.&#160;The&#160;resultant&#160;morphology&#160;from&#160;the&#160;simulation&#160;can&#160;then&#160;be&#160;compared&#160;with<br/>that&#160;in&#160;the&#160;database,&#160;and&#160;a&#160;score&#160;can&#160;be&#160;computed&#160;that&#160;quantitatively&#160;describe&#160;how</p>
+<p style="position:absolute;top:956px;left:172px;white-space:nowrap" class="ft126"><b>Fig.&#160;24.3&#160;</b>A&#160;user-&#160;and&#160;computer-friendly&#160;mathematical&#160;ontology&#160;for&#160;planarian&#160;regeneration.&#160;<b>a&#160;</b>A&#160;set<br/>of&#160;morphological&#160;outcomes&#160;from&#160;the&#160;literature&#160;formalized&#160;with&#160;the&#160;ontology&#160;as&#160;a&#160;graph&#160;representa-<br/>tion&#160;and&#160;automatically-generated&#160;cartoons.&#160;<b>b&#160;</b>Formalized&#160;worm&#160;manipulations&#160;as&#160;described&#160;in&#160;the<br/>literature.&#160;<b>c&#160;</b>A&#160;curated&#160;database&#160;of&#160;experiments&#160;linking&#160;manipulations&#160;to&#160;morphological&#160;outcomes</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft124">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:12px;font-family:Times;color:#131413;}
+	.ft131{font-size:12px;font-family:Times;color:#131413;}
+	.ft132{font-size:15px;font-family:Times;color:#131413;}
+	.ft133{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft134{font-size:11px;font-family:Times;color:#808080;}
+	.ft135{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft136{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft130">644</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft130">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:574px;left:172px;white-space:nowrap" class="ft135"><b>Fig.&#160;24.4&#160;</b>A&#160;system-level&#160;simulator&#160;of&#160;planarian&#160;regeneration.&#160;<b>a&#160;</b>Schematic&#160;representation&#160;of&#160;a&#160;reg-<br/>ulatory&#160;network&#160;model.&#160;<b>b&#160;</b>A&#160;complete&#160;system&#160;of&#160;partial&#160;differential&#160;equations&#160;describing&#160;a&#160;regulatory<br/>network&#160;model.&#160;<b>c&#160;</b>An&#160;in&#160;silico&#160;experiment&#160;showing&#160;the&#160;dynamics&#160;of&#160;the&#160;system.&#160;<b>d&#160;</b>A&#160;perturbation&#160;in<br/>silico&#160;experiment&#160;(knocking&#160;down&#160;the&#160;gene&#160;β-catenin)&#160;showing&#160;a&#160;different&#160;outcome</p>
+<p style="position:absolute;top:686px;left:172px;white-space:nowrap" class="ft136">close&#160;the&#160;model&#160;is&#160;in&#160;recapitulating&#160;the&#160;morphologies&#160;from&#160;the&#160;experiments&#160;curated<br/>in&#160;the&#160;database.&#160;The&#160;current&#160;version&#160;of&#160;the&#160;virtual&#160;worm&#160;simulates&#160;only&#160;biochemical<br/>signaling,&#160;and&#160;will&#160;be&#160;extended&#160;to&#160;include&#160;bioelectrical&#160;gradients&#160;in&#160;the&#160;next&#160;version.</p>
+<p style="position:absolute;top:748px;left:193px;white-space:nowrap" class="ft132">We&#160;also&#160;developed&#160;an&#160;automated&#160;computational&#160;method&#160;that&#160;takes&#160;as&#160;input</p>
+<p style="position:absolute;top:768px;left:172px;white-space:nowrap" class="ft136">a&#160;dataset&#160;of&#160;formalized&#160;experiments&#160;and&#160;returns&#160;a&#160;mechanistic&#160;model,&#160;reverse-<br/>engineering&#160;all&#160;the&#160;necessary&#160;components,&#160;regulations,&#160;and&#160;parameters,&#160;that,&#160;when<br/>simulated,&#160;recapitulates&#160;all&#160;the&#160;outcomes&#160;defined&#160;in&#160;the&#160;input&#160;dataset&#160;(Fig.&#160;24.5).<br/>The&#160;method&#160;is&#160;based&#160;on&#160;evolutionary&#160;computation,&#160;where&#160;a&#160;population&#160;of&#160;candidate<br/>models&#160;are&#160;iteratively&#160;crossed&#160;and&#160;mutated&#160;to&#160;produce&#160;new&#160;models,&#160;which&#160;are&#160;then<br/>evaluated&#160;and&#160;scored&#160;in&#160;the&#160;simulator&#160;to&#160;rank&#160;them&#160;and&#160;keep&#160;the&#160;best&#160;ones&#160;for&#160;the&#160;next<br/>generation.&#160;The&#160;initial&#160;population&#160;is&#160;made&#160;of&#160;random&#160;models,&#160;including&#160;random&#160;inter-<br/>actions&#160;and&#160;parameters.&#160;The&#160;cross-over&#160;and&#160;mutation&#160;operators&#160;create&#160;new&#160;models<br/>from&#160;existing&#160;ones&#160;by&#160;combining&#160;the&#160;products,&#160;links,&#160;and&#160;parameters&#160;of&#160;two&#160;models<br/>from&#160;the&#160;current&#160;population,&#160;and&#160;then&#160;probabilistically&#160;adding,&#160;removing,&#160;and&#160;alter-<br/>ing&#160;products,&#160;regulatory&#160;links,&#160;and&#160;parameters.&#160;The&#160;method&#160;automatically&#160;performs<br/>all&#160;these&#160;operations&#160;without&#160;any&#160;manual&#160;intervention.&#160;During&#160;this&#160;process,&#160;the&#160;pop-<br/>ulation&#160;evolves&#160;toward&#160;candidate&#160;models&#160;with&#160;less&#160;and&#160;less&#160;error,&#160;until&#160;a&#160;model&#160;with</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft134">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:12px;font-family:Times;color:#131413;}
+	.ft141{font-size:12px;font-family:Times;color:#131413;}
+	.ft142{font-size:15px;font-family:Times;color:#131413;}
+	.ft143{font-size:11px;font-family:Times;color:#808080;}
+	.ft144{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft145{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft140">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft140">645</p>
+<p style="position:absolute;top:560px;left:172px;white-space:nowrap" class="ft144"><b>Fig.&#160;24.5&#160;</b>Automated&#160;method&#160;for&#160;the&#160;reverse-engineering&#160;of&#160;regulatory&#160;networks&#160;directly&#160;from<br/>morphological&#160;experimental&#160;data.&#160;<b>a&#160;</b>The&#160;input&#160;dataset&#160;of&#160;formalized&#160;experiments.&#160;<b>b&#160;</b>The&#160;heuristic<br/>machine&#160;learning&#160;algorithm&#160;based&#160;on&#160;evolutionary&#160;computation.&#160;<b>c&#160;</b>The&#160;in&#160;silico&#160;experiment&#160;simulator<br/>used&#160;by&#160;the&#160;algorithm&#160;to&#160;evaluate&#160;candidate&#160;models.&#160;<b>d&#160;</b>The&#160;output&#160;of&#160;the&#160;algorithm&#160;is&#160;an&#160;inferred<br/>regulatory&#160;network&#160;model&#160;defined&#160;as&#160;a&#160;complete&#160;system&#160;of&#160;partial&#160;differential&#160;equations</p>
+<p style="position:absolute;top:689px;left:172px;white-space:nowrap" class="ft145">zero&#160;error&#160;is&#160;found,&#160;which&#160;can&#160;perfectly&#160;recapitulate&#160;all&#160;the&#160;experiments&#160;formalized<br/>in&#160;the&#160;database.&#160;Thus,&#160;while&#160;it&#160;is&#160;possible&#160;to&#160;seed&#160;the&#160;initial&#160;population&#160;with&#160;candidate<br/>human-derived&#160;models,&#160;the&#160;method&#160;is&#160;able&#160;to&#160;generate&#160;models&#160;with&#160;high&#160;explanatory<br/>power&#160;with&#160;no&#160;human&#160;input.&#160;This&#160;is&#160;an&#160;important&#160;feature,&#160;since&#160;the&#160;(ever-growing)<br/>data&#160;of&#160;planarian&#160;regeneration&#160;are&#160;so&#160;numerous&#160;and&#160;remarkable,&#160;that&#160;no&#160;constructive,<br/>comprehensive&#160;model&#160;had&#160;ever&#160;been&#160;proposed&#160;(or&#160;specified&#160;in&#160;sufficient&#160;detail&#160;to&#160;be<br/>quantitatively&#160;testable)&#160;despite&#160;over&#160;120&#160;years&#160;of&#160;focused&#160;attention.</p>
+<p style="position:absolute;top:834px;left:193px;white-space:nowrap" class="ft142">The&#160;distributed&#160;nature&#160;of&#160;the&#160;evolutionary&#160;algorithm&#160;makes&#160;it&#160;amenable&#160;for&#160;a</p>
+<p style="position:absolute;top:854px;left:172px;white-space:nowrap" class="ft145">parallel&#160;implementation&#160;in&#160;a&#160;high&#160;performance&#160;computing&#160;environment.&#160;The&#160;sim-<br/>ulation&#160;and&#160;evaluation&#160;of&#160;each&#160;of&#160;the&#160;new&#160;models&#160;produced&#160;by&#160;the&#160;method&#160;can&#160;be<br/>performed&#160;independently&#160;from&#160;each&#160;other.&#160;We&#160;designed&#160;a&#160;parallel&#160;implementation&#160;of<br/>the&#160;algorithm&#160;based&#160;on&#160;a&#160;master-slave&#160;scheme.&#160;The&#160;master&#160;node&#160;stores&#160;the&#160;evolving<br/>population,&#160;applies&#160;the&#160;cross-over&#160;and&#160;mutation&#160;operators&#160;to&#160;create&#160;new&#160;models,&#160;and<br/>select&#160;the&#160;best&#160;models&#160;to&#160;keep&#160;in&#160;the&#160;population.&#160;A&#160;set&#160;of&#160;slave&#160;nodes&#160;receive&#160;from<br/>the&#160;master&#160;node&#160;the&#160;new&#160;models,&#160;simulate&#160;and&#160;evaluate&#160;them&#160;in&#160;parallel,&#160;and&#160;return<br/>the&#160;model&#160;scores&#160;to&#160;the&#160;master&#160;node.&#160;In&#160;addition,&#160;the&#160;evolving&#160;population&#160;is&#160;divided<br/>in&#160;subpopulations&#160;(called&#160;islands),&#160;which&#160;allows&#160;further&#160;parallelization&#160;(while&#160;the</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft143">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:12px;font-family:Times;color:#131413;}
+	.ft151{font-size:15px;font-family:Times;color:#131413;}
+	.ft152{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft153{font-size:18px;font-family:Times;color:#131413;}
+	.ft154{font-size:15px;font-family:Times;color:#131413;}
+	.ft155{font-size:11px;font-family:Times;color:#808080;}
+	.ft156{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft150">646</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft150">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:118px;left:172px;white-space:nowrap" class="ft156">master&#160;node&#160;is&#160;busy&#160;creating&#160;and&#160;selecting&#160;new&#160;candidate&#160;models&#160;for&#160;a&#160;subpopula-<br/>tion,&#160;others&#160;subpopulations&#160;are&#160;being&#160;evaluated&#160;in&#160;the&#160;slave&#160;nodes)&#160;and&#160;preserves<br/>the&#160;population&#160;diversity&#160;(a&#160;single&#160;good&#160;model&#160;cannot&#160;quickly&#160;take&#160;over&#160;the&#160;entire<br/>population)&#160;[93].&#160;Every&#160;250&#160;generations,&#160;all&#160;subpopulations&#160;are&#160;randomly&#160;paired&#160;and<br/>their&#160;models&#160;are&#160;randomly&#160;shuffled&#160;to&#160;avoid&#160;the&#160;stall&#160;of&#160;a&#160;subpopulation&#160;in&#160;a&#160;local<br/>optimum.</p>
+<p style="position:absolute;top:293px;left:172px;white-space:nowrap" class="ft153"><b>24.4&#160;A&#160;Dynamic&#160;Model&#160;of&#160;Planarian&#160;Regeneration</b></p>
+<p style="position:absolute;top:345px;left:172px;white-space:nowrap" class="ft156">Applying&#160;our&#160;method&#160;to&#160;the&#160;main&#160;head-versus-tail&#160;regeneration&#160;experiments&#160;in&#160;the<br/>worm,&#160;we&#160;reverse-engineered&#160;the&#160;first&#160;comprehensive&#160;dynamic&#160;network&#160;of&#160;planarian<br/>regeneration&#160;(Fig.&#160;24.6).&#160;First,&#160;we&#160;encoded&#160;with&#160;the&#160;formal&#160;ontology&#160;a&#160;dataset&#160;of<br/>in&#160;vivo&#160;experiments&#160;to&#160;serve&#160;as&#160;input&#160;to&#160;the&#160;algorithm.&#160;The&#160;dataset&#160;included&#160;the<br/>most&#160;important&#160;experiments&#160;of&#160;anterior-posterior&#160;regeneration&#160;from&#160;the&#160;planarian<br/>literature&#160;[28,&#160;32,&#160;63,&#160;69–71,&#160;79],&#160;including&#160;surgical,&#160;pharmacological,&#160;and&#160;genetic<br/>(RNAi-mediated&#160;knockdown)&#160;perturbations&#160;and&#160;their&#160;resulting&#160;morphologies.&#160;The<br/>algorithm&#160;ran&#160;for&#160;42&#160;hours&#160;using&#160;256&#160;cores&#160;in&#160;a&#160;computer&#160;cluster&#160;(<i>Stampede&#160;</i>at&#160;the<br/>Texas&#160;Advanced&#160;Computing&#160;Center),&#160;performing&#160;billions&#160;of&#160;in&#160;silico&#160;experiments,<br/>and&#160;returning&#160;as&#160;output&#160;a&#160;regulatory&#160;network&#160;model&#160;(system&#160;of&#160;partial&#160;differential<br/>equations)&#160;with&#160;all&#160;parameters&#160;and&#160;relationships&#160;inferred&#160;de&#160;novo.&#160;This&#160;network&#160;can<br/>recapitulate&#160;in&#160;the&#160;in&#160;silico&#160;simulator&#160;all&#160;the&#160;resultant&#160;morphologies&#160;from&#160;all&#160;the<br/>experiments&#160;included&#160;in&#160;the&#160;input&#160;dataset.</p>
+<p style="position:absolute;top:614px;left:193px;white-space:nowrap" class="ft151">Interestingly,&#160;the&#160;comprehensive&#160;model&#160;automatically&#160;reverse-engineered&#160;by&#160;our</p>
+<p style="position:absolute;top:635px;left:172px;white-space:nowrap" class="ft156">method&#160;is&#160;not&#160;a&#160;hairball&#160;of&#160;puzzling&#160;connections,&#160;but&#160;a&#160;small&#160;set&#160;of&#160;regulatory&#160;inter-<br/>actions&#160;mostly&#160;consistent&#160;with&#160;our&#160;molecular&#160;knowledge&#160;from&#160;the&#160;literature&#160;that<br/>can&#160;readily&#160;be&#160;understood&#160;by&#160;a&#160;human&#160;scientist.&#160;In&#160;addition,&#160;the&#160;model&#160;predicted&#160;new<br/>regulatory&#160;interactions&#160;yet-to-be-discovered.&#160;Interestingly,&#160;the&#160;algorithm&#160;consistently<br/>predicted&#160;that&#160;notum&#160;directly&#160;inhibits&#160;wnt,&#160;an&#160;interaction&#160;that&#160;was&#160;molecularly&#160;con-<br/>firmed&#160;recently&#160;in&#160;vivo&#160;[38],&#160;after&#160;the&#160;prediction&#160;made&#160;by&#160;our&#160;model&#160;and&#160;contrary&#160;to<br/>the&#160;prevalent&#160;hypothesis&#160;in&#160;the&#160;field.&#160;Moreover,&#160;our&#160;method&#160;detected&#160;as&#160;necessary&#160;two<br/>unknown&#160;genes&#160;(labeled&#160;<i>a&#160;</i>and&#160;<i>b</i>,&#160;Fig.&#160;6):&#160;without&#160;them,&#160;the&#160;algorithm&#160;could&#160;not&#160;find<br/>a&#160;regulatory&#160;network&#160;that&#160;could&#160;recapitulate&#160;the&#160;input&#160;dataset&#160;of&#160;experiments.&#160;These<br/>unknown&#160;genes&#160;can&#160;be&#160;further&#160;characterized&#160;by&#160;searching&#160;for&#160;known&#160;genes&#160;with&#160;the<br/>same&#160;predicted&#160;interactions&#160;in&#160;other&#160;organisms&#160;curated&#160;in&#160;specialized&#160;databases,&#160;such<br/>as&#160;the&#160;STRING&#160;protein-protein&#160;interaction&#160;database&#160;[89].&#160;We&#160;are&#160;currently&#160;validating<br/>at&#160;the&#160;bench&#160;candidates&#160;for&#160;such&#160;novel&#160;genes&#160;[48].</p>
+<p style="position:absolute;top:904px;left:193px;white-space:nowrap" class="ft151">Importantly,&#160;the&#160;mathematical&#160;nature&#160;of&#160;the&#160;model&#160;allows&#160;us&#160;to&#160;study&#160;the&#160;dynamic</p>
+<p style="position:absolute;top:924px;left:172px;white-space:nowrap" class="ft156">mechanisms&#160;of&#160;the&#160;signaling&#160;system&#160;(Fig.&#160;24.7).&#160;Visualizing&#160;the&#160;state&#160;space&#160;during&#160;the<br/>regeneration&#160;of&#160;a&#160;trunk&#160;fragment,&#160;we&#160;can&#160;analyze&#160;the&#160;dynamics&#160;defined&#160;by&#160;the&#160;system.<br/>Figure&#160;24.7&#160;shows&#160;the&#160;state&#160;trajectory&#160;of&#160;different&#160;morphological&#160;and&#160;genetic&#160;prod-<br/>ucts&#160;in&#160;three&#160;locations&#160;in&#160;the&#160;trunk&#160;fragment:&#160;anterior,&#160;center,&#160;and&#160;posterior.&#160;In&#160;all&#160;the<br/>products&#160;shown,&#160;the&#160;initial&#160;state&#160;(the&#160;pre-perturbation&#160;wild-type&#160;morphology)&#160;is&#160;the<br/>same&#160;in&#160;the&#160;three&#160;fragment&#160;locations,&#160;except&#160;in&#160;the&#160;case&#160;of&#160;notum,&#160;which&#160;is&#160;activated</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft155">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:12px;font-family:Times;color:#131413;}
+	.ft161{font-size:12px;font-family:Times;color:#131413;}
+	.ft162{font-size:15px;font-family:Times;color:#131413;}
+	.ft163{font-size:11px;font-family:Times;color:#808080;}
+	.ft164{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft165{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft160">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft160">647</p>
+<p style="position:absolute;top:724px;left:172px;white-space:nowrap" class="ft164"><b>Fig.&#160;24.6&#160;</b>Automatically-inferred&#160;comprehensive&#160;model&#160;of&#160;planarian&#160;regeneration.&#160;<b>a&#160;</b>Dataset&#160;of<br/>formalized&#160;in&#160;vivo&#160;experiments.&#160;<b>b&#160;</b>Formalization&#160;of&#160;the&#160;experiments&#160;in&#160;a&#160;database.&#160;<b>c&#160;</b>Evolutionary<br/>process&#160;run&#160;by&#160;the&#160;automatic&#160;method.&#160;<b>d&#160;</b>Schematic&#160;of&#160;the&#160;resultant&#160;inferred&#160;regulatory&#160;network<br/>model.&#160;<b>e&#160;</b>The&#160;inferred&#160;model&#160;can&#160;recapitulate&#160;in&#160;silico&#160;all&#160;the&#160;patterning&#160;outcomes&#160;of&#160;the&#160;input<br/>dataset&#160;of&#160;in&#160;vivo&#160;experiments</p>
+<p style="position:absolute;top:853px;left:172px;white-space:nowrap" class="ft165">higher&#160;in&#160;the&#160;anterior&#160;side&#160;of&#160;the&#160;fragment&#160;that&#160;in&#160;the&#160;posterior&#160;side.&#160;In&#160;the&#160;wild&#160;type<br/>experiment&#160;(no&#160;treatment),&#160;the&#160;system&#160;defines&#160;three&#160;clear&#160;attractors&#160;corresponding&#160;to<br/>the&#160;head,&#160;trunk,&#160;and&#160;tail&#160;morphological&#160;outcomes,&#160;where&#160;the&#160;trajectories&#160;of&#160;the&#160;ante-<br/>rior,&#160;center,&#160;and&#160;posterior&#160;locations&#160;of&#160;the&#160;fragment&#160;converge&#160;respectively.&#160;However,<br/>knocking-down&#160;β-catenin&#160;or&#160;notum&#160;produces&#160;a&#160;bifurcation&#160;in&#160;the&#160;dynamic&#160;regula-<br/>tory&#160;system,&#160;altering&#160;the&#160;attractors&#160;location&#160;and&#160;hence&#160;the&#160;trajectories&#160;and&#160;resulting<br/>morphological&#160;outcomes.</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft163">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:12px;font-family:Times;color:#131413;}
+	.ft171{font-size:12px;font-family:Times;color:#131413;}
+	.ft172{font-size:18px;font-family:Times;color:#131413;}
+	.ft173{font-size:15px;font-family:Times;color:#131413;}
+	.ft174{font-size:11px;font-family:Times;color:#808080;}
+	.ft175{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft176{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft170">648</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft170">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:577px;left:172px;white-space:nowrap" class="ft175"><b>Fig.&#160;24.7&#160;</b>Phase&#160;portraits&#160;showing&#160;the&#160;dynamics&#160;of&#160;the&#160;comprehensive&#160;model&#160;for&#160;the&#160;<b>a&#160;</b>control<br/>experiment,&#160;<b>b&#160;</b>knock&#160;down&#160;of&#160;β-catenin,&#160;and&#160;<b>c&#160;</b>knock&#160;down&#160;of&#160;notum.&#160;This&#160;analysis&#160;reveals&#160;the<br/>dynamic&#160;properties&#160;defined&#160;by&#160;the&#160;model,&#160;including&#160;the&#160;trajectories,&#160;attractors,&#160;and&#160;bifurcations</p>
+<p style="position:absolute;top:668px;left:172px;white-space:nowrap" class="ft172"><b>24.5&#160;Discussion</b></p>
+<p style="position:absolute;top:720px;left:172px;white-space:nowrap" class="ft176">Planarian&#160;worms&#160;possess&#160;an&#160;extraordinary&#160;ability&#160;to&#160;regenerate&#160;their&#160;complete&#160;bod-<br/>ies&#160;from&#160;almost&#160;any&#160;amputated&#160;fragment.&#160;The&#160;inherent&#160;complexity&#160;of&#160;the&#160;biological<br/>regulation&#160;of&#160;patterns,&#160;shapes,&#160;and&#160;forms&#160;prevent&#160;us&#160;to&#160;manually&#160;derive&#160;mechanistic<br/>models&#160;from&#160;the&#160;large&#160;dataset&#160;of&#160;perturbation&#160;experiments&#160;existent&#160;in&#160;the&#160;literature.<br/>Instead,&#160;it&#160;is&#160;clear&#160;that&#160;computational&#160;methods&#160;are&#160;needed&#160;to&#160;aid&#160;us&#160;in&#160;reverse-<br/>engineering&#160;mathematical&#160;models&#160;with&#160;the&#160;capacity&#160;to&#160;recapitulate&#160;the&#160;observed<br/>outcomes,&#160;provide&#160;accurate&#160;predictions,&#160;and&#160;offer&#160;a&#160;comprehensive&#160;view&#160;of&#160;all&#160;the<br/>necessary&#160;components&#160;and&#160;relations&#160;controlling&#160;the&#160;system.</p>
+<p style="position:absolute;top:886px;left:193px;white-space:nowrap" class="ft173">Here&#160;we&#160;reviewed&#160;an&#160;integrated&#160;approach&#160;for&#160;the&#160;reverse&#160;engineering&#160;of&#160;dynamic</p>
+<p style="position:absolute;top:906px;left:172px;white-space:nowrap" class="ft176">models&#160;of&#160;regeneration&#160;directly&#160;from&#160;morphological&#160;outcomes.&#160;Our&#160;methodology&#160;is<br/>based&#160;on&#160;a&#160;formal&#160;ontology&#160;to&#160;mathematically&#160;describe&#160;regenerative&#160;experiments&#160;and<br/>morphologies,&#160;a&#160;systems-level&#160;simulator&#160;of&#160;tissue&#160;patterning,&#160;and&#160;a&#160;machine&#160;learn-<br/>ing&#160;heuristic&#160;algorithm&#160;to&#160;automatically&#160;infer&#160;dynamic&#160;regulatory&#160;models&#160;directly<br/>from&#160;the&#160;data.&#160;Together,&#160;these&#160;components&#160;can&#160;automate&#160;the&#160;process&#160;of&#160;discovering<br/>a&#160;mechanistic&#160;model,&#160;based&#160;on&#160;partial&#160;differential&#160;equations,&#160;that&#160;can&#160;recapitulate&#160;the</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft174">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:12px;font-family:Times;color:#131413;}
+	.ft181{font-size:15px;font-family:Times;color:#131413;}
+	.ft182{font-size:15px;font-family:Times;color:#131413;}
+	.ft183{font-size:15px;font-family:Times;color:#0000ff;}
+	.ft184{font-size:12px;font-family:Times;color:#131413;}
+	.ft185{font-size:11px;font-family:Times;color:#808080;}
+	.ft186{font-size:15px;line-height:20px;font-family:Times;color:#131413;}
+	.ft187{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft180">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft180">649</p>
+<p style="position:absolute;top:118px;left:172px;white-space:nowrap" class="ft186">exact&#160;outcomes&#160;described&#160;in&#160;the&#160;input&#160;dataset&#160;of&#160;experiments.&#160;As&#160;a&#160;proof&#160;of&#160;principle,<br/>we&#160;applied&#160;our&#160;method&#160;to&#160;the&#160;problem&#160;of&#160;planarian&#160;regeneration,&#160;resulting&#160;in&#160;a&#160;com-<br/>prehensive&#160;model&#160;able&#160;to&#160;recapitulate&#160;a&#160;diverse&#160;set&#160;of&#160;genetic&#160;and&#160;pharmacological<br/>experiments.&#160;The&#160;inferred&#160;model&#160;includes&#160;all&#160;the&#160;necessary&#160;components,&#160;interac-<br/>tions,&#160;and&#160;parameters&#160;to&#160;compute&#160;the&#160;precise&#160;morphological&#160;outcomes.&#160;Precisely,<br/>the&#160;computational&#160;nature&#160;of&#160;the&#160;model,&#160;accurately&#160;described&#160;as&#160;a&#160;set&#160;of&#160;biochemical<br/>processes,&#160;allow&#160;us&#160;to&#160;describe&#160;and&#160;study&#160;the&#160;exact&#160;dynamics&#160;of&#160;the&#160;system,&#160;revealing<br/>the&#160;attractors&#160;and&#160;bifurcations&#160;responsible&#160;for&#160;the&#160;observed&#160;behavior&#160;in&#160;the&#160;different<br/>experiments&#160;and&#160;the&#160;inherent&#160;controlling&#160;mechanisms&#160;in&#160;the&#160;system.&#160;Furthermore,<br/>the&#160;dynamic&#160;model&#160;can&#160;readily&#160;be&#160;used&#160;for&#160;predicting&#160;the&#160;outcome&#160;of&#160;any&#160;novel<br/>experimental&#160;perturbation&#160;of&#160;its&#160;defined&#160;components,&#160;which&#160;can&#160;be&#160;then&#160;validated&#160;by<br/>replicating&#160;the&#160;same&#160;experiments&#160;in&#160;vivo&#160;at&#160;the&#160;bench.</p>
+<p style="position:absolute;top:366px;left:193px;white-space:nowrap" class="ft181">Our&#160;method&#160;is&#160;not&#160;restricted&#160;to&#160;regenerative&#160;experiments,&#160;but&#160;it&#160;is&#160;general&#160;enough</p>
+<p style="position:absolute;top:387px;left:172px;white-space:nowrap" class="ft186">to&#160;be&#160;applicable&#160;to&#160;any&#160;biological&#160;system&#160;which&#160;experiments&#160;can&#160;be&#160;formalized&#160;and<br/>simulated&#160;in&#160;silico.&#160;Indeed,&#160;we&#160;have&#160;used&#160;a&#160;similar&#160;approach&#160;for&#160;the&#160;reverse&#160;engineer-<br/>ing&#160;of&#160;a&#160;dynamic&#160;regulatory&#160;network&#160;of&#160;a&#160;melanoma-like&#160;phenotype&#160;in&#160;<i>Xenopus&#160;</i>[41].<br/>In&#160;this&#160;case,&#160;the&#160;system&#160;is&#160;stochastic:&#160;two&#160;simulations&#160;with&#160;the&#160;same&#160;conditions&#160;can<br/>result&#160;in&#160;different&#160;outcomes.&#160;Importantly,&#160;the&#160;reverse-engineered&#160;signaling&#160;system<br/>model&#160;could&#160;not&#160;only&#160;recapitulate&#160;the&#160;observed&#160;phenotypes,&#160;but&#160;also&#160;the&#160;exact&#160;sto-<br/>chastic&#160;ratios&#160;obtained&#160;in&#160;vivo.&#160;In&#160;conclusion,&#160;this&#160;methodology&#160;is&#160;widely&#160;applicable,<br/>and&#160;able&#160;to&#160;unravel&#160;complex&#160;regulatory&#160;systems&#160;directly&#160;from&#160;morphological&#160;data.<br/>Indeed,&#160;the&#160;discovered&#160;dynamic&#160;models&#160;represent&#160;a&#160;mechanistic&#160;understanding&#160;of&#160;the<br/>unconventional&#160;computations&#160;necessary&#160;to&#160;control&#160;these&#160;biological&#160;systems,&#160;offering<br/>key&#160;insights&#160;for&#160;finding&#160;novel&#160;interventions&#160;to&#160;complex,&#160;multidimensional&#160;processes<br/>such&#160;as&#160;regeneration&#160;and&#160;diseases&#160;such&#160;as&#160;cancer.</p>
+<p style="position:absolute;top:635px;left:193px;white-space:nowrap" class="ft181">In&#160;addition&#160;to&#160;the&#160;computational&#160;approaches&#160;to&#160;understanding&#160;the&#160;regenerative</p>
+<p style="position:absolute;top:656px;left:172px;white-space:nowrap" class="ft186">properties&#160;of&#160;extant&#160;species&#160;of&#160;planaria,&#160;there&#160;is&#160;another&#160;sense&#160;of&#160;computation&#160;in<br/>this&#160;field:&#160;that&#160;performed&#160;by&#160;the&#160;worm&#160;itself.&#160;Using&#160;networks&#160;of&#160;chemically-&#160;and<br/>bioelectrically-connected&#160;elements,&#160;these&#160;remarkable&#160;animals&#160;compute&#160;everything<br/>necessary&#160;to&#160;restore&#160;a&#160;complex&#160;3-dimensional&#160;shape&#160;despite&#160;unpredictable&#160;experi-<br/>mental&#160;perturbations.&#160;It&#160;remains&#160;to&#160;be&#160;seen&#160;whether&#160;the&#160;smallest&#160;computational&#160;units<br/>are&#160;cells,&#160;subcellular&#160;organelles&#160;(e.g.,&#160;cytoskeleton),&#160;or&#160;multi-cellular&#160;subnetworks.<br/>Nevertheless,&#160;in&#160;addition&#160;to&#160;the&#160;obvious&#160;implications&#160;for&#160;regenerative&#160;medicine&#160;and<br/>robust&#160;artificial&#160;constructs,&#160;understanding&#160;the&#160;general&#160;dynamics&#160;that&#160;enable&#160;this&#160;will<br/>surely&#160;enrich&#160;our&#160;understanding&#160;of&#160;unconventional&#160;computing.&#160;This&#160;novel&#160;architec-<br/>ture&#160;performs&#160;remarkable&#160;feats&#160;of&#160;real-time&#160;pattern&#160;memory&#160;and&#160;distributed&#160;decision-<br/>making.&#160;As&#160;much&#160;as&#160;we&#160;seek&#160;to&#160;make&#160;computational&#160;models&#160;of&#160;real&#160;worm&#160;species<br/>produced&#160;by&#160;the&#160;biosphere’s&#160;evolutionary&#160;history,&#160;the&#160;worms&#160;are&#160;themselves&#160;models<br/>of&#160;fundamental&#160;computational&#160;principles&#160;that&#160;once&#160;discovered,&#160;will&#160;have&#160;implications<br/>well&#160;beyond&#160;any&#160;single&#160;material&#160;implementation.</p>
+<p style="position:absolute;top:964px;left:172px;white-space:nowrap" class="ft187"><b>Acknowledgments&#160;</b>This&#160;work&#160;was&#160;supported&#160;by&#160;NSF&#160;grant&#160;EF-1124651,&#160;NIH&#160;grant&#160;GM078484,<br/>USAMRMC&#160;grant&#160;W81XWH-10-2-0058,&#160;and&#160;the&#160;Mathers&#160;Foundation.&#160;Computation&#160;used&#160;the<br/>Extreme&#160;Science&#160;and&#160;Engineering&#160;Discovery&#160;Environment&#160;(XSEDE),&#160;which&#160;is&#160;supported&#160;by&#160;NSF<br/>grant&#160;ACI-1053575,&#160;and&#160;a&#160;cluster&#160;computer&#160;awarded&#160;by&#160;Silicon&#160;Mechanics.</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft185">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:12px;font-family:Times;color:#131413;}
+	.ft191{font-size:18px;font-family:Times;color:#131413;}
+	.ft192{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft193{font-size:12px;font-family:Times;color:#131413;}
+	.ft194{font-size:12px;font-family:Times;color:#131413;}
+	.ft195{font-size:11px;font-family:Times;color:#808080;}
+	.ft196{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft197{font-size:12px;line-height:17px;font-family:Times;color:#0000ff;}
+	.ft198{font-size:12px;line-height:16px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft190">650</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft190">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:114px;left:172px;white-space:nowrap" class="ft191"><b>References</b></p>
+<p style="position:absolute;top:165px;left:179px;white-space:nowrap" class="ft190">1.&#160;Aboukhatwa,&#160;E.,&#160;Aboobaker,&#160;A.:&#160;An&#160;Introduction&#160;to&#160;Planarians&#160;and&#160;Their&#160;Stem&#160;Cells.&#160;Wiley,</p>
+<p style="position:absolute;top:182px;left:199px;white-space:nowrap" class="ft190">New&#160;York&#160;(2015).&#160;doi:10.1002/9780470015902.a0001097.pub2</p>
+<p style="position:absolute;top:199px;left:179px;white-space:nowrap" class="ft190">2.&#160;Aster,&#160;R.C.,&#160;Thurber,&#160;C.H.:&#160;Parameter&#160;Estimation&#160;and&#160;Inverse&#160;Problems,&#160;2nd&#160;edn.&#160;Academic</p>
+<p style="position:absolute;top:216px;left:199px;white-space:nowrap" class="ft190">Press,&#160;Waltham&#160;(2012)</p>
+<p style="position:absolute;top:233px;left:179px;white-space:nowrap" class="ft190">3.&#160;Baguna,&#160;J.,&#160;Saló,&#160;E.,&#160;Auladell,&#160;C.:&#160;Regeneration&#160;and&#160;pattern&#160;formation&#160;in&#160;planarians.&#160;iii.&#160;evidence</p>
+<p style="position:absolute;top:250px;left:199px;white-space:nowrap" class="ft196">that&#160;neoblasts&#160;are&#160;totipotent&#160;stem-cells&#160;and&#160;the&#160;source&#160;of&#160;blastema&#160;cells.&#160;Development&#160;<b>107</b>(1),<br/>77–86&#160;(1989)</p>
+<p style="position:absolute;top:284px;left:179px;white-space:nowrap" class="ft190">4.&#160;Basso,&#160;K.,&#160;Margolin,&#160;A.A.,&#160;Stolovitzky,&#160;G.,&#160;Klein,&#160;U.,&#160;Dalla-Favera,&#160;R.,&#160;Califano,&#160;A.:&#160;Reverse</p>
+<p style="position:absolute;top:301px;left:199px;white-space:nowrap" class="ft197">engineering&#160;of&#160;regulatory&#160;networks&#160;in&#160;human&#160;b&#160;cells.&#160;Nat.&#160;Genet&#160;<b>37</b>(4),&#160;382–390&#160;(2005).&#160;doi:10.<br/>1038/ng1532</p>
+<p style="position:absolute;top:334px;left:179px;white-space:nowrap" class="ft190">5.&#160;Beane,&#160;W.S.,&#160;Morokuma,&#160;J.,&#160;Adams,&#160;D.S.,&#160;Levin,&#160;M.:&#160;A&#160;chemical&#160;genetics&#160;approach&#160;reveals&#160;h,</p>
+<p style="position:absolute;top:352px;left:199px;white-space:nowrap" class="ft198">k-atpase-mediated&#160;membrane&#160;voltage&#160;is&#160;required&#160;for&#160;planarian&#160;head&#160;regeneration.&#160;Chem.&#160;Biol.<br/><b>18</b>(1),&#160;77–89&#160;(2011)</p>
+<p style="position:absolute;top:385px;left:179px;white-space:nowrap" class="ft190">6.&#160;Beane,&#160;W.S.,&#160;Morokuma,&#160;J.,&#160;Lemire,&#160;J.M.,&#160;Levin,&#160;M.:&#160;Bioelectric&#160;signaling&#160;regulates&#160;head&#160;and</p>
+<p style="position:absolute;top:403px;left:199px;white-space:nowrap" class="ft190">organ&#160;size&#160;during&#160;planarian&#160;regeneration.&#160;Development&#160;<b>140</b>(2),&#160;313–22&#160;(2013)</p>
+<p style="position:absolute;top:419px;left:179px;white-space:nowrap" class="ft190">7.&#160;Becker,&#160;K.,&#160;Balsa-Canto,&#160;E.,&#160;Cicin-Sain,&#160;D.,&#160;Hoermann,&#160;A.,&#160;Janssens,&#160;H.,&#160;Banga,&#160;J.R.,&#160;Jaeger,&#160;J.:</p>
+<p style="position:absolute;top:436px;left:199px;white-space:nowrap" class="ft196">Reverse-engineering&#160;post-transcriptional&#160;regulation&#160;of&#160;gap&#160;genes&#160;in&#160;drosophila&#160;melanogaster.<br/>PLOS&#160;Comput.&#160;Biol.&#160;<b>9</b>(10),&#160;e1003,281&#160;(2013).&#160;doi:10.1371/journal.pcbi.1003281</p>
+<p style="position:absolute;top:470px;left:179px;white-space:nowrap" class="ft190">8.&#160;Bonabeau,&#160;E.:&#160;From&#160;classical&#160;models&#160;of&#160;morphogenesis&#160;to&#160;agent-based&#160;models&#160;of&#160;pattern&#160;for-</p>
+<p style="position:absolute;top:487px;left:199px;white-space:nowrap" class="ft190">mation.&#160;Artif.&#160;Life&#160;<b>3</b>(3),&#160;191–211&#160;(1997)</p>
+<p style="position:absolute;top:504px;left:179px;white-space:nowrap" class="ft190">9.&#160;Bongard,&#160;J.,&#160;Lipson,&#160;H.:&#160;Automated&#160;reverse&#160;engineering&#160;of&#160;nonlinear&#160;dynamical&#160;systems.&#160;Proc.</p>
+<p style="position:absolute;top:521px;left:199px;white-space:nowrap" class="ft190">Natl.&#160;Acad.&#160;Sci.&#160;U.&#160;S.&#160;A&#160;<b>104</b>(24),&#160;9943–9948&#160;(2007).&#160;doi:10.1073/pnas.0609476104</p>
+<p style="position:absolute;top:538px;left:172px;white-space:nowrap" class="ft190">10.&#160;Bonneau,&#160;R.,&#160;Facciotti,&#160;M.T.,&#160;Reiss,&#160;D.J.,&#160;Schmid,&#160;A.K.,&#160;Pan,&#160;M.,&#160;Kaur,&#160;A.,&#160;Thorsson,&#160;V.,</p>
+<p style="position:absolute;top:555px;left:199px;white-space:nowrap" class="ft196">Shannon,&#160;P.,&#160;Johnson,&#160;M.H.,&#160;Bare,&#160;J.C.,&#160;Longabaugh,&#160;W.,&#160;Vuthoori,&#160;M.,&#160;Whitehead,&#160;K.,&#160;Madar,<br/>A.,&#160;Suzuki,&#160;L.,&#160;Mori,&#160;T.,&#160;Chang,&#160;D.E.,&#160;DiRuggiero,&#160;J.,&#160;Johnson,&#160;C.H.,&#160;Hood,&#160;L.,&#160;Baliga,&#160;N.S.:<br/>A&#160;predictive&#160;model&#160;for&#160;transcriptional&#160;control&#160;of&#160;physiology&#160;in&#160;a&#160;free&#160;living&#160;cell.&#160;Cell&#160;<b>131</b>(7),<br/>1354–1365&#160;(2007).&#160;doi:10.1016/j.cell.2007.10.053</p>
+<p style="position:absolute;top:623px;left:172px;white-space:nowrap" class="ft190">11.&#160;Bonneau,&#160;R.,&#160;Reiss,&#160;D.J.,&#160;Shannon,&#160;P.,&#160;Facciotti,&#160;M.,&#160;Hood,&#160;L.,&#160;Baliga,&#160;N.S.,&#160;Thorsson,&#160;V.:&#160;The</p>
+<p style="position:absolute;top:640px;left:199px;white-space:nowrap" class="ft196">inferelator:&#160;an&#160;algorithm&#160;for&#160;learning&#160;parsimonious&#160;regulatory&#160;networks&#160;from&#160;systems-biology<br/>data&#160;sets&#160;de&#160;novo.&#160;Genome&#160;Biol.&#160;<b>7</b>(5)&#160;Artn&#160;R36&#160;(2006).&#160;doi:10.1186/Gb-2006-7-5-R36</p>
+<p style="position:absolute;top:674px;left:172px;white-space:nowrap" class="ft190">12.&#160;Botman,&#160;D.,&#160;Röttinger,&#160;E.,&#160;Martindale,&#160;M.Q.,&#160;de&#160;Jong,&#160;J.,&#160;Kaandorp,&#160;J.A.:&#160;A&#160;computational</p>
+<p style="position:absolute;top:691px;left:199px;white-space:nowrap" class="ft196">approach&#160;towards&#160;a&#160;gene&#160;regulatory&#160;network&#160;for&#160;the&#160;developing&#160;<i>Nematostella&#160;vectensis</i>.&#160;PLOS<br/>ONE&#160;<b>9</b>(7),&#160;e103341&#160;(2014).&#160;doi:10.1371/journal.pone.0103341</p>
+<p style="position:absolute;top:725px;left:172px;white-space:nowrap" class="ft190">13.&#160;Brockes,&#160;J.P.,&#160;Kumar,&#160;A.:&#160;Appendage&#160;regeneration&#160;in&#160;adult&#160;vertebrates&#160;and&#160;implications&#160;for</p>
+<p style="position:absolute;top:742px;left:199px;white-space:nowrap" class="ft190">regenerative&#160;medicine.&#160;Science&#160;<b>310</b>(5756),&#160;1919–1923&#160;(2005).&#160;doi:10.1126/science.1115200</p>
+<p style="position:absolute;top:759px;left:172px;white-space:nowrap" class="ft190">14.&#160;Cantone,&#160;I.,&#160;Marucci,&#160;L.,&#160;Iorio,&#160;F.,&#160;Ricci,&#160;M.A.,&#160;Belcastro,&#160;V.,&#160;Bansal,&#160;M.,&#160;Santini,&#160;S.,&#160;di</p>
+<p style="position:absolute;top:776px;left:199px;white-space:nowrap" class="ft197">Bernardo,&#160;M.,&#160;di&#160;Bernardo,&#160;D.,&#160;Cosma,&#160;M.P.:&#160;A&#160;yeast&#160;synthetic&#160;network&#160;for&#160;in&#160;vivo&#160;assess-<br/>ment&#160;of&#160;reverse-engineering&#160;and&#160;modeling&#160;approaches.&#160;Cell&#160;<b>137</b>(1),&#160;172–181&#160;(2009).&#160;doi:10.<br/>1016/j.cell.2009.01.055</p>
+<p style="position:absolute;top:827px;left:172px;white-space:nowrap" class="ft190">15.&#160;Carroll,&#160;S.:&#160;Endless&#160;Forms&#160;Most&#160;Beautiful:&#160;The&#160;New&#160;Science&#160;of&#160;Evo&#160;Devo&#160;and&#160;the&#160;Making&#160;of</p>
+<p style="position:absolute;top:844px;left:199px;white-space:nowrap" class="ft190">the&#160;Animal&#160;Kingdom.&#160;W.&#160;W.&#160;Norton&#160;&amp;&#160;Company,&#160;New&#160;York&#160;(2005)</p>
+<p style="position:absolute;top:861px;left:172px;white-space:nowrap" class="ft190">16.&#160;Carroll,&#160;S.,&#160;Grenier,&#160;J.,&#160;Weatherbee,&#160;S.:&#160;From&#160;DNA&#160;to&#160;Diversity:&#160;Molecular&#160;Genetics&#160;and&#160;the</p>
+<p style="position:absolute;top:878px;left:199px;white-space:nowrap" class="ft190">Evolution&#160;of&#160;Animal&#160;Design.&#160;Wiley,&#160;Blackwell,&#160;New&#160;York&#160;(2004)</p>
+<p style="position:absolute;top:894px;left:172px;white-space:nowrap" class="ft190">17.&#160;Chara,&#160;O.,&#160;Tanaka,&#160;E.M.,&#160;Brusch,&#160;L.:&#160;Mathematical&#160;Modeling&#160;of&#160;Regenerative&#160;Processes,&#160;<b>108</b>,</p>
+<p style="position:absolute;top:912px;left:199px;white-space:nowrap" class="ft190">283–317&#160;(2014).&#160;doi:10.1016/B978-0-12-391498-9.00011-5</p>
+<p style="position:absolute;top:928px;left:172px;white-space:nowrap" class="ft190">18.&#160;Cohen,&#160;I.R.,&#160;Harel,&#160;D.:&#160;Explaining&#160;a&#160;complex&#160;living&#160;system:&#160;dynamics,&#160;multi-scaling&#160;and&#160;emer-</p>
+<p style="position:absolute;top:945px;left:199px;white-space:nowrap" class="ft190">gence.&#160;J.&#160;Royal&#160;Soc.&#160;Interface&#160;<b>4</b>(13),&#160;175–182&#160;(2007).&#160;doi:10.1098/rsif.2006.0173</p>
+<p style="position:absolute;top:962px;left:172px;white-space:nowrap" class="ft190">19.&#160;Corning,&#160;W.C.,&#160;Freed,&#160;S.:&#160;Planarian&#160;behaviour&#160;and&#160;biochemistry.&#160;Nature&#160;<b>219</b>(160),&#160;1227–9</p>
+<p style="position:absolute;top:979px;left:199px;white-space:nowrap" class="ft190">(1968)</p>
+<p style="position:absolute;top:996px;left:172px;white-space:nowrap" class="ft190">20.&#160;Crombach,&#160;A.,&#160;Wotton,&#160;K.R.,&#160;Cicin-Sain,&#160;D.,&#160;Ashyraliyev,&#160;M.,&#160;Jaeger,&#160;J.:&#160;Efficient&#160;reverse-</p>
+<p style="position:absolute;top:1013px;left:199px;white-space:nowrap" class="ft196">engineering&#160;of&#160;a&#160;developmental&#160;gene&#160;regulatory&#160;network.&#160;PLOS&#160;Comput.&#160;Biol.&#160;<b>8</b>(7),&#160;e1002589<br/>(2012).&#160;doi:10.1371/journal.pcbi.1002589</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft195">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:12px;font-family:Times;color:#131413;}
+	.ft201{font-size:12px;font-family:Times;color:#131413;}
+	.ft202{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft203{font-size:11px;font-family:Times;color:#808080;}
+	.ft204{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft205{font-size:12px;line-height:17px;font-family:Times;color:#0000ff;}
+	.ft206{font-size:12px;line-height:16px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft200">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft200">651</p>
+<p style="position:absolute;top:120px;left:172px;white-space:nowrap" class="ft200">21.&#160;Daniel,&#160;R.,&#160;Rubens,&#160;J.R.,&#160;Sarpeshkar,&#160;R.,&#160;Lu,&#160;T.K.:&#160;Synthetic&#160;analog&#160;computation&#160;in&#160;living&#160;cells.</p>
+<p style="position:absolute;top:138px;left:199px;white-space:nowrap" class="ft200">Nature&#160;<b>497</b>(7451),&#160;619–23&#160;(2013).&#160;doi:10.1038/nature12148</p>
+<p style="position:absolute;top:155px;left:172px;white-space:nowrap" class="ft200">22.&#160;Edwards,&#160;J.S.,&#160;Palsson,&#160;B.O.:&#160;The&#160;escherichia&#160;coli&#160;mg1655&#160;in&#160;silico&#160;metabolic&#160;genotype:&#160;Its</p>
+<p style="position:absolute;top:172px;left:199px;white-space:nowrap" class="ft204">definition,&#160;characteristics,&#160;and&#160;capabilities.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;U.&#160;S.&#160;A.&#160;<b>97</b>(10),&#160;5528–5533<br/>(2000).&#160;doi:10.1073/pnas.97.10.5528</p>
+<p style="position:absolute;top:206px;left:172px;white-space:nowrap" class="ft200">23.&#160;Ellner,&#160;S.P.,&#160;Guckenheimer,&#160;J.:&#160;Dynamic&#160;Models&#160;in&#160;Biology.&#160;Princeton&#160;University&#160;Press,&#160;Prince-</p>
+<p style="position:absolute;top:223px;left:199px;white-space:nowrap" class="ft200">ton&#160;(2006)</p>
+<p style="position:absolute;top:240px;left:172px;white-space:nowrap" class="ft200">24.&#160;Faith,&#160;J.J.,&#160;Hayete,&#160;B.,&#160;Thaden,&#160;J.T.,&#160;Mogno,&#160;I.,&#160;Wierzbowski,&#160;J.,&#160;Cottarel,&#160;G.,&#160;Kasif,&#160;S.,&#160;Collins,</p>
+<p style="position:absolute;top:258px;left:199px;white-space:nowrap" class="ft205">J.J.,&#160;Gardner,&#160;T.S.:&#160;Large-scale&#160;mapping&#160;and&#160;validation&#160;of&#160;escherichia&#160;coli&#160;transcriptional&#160;reg-<br/>ulation&#160;from&#160;a&#160;compendium&#160;of&#160;expression&#160;profiles.&#160;PLOS&#160;Biol.&#160;<b>5</b>(1),&#160;e8&#160;(2007).&#160;doi:10.1371/<br/>journal.pbio.0050008</p>
+<p style="position:absolute;top:309px;left:172px;white-space:nowrap" class="ft200">25.&#160;Fomekong-Nanfack,&#160;Y.,&#160;Kaandorp,&#160;J.A.,&#160;Blom,&#160;J.:&#160;Efficient&#160;parameter&#160;estimation&#160;for&#160;spatio-</p>
+<p style="position:absolute;top:326px;left:199px;white-space:nowrap" class="ft206">temporal&#160;models&#160;of&#160;pattern&#160;formation:&#160;case&#160;study&#160;of&#160;drosophila&#160;melanogaster.&#160;Bioinformatics<br/><b>23</b>(24),&#160;3356–3363&#160;(2007).&#160;doi:10.1093/bioinformatics/btm433</p>
+<p style="position:absolute;top:361px;left:172px;white-space:nowrap" class="ft200">26.&#160;Ganguly,&#160;N.,&#160;Sikdar,&#160;B.K.,&#160;Deutsch,&#160;A.,&#160;Canright,&#160;G.,&#160;Chaudhuri,&#160;P.:&#160;A&#160;Survey&#160;on&#160;Cellular</p>
+<p style="position:absolute;top:378px;left:199px;white-space:nowrap" class="ft204">Automata.&#160;Report,&#160;Centre&#160;for&#160;High&#160;Performance&#160;Computing,&#160;Dresden&#160;University&#160;of&#160;Technology<br/>(2003)</p>
+<p style="position:absolute;top:412px;left:172px;white-space:nowrap" class="ft200">27.&#160;Gardner,&#160;T.S.,&#160;di&#160;Bernardo,&#160;D.,&#160;Lorenz,&#160;D.,&#160;Collins,&#160;J.J.:&#160;Inferring&#160;genetic&#160;networks&#160;and&#160;identi-</p>
+<p style="position:absolute;top:429px;left:199px;white-space:nowrap" class="ft204">fying&#160;compound&#160;mode&#160;of&#160;action&#160;via&#160;expression&#160;profiling.&#160;Science&#160;<b>301</b>(5629),&#160;102–105&#160;(2003).<br/>doi:10.1126/science.1081900</p>
+<p style="position:absolute;top:464px;left:172px;white-space:nowrap" class="ft200">28.&#160;Gurley,&#160;K.A.,&#160;Rink,&#160;J.C.:&#160;Sanchez&#160;Alvarado,&#160;A.:&#160;β-catenin&#160;defines&#160;head&#160;versus&#160;tail&#160;identity</p>
+<p style="position:absolute;top:481px;left:199px;white-space:nowrap" class="ft200">during&#160;planarian&#160;regeneration&#160;and&#160;homeostasis.&#160;Science&#160;<b>319</b>(5861),&#160;323–327&#160;(2008)</p>
+<p style="position:absolute;top:498px;left:172px;white-space:nowrap" class="ft200">29.&#160;Gursky,&#160;V.V.,&#160;Panok,&#160;L.,&#160;Myasnikova,&#160;E.M.,&#160;Manu&#160;Samsonova,&#160;M.G.,&#160;Reinitz,&#160;J.,&#160;Samsonov,</p>
+<p style="position:absolute;top:515px;left:199px;white-space:nowrap" class="ft204">A.M.:&#160;Mechanisms&#160;of&#160;gap&#160;gene&#160;expression&#160;canalization&#160;in&#160;the&#160;drosophila&#160;blastoderm.&#160;BMC<br/>Syst.&#160;Biol.&#160;<b>5</b>,&#160;118&#160;(2011).&#160;doi:10.1186/1752-0509-5-118</p>
+<p style="position:absolute;top:549px;left:172px;white-space:nowrap" class="ft200">30.&#160;Hecker,&#160;M.,&#160;Lambeck,&#160;S.,&#160;Toepfer,&#160;S.,&#160;van&#160;Someren,&#160;E.,&#160;Guthke,&#160;R.:&#160;Gene&#160;regulatory&#160;network</p>
+<p style="position:absolute;top:567px;left:199px;white-space:nowrap" class="ft204">inference:&#160;Data&#160;integration&#160;in&#160;dynamic&#160;models—review.&#160;Biosystems&#160;<b>96</b>(1),&#160;86–103&#160;(2009).<br/>doi:10.1016/j.biosystems.2008.12.004</p>
+<p style="position:absolute;top:601px;left:172px;white-space:nowrap" class="ft204">31.&#160;Hunter,&#160;L.:&#160;Artificial&#160;intelligence&#160;and&#160;molecular&#160;biology.&#160;AI&#160;Mag.&#160;<b>11</b>(5),&#160;27–36&#160;(1990)<br/>32.&#160;Iglesias,&#160;M.,&#160;Gomez-Skarmeta,&#160;J.L.,&#160;Saló,&#160;E.,&#160;Adell,&#160;T.:&#160;Silencing&#160;of&#160;smed-β-catenin&#160;generates</p>
+<p style="position:absolute;top:635px;left:199px;white-space:nowrap" class="ft200">radial-like&#160;hypercephalized&#160;planarians.&#160;Development&#160;<b>135</b>(7),&#160;1215–1221&#160;(2008)</p>
+<p style="position:absolute;top:652px;left:172px;white-space:nowrap" class="ft200">33.&#160;Ilsley,&#160;G.R.,&#160;Fisher,&#160;J.,&#160;Apweiler,&#160;R.,&#160;DePace,&#160;A.H.,&#160;Luscombe,&#160;N.M.:&#160;Cellular&#160;resolution&#160;models</p>
+<p style="position:absolute;top:669px;left:199px;white-space:nowrap" class="ft205">for&#160;even&#160;skipped&#160;regulation&#160;in&#160;the&#160;entire&#160;Drosophila&#160;embryo,&#160;vol.&#160;2&#160;(2013).&#160;doi:10.7554/eLife.<br/>00522</p>
+<p style="position:absolute;top:704px;left:172px;white-space:nowrap" class="ft200">34.&#160;Jaeger,&#160;J.,&#160;Blagov,&#160;M.,&#160;Kosman,&#160;D.,&#160;Kozlov,&#160;K.N.,&#160;Manu,&#160;Myasnikova,&#160;E.,&#160;Surkova,&#160;S.,&#160;Vanario-</p>
+<p style="position:absolute;top:721px;left:199px;white-space:nowrap" class="ft204">Alonso,&#160;C.E.,&#160;Samsonova,&#160;M.,&#160;Sharp,&#160;D.H.,&#160;Reinitz,&#160;J.:&#160;Dynamical&#160;analysis&#160;of&#160;regulatory&#160;inter-<br/>actions&#160;in&#160;the&#160;gap&#160;gene&#160;system&#160;of&#160;drosophila&#160;melanogaster.&#160;Genetics&#160;<b>167</b>(4),&#160;1721–1737&#160;(2004).<br/>doi:10.1534/genetics.104.027334</p>
+<p style="position:absolute;top:772px;left:172px;white-space:nowrap" class="ft200">35.&#160;Jaeger,&#160;J.,&#160;Crombach,&#160;A.:&#160;Life&#160;attractors:&#160;understanding&#160;developmental&#160;systems&#160;through&#160;reverse</p>
+<p style="position:absolute;top:790px;left:199px;white-space:nowrap" class="ft200">engineering&#160;and&#160;in&#160;silico&#160;evolution,&#160;Adv.&#160;Exp.&#160;Med.&#160;Biol.&#160;<b>751</b>,&#160;93–119&#160;(2012)</p>
+<p style="position:absolute;top:807px;left:172px;white-space:nowrap" class="ft200">36.&#160;Jaeger,&#160;J.,&#160;Sharpe,&#160;J.:&#160;On&#160;the&#160;Concept&#160;of&#160;Mechanism&#160;in&#160;Development.&#160;Oxford&#160;University&#160;Press,</p>
+<p style="position:absolute;top:824px;left:199px;white-space:nowrap" class="ft200">Oxford&#160;(2014)</p>
+<p style="position:absolute;top:841px;left:172px;white-space:nowrap" class="ft200">37.&#160;Jaeger,&#160;J.,&#160;Surkova,&#160;S.,&#160;Blagov,&#160;M.,&#160;Janssens,&#160;H.,&#160;Kosman,&#160;D.,&#160;Kozlov,&#160;K.N.,&#160;Manu,&#160;Myas-</p>
+<p style="position:absolute;top:858px;left:199px;white-space:nowrap" class="ft204">nikova,&#160;E.,&#160;Vanario-Alonso,&#160;C.E.,&#160;Samsonova,&#160;M.,&#160;Sharp,&#160;D.H.,&#160;Reinitz,&#160;J.:&#160;Dynamic&#160;control<br/>of&#160;positional&#160;information&#160;in&#160;the&#160;early&#160;drosophila&#160;embryo.&#160;Nature&#160;<b>430</b>(6997),&#160;368–371&#160;(2004).<br/>doi:10.1038/Nature02678</p>
+<p style="position:absolute;top:910px;left:172px;white-space:nowrap" class="ft200">38.&#160;Kakugawa,&#160;S.,&#160;Langton,&#160;P.F.,&#160;Zebisch,&#160;M.,&#160;Howell,&#160;S.A.,&#160;Chang,&#160;T.H.,&#160;Liu,&#160;Y.,&#160;Feizi,&#160;T.,&#160;Bineva,</p>
+<p style="position:absolute;top:927px;left:199px;white-space:nowrap" class="ft204">G.,&#160;O/’Reilly,&#160;N.,&#160;Snijders,&#160;A.P.,&#160;Jones,&#160;E.Y.,&#160;Vincent,&#160;J.P.:&#160;Notum&#160;deacylates&#160;wnt&#160;proteins&#160;to<br/>suppress&#160;signalling&#160;activity.&#160;Nature&#160;<b>519</b>(7542),&#160;187–192&#160;(2015).&#160;doi:10.1038/nature14259</p>
+<p style="position:absolute;top:961px;left:172px;white-space:nowrap" class="ft200">39.&#160;Koza,&#160;J.:&#160;Genetic&#160;Programming:&#160;On&#160;the&#160;Programming&#160;of&#160;Computers&#160;by&#160;Means&#160;of&#160;Natural</p>
+<p style="position:absolute;top:978px;left:199px;white-space:nowrap" class="ft200">Selection&#160;(Complex&#160;Adaptive&#160;Systems).&#160;The&#160;MIT&#160;Press,&#160;Cambridge&#160;(1992)</p>
+<p style="position:absolute;top:996px;left:172px;white-space:nowrap" class="ft200">40.&#160;Levin,&#160;M.:&#160;Endogenous&#160;bioelectrical&#160;networks&#160;store&#160;non-genetic&#160;patterning&#160;information&#160;during</p>
+<p style="position:absolute;top:1013px;left:199px;white-space:nowrap" class="ft205">development&#160;and&#160;regeneration.&#160;J.&#160;Physiol.&#160;<b>592</b>(11),&#160;2295–2305&#160;(2014).&#160;doi:10.1113/jphysiol.<br/>2014.271940</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft203">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:12px;font-family:Times;color:#131413;}
+	.ft211{font-size:12px;font-family:Times;color:#131413;}
+	.ft212{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft213{font-size:11px;font-family:Times;color:#808080;}
+	.ft214{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft215{font-size:12px;line-height:17px;font-family:Times;color:#0000ff;}
+	.ft216{font-size:12px;line-height:16px;font-family:Times;color:#131413;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft210">652</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft210">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:120px;left:172px;white-space:nowrap" class="ft210">41.&#160;Lobikin,&#160;M.,&#160;Lobo,&#160;D.,&#160;Blackiston,&#160;D.,&#160;Martyniuk,&#160;C.,&#160;Tkachenko,&#160;E.,&#160;Levin,&#160;M.:&#160;Serotonergic</p>
+<p style="position:absolute;top:138px;left:199px;white-space:nowrap" class="ft214">regulation&#160;of&#160;melanocyte&#160;conversion:&#160;a&#160;bioelectrically&#160;regulated&#160;network&#160;for&#160;stochastic&#160;all-or-<br/>none&#160;hyperpigmentation.&#160;Sci.&#160;Signal.&#160;<b>8</b>(397),&#160;ra99&#160;(2015)</p>
+<p style="position:absolute;top:172px;left:172px;white-space:nowrap" class="ft210">42.&#160;Lobo,&#160;D.,&#160;Beane,&#160;W.,&#160;Levin,&#160;M.:&#160;Modeling&#160;planarian&#160;regeneration:&#160;a&#160;primer&#160;for&#160;reverse-</p>
+<p style="position:absolute;top:189px;left:199px;white-space:nowrap" class="ft215">engineering&#160;the&#160;worm.&#160;PLOS&#160;Comput.&#160;Biol.&#160;<b>8</b>(4),&#160;e1002481&#160;(2012).&#160;doi:10.1371/journal.pcbi.<br/>1002481</p>
+<p style="position:absolute;top:224px;left:172px;white-space:nowrap" class="ft210">43.&#160;Lobo,&#160;D.,&#160;Feldman,&#160;E.B.,&#160;Shah,&#160;M.,&#160;Malone,&#160;T.J.,&#160;Levin,&#160;M.:&#160;A&#160;bioinformatics&#160;expert&#160;system</p>
+<p style="position:absolute;top:241px;left:199px;white-space:nowrap" class="ft214">linking&#160;functional&#160;data&#160;to&#160;anatomical&#160;outcomes&#160;in&#160;limb&#160;regeneration.&#160;Regeneration&#160;<b>1</b>(2),&#160;37–56<br/>(2014).&#160;doi:10.1002/reg2.13</p>
+<p style="position:absolute;top:275px;left:172px;white-space:nowrap" class="ft210">44.&#160;Lobo,&#160;D.,&#160;Feldman,&#160;E.B.,&#160;Shah,&#160;M.,&#160;Malone,&#160;T.J.,&#160;Levin,&#160;M.:&#160;Limbform:&#160;a&#160;functional&#160;ontology-</p>
+<p style="position:absolute;top:293px;left:199px;white-space:nowrap" class="ft214">based&#160;database&#160;of&#160;limb&#160;regeneration&#160;experiments.&#160;Bioinformatics&#160;<b>30</b>(24),&#160;3598–600&#160;(2014).<br/>doi:10.1093/bioinformatics/btu582</p>
+<p style="position:absolute;top:327px;left:172px;white-space:nowrap" class="ft210">45.&#160;Lobo,&#160;D.,&#160;Levin,&#160;M.:&#160;Inferring&#160;regulatory&#160;networks&#160;from&#160;experimental&#160;morphological&#160;pheno-</p>
+<p style="position:absolute;top:344px;left:199px;white-space:nowrap" class="ft216">types:&#160;a&#160;computational&#160;method&#160;reverse-engineers&#160;planarian&#160;regeneration.&#160;PLOS&#160;Comput.&#160;Biol.<br/><b>11</b>(6),&#160;e1004295&#160;(2015).&#160;doi:10.1371/journal.pcbi.1004295</p>
+<p style="position:absolute;top:379px;left:172px;white-space:nowrap" class="ft210">46.&#160;Lobo,&#160;D.,&#160;Malone,&#160;T.J.,&#160;Levin,&#160;M.:&#160;Planform:&#160;an&#160;application&#160;and&#160;database&#160;of&#160;graph-encoded</p>
+<p style="position:absolute;top:396px;left:199px;white-space:nowrap" class="ft215">planarian&#160;regenerative&#160;experiments.&#160;Bioinformatics&#160;<b>29</b>(8),&#160;1098–1100&#160;(2013).&#160;doi:10.1093/<br/>bioinformatics/btt088</p>
+<p style="position:absolute;top:430px;left:172px;white-space:nowrap" class="ft210">47.&#160;Lobo,&#160;D.,&#160;Malone,&#160;T.J.,&#160;Levin,&#160;M.:&#160;Towards&#160;a&#160;bioinformatics&#160;of&#160;patterning:&#160;a&#160;computational</p>
+<p style="position:absolute;top:448px;left:199px;white-space:nowrap" class="ft215">approach&#160;to&#160;understanding&#160;regulative&#160;morphogenesis.&#160;Biol.&#160;Open&#160;<b>2</b>(2),&#160;156–169&#160;(2013).&#160;doi:10.<br/>1242/bio.20123400</p>
+<p style="position:absolute;top:482px;left:172px;white-space:nowrap" class="ft210">48.&#160;Lobo&#160;D.,&#160;Morokuma,&#160;J.,&#160;Levin,&#160;M.:&#160;Computational&#160;discovery&#160;and&#160;in&#160;vivo&#160;validation&#160;of</p>
+<p style="position:absolute;top:499px;left:199px;white-space:nowrap" class="ft215">hnf4&#160;as&#160;a&#160;regulatory&#160;gene&#160;in&#160;planarian&#160;regeneration.&#160;Bioinformatics,&#160;in&#160;press.&#160;doi:&#160;10.1093/<br/>bioinformatics/btw299</p>
+<p style="position:absolute;top:534px;left:172px;white-space:nowrap" class="ft210">49.&#160;Lobo,&#160;D.,&#160;Solano,&#160;M.,&#160;Bubenik,&#160;G.A.,&#160;Levin,&#160;M.:&#160;A&#160;linear-encoding&#160;model&#160;explains&#160;the&#160;vari-</p>
+<p style="position:absolute;top:551px;left:199px;white-space:nowrap" class="ft215">ability&#160;of&#160;the&#160;target&#160;morphology&#160;in&#160;regeneration.&#160;J.&#160;R.&#160;Soc.&#160;Interface&#160;<b>11</b>(92)&#160;(2014).&#160;doi:10.<br/>1098/rsif.2013.0918</p>
+<p style="position:absolute;top:585px;left:172px;white-space:nowrap" class="ft210">50.&#160;Lobo,&#160;D.,&#160;Vico,&#160;F.,&#160;Dassow,&#160;J.:&#160;Graph&#160;grammars&#160;with&#160;string-regulated&#160;rewriting.&#160;Theor.&#160;Comput.</p>
+<p style="position:absolute;top:603px;left:199px;white-space:nowrap" class="ft210">Sci.&#160;<b>412</b>(43),&#160;6101–6111&#160;(2011).&#160;doi:10.1016/j.tcs.2011.07.004</p>
+<p style="position:absolute;top:620px;left:172px;white-space:nowrap" class="ft210">51.&#160;Lobo,&#160;D.,&#160;Vico,&#160;F.J.:&#160;Evolutionary&#160;development&#160;of&#160;tensegrity&#160;structures.&#160;Biosystems&#160;<b>101</b>(3),</p>
+<p style="position:absolute;top:637px;left:199px;white-space:nowrap" class="ft210">167–176&#160;(2010).&#160;doi:10.1016/j.biosystems.2010.06.005</p>
+<p style="position:absolute;top:654px;left:172px;white-space:nowrap" class="ft210">52.&#160;Manu,&#160;Surkova,&#160;S.,&#160;Spirov,&#160;A.V.,&#160;Gursky,&#160;V.V.,&#160;Janssens,&#160;H.,&#160;Kim,&#160;A.R.,&#160;Radulescu,&#160;O.,&#160;Vanario-</p>
+<p style="position:absolute;top:672px;left:199px;white-space:nowrap" class="ft214">Alonso,&#160;C.E.,&#160;Sharp,&#160;D.H.,&#160;Samsonova,&#160;M.,&#160;Reinitz,&#160;J.:&#160;Canalization&#160;of&#160;gene&#160;expression&#160;and<br/>domain&#160;shifts&#160;in&#160;the&#160;drosophila&#160;blastoderm&#160;by&#160;dynamical&#160;attractors.&#160;PLOS&#160;Comput.&#160;Biol.&#160;<b>5</b>(3),<br/>e1000303&#160;(2009).&#160;doi:10.1371/journal.pcbi.1000303</p>
+<p style="position:absolute;top:723px;left:172px;white-space:nowrap" class="ft210">53.&#160;Manu,&#160;Surkova:&#160;S.,&#160;Spirov,&#160;A.V.,&#160;Gursky,&#160;V.V.,&#160;Janssens,&#160;H.,&#160;Kim,&#160;A.R.,&#160;Radulescu,&#160;O.,&#160;Vanario-</p>
+<p style="position:absolute;top:741px;left:199px;white-space:nowrap" class="ft214">Alonso,&#160;C.E.,&#160;Sharp,&#160;D.H.,&#160;Samsonova,&#160;M.,&#160;Reinitz,&#160;J.:&#160;Canalization&#160;of&#160;gene&#160;expression&#160;in&#160;the<br/>drosophila&#160;blastoderm&#160;by&#160;gap&#160;gene&#160;cross&#160;regulation.&#160;Plos&#160;Biol.&#160;<b>7</b>(3),&#160;591–603&#160;ARTN&#160;e1000049<br/>(2009).&#160;doi:10.1371/journal.pbio.1000049</p>
+<p style="position:absolute;top:792px;left:172px;white-space:nowrap" class="ft210">54.&#160;Marcus,&#160;G.:&#160;The&#160;Birth&#160;Of&#160;The&#160;Mind:&#160;How&#160;A&#160;Tiny&#160;Number&#160;of&#160;Genes&#160;Creates&#160;the&#160;Complexities</p>
+<p style="position:absolute;top:809px;left:199px;white-space:nowrap" class="ft210">of&#160;Human&#160;Thought.&#160;Basic&#160;Books,&#160;New&#160;York&#160;(2003)</p>
+<p style="position:absolute;top:827px;left:172px;white-space:nowrap" class="ft210">55.&#160;Margolin,&#160;A.A.,&#160;Nemenman,&#160;I.,&#160;Basso,&#160;K.,&#160;Wiggins,&#160;C.,&#160;Stolovitzky,&#160;G.,&#160;Dalla&#160;Favera,&#160;R.,</p>
+<p style="position:absolute;top:844px;left:199px;white-space:nowrap" class="ft215">Califano,&#160;A.:&#160;Aracne:&#160;an&#160;algorithm&#160;for&#160;the&#160;reconstruction&#160;of&#160;gene&#160;regulatory&#160;networks&#160;in&#160;a<br/>mammalian&#160;cellular&#160;context.&#160;BMC&#160;Bioinform.&#160;<b>7&#160;</b>Suppl&#160;1,&#160;S7&#160;(2006).&#160;doi:10.1186/1471-2105-<br/>7-S1-S7</p>
+<p style="position:absolute;top:896px;left:172px;white-space:nowrap" class="ft210">56.&#160;McCarthy,&#160;J.:&#160;The&#160;Inversion&#160;of&#160;Functions&#160;Defined&#160;by&#160;Turing&#160;Machines,&#160;vol.&#160;34,&#160;pp.&#160;177–181.</p>
+<p style="position:absolute;top:913px;left:199px;white-space:nowrap" class="ft210">Princeton&#160;University&#160;Press,&#160;Princeton&#160;(1956)</p>
+<p style="position:absolute;top:930px;left:172px;white-space:nowrap" class="ft214">57.&#160;Meinhardt,&#160;H.:&#160;Models&#160;of&#160;Biological&#160;Pattern&#160;Formation.&#160;Academic&#160;Press,&#160;Cambridge&#160;(1982)<br/>58.&#160;Meinhardt,&#160;H.:&#160;Beta-catenin&#160;and&#160;axis&#160;formation&#160;in&#160;planarians.&#160;Bioessays&#160;<b>31</b>(1),&#160;5–9&#160;(2009)<br/>59.&#160;Meinhardt,&#160;H.:&#160;Models&#160;for&#160;the&#160;generation&#160;and&#160;interpretation&#160;of&#160;gradients.&#160;Cold&#160;Spring&#160;Harb.</p>
+<p style="position:absolute;top:982px;left:199px;white-space:nowrap" class="ft210">Perspect.&#160;Biol.&#160;<b>1</b>(4)&#160;(2009).&#160;doi:10.1101/cshperspect.a001362</p>
+<p style="position:absolute;top:999px;left:172px;white-space:nowrap" class="ft210">60.&#160;Mitchell,&#160;M.:&#160;Biological&#160;computation.&#160;Comput.&#160;J.&#160;<b>55</b>(7),&#160;852–855&#160;(2012).&#160;doi:10.1093/comjnl/</p>
+<p style="position:absolute;top:1016px;left:199px;white-space:nowrap" class="ft212">bxs078</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft213">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft220{font-size:12px;font-family:Times;color:#131413;}
+	.ft221{font-size:12px;font-family:Times;color:#131413;}
+	.ft222{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft223{font-size:11px;font-family:Times;color:#808080;}
+	.ft224{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft225{font-size:12px;line-height:17px;font-family:Times;color:#0000ff;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page22-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft220">24&#160;Computing&#160;a&#160;Worm:&#160;Reverse-Engineering&#160;…</p>
+<p style="position:absolute;top:78px;left:724px;white-space:nowrap" class="ft220">653</p>
+<p style="position:absolute;top:120px;left:172px;white-space:nowrap" class="ft220">61.&#160;Molinelli,&#160;E.J.,&#160;Korkut,&#160;A.,&#160;Wang,&#160;W.,&#160;Miller,&#160;M.L.,&#160;Gauthier,&#160;N.P.,&#160;Jing,&#160;X.,&#160;Kaushik,&#160;P.,&#160;He,</p>
+<p style="position:absolute;top:138px;left:199px;white-space:nowrap" class="ft224">Q.,&#160;Mills,&#160;G.,&#160;Solit,&#160;D.B.,&#160;Pratilas,&#160;C.A.,&#160;Weigt,&#160;M.,&#160;Braunstein,&#160;A.,&#160;Pagnani,&#160;A.,&#160;Zecchina,<br/>R.,&#160;Sander,&#160;C.:&#160;Perturbation&#160;biology:&#160;Inferring&#160;signaling&#160;networks&#160;in&#160;cellular&#160;systems.&#160;PLOS<br/>Comput.&#160;Biol.&#160;<b>9</b>(12),&#160;e1003290&#160;(2013).&#160;doi:10.1371/journal.pcbi.1003290</p>
+<p style="position:absolute;top:189px;left:172px;white-space:nowrap" class="ft220">62.&#160;Morgan,&#160;T.:&#160;Experimental&#160;studies&#160;of&#160;the&#160;regeneration&#160;of&#160;planaria&#160;maculata.&#160;Dev.&#160;Genes&#160;Evol.</p>
+<p style="position:absolute;top:206px;left:199px;white-space:nowrap" class="ft221"><b>7</b>(2),&#160;364–397&#160;(1898)</p>
+<p style="position:absolute;top:223px;left:172px;white-space:nowrap" class="ft220">63.&#160;Oviedo,&#160;N.J.,&#160;Morokuma,&#160;J.,&#160;Walentek,&#160;P.,&#160;Kema,&#160;I.,&#160;Gu,&#160;M.B.,&#160;Ahn,&#160;J.M.,&#160;Hwang,&#160;J.S.,&#160;Gojo-</p>
+<p style="position:absolute;top:241px;left:199px;white-space:nowrap" class="ft224">bori,&#160;T.,&#160;Levin,&#160;M.:&#160;Long-range&#160;neural&#160;and&#160;gap&#160;junction&#160;protein-mediated&#160;cues&#160;control&#160;polarity<br/>during&#160;planarian&#160;regeneration.&#160;Dev.&#160;Biol.&#160;<b>339</b>(1),&#160;188–199&#160;(2010)</p>
+<p style="position:absolute;top:275px;left:172px;white-space:nowrap" class="ft220">64.&#160;Oviedo,&#160;N.J.,&#160;Newmark,&#160;P.A.:&#160;Sánchez&#160;Alvarado,&#160;A.:&#160;Allometric&#160;scaling&#160;and&#160;proportion&#160;regu-</p>
+<p style="position:absolute;top:292px;left:199px;white-space:nowrap" class="ft220">lation&#160;in&#160;the&#160;freshwater&#160;planarian&#160;schmidtea&#160;mediterranea.&#160;Dev.&#160;Dyn.<b>226</b>(2),&#160;326–333&#160;(2003)</p>
+<p style="position:absolute;top:309px;left:172px;white-space:nowrap" class="ft220">65.&#160;Patil,&#160;K.R.,&#160;Nielsen,&#160;J.:&#160;Uncovering&#160;transcriptional&#160;regulation&#160;of&#160;metabolism&#160;by&#160;using&#160;metabolic</p>
+<p style="position:absolute;top:326px;left:199px;white-space:nowrap" class="ft225">network&#160;topology.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;U.S.&#160;A.&#160;<b>102</b>(8),&#160;2685–2689&#160;(2005).&#160;doi:10.1073/pnas.<br/>0406811102</p>
+<p style="position:absolute;top:361px;left:172px;white-space:nowrap" class="ft220">66.&#160;Pearson,&#160;B.:&#160;Sanchez&#160;Alvarado,&#160;A.:&#160;Regeneration,&#160;stem&#160;cells,&#160;and&#160;the&#160;evolution&#160;of&#160;tumor&#160;sup-</p>
+<p style="position:absolute;top:378px;left:199px;white-space:nowrap" class="ft225">pression.&#160;Cold&#160;Spring&#160;Harb.&#160;Symp.&#160;Quant.&#160;Biol.&#160;<b>73</b>,&#160;565–572&#160;(2008).&#160;doi:10.1101/sqb.2008.<br/>73.045</p>
+<p style="position:absolute;top:412px;left:172px;white-space:nowrap" class="ft220">67.&#160;Pellettieri,&#160;J.,&#160;Sanchez&#160;Alvarado,&#160;A.:&#160;Cell&#160;turnover&#160;and&#160;adult&#160;tissue&#160;homeostasis:&#160;From&#160;humans</p>
+<p style="position:absolute;top:429px;left:199px;white-space:nowrap" class="ft225">to&#160;planarians.&#160;Annu.&#160;Rev.&#160;Genet.&#160;<b>41</b>,&#160;83–105&#160;(2007).&#160;doi:10.1146/annurev.genet.41.110306.<br/>130244</p>
+<p style="position:absolute;top:464px;left:172px;white-space:nowrap" class="ft220">68.&#160;Perkins,&#160;T.J.,&#160;Jaeger,&#160;J.,&#160;Reinitz,&#160;J.,&#160;Glass,&#160;L.:&#160;Reverse&#160;engineering&#160;the&#160;gap&#160;gene&#160;network&#160;of</p>
+<p style="position:absolute;top:481px;left:199px;white-space:nowrap" class="ft225">drosophila&#160;melanogaster.&#160;PLOS&#160;Comput.&#160;Biol.&#160;<b>2</b>(5),&#160;417–428&#160;(2006).&#160;doi:10.1371/journal.<br/>pcbi.0020051</p>
+<p style="position:absolute;top:515px;left:172px;white-space:nowrap" class="ft220">69.&#160;Petersen,&#160;C.P.,&#160;Reddien,&#160;P.W.:&#160;Smed-βcatenin-1&#160;is&#160;required&#160;for&#160;anteroposterior&#160;blastema&#160;polar-</p>
+<p style="position:absolute;top:532px;left:199px;white-space:nowrap" class="ft220">ity&#160;in&#160;planarian&#160;regeneration.&#160;Science&#160;<b>319</b>(5861),&#160;327–330&#160;(2008)</p>
+<p style="position:absolute;top:549px;left:172px;white-space:nowrap" class="ft220">70.&#160;Petersen,&#160;C.P.,&#160;Reddien,&#160;P.W.:&#160;A&#160;wound-induced&#160;wnt&#160;expression&#160;program&#160;controls&#160;planarian</p>
+<p style="position:absolute;top:567px;left:199px;white-space:nowrap" class="ft225">regeneration&#160;polarity.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;U.&#160;S.&#160;A.&#160;<b>106</b>(40),&#160;17061–17066&#160;(2009).&#160;doi:10.<br/>1073/pnas.0906823106</p>
+<p style="position:absolute;top:601px;left:172px;white-space:nowrap" class="ft220">71.&#160;Petersen,&#160;C.P.,&#160;Reddien,&#160;P.W.:&#160;Polarized&#160;notum&#160;activation&#160;at&#160;wounds&#160;inhibits&#160;wnt&#160;function</p>
+<p style="position:absolute;top:618px;left:199px;white-space:nowrap" class="ft225">to&#160;promote&#160;planarian&#160;head&#160;regeneration.&#160;Science&#160;<b>332</b>(6031),&#160;852–855&#160;(2011).&#160;doi:10.1126/<br/>science.1202143</p>
+<p style="position:absolute;top:652px;left:172px;white-space:nowrap" class="ft220">72.&#160;Ramm,&#160;A.G.:&#160;Inverse&#160;Problems.&#160;Mathematical&#160;and&#160;analytical&#160;techniques&#160;with&#160;applications&#160;to</p>
+<p style="position:absolute;top:670px;left:199px;white-space:nowrap" class="ft220">engineering.&#160;Springer,&#160;New&#160;York&#160;(2005)</p>
+<p style="position:absolute;top:687px;left:172px;white-space:nowrap" class="ft220">73.&#160;Reddien,&#160;P.W.,&#160;Bermange,&#160;A.L.,&#160;Murfitt,&#160;K.J.,&#160;Jennings,&#160;J.R.,&#160;Alvarado,&#160;A.S.:&#160;Identification&#160;of</p>
+<p style="position:absolute;top:704px;left:199px;white-space:nowrap" class="ft225">genes&#160;needed&#160;for&#160;regeneration,&#160;stem&#160;cell&#160;function,&#160;and&#160;tissue&#160;homeostasis&#160;by&#160;systematic&#160;gene<br/>perturbation&#160;in&#160;planaria.&#160;Develop.&#160;Cell&#160;<b>8</b>(5),&#160;635–649&#160;(2005).&#160;doi:10.1016/j.devcel.2005.02.<br/>014</p>
+<p style="position:absolute;top:755px;left:172px;white-space:nowrap" class="ft220">74.&#160;Reddien,&#160;P.W.,&#160;Sanchez&#160;Alvarado,&#160;A.:&#160;Fundamentals&#160;of&#160;planarian&#160;regeneration:&#160;Annu.&#160;Rev.&#160;cell</p>
+<p style="position:absolute;top:773px;left:199px;white-space:nowrap" class="ft220">Develop.&#160;Biol.<b>20</b>,&#160;725–757&#160;(2004)</p>
+<p style="position:absolute;top:790px;left:172px;white-space:nowrap" class="ft220">75.&#160;Reinitz,&#160;J.,&#160;Kosman,&#160;D.,&#160;Vanario-Alonso,&#160;C.E.,&#160;Sharp,&#160;D.H.:&#160;Stripe&#160;forming&#160;architecture&#160;of&#160;the</p>
+<p style="position:absolute;top:807px;left:199px;white-space:nowrap" class="ft225">gap&#160;gene&#160;system.&#160;Develop.&#160;Genet.&#160;<b>23</b>(1),&#160;11–27&#160;(1998).&#160;doi:10.1002/(Sici)1520-6408(1998)23:<br/>1&lt;11:Aid-Dvg2&gt;3.0.Co;2-9</p>
+<p style="position:absolute;top:841px;left:172px;white-space:nowrap" class="ft220">76.&#160;Reinitz,&#160;J.,&#160;Mjolsness,&#160;E.,&#160;Sharp,&#160;D.H.:&#160;Model&#160;for&#160;cooperative&#160;control&#160;of&#160;positional&#160;information</p>
+<p style="position:absolute;top:858px;left:199px;white-space:nowrap" class="ft225">in&#160;drosophila&#160;by&#160;bicoid&#160;and&#160;maternal&#160;hunchback.&#160;J.&#160;Exp.&#160;Zool.&#160;<b>271</b>(1),&#160;47–56&#160;(1995).&#160;doi:10.<br/>1002/jez.1402710106</p>
+<p style="position:absolute;top:893px;left:172px;white-space:nowrap" class="ft220">77.&#160;Reinitz,&#160;J.,&#160;Sharp,&#160;D.H.:&#160;Mechanism&#160;of&#160;eve&#160;stripe&#160;formation.&#160;Mech.&#160;Develop.&#160;<b>49</b>(1–2),&#160;133–158</p>
+<p style="position:absolute;top:910px;left:199px;white-space:nowrap" class="ft220">(1995).&#160;doi:10.1016/0925-4773(94)00310-J</p>
+<p style="position:absolute;top:927px;left:172px;white-space:nowrap" class="ft220">78.&#160;Reuter,&#160;H.,&#160;Mäz,&#160;M.,&#160;Vogg,&#160;M.,&#160;Eccles,&#160;D.,&#160;Gírfol-Boldú,&#160;L.,&#160;Wehner,&#160;D.,&#160;Owlarn,&#160;S.,&#160;Adell,&#160;T.,</p>
+<p style="position:absolute;top:944px;left:199px;white-space:nowrap" class="ft224">Weidinger,&#160;G.,&#160;Bartscherer,&#160;K.:&#160;β-catenin-dependent&#160;control&#160;of&#160;positional&#160;information&#160;along<br/>the&#160;ap&#160;body&#160;axis&#160;in&#160;planarians&#160;involves&#160;a&#160;teashirt&#160;family&#160;member.&#160;Cell&#160;Rep.&#160;<b>10</b>(2),&#160;253–265<br/>(2015).&#160;doi:10.1016/j.celrep.2014.12.018</p>
+<p style="position:absolute;top:996px;left:172px;white-space:nowrap" class="ft220">79.&#160;Rink,&#160;J.C.,&#160;Gurley,&#160;K.A.,&#160;Elliott,&#160;S.A.:&#160;Sánchez&#160;Alvarado,&#160;A.:&#160;Planarian&#160;hh&#160;signaling&#160;regulates</p>
+<p style="position:absolute;top:1013px;left:199px;white-space:nowrap" class="ft224">regeneration&#160;polarity&#160;and&#160;links&#160;hh&#160;pathway&#160;evolution&#160;to&#160;cilia.&#160;Science&#160;<b>326</b>(5958),&#160;1406–1410<br/>(2009)</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft223">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>30c879e8a0ea15039002be6e7a39c084-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft230{font-size:12px;font-family:Times;color:#131413;}
+	.ft231{font-size:12px;font-family:Times;color:#131413;}
+	.ft232{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft233{font-size:11px;font-family:Times;color:#808080;}
+	.ft234{font-size:12px;line-height:17px;font-family:Times;color:#131413;}
+	.ft235{font-size:12px;line-height:17px;font-family:Times;color:#0000ff;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page23-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:172px;white-space:nowrap" class="ft230">654</p>
+<p style="position:absolute;top:78px;left:614px;white-space:nowrap" class="ft230">D.&#160;Lobo&#160;and&#160;M.&#160;Levin</p>
+<p style="position:absolute;top:120px;left:172px;white-space:nowrap" class="ft230">80.&#160;Roberts-Galbraith,&#160;R.H.,&#160;Newmark,&#160;P.A.:&#160;On&#160;the&#160;organ&#160;trail:&#160;insights&#160;into&#160;organ&#160;regeneration&#160;in</p>
+<p style="position:absolute;top:138px;left:199px;white-space:nowrap" class="ft230">the&#160;planarian.&#160;Curr.&#160;Opin.&#160;Genet.&#160;Develop.&#160;<b>32</b>,&#160;37–46&#160;(2015).&#160;doi:10.1016/j.gde.2015.01.009</p>
+<p style="position:absolute;top:155px;left:172px;white-space:nowrap" class="ft230">81.&#160;Saló,&#160;E.,&#160;Abril,&#160;J.F.,&#160;Adell,&#160;T.,&#160;Cebricá,&#160;F.,&#160;Eckelt,&#160;K.,&#160;Fernandez-Taboada,&#160;E.,&#160;Handberg-</p>
+<p style="position:absolute;top:172px;left:199px;white-space:nowrap" class="ft234">Thorsager,&#160;M.,&#160;Iglesias,&#160;M.,&#160;Molina,&#160;M.D.D.,&#160;Rodrguez-Esteban,&#160;G.:&#160;Planarian&#160;regeneration:<br/>achievements&#160;and&#160;future&#160;directions&#160;after&#160;20&#160;years&#160;of&#160;research.&#160;Int.&#160;J.&#160;Develop.&#160;Biol.&#160;<b>53</b>(8–10),<br/>1317–1327&#160;(2009)</p>
+<p style="position:absolute;top:224px;left:172px;white-space:nowrap" class="ft230">82.&#160;Schmidt,&#160;M.,&#160;Lipson,&#160;H.:&#160;Distilling&#160;free-form&#160;natural&#160;laws&#160;from&#160;experimental&#160;data.&#160;Science</p>
+<p style="position:absolute;top:240px;left:199px;white-space:nowrap" class="ft231"><b>324</b>(5923),&#160;81–85&#160;(2009)</p>
+<p style="position:absolute;top:258px;left:172px;white-space:nowrap" class="ft230">83.&#160;Schmidt,&#160;M.D.,&#160;Vallabhajosyula,&#160;R.R.,&#160;Jenkins,&#160;J.W.,&#160;Hood,&#160;J.E.,&#160;Soni,&#160;A.S.,&#160;Wikswo,&#160;J.P.,</p>
+<p style="position:absolute;top:275px;left:199px;white-space:nowrap" class="ft234">Lipson,&#160;H.:&#160;Automated&#160;refinement&#160;and&#160;inference&#160;of&#160;analytical&#160;models&#160;for&#160;metabolic&#160;networks.<br/>Phys.&#160;Biol.&#160;<b>8</b>(5),&#160;055011&#160;(2011).&#160;doi:10.1088/1478-3975/8/5/055011</p>
+<p style="position:absolute;top:310px;left:172px;white-space:nowrap" class="ft230">84.&#160;Scimone,&#160;M.,&#160;Kravarik,&#160;K.,&#160;Lapan,&#160;S.,&#160;Reddien,&#160;P.:&#160;Neoblast&#160;specialization&#160;in&#160;regeneration&#160;of</p>
+<p style="position:absolute;top:327px;left:199px;white-space:nowrap" class="ft235">the&#160;planarian&#160;schmidtea&#160;mediterranea.&#160;Stem&#160;Cell&#160;Rep.&#160;<b>3</b>(2),&#160;339–352&#160;(2014).&#160;doi:10.1016/j.<br/>stemcr.2014.06.001</p>
+<p style="position:absolute;top:362px;left:172px;white-space:nowrap" class="ft230">85.&#160;Shomrat,&#160;T.,&#160;Levin,&#160;M.:&#160;An&#160;automated&#160;training&#160;paradigm&#160;reveals&#160;long-term&#160;memory&#160;in&#160;planaria</p>
+<p style="position:absolute;top:379px;left:199px;white-space:nowrap" class="ft235">and&#160;its&#160;persistence&#160;through&#160;head&#160;regeneration.&#160;J.&#160;Exp.&#160;Biol.&#160;<b>216</b>(20),&#160;3799–3810&#160;(2013).&#160;doi:10.<br/>1242/jeb.087809</p>
+<p style="position:absolute;top:413px;left:172px;white-space:nowrap" class="ft230">86.&#160;Sirbu,&#160;A.,&#160;Ruskin,&#160;H.,&#160;Crane,&#160;M.:&#160;Comparison&#160;of&#160;evolutionary&#160;algorithms&#160;in&#160;gene&#160;regulatory</p>
+<p style="position:absolute;top:430px;left:199px;white-space:nowrap" class="ft230">network&#160;model&#160;inference.&#160;BMC&#160;Bioinform.&#160;<b>11</b>(1),&#160;59&#160;(2010)</p>
+<p style="position:absolute;top:448px;left:172px;white-space:nowrap" class="ft230">87.&#160;Soldatova,&#160;L.,&#160;King,&#160;R.:&#160;An&#160;ontology&#160;of&#160;scientific&#160;experiments.&#160;J.&#160;R.&#160;Soc.&#160;Interface&#160;<b>3</b>(11),</p>
+<p style="position:absolute;top:465px;left:199px;white-space:nowrap" class="ft230">795–803&#160;(2006)</p>
+<p style="position:absolute;top:482px;left:172px;white-space:nowrap" class="ft230">88.&#160;Solë,&#160;R.V.,&#160;Macia,&#160;J.:&#160;Expanding&#160;the&#160;landscape&#160;of&#160;biological&#160;computation&#160;with&#160;synthetic&#160;mul-</p>
+<p style="position:absolute;top:499px;left:199px;white-space:nowrap" class="ft230">ticellular&#160;consortia.&#160;Nat.&#160;Comput.&#160;1–13&#160;(2013).&#160;doi:10.1007/s11047-013-9380-y</p>
+<p style="position:absolute;top:517px;left:172px;white-space:nowrap" class="ft230">89.&#160;Szklarczyk,&#160;D.,&#160;Franceschini,&#160;A.,&#160;Wyder,&#160;S.,&#160;Forslund,&#160;K.,&#160;Heller,&#160;D.,&#160;Huerta-Cepas,&#160;J.,</p>
+<p style="position:absolute;top:534px;left:199px;white-space:nowrap" class="ft234">Simonovic,&#160;M.,&#160;Roth,&#160;A.,&#160;Santos,&#160;A.,&#160;Tsafou,&#160;K.P.,&#160;Kuhn,&#160;M.,&#160;Bork,&#160;P.,&#160;Jensen,&#160;L.J.,&#160;von<br/>Mering,&#160;C.:&#160;String&#160;v10:&#160;protein-protein&#160;interaction&#160;networks,&#160;integrated&#160;over&#160;the&#160;tree&#160;of&#160;life.<br/>Nucl.&#160;Acids&#160;Res.&#160;<b>43</b>(D1),&#160;D447–D452&#160;(2015).&#160;doi:10.1093/nar/gku1003</p>
+<p style="position:absolute;top:585px;left:172px;white-space:nowrap" class="ft230">90.&#160;Tegner,&#160;J.,&#160;Yeung,&#160;M.K.,&#160;Hasty,&#160;J.,&#160;Collins,&#160;J.J.:&#160;Reverse&#160;engineering&#160;gene&#160;networks:&#160;integrating</p>
+<p style="position:absolute;top:603px;left:199px;white-space:nowrap" class="ft234">genetic&#160;perturbations&#160;with&#160;dynamical&#160;modeling.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;U.&#160;S.&#160;A.&#160;<b>100</b>(10),&#160;5944–<br/>5949&#160;(2003).&#160;doi:10.1073/pnas.0933416100</p>
+<p style="position:absolute;top:637px;left:172px;white-space:nowrap" class="ft230">91.&#160;Van&#160;Oye,&#160;P.:&#160;Over&#160;het&#160;geheugen&#160;bij&#160;de&#160;platwormen&#160;en&#160;andere&#160;biologische&#160;waarnemingen&#160;bij</p>
+<p style="position:absolute;top:654px;left:199px;white-space:nowrap" class="ft230">deze&#160;dieren.&#160;Natuurwet.&#160;Tijdschr&#160;<b>2</b>,&#160;1–9&#160;(1920)</p>
+<p style="position:absolute;top:672px;left:172px;white-space:nowrap" class="ft230">92.&#160;Wagner,&#160;D.E.,&#160;Wang,&#160;I.E.,&#160;Reddien,&#160;P.W.:&#160;Clonogenic&#160;neoblasts&#160;are&#160;pluripotent&#160;adult&#160;stem&#160;cells</p>
+<p style="position:absolute;top:689px;left:199px;white-space:nowrap" class="ft235">that&#160;underlie&#160;planarian&#160;regeneration.&#160;Science&#160;<b>332</b>(6031),&#160;811–816&#160;(2011).&#160;doi:10.1126/science.<br/>1203983</p>
+<p style="position:absolute;top:723px;left:172px;white-space:nowrap" class="ft230">93.&#160;Whitley,&#160;D.,&#160;Rana,&#160;S.,&#160;Heckendorn,&#160;R.B.:&#160;The&#160;island&#160;model&#160;genetic&#160;algorithm:&#160;on&#160;separability,</p>
+<p style="position:absolute;top:741px;left:199px;white-space:nowrap" class="ft230">population&#160;size&#160;and&#160;convergence.&#160;J.&#160;Comput.&#160;Inf.&#160;Technol.&#160;<b>7</b>,&#160;33–48&#160;(1999)</p>
+<p style="position:absolute;top:758px;left:172px;white-space:nowrap" class="ft230">94.&#160;Yeung,&#160;M.K.S.,&#160;Tegnér,&#160;J.,&#160;Collins,&#160;J.J.:&#160;Reverse&#160;engineering&#160;gene&#160;networks&#160;using&#160;singular</p>
+<p style="position:absolute;top:775px;left:199px;white-space:nowrap" class="ft234">value&#160;decomposition&#160;and&#160;robust&#160;regression.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;<b>99</b>(9),&#160;6163–6168&#160;(2002).<br/>doi:10.1073/pnas.092576199</p>
+<p style="position:absolute;top:809px;left:172px;white-space:nowrap" class="ft230">95.&#160;Zhu,&#160;S.J.,&#160;Hallows,&#160;S.E.,&#160;Currie,&#160;K.W.,&#160;Xu,&#160;C.,&#160;Pearson,&#160;B.J.:&#160;A&#160;mex3&#160;homolog&#160;is&#160;required&#160;for</p>
+<p style="position:absolute;top:827px;left:199px;white-space:nowrap" class="ft235">differentiation&#160;during&#160;planarian&#160;stem&#160;cell&#160;lineage&#160;development.&#160;eLife&#160;<b>4&#160;</b>(2015).&#160;doi:10.7554/<br/>eLife.07025</p>
+<p style="position:absolute;top:1148px;left:386px;white-space:nowrap" class="ft233">michael.levin@tufts.edu</p>
+</div>
+</body>
+</html>

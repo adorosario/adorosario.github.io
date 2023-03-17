@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:21px;font-family:Times;color:#000000;}
+	.ft11{font-size:12px;font-family:Times;color:#000000;}
+	.ft12{font-size:10px;font-family:Times;color:#000000;}
+	.ft13{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft14{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+	.ft15{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft10">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models</p>
+<p style="position:absolute;top:112px;left:81px;white-space:nowrap" class="ft10">of&#160;Robustness&#160;in&#160;Development</p>
+<p style="position:absolute;top:139px;left:81px;white-space:nowrap" class="ft10">and&#160;Regeneration:&#160;Stability&#160;of&#160;Memory</p>
+<p style="position:absolute;top:166px;left:81px;white-space:nowrap" class="ft10">During&#160;Morphological&#160;Remodeling</p>
+<p style="position:absolute;top:228px;left:81px;white-space:nowrap" class="ft11">Jennifer&#160;Hammelman,&#160;Daniel&#160;Lobo&#160;and&#160;Michael&#160;Levin</p>
+<p style="position:absolute;top:284px;left:81px;white-space:nowrap" class="ft11">Abstract&#160;Artiﬁcial&#160;neural&#160;networks&#160;are&#160;both&#160;a&#160;well-established&#160;tool&#160;in&#160;machine</p>
+<p style="position:absolute;top:302px;left:81px;white-space:nowrap" class="ft13">learning&#160;and&#160;a&#160;mathematical&#160;model&#160;of&#160;distributed&#160;information&#160;processing.<br/>Developmental&#160;and&#160;regenerative&#160;biology&#160;is&#160;in&#160;desperate&#160;need&#160;of&#160;conceptual&#160;models<br/>to&#160;explain&#160;how&#160;some&#160;species&#160;retain&#160;memories&#160;despite&#160;drastic&#160;reorganization,<br/>remodeling,&#160;or&#160;regeneration&#160;of&#160;the&#160;brain.&#160;Here,&#160;we&#160;formalize&#160;a&#160;method&#160;of&#160;artiﬁcial</p>
+<p style="position:absolute;top:374px;left:81px;white-space:nowrap" class="ft13">neural&#160;network&#160;perturbation&#160;and&#160;quantitatively&#160;analyze&#160;memory&#160;persistence&#160;during<br/>different&#160;types&#160;of&#160;topology&#160;change.&#160;We&#160;introduce&#160;this&#160;system&#160;as&#160;a&#160;computational<br/>model&#160;of&#160;the&#160;complex&#160;information&#160;processing&#160;mechanisms&#160;that&#160;allow&#160;memories&#160;to<br/>persist&#160;during&#160;signiﬁcant&#160;cellular&#160;and&#160;morphological&#160;turnover&#160;in&#160;the&#160;brain.&#160;We</p>
+<p style="position:absolute;top:445px;left:81px;white-space:nowrap" class="ft11">found&#160;that&#160;perturbations&#160;in&#160;artiﬁcial&#160;neural&#160;networks&#160;have&#160;a&#160;general&#160;negative&#160;effect</p>
+<p style="position:absolute;top:463px;left:81px;white-space:nowrap" class="ft11">on&#160;the&#160;preservation&#160;of&#160;memory,&#160;but&#160;that&#160;the&#160;removal&#160;of&#160;neurons&#160;with&#160;different&#160;ﬁring</p>
+<p style="position:absolute;top:481px;left:81px;white-space:nowrap" class="ft13">patterns&#160;can&#160;effectively&#160;minimize&#160;this&#160;memory&#160;loss.&#160;The&#160;training&#160;algorithms<br/>employed&#160;and&#160;the&#160;difﬁculty&#160;of&#160;the&#160;pattern&#160;recognition&#160;problem&#160;tested&#160;are&#160;key&#160;factors</p>
+<p style="position:absolute;top:517px;left:81px;white-space:nowrap" class="ft13">determining&#160;the&#160;impact&#160;of&#160;perturbations.&#160;The&#160;results&#160;show&#160;that&#160;certain&#160;perturbations,<br/>such&#160;as&#160;neuron&#160;splitting&#160;and&#160;scaling,&#160;can&#160;achieve&#160;memory&#160;persistence&#160;by&#160;functional<br/>recovery&#160;of&#160;lost&#160;patterning&#160;information.&#160;The&#160;study&#160;of&#160;models&#160;integrating&#160;both<br/>growth&#160;and&#160;reduction,&#160;combined&#160;with&#160;distributed&#160;information&#160;processing&#160;is&#160;an<br/>essential&#160;ﬁrst&#160;step&#160;for&#160;a&#160;computational&#160;theory&#160;of&#160;pattern&#160;formation,&#160;plasticity,&#160;and</p>
+<p style="position:absolute;top:607px;left:81px;white-space:nowrap" class="ft11">robustness.</p>
+<p style="position:absolute;top:761px;left:81px;white-space:nowrap" class="ft12">J.&#160;Hammelman&#160;!&#160;M.&#160;Levin&#160;(&amp;)</p>
+<p style="position:absolute;top:776px;left:81px;white-space:nowrap" class="ft14">Biology&#160;Department,&#160;School&#160;of&#160;Arts&#160;and&#160;Science,&#160;Tufts&#160;University,<br/>200&#160;Boston&#160;Avenue,&#160;Suite&#160;4600,&#160;Medford,&#160;MA&#160;02155,&#160;USA<br/>e-mail:&#160;michael.levin@tufts.edu</p>
+<p style="position:absolute;top:828px;left:81px;white-space:nowrap" class="ft14">D.&#160;Lobo<br/>Department&#160;of&#160;Biological&#160;Sciences,&#160;University&#160;of&#160;Maryland,&#160;Baltimore&#160;County,<br/>1000&#160;Hilltop&#160;Circle,&#160;Baltimore,&#160;MD&#160;21250,&#160;USA</p>
+<p style="position:absolute;top:888px;left:81px;white-space:nowrap" class="ft12">©</p>
+<p style="position:absolute;top:888px;left:95px;white-space:nowrap" class="ft12">Springer&#160;International&#160;Publishing&#160;Switzerland&#160;2016</p>
+<p style="position:absolute;top:903px;left:81px;white-space:nowrap" class="ft14">S.&#160;Shanmuganathan&#160;and&#160;S.&#160;Samarasinghe&#160;(eds.),&#160;Artificial&#160;Neural<br/>Network&#160;Modelling,&#160;Studies&#160;in&#160;Computational&#160;Intelligence&#160;628,<br/>DOI&#160;10.1007/978-3-319-28495-8_3</p>
+<p style="position:absolute;top:888px;left:566px;white-space:nowrap" class="ft12">45</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:15px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft23{font-size:10px;font-family:Times;color:#000000;}
+	.ft24{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft20">1&#160;Introduction</p>
+<p style="position:absolute;top:130px;left:81px;white-space:nowrap" class="ft24">The&#160;animal&#160;brain&#160;is&#160;widely&#160;considered&#160;to&#160;be&#160;the&#160;material&#160;substrate&#160;of&#160;memory.&#160;It<br/>may&#160;thus&#160;be&#160;expected&#160;that&#160;maintenance&#160;of&#160;complex&#160;memories&#160;requires&#160;stability&#160;of<br/>brain&#160;structure.&#160;Remarkably,&#160;several&#160;studies&#160;in&#160;a&#160;number&#160;of&#160;animal&#160;species&#160;revealed<br/>that&#160;this&#160;is&#160;not&#160;the&#160;case&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">1</a>].&#160;Planarian&#160;flatworms&#160;are&#160;able&#160;to&#160;recall&#160;learned&#160;infor-<br/>mation&#160;after&#160;their&#160;entire&#160;brain&#160;has&#160;been&#160;amputated&#160;and&#160;regenerated&#160;(suggesting&#160;an<br/>imprinting&#160;process&#160;by&#160;the&#160;somatic&#160;tissues&#160;onto&#160;the&#160;newly&#160;developing&#160;brain)&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[2].<br/></a>Insects&#160;that&#160;metamorphose&#160;into&#160;butterflies&#160;or&#160;beetles&#160;still&#160;remember&#160;information<br/>learned&#160;as&#160;larvae,&#160;despite&#160;the&#160;fact&#160;that&#160;this&#160;process&#160;involves&#160;an&#160;almost&#160;complete<br/>rewiring&#160;of&#160;their&#160;brain&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[3</a>].&#160;Mammals&#160;are&#160;not&#160;exempt&#160;from&#160;this,&#160;as&#160;illustrated&#160;by<br/>ground&#160;squirrels&#160;that&#160;retain&#160;memories&#160;after&#160;winter&#160;hibernation&#160;has&#160;drastically&#160;pruned<br/>and&#160;rebuilt&#160;large&#160;regions&#160;of&#160;the&#160;brain&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[4].&#160;</a>How&#160;can&#160;memories&#160;persist&#160;in&#160;the&#160;face&#160;of<br/>reorganization&#160;of&#160;the&#160;recording&#160;medium?&#160;Speciﬁcally,&#160;it&#160;is&#160;unknown&#160;how&#160;bio-</p>
+<p style="position:absolute;top:346px;left:81px;white-space:nowrap" class="ft24">electric&#160;networks&#160;(whether&#160;neural&#160;or&#160;non-neural)&#160;can&#160;stably&#160;store&#160;information<br/>despite&#160;cellular&#160;turnover&#160;and&#160;changes&#160;of&#160;connectivity&#160;required&#160;for&#160;regenerative<br/>repair&#160;and&#160;remodeling.&#160;The&#160;answer&#160;to&#160;this&#160;question&#160;would&#160;have&#160;huge&#160;implications<br/>not&#160;only&#160;for&#160;regenerative&#160;neuromedicine&#160;(e.g.,&#160;cognitive&#160;consequences&#160;of&#160;stem&#160;cell<br/>implants&#160;into&#160;the&#160;adult&#160;brain),&#160;but&#160;also&#160;for&#160;the&#160;fundamental&#160;understanding&#160;of&#160;how<br/>propositional&#160;content&#160;is&#160;encoded&#160;in&#160;properties&#160;of&#160;living&#160;tissues.&#160;Despite&#160;the<br/>importance&#160;of&#160;this&#160;question,&#160;and&#160;on-going&#160;research&#160;into&#160;the&#160;molecular&#160;mechanisms<br/>of&#160;cellular&#160;turnover&#160;in&#160;the&#160;brain,&#160;no&#160;conceptual&#160;models&#160;have&#160;been&#160;developed&#160;to<br/>probe&#160;the&#160;robustness&#160;of&#160;information&#160;in&#160;remodeling&#160;cell&#160;networks.</p>
+<p style="position:absolute;top:507px;left:99px;white-space:nowrap" class="ft21">Artiﬁcial&#160;neural&#160;networks&#160;are&#160;well-established&#160;quantitative&#160;models&#160;of&#160;cognition</p>
+<p style="position:absolute;top:525px;left:81px;white-space:nowrap" class="ft24">that&#160;show&#160;promise&#160;to&#160;study&#160;the&#160;patterning&#160;capabilities&#160;of&#160;a&#160;dynamic&#160;system&#160;that&#160;is<br/>robust&#160;to&#160;components&#160;that&#160;move,&#160;proliferate,&#160;and&#160;die.&#160;While&#160;the&#160;learning&#160;perfor-<br/>mance&#160;properties&#160;of&#160;ANNs&#160;have&#160;been&#160;widely&#160;studied&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">5</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">6</a>],&#160;much&#160;less&#160;attention&#160;has<br/>been&#160;paid&#160;to&#160;the&#160;consequences&#160;of&#160;topology&#160;change&#160;that&#160;would&#160;mimic&#160;cellular<br/>turnover&#160;in&#160;vivo.&#160;Thus,&#160;a&#160;quantitative&#160;study&#160;is&#160;needed&#160;for&#160;the&#160;understanding&#160;of<br/>memory&#160;properties&#160;of&#160;neural&#160;networks&#160;under&#160;dynamic&#160;rearrangements&#160;of&#160;topology.<br/>We&#160;sought&#160;to&#160;develop&#160;a&#160;proof-of-concept&#160;for&#160;analysis&#160;of&#160;models&#160;that&#160;subsume&#160;both,<br/>structural&#160;change&#160;(remodeling)&#160;and&#160;functional&#160;(cognitive)&#160;performance.&#160;Here,&#160;we<br/>introduce&#160;perturbation&#160;methods&#160;that&#160;mimic&#160;aspects&#160;of&#160;the&#160;dynamic&#160;cellular&#160;regen-<br/>eration&#160;observed&#160;in&#160;vivo.&#160;Using&#160;feed-forward&#160;single&#160;hidden&#160;layer&#160;networks&#160;trained<br/>with&#160;different&#160;backpropagation&#160;methods&#160;on&#160;pattern-recognition&#160;learning&#160;tasks,&#160;we<br/>assayed&#160;performance&#160;(memory&#160;persistence)&#160;after&#160;node&#160;removal,&#160;addition,&#160;and<br/>connection-blocking&#160;perturbations.&#160;These&#160;data&#160;demonstrate&#160;how&#160;artiﬁcial&#160;neural</p>
+<p style="position:absolute;top:758px;left:81px;white-space:nowrap" class="ft24">networks&#160;can&#160;be&#160;used&#160;as&#160;models&#160;for&#160;cognitive&#160;robustness&#160;and&#160;plasticity&#160;in&#160;devel-<br/>opmental&#160;and&#160;regenerative&#160;biology.</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft23">46</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft23">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:15px;font-family:Times;color:#000000;}
+	.ft31{font-size:12px;font-family:Times;color:#000000;}
+	.ft32{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft33{font-size:10px;font-family:Times;color:#000000;}
+	.ft34{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft30">2&#160;Development,&#160;Regeneration,&#160;and&#160;Artiﬁcial&#160;Neural</p>
+<p style="position:absolute;top:106px;left:108px;white-space:nowrap" class="ft30">Networks</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft30">2.1&#160;Biological&#160;Relevance:&#160;Memory&#160;Is&#160;Retained&#160;During</p>
+<p style="position:absolute;top:163px;left:121px;white-space:nowrap" class="ft30">Remodeling</p>
+<p style="position:absolute;top:208px;left:81px;white-space:nowrap" class="ft34">It&#160;was&#160;once&#160;a&#160;long-standing&#160;central&#160;dogma&#160;of&#160;neurobiology&#160;that&#160;the&#160;central&#160;nervous<br/>system&#160;was&#160;incapable&#160;of&#160;accommodating&#160;neuron&#160;growth&#160;and&#160;death.&#160;This&#160;theory&#160;has<br/>since&#160;been&#160;overturned&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[7–9],&#160;</a>which&#160;opens&#160;up&#160;a&#160;new&#160;ﬁeld&#160;of&#160;study&#160;to&#160;understand</p>
+<p style="position:absolute;top:262px;left:81px;white-space:nowrap" class="ft34">how&#160;individual&#160;neurons&#160;and&#160;their&#160;environment&#160;contribute&#160;to&#160;the&#160;overall&#160;plasticity<br/>and&#160;growth&#160;of&#160;the&#160;brain&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">10,&#160;11</a>].&#160;Much&#160;evidence&#160;now&#160;suggests&#160;that&#160;biological<br/>neural&#160;networks&#160;in&#160;many&#160;organisms,&#160;including&#160;mammals,&#160;have&#160;the&#160;capability&#160;of<br/>pruning,&#160;growing,&#160;and&#160;altering&#160;connectivity&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">12,&#160;13</a>].&#160;Some&#160;species&#160;of&#160;insects<br/>undergo&#160;signiﬁcant&#160;remodeling&#160;of&#160;the&#160;central&#160;nervous&#160;system&#160;and&#160;brain&#160;during</p>
+<p style="position:absolute;top:352px;left:81px;white-space:nowrap" class="ft34">metamorphosis&#160;from&#160;the&#160;larval&#160;to&#160;adult&#160;form,&#160;yet&#160;have&#160;been&#160;shown&#160;to&#160;maintain<br/>stored&#160;memories.&#160;Drosophila&#160;and&#160;manduca&#160;larvae&#160;have&#160;an&#160;ability&#160;to&#160;remember<br/>aversive&#160;associative&#160;learning&#160;tasks&#160;pairing&#160;electric&#160;shock&#160;with&#160;odor&#160;into&#160;adulthood<br/>[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">3</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">14</a>].&#160;Weevils&#160;and&#160;wasps&#160;demonstrate&#160;a&#160;preference&#160;for&#160;the&#160;odors&#160;of&#160;their&#160;larval<br/>environments,&#160;supporting&#160;a&#160;long-standing&#160;hypothesis&#160;in&#160;entomology&#160;known&#160;as&#160;the<br/>Hopkins&#160;‘host-selection&#160;principle’&#160;that&#160;beetles&#160;and&#160;other&#160;insects&#160;favor&#160;their&#160;larval<br/>environment&#160;in&#160;selection&#160;of&#160;their&#160;adult&#160;homes&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[15</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">16</a>].&#160;Planarian&#160;flatworms&#160;are<br/>another&#160;animal&#160;that&#160;demonstrate&#160;persistent&#160;memory&#160;after&#160;undergoing&#160;extensive<br/>remodeling.&#160;These&#160;flatworms&#160;have&#160;an&#160;incredible&#160;regeneration&#160;capacity&#160;in&#160;that&#160;they<br/>can&#160;regrow&#160;a&#160;fully&#160;functioning&#160;central&#160;nervous&#160;system&#160;and&#160;brain&#160;after&#160;head<br/>amputation&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">17].&#160;</a>In&#160;studies&#160;of&#160;memory&#160;persistence&#160;after&#160;head&#160;regeneration,&#160;it&#160;was<br/>discovered&#160;that&#160;flatworms&#160;trained&#160;on&#160;learning&#160;tasks&#160;before&#160;amputation&#160;require<br/>signiﬁcantly&#160;less&#160;trials&#160;to&#160;re-learn&#160;the&#160;same&#160;task&#160;(the&#160;“savings”&#160;paradigm)&#160;than</p>
+<p style="position:absolute;top:585px;left:81px;white-space:nowrap" class="ft31">amputated&#160;but&#160;previously&#160;untrained&#160;animals&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[2,&#160;18</a>].</p>
+<p style="position:absolute;top:603px;left:99px;white-space:nowrap" class="ft31">While&#160;amphibians,&#160;zebraﬁsh,&#160;and&#160;planaria&#160;are&#160;capable&#160;of&#160;complete&#160;central&#160;ner-</p>
+<p style="position:absolute;top:621px;left:81px;white-space:nowrap" class="ft34">vous&#160;system&#160;regeneration,&#160;it&#160;appears&#160;that&#160;most&#160;mammals&#160;and&#160;birds&#160;are&#160;more&#160;limited<br/>in&#160;neurogenesis&#160;to&#160;speciﬁc&#160;regions&#160;of&#160;the&#160;brain&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[12</a>].&#160;Human&#160;neuronal&#160;progenitors</p>
+<p style="position:absolute;top:657px;left:81px;white-space:nowrap" class="ft34">have&#160;already&#160;proven&#160;to&#160;be&#160;a&#160;promising&#160;candidate&#160;as&#160;a&#160;treatment&#160;of&#160;traumatic&#160;injury,<br/>shown&#160;to&#160;successfully&#160;integrate&#160;and&#160;aid&#160;functional&#160;recovery&#160;in&#160;mice&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[19</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">20].<br/></a>Conversely,&#160;elevated&#160;neurogenesis&#160;in&#160;the&#160;dentate&#160;gyrus&#160;region&#160;of&#160;the&#160;hippocampus<br/>is&#160;a&#160;cause&#160;of&#160;forgetfulness&#160;in&#160;adulthood&#160;and&#160;infancy&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#19">[21</a>].&#160;Neuronal&#160;death&#160;is&#160;also<br/>implicated&#160;as&#160;a&#160;primary&#160;cause&#160;of&#160;neurodegenerative&#160;diseases,&#160;especially&#160;diseases<br/>like&#160;amyotrophic&#160;lateral&#160;sclerosis,&#160;where&#160;motor&#160;neurons&#160;weaken&#160;and&#160;die&#160;slowly&#160;over<br/>time,&#160;and&#160;in&#160;traumatic&#160;brain&#160;injury,&#160;where&#160;delayed&#160;neuron&#160;death&#160;occurs&#160;in&#160;selective<br/>cell&#160;regions&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">22].&#160;</a>Yet&#160;cells&#160;also&#160;die&#160;during&#160;initial&#160;neurogenesis&#160;in&#160;the&#160;development<br/>of&#160;the&#160;nervous&#160;system&#160;as&#160;a&#160;pruning&#160;mechanism&#160;for&#160;neurons&#160;that&#160;are&#160;poorly&#160;wired&#160;or<br/>functionally&#160;redundant&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">23].&#160;</a>Understanding&#160;and&#160;leveraging&#160;the&#160;neural&#160;plasticity&#160;of<br/>animals&#160;capable&#160;of&#160;full&#160;brain&#160;repair&#160;is&#160;the&#160;ﬁrst&#160;step&#160;for&#160;ﬁnding&#160;a&#160;treatment&#160;of</p>
+<p style="position:absolute;top:854px;left:81px;white-space:nowrap" class="ft34">traumatic&#160;brain&#160;injury:&#160;replacing&#160;or&#160;inducing&#160;formation&#160;of&#160;lost&#160;neurons&#160;and&#160;allowing<br/>the&#160;network&#160;to&#160;dictate&#160;their&#160;differentiation&#160;and&#160;functional&#160;response,&#160;which&#160;will</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft33">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft33">47</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft42{font-size:15px;font-family:Times;color:#000000;}
+	.ft43{font-size:10px;font-family:Times;color:#000000;}
+	.ft44{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft45{font-size:12px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft44">contribute&#160;to&#160;innovative&#160;solutions&#160;for&#160;treatment&#160;of&#160;traumatic&#160;brain&#160;injury&#160;and&#160;neu-<br/>rological&#160;disorders&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[24</a>].</p>
+<p style="position:absolute;top:122px;left:99px;white-space:nowrap" class="ft40">Despite&#160;the&#160;rapid&#160;move&#160;toward&#160;stem&#160;cell&#160;therapy&#160;for&#160;degenerative&#160;disease&#160;and</p>
+<p style="position:absolute;top:140px;left:81px;white-space:nowrap" class="ft44">brain&#160;damage,&#160;it&#160;is&#160;still&#160;completely&#160;unknown&#160;what&#160;the&#160;cognitive&#160;consequences&#160;will<br/>be&#160;for&#160;an&#160;adult&#160;patient&#160;with&#160;decades&#160;of&#160;memories&#160;when&#160;the&#160;brain&#160;is&#160;engrafted&#160;with<br/>descendants&#160;of&#160;naïve&#160;stem&#160;cells.&#160;The&#160;studies&#160;of&#160;morphogenetic&#160;remodeling&#160;mech-<br/>anisms&#160;and&#160;of&#160;memory&#160;and&#160;behavioral&#160;performance&#160;have&#160;not&#160;been&#160;integrated.<br/>Indeed,&#160;there&#160;are&#160;no&#160;established&#160;platforms&#160;for&#160;computational&#160;modeling&#160;of&#160;behavior<br/>during&#160;brain&#160;remodeling.&#160;It&#160;is&#160;thus&#160;imperative&#160;to&#160;begin&#160;to&#160;formalize&#160;the&#160;under-<br/>standing&#160;of&#160;what&#160;happens&#160;to&#160;memories&#160;and&#160;behavioral&#160;programs&#160;when&#160;cells&#160;are<br/>added&#160;(proliferation),&#160;removed&#160;(apoptosis/necrosis),&#160;relocated&#160;(migration),&#160;and<br/>re-wired&#160;(synaptic&#160;plasticity).</p>
+<p style="position:absolute;top:342px;left:81px;white-space:nowrap" class="ft42">2.2&#160;Traditional&#160;and&#160;Adaptive&#160;Artiﬁcial&#160;Neural&#160;Network</p>
+<p style="position:absolute;top:363px;left:121px;white-space:nowrap" class="ft42">Models</p>
+<p style="position:absolute;top:408px;left:81px;white-space:nowrap" class="ft40">Artiﬁcial&#160;neural&#160;networks&#160;(ANN)&#160;are&#160;a&#160;computational&#160;model&#160;of&#160;the&#160;neuronal&#160;con-</p>
+<p style="position:absolute;top:426px;left:81px;white-space:nowrap" class="ft45">nectivity&#160;in&#160;the&#160;brain.&#160;The&#160;feed-forward&#160;network&#160;is&#160;one&#160;of&#160;the&#160;most&#160;common&#160;neural<br/>network&#160;architectures&#160;in&#160;which&#160;connections&#160;between&#160;neurons&#160;are&#160;directed&#160;and&#160;going<br/>only&#160;in&#160;a&#160;global&#160;forward&#160;direction,&#160;avoiding&#160;the&#160;formation&#160;of&#160;feed-back&#160;loops.&#160;The<br/>output&#160;of&#160;a&#160;neuron&#160;can&#160;be&#160;calculated&#160;as&#160;a&#160;dot&#160;product&#160;of&#160;the&#160;input&#160;vector,&#160;x,&#160;and<br/>connection&#160;weight&#160;vector,&#160;w,&#160;plus&#160;some&#160;bias&#160;value,&#160;b,&#160;which&#160;acts&#160;as&#160;the&#160;neurons’<br/>ﬁring&#160;threshold&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[25</a>].&#160;The&#160;output&#160;of&#160;the&#160;neuron&#160;is&#160;generally&#160;modulated&#160;by&#160;some</p>
+<p style="position:absolute;top:534px;left:81px;white-space:nowrap" class="ft44">activation&#160;function&#160;that&#160;is&#160;nonlinear,&#160;usually&#160;a&#160;sigmoid,&#160;such&#160;that&#160;the&#160;neural&#160;network<br/>is&#160;able&#160;to&#160;learn&#160;patterns&#160;that&#160;are&#160;not&#160;linearly&#160;separable&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">26,&#160;27</a>].</p>
+<p style="position:absolute;top:569px;left:99px;white-space:nowrap" class="ft40">While&#160;most&#160;of&#160;the&#160;work&#160;to-date&#160;has&#160;focused&#160;on&#160;ANNs&#160;with&#160;constant&#160;(ﬁxed)</p>
+<p style="position:absolute;top:587px;left:81px;white-space:nowrap" class="ft44">topologies,&#160;a&#160;few&#160;studies&#160;have&#160;exampled&#160;dynamical&#160;changes&#160;to&#160;ANN&#160;structure.<br/>Artiﬁcial&#160;neural&#160;network&#160;growth&#160;and&#160;pruning&#160;techniques&#160;have&#160;been&#160;primarily</p>
+<p style="position:absolute;top:623px;left:81px;white-space:nowrap" class="ft40">addressed&#160;as&#160;a&#160;part&#160;of&#160;training&#160;to&#160;avoid&#160;over-ﬁtting&#160;(network&#160;is&#160;too&#160;large)&#160;or</p>
+<p style="position:absolute;top:641px;left:81px;white-space:nowrap" class="ft40">under-ﬁtting&#160;(network&#160;is&#160;too&#160;small)&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">28].&#160;</a>The&#160;majority&#160;of&#160;techniques&#160;developed&#160;are</p>
+<p style="position:absolute;top:659px;left:81px;white-space:nowrap" class="ft44">meant&#160;as&#160;a&#160;pre-training&#160;network&#160;optimization&#160;or&#160;an&#160;intermediate&#160;step&#160;in&#160;training&#160;the<br/>network&#160;and&#160;therefore&#160;the&#160;immediate&#160;effects&#160;of&#160;perturbation&#160;on&#160;memory&#160;persistence<br/>after&#160;all&#160;training&#160;has&#160;been&#160;completed&#160;have&#160;not&#160;been&#160;studied&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[29</a>–<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">31].&#160;</a>While&#160;some<br/>studies&#160;of&#160;artiﬁcial&#160;neural&#160;network&#160;architecture&#160;have&#160;attempted&#160;to&#160;draw&#160;connections</p>
+<p style="position:absolute;top:731px;left:81px;white-space:nowrap" class="ft44">between&#160;such&#160;computational&#160;methods&#160;and&#160;their&#160;biological&#160;implications&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">28,&#160;31],<br/></a>none&#160;have&#160;formally&#160;attempted&#160;to&#160;test&#160;perturbation&#160;methods&#160;prior&#160;to&#160;re-training&#160;the<br/>network.</p>
+<p style="position:absolute;top:785px;left:99px;white-space:nowrap" class="ft40">The&#160;combination&#160;of&#160;genetic&#160;algorithms&#160;and&#160;artiﬁcial&#160;neural&#160;networks&#160;has&#160;given</p>
+<p style="position:absolute;top:802px;left:81px;white-space:nowrap" class="ft44">rise&#160;to&#160;a&#160;series&#160;of&#160;studies&#160;related&#160;to&#160;evolving&#160;adaptive&#160;and&#160;developmental&#160;neural<br/>networks&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[32</a>–<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">36].&#160;</a>These&#160;and&#160;other&#160;works&#160;studying&#160;neural-like&#160;cellular&#160;models&#160;of<br/>development&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">37,&#160;38]&#160;</a>suggest&#160;that&#160;artiﬁcial&#160;evolution&#160;has&#160;the&#160;capacity&#160;to&#160;produce</p>
+<p style="position:absolute;top:856px;left:81px;white-space:nowrap" class="ft44">robust&#160;information&#160;processing&#160;systems.&#160;Compositional&#160;pattern&#160;producing&#160;networks<br/>(CPPNs)&#160;are&#160;an&#160;example&#160;of&#160;a&#160;developmental&#160;artiﬁcial&#160;neural&#160;network&#160;model</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft43">48</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft43">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft52{font-size:15px;font-family:Times;color:#000000;}
+	.ft53{font-size:10px;font-family:Times;color:#000000;}
+	.ft54{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft54">evolved&#160;by&#160;genetic&#160;algorithms&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[33</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">35</a>],&#160;and&#160;incorporate&#160;protein&#160;diffusion&#160;along&#160;with<br/>excitatory&#160;proteins&#160;into&#160;an&#160;artiﬁcial&#160;tissue&#160;model.&#160;This&#160;model&#160;was&#160;later&#160;extended</p>
+<p style="position:absolute;top:122px;left:81px;white-space:nowrap" class="ft54">with&#160;the&#160;neuroevolution&#160;of&#160;augmented&#160;topologies&#160;algorithm,&#160;NEAT,&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">39]&#160;</a>which<br/>provides&#160;a&#160;method&#160;for&#160;augmenting&#160;artiﬁcial&#160;neural&#160;network&#160;topologies&#160;to&#160;become</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft54">incrementally&#160;complex&#160;throughout&#160;genetic&#160;algorithm&#160;evolution&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">32].&#160;</a>Most&#160;recently,<br/>the&#160;CPPN-NEAT&#160;method&#160;was&#160;used&#160;to&#160;evolve&#160;3-dimensional&#160;structures,&#160;a&#160;promising<br/>avenue&#160;for&#160;the&#160;study&#160;of&#160;morphogenesis&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[36</a>].</p>
+<p style="position:absolute;top:212px;left:99px;white-space:nowrap" class="ft50">Signiﬁcant&#160;questions&#160;remain&#160;open&#160;with&#160;respect&#160;to&#160;the&#160;degree&#160;of&#160;robustness&#160;of</p>
+<p style="position:absolute;top:230px;left:81px;white-space:nowrap" class="ft54">memory&#160;after&#160;ANN&#160;structure&#160;change.&#160;Moreover,&#160;it&#160;is&#160;not&#160;known&#160;what&#160;value<br/>assignment&#160;policies&#160;for&#160;new&#160;cells&#160;(and&#160;the&#160;neighbors&#160;of&#160;dying&#160;cells)&#160;in&#160;a&#160;network<br/>optimally&#160;preserve&#160;function&#160;during&#160;topological&#160;change.&#160;Here,&#160;we&#160;approach&#160;these<br/>questions&#160;with&#160;a&#160;novel&#160;quantitative&#160;analysis&#160;of&#160;the&#160;behavioral&#160;performance&#160;of&#160;an<br/>ANN&#160;model&#160;subjected&#160;to&#160;cellular&#160;removal&#160;and&#160;proliferation.</p>
+<p style="position:absolute;top:364px;left:81px;white-space:nowrap" class="ft52">3&#160;Formalizing&#160;Artiﬁcial&#160;Neural&#160;Network&#160;Cellular</p>
+<p style="position:absolute;top:385px;left:108px;white-space:nowrap" class="ft52">Perturbation</p>
+<p style="position:absolute;top:421px;left:81px;white-space:nowrap" class="ft52">3.1&#160;Experimental&#160;Methods</p>
+<p style="position:absolute;top:466px;left:81px;white-space:nowrap" class="ft54">We&#160;utilized&#160;a&#160;simple&#160;ANN&#160;topology&#160;for&#160;our&#160;primary&#160;experiment:&#160;a&#160;feed-forward<br/>single&#160;hidden&#160;layer&#160;neural&#160;network&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#6">1a).&#160;</a>A&#160;tangent&#160;sigmoid&#160;transfer&#160;function<br/>was&#160;used&#160;as&#160;activation&#160;function&#160;for&#160;all&#160;neurons.&#160;All&#160;networks&#160;had&#160;2&#160;input&#160;neurons<br/>and&#160;a&#160;hidden&#160;layer&#160;of&#160;a&#160;size&#160;of&#160;either&#160;10&#160;neurons&#160;or&#160;20&#160;neurons.&#160;We&#160;chose&#160;not&#160;to<br/>optimize&#160;the&#160;hidden&#160;layer&#160;size&#160;in&#160;order&#160;to&#160;compare&#160;the&#160;perturbations&#160;across&#160;the&#160;two<br/>training&#160;algorithms&#160;(likely&#160;with&#160;different&#160;optimal&#160;network&#160;sizes).&#160;The&#160;MATLAB<br/>Neural&#160;Network&#160;Toolbox&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[40</a>]&#160;provided&#160;the&#160;implementations&#160;for&#160;the&#160;artiﬁcial&#160;neural</p>
+<p style="position:absolute;top:592px;left:81px;white-space:nowrap" class="ft50">networks&#160;and&#160;related&#160;functions&#160;for&#160;training&#160;and&#160;testing&#160;them.</p>
+<p style="position:absolute;top:610px;left:99px;white-space:nowrap" class="ft50">We&#160;performed&#160;the&#160;training&#160;of&#160;the&#160;networks&#160;with&#160;two&#160;different&#160;backpropagation</p>
+<p style="position:absolute;top:628px;left:81px;white-space:nowrap" class="ft54">training&#160;algorithms:&#160;Levenberg-Marquardt&#160;and&#160;resilient&#160;back&#160;propagation.&#160;Both<br/>algorithms&#160;use&#160;the&#160;output&#160;error&#160;of&#160;the&#160;training&#160;network&#160;to&#160;adjust&#160;the&#160;internal<br/>weights,&#160;starting&#160;from&#160;the&#160;neurons&#160;in&#160;the&#160;output&#160;layer&#160;and&#160;propagating&#160;backwards<br/>through&#160;the&#160;rest&#160;of&#160;the&#160;network&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[41</a>].&#160;The&#160;Levenberg-Marquardt&#160;training&#160;algorithm<br/>is&#160;an&#160;optimization&#160;of&#160;the&#160;traditional&#160;backpropagation&#160;algorithm&#160;that&#160;approximates<br/>the&#160;computation&#160;of&#160;the&#160;Hessian&#160;matrix&#160;using&#160;a&#160;Jacobian&#160;matrix&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">42].&#160;</a>The&#160;resilient<br/>backpropagation&#160;algorithm&#160;is&#160;a&#160;modiﬁed&#160;backpropagation&#160;algorithm&#160;that&#160;was</p>
+<p style="position:absolute;top:753px;left:81px;white-space:nowrap" class="ft54">designed&#160;to&#160;combat&#160;the&#160;minimization&#160;of&#160;extreme&#160;changes&#160;due&#160;to&#160;taking&#160;the<br/>derivative&#160;of&#160;the&#160;tangent&#160;sigmoid&#160;transfer&#160;function&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">43].</a></p>
+<p style="position:absolute;top:789px;left:99px;white-space:nowrap" class="ft50">We&#160;evaluated&#160;the&#160;networks&#160;using&#160;three&#160;benchmark&#160;data&#160;sets&#160;of&#160;varying&#160;com-</p>
+<p style="position:absolute;top:807px;left:81px;white-space:nowrap" class="ft50">plexity&#160;(two&#160;spirals&#160;and&#160;half-kernel).&#160;The&#160;input&#160;was&#160;deﬁned&#160;as&#160;the&#160;x&#160;and&#160;y&#160;coor-</p>
+<p style="position:absolute;top:825px;left:81px;white-space:nowrap" class="ft50">dinates&#160;for&#160;a&#160;data&#160;point,&#160;and&#160;the&#160;output&#160;as&#160;a&#160;value&#160;(color&#160;classiﬁcation)&#160;for&#160;the&#160;point</p>
+<p style="position:absolute;top:843px;left:81px;white-space:nowrap" class="ft50">(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#6">1).</a></p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft53">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft53">49</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:10px;font-family:Times;color:#000000;}
+	.ft61{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+	.ft62{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:724px;left:81px;white-space:nowrap" class="ft60">Fig.&#160;1&#160;Basic&#160;model&#160;structure&#160;and&#160;qualitative&#160;methods&#160;for&#160;studying&#160;artiﬁcial&#160;neural&#160;networks.</p>
+<p style="position:absolute;top:739px;left:81px;white-space:nowrap" class="ft62">a&#160;Pattern&#160;recognition&#160;goals&#160;for&#160;network&#160;to&#160;discriminate&#160;between&#160;two&#160;spirals;&#160;area&#160;of&#160;uncertainty&#160;can<br/>be&#160;seen&#160;from&#160;output&#160;on&#160;entire&#160;input&#160;space.&#160;b&#160;Feedforward&#160;single&#160;hidden&#160;layer&#160;neural&#160;network&#160;with<br/>5&#160;hidden&#160;neurons.&#160;c&#160;The&#160;artiﬁcial&#160;neural&#160;network&#160;output&#160;can&#160;be&#160;visualized&#160;over&#160;the&#160;training&#160;data&#160;set</p>
+<p style="position:absolute;top:784px;left:81px;white-space:nowrap" class="ft62">(spiral&#160;x,&#160;y&#160;points)&#160;or&#160;mapped&#160;over&#160;the&#160;entire&#160;input&#160;space&#160;to&#160;show&#160;a&#160;global&#160;categorization.&#160;d&#160;The<br/>output&#160;of&#160;each&#160;hidden&#160;neuron&#160;can&#160;be&#160;visualized&#160;to&#160;determine&#160;when&#160;individual&#160;neurons&#160;are&#160;ﬁring</p>
+<p style="position:absolute;top:814px;left:81px;white-space:nowrap" class="ft60">(purple)&#160;and&#160;not-ﬁring&#160;(blue).&#160;Visualizing&#160;the&#160;output&#160;of&#160;the&#160;network&#160;shows&#160;how&#160;its&#160;memory&#160;is</p>
+<p style="position:absolute;top:829px;left:81px;white-space:nowrap" class="ft60">stored</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft60">50</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft60">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:12px;font-family:Times;color:#000000;}
+	.ft71{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft72{font-size:8px;font-family:Times;color:#000000;}
+	.ft73{font-size:15px;font-family:Times;color:#000000;}
+	.ft74{font-size:5px;font-family:Times;color:#000000;}
+	.ft75{font-size:10px;font-family:Times;color:#000000;}
+	.ft76{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft77{font-size:12px;line-height:20px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:99px;white-space:nowrap" class="ft70">The&#160;quantitative&#160;error&#160;of&#160;the&#160;network&#160;was&#160;computed&#160;using&#160;the&#160;mean&#160;squared</p>
+<p style="position:absolute;top:104px;left:81px;white-space:nowrap" class="ft70">error&#160;function,&#160;which&#160;is&#160;commonly&#160;used&#160;to&#160;quantitatively&#160;test&#160;errors&#160;in&#160;artiﬁcial</p>
+<p style="position:absolute;top:122px;left:81px;white-space:nowrap" class="ft76">neural&#160;networks&#160;as&#160;well&#160;as&#160;other&#160;machine&#160;learning&#160;algorithms.&#160;Given&#160;n&#160;inputs&#160;for<br/>the&#160;actual&#160;outputs&#160;x&#160;and&#160;expected&#160;outputs&#160;r,&#160;the&#160;equation&#160;calculates&#160;the&#160;mean<br/>difference&#160;between&#160;the&#160;expected&#160;and&#160;actual&#160;outputs&#160;over&#160;the&#160;input&#160;set&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#7">(1).</a></p>
+<p style="position:absolute;top:194px;left:286px;white-space:nowrap" class="ft77">1<br/>n</p>
+<p style="position:absolute;top:191px;left:296px;white-space:nowrap" class="ft70">X</p>
+<p style="position:absolute;top:191px;left:304px;white-space:nowrap" class="ft72">n</p>
+<p style="position:absolute;top:224px;left:298px;white-space:nowrap" class="ft72">t¼1</p>
+<p style="position:absolute;top:206px;left:317px;white-space:nowrap" class="ft70">ðrt&#160;$&#160;xtÞ</p>
+<p style="position:absolute;top:201px;left:367px;white-space:nowrap" class="ft72">2</p>
+<p style="position:absolute;top:206px;left:559px;white-space:nowrap" class="ft70">ð1Þ</p>
+<p style="position:absolute;top:284px;left:81px;white-space:nowrap" class="ft73">3.2&#160;Perturbation&#160;Methods</p>
+<p style="position:absolute;top:329px;left:81px;white-space:nowrap" class="ft70">We&#160;implemented&#160;and&#160;tested&#160;seven&#160;perturbation&#160;methods&#160;on&#160;artiﬁcial&#160;neural&#160;net-</p>
+<p style="position:absolute;top:347px;left:81px;white-space:nowrap" class="ft76">works,&#160;falling&#160;under&#160;the&#160;categories&#160;of&#160;neuron&#160;removal,&#160;addition,&#160;and&#160;connection<br/>blocking.&#160;The&#160;merging&#160;and&#160;splitting&#160;techniques,&#160;used&#160;to&#160;implement&#160;cell&#160;prolifera-<br/>tion&#160;and&#160;programmed&#160;cell&#160;death&#160;(apoptosis)&#160;were&#160;adapted&#160;from&#160;a&#160;neuron&#160;pruning<br/>and&#160;growing&#160;method&#160;in&#160;an&#160;iterative&#160;training&#160;algorithm&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">30].&#160;</a>The&#160;seven&#160;perturbation<br/>methods&#160;implemented&#160;are&#160;the&#160;following:</p>
+<p style="position:absolute;top:444px;left:82px;white-space:nowrap" class="ft70">•&#160;Remove—set&#160;the&#160;input&#160;and&#160;output&#160;weights&#160;and&#160;the&#160;bias&#160;of&#160;a&#160;speciﬁc&#160;neuron&#160;to&#160;0</p>
+<p style="position:absolute;top:463px;left:101px;white-space:nowrap" class="ft70">(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">2a).</a></p>
+<p style="position:absolute;top:479px;left:82px;white-space:nowrap" class="ft70">•&#160;Merge—merge&#160;two&#160;neurons,&#160;a&#160;and&#160;b,&#160;into&#160;neuron&#160;c&#160;by&#160;combining&#160;the&#160;weights&#160;of</p>
+<p style="position:absolute;top:499px;left:101px;white-space:nowrap" class="ft76">the&#160;input&#160;layer&#160;and&#160;output&#160;layer&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#7">(2a</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#7">2b).&#160;</a>Adapted&#160;from&#160;a&#160;pruning&#160;method&#160;for<br/>artiﬁcial&#160;neural&#160;network&#160;size&#160;optimization&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[30</a>]</p>
+<p style="position:absolute;top:564px;left:259px;white-space:nowrap" class="ft70">Input&#160;layer&#160;w</p>
+<p style="position:absolute;top:563px;left:338px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:570px;left:347px;white-space:nowrap" class="ft72">c</p>
+<p style="position:absolute;top:566px;left:357px;white-space:nowrap" class="ft70">¼</p>
+<p style="position:absolute;top:554px;left:372px;white-space:nowrap" class="ft70">w</p>
+<p style="position:absolute;top:553px;left:373px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:560px;left:382px;white-space:nowrap" class="ft72">a</p>
+<p style="position:absolute;top:556px;left:391px;white-space:nowrap" class="ft70">þ&#160;w</p>
+<p style="position:absolute;top:553px;left:406px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:560px;left:415px;white-space:nowrap" class="ft72">b</p>
+<p style="position:absolute;top:574px;left:393px;white-space:nowrap" class="ft70">2</p>
+<p style="position:absolute;top:566px;left:553px;white-space:nowrap" class="ft70">ð2aÞ</p>
+<p style="position:absolute;top:606px;left:254px;white-space:nowrap" class="ft70">Output&#160;layer&#160;w</p>
+<p style="position:absolute;top:606px;left:343px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:613px;left:352px;white-space:nowrap" class="ft72">c</p>
+<p style="position:absolute;top:608px;left:362px;white-space:nowrap" class="ft70">¼&#160;w</p>
+<p style="position:absolute;top:606px;left:379px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:613px;left:387px;white-space:nowrap" class="ft72">a</p>
+<p style="position:absolute;top:608px;left:396px;white-space:nowrap" class="ft70">þ&#160;w</p>
+<p style="position:absolute;top:606px;left:411px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:613px;left:420px;white-space:nowrap" class="ft72">b</p>
+<p style="position:absolute;top:608px;left:552px;white-space:nowrap" class="ft70">ð2bÞ</p>
+<p style="position:absolute;top:639px;left:82px;white-space:nowrap" class="ft70">•&#160;Merge&#160;insigniﬁcant&#160;with&#160;correlated&#160;neuron—select&#160;the&#160;least&#160;signiﬁcant&#160;neuron,</p>
+<p style="position:absolute;top:659px;left:101px;white-space:nowrap" class="ft70">where&#160;signiﬁcance&#160;is&#160;computed&#160;as&#160;the&#160;standard&#160;deviation&#160;of&#160;the&#160;hidden&#160;neurons’</p>
+<p style="position:absolute;top:676px;left:101px;white-space:nowrap" class="ft76">output&#160;over&#160;the&#160;training&#160;set&#160;(<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#7">3</a>),&#160;and&#160;select&#160;the&#160;neuron&#160;that&#160;is&#160;most&#160;correlated&#160;to&#160;as<br/>the&#160;neuron&#160;that&#160;has&#160;the&#160;smallest&#160;mean&#160;squared&#160;error&#160;to&#160;the&#160;insigniﬁcant&#160;neuron</p>
+<p style="position:absolute;top:712px;left:101px;white-space:nowrap" class="ft70">and&#160;merge&#160;as&#160;in&#160;2.</p>
+<p style="position:absolute;top:748px;left:236px;white-space:nowrap" class="ft70">Significance&#160;sa&#160;¼&#160;r&#160;o&#160;w</p>
+<p style="position:absolute;top:748px;left:391px;white-space:nowrap" class="ft74">*</p>
+<p style="position:absolute;top:755px;left:400px;white-space:nowrap" class="ft72">a</p>
+<p style="position:absolute;top:734px;left:381px;white-space:nowrap" class="ft70">!&#160;&#34;</p>
+<p style="position:absolute;top:734px;left:364px;white-space:nowrap" class="ft70">!</p>
+<p style="position:absolute;top:734px;left:414px;white-space:nowrap" class="ft70">&#34;</p>
+<p style="position:absolute;top:750px;left:559px;white-space:nowrap" class="ft70">ð3Þ</p>
+<p style="position:absolute;top:796px;left:82px;white-space:nowrap" class="ft70">•&#160;Add&#160;randomly—add&#160;a&#160;neuron&#160;with&#160;random&#160;weights&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">2b).</a></p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft75">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft75">51</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:10px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft80">52</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft80">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:12px;font-family:Times;color:#000000;}
+	.ft91{font-size:7px;font-family:Times;color:#000000;}
+	.ft92{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft93{font-size:5px;font-family:Times;color:#000000;}
+	.ft94{font-size:8px;font-family:Times;color:#000000;}
+	.ft95{font-size:15px;font-family:Times;color:#000000;}
+	.ft96{font-size:9px;font-family:Times;color:#000000;}
+	.ft97{font-size:10px;font-family:Times;color:#000000;}
+	.ft98{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft99{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:294px;left:82px;white-space:nowrap" class="ft90">•&#160;Split—splitting&#160;a&#160;neuron&#160;involves&#160;modifying&#160;the&#160;weights&#160;of&#160;the&#160;original&#160;neuron</p>
+<p style="position:absolute;top:314px;left:101px;white-space:nowrap" class="ft98">a&#160;and&#160;new&#160;neuron&#160;b&#160;so&#160;that&#160;the&#160;two&#160;new&#160;neurons&#160;contain&#160;the&#160;same&#160;number&#160;of<br/>connections&#160;as&#160;the&#160;parent&#160;neuron,&#160;wa&#160;(<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">4a,&#160;4b).&#160;</a>The&#160;parameter&#160;α&#160;represents&#160;a</p>
+<p style="position:absolute;top:349px;left:101px;white-space:nowrap" class="ft98">random&#160;“mutation”&#160;value&#160;that&#160;for&#160;the&#160;scope&#160;of&#160;this&#160;study&#160;was&#160;a&#160;normally&#160;dis-<br/>tributed&#160;random&#160;number&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">30].</a></p>
+<p style="position:absolute;top:408px;left:252px;white-space:nowrap" class="ft90">Old&#160;neuron&#160;w</p>
+<p style="position:absolute;top:407px;left:334px;white-space:nowrap" class="ft93">*</p>
+<p style="position:absolute;top:401px;left:343px;white-space:nowrap" class="ft93">0</p>
+<p style="position:absolute;top:416px;left:343px;white-space:nowrap" class="ft94">a&#160;¼&#160;ð1&#160;þ&#160;aÞw</p>
+<p style="position:absolute;top:407px;left:413px;white-space:nowrap" class="ft93">*</p>
+<p style="position:absolute;top:414px;left:422px;white-space:nowrap" class="ft94">a</p>
+<p style="position:absolute;top:409px;left:553px;white-space:nowrap" class="ft90">ð4aÞ</p>
+<p style="position:absolute;top:444px;left:261px;white-space:nowrap" class="ft90">New&#160;neuron&#160;w</p>
+<p style="position:absolute;top:443px;left:349px;white-space:nowrap" class="ft93">*</p>
+<p style="position:absolute;top:450px;left:358px;white-space:nowrap" class="ft94">b</p>
+<p style="position:absolute;top:446px;left:368px;white-space:nowrap" class="ft90">¼&#160;$aw</p>
+<p style="position:absolute;top:443px;left:404px;white-space:nowrap" class="ft93">*</p>
+<p style="position:absolute;top:450px;left:413px;white-space:nowrap" class="ft94">a</p>
+<p style="position:absolute;top:446px;left:552px;white-space:nowrap" class="ft90">ð4bÞ</p>
+<p style="position:absolute;top:477px;left:82px;white-space:nowrap" class="ft90">•&#160;Split&#160;insigniﬁcant—select&#160;the&#160;least&#160;signiﬁcant&#160;hidden&#160;neuron&#160;(<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#7">3</a>)&#160;and&#160;split&#160;it</p>
+<p style="position:absolute;top:496px;left:101px;white-space:nowrap" class="ft90">(<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">4a,&#160;4b).</a></p>
+<p style="position:absolute;top:512px;left:82px;white-space:nowrap" class="ft90">•&#160;Block&#160;connections—set&#160;the&#160;connection&#160;between&#160;neuron&#160;a&#160;and&#160;neuron&#160;b&#160;to&#160;be&#160;0</p>
+<p style="position:absolute;top:532px;left:101px;white-space:nowrap" class="ft98">(<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">5</a>),&#160;this&#160;can&#160;be&#160;done&#160;between&#160;both&#160;the&#160;input&#160;to&#160;hidden&#160;layer&#160;connections&#160;and&#160;the<br/>hidden&#160;layer&#160;to&#160;output&#160;connections&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">2</a>c).</p>
+<p style="position:absolute;top:584px;left:315px;white-space:nowrap" class="ft90">wab&#160;¼&#160;0</p>
+<p style="position:absolute;top:585px;left:559px;white-space:nowrap" class="ft90">ð5Þ</p>
+<p style="position:absolute;top:650px;left:81px;white-space:nowrap" class="ft95">4&#160;Results</p>
+<p style="position:absolute;top:686px;left:81px;white-space:nowrap" class="ft95">4.1&#160;Robustness&#160;of&#160;Feedforward&#160;Single&#160;Hidden&#160;Layer</p>
+<p style="position:absolute;top:707px;left:121px;white-space:nowrap" class="ft95">Artiﬁcial&#160;Neural&#160;Networks</p>
+<p style="position:absolute;top:752px;left:81px;white-space:nowrap" class="ft90">We&#160;assayed&#160;the&#160;performance&#160;of&#160;two&#160;different&#160;artiﬁcial&#160;neural&#160;networks,&#160;one&#160;trained</p>
+<p style="position:absolute;top:769px;left:81px;white-space:nowrap" class="ft98">with&#160;resilient&#160;backpropagation&#160;and&#160;one&#160;with&#160;Levenberg-Marquardt&#160;training&#160;algo-<br/>rithm,&#160;on&#160;two&#160;different&#160;pattern&#160;recognition&#160;problems&#160;and&#160;seven&#160;types&#160;of&#160;perturbation<br/>to&#160;determine&#160;how&#160;topological&#160;changes&#160;impacted&#160;neural&#160;network&#160;memory.&#160;The<br/>results&#160;show&#160;how&#160;the&#160;memory&#160;effects&#160;of&#160;even&#160;slight&#160;changes&#160;to&#160;network&#160;topology&#160;by<br/>perturbing&#160;only&#160;3&#160;connections&#160;could&#160;be&#160;quite&#160;severe&#160;for&#160;any&#160;of&#160;the&#160;perturbations:<br/>neuron&#160;removal,&#160;addition,&#160;or&#160;connection&#160;blocking&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">2</a>).</p>
+<p style="position:absolute;top:90px;left:67px;white-space:nowrap" class="ft96">b</p>
+<p style="position:absolute;top:87px;left:81px;white-space:nowrap" class="ft97">Fig.&#160;2&#160;Effects&#160;of&#160;modiﬁcation&#160;of&#160;topology&#160;by&#160;three&#160;connections.&#160;a&#160;Trained&#160;artiﬁcial&#160;neural</p>
+<p style="position:absolute;top:102px;left:81px;white-space:nowrap" class="ft99">network&#160;before&#160;any&#160;perturbation&#160;has&#160;learned&#160;the&#160;two-spiral&#160;pattern&#160;with&#160;some&#160;area&#160;of&#160;uncertainty<br/>where&#160;it&#160;cannot&#160;discriminate&#160;between&#160;the&#160;two&#160;spirals.&#160;b&#160;Removing&#160;hidden&#160;neuron&#160;ﬁve&#160;from&#160;the</p>
+<p style="position:absolute;top:132px;left:81px;white-space:nowrap" class="ft97">artiﬁcial&#160;neural&#160;network&#160;by&#160;blocking&#160;its&#160;two&#160;input&#160;and&#160;one&#160;output&#160;connections&#160;causes&#160;perturbation</p>
+<p style="position:absolute;top:147px;left:81px;white-space:nowrap" class="ft99">of&#160;the&#160;network&#160;output,&#160;and&#160;loss&#160;of&#160;memory&#160;of&#160;the&#160;learned&#160;pattern.&#160;c&#160;Addition&#160;of&#160;hidden&#160;neuron&#160;six<br/>to&#160;the&#160;artiﬁcial&#160;neural&#160;network&#160;post-training&#160;by&#160;addition&#160;of&#160;two&#160;input&#160;and&#160;one&#160;output&#160;connections</p>
+<p style="position:absolute;top:177px;left:81px;white-space:nowrap" class="ft99">causes&#160;perturbation&#160;of&#160;the&#160;network&#160;output,&#160;and&#160;an&#160;alteration&#160;of&#160;the&#160;learned&#160;pattern.&#160;In&#160;comparison<br/>to&#160;the&#160;original&#160;network&#160;(a),&#160;the&#160;addition&#160;of&#160;the&#160;neuron&#160;has&#160;improved&#160;performance.&#160;The&#160;neuron<br/>addition&#160;post-training&#160;is&#160;not&#160;universally&#160;beneﬁcial,&#160;sometimes&#160;causing&#160;loss&#160;of&#160;learned&#160;patterning</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft99">information.&#160;d&#160;Connection&#160;blocking&#160;between&#160;input&#160;neurons&#160;and&#160;hidden&#160;neurons&#160;(X&#160;to&#160;3&#160;and&#160;Y&#160;to&#160;5)<br/>and&#160;hidden&#160;neurons&#160;and&#160;output&#160;neuron&#160;(3&#160;to&#160;output)&#160;causes&#160;loss&#160;of&#160;memory&#160;of&#160;correct&#160;patterning<br/>information</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft97">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft97">53</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:10px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft100">54</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft100">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:12px;font-family:Times;color:#000000;}
+	.ft111{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft112{font-size:15px;font-family:Times;color:#000000;}
+	.ft113{font-size:9px;font-family:Times;color:#000000;}
+	.ft114{font-size:10px;font-family:Times;color:#000000;}
+	.ft115{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft116{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+	.ft117{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:460px;left:99px;white-space:nowrap" class="ft110">Neuron&#160;removal&#160;or&#160;blocking&#160;of&#160;3&#160;network&#160;connections&#160;caused&#160;almost&#160;a&#160;complete</p>
+<p style="position:absolute;top:478px;left:81px;white-space:nowrap" class="ft115">pattern&#160;degradation&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">2a,&#160;</a>c)&#160;while&#160;the&#160;effect&#160;of&#160;neuron&#160;addition&#160;was&#160;less&#160;severe<br/>(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#9">2b).&#160;</a>In&#160;order&#160;to&#160;determine&#160;how&#160;network&#160;performance&#160;degrades&#160;with&#160;increasing<br/>perturbation&#160;of&#160;cells,&#160;we&#160;trained&#160;a&#160;network&#160;and&#160;then&#160;progressively&#160;removed&#160;indi-<br/>vidual&#160;nodes&#160;at&#160;random,&#160;while&#160;testing&#160;its&#160;performance&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#11">3</a>).&#160;Patterning&#160;memory<br/>in&#160;the&#160;feedforward&#160;artiﬁcial&#160;neural&#160;networks&#160;was&#160;overall&#160;quickly&#160;affected&#160;by&#160;all</p>
+<p style="position:absolute;top:567px;left:81px;white-space:nowrap" class="ft115">seven&#160;perturbation&#160;methods,&#160;with&#160;removal&#160;and&#160;connection&#160;blocking&#160;being&#160;more<br/>traumatic&#160;to&#160;memory&#160;than&#160;neuron&#160;addition,&#160;but&#160;all&#160;having&#160;severe&#160;memory&#160;degra-<br/>dation&#160;at&#160;50&#160;%&#160;perturbation&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#11">3e).&#160;</a>Most&#160;perturbations&#160;reach&#160;above&#160;the&#160;threshold<br/>for&#160;network&#160;error&#160;at&#160;20&#160;%&#160;perturbation&#160;and&#160;certainly&#160;by&#160;50&#160;%&#160;perturbation&#160;except&#160;for<br/>neuron&#160;splitting,&#160;which&#160;was&#160;nonlinear&#160;in&#160;that&#160;further&#160;cellular&#160;perturbation&#160;did&#160;not<br/>always&#160;lead&#160;to&#160;a&#160;greater&#160;network&#160;error.</p>
+<p style="position:absolute;top:720px;left:81px;white-space:nowrap" class="ft112">4.2&#160;Differential&#160;Robustness&#160;of&#160;Training&#160;Algorithms</p>
+<p style="position:absolute;top:765px;left:81px;white-space:nowrap" class="ft115">It&#160;was&#160;discovered&#160;that&#160;the&#160;resilient&#160;backpropagation&#160;algorithm&#160;overall&#160;was&#160;more<br/>robust&#160;to&#160;all&#160;types&#160;of&#160;perturbation&#160;than&#160;the&#160;Levenberg-Marquardt&#160;training&#160;algorithm<br/>(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#11">3).&#160;</a>This&#160;was&#160;particularly&#160;noticeable&#160;for&#160;removal&#160;and&#160;merging&#160;methods;&#160;the<br/>perturbation&#160;of&#160;resilient&#160;backpropagation&#160;networks&#160;had&#160;a&#160;slower&#160;effect&#160;on&#160;the&#160;net-<br/>work&#160;error,&#160;whereas&#160;the&#160;Levenberg-Marquardt&#160;networks&#160;lost&#160;almost&#160;all&#160;patterning<br/>capability&#160;after&#160;the&#160;removal&#160;of&#160;just&#160;one&#160;neuron&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#11">3).&#160;</a>One&#160;component&#160;that<br/>appeared&#160;to&#160;contribute&#160;to&#160;this&#160;robustness&#160;was&#160;the&#160;training&#160;of&#160;the&#160;bias&#160;values&#160;of&#160;the</p>
+<p style="position:absolute;top:90px;left:67px;white-space:nowrap" class="ft113">b</p>
+<p style="position:absolute;top:87px;left:81px;white-space:nowrap" class="ft116">Fig.&#160;3&#160;Testing&#160;resilience&#160;as&#160;a&#160;function&#160;of&#160;percent&#160;perturbation&#160;for&#160;different&#160;training&#160;algorithms.<br/>a&#160;Network&#160;trained&#160;with&#160;resilient&#160;backpropagation&#160;loses&#160;little&#160;patterning&#160;information&#160;when&#160;neurons<br/>are&#160;removed&#160;using&#160;the&#160;simple&#160;remove&#160;neuron&#160;perturbation&#160;method.&#160;The&#160;network&#160;ends&#160;with&#160;&lt;0.3<br/>mean-squared&#160;error&#160;(MSE)&#160;since&#160;b&#160;the&#160;output&#160;neuron,&#160;due&#160;to&#160;the&#160;intermediate&#160;bias&#160;value<br/>characteristic&#160;of&#160;the&#160;Resilient&#160;Backpropagation&#160;training&#160;method,&#160;is&#160;always&#160;ﬁring&#160;with&#160;an</p>
+<p style="position:absolute;top:162px;left:81px;white-space:nowrap" class="ft114">intermediate&#160;value&#160;for&#160;all&#160;inputs&#160;of&#160;the&#160;binary&#160;spiral&#160;classiﬁcations&#160;after&#160;all&#160;hidden&#160;neurons&#160;are</p>
+<p style="position:absolute;top:177px;left:81px;white-space:nowrap" class="ft116">removed.&#160;c&#160;Levenberg-Marquardt&#160;trained&#160;network&#160;reaches&#160;0.3&#160;mean&#160;squared&#160;error&#160;before&#160;10&#160;%<br/>perturbation&#160;and&#160;quickly&#160;approaches&#160;the&#160;average&#160;error&#160;of&#160;a&#160;random&#160;artiﬁcial&#160;neural&#160;network,&#160;since</p>
+<p style="position:absolute;top:206px;left:81px;white-space:nowrap" class="ft114">d&#160;the&#160;output&#160;neuron&#160;is&#160;constantly&#160;ﬁring&#160;with&#160;a&#160;high&#160;value&#160;and&#160;hence&#160;classifying&#160;every&#160;point&#160;into</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft116">one&#160;of&#160;the&#160;spirals&#160;because&#160;of&#160;the&#160;extreme&#160;bias&#160;values&#160;characteristic&#160;of&#160;the&#160;Levenberg-Marquardt<br/>training&#160;method.&#160;For&#160;both&#160;a&#160;and&#160;c,&#160;random&#160;network&#160;error&#160;was&#160;calculated&#160;by&#160;randomly&#160;assigning<br/>weights&#160;to&#160;neurons&#160;that&#160;were&#160;within&#160;the&#160;range&#160;(min&#160;and&#160;max&#160;with&#160;standard&#160;deviation)&#160;of&#160;a&#160;trained<br/>network&#160;and&#160;computed&#160;the&#160;error&#160;for&#160;the&#160;training&#160;problem.&#160;The&#160;networks&#160;are&#160;single&#160;hidden&#160;layer<br/>network&#160;(10&#160;neurons&#160;in&#160;the&#160;hidden&#160;layer&#160;such&#160;that&#160;10&#160;%&#160;removal&#160;is&#160;equivalent&#160;to&#160;the&#160;removal&#160;of<br/>just&#160;one&#160;neuron).&#160;Performance&#160;was&#160;measured&#160;by&#160;the&#160;mean&#160;squared&#160;error&#160;(MSE).&#160;e&#160;Networks&#160;trained<br/>with&#160;the&#160;Levenberg-Marquardt&#160;algorithm&#160;(yellow&#160;20&#160;%&#160;manipulation;&#160;red&#160;50&#160;%&#160;manipulation)&#160;lose<br/>patterning&#160;information&#160;more&#160;quickly&#160;than&#160;those&#160;trained&#160;with&#160;resilient&#160;backpropagation&#160;(green&#160;20&#160;%<br/>manipulation;&#160;blue&#160;50&#160;%&#160;manipulation)&#160;for&#160;all&#160;seven&#160;perturbation&#160;methods.&#160;Starting&#160;error&#160;for&#160;the<br/>network&#160;is&#160;in&#160;white.&#160;One&#160;network&#160;trained&#160;with&#160;each&#160;algorithm&#160;was&#160;used,&#160;with&#160;each&#160;perturbation<br/>(i.e.&#160;remove&#160;20&#160;%)&#160;performed&#160;randomly&#160;250&#160;times.&#160;Performance&#160;was&#160;measured&#160;by&#160;the&#160;mean<br/>squared&#160;error&#160;w/standard&#160;deviation.&#160;Overall,&#160;while&#160;networks&#160;trained&#160;by&#160;either&#160;training&#160;algorithm<br/>are&#160;negatively&#160;affected&#160;by&#160;perturbation,&#160;the&#160;networks&#160;trained&#160;with&#160;resilient&#160;backpropagation&#160;have<br/>greater&#160;memory&#160;persistence&#160;that&#160;those&#160;trained&#160;with&#160;the&#160;Levenberg-Marquardt&#160;training&#160;algorithm</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft114">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft114">55</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:12px;font-family:Times;color:#000000;}
+	.ft121{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft122{font-size:10px;font-family:Times;color:#000000;}
+	.ft123{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft124{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+	.ft125{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:459px;left:81px;white-space:nowrap" class="ft120">output&#160;neurons.&#160;This&#160;was&#160;then&#160;conﬁrmed&#160;by&#160;training&#160;100&#160;networks&#160;using&#160;the&#160;two</p>
+<p style="position:absolute;top:476px;left:81px;white-space:nowrap" class="ft123">different&#160;training&#160;algorithms&#160;on&#160;the&#160;two&#160;spiral&#160;problem&#160;and&#160;for&#160;each&#160;network<br/>recording&#160;the&#160;value&#160;for&#160;its&#160;output&#160;bias&#160;neuron&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#12">4).&#160;</a>Using&#160;a&#160;two-tailed&#160;t-test&#160;with<br/>unequal&#160;variance,&#160;resilient&#160;backpropagation&#160;was&#160;found&#160;to&#160;have&#160;signiﬁcantly&#160;lower</p>
+<p style="position:absolute;top:530px;left:81px;white-space:nowrap" class="ft123">bias&#160;values&#160;for&#160;its&#160;output&#160;neurons&#160;than&#160;Levenberg-Marquardt&#160;for&#160;output&#160;neurons<br/>(p&#160;&lt;&#160;0.05e-04).</p>
+<p style="position:absolute;top:566px;left:99px;white-space:nowrap" class="ft120">Seemingly,&#160;the&#160;more&#160;extreme&#160;bias&#160;values&#160;of&#160;the&#160;output&#160;neurons&#160;from</p>
+<p style="position:absolute;top:584px;left:81px;white-space:nowrap" class="ft123">Levenberg-Marquardt&#160;training&#160;appeared&#160;to&#160;cause&#160;the&#160;network&#160;to&#160;quickly&#160;lose<br/>functionality,&#160;reaching&#160;the&#160;average&#160;error&#160;of&#160;a&#160;random&#160;artiﬁcial&#160;neural&#160;network.&#160;In</p>
+<p style="position:absolute;top:620px;left:81px;white-space:nowrap" class="ft120">contrast,&#160;artiﬁcial&#160;neural&#160;networks&#160;trained&#160;with&#160;resilient&#160;backpropagation&#160;never</p>
+<p style="position:absolute;top:638px;left:81px;white-space:nowrap" class="ft123">reached&#160;the&#160;error&#160;level&#160;of&#160;a&#160;random&#160;network,&#160;even&#160;after&#160;perturbing&#160;all&#160;hidden&#160;and<br/>input&#160;neurons,&#160;because&#160;of&#160;the&#160;output&#160;neuron&#160;biases.&#160;It&#160;is&#160;biologically&#160;plausible&#160;that<br/>bioelectrical&#160;networks&#160;with&#160;extreme&#160;differences&#160;in&#160;membrane&#160;potential&#160;would&#160;be<br/>less&#160;robust,&#160;as&#160;the&#160;loss&#160;of&#160;one&#160;neuron&#160;would&#160;signiﬁcantly&#160;impact&#160;the&#160;response&#160;of&#160;its</p>
+<p style="position:absolute;top:710px;left:81px;white-space:nowrap" class="ft123">neighbors.&#160;This&#160;idea&#160;was&#160;further&#160;reinforced&#160;by&#160;the&#160;impact&#160;showed&#160;by&#160;random&#160;values<br/>of&#160;a&#160;mutation&#160;(scaling)&#160;parameter&#160;in&#160;the&#160;splitting&#160;perturbation&#160;methods.&#160;In&#160;future<br/>work,&#160;this&#160;mutation&#160;parameter&#160;will&#160;be&#160;tested&#160;to&#160;determine&#160;an&#160;optimal&#160;mutation&#160;value<br/>(or&#160;pattern)&#160;for&#160;splitting&#160;neurons&#160;in&#160;the&#160;network.</p>
+<p style="position:absolute;top:296px;left:81px;white-space:nowrap" class="ft125">Fig.&#160;4&#160;Comparing&#160;absolute&#160;bias&#160;values&#160;of&#160;output&#160;neurons&#160;between&#160;training&#160;algorithms.&#160;The&#160;output<br/>bias&#160;values&#160;were&#160;compared&#160;for&#160;the&#160;resilient&#160;backpropagation&#160;and&#160;Levenberg-Marquardt&#160;training<br/>algorithms&#160;on&#160;10&#160;hidden&#160;neuron&#160;feed-forward&#160;artiﬁcial&#160;neural&#160;networks&#160;learning&#160;the&#160;two-spiral</p>
+<p style="position:absolute;top:341px;left:81px;white-space:nowrap" class="ft125">problem.&#160;We&#160;sampled&#160;the&#160;output&#160;values&#160;of&#160;100&#160;networks&#160;for&#160;each&#160;training&#160;algorithm,&#160;and&#160;took&#160;the<br/>mean&#160;and&#160;standard&#160;deviation&#160;of&#160;the&#160;bias&#160;value&#160;of&#160;their&#160;output&#160;neurons.&#160;Resilient&#160;backpropagation<br/>output&#160;neurons&#160;on&#160;average&#160;have&#160;a&#160;signiﬁcantly&#160;lower&#160;absolute&#160;value&#160;(less&#160;extreme&#160;ﬁring)&#160;than&#160;the</p>
+<p style="position:absolute;top:385px;left:81px;white-space:nowrap" class="ft125">output&#160;neurons&#160;of&#160;Levenberg-Marquardt&#160;trained&#160;networks.&#160;Using&#160;a&#160;two&#160;sample&#160;t-test&#160;with&#160;unequal<br/>variance&#160;we&#160;conﬁrmed&#160;that&#160;the&#160;two&#160;training&#160;algorithms&#160;had&#160;signiﬁcantly&#160;different&#160;bias&#160;values&#160;for</p>
+<p style="position:absolute;top:415px;left:81px;white-space:nowrap" class="ft122">their&#160;output&#160;neurons&#160;(p&#160;&lt;&#160;0.05e-4)</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft122">56</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft122">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:15px;font-family:Times;color:#000000;}
+	.ft131{font-size:12px;font-family:Times;color:#000000;}
+	.ft132{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft133{font-size:10px;font-family:Times;color:#000000;}
+	.ft134{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft135{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+	.ft136{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft130">4.3&#160;Resilience&#160;to&#160;Cell&#160;Death&#160;Depends&#160;on&#160;the&#160;Difﬁculty</p>
+<p style="position:absolute;top:106px;left:121px;white-space:nowrap" class="ft130">of&#160;the&#160;Problem</p>
+<p style="position:absolute;top:151px;left:81px;white-space:nowrap" class="ft134">In&#160;order&#160;to&#160;determine&#160;if&#160;networks&#160;trained&#160;with&#160;easier&#160;or&#160;harder&#160;patterning&#160;problems<br/>were&#160;more&#160;robust&#160;to&#160;perturbation,&#160;we&#160;ran&#160;an&#160;experiment&#160;that&#160;determined&#160;which<br/>20&#160;%&#160;of&#160;the&#160;neurons&#160;in&#160;an&#160;artiﬁcial&#160;neural&#160;network&#160;gave&#160;the&#160;best&#160;memory&#160;persis-</p>
+<p style="position:absolute;top:205px;left:81px;white-space:nowrap" class="ft134">tence&#160;(least&#160;mean&#160;squared&#160;error)&#160;over&#160;the&#160;output,&#160;and&#160;then&#160;compared&#160;that&#160;value&#160;to<br/>the&#160;average&#160;performance&#160;of&#160;all&#160;of&#160;the&#160;possible&#160;combinations&#160;of&#160;20&#160;%&#160;neurons<br/>removal.&#160;The&#160;results&#160;showed&#160;that&#160;the&#160;two-spiral&#160;problem,&#160;a&#160;notoriously&#160;difﬁcult</p>
+<p style="position:absolute;top:259px;left:81px;white-space:nowrap" class="ft134">machine-learning&#160;problem,&#160;trained&#160;with&#160;resilient&#160;backpropagation&#160;had&#160;the&#160;least<br/>difference&#160;in&#160;performance&#160;between&#160;removal&#160;of&#160;the&#160;best&#160;20&#160;%&#160;and&#160;the&#160;average&#160;20&#160;%<br/>(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#13">5</a>).&#160;In&#160;contrast,&#160;the&#160;half-kernel&#160;problem&#160;with&#160;the&#160;resilient&#160;backpropagation</p>
+<p style="position:absolute;top:757px;left:81px;white-space:nowrap" class="ft136">Fig.&#160;5&#160;Comparing&#160;average&#160;to&#160;optimal&#160;memory&#160;performance&#160;of&#160;20&#160;%&#160;neuron&#160;removal&#160;for&#160;different<br/>training&#160;problems&#160;and&#160;algorithms.&#160;Best&#160;performance&#160;compared&#160;to&#160;average&#160;performance&#160;for&#160;removal<br/>of&#160;20&#160;%&#160;of&#160;neurons&#160;for&#160;single&#160;hidden&#160;layer&#160;(20&#160;neurons—remove&#160;4&#160;neurons)&#160;artiﬁcial&#160;neural</p>
+<p style="position:absolute;top:802px;left:81px;white-space:nowrap" class="ft136">networks&#160;trained&#160;on&#160;different&#160;data&#160;sets&#160;(two-spiral&#160;and&#160;half-kernel)&#160;and&#160;with&#160;different&#160;training<br/>algorithms:&#160;resilient&#160;backpropagation&#160;(RP);&#160;Levenberg-Marquardt&#160;(LM).&#160;Performance&#160;was<br/>measured&#160;as&#160;the&#160;mean&#160;squared&#160;error.&#160;Network&#160;trained&#160;with&#160;the&#160;half-kernel&#160;data&#160;set&#160;using&#160;resilient<br/>backpropagation&#160;had&#160;a&#160;low&#160;error&#160;for&#160;the&#160;best&#160;performance,&#160;indicating&#160;a&#160;high&#160;memory&#160;persistence<br/>with&#160;optimal&#160;neuron&#160;removal.&#160;Overall,&#160;the&#160;training&#160;algorithm&#160;had&#160;an&#160;impact&#160;on&#160;average&#160;resilience<br/>and&#160;the&#160;patterning&#160;problem&#160;had&#160;an&#160;impact&#160;on&#160;optimal&#160;resilience</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft133">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft133">57</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:12px;font-family:Times;color:#000000;}
+	.ft141{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft142{font-size:15px;font-family:Times;color:#000000;}
+	.ft143{font-size:10px;font-family:Times;color:#000000;}
+	.ft144{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft145{font-size:12px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft144">training&#160;algorithm&#160;had&#160;the&#160;greatest&#160;difference&#160;between&#160;the&#160;best&#160;performance&#160;with<br/>20&#160;%&#160;neuron&#160;removal&#160;and&#160;average&#160;removal&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#13">5</a>).&#160;As&#160;the&#160;two-spiral&#160;problem&#160;has&#160;a<br/>higher&#160;degree&#160;of&#160;nonlinearity&#160;in&#160;its&#160;patterning,&#160;intuitively&#160;our&#160;results&#160;conﬁrm&#160;that</p>
+<p style="position:absolute;top:140px;left:81px;white-space:nowrap" class="ft144">most&#160;if&#160;not&#160;all&#160;of&#160;the&#160;networks’&#160;hidden&#160;neurons&#160;are&#160;essential&#160;to&#160;the&#160;ability&#160;to&#160;learn<br/>the&#160;problem.&#160;The&#160;same&#160;is&#160;not&#160;true&#160;for&#160;the&#160;half-kernel&#160;pattern&#160;recognition&#160;problem<br/>because&#160;it&#160;is&#160;more&#160;linear&#160;and&#160;thus&#160;requires&#160;less&#160;neurons&#160;(in&#160;fact&#160;may&#160;contain<br/>redundant&#160;neurons)&#160;that&#160;can&#160;be&#160;pruned&#160;without&#160;compromising&#160;memory.&#160;In&#160;fact,&#160;it&#160;is<br/>likely&#160;that&#160;these&#160;excess&#160;nodes&#160;in&#160;the&#160;network&#160;learning&#160;the&#160;half-kernel&#160;problem&#160;were<br/>overgeneralizing,&#160;a&#160;common&#160;concern&#160;in&#160;ANN&#160;optimization&#160;literature&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[25</a>].</p>
+<p style="position:absolute;top:293px;left:81px;white-space:nowrap" class="ft142">4.4&#160;Balancing&#160;Node&#160;Removal&#160;May&#160;Increase&#160;Memory</p>
+<p style="position:absolute;top:314px;left:121px;white-space:nowrap" class="ft142">Persistence</p>
+<p style="position:absolute;top:358px;left:81px;white-space:nowrap" class="ft144">Using&#160;the&#160;same&#160;network&#160;trained&#160;using&#160;resilient&#160;backpropagation&#160;on&#160;the&#160;half-kernel<br/>problem&#160;with&#160;the&#160;optimal&#160;20&#160;%&#160;neuron&#160;removal,&#160;we&#160;looked&#160;at&#160;the&#160;ﬁring&#160;output&#160;for</p>
+<p style="position:absolute;top:394px;left:81px;white-space:nowrap" class="ft144">each&#160;hidden&#160;neuron&#160;in&#160;the&#160;network&#160;to&#160;determine&#160;if&#160;there&#160;was&#160;a&#160;pattern&#160;of&#160;what&#160;neurons<br/>were&#160;found&#160;to&#160;be&#160;best&#160;to&#160;remove.&#160;By&#160;viewing&#160;the&#160;ﬁring&#160;patterns&#160;of&#160;the&#160;hidden&#160;layer</p>
+<p style="position:absolute;top:430px;left:81px;white-space:nowrap" class="ft140">neurons,&#160;we&#160;were&#160;able&#160;to&#160;understand&#160;the&#160;network&#160;architecture&#160;and&#160;how&#160;the&#160;ﬁring</p>
+<p style="position:absolute;top:448px;left:81px;white-space:nowrap" class="ft144">pattern&#160;plays&#160;a&#160;role&#160;in&#160;memory&#160;persistence.&#160;Interestingly,&#160;this&#160;network&#160;trained&#160;with<br/>resilient&#160;backpropagation&#160;for&#160;half-kernel&#160;was&#160;the&#160;only&#160;network&#160;tested&#160;in&#160;this&#160;study&#160;that<br/>contained&#160;neurons&#160;that&#160;ﬁred&#160;weakly&#160;(neuron&#160;three&#160;and&#160;ﬁve;&#160;Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#15">6),&#160;</a>and&#160;only&#160;one&#160;of</p>
+<p style="position:absolute;top:502px;left:81px;white-space:nowrap" class="ft140">the&#160;two&#160;weakly&#160;ﬁring&#160;neurons&#160;was&#160;removed&#160;in&#160;the&#160;20&#160;%&#160;best&#160;performance&#160;case.&#160;The</p>
+<p style="position:absolute;top:520px;left:81px;white-space:nowrap" class="ft140">other&#160;weakly&#160;ﬁring&#160;neuron&#160;(neuron&#160;ﬁve)&#160;was&#160;not&#160;part&#160;of&#160;the&#160;20&#160;%&#160;removed.</p>
+<p style="position:absolute;top:538px;left:99px;white-space:nowrap" class="ft140">Overall,&#160;there&#160;was&#160;no&#160;immediate&#160;pattern&#160;in&#160;the&#160;types&#160;of&#160;neurons&#160;that&#160;were&#160;best&#160;to</p>
+<p style="position:absolute;top:556px;left:81px;white-space:nowrap" class="ft140">be&#160;removed&#160;from&#160;the&#160;artiﬁcial&#160;neural&#160;networks:&#160;we&#160;found&#160;that&#160;it&#160;was&#160;not&#160;best&#160;to</p>
+<p style="position:absolute;top:574px;left:81px;white-space:nowrap" class="ft145">always&#160;remove&#160;neurons&#160;that&#160;had&#160;consistent&#160;behavior&#160;(always&#160;ﬁring&#160;or&#160;always&#160;not<br/>ﬁring)&#160;but&#160;rather&#160;it&#160;seemed&#160;best&#160;to&#160;remove&#160;a&#160;balance&#160;of&#160;ﬁring&#160;and&#160;non-ﬁring&#160;neu-</p>
+<p style="position:absolute;top:609px;left:81px;white-space:nowrap" class="ft144">rons.&#160;This&#160;suggests&#160;that&#160;static&#160;neurons&#160;are&#160;in&#160;fact&#160;necessary&#160;for&#160;overall&#160;patterning<br/>recognition&#160;capability.&#160;The&#160;removal&#160;of&#160;neurons&#160;to&#160;“balance”&#160;the&#160;network&#160;may&#160;be<br/>comparable&#160;to&#160;the&#160;allometric&#160;scaling&#160;of&#160;the&#160;planarian&#160;flatworm,&#160;in&#160;which&#160;the&#160;pro-<br/>portions&#160;of&#160;the&#160;worm&#160;are&#160;perfectly&#160;preserved&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[44</a>].</p>
+<p style="position:absolute;top:726px;left:81px;white-space:nowrap" class="ft142">4.5&#160;Functional&#160;Recovery&#160;of&#160;Lost&#160;Patterning&#160;Information</p>
+<p style="position:absolute;top:771px;left:81px;white-space:nowrap" class="ft144">There&#160;were&#160;a&#160;few&#160;occurrences&#160;of&#160;a&#160;striking&#160;functional&#160;recovery&#160;of&#160;seemingly&#160;lost<br/>patterning&#160;information&#160;that&#160;was&#160;seen&#160;when&#160;using&#160;the&#160;splitting&#160;neuron&#160;and<br/>the&#160;splitting&#160;insigniﬁcant&#160;neuron&#160;perturbation&#160;methods&#160;(Fig.&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#16">7).&#160;</a>In&#160;the&#160;splitting</p>
+<p style="position:absolute;top:825px;left:81px;white-space:nowrap" class="ft140">insigniﬁcant&#160;method,&#160;the&#160;neurons&#160;chose&#160;to&#160;split&#160;were&#160;the&#160;same,&#160;but&#160;the&#160;mutation</p>
+<p style="position:absolute;top:843px;left:81px;white-space:nowrap" class="ft140">parameter&#160;(4)&#160;varied,&#160;which,&#160;for&#160;extreme&#160;mutation&#160;parameters,&#160;may&#160;have&#160;caused&#160;the</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft143">58</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft143">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:12px;font-family:Times;color:#000000;}
+	.ft151{font-size:10px;font-family:Times;color:#000000;}
+	.ft152{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft153{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+	.ft154{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:637px;left:81px;white-space:nowrap" class="ft152">extreme&#160;imbalance&#160;showed&#160;by&#160;the&#160;network&#160;(loss&#160;of&#160;all&#160;functional&#160;information).&#160;If<br/>this&#160;was&#160;followed&#160;by&#160;a&#160;more&#160;reasonable&#160;mutation&#160;parameter,&#160;this&#160;could&#160;cause&#160;a<br/>scaling&#160;of&#160;the&#160;network&#160;(changing&#160;the&#160;ﬁring&#160;rates&#160;of&#160;all&#160;added&#160;neurons&#160;from&#160;extreme</p>
+<p style="position:absolute;top:690px;left:81px;white-space:nowrap" class="ft152">values&#160;to&#160;more&#160;balanced&#160;ones)&#160;that&#160;appeared&#160;to&#160;recover&#160;the&#160;patterning&#160;information.<br/>While&#160;the&#160;original&#160;intent&#160;was&#160;to&#160;study&#160;the&#160;impact&#160;of&#160;neuron&#160;splitting,&#160;these&#160;results<br/>suggest&#160;that&#160;neuron&#160;scaling&#160;may&#160;be&#160;very&#160;important&#160;to&#160;the&#160;recovery&#160;of&#160;lost&#160;patterning<br/>information.&#160;This&#160;may&#160;have&#160;implications&#160;for&#160;cancer&#160;and&#160;neurological&#160;diseases,<br/>where&#160;perhaps&#160;the&#160;bioelectrical&#160;properties&#160;of&#160;newly&#160;introduced&#160;cells&#160;can&#160;be&#160;adjusted<br/>to&#160;cause&#160;a&#160;certain&#160;alteration&#160;in&#160;the&#160;overall&#160;bioelectrical&#160;network&#160;and&#160;produce&#160;a<br/>functional&#160;recovery&#160;of&#160;the&#160;correct&#160;pattern.</p>
+<p style="position:absolute;top:474px;left:81px;white-space:nowrap" class="ft154">Fig.&#160;6&#160;Identifying&#160;patterns&#160;of&#160;best&#160;neurons&#160;to&#160;remove&#160;from&#160;network&#160;with&#160;memory&#160;persistence&#160;to<br/>20&#160;%&#160;removal.&#160;Individual&#160;neuron&#160;output&#160;for&#160;each&#160;of&#160;the&#160;20&#160;hidden&#160;neurons&#160;in&#160;a&#160;single&#160;layer<br/>feedforward&#160;artiﬁcial&#160;neural&#160;network&#160;trained&#160;using&#160;resilient&#160;backpropagation&#160;on&#160;the&#160;half-kernel</p>
+<p style="position:absolute;top:519px;left:81px;white-space:nowrap" class="ft154">data&#160;set&#160;showing&#160;optimal&#160;20&#160;%&#160;neuron&#160;removal.&#160;Grayscale&#160;neurons&#160;(neurons&#160;numbered&#160;1–4)&#160;are<br/>removed.&#160;For&#160;colored&#160;neurons,&#160;purple&#160;indicates&#160;where&#160;the&#160;neuron&#160;ﬁres&#160;over&#160;the&#160;input&#160;space&#160;and</p>
+<p style="position:absolute;top:549px;left:81px;white-space:nowrap" class="ft151">blue&#160;indicates&#160;where&#160;it&#160;is&#160;not&#160;ﬁring.&#160;For&#160;grayscale&#160;(dead)&#160;neurons,&#160;white&#160;to&#160;black&#160;indicated&#160;ﬁring</p>
+<p style="position:absolute;top:564px;left:81px;white-space:nowrap" class="ft151">level,&#160;with&#160;white&#160;being&#160;ﬁring&#160;and&#160;black&#160;being&#160;not&#160;ﬁring.&#160;There&#160;is&#160;not&#160;one&#160;consistent&#160;type&#160;of&#160;neuron</p>
+<p style="position:absolute;top:579px;left:81px;white-space:nowrap" class="ft151">that&#160;is&#160;removed,&#160;but&#160;rather&#160;four&#160;neurons&#160;that&#160;ﬁre&#160;at&#160;different&#160;places&#160;in&#160;the&#160;input&#160;space.&#160;This&#160;implies</p>
+<p style="position:absolute;top:594px;left:81px;white-space:nowrap" class="ft151">that&#160;balancing&#160;neuron&#160;removal&#160;may&#160;be&#160;a&#160;method&#160;for&#160;maintaining&#160;memory&#160;persistence</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft151">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft151">59</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:15px;font-family:Times;color:#000000;}
+	.ft161{font-size:12px;font-family:Times;color:#000000;}
+	.ft162{font-size:10px;font-family:Times;color:#000000;}
+	.ft163{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft164{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+	.ft165{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:655px;left:81px;white-space:nowrap" class="ft160">5&#160;Discussion</p>
+<p style="position:absolute;top:700px;left:81px;white-space:nowrap" class="ft163">We&#160;analyzed&#160;a&#160;computational&#160;model&#160;of&#160;memory&#160;in&#160;a&#160;neural&#160;network&#160;subject&#160;to<br/>morphological&#160;plasticity.&#160;We&#160;found&#160;that:</p>
+<p style="position:absolute;top:743px;left:82px;white-space:nowrap" class="ft161">•&#160;Morphological&#160;perturbations&#160;to&#160;artiﬁcial&#160;neural&#160;networks&#160;corrupt&#160;learned&#160;pat-</p>
+<p style="position:absolute;top:763px;left:101px;white-space:nowrap" class="ft163">terns&#160;with&#160;a&#160;majority&#160;being&#160;outside&#160;of&#160;acceptable&#160;network&#160;error&#160;at&#160;20&#160;%&#160;per-<br/>turbation,&#160;excluding&#160;neuron&#160;splitting&#160;as&#160;it&#160;remains&#160;in&#160;the&#160;acceptable&#160;error&#160;range<br/>after&#160;both&#160;20&#160;and&#160;50&#160;%&#160;perturbation.</p>
+<p style="position:absolute;top:815px;left:82px;white-space:nowrap" class="ft161">•&#160;Resilient&#160;backpropagation-trained&#160;networks&#160;are&#160;more&#160;robust&#160;than&#160;the</p>
+<p style="position:absolute;top:835px;left:101px;white-space:nowrap" class="ft161">Levenberg-Marquardt&#160;trained&#160;networks&#160;to&#160;morphological&#160;change.</p>
+<p style="position:absolute;top:851px;left:82px;white-space:nowrap" class="ft161">•&#160;Networks&#160;learning&#160;harder&#160;patterning&#160;problems&#160;are&#160;less&#160;capable&#160;of&#160;robustness</p>
+<p style="position:absolute;top:871px;left:101px;white-space:nowrap" class="ft161">after&#160;cell&#160;death.</p>
+<p style="position:absolute;top:493px;left:81px;white-space:nowrap" class="ft164">Fig.&#160;7&#160;Evidence&#160;of&#160;functional&#160;recovery&#160;of&#160;lost&#160;patterning&#160;information&#160;while&#160;splitting&#160;of<br/>insigniﬁcant&#160;neurons.&#160;Output&#160;over&#160;the&#160;entire&#160;input&#160;space&#160;(top)&#160;and&#160;training&#160;data&#160;coordinates</p>
+<p style="position:absolute;top:523px;left:81px;white-space:nowrap" class="ft162">(bottom)&#160;for&#160;each&#160;of&#160;10&#160;sequential&#160;perturbations&#160;in&#160;a&#160;single&#160;hidden-layer&#160;feed-forward&#160;artiﬁcial</p>
+<p style="position:absolute;top:538px;left:81px;white-space:nowrap" class="ft165">neural&#160;network.&#160;The&#160;network&#160;was&#160;initially&#160;trained&#160;with&#160;Levenberg-Marqardt&#160;training&#160;algorithm&#160;on<br/>the&#160;two-spiral&#160;dataset.&#160;After&#160;training,&#160;neurons&#160;were&#160;sequentially&#160;added&#160;using&#160;the&#160;splitting<br/>insigniﬁcant&#160;method.&#160;Functional&#160;information&#160;was&#160;lost&#160;after&#160;the&#160;addition&#160;of&#160;three&#160;neurons,&#160;but</p>
+<p style="position:absolute;top:583px;left:81px;white-space:nowrap" class="ft165">recovered&#160;after&#160;the&#160;addition&#160;of&#160;six&#160;neurons&#160;and&#160;nine&#160;neurons.&#160;This&#160;implies&#160;that&#160;addition&#160;of&#160;neurons<br/>using&#160;information&#160;from&#160;old&#160;neurons&#160;in&#160;the&#160;network&#160;may&#160;be&#160;a&#160;means&#160;of&#160;resilience&#160;towards<br/>topological&#160;perturbations</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft162">60</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft162">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:12px;font-family:Times;color:#000000;}
+	.ft171{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft172{font-size:10px;font-family:Times;color:#000000;}
+	.ft173{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:85px;left:82px;white-space:nowrap" class="ft170">•&#160;Selective&#160;cell&#160;death&#160;of&#160;neurons&#160;that&#160;balance&#160;ﬁring&#160;patterns&#160;may&#160;increase&#160;memory</p>
+<p style="position:absolute;top:104px;left:101px;white-space:nowrap" class="ft170">persistence.</p>
+<p style="position:absolute;top:121px;left:82px;white-space:nowrap" class="ft170">•&#160;Re-scaling&#160;of&#160;sequentially&#160;split&#160;neurons&#160;can&#160;facilitate&#160;recovery&#160;of&#160;lost&#160;patterning</p>
+<p style="position:absolute;top:140px;left:101px;white-space:nowrap" class="ft170">information&#160;in&#160;the&#160;network.</p>
+<p style="position:absolute;top:167px;left:99px;white-space:nowrap" class="ft170">Our&#160;data&#160;represent&#160;a&#160;proof-of-principle&#160;of&#160;using&#160;computational&#160;models&#160;to</p>
+<p style="position:absolute;top:185px;left:81px;white-space:nowrap" class="ft170">understand&#160;the&#160;stability&#160;of&#160;memory&#160;in&#160;nervous&#160;systems&#160;undergoing&#160;signiﬁcant</p>
+<p style="position:absolute;top:203px;left:81px;white-space:nowrap" class="ft170">remodeling.&#160;The&#160;ﬁndings&#160;also&#160;have&#160;implications&#160;for&#160;understanding&#160;the&#160;robustness&#160;of</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft170">artiﬁcial&#160;cognitive&#160;devices&#160;that&#160;will&#160;increasingly&#160;be&#160;called&#160;upon&#160;to&#160;function&#160;despite</p>
+<p style="position:absolute;top:239px;left:81px;white-space:nowrap" class="ft170">damage&#160;or&#160;reconﬁguration&#160;(e.g.,&#160;in&#160;space&#160;exploration).&#160;Two&#160;major&#160;lines&#160;of&#160;inquiry</p>
+<p style="position:absolute;top:257px;left:81px;white-space:nowrap" class="ft170">represent&#160;the&#160;most&#160;important&#160;next&#160;steps.&#160;First&#160;is&#160;the&#160;modiﬁcation&#160;of&#160;our&#160;paradigm&#160;to</p>
+<p style="position:absolute;top:275px;left:81px;white-space:nowrap" class="ft170">match&#160;speciﬁc&#160;instances&#160;of&#160;biological&#160;neural&#160;remodeling.&#160;We&#160;chose&#160;the&#160;training</p>
+<p style="position:absolute;top:293px;left:81px;white-space:nowrap" class="ft173">paradigm&#160;(e.g.,&#160;backpropagation)&#160;to&#160;maximize&#160;tractability&#160;and&#160;connection&#160;with&#160;the<br/>existing&#160;body&#160;of&#160;work&#160;in&#160;the&#160;ﬁeld&#160;of&#160;ANNs.&#160;Future&#160;work&#160;must&#160;extend&#160;this&#160;analysis</p>
+<p style="position:absolute;top:329px;left:81px;white-space:nowrap" class="ft173">to&#160;networks&#160;with&#160;greater&#160;biological&#160;realism&#160;and&#160;training&#160;mechanisms&#160;that&#160;are<br/>plausibly&#160;operational&#160;in&#160;real&#160;biological&#160;brains&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[45</a>].</p>
+<p style="position:absolute;top:364px;left:99px;white-space:nowrap" class="ft170">A&#160;second&#160;major&#160;area&#160;for&#160;investigation,&#160;on-going&#160;in&#160;our&#160;lab,&#160;is&#160;the&#160;extension&#160;of</p>
+<p style="position:absolute;top:382px;left:81px;white-space:nowrap" class="ft173">models&#160;used&#160;in&#160;computational&#160;neuroscience&#160;to&#160;understand&#160;goal-directed&#160;activity&#160;of<br/>non-neural&#160;tissues.&#160;The&#160;ability&#160;of&#160;some&#160;organisms&#160;to&#160;regenerate&#160;complex&#160;body<br/>organs&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">[46</a>]&#160;and&#160;adjust&#160;their&#160;structure&#160;toward&#160;the&#160;correct&#160;anatomy&#160;despite&#160;unpre-<br/>dictable</p>
+<p style="position:absolute;top:436px;left:148px;white-space:nowrap" class="ft170">perturbations</p>
+<p style="position:absolute;top:436px;left:247px;white-space:nowrap" class="ft170">[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">47,</a></p>
+<p style="position:absolute;top:436px;left:291px;white-space:nowrap" class="ft171"><a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">48</a>]</p>
+<p style="position:absolute;top:436px;left:331px;white-space:nowrap" class="ft170">reveals</p>
+<p style="position:absolute;top:436px;left:394px;white-space:nowrap" class="ft170">the</p>
+<p style="position:absolute;top:436px;left:433px;white-space:nowrap" class="ft170">existence</p>
+<p style="position:absolute;top:436px;left:508px;white-space:nowrap" class="ft170">of</p>
+<p style="position:absolute;top:436px;left:541px;white-space:nowrap" class="ft170">robust</p>
+<p style="position:absolute;top:454px;left:81px;white-space:nowrap" class="ft173">information-processing&#160;algorithms&#160;executed&#160;by&#160;somatic&#160;tissues&#160;that&#160;must&#160;make<br/>decisions&#160;guiding&#160;their&#160;growth&#160;and&#160;form&#160;toward&#160;adaptive&#160;outcomes.&#160;The&#160;body&#160;has<br/>an&#160;incredible&#160;capacity&#160;to&#160;learn&#160;and&#160;remember&#160;its&#160;structure—a&#160;capacity&#160;that&#160;is&#160;cur-<br/>rently&#160;an&#160;untapped&#160;resource&#160;in&#160;biomedicine&#160;due&#160;to&#160;our&#160;limited&#160;understanding&#160;of&#160;the<br/>mechanisms&#160;of&#160;control&#160;of&#160;this&#160;complex&#160;system.&#160;Extensive&#160;data&#160;now&#160;demonstrate<br/>that&#160;all&#160;cells,&#160;not&#160;just&#160;neurons,&#160;communicate&#160;via&#160;electrical&#160;signals&#160;and&#160;neurotrans-<br/>mitters&#160;in&#160;making&#160;decisions&#160;that&#160;control&#160;morphogenesis&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">49–52</a>].&#160;Thus,&#160;we&#160;have<br/>conjectured&#160;that&#160;the&#160;ability&#160;to&#160;restore&#160;a&#160;target&#160;shape&#160;after&#160;injury&#160;or&#160;deformation&#160;may<br/>represent&#160;a&#160;kind&#160;of&#160;memory,&#160;and&#160;could&#160;be&#160;tractably&#160;modeled&#160;by&#160;techniques&#160;cur-<br/>rently&#160;used&#160;to&#160;understand&#160;memory&#160;in&#160;the&#160;nervous&#160;system&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">[52–55].&#160;</a>Mathematical<br/>models&#160;of&#160;such&#160;learning&#160;and&#160;memory,&#160;and&#160;particularly&#160;those&#160;inspired&#160;by&#160;cognitive<br/>science,&#160;may&#160;hold&#160;the&#160;key&#160;to&#160;understanding&#160;the&#160;storage&#160;and&#160;access&#160;of&#160;somatic&#160;cell<br/>memory.&#160;This&#160;is&#160;a&#160;top-down,&#160;information-centered&#160;approach&#160;which&#160;complements<br/>the&#160;current&#160;paradigm’s&#160;near-exclusive&#160;focus&#160;on&#160;bottom-up&#160;models&#160;of&#160;molecular<br/>interaction&#160;pathways.</p>
+<p style="position:absolute;top:723px;left:99px;white-space:nowrap" class="ft170">Simply&#160;the&#160;ability&#160;to&#160;manipulate&#160;somatic&#160;memory&#160;would&#160;hold&#160;great&#160;potential&#160;for</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft173">biomedicine&#160;in&#160;treatment&#160;of&#160;traumatic&#160;injuries&#160;and&#160;birth&#160;defects,&#160;because&#160;it&#160;may&#160;help<br/>avoid&#160;the&#160;complexity&#160;explosion&#160;that&#160;hampers&#160;efforts&#160;to&#160;control&#160;complex&#160;shapes&#160;by<br/>tweaking&#160;speciﬁc&#160;molecular&#160;activities.&#160;It&#160;is&#160;possible&#160;that&#160;the&#160;mechanisms&#160;implicated</p>
+<p style="position:absolute;top:795px;left:81px;white-space:nowrap" class="ft173">in&#160;the&#160;massively&#160;distributed&#160;computing&#160;mechanisms&#160;of&#160;the&#160;brain&#160;are&#160;also&#160;present&#160;in<br/>the&#160;body,&#160;especially&#160;given&#160;that&#160;somatic&#160;cells&#160;contain&#160;the&#160;same&#160;signaling&#160;components<br/>that&#160;are&#160;essential&#160;for&#160;neuronal&#160;information&#160;processing&#160;and&#160;that&#160;neuronal&#160;commu-<br/>nication&#160;likely&#160;evolved&#160;from&#160;more&#160;primitive&#160;somatic&#160;signaling&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">[56</a>–<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">59].&#160;</a>If&#160;so,&#160;the<br/>mathematical&#160;formalizations&#160;employed&#160;in&#160;cognitive&#160;science&#160;may&#160;serve&#160;to&#160;further&#160;our</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft172">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft172">61</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:12px;font-family:Times;color:#000000;}
+	.ft181{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft182{font-size:10px;font-family:Times;color:#000000;}
+	.ft183{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft184{font-size:12px;line-height:21px;font-family:Times;color:#000000;}
+	.ft185{font-size:10px;line-height:15px;font-family:Times;color:#000000;}
+	.ft186{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft183">understanding&#160;of&#160;cellular&#160;coordination&#160;towards&#160;complex&#160;pattern&#160;formation&#160;in<br/>development&#160;and&#160;regeneration.&#160;In&#160;particular,&#160;artiﬁcial&#160;neural&#160;networks&#160;and</p>
+<p style="position:absolute;top:122px;left:81px;white-space:nowrap" class="ft183">self-organizing&#160;maps&#160;are&#160;known&#160;for&#160;creating&#160;attractor&#160;states&#160;from&#160;which&#160;stable<br/>patterns&#160;may&#160;arise&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">[60</a>,&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">61].&#160;</a>Basins&#160;of&#160;attraction&#160;are&#160;gaining&#160;popularity&#160;in&#160;devel-<br/>opmental&#160;biology&#160;to&#160;explain&#160;the&#160;course&#160;of&#160;gene&#160;expression&#160;via&#160;gene&#160;regulatory<br/>networks&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">62–64</a>],&#160;but&#160;can&#160;also&#160;explain&#160;the&#160;collective&#160;phenomena&#160;of&#160;stable&#160;mor-<br/>phologies&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">[54</a>].</p>
+<p style="position:absolute;top:212px;left:99px;white-space:nowrap" class="ft180">The&#160;planarian&#160;flatworm&#160;is&#160;an&#160;ideal&#160;model&#160;system&#160;for&#160;investigating&#160;such&#160;work&#160;due</p>
+<p style="position:absolute;top:230px;left:81px;white-space:nowrap" class="ft183">to&#160;its&#160;highly&#160;regenerative&#160;nature&#160;and&#160;demonstrated&#160;morphological&#160;plasticity&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">65–<br/>68].&#160;</a>Planarian&#160;flatworms&#160;have&#160;the&#160;capability&#160;of&#160;extending&#160;their&#160;genetically&#160;encoded<br/>morphologies&#160;to&#160;a&#160;number&#160;of&#160;additional&#160;stable&#160;states,&#160;including&#160;double&#160;and<br/>quadruple&#160;head&#160;morphologies&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">69].&#160;</a>The&#160;question&#160;that&#160;remains&#160;is&#160;how&#160;and&#160;why&#160;such<br/>stable&#160;states&#160;exist&#160;and&#160;if&#160;it&#160;is&#160;a&#160;property&#160;unique&#160;to&#160;regenerative&#160;organisms&#160;or&#160;if&#160;it&#160;is<br/>innate&#160;to&#160;all&#160;stem&#160;cell&#160;populations.&#160;In&#160;future&#160;work,&#160;we&#160;hope&#160;to&#160;expand&#160;our&#160;proposed<br/>method&#160;for&#160;artiﬁcial&#160;neural&#160;network&#160;perturbation&#160;to&#160;more&#160;complex&#160;network&#160;types</p>
+<p style="position:absolute;top:355px;left:81px;white-space:nowrap" class="ft184">such&#160;as&#160;deep&#160;multilayer&#160;perceptrons&#160;and&#160;recurrent&#160;neural&#160;networks&#160;which&#160;are&#160;known<br/>to&#160;have&#160;a&#160;more&#160;complex&#160;“memory”&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#20">28]&#160;</a>as&#160;well&#160;as&#160;unsupervised&#160;networks&#160;(not<br/>trained&#160;with&#160;output&#160;criteria)&#160;such&#160;as&#160;the&#160;self-organizing&#160;map&#160;which&#160;are&#160;known&#160;to<br/>mimic&#160;the&#160;organization&#160;of&#160;like&#160;cells&#160;into&#160;clusters&#160;that&#160;share&#160;recognition&#160;properties,<br/>much&#160;like&#160;biological&#160;neural&#160;networks&#160;<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">[70</a>].&#160;Additionally,&#160;future&#160;experiments&#160;will<br/>employ&#160;data&#160;that&#160;is&#160;related&#160;to&#160;biological&#160;shape&#160;to&#160;draw&#160;further&#160;connections&#160;between<br/>pattern&#160;recognition&#160;and&#160;target&#160;morphology.&#160;The&#160;work&#160;presented&#160;in&#160;this&#160;paper&#160;is&#160;the<br/>ﬁrst&#160;to&#160;attempt&#160;to&#160;formalize&#160;perturbation&#160;methods&#160;for&#160;artiﬁcial&#160;neural&#160;networks&#160;in</p>
+<p style="position:absolute;top:499px;left:81px;white-space:nowrap" class="ft183">order&#160;to&#160;determine&#160;their&#160;use&#160;as&#160;a&#160;biological&#160;model.&#160;Evidence&#160;of&#160;functional&#160;recovery<br/>and&#160;sensitivity&#160;to&#160;the&#160;method&#160;of&#160;perturbation&#160;implies&#160;that&#160;artiﬁcial&#160;neural&#160;networks</p>
+<p style="position:absolute;top:535px;left:81px;white-space:nowrap" class="ft183">are&#160;capable&#160;of&#160;memory&#160;persistence&#160;and&#160;can&#160;serve&#160;as&#160;a&#160;model&#160;of&#160;a&#160;dynamic&#160;infor-<br/>mation&#160;processing&#160;system.</p>
+<p style="position:absolute;top:571px;left:99px;white-space:nowrap" class="ft180">For&#160;biologists,&#160;important&#160;advances&#160;in&#160;neuroscience&#160;and&#160;the&#160;manipulation&#160;of</p>
+<p style="position:absolute;top:589px;left:81px;white-space:nowrap" class="ft183">somatic&#160;target&#160;morphology&#160;for&#160;regenerative&#160;medicine&#160;await&#160;a&#160;better&#160;understanding<br/>of&#160;memory&#160;robustness&#160;in&#160;dynamic&#160;cellular&#160;networks&#160;[<a href="5e3ed74cc1918623cd838c8c71f14e5ds.html#21">54].&#160;</a>For&#160;computer&#160;scientists,<br/>understanding&#160;the&#160;mechanism&#160;of&#160;cell&#160;memory&#160;is&#160;an&#160;interesting&#160;question&#160;as&#160;well&#160;as&#160;a<br/>practical&#160;one:&#160;such&#160;a&#160;system&#160;could&#160;be&#160;the&#160;ﬁrst&#160;step&#160;toward&#160;designing&#160;self-building</p>
+<p style="position:absolute;top:660px;left:81px;white-space:nowrap" class="ft183">and&#160;regenerative&#160;machinery.&#160;It&#160;is&#160;a&#160;question&#160;that&#160;has&#160;to&#160;be&#160;answered&#160;with&#160;care,&#160;as&#160;the<br/>balance&#160;between&#160;robustness&#160;and&#160;adaptability&#160;is&#160;a&#160;long-standing&#160;challenge&#160;in&#160;biology<br/>and&#160;computer&#160;science.&#160;As&#160;a&#160;mature&#160;model&#160;of&#160;cognitive&#160;information&#160;processing,<br/>artiﬁcial&#160;neural&#160;networks&#160;may&#160;be&#160;able&#160;to&#160;help&#160;solve&#160;the&#160;great&#160;mystery&#160;of&#160;how&#160;the</p>
+<p style="position:absolute;top:732px;left:81px;white-space:nowrap" class="ft183">body&#160;remembers&#160;and&#160;inform&#160;our&#160;understanding&#160;of&#160;development&#160;and&#160;regeneration&#160;in<br/>the&#160;process.</p>
+<p style="position:absolute;top:785px;left:81px;white-space:nowrap" class="ft186">Acknowledgments&#160;We&#160;thank&#160;the&#160;Levin&#160;lab,&#160;Francisco&#160;J.&#160;Vico,&#160;and&#160;many&#160;others&#160;in&#160;the&#160;com-<br/>munity&#160;for&#160;helpful&#160;discussions&#160;at&#160;the&#160;intersection&#160;of&#160;neuroscience&#160;and&#160;developmental&#160;biology.&#160;This<br/>work&#160;was&#160;supported&#160;by&#160;NSF&#160;(subaward&#160;#CBET-0939511&#160;via&#160;EBICS&#160;at&#160;MIT),&#160;the&#160;G.&#160;Harold&#160;and<br/>Leila&#160;Y.&#160;Mathers&#160;Charitable,&#160;and&#160;Templeton&#160;World&#160;Charity&#160;Foundations.</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft182">62</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft182">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:15px;font-family:Times;color:#000000;}
+	.ft191{font-size:10px;font-family:Times;color:#000000;}
+	.ft192{font-size:10px;font-family:Times;color:#0000ff;}
+	.ft193{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft190">References</p>
+<p style="position:absolute;top:129px;left:88px;white-space:nowrap" class="ft191">1.&#160;D.&#160;Blackiston,&#160;T.&#160;Shomrat,&#160;M.&#160;Levin,&#160;The&#160;stability&#160;of&#160;memories&#160;during&#160;brain&#160;remodeling:&#160;a</p>
+<p style="position:absolute;top:144px;left:102px;white-space:nowrap" class="ft191">perspective,&#160;Communicative&#160;and&#160;Integrative&#160;Biology&#160;(In&#160;Press,&#160;2015)</p>
+<p style="position:absolute;top:159px;left:88px;white-space:nowrap" class="ft191">2.&#160;J.V.&#160;McConnell,&#160;A.L.&#160;Jacobson,&#160;D.P.&#160;Kimble,&#160;The&#160;effects&#160;of&#160;regeneration&#160;upon&#160;retention&#160;of&#160;a</p>
+<p style="position:absolute;top:174px;left:102px;white-space:nowrap" class="ft191">conditioned&#160;response&#160;in&#160;the&#160;planarian.&#160;J.&#160;Comp.&#160;Physiol.&#160;Psychol.&#160;52,&#160;1–5&#160;(1959)</p>
+<p style="position:absolute;top:189px;left:88px;white-space:nowrap" class="ft191">3.&#160;D.J.&#160;Blackiston,&#160;E.&#160;Silva&#160;Casey,&#160;M.R.&#160;Weiss,&#160;Retention&#160;of&#160;memory&#160;through&#160;metamorphosis:</p>
+<p style="position:absolute;top:204px;left:102px;white-space:nowrap" class="ft191">can&#160;a&#160;moth&#160;remember&#160;what&#160;it&#160;learned&#160;as&#160;a&#160;caterpillar?.&#160;PLoS&#160;ONE&#160;3,&#160;e1736&#160;(2008)</p>
+<p style="position:absolute;top:219px;left:88px;white-space:nowrap" class="ft191">4.&#160;J.M.&#160;Mateo,&#160;Self-referent&#160;phenotype&#160;matching&#160;and&#160;long-term&#160;maintenance&#160;of&#160;kin&#160;recognition.</p>
+<p style="position:absolute;top:234px;left:102px;white-space:nowrap" class="ft191">Anim.&#160;Behav.&#160;80,&#160;929–935&#160;(2010)</p>
+<p style="position:absolute;top:249px;left:88px;white-space:nowrap" class="ft191">5.&#160;K.J.&#160;Anil,&#160;Artiﬁcial&#160;neural&#160;networks:&#160;a&#160;tutorial&#160;(1996),&#160;pp.&#160;31–44,&#160;<a href="http://doi.ieeecomputersociety.org/10.1109/2.485891">http://doi.</a></p>
+<p style="position:absolute;top:264px;left:102px;white-space:nowrap" class="ft192"><a href="http://doi.ieeecomputersociety.org/10.1109/2.485891">ieeecomputersociety.org/10.1109/2.485891</a></p>
+<p style="position:absolute;top:279px;left:88px;white-space:nowrap" class="ft191">6.&#160;H.&#160;White,&#160;Artiﬁcial&#160;Neural&#160;Networks:&#160;Approximation&#160;and&#160;Learning&#160;Theory&#160;(Blackwell</p>
+<p style="position:absolute;top:293px;left:102px;white-space:nowrap" class="ft191">Publishers,&#160;Inc.,&#160;1992)</p>
+<p style="position:absolute;top:308px;left:88px;white-space:nowrap" class="ft191">7.&#160;P.&#160;Arlotta,&#160;B.&#160;Berninger,&#160;Brains&#160;in&#160;metamorphosis:&#160;reprogramming&#160;cell&#160;identity&#160;within&#160;the</p>
+<p style="position:absolute;top:323px;left:102px;white-space:nowrap" class="ft191">central&#160;nervous&#160;system.&#160;Curr.&#160;Opin.&#160;Neurobiol.&#160;27,&#160;208–214&#160;(2014)</p>
+<p style="position:absolute;top:338px;left:88px;white-space:nowrap" class="ft191">8.&#160;D.A.&#160;Berg,&#160;L.&#160;Belnoue,&#160;H.&#160;Song,&#160;A.&#160;Simon,&#160;Neurotransmitter-mediated&#160;control&#160;of</p>
+<p style="position:absolute;top:353px;left:102px;white-space:nowrap" class="ft191">neurogenesis&#160;in&#160;the&#160;adult&#160;vertebrate&#160;brain.&#160;Development&#160;140,&#160;2548–2561&#160;(2013)</p>
+<p style="position:absolute;top:368px;left:88px;white-space:nowrap" class="ft191">9.&#160;M.&#160;Koehl,&#160;D.N.&#160;Abrous,&#160;A&#160;new&#160;chapter&#160;in&#160;the&#160;ﬁeld&#160;of&#160;memory:&#160;adult&#160;hippocampal</p>
+<p style="position:absolute;top:383px;left:102px;white-space:nowrap" class="ft191">neurogenesis.&#160;Eur.&#160;J.&#160;Neurosci.&#160;33,&#160;1101–1114&#160;(2011)</p>
+<p style="position:absolute;top:398px;left:81px;white-space:nowrap" class="ft191">10.&#160;W.&#160;Deng,&#160;J.B.&#160;Aimone,&#160;F.H.&#160;Gage,&#160;New&#160;neurons&#160;and&#160;new&#160;memories:&#160;how&#160;does&#160;adult</p>
+<p style="position:absolute;top:413px;left:102px;white-space:nowrap" class="ft191">hippocampal&#160;neurogenesis&#160;affect&#160;learning&#160;and&#160;memory?&#160;Nat.&#160;Rev.&#160;Neurosci.&#160;11,&#160;339–350&#160;(2010)</p>
+<p style="position:absolute;top:428px;left:81px;white-space:nowrap" class="ft191">11.&#160;Y.&#160;Kitabatake,&#160;K.A.&#160;Sailor,&#160;G.L.&#160;Ming,&#160;H.&#160;Song,&#160;Adult&#160;neurogenesis&#160;and&#160;hippocampal</p>
+<p style="position:absolute;top:443px;left:102px;white-space:nowrap" class="ft193">memory&#160;function:&#160;new&#160;cells,&#160;more&#160;plasticity,&#160;new&#160;memories?.&#160;Neurosurg.&#160;Clin.&#160;North&#160;Am.&#160;18,<br/>105–13&#160;(2007)</p>
+<p style="position:absolute;top:472px;left:81px;white-space:nowrap" class="ft191">12.&#160;S.&#160;Couillard-Despres,&#160;B.&#160;Iglseder,&#160;L.&#160;Aigner,&#160;Neurogenesis,&#160;cellular&#160;plasticity&#160;and&#160;cognition:</p>
+<p style="position:absolute;top:487px;left:102px;white-space:nowrap" class="ft193">the&#160;impact&#160;of&#160;stem&#160;cells&#160;in&#160;the&#160;adult&#160;and&#160;aging&#160;brain–a&#160;mini-review.&#160;Gerontology&#160;57,&#160;559–564<br/>(2011)</p>
+<p style="position:absolute;top:517px;left:81px;white-space:nowrap" class="ft191">13.&#160;C.&#160;Wiltrout,&#160;B.&#160;Lang,&#160;Y.&#160;Yan,&#160;R.J.&#160;Dempsey,&#160;R.&#160;Vemuganti,&#160;Repairing&#160;brain&#160;after&#160;stroke:&#160;A</p>
+<p style="position:absolute;top:532px;left:102px;white-space:nowrap" class="ft191">review&#160;on&#160;post-ischemic&#160;neurogenesis.&#160;Mech.&#160;Neurodegeneration&#160;50,&#160;1028–1041&#160;(2007)</p>
+<p style="position:absolute;top:547px;left:81px;white-space:nowrap" class="ft191">14.&#160;T.&#160;Tully,&#160;V.&#160;Cambiazo,&#160;L.&#160;Kruse,&#160;Memory&#160;through&#160;metamorphosis&#160;in&#160;normal&#160;and&#160;mutant</p>
+<p style="position:absolute;top:562px;left:102px;white-space:nowrap" class="ft191">Drosophila.&#160;J.&#160;Neurosci.&#160;14,&#160;68–74&#160;(1994)</p>
+<p style="position:absolute;top:577px;left:81px;white-space:nowrap" class="ft191">15.&#160;M.&#160;Gandolﬁ,&#160;L.&#160;Mattiacci,&#160;S.&#160;Dorn,&#160;Preimaginal&#160;learning&#160;determines&#160;adult&#160;response&#160;to</p>
+<p style="position:absolute;top:592px;left:102px;white-space:nowrap" class="ft193">chemical&#160;stimuli&#160;in&#160;a&#160;parasitic&#160;wasp.&#160;Proc.&#160;R.&#160;Soc.&#160;Lond.&#160;Ser.&#160;B-Biol.&#160;Sci.&#160;270,&#160;2623–2629<br/>(2003)</p>
+<p style="position:absolute;top:622px;left:81px;white-space:nowrap" class="ft191">16.&#160;K.&#160;Rietdorf,&#160;J.L.M.&#160;Steidle,&#160;Was&#160;Hopkins&#160;right?&#160;Influence&#160;of&#160;larval&#160;and&#160;early&#160;adult&#160;experience</p>
+<p style="position:absolute;top:636px;left:102px;white-space:nowrap" class="ft193">on&#160;the&#160;olfactory&#160;response&#160;in&#160;the&#160;granary&#160;weevil&#160;Sitophilus&#160;granarius&#160;(Coleoptera,<br/>Curculionidae).&#160;Physiological&#160;Entomol.&#160;27,&#160;223–227&#160;(2002)</p>
+<p style="position:absolute;top:666px;left:81px;white-space:nowrap" class="ft191">17.&#160;K.&#160;Agata,&#160;Y.&#160;Umesono,&#160;Brain&#160;regeneration&#160;from&#160;pluripotent&#160;stem&#160;cells&#160;in&#160;planarian.&#160;Philos.</p>
+<p style="position:absolute;top:681px;left:102px;white-space:nowrap" class="ft191">Trans.&#160;R.&#160;Soc.&#160;Lond.&#160;B&#160;Biol.&#160;Sci.&#160;363,&#160;2071–2078&#160;(2008)</p>
+<p style="position:absolute;top:696px;left:81px;white-space:nowrap" class="ft191">18.&#160;T.&#160;Shomrat,&#160;M.&#160;Levin,&#160;An&#160;automated&#160;training&#160;paradigm&#160;reveals&#160;long-term&#160;memory&#160;in</p>
+<p style="position:absolute;top:711px;left:102px;white-space:nowrap" class="ft193">planarians&#160;and&#160;its&#160;persistence&#160;through&#160;head&#160;regeneration.&#160;J.&#160;Expe.&#160;Biol.&#160;216,&#160;3799–3810<br/>(2013)</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft191">19.&#160;R.A.&#160;Fricker,&#160;M.K.&#160;Carpenter,&#160;C.&#160;Winkler,&#160;C.&#160;Greco,&#160;M.A.&#160;Gates,&#160;A.&#160;Björklund,&#160;Site-speciﬁc</p>
+<p style="position:absolute;top:756px;left:102px;white-space:nowrap" class="ft193">migration&#160;and&#160;neuronal&#160;differentiation&#160;of&#160;human&#160;neural&#160;progenitor&#160;cells&#160;after&#160;transplantation&#160;in<br/>the&#160;Adult&#160;Rat&#160;Brain.&#160;J.&#160;Neurosci.&#160;19,&#160;5990–6005&#160;(1999)</p>
+<p style="position:absolute;top:786px;left:81px;white-space:nowrap" class="ft191">20.&#160;A.&#160;Wennersten,&#160;X.&#160;Meijer,&#160;S.&#160;Holmin,&#160;L.&#160;Wahlberg,&#160;T.&#160;Mathiesen,&#160;Proliferation,&#160;migration,</p>
+<p style="position:absolute;top:801px;left:102px;white-space:nowrap" class="ft193">and&#160;differentiation&#160;of&#160;human&#160;neural&#160;stem/progenitor&#160;cells&#160;after&#160;transplantation&#160;into&#160;a&#160;rat&#160;model<br/>of&#160;traumatic&#160;brain&#160;injury.&#160;J.&#160;Neurosurg.&#160;100,&#160;88–96&#160;(2004)</p>
+<p style="position:absolute;top:830px;left:81px;white-space:nowrap" class="ft191">21.&#160;K.G.&#160;Akers,&#160;A.&#160;Martinez-Canabal,&#160;L.&#160;Restivo,&#160;A.P.&#160;Yiu,&#160;A.&#160;De&#160;Cristofaro,&#160;H.-L.&#160;Hsiang&#160;et&#160;al.,</p>
+<p style="position:absolute;top:845px;left:102px;white-space:nowrap" class="ft193">Hippocampal&#160;neurogenesis&#160;regulates&#160;forgetting&#160;during&#160;adulthood&#160;and&#160;infancy.&#160;Science&#160;344,<br/>598–602&#160;(2014)</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft191">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft191">63</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:10px;font-family:Times;color:#000000;}
+	.ft201{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:87px;left:81px;white-space:nowrap" class="ft200">22.&#160;L.J.&#160;Martin,&#160;Neuronal&#160;death&#160;in&#160;amyotrophic&#160;lateral&#160;sclerosis&#160;is&#160;apoptosis:&#160;possible&#160;contribution</p>
+<p style="position:absolute;top:102px;left:102px;white-space:nowrap" class="ft200">of&#160;a&#160;programmed&#160;cell&#160;death&#160;mechanism.&#160;J.&#160;Neuropathol.&#160;Exp.&#160;Neurol.&#160;58,&#160;459–471&#160;(1999)</p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft200">23.&#160;W.M.&#160;Cowan,&#160;J.W.&#160;Fawcett,&#160;D.D.&#160;O’Leary,&#160;B.B.&#160;Stanﬁeld,&#160;Regressive&#160;events&#160;in&#160;neurogenesis.</p>
+<p style="position:absolute;top:132px;left:102px;white-space:nowrap" class="ft200">Science&#160;225,&#160;1258–1265&#160;(1984)</p>
+<p style="position:absolute;top:147px;left:81px;white-space:nowrap" class="ft200">24.&#160;Y.&#160;Xiong,&#160;A.&#160;Mahmood,&#160;M.&#160;Chopp,&#160;Angiogenesis,&#160;neurogenesis&#160;and&#160;brain&#160;recovery&#160;of&#160;function</p>
+<p style="position:absolute;top:161px;left:102px;white-space:nowrap" class="ft200">following&#160;injury.&#160;Curr.&#160;Opin.&#160;Investig.&#160;Drugs&#160;(Lond.,&#160;Engl.:&#160;2000)&#160;11,&#160;298–308&#160;(2010)</p>
+<p style="position:absolute;top:176px;left:81px;white-space:nowrap" class="ft200">25.&#160;I.A.&#160;Basheer,&#160;M.&#160;Hajmeer,&#160;Artiﬁcial&#160;neural&#160;networks:&#160;fundamentals,&#160;computing,&#160;design,&#160;and</p>
+<p style="position:absolute;top:191px;left:102px;white-space:nowrap" class="ft200">application.&#160;J.&#160;Microbiol.&#160;Methods&#160;43,&#160;3–31&#160;(2000)</p>
+<p style="position:absolute;top:206px;left:81px;white-space:nowrap" class="ft200">26.&#160;M.&#160;Anthony,&#160;P.L.&#160;Bartlett,&#160;Neural&#160;Network&#160;Learning:&#160;Theoretical&#160;Foundations&#160;(Cambridge</p>
+<p style="position:absolute;top:221px;left:102px;white-space:nowrap" class="ft200">University&#160;Press,&#160;2009)</p>
+<p style="position:absolute;top:236px;left:81px;white-space:nowrap" class="ft201">27.&#160;S.&#160;Haykin,&#160;Neural&#160;Networks:&#160;A&#160;Comprehensive&#160;Foundation&#160;(Prentice&#160;Hall&#160;PTR,&#160;1998)<br/>28.&#160;A.M.&#160;Hermundstad,&#160;K.S.&#160;Brown,&#160;D.S.&#160;Bassett,&#160;J.M.&#160;Carlson,&#160;Learning,&#160;memory,&#160;and&#160;the&#160;role</p>
+<p style="position:absolute;top:266px;left:102px;white-space:nowrap" class="ft200">of&#160;neural&#160;network&#160;architecture.&#160;PLoS&#160;Comput.&#160;Biol.&#160;7,&#160;e1002063&#160;(2011)</p>
+<p style="position:absolute;top:281px;left:81px;white-space:nowrap" class="ft200">29.&#160;P.G.&#160;Benardos,&#160;G.C.&#160;Vosniakos,&#160;Optimizing&#160;feedforward&#160;artiﬁcial&#160;neural&#160;network&#160;architecture.</p>
+<p style="position:absolute;top:296px;left:102px;white-space:nowrap" class="ft200">Eng.&#160;Appl.&#160;Artif.&#160;Intell.&#160;20,&#160;365–382&#160;(2007)</p>
+<p style="position:absolute;top:311px;left:81px;white-space:nowrap" class="ft200">30.&#160;M.M.&#160;Islam,&#160;M.A.&#160;Sattar,&#160;M.F.&#160;Amin,&#160;K.&#160;Murase,&#160;A&#160;new&#160;adaptive&#160;strategy&#160;for&#160;pruning&#160;and</p>
+<p style="position:absolute;top:325px;left:102px;white-space:nowrap" class="ft200">adding&#160;hidden&#160;neurons&#160;during&#160;training&#160;artiﬁcial&#160;neural&#160;networks,&#160;in&#160;Intelligent&#160;Data</p>
+<p style="position:absolute;top:341px;left:102px;white-space:nowrap" class="ft201">Engineering&#160;and&#160;Automated&#160;Learning—IDEAL&#160;2008,&#160;vol.&#160;5326,&#160;ed.&#160;by&#160;C.&#160;Fyfe,&#160;D.&#160;Kim,<br/>S.-Y.&#160;Lee,&#160;H.&#160;Yin&#160;(Springer&#160;Berlin&#160;Heidelberg,&#160;2008),&#160;pp.&#160;40–48</p>
+<p style="position:absolute;top:370px;left:81px;white-space:nowrap" class="ft201">31.&#160;Y.&#160;Lecun,&#160;J.S.&#160;Denker,&#160;S.A.&#160;Solla,&#160;Optimal&#160;Brain&#160;Damage,&#160;pp.&#160;598–605<br/>32.&#160;K.O.&#160;Stanley,&#160;R.&#160;Miikkulainen,&#160;Efﬁcient&#160;reinforcement&#160;learning&#160;through&#160;evolving&#160;neural</p>
+<p style="position:absolute;top:400px;left:102px;white-space:nowrap" class="ft200">network&#160;topologies.&#160;Network&#160;(Phenotype)&#160;1,&#160;3&#160;(1996)</p>
+<p style="position:absolute;top:415px;left:81px;white-space:nowrap" class="ft200">33.&#160;A.N.&#160;Hampton,&#160;C.&#160;Adami,&#160;Evolution&#160;of&#160;robust&#160;developmental&#160;neural&#160;networks.&#160;Proc.&#160;Artif.</p>
+<p style="position:absolute;top:430px;left:102px;white-space:nowrap" class="ft200">Life&#160;9,&#160;438–443&#160;(2004)</p>
+<p style="position:absolute;top:445px;left:81px;white-space:nowrap" class="ft200">34.&#160;J.F.&#160;Miller,&#160;Evolving&#160;developmental&#160;programs&#160;for&#160;adaptation,&#160;morphogenesis,&#160;and&#160;self-repair,</p>
+<p style="position:absolute;top:460px;left:102px;white-space:nowrap" class="ft200">in&#160;Advances&#160;in&#160;Artiﬁcial&#160;Life&#160;(Springer,&#160;2003),&#160;pp.&#160;256–265</p>
+<p style="position:absolute;top:475px;left:81px;white-space:nowrap" class="ft200">35.&#160;J.C.&#160;Astor,&#160;C.&#160;Adami,&#160;A&#160;developmental&#160;model&#160;for&#160;the&#160;evolution&#160;of&#160;artiﬁcial&#160;neural&#160;networks.</p>
+<p style="position:absolute;top:490px;left:102px;white-space:nowrap" class="ft200">Artif.&#160;Life&#160;6,&#160;189–218&#160;(2000)</p>
+<p style="position:absolute;top:504px;left:81px;white-space:nowrap" class="ft200">36.&#160;J.E.&#160;Auerbach,&#160;J.C.&#160;Bongard,&#160;Evolving&#160;CPPNs&#160;to&#160;grow&#160;three-dimensional&#160;physical&#160;structures,</p>
+<p style="position:absolute;top:519px;left:102px;white-space:nowrap" class="ft201">in&#160;Proceedings&#160;of&#160;the&#160;12th&#160;Annual&#160;Conference&#160;on&#160;GENETIC&#160;and&#160;Evolutionary&#160;Computation<br/>(2010),&#160;pp.&#160;627–634</p>
+<p style="position:absolute;top:549px;left:81px;white-space:nowrap" class="ft200">37.&#160;N.&#160;Bessonov,&#160;M.&#160;Levin,&#160;N.&#160;Morozova,&#160;N.&#160;Reinberg,&#160;A.&#160;Tosenberger,&#160;V.&#160;Volpert,&#160;On&#160;a&#160;model</p>
+<p style="position:absolute;top:564px;left:102px;white-space:nowrap" class="ft200">of&#160;pattern&#160;regeneration&#160;based&#160;on&#160;cell&#160;memory.&#160;PLoS&#160;ONE&#160;10,&#160;e0118091&#160;(2015)</p>
+<p style="position:absolute;top:579px;left:81px;white-space:nowrap" class="ft200">38.&#160;U.&#160;Yerushalmi,&#160;M.&#160;Teicher,&#160;Evolving&#160;synaptic&#160;plasticity&#160;with&#160;an&#160;evolutionary&#160;cellular</p>
+<p style="position:absolute;top:594px;left:102px;white-space:nowrap" class="ft200">development&#160;model.&#160;PLoS&#160;ONE&#160;3,&#160;e3697&#160;(2008)</p>
+<p style="position:absolute;top:609px;left:81px;white-space:nowrap" class="ft200">39.&#160;K.O.&#160;Stanley,&#160;Compositional&#160;pattern&#160;producing&#160;networks:&#160;A&#160;novel&#160;abstraction&#160;of&#160;development.</p>
+<p style="position:absolute;top:624px;left:102px;white-space:nowrap" class="ft200">Genet.&#160;Program&#160;Evolvable&#160;Mach.&#160;8,&#160;131–162&#160;(2007)</p>
+<p style="position:absolute;top:639px;left:81px;white-space:nowrap" class="ft201">40.&#160;M.&#160;a.&#160;N.&#160;N.&#160;T.&#160;R.,&#160;Natick&#160;(The&#160;MathWorks,&#160;Inc.,&#160;Massachusetts,&#160;United&#160;States,&#160;2012)<br/>41.&#160;R.&#160;Hecht-Nielsen,&#160;Theory&#160;of&#160;the&#160;backpropagation&#160;neural&#160;network,&#160;in&#160;Neural&#160;Networks,&#160;1989.</p>
+<p style="position:absolute;top:669px;left:102px;white-space:nowrap" class="ft200">IJCNN.,&#160;International&#160;Joint&#160;Conference&#160;on,&#160;vil.&#160;1&#160;(1989),&#160;pp.&#160;593–605</p>
+<p style="position:absolute;top:683px;left:81px;white-space:nowrap" class="ft200">42.&#160;D.&#160;Marquardt,&#160;An&#160;algorithm&#160;for&#160;least-squares&#160;estimation&#160;of&#160;nonlinear&#160;parameters.&#160;J.&#160;Soc.&#160;Ind.</p>
+<p style="position:absolute;top:698px;left:102px;white-space:nowrap" class="ft200">Appl.&#160;Math.&#160;11,&#160;431–441&#160;(1963)</p>
+<p style="position:absolute;top:713px;left:81px;white-space:nowrap" class="ft200">43.&#160;M.&#160;Riedmiller,&#160;H.&#160;Braun,&#160;A&#160;direct&#160;adaptive&#160;method&#160;for&#160;faster&#160;backpropagation&#160;learning:&#160;the</p>
+<p style="position:absolute;top:728px;left:102px;white-space:nowrap" class="ft200">RPROP&#160;algorithm,&#160;in&#160;IEEE&#160;International&#160;Conference&#160;on&#160;Neural&#160;Networks,&#160;pp.&#160;586–591</p>
+<p style="position:absolute;top:743px;left:81px;white-space:nowrap" class="ft200">44.&#160;N.J.&#160;Oviedo,&#160;P.A.&#160;Newmark,&#160;A.&#160;Sánchez&#160;Alvarado,&#160;Allometric&#160;scaling&#160;and&#160;proportion</p>
+<p style="position:absolute;top:758px;left:102px;white-space:nowrap" class="ft201">regulation&#160;in&#160;the&#160;freshwater&#160;planarian&#160;Schmidtea&#160;mediterranea.&#160;Dev.&#160;Dyn.&#160;226,&#160;326–333<br/>(2003)</p>
+<p style="position:absolute;top:788px;left:81px;white-space:nowrap" class="ft200">45.&#160;G.&#160;Deco,&#160;E.T.&#160;Rolls,&#160;L.&#160;Albantakis,&#160;R.&#160;Romo,&#160;Brain&#160;mechanisms&#160;for&#160;perceptual&#160;and</p>
+<p style="position:absolute;top:803px;left:102px;white-space:nowrap" class="ft200">reward-related&#160;decision-making.&#160;Prog.&#160;Neurobiol.&#160;103,&#160;194–213&#160;(2013)</p>
+<p style="position:absolute;top:818px;left:81px;white-space:nowrap" class="ft200">46.&#160;K.D.&#160;Birnbaum,&#160;A.S.&#160;Alvarado,&#160;Slicing&#160;across&#160;kingdoms:&#160;regeneration&#160;in&#160;plants&#160;and&#160;animals.</p>
+<p style="position:absolute;top:833px;left:102px;white-space:nowrap" class="ft200">Cell&#160;132,&#160;697–710&#160;(2008)</p>
+<p style="position:absolute;top:848px;left:81px;white-space:nowrap" class="ft200">47.&#160;D.&#160;Lobo,&#160;M.&#160;Solano,&#160;G.A.&#160;Bubenik,&#160;M.&#160;Levin,&#160;A&#160;linear-encoding&#160;model&#160;explains&#160;the</p>
+<p style="position:absolute;top:862px;left:102px;white-space:nowrap" class="ft201">variability&#160;of&#160;the&#160;target&#160;morphology&#160;in&#160;regeneration.&#160;J.&#160;R.&#160;Soc.,&#160;Interface/R.&#160;Soc.&#160;11,&#160;20130918<br/>(2014)</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft200">64</p>
+<p style="position:absolute;top:52px;left:471px;white-space:nowrap" class="ft200">J.&#160;Hammelman&#160;et&#160;al.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>5e3ed74cc1918623cd838c8c71f14e5d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:10px;font-family:Times;color:#000000;}
+	.ft211{font-size:10px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:87px;left:81px;white-space:nowrap" class="ft210">48.&#160;L.N.&#160;Vandenberg,&#160;D.S.&#160;Adams,&#160;M.&#160;Levin,&#160;Normalized&#160;shape&#160;and&#160;location&#160;of&#160;perturbed</p>
+<p style="position:absolute;top:102px;left:102px;white-space:nowrap" class="ft211">craniofacial&#160;structures&#160;in&#160;the&#160;Xenopus&#160;tadpole&#160;reveal&#160;an&#160;innate&#160;ability&#160;to&#160;achieve&#160;correct<br/>morphology.&#160;Dev.&#160;Dyn.&#160;241,&#160;863–878&#160;(2012)</p>
+<p style="position:absolute;top:132px;left:81px;white-space:nowrap" class="ft210">49.&#160;J.&#160;Mustard,&#160;M.&#160;Levin,&#160;Bioelectrical&#160;mechanisms&#160;for&#160;programming&#160;growth&#160;and&#160;form:&#160;taming</p>
+<p style="position:absolute;top:147px;left:102px;white-space:nowrap" class="ft210">physiological&#160;networks&#160;for&#160;soft&#160;body&#160;robotics,&#160;Soft&#160;Rob.&#160;1,&#160;169–191&#160;(2014)</p>
+<p style="position:absolute;top:161px;left:81px;white-space:nowrap" class="ft210">50.&#160;A.&#160;Tseng,&#160;M.&#160;Levin,&#160;Cracking&#160;the&#160;bioelectric&#160;code:&#160;Probing&#160;endogenous&#160;ionic&#160;controls&#160;of</p>
+<p style="position:absolute;top:176px;left:102px;white-space:nowrap" class="ft210">pattern&#160;formation.&#160;Commun.&#160;Integr.&#160;Biol.&#160;6,&#160;1–8&#160;(2013)</p>
+<p style="position:absolute;top:191px;left:81px;white-space:nowrap" class="ft210">51.&#160;M.&#160;Levin,&#160;C.G.&#160;Stevenson,&#160;Regulation&#160;of&#160;cell&#160;behavior&#160;and&#160;tissue&#160;patterning&#160;by&#160;bioelectrical</p>
+<p style="position:absolute;top:206px;left:102px;white-space:nowrap" class="ft211">signals:&#160;challenges&#160;and&#160;opportunities&#160;for&#160;biomedical&#160;engineering.&#160;Annu.&#160;Rev.&#160;Biomed.&#160;Eng.<br/>14,&#160;295–323&#160;(2012)</p>
+<p style="position:absolute;top:236px;left:81px;white-space:nowrap" class="ft210">52.&#160;M.&#160;Levin,&#160;Molecular&#160;bioelectricity:&#160;how&#160;endogenous&#160;voltage&#160;potentials&#160;control&#160;cell&#160;behavior</p>
+<p style="position:absolute;top:251px;left:102px;white-space:nowrap" class="ft210">and&#160;instruct&#160;pattern&#160;regulation&#160;in&#160;vivo.&#160;Mol.&#160;Biol.&#160;Cell&#160;25,&#160;3835–3850&#160;(2014)</p>
+<p style="position:absolute;top:266px;left:81px;white-space:nowrap" class="ft210">53.&#160;M.&#160;Levin,&#160;Reprogramming&#160;cells&#160;and&#160;tissue&#160;patterning&#160;via&#160;bioelectrical&#160;pathways:&#160;molecular</p>
+<p style="position:absolute;top:281px;left:102px;white-space:nowrap" class="ft211">mechanisms&#160;and&#160;biomedical&#160;opportunities.&#160;Wiley&#160;Interdisc.&#160;Rev.:&#160;Syst.&#160;Biol.&#160;Med.&#160;5,&#160;657–676<br/>(2013)</p>
+<p style="position:absolute;top:311px;left:81px;white-space:nowrap" class="ft210">54.&#160;M.&#160;Levin,&#160;Morphogenetic&#160;ﬁelds&#160;in&#160;embryogenesis,&#160;regeneration,&#160;and&#160;cancer:&#160;non-local&#160;control</p>
+<p style="position:absolute;top:325px;left:102px;white-space:nowrap" class="ft210">of&#160;complex&#160;patterning.&#160;Bio&#160;Syst.&#160;109,&#160;243–261&#160;(2012)</p>
+<p style="position:absolute;top:340px;left:81px;white-space:nowrap" class="ft210">55.&#160;M.&#160;Levin,&#160;Endogenous&#160;bioelectrical&#160;networks&#160;store&#160;non-genetic&#160;patterning&#160;information&#160;during</p>
+<p style="position:absolute;top:355px;left:102px;white-space:nowrap" class="ft210">development&#160;and&#160;regeneration.&#160;J.&#160;Physiol.&#160;592,&#160;2295–2305&#160;(2014)</p>
+<p style="position:absolute;top:370px;left:81px;white-space:nowrap" class="ft210">56.&#160;F.&#160;Keijzer,&#160;M.&#160;van&#160;Duijn,&#160;P.&#160;Lyon,&#160;What&#160;nervous&#160;systems&#160;do:&#160;early&#160;evolution,&#160;input-output,</p>
+<p style="position:absolute;top:385px;left:102px;white-space:nowrap" class="ft210">and&#160;the&#160;skin&#160;brain&#160;thesis.&#160;Adapt.&#160;Behav.&#160;21,&#160;67–85&#160;(2013)</p>
+<p style="position:absolute;top:400px;left:81px;white-space:nowrap" class="ft210">57.&#160;N.D.&#160;Holland,&#160;Early&#160;central&#160;nervous&#160;system&#160;evolution:&#160;an&#160;era&#160;of&#160;skin&#160;brains?&#160;Nat.&#160;Rev.</p>
+<p style="position:absolute;top:415px;left:102px;white-space:nowrap" class="ft210">Neurosci.&#160;4,&#160;617–627&#160;(2003)</p>
+<p style="position:absolute;top:430px;left:81px;white-space:nowrap" class="ft210">58.&#160;G.A.&#160;Buznikov,&#160;Y.B.&#160;Shmukler,&#160;Possible&#160;role&#160;of&#160;“prenervous”&#160;neurotransmitters&#160;in&#160;cellular</p>
+<p style="position:absolute;top:445px;left:102px;white-space:nowrap" class="ft210">interactions&#160;of&#160;early&#160;embryogenesis:&#160;a&#160;hypothesis.&#160;Neurochem.&#160;Res.&#160;6,&#160;55–68&#160;(1981)</p>
+<p style="position:absolute;top:460px;left:81px;white-space:nowrap" class="ft210">59.&#160;G.&#160;Buznikov,&#160;Y.&#160;Shmukler,&#160;J.&#160;Lauder,&#160;From&#160;oocyte&#160;to&#160;neuron:&#160;do&#160;neurotransmitters&#160;function&#160;in</p>
+<p style="position:absolute;top:475px;left:102px;white-space:nowrap" class="ft210">the&#160;same&#160;way&#160;throughout&#160;development?&#160;Cell.&#160;Mol.&#160;Neurobiol.&#160;16,&#160;537–559&#160;(1996)</p>
+<p style="position:absolute;top:490px;left:81px;white-space:nowrap" class="ft210">60.&#160;H.&#160;Yan,&#160;L.&#160;Zhao,&#160;L.&#160;Hu,&#160;X.&#160;Wang,&#160;E.&#160;Wang,&#160;J.&#160;Wang,&#160;Nonequilibrium&#160;landscape&#160;theory&#160;of</p>
+<p style="position:absolute;top:504px;left:102px;white-space:nowrap" class="ft210">neural&#160;networks.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;110,&#160;E4185–E4194&#160;(2013)</p>
+<p style="position:absolute;top:519px;left:81px;white-space:nowrap" class="ft210">61.&#160;K.&#160;Friston,&#160;B.&#160;SenGupta,&#160;G.&#160;Auletta,&#160;Cognitive&#160;dynamics:&#160;From&#160;attractors&#160;to&#160;active&#160;inference.</p>
+<p style="position:absolute;top:534px;left:102px;white-space:nowrap" class="ft210">Proc.&#160;IEEE&#160;102,&#160;427–445&#160;(2014)</p>
+<p style="position:absolute;top:549px;left:81px;white-space:nowrap" class="ft210">62.&#160;S.&#160;Bhattacharya,&#160;Q.&#160;Zhang,&#160;M.&#160;Andersen,&#160;A&#160;deterministic&#160;map&#160;of&#160;Waddington’s&#160;epigenetic</p>
+<p style="position:absolute;top:564px;left:102px;white-space:nowrap" class="ft210">landscape&#160;for&#160;cell&#160;fate&#160;speciﬁcation.&#160;BMC&#160;Syst.&#160;Biol.&#160;5,&#160;85&#160;(2011)</p>
+<p style="position:absolute;top:579px;left:81px;white-space:nowrap" class="ft210">63.&#160;B.D.&#160;MacArthur,&#160;A.&#160;Ma’ayan,&#160;I.&#160;Lemischka,&#160;Toward&#160;stem&#160;cell&#160;systems&#160;biology:&#160;from</p>
+<p style="position:absolute;top:594px;left:102px;white-space:nowrap" class="ft211">molecules&#160;to&#160;networks&#160;and&#160;landscapes.&#160;Cold&#160;Spring&#160;Harb.&#160;Symp.Quant.&#160;Biol.&#160;2008,&#160;p.&#160;sqb.<br/>2008.73.&#160;061</p>
+<p style="position:absolute;top:624px;left:81px;white-space:nowrap" class="ft210">64.&#160;S.&#160;Huang,&#160;The&#160;molecular&#160;and&#160;mathematical&#160;basis&#160;of&#160;Waddington’s&#160;epigenetic&#160;landscape:&#160;A</p>
+<p style="position:absolute;top:639px;left:102px;white-space:nowrap" class="ft210">framework&#160;for&#160;post-Darwinian&#160;biology?&#160;BioEssays&#160;34,&#160;149–157&#160;(2012)</p>
+<p style="position:absolute;top:654px;left:81px;white-space:nowrap" class="ft210">65.&#160;E.&#160;Aboukhatwa,&#160;A.&#160;Aboobaker,&#160;An&#160;introduction&#160;to&#160;planarians&#160;and&#160;their&#160;stem&#160;cells,”&#160;in&#160;eLS,&#160;ed</p>
+<p style="position:absolute;top:669px;left:102px;white-space:nowrap" class="ft210">(John&#160;Wiley&#160;and&#160;Sons,&#160;Ltd,&#160;2015)</p>
+<p style="position:absolute;top:683px;left:81px;white-space:nowrap" class="ft210">66.&#160;D.&#160;Lobo,&#160;W.S.&#160;Beane,&#160;M.&#160;Levin,&#160;Modeling&#160;planarian&#160;regeneration:&#160;a&#160;primer&#160;for</p>
+<p style="position:absolute;top:698px;left:102px;white-space:nowrap" class="ft210">reverse-engineering&#160;the&#160;worm.&#160;PLoS&#160;Comput.&#160;Biol.&#160;8,&#160;e1002481&#160;(2012)</p>
+<p style="position:absolute;top:713px;left:81px;white-space:nowrap" class="ft210">67.&#160;E.&#160;Saló,&#160;K.&#160;Agata,&#160;Planarian&#160;regeneration:&#160;a&#160;classic&#160;topic&#160;claiming&#160;new&#160;attention.&#160;Int.&#160;J.&#160;Dev.</p>
+<p style="position:absolute;top:728px;left:102px;white-space:nowrap" class="ft210">Biol.&#160;56,&#160;1–4&#160;(2012)</p>
+<p style="position:absolute;top:743px;left:81px;white-space:nowrap" class="ft210">68.&#160;P.W.&#160;Reddien,&#160;A.&#160;Sanchez&#160;Alvarado,&#160;Fundamentals&#160;of&#160;planarian&#160;regeneration.&#160;Annu.&#160;Rev.</p>
+<p style="position:absolute;top:758px;left:102px;white-space:nowrap" class="ft210">Cell&#160;Dev.&#160;Biol.&#160;20,&#160;725–57&#160;(2004)</p>
+<p style="position:absolute;top:773px;left:81px;white-space:nowrap" class="ft210">69.&#160;N.J.&#160;Oviedo,&#160;J.&#160;Morokuma,&#160;P.&#160;Walentek,&#160;I.&#160;Kema,&#160;M.B.&#160;Gu,&#160;J.-M.&#160;Ahn&#160;et&#160;al.,&#160;Long-range</p>
+<p style="position:absolute;top:788px;left:102px;white-space:nowrap" class="ft211">neural&#160;and&#160;gap&#160;junction&#160;protein-mediated&#160;cues&#160;control&#160;polarity&#160;during&#160;planarian&#160;regeneration.<br/>Dev.&#160;Biol.&#160;339,&#160;188–199&#160;(2010)</p>
+<p style="position:absolute;top:818px;left:81px;white-space:nowrap" class="ft210">70.&#160;T.&#160;Kohonen,&#160;Self-organized&#160;formation&#160;of&#160;topologically&#160;correct&#160;feature&#160;maps.&#160;Biol.&#160;Cybern.&#160;43,</p>
+<p style="position:absolute;top:833px;left:102px;white-space:nowrap" class="ft210">59–69&#160;(1982)</p>
+<p style="position:absolute;top:52px;left:81px;white-space:nowrap" class="ft210">Artiﬁcial&#160;Neural&#160;Networks&#160;as&#160;Models&#160;of&#160;Robustness&#160;…</p>
+<p style="position:absolute;top:52px;left:566px;white-space:nowrap" class="ft210">65</p>
+</div>
+</body>
+</html>

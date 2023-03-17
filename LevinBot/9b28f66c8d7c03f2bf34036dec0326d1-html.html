@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9b28f66c8d7c03f2bf34036dec0326d1-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:32px;font-family:Times;color:#000000;}
+	.ft11{font-size:13px;font-family:Times;color:#000000;}
+	.ft12{font-size:8px;font-family:Times;color:#000000;}
+	.ft13{font-size:12px;font-family:Times;color:#000000;}
+	.ft14{font-size:7px;font-family:Times;color:#000000;}
+	.ft15{font-size:10px;font-family:Times;color:#000000;}
+	.ft16{font-size:10px;font-family:Times;color:#000000;}
+	.ft17{font-size:12px;font-family:Times;color:#000000;}
+	.ft18{font-size:9px;font-family:Times;color:#000000;}
+	.ft19{font-size:12px;font-family:Times;color:#000000;}
+	.ft110{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft111{font-size:12px;line-height:15px;font-family:Times;color:#000000;}
+	.ft112{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:76px;left:156px;white-space:nowrap" class="ft10">Microfluidic Platform&#160;to Study Intercellular&#160;</p>
+<p style="position:absolute;top:116px;left:94px;white-space:nowrap" class="ft10">Connectivity Through On-chip Electrical Impedance&#160;</p>
+<p style="position:absolute;top:156px;left:365px;white-space:nowrap" class="ft10">Measurement&#160;</p>
+<p style="position:absolute;top:229px;left:236px;white-space:nowrap" class="ft11">Joel Dungan1, Juanita&#160;Mathews2, Michael Levin2, Valencia Koomson1&#160;</p>
+<p style="position:absolute;top:250px;left:191px;white-space:nowrap" class="ft13">Department&#160;of&#160;Electrical and&#160;Computer Engineering,&#160;Tufts&#160;University, Medford, MA&#160;021551&#160;</p>
+<p style="position:absolute;top:267px;left:275px;white-space:nowrap" class="ft13">Department&#160;of&#160;Biology, Tufts&#160;University, Medford, MA&#160;021552&#160;</p>
+<p style="position:absolute;top:283px;left:459px;white-space:nowrap" class="ft13">&#160;</p>
+<p style="position:absolute;top:301px;left:102px;white-space:nowrap" class="ft15"><i><b>Abstract</b></i><b>—</b></p>
+<p style="position:absolute;top:300px;left:160px;white-space:nowrap" class="ft17"><b>A platform&#160;has&#160;been developed to&#160;study&#160;</b></p>
+<p style="position:absolute;top:317px;left:83px;white-space:nowrap" class="ft110"><b>intercellular communication&#160;in non-neural cells&#160;as&#160;it relates&#160;<br/>to developmental&#160;biology&#160;and&#160;morphogenetic&#160;<br/>bioengineering. The versatile platform&#160;uses&#160;laminar flow in&#160;<br/>a&#160;microfluidic channel to create a&#160;“sucrose gap”&#160;that&#160;forces&#160;<br/>electrical signaling through a cell&#160;monolayer. The&#160;<br/>intercellular communication&#160;in the cell network&#160;is&#160;detected&#160;<br/>through&#160;electrical&#160;impedance measurements. A&#160;phase&#160;<br/>sensitive homodyne&#160;system&#160;has been designed and&#160;<br/>simulated&#160;in&#160;a 130nm&#160;CMOS&#160;process&#160;to provide&#160;a readout&#160;<br/>of cell&#160;monolayer complex impedance within the&#160;device. The&#160;<br/>system&#160;exhibits&#160;a highly&#160;linear conversion rate of&#160;<br/>0.589mV/kȍ&#160;for cell layer impedances&#160;up to 1&#160;Mȍ.<i>&#160;</i></b></p>
+<p style="position:absolute;top:530px;left:102px;white-space:nowrap" class="ft15"><i><b>Keywords—CMOS; homodyne; lab-on-a-chip;&#160;gap junction&#160;</b></i></p>
+<p style="position:absolute;top:565px;left:211px;white-space:nowrap" class="ft13">I.&#160;</p>
+<p style="position:absolute;top:565px;left:241px;white-space:nowrap" class="ft13">INTRODUCTION&#160;</p>
+<p style="position:absolute;top:586px;left:103px;white-space:nowrap" class="ft13">Non-neural&#160;cells&#160;possess&#160;sophisticated intercellular&#160;</p>
+<p style="position:absolute;top:602px;left:83px;white-space:nowrap" class="ft13">communication&#160;mechanisms&#160;and&#160;are&#160;capable&#160;of&#160;forming&#160;</p>
+<p style="position:absolute;top:618px;left:83px;white-space:nowrap" class="ft13">networks and making decisions&#160;about&#160;cell growth and&#160;</p>
+<p style="position:absolute;top:634px;left:83px;white-space:nowrap" class="ft13">proliferation&#160;[1].&#160;Non-neural cellular&#160;communication&#160;is&#160;</p>
+<p style="position:absolute;top:649px;left:83px;white-space:nowrap" class="ft13">mediated by&#160;gap&#160;junctions.&#160;These&#160;close&#160;cytosolic couplings&#160;</p>
+<p style="position:absolute;top:665px;left:83px;white-space:nowrap" class="ft13">allow&#160;the&#160;exchange&#160;of&#160;signaling molecules&#160;or ions&#160;between&#160;</p>
+<p style="position:absolute;top:681px;left:83px;white-space:nowrap" class="ft13">adjacent&#160;cells. Gap junctions&#160;are comprised of&#160;membrane&#160;</p>
+<p style="position:absolute;top:696px;left:83px;white-space:nowrap" class="ft13">proteins&#160;that&#160;can&#160;allow&#160;diffusion&#160;with&#160;high&#160;specificity&#160;[1-3].&#160;</p>
+<p style="position:absolute;top:712px;left:83px;white-space:nowrap" class="ft13">Recent&#160;results&#160;have&#160;shown&#160;that connectivity&#160;between&#160;non-neural&#160;</p>
+<p style="position:absolute;top:728px;left:83px;white-space:nowrap" class="ft13">cells&#160;plays a&#160;crucial&#160;role&#160;in&#160;shaping&#160;cell&#160;development.&#160;&#160;</p>
+<p style="position:absolute;top:752px;left:103px;white-space:nowrap" class="ft13">Patterns&#160;in connectivity&#160;established at&#160;the&#160;cellular&#160;level&#160;</p>
+<p style="position:absolute;top:768px;left:83px;white-space:nowrap" class="ft13">cascade&#160;into complex&#160;behaviors&#160;important to&#160;regenerative&#160;</p>
+<p style="position:absolute;top:784px;left:83px;white-space:nowrap" class="ft13">medicine and morphogenetic&#160;bioengineering.&#160;Altering&#160;gap&#160;</p>
+<p style="position:absolute;top:799px;left:83px;white-space:nowrap" class="ft13">junction&#160;activity&#160;has&#160;been shown to affect&#160;pattern&#160;formation&#160;[4],&#160;</p>
+<p style="position:absolute;top:815px;left:83px;white-space:nowrap" class="ft13">asymmetry&#160;[5],&#160;and&#160;organ growth,&#160;going so&#160;far&#160;as&#160;to&#160;induce&#160;the&#160;</p>
+<p style="position:absolute;top:831px;left:83px;white-space:nowrap" class="ft13">formation&#160;of&#160;multiple&#160;heads&#160;in planarians [6].&#160;Errors&#160;in gap&#160;</p>
+<p style="position:absolute;top:847px;left:83px;white-space:nowrap" class="ft13">junction&#160;signaling&#160;can&#160;also&#160;cause abnormal growth&#160;that&#160;</p>
+<p style="position:absolute;top:862px;left:83px;white-space:nowrap" class="ft13">manifests&#160;as&#160;various&#160;disease&#160;states&#160;in&#160;humans,&#160;including&#160;forms&#160;</p>
+<p style="position:absolute;top:878px;left:83px;white-space:nowrap" class="ft13">of&#160;cancer [7]. Numerous studies&#160;have linked abnormal&#160;gap&#160;</p>
+<p style="position:absolute;top:894px;left:83px;white-space:nowrap" class="ft13">junction&#160;communication&#160;with tumor&#160;formation&#160;and&#160;</p>
+<p style="position:absolute;top:909px;left:83px;white-space:nowrap" class="ft13">carcinogenesis,&#160;and therapies focusing on gap&#160;junction&#160;</p>
+<p style="position:absolute;top:925px;left:83px;white-space:nowrap" class="ft13">regulation&#160;have met with some&#160;success in mouse models [8].&#160;</p>
+<p style="position:absolute;top:941px;left:83px;white-space:nowrap" class="ft13">Gap&#160;junction-mediated&#160;signaling has been&#160;shown to&#160;affect&#160;the&#160;</p>
+<p style="position:absolute;top:957px;left:83px;white-space:nowrap" class="ft13">differentiation&#160;of&#160;multipotent cells&#160;[9],&#160;and&#160;in general,&#160;regulation&#160;</p>
+<p style="position:absolute;top:972px;left:83px;white-space:nowrap" class="ft13">of&#160;these&#160;electrical&#160;synapses&#160;is&#160;an&#160;essential&#160;component&#160;of&#160;</p>
+<p style="position:absolute;top:988px;left:83px;white-space:nowrap" class="ft111">exploiting developmental bioelectricity&#160;for&#160;the bioengineering&#160;<br/>of&#160;artificial&#160;living constructs&#160;(synthetic&#160;morphology)&#160;[10-12]. &#160;</p>
+<p style="position:absolute;top:299px;left:493px;white-space:nowrap" class="ft13">Traditionally, gap&#160;junction&#160;activity&#160;is examined via&#160;either&#160;the&#160;</p>
+<p style="position:absolute;top:315px;left:472px;white-space:nowrap" class="ft13">patch&#160;clamping&#160;method&#160;[13]&#160;or&#160;by&#160;observation&#160;of&#160;specialized&#160;</p>
+<p style="position:absolute;top:331px;left:472px;white-space:nowrap" class="ft13">diffusive&#160;dyes&#160;[9-11].&#160;Whole&#160;cell patch clamping&#160;measures&#160;gap&#160;</p>
+<p style="position:absolute;top:346px;left:472px;white-space:nowrap" class="ft13">junction&#160;activity&#160;by&#160;recording&#160;the flow&#160;of&#160;charged ions&#160;through&#160;</p>
+<p style="position:absolute;top:362px;left:472px;white-space:nowrap" class="ft13">a cell membrane as&#160;an electrical voltage.&#160;However,&#160;the&#160;technique&#160;</p>
+<p style="position:absolute;top:378px;left:472px;white-space:nowrap" class="ft13">disrupts&#160;the membrane and&#160;is&#160;both&#160;expensive&#160;and technically&#160;</p>
+<p style="position:absolute;top:394px;left:472px;white-space:nowrap" class="ft13">challenging to perform,&#160;especially&#160;on more than&#160;a single&#160;cell.&#160;</p>
+<p style="position:absolute;top:409px;left:472px;white-space:nowrap" class="ft13">Dye diffusion&#160;methods&#160;attach&#160;fluorescent&#160;indicators&#160;to&#160;track&#160;the&#160;</p>
+<p style="position:absolute;top:425px;left:472px;white-space:nowrap" class="ft13">flow&#160;of&#160;signaling molecules&#160;through gap&#160;junctions.&#160;However,&#160;the&#160;</p>
+<p style="position:absolute;top:441px;left:472px;white-space:nowrap" class="ft13">results&#160;of&#160;these&#160;dye&#160;tests&#160;are&#160;difficult&#160;to&#160;quantify&#160;and&#160;</p>
+<p style="position:absolute;top:456px;left:472px;white-space:nowrap" class="ft13">repeatability&#160;is&#160;a significant&#160;issue.&#160;</p>
+<p style="position:absolute;top:481px;left:493px;white-space:nowrap" class="ft13">To&#160;overcome&#160;the&#160;limitations&#160;of&#160;the&#160;existing&#160;technologies,&#160;a&#160;</p>
+<p style="position:absolute;top:496px;left:472px;white-space:nowrap" class="ft13">microfluidic&#160;platform&#160;is&#160;proposed&#160;to&#160;perform&#160;repeatable&#160;non-</p>
+<p style="position:absolute;top:512px;left:472px;white-space:nowrap" class="ft13">invasive&#160;assays&#160;on&#160;tissue&#160;networks.&#160;In&#160;a manner&#160;analogous to&#160;</p>
+<p style="position:absolute;top:528px;left:472px;white-space:nowrap" class="ft13">sucrose&#160;bridge&#160;experiments [14], the microfluidic&#160;chip&#160;</p>
+<p style="position:absolute;top:544px;left:472px;white-space:nowrap" class="ft13">electrically&#160;isolates&#160;a&#160;living&#160;cell&#160;culture,&#160;allowing precise&#160;</p>
+<p style="position:absolute;top:559px;left:472px;white-space:nowrap" class="ft13">impedance&#160;measurements&#160;that&#160;correspond&#160;to&#160;the&#160;average&#160;</p>
+<p style="position:absolute;top:575px;left:472px;white-space:nowrap" class="ft13">connectivity&#160;across the cells.&#160;This&#160;real&#160;time monitoring&#160;of&#160;</p>
+<p style="position:absolute;top:591px;left:472px;white-space:nowrap" class="ft13">cellular&#160;connectivity&#160;allows&#160;closed loop&#160;drug&#160;delivery&#160;studies&#160;</p>
+<p style="position:absolute;top:607px;left:472px;white-space:nowrap" class="ft13">that will test&#160;training and&#160;anticipation&#160;in gap&#160;junction&#160;networks.&#160;</p>
+<p style="position:absolute;top:622px;left:472px;white-space:nowrap" class="ft13">The ability&#160;to sense&#160;and&#160;manipulate gap&#160;junctional&#160;</p>
+<p style="position:absolute;top:638px;left:472px;white-space:nowrap" class="ft13">communication&#160;could have&#160;profound impacts&#160;on&#160;research&#160;and&#160;</p>
+<p style="position:absolute;top:654px;left:472px;white-space:nowrap" class="ft13">applications&#160;in&#160;developmental&#160;biology&#160;and tissue&#160;engineering.&#160;&#160;</p>
+<p style="position:absolute;top:690px;left:566px;white-space:nowrap" class="ft13">II.&#160;&#160;MICROFLUIDIC&#160;PLATFORM&#160;</p>
+<p style="position:absolute;top:721px;left:472px;white-space:nowrap" class="ft19"><i>A.&#160;&#160;Microfluidic Design&#160;</i></p>
+<p style="position:absolute;top:742px;left:493px;white-space:nowrap" class="ft13">A&#160;microfluidic device&#160;that&#160;miniaturizes&#160;sucrose&#160;bridge&#160;</p>
+<p style="position:absolute;top:757px;left:472px;white-space:nowrap" class="ft13">experiments was presented&#160;in [15].&#160;This&#160;work&#160;extends&#160;those&#160;</p>
+<p style="position:absolute;top:773px;left:472px;white-space:nowrap" class="ft13">results&#160;and incorporates&#160;key&#160;improvements&#160;to realize a true&#160;lab-</p>
+<p style="position:absolute;top:789px;left:472px;white-space:nowrap" class="ft13">on-chip research platform.&#160;The&#160;device&#160;takes advantage&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:1033px;left:105px;white-space:nowrap" class="ft18">This&#160;work&#160;sponsored&#160;in part&#160;by&#160;the NSF&#160;IGERT&#160;program.&#160;</p>
+<p style="position:absolute;top:1001px;left:472px;white-space:nowrap" class="ft112">Fig.&#160;1.&#160;&#160;(a)&#160;Topview&#160;of&#160;the&#160;microfluidic&#160;device, fluid&#160;inlets&#160;are&#160;on&#160;the&#160;bottom,&#160;<br/>pads&#160;at&#160;the&#160;top fit&#160;a standard&#160;card edge&#160;connector,&#160;(b)&#160;chip&#160;cross-section.&#160;</p>
+<p style="position:absolute;top:1089px;left:81px;white-space:nowrap" class="ft11">978-1-5090-6389-5/17/$31.00 ©2017 IEEE</p>
+<p style="position:absolute;top:1089px;left:452px;white-space:nowrap" class="ft11">56</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9b28f66c8d7c03f2bf34036dec0326d1-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:9px;font-family:Times;color:#000000;}
+	.ft23{font-size:7px;font-family:Times;color:#000000;}
+	.ft24{font-size:13px;font-family:Times;color:#000000;}
+	.ft25{font-size:12px;line-height:15px;font-family:Times;color:#000000;}
+	.ft26{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:83px;left:83px;white-space:nowrap" class="ft20">phenomenon&#160;of&#160;laminar flow&#160;to&#160;create&#160;three&#160;distinct&#160;fluid&#160;regions&#160;</p>
+<p style="position:absolute;top:98px;left:83px;white-space:nowrap" class="ft20">in a central&#160;channel, shown in Fig.&#160;1.&#160;A sucrose&#160;based&#160;center&#160;</p>
+<p style="position:absolute;top:114px;left:83px;white-space:nowrap" class="ft20">stream&#160;creates&#160;a high&#160;impedance&#160;barrier which&#160;forces&#160;the&#160;</p>
+<p style="position:absolute;top:130px;left:83px;white-space:nowrap" class="ft20">majority&#160;of&#160;electrical&#160;signaling through the&#160;cell layer&#160;above.&#160;</p>
+<p style="position:absolute;top:146px;left:83px;white-space:nowrap" class="ft20">Thus,&#160;any&#160;current&#160;stimulus&#160;driven&#160;between the&#160;conductive&#160;saline&#160;</p>
+<p style="position:absolute;top:161px;left:83px;white-space:nowrap" class="ft20">side&#160;streams traverses&#160;the&#160;cell&#160;monolayer&#160;producing a recordable&#160;</p>
+<p style="position:absolute;top:177px;left:83px;white-space:nowrap" class="ft20">voltage that&#160;represents&#160;the&#160;average&#160;electrical&#160;impedance&#160;across&#160;</p>
+<p style="position:absolute;top:193px;left:83px;white-space:nowrap" class="ft20">the cell&#160;network.&#160;</p>
+<p style="position:absolute;top:217px;left:103px;white-space:nowrap" class="ft20">Digitally&#160;controlled&#160;solenoid&#160;valves&#160;allow&#160;quick switching&#160;</p>
+<p style="position:absolute;top:233px;left:83px;white-space:nowrap" class="ft20">(on&#160;order&#160;of&#160;milliseconds)&#160;of&#160;the central stream&#160;among three&#160;high&#160;</p>
+<p style="position:absolute;top:249px;left:83px;white-space:nowrap" class="ft20">resistivity&#160;sucrose&#160;solutions,&#160;each&#160;which may&#160;be&#160;perfused&#160;with&#160;</p>
+<p style="position:absolute;top:264px;left:83px;white-space:nowrap" class="ft20">chemicals&#160;agents&#160;that&#160;induce changes&#160;in&#160;cell connectivity.&#160;This&#160;</p>
+<p style="position:absolute;top:280px;left:83px;white-space:nowrap" class="ft20">rapid&#160;automated solution&#160;exchange&#160;enables&#160;closed&#160;loop&#160;drug&#160;</p>
+<p style="position:absolute;top:296px;left:83px;white-space:nowrap" class="ft20">delivery&#160;experiments,&#160;in which drug&#160;delivery&#160;is modulated&#160;</p>
+<p style="position:absolute;top:311px;left:83px;white-space:nowrap" class="ft25">directly&#160;in&#160;response to&#160;electrical measurement of&#160;cellular&#160;<br/>network connectivity.&#160;&#160;</p>
+<p style="position:absolute;top:352px;left:103px;white-space:nowrap" class="ft20">A&#160;polymethylsiloxane&#160;(PDMS)&#160;layer&#160;forming the&#160;top layer&#160;</p>
+<p style="position:absolute;top:367px;left:83px;white-space:nowrap" class="ft20">of&#160;the microchannels&#160;offers&#160;several advantages.&#160;Importantly,&#160;the&#160;</p>
+<p style="position:absolute;top:383px;left:83px;white-space:nowrap" class="ft20">device is&#160;much&#160;less&#160;susceptible&#160;to&#160;leaking&#160;because&#160;the elastomer&#160;</p>
+<p style="position:absolute;top:399px;left:83px;white-space:nowrap" class="ft20">accommodates some&#160;non-uniformity&#160;in the SU8 film. In&#160;addition&#160;</p>
+<p style="position:absolute;top:415px;left:83px;white-space:nowrap" class="ft20">to easing fabrication tolerances,&#160;the&#160;PDMS&#160;also&#160;allows trapped&#160;</p>
+<p style="position:absolute;top:430px;left:83px;white-space:nowrap" class="ft20">bubbles&#160;to&#160;outgas&#160;over&#160;time.&#160;Cell&#160;adhesion&#160;to&#160;PDMS has&#160;proved&#160;</p>
+<p style="position:absolute;top:446px;left:83px;white-space:nowrap" class="ft20">exceptional.&#160;In&#160;the&#160;case&#160;of&#160;normal rat kidney&#160;cells, adhesion&#160;to&#160;</p>
+<p style="position:absolute;top:462px;left:83px;white-space:nowrap" class="ft20">PDMS&#160;appears&#160;superior to&#160;glass&#160;and has&#160;been successfully&#160;</p>
+<p style="position:absolute;top:477px;left:83px;white-space:nowrap" class="ft20">demonstrated under laminar&#160;flow&#160;conditions for 24 hours.&#160;</p>
+<p style="position:absolute;top:511px;left:83px;white-space:nowrap" class="ft21"><i>B.&#160;&#160;Fabrication&#160;</i></p>
+<p style="position:absolute;top:531px;left:103px;white-space:nowrap" class="ft20">The&#160;microfluidic&#160;chip,&#160;as&#160;diagrammed in&#160;Fig.&#160;1,&#160;has&#160;been&#160;</p>
+<p style="position:absolute;top:547px;left:83px;white-space:nowrap" class="ft20">fabricated in&#160;the&#160;Tufts&#160;Micro/Nanofab.&#160;Cr/Au electrodes&#160;were&#160;</p>
+<p style="position:absolute;top:563px;left:83px;white-space:nowrap" class="ft20">patterned onto&#160;a borosilicate&#160;substrate&#160;using&#160;a&#160;liftoff&#160;process.&#160;</p>
+<p style="position:absolute;top:578px;left:83px;white-space:nowrap" class="ft20">The walls&#160;of&#160;the microfluidic channels&#160;were formed using&#160;</p>
+<p style="position:absolute;top:594px;left:83px;white-space:nowrap" class="ft20">MicroChem&#160;SU8-3050 at&#160;a thickness&#160;of&#160;65um.&#160;A&#160;flat&#160;layer&#160;of&#160;</p>
+<p style="position:absolute;top:610px;left:83px;white-space:nowrap" class="ft20">PDMS&#160;(Sylgard&#160;184),&#160;mixed&#160;at&#160;a&#160;ratio&#160;of&#160;5:1&#160;elastomeric&#160;base to&#160;</p>
+<p style="position:absolute;top:626px;left:83px;white-space:nowrap" class="ft20">curing&#160;agent&#160;in&#160;order&#160;to&#160;increase&#160;rigidity, forms the&#160;top&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:641px;left:83px;white-space:nowrap" class="ft20">microfluidic&#160;channels&#160;and&#160;serves&#160;as&#160;a&#160;substrate&#160;for&#160;cell&#160;culture.&#160;</p>
+<p style="position:absolute;top:657px;left:83px;white-space:nowrap" class="ft20">The&#160;layers&#160;of&#160;the&#160;device are compressed&#160;together in&#160;a custom&#160;</p>
+<p style="position:absolute;top:673px;left:83px;white-space:nowrap" class="ft20">housing laser&#160;cut&#160;from&#160;clear&#160;acrylic&#160;(ePlastics&#160;1/8”).&#160;The housing&#160;</p>
+<p style="position:absolute;top:688px;left:83px;white-space:nowrap" class="ft20">provides&#160;even&#160;pressure&#160;generated&#160;through 6 screws&#160;and is&#160;</p>
+<p style="position:absolute;top:704px;left:83px;white-space:nowrap" class="ft20">designed to&#160;the&#160;dimensions&#160;of&#160;a standard 90 mm&#160;petri&#160;dish&#160;so&#160;</p>
+<p style="position:absolute;top:720px;left:83px;white-space:nowrap" class="ft20">that&#160;it&#160;can&#160;be&#160;easily&#160;mounted&#160;on&#160;an&#160;inverted&#160;microscope.&#160;</p>
+<p style="position:absolute;top:753px;left:83px;white-space:nowrap" class="ft21"><i>C.&#160;&#160;Electrical Measurement&#160;</i></p>
+<p style="position:absolute;top:774px;left:103px;white-space:nowrap" class="ft20">The&#160;device&#160;has&#160;also been reconfigured&#160;to&#160;improve&#160;the&#160;</p>
+<p style="position:absolute;top:790px;left:83px;white-space:nowrap" class="ft20">electrode&#160;design&#160;and&#160;electrical&#160;measurement scheme.&#160;An&#160;</p>
+<p style="position:absolute;top:805px;left:83px;white-space:nowrap" class="ft20">additional&#160;set&#160;of&#160;electrodes&#160;have&#160;been&#160;incorporated&#160;to&#160;create&#160;a&#160;</p>
+<p style="position:absolute;top:821px;left:83px;white-space:nowrap" class="ft20">built in&#160;control&#160;channel.&#160;The electrodes&#160;have&#160;also&#160;been routed&#160;</p>
+<p style="position:absolute;top:837px;left:83px;white-space:nowrap" class="ft20">(under&#160;protective&#160;photoresist)&#160;to&#160;a&#160;single&#160;edge&#160;of&#160;the&#160;chip&#160;where&#160;</p>
+<p style="position:absolute;top:852px;left:83px;white-space:nowrap" class="ft20">a good&#160;electrical&#160;contact&#160;can&#160;be&#160;made&#160;via&#160;a&#160;standard&#160;chip&#160;edge&#160;</p>
+<p style="position:absolute;top:868px;left:83px;white-space:nowrap" class="ft20">connector.&#160;The&#160;connector&#160;routes&#160;all&#160;signals&#160;into&#160;a&#160;custom&#160;printed&#160;</p>
+<p style="position:absolute;top:884px;left:83px;white-space:nowrap" class="ft20">circuit&#160;board&#160;that houses the&#160;proposed&#160;integrated circuit&#160;to&#160;</p>
+<p style="position:absolute;top:900px;left:83px;white-space:nowrap" class="ft20">perform&#160;electrical&#160;impedance&#160;measurements.&#160;</p>
+<p style="position:absolute;top:936px;left:187px;white-space:nowrap" class="ft20">III.&#160;&#160;INTEGRATED&#160;CIRCUIT&#160;</p>
+<p style="position:absolute;top:967px;left:83px;white-space:nowrap" class="ft21"><i>A.&#160;&#160;System Architecture&#160;</i></p>
+<p style="position:absolute;top:988px;left:103px;white-space:nowrap" class="ft20">In&#160;order to&#160;prevent&#160;electroplating of&#160;the gold&#160;electrodes, an&#160;</p>
+<p style="position:absolute;top:1003px;left:83px;white-space:nowrap" class="ft20">alternating&#160;current&#160;stimulus&#160;with&#160;low&#160;peak&#160;current&#160;(&lt;1μA) is&#160;</p>
+<p style="position:absolute;top:1019px;left:83px;white-space:nowrap" class="ft20">used &#160;to probe the&#160;cell&#160;layer.&#160;Taking&#160;advantage of&#160;the&#160;modulated&#160;</p>
+<p style="position:absolute;top:499px;left:472px;white-space:nowrap" class="ft20">input,&#160;a homodyne&#160;demodulation&#160;scheme&#160;is&#160;proposed in&#160;Fig.&#160;2&#160;</p>
+<p style="position:absolute;top:515px;left:472px;white-space:nowrap" class="ft20">to&#160;both&#160;improve&#160;noise&#160;performance&#160;at&#160;the&#160;output&#160;and&#160;to&#160;function&#160;</p>
+<p style="position:absolute;top:531px;left:472px;white-space:nowrap" class="ft20">as a voltage&#160;readout&#160;circuit.&#160;Multiplying the voltage signal&#160;seen&#160;</p>
+<p style="position:absolute;top:546px;left:472px;white-space:nowrap" class="ft20">across&#160;the&#160;cell&#160;layer&#160;(Zcells)&#160;by&#160;the&#160;original&#160;modulation&#160;frequency&#160;</p>
+<p style="position:absolute;top:562px;left:472px;white-space:nowrap" class="ft20">red-shifts the signal to&#160;0&#160;Hz,&#160;where a sharp&#160;ultra-low&#160;pass filter&#160;</p>
+<p style="position:absolute;top:578px;left:472px;white-space:nowrap" class="ft20">can&#160;significantly&#160;reduce&#160;the&#160;noise&#160;bandwidth.&#160;In&#160;addition&#160;to&#160;</p>
+<p style="position:absolute;top:593px;left:472px;white-space:nowrap" class="ft20">improving the&#160;SNR, the&#160;architecture&#160;of&#160;Fig.&#160;1&#160;enables&#160;phase&#160;</p>
+<p style="position:absolute;top:609px;left:472px;white-space:nowrap" class="ft20">sensitive&#160;detection for&#160;complex impedance measurement. In&#160;the&#160;</p>
+<p style="position:absolute;top:625px;left:472px;white-space:nowrap" class="ft20">quadrature&#160;channel,&#160;the&#160;signal is&#160;instead multiplied by&#160;a&#160;</p>
+<p style="position:absolute;top:641px;left:472px;white-space:nowrap" class="ft20">reference signal shifted&#160;by&#160;90°&#160;relative&#160;to&#160;the&#160;reference,&#160;resulting&#160;</p>
+<p style="position:absolute;top:656px;left:472px;white-space:nowrap" class="ft20">in&#160;only&#160;the&#160;out&#160;of&#160;phase&#160;components&#160;of&#160;the&#160;signal&#160;appearing&#160;at&#160;</p>
+<p style="position:absolute;top:672px;left:472px;white-space:nowrap" class="ft20">output,&#160;Qcells.&#160;</p>
+<p style="position:absolute;top:696px;left:493px;white-space:nowrap" class="ft20">The architecture&#160;previously&#160;described&#160;is very&#160;similar&#160;to&#160;a&#160;</p>
+<p style="position:absolute;top:712px;left:472px;white-space:nowrap" class="ft20">“lock-in”&#160;amplifier,&#160;except&#160;that no&#160;phase-locked&#160;loop&#160;is&#160;</p>
+<p style="position:absolute;top:728px;left:472px;white-space:nowrap" class="ft20">employed&#160;to&#160;ensure&#160;that&#160;the&#160;I-channel&#160;is&#160;perfectly&#160;in&#160;phase.&#160;</p>
+<p style="position:absolute;top:744px;left:472px;white-space:nowrap" class="ft20">Integrated&#160;lock-in&#160;amplifiers&#160;have been&#160;presented&#160;previously&#160;</p>
+<p style="position:absolute;top:759px;left:472px;white-space:nowrap" class="ft20">[16-20],&#160;however,&#160;the&#160;chief&#160;difficulty&#160;in this design will result&#160;</p>
+<p style="position:absolute;top:775px;left:472px;white-space:nowrap" class="ft20">from&#160;high impedance&#160;loading.&#160;In&#160;preliminary&#160;measurements and&#160;</p>
+<p style="position:absolute;top:791px;left:472px;white-space:nowrap" class="ft20">previously&#160;published results&#160;[15], cell&#160;layer&#160;impedances&#160;have&#160;</p>
+<p style="position:absolute;top:806px;left:472px;white-space:nowrap" class="ft20">been&#160;measured in the&#160;range&#160;of&#160;hundreds&#160;of&#160;kilohms.&#160;Such&#160;high&#160;</p>
+<p style="position:absolute;top:822px;left:472px;white-space:nowrap" class="ft20">load&#160;impedances&#160;present&#160;considerable strain&#160;on&#160;the&#160;circuit&#160;</p>
+<p style="position:absolute;top:838px;left:472px;white-space:nowrap" class="ft20">stability&#160;and&#160;frequency&#160;response.&#160;</p>
+<p style="position:absolute;top:871px;left:472px;white-space:nowrap" class="ft21"><i>B.&#160;&#160;Current Driver&#160;</i></p>
+<p style="position:absolute;top:892px;left:493px;white-space:nowrap" class="ft20">A&#160;highly&#160;stable&#160;precision&#160;AC&#160;current&#160;source&#160;is&#160;required&#160;for&#160;</p>
+<p style="position:absolute;top:908px;left:472px;white-space:nowrap" class="ft20">accurate measurements&#160;of&#160;absolute&#160;impedance&#160;in&#160;this&#160;system. If&#160;</p>
+<p style="position:absolute;top:923px;left:472px;white-space:nowrap" class="ft20">the waveform&#160;shape&#160;and frequency&#160;is&#160;provided&#160;by&#160;an&#160;external&#160;</p>
+<p style="position:absolute;top:939px;left:472px;white-space:nowrap" class="ft20">reference,&#160;as&#160;proposed,&#160;this current driver&#160;takes the form&#160;of&#160;a&#160;</p>
+<p style="position:absolute;top:955px;left:472px;white-space:nowrap" class="ft20">high precision&#160;transconductance&#160;amplifier.&#160;For&#160;this&#160;purpose&#160;</p>
+<p style="position:absolute;top:970px;left:472px;white-space:nowrap" class="ft20">many&#160;applications turn&#160;to&#160;the&#160;standard&#160;differential pair&#160;cell&#160;[21],&#160;</p>
+<p style="position:absolute;top:986px;left:472px;white-space:nowrap" class="ft20">[22].&#160;However,&#160;the&#160;open&#160;loop&#160;transconductance&#160;of&#160;these&#160;cells&#160;</p>
+<p style="position:absolute;top:1002px;left:472px;white-space:nowrap" class="ft20">cannot&#160;be&#160;easily&#160;guaranteed since&#160;it&#160;is&#160;a&#160;direct&#160;function&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:1018px;left:472px;white-space:nowrap" class="ft20">input pairs’&#160;gm&#160;values. Such&#160;designs&#160;are therefore very&#160;</p>
+<p style="position:absolute;top:463px;left:472px;white-space:nowrap" class="ft26">Fig.&#160;3.&#160; (a) Feedback&#160;structure for differential current&#160;driver,&#160;(b) transistor level<br/>schematic&#160;of&#160;transconductance&#160;amplifier&#160;(biasing&#160;and&#160;CMFB not&#160;shown).&#160;</p>
+<p style="position:absolute;top:269px;left:472px;white-space:nowrap" class="ft22">Fig.&#160;2.&#160;&#160;System&#160;architecture.&#160;</p>
+<p style="position:absolute;top:1089px;left:452px;white-space:nowrap" class="ft24">57</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9b28f66c8d7c03f2bf34036dec0326d1-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:8px;font-family:Times;color:#000000;}
+	.ft32{font-size:6px;font-family:Times;color:#000000;}
+	.ft33{font-size:7px;font-family:Times;color:#000000;}
+	.ft34{font-size:12px;font-family:Times;color:#000000;}
+	.ft35{font-size:9px;font-family:Times;color:#000000;}
+	.ft36{font-size:13px;font-family:Times;color:#000000;}
+	.ft37{font-size:12px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:523px;left:83px;white-space:nowrap" class="ft30">susceptible&#160;to&#160;temperature changes,&#160;mismatch&#160;errors, and&#160;bias&#160;</p>
+<p style="position:absolute;top:539px;left:83px;white-space:nowrap" class="ft30">current fluctuations.&#160;In&#160;addition,&#160;in&#160;order&#160;to&#160;maintain stability&#160;</p>
+<p style="position:absolute;top:554px;left:83px;white-space:nowrap" class="ft30">over a large load impedance, the&#160;output impedance&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:570px;left:83px;white-space:nowrap" class="ft30">transconductor&#160;must be&#160;exceptionally&#160;high.&#160;</p>
+<p style="position:absolute;top:594px;left:103px;white-space:nowrap" class="ft30">To&#160;establish&#160;a&#160;regulated&#160;transconductance&#160;and&#160;high&#160;output&#160;</p>
+<p style="position:absolute;top:610px;left:83px;white-space:nowrap" class="ft30">impedance,&#160;a feedback&#160;approach&#160;for&#160;a&#160;differential current&#160;driver&#160;</p>
+<p style="position:absolute;top:626px;left:83px;white-space:nowrap" class="ft30">is proposed&#160;[23], as&#160;shown in&#160;Fig.&#160;3a. From&#160;two-port&#160;network&#160;</p>
+<p style="position:absolute;top:642px;left:83px;white-space:nowrap" class="ft37">theory, a transconductance amplifier with&#160;open-loop&#160;<br/>transconductance,&#160;</p>
+<p style="position:absolute;top:657px;left:190px;white-space:nowrap" class="ft30">ܩ௠&#160;,&#160;that&#160;is connected&#160;through series-series&#160;</p>
+<p style="position:absolute;top:674px;left:83px;white-space:nowrap" class="ft30">feedback&#160;with&#160;a transimpedance&#160;amplifier&#160;of&#160;gain,&#160;</p>
+<p style="position:absolute;top:673px;left:396px;white-space:nowrap" class="ft30">ܴ௙&#160;, will&#160;</p>
+<p style="position:absolute;top:691px;left:83px;white-space:nowrap" class="ft30">experience&#160;an&#160;enhanced closed&#160;loop&#160;transconductance,&#160;</p>
+<p style="position:absolute;top:691px;left:423px;white-space:nowrap" class="ft30">Ȟ௠&#160;,&#160;</p>
+<p style="position:absolute;top:707px;left:83px;white-space:nowrap" class="ft30">given by:&#160;</p>
+<p style="position:absolute;top:736px;left:103px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:735px;left:224px;white-space:nowrap" class="ft30">Ȟ௠&#160;ൌ</p>
+<p style="position:absolute;top:730px;left:272px;white-space:nowrap" class="ft31">ீ೘</p>
+<p style="position:absolute;top:746px;left:259px;white-space:nowrap" class="ft31">ଵାீ೘ோ೑</p>
+<p style="position:absolute;top:736px;left:300px;white-space:nowrap" class="ft30">. (1)&#160;</p>
+<p style="position:absolute;top:768px;left:83px;white-space:nowrap" class="ft30">Similarly&#160;the&#160;output&#160;resistance,&#160;</p>
+<p style="position:absolute;top:767px;left:269px;white-space:nowrap" class="ft30">ܴ௢௨௧,&#160;is&#160;also enhanced by&#160;the&#160;</p>
+<p style="position:absolute;top:784px;left:83px;white-space:nowrap" class="ft30">loop&#160;gain factor,&#160;</p>
+<p style="position:absolute;top:784px;left:180px;white-space:nowrap" class="ft30">ܩ௠ܴ௙:&#160;</p>
+<p style="position:absolute;top:812px;left:103px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:811px;left:200px;white-space:nowrap" class="ft30">ܴ௢௨௧&#160;ൌ&#160;ݎ଴൫ͳ&#160;൅&#160;ܩ௠ܴ௙൯&#160;(2)&#160;</p>
+<p style="position:absolute;top:838px;left:83px;white-space:nowrap" class="ft30">where&#160;</p>
+<p style="position:absolute;top:837px;left:121px;white-space:nowrap" class="ft30">ݎ଴&#160;is&#160;the output&#160;resistance&#160;of&#160;the original&#160;transconductor.&#160;</p>
+<p style="position:absolute;top:854px;left:83px;white-space:nowrap" class="ft30">In&#160;this&#160;structure,&#160;</p>
+<p style="position:absolute;top:854px;left:197px;white-space:nowrap" class="ft30">ܩ௠&#160;ൌ&#160;ܣ଴݃௠&#160;ݎ଴&#160;ሺݎ଴&#160;൅&#160;ܴௌ&#160;൅&#160;ܼ௅ሻ</p>
+<p style="position:absolute;top:853px;left:283px;white-space:nowrap" class="ft30">Τ</p>
+<p style="position:absolute;top:854px;left:383px;white-space:nowrap" class="ft30">&#160;and&#160;</p>
+<p style="position:absolute;top:854px;left:416px;white-space:nowrap" class="ft30">ܴ௙&#160;ൌ</p>
+<p style="position:absolute;top:871px;left:83px;white-space:nowrap" class="ft30">ܣ௨ܴௌ&#160;, such&#160;that from&#160;(1)&#160;the&#160;total transconductance&#160;can&#160;be&#160;</p>
+<p style="position:absolute;top:888px;left:83px;white-space:nowrap" class="ft30">approximated&#160;by&#160;</p>
+<p style="position:absolute;top:916px;left:103px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:915px;left:234px;white-space:nowrap" class="ft30">Ȟ௠&#160;ൎ</p>
+<p style="position:absolute;top:911px;left:279px;white-space:nowrap" class="ft31">ଵ</p>
+<p style="position:absolute;top:927px;left:269px;white-space:nowrap" class="ft31">஺ೠோೄ</p>
+<p style="position:absolute;top:916px;left:294px;white-space:nowrap" class="ft30">&#160;(3)&#160;</p>
+<p style="position:absolute;top:946px;left:83px;white-space:nowrap" class="ft30">when&#160;</p>
+<p style="position:absolute;top:946px;left:118px;white-space:nowrap" class="ft30">ݎ଴&#160;ب&#160;ܴௌ&#160;൅&#160;ܼ௅&#160;&#160;and&#160;ܣ௨ܣ଴݃௠ܴ௦&#160;ب&#160;ͳ.&#160;Letting&#160;ܣ௨&#160;ൌ&#160;ͳ, an&#160;</p>
+<p style="position:absolute;top:962px;left:83px;white-space:nowrap" class="ft30">ܴௌ&#160;&#160;of&#160;&#160;100&#160;&#160;kȍ&#160;is&#160;chosen&#160;so that&#160;the&#160;driver&#160;can&#160;be&#160;directly&#160;</p>
+<p style="position:absolute;top:978px;left:83px;white-space:nowrap" class="ft30">controlled&#160;by&#160;a&#160;function&#160;generator&#160;or&#160;by&#160;the&#160;analog&#160;output&#160;port&#160;</p>
+<p style="position:absolute;top:994px;left:83px;white-space:nowrap" class="ft30">of&#160;a microcontroller&#160;producing a 100mV&#160;sinusoid&#160;signal.&#160;</p>
+<p style="position:absolute;top:283px;left:493px;white-space:nowrap" class="ft30">The preamplifier (</p>
+<p style="position:absolute;top:282px;left:596px;white-space:nowrap" class="ft30">ܣ଴) in&#160;Fig.&#160;3a is&#160;implemented as&#160;a standard&#160;</p>
+<p style="position:absolute;top:299px;left:472px;white-space:nowrap" class="ft30">folded&#160;cascode&#160;amplifier&#160;with NMOS inputs.&#160;Miller&#160;</p>
+<p style="position:absolute;top:315px;left:472px;white-space:nowrap" class="ft30">compensation&#160;capacitors&#160;provide&#160;a&#160;feedforward path&#160;to&#160;bring&#160;the&#160;</p>
+<p style="position:absolute;top:330px;left:472px;white-space:nowrap" class="ft30">amplifier’s&#160;phase margin&#160;to&#160;55.03°.&#160;The&#160;open&#160;loop&#160;gain&#160;at&#160;low&#160;</p>
+<p style="position:absolute;top:346px;left:472px;white-space:nowrap" class="ft30">frequencies is&#160;greater&#160;than&#160;68&#160;dB.&#160;&#160;</p>
+<p style="position:absolute;top:370px;left:493px;white-space:nowrap" class="ft30">Voltage&#160;to&#160;current&#160;conversion&#160;in&#160;the&#160;transconductor&#160;block&#160;</p>
+<p style="position:absolute;top:386px;left:472px;white-space:nowrap" class="ft30">(Fig.&#160;3b)&#160;is&#160;achieved&#160;through&#160;a&#160;balanced&#160;differential&#160;pair. The&#160;</p>
+<p style="position:absolute;top:402px;left:472px;white-space:nowrap" class="ft30">resulting&#160;current&#160;is&#160;mirrored&#160;to&#160;the output&#160;at&#160;a ratio&#160;of&#160;M:1 via a&#160;</p>
+<p style="position:absolute;top:418px;left:472px;white-space:nowrap" class="ft30">double&#160;cascode&#160;mirror.&#160;A&#160;supply&#160;voltage&#160;of&#160;Vdd=3.3V&#160;provides&#160;</p>
+<p style="position:absolute;top:433px;left:472px;white-space:nowrap" class="ft30">ample&#160;headroom&#160;for this&#160;normally&#160;swing-expensive&#160;cascode&#160;</p>
+<p style="position:absolute;top:449px;left:472px;white-space:nowrap" class="ft30">mirroring&#160;structure.&#160;The&#160;mirror&#160;provides&#160;large&#160;output&#160;resistance&#160;</p>
+<p style="position:absolute;top:465px;left:472px;white-space:nowrap" class="ft30">by&#160;both&#160;reducing&#160;the&#160;output&#160;branch&#160;bias&#160;current&#160;by&#160;a&#160;factor&#160;of&#160;M&#160;</p>
+<p style="position:absolute;top:480px;left:472px;white-space:nowrap" class="ft30">and&#160;through&#160;capitalizing on&#160;the&#160;effects of&#160;cascoding. &#160;As&#160;</p>
+<p style="position:absolute;top:496px;left:472px;white-space:nowrap" class="ft30">demonstrated&#160;in&#160;Fig.&#160;4a,&#160;where&#160;a&#160;resistive&#160;load&#160;is&#160;swept&#160;against&#160;</p>
+<p style="position:absolute;top:512px;left:472px;white-space:nowrap" class="ft30">a low&#160;frequency&#160;voltage&#160;input, the&#160;transconductor&#160;achieves&#160;an&#160;</p>
+<p style="position:absolute;top:528px;left:472px;white-space:nowrap" class="ft30">output resistance&#160;of&#160;49&#160;Mȍ&#160;(i.e. where the&#160;transconductance&#160;</p>
+<p style="position:absolute;top:543px;left:472px;white-space:nowrap" class="ft30">falls&#160;by&#160;half).&#160;&#160;The frequency&#160;response&#160;of&#160;the transconductor&#160;</p>
+<p style="position:absolute;top:559px;left:472px;white-space:nowrap" class="ft30">under&#160;a&#160;1 Mȍ-2&#160;pF&#160;load&#160;is&#160;presented&#160;in Fig&#160;4b, showing that&#160;the&#160;</p>
+<p style="position:absolute;top:575px;left:472px;white-space:nowrap" class="ft30">output falls&#160;by&#160;3dB&#160;at&#160;26.3 MHz.&#160;</p>
+<p style="position:absolute;top:599px;left:493px;white-space:nowrap" class="ft30">Transimpedance&#160;feedback&#160;is&#160;achieved&#160;through a&#160;unity&#160;gain&#160;</p>
+<p style="position:absolute;top:615px;left:472px;white-space:nowrap" class="ft30">buffer&#160;that senses&#160;the&#160;current flowing through sense&#160;resistor,&#160;</p>
+<p style="position:absolute;top:614px;left:817px;white-space:nowrap" class="ft30">ܴௌ.&#160;</p>
+<p style="position:absolute;top:631px;left:472px;white-space:nowrap" class="ft30">The&#160;buffer&#160;is implemented with a differential&#160;difference&#160;</p>
+<p style="position:absolute;top:647px;left:472px;white-space:nowrap" class="ft30">amplifier&#160;(DDA)&#160;configured&#160;to&#160;shift&#160;the&#160;single&#160;ended&#160;output&#160;to&#160;</p>
+<p style="position:absolute;top:662px;left:472px;white-space:nowrap" class="ft30">Vdd/2&#160;[24],&#160;[25].&#160;</p>
+<p style="position:absolute;top:687px;left:493px;white-space:nowrap" class="ft30">The simulated&#160;output&#160;of&#160;the&#160;full feedback&#160;structure&#160;of&#160;Fig.&#160;3&#160;</p>
+<p style="position:absolute;top:702px;left:472px;white-space:nowrap" class="ft37">is shown in Fig.&#160;5.&#160;The transconductance&#160;is&#160;regulated&#160;to 10&#160;μS&#160;<br/>as&#160;expected&#160;for&#160;</p>
+<p style="position:absolute;top:718px;left:568px;white-space:nowrap" class="ft30">ܴௌ&#160;= 100&#160;kȍ. The&#160;driver&#160;exhibits&#160;good&#160;load&#160;</p>
+<p style="position:absolute;top:734px;left:472px;white-space:nowrap" class="ft37">stability&#160;with 0.05%&#160;transconductance&#160;variation&#160;over&#160;the&#160;<br/>expected&#160;operating range&#160;(100 kȍ&#160;&lt;&#160;</p>
+<p style="position:absolute;top:749px;left:686px;white-space:nowrap" class="ft30">ܼ௅&lt; 1 Mȍ).&#160;The driver&#160;is&#160;</p>
+<p style="position:absolute;top:766px;left:472px;white-space:nowrap" class="ft30">gain stable&#160;up&#160;to&#160;a&#160;frequency&#160;of 110 kHz.&#160;</p>
+<p style="position:absolute;top:800px;left:472px;white-space:nowrap" class="ft34"><i>C.&#160;&#160;Demodulation Circuit&#160;</i></p>
+<p style="position:absolute;top:820px;left:493px;white-space:nowrap" class="ft30">The&#160;instrumentation amplifier (INA)&#160;responsible&#160;for&#160;</p>
+<p style="position:absolute;top:836px;left:472px;white-space:nowrap" class="ft30">detecting the induced voltage&#160;difference&#160;across&#160;the cell&#160;layer is&#160;</p>
+<p style="position:absolute;top:851px;left:472px;white-space:nowrap" class="ft37">based&#160;on&#160;the&#160;current feedback&#160;topology&#160;presented&#160;in&#160;Fig.&#160;6&#160;[26].&#160;<br/>The&#160;gain&#160;of&#160;this&#160;circuit&#160;is&#160;approximately&#160;</p>
+<p style="position:absolute;top:866px;left:719px;white-space:nowrap" class="ft30">ܴ௅Ȁܴௌ.&#160;&#160;Differential&#160;</p>
+<p style="position:absolute;top:883px;left:472px;white-space:nowrap" class="ft37">voltage&#160;at&#160;the input&#160;is&#160;converted&#160;to&#160;current&#160;through source&#160;<br/>degeneration&#160;resistors,&#160;</p>
+<p style="position:absolute;top:898px;left:606px;white-space:nowrap" class="ft30">ܴௌ, in&#160;the&#160;first transconductor&#160;stage.&#160;In&#160;</p>
+<p style="position:absolute;top:915px;left:472px;white-space:nowrap" class="ft37">the second&#160;transimpedance&#160;amplifier&#160;stage,&#160;differential&#160;current&#160;<br/>flows through&#160;</p>
+<p style="position:absolute;top:930px;left:557px;white-space:nowrap" class="ft30">ܴ௅,&#160;converting&#160;the signal&#160;back&#160;to voltage.&#160;Very&#160;</p>
+<p style="position:absolute;top:947px;left:472px;white-space:nowrap" class="ft37">high input&#160;impedance&#160;and a moderate&#160;gain&#160;of&#160;2 are&#160;achieved in&#160;<br/>this system&#160;block.&#160;</p>
+<p style="position:absolute;top:987px;left:493px;white-space:nowrap" class="ft30">The signal&#160;buffered&#160;by&#160;the&#160;INA&#160;is mixed&#160;with the&#160;square&#160;</p>
+<p style="position:absolute;top:1003px;left:472px;white-space:nowrap" class="ft30">wave&#160;reference signal&#160;by&#160;a&#160;passive&#160;mixer,&#160;in which transmission&#160;</p>
+<p style="position:absolute;top:1018px;left:472px;white-space:nowrap" class="ft30">gates&#160;reverse&#160;the&#160;polarity&#160;of&#160;the&#160;differential&#160;signal&#160;when the&#160;</p>
+<p style="position:absolute;top:468px;left:434px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:481px;left:173px;white-space:nowrap" class="ft35">(a)&#160;</p>
+<p style="position:absolute;top:481px;left:342px;white-space:nowrap" class="ft35">(b)&#160;</p>
+<p style="position:absolute;top:500px;left:84px;white-space:nowrap" class="ft35">Fig.&#160;5.&#160; Simulation&#160;results&#160;for closed&#160;loop&#160;current&#160;driver.&#160;</p>
+<p style="position:absolute;top:248px;left:430px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:261px;left:174px;white-space:nowrap" class="ft35">(a)&#160;</p>
+<p style="position:absolute;top:261px;left:356px;white-space:nowrap" class="ft35">(b)&#160;</p>
+<p style="position:absolute;top:280px;left:84px;white-space:nowrap" class="ft35">Fig.&#160;4. &#160;Simulation results&#160;for&#160;open&#160;loop&#160;transconductance&#160;amplifier.&#160;</p>
+<p style="position:absolute;top:241px;left:799px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:260px;left:472px;white-space:nowrap" class="ft35">Fig.&#160;6. &#160;Current feedback&#160;INA&#160;schematic&#160;(CMFB not&#160;shown).&#160;</p>
+<p style="position:absolute;top:1089px;left:452px;white-space:nowrap" class="ft36">58</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9b28f66c8d7c03f2bf34036dec0326d1-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:9px;font-family:Times;color:#000000;}
+	.ft42{font-size:7px;font-family:Times;color:#000000;}
+	.ft43{font-size:13px;font-family:Times;color:#000000;}
+	.ft44{font-size:9px;line-height:12px;font-family:Times;color:#000000;}
+	.ft45{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:302px;left:83px;white-space:nowrap" class="ft40">reference&#160;signal&#160;is low.&#160;A difference&#160;amplifier&#160;converts&#160;the&#160;</p>
+<p style="position:absolute;top:318px;left:83px;white-space:nowrap" class="ft40">output to&#160;a single&#160;ended voltage&#160;for&#160;filtering.&#160;For&#160;the&#160;purposes&#160;of&#160;</p>
+<p style="position:absolute;top:333px;left:83px;white-space:nowrap" class="ft40">the simulation&#160;results&#160;presented in Fig.&#160;7,&#160;a simple&#160;passive&#160;third&#160;</p>
+<p style="position:absolute;top:349px;left:83px;white-space:nowrap" class="ft40">order RC filter&#160;has&#160;been&#160;used.&#160;&#160;</p>
+<p style="position:absolute;top:383px;left:224px;white-space:nowrap" class="ft40">IV.&#160;&#160;RESULTS&#160;</p>
+<p style="position:absolute;top:404px;left:103px;white-space:nowrap" class="ft40">Fig.&#160;7 shows the&#160;simulated response&#160;of&#160;the&#160;integrated&#160;</p>
+<p style="position:absolute;top:420px;left:83px;white-space:nowrap" class="ft40">impedance measurement circuit. As&#160;the&#160;load&#160;resistance&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:436px;left:83px;white-space:nowrap" class="ft40">cells&#160;is&#160;swept across&#160;the&#160;physiologically&#160;relevant&#160;range,&#160;the&#160;</p>
+<p style="position:absolute;top:452px;left:83px;white-space:nowrap" class="ft40">system&#160;exhibits&#160;a&#160;highly&#160;linear response with a&#160;conversion rate&#160;</p>
+<p style="position:absolute;top:467px;left:83px;white-space:nowrap" class="ft40">of&#160;0.589&#160;mV/kȍ&#160;(R2&#160;&gt;&#160;0.999),&#160;while&#160;the current&#160;driver&#160;remains&#160;</p>
+<p style="position:absolute;top:483px;left:83px;white-space:nowrap" class="ft40">stable.&#160;The Q-channel readout&#160;remains constant&#160;over a&#160;resistive&#160;</p>
+<p style="position:absolute;top:499px;left:83px;white-space:nowrap" class="ft40">load&#160;sweep.&#160;Further&#160;work&#160;aims to&#160;complete&#160;the&#160;integration&#160;of&#160;an&#160;</p>
+<p style="position:absolute;top:514px;left:83px;white-space:nowrap" class="ft40">OTA-C&#160;architecture for the final low&#160;pass&#160;filter&#160;element. Upon&#160;</p>
+<p style="position:absolute;top:530px;left:83px;white-space:nowrap" class="ft40">fabrication,&#160;the&#160;proposed&#160;integrated circuit&#160;will enable&#160;precise&#160;</p>
+<p style="position:absolute;top:546px;left:83px;white-space:nowrap" class="ft40">electrical measurement of&#160;gap&#160;junction&#160;mediated&#160;cellular&#160;</p>
+<p style="position:absolute;top:562px;left:83px;white-space:nowrap" class="ft40">interconnectivity&#160;in a&#160;lab-on-a-chip device, ideal for&#160;</p>
+<p style="position:absolute;top:577px;left:83px;white-space:nowrap" class="ft40">investigation&#160;of&#160;in vitro models&#160;of&#160;regenerative&#160;biology&#160;and&#160;</p>
+<p style="position:absolute;top:593px;left:83px;white-space:nowrap" class="ft40">physiological&#160;plasticity&#160;[27], [28].&#160;</p>
+<p style="position:absolute;top:630px;left:227px;white-space:nowrap" class="ft40">REFERENCES&#160;</p>
+<p style="position:absolute;top:652px;left:83px;white-space:nowrap" class="ft41">[1]&#160;&#160;J.&#160;Mathews&#160;and&#160;M.&#160;Levin,&#160;“Gap&#160;junctional&#160;signaling in&#160;pattern&#160;regulation:&#160;</p>
+<p style="position:absolute;top:665px;left:109px;white-space:nowrap" class="ft41">Physiological&#160;network connectivity&#160;instructs&#160;growth and form.,”&#160;</p>
+<p style="position:absolute;top:677px;left:109px;white-space:nowrap" class="ft41">Developmental Neurobiology,&#160;Jun.&#160;2016.&#160;</p>
+<p style="position:absolute;top:694px;left:83px;white-space:nowrap" class="ft41">[2]&#160;&#160;E.&#160;Scemes,&#160;S.&#160;Suadicani,&#160;G.&#160;Dahl,&#160;and D.&#160;Spray,&#160;“Connexin&#160;and&#160;pannexin&#160;</p>
+<p style="position:absolute;top:707px;left:109px;white-space:nowrap" class="ft41">mediated&#160;cell-cell&#160;communication,”&#160;Neuron&#160;Glia Biology,&#160;vol.&#160;3, no.&#160;3,&#160;</p>
+<p style="position:absolute;top:720px;left:109px;white-space:nowrap" class="ft41">pp.&#160;199–208,&#160;Nov.&#160;2008.&#160;</p>
+<p style="position:absolute;top:737px;left:83px;white-space:nowrap" class="ft41">[3]&#160;&#160;G.&#160;Sohl&#160;and K.&#160;Willecke, “Gap junctions&#160;and&#160;the&#160;connexin&#160;protein&#160;</p>
+<p style="position:absolute;top:750px;left:109px;white-space:nowrap" class="ft41">family,”&#160;Cardiovascular&#160;Research,&#160;vol.&#160;62,&#160;no.&#160;2,&#160;pp.&#160;228–232,&#160;May&#160;2004.&#160;</p>
+<p style="position:absolute;top:766px;left:83px;white-space:nowrap" class="ft41">[4]&#160;&#160;K.&#160;J.&#160;Sims,&#160;D.&#160;Eble,&#160;and&#160;M.&#160;Iovine,&#160;“Connexin43&#160;regulates&#160;joint location&#160;</p>
+<p style="position:absolute;top:779px;left:109px;white-space:nowrap" class="ft41">in&#160;zebrafish&#160;fins,”&#160;Development Biology,&#160;vol.&#160;327,&#160;no. 2, pp.&#160;410–418,&#160;</p>
+<p style="position:absolute;top:792px;left:109px;white-space:nowrap" class="ft41">Mar. 2009.&#160;</p>
+<p style="position:absolute;top:809px;left:83px;white-space:nowrap" class="ft41">[5]&#160;&#160;C.-F. Chuang,&#160;M. K.&#160;VanHoven, R.&#160;D.&#160;Fetter,&#160;V.&#160;K.&#160;Verselis, and&#160;C. I.&#160;</p>
+<p style="position:absolute;top:822px;left:109px;white-space:nowrap" class="ft44">Bargmann, “An innexin-dependent&#160;cell&#160;network establishes&#160;left-right&#160;<br/>neuronal&#160;asymmetry&#160;in&#160;C.&#160;elegans,”&#160;Cell,&#160;vol.&#160;129,&#160;no.&#160;4,&#160;pp.&#160;787–799,&#160;</p>
+<p style="position:absolute;top:847px;left:109px;white-space:nowrap" class="ft41">May&#160;2007.&#160;</p>
+<p style="position:absolute;top:864px;left:83px;white-space:nowrap" class="ft41">[6]&#160;&#160;M.&#160;Emmons-Bell et&#160;al.,&#160;“Gap&#160;junctional&#160;blockade&#160;stochastically&#160;induces&#160;</p>
+<p style="position:absolute;top:877px;left:109px;white-space:nowrap" class="ft44">different&#160;species-specific&#160;head&#160;anatomies&#160;in&#160;genetically&#160;wild-type&#160;<br/>Girardia&#160;dorotocephala&#160;flatworms,”&#160;International Journal of Molecular&#160;</p>
+<p style="position:absolute;top:903px;left:109px;white-space:nowrap" class="ft41">Sciences,&#160;vol.&#160;16,&#160;no.&#160;11,&#160;pp.&#160;27865–27896,&#160;Nov.&#160;2015.&#160;</p>
+<p style="position:absolute;top:920px;left:83px;white-space:nowrap" class="ft41">[7]&#160;&#160;Y.&#160;Omori and H. Yamasaki, “Mutated&#160;connexin43 proteins&#160;inhibit rat&#160;</p>
+<p style="position:absolute;top:932px;left:109px;white-space:nowrap" class="ft44">glioma&#160;cell&#160;growth suppression mediated&#160;by&#160;wild-type&#160;connexin43&#160;in&#160;a&#160;<br/>dominant-negative&#160;manner.,” International&#160;Journal&#160;of&#160;Cancer, vol. 78,&#160;no.&#160;</p>
+<p style="position:absolute;top:958px;left:109px;white-space:nowrap" class="ft41">4,&#160;pp.&#160;446–453,&#160;Nov.&#160;1998.&#160;</p>
+<p style="position:absolute;top:975px;left:83px;white-space:nowrap" class="ft41">[8]&#160;&#160;B.&#160;Chernet,&#160;C.&#160;Fields, and&#160;M. Levin, “Long-range&#160;gap junctional&#160;signaling&#160;</p>
+<p style="position:absolute;top:988px;left:109px;white-space:nowrap" class="ft41">controls&#160;oncogene-mediated tumorigenesis&#160;in&#160;Xenopus&#160;laevis&#160;embryos,”&#160;</p>
+<p style="position:absolute;top:1001px;left:109px;white-space:nowrap" class="ft41">Frontiers&#160;in&#160;Physiology,&#160;vol.&#160;5,&#160;p.&#160;519,&#160;Jan.&#160;2015.&#160;</p>
+<p style="position:absolute;top:83px;left:472px;white-space:nowrap" class="ft41">[9]&#160;&#160;N.&#160;Oviedo&#160;and&#160;M.&#160;Levin, “smedinx-11&#160;is&#160;a&#160;planarian stem&#160;cell&#160;gap&#160;</p>
+<p style="position:absolute;top:96px;left:498px;white-space:nowrap" class="ft41">junction gene&#160;required&#160;for regeneration&#160;and homeostasis,” Development,&#160;</p>
+<p style="position:absolute;top:109px;left:498px;white-space:nowrap" class="ft41">vol.&#160;134,&#160;pp.&#160;3121–3131, Aug.&#160;2007.&#160;</p>
+<p style="position:absolute;top:125px;left:472px;white-space:nowrap" class="ft41">[10]&#160;&#160;M.&#160;Levin,&#160;G.&#160;Pezzulo,&#160;and&#160;J.&#160;M.&#160;Finkelstein,&#160;“Endogenous&#160;Bioelectric&#160;</p>
+<p style="position:absolute;top:138px;left:498px;white-space:nowrap" class="ft41">Signaling&#160;Networks:&#160;Exploiting&#160;Voltage&#160;Gradients&#160;for&#160;Control&#160;of&#160;Growth&#160;</p>
+<p style="position:absolute;top:151px;left:498px;white-space:nowrap" class="ft41">and&#160;Form,”&#160;Annual&#160;Review&#160;of Biomedical&#160;Engineering,&#160;vol.&#160;19,&#160;in&#160;press.&#160;</p>
+<p style="position:absolute;top:168px;left:472px;white-space:nowrap" class="ft41">[11]&#160;&#160;M.&#160;Levin,&#160;“Molecular&#160;bioelectricity:&#160;how&#160;endogenous&#160;voltage potentials&#160;</p>
+<p style="position:absolute;top:181px;left:498px;white-space:nowrap" class="ft41">control&#160;cell&#160;behavior&#160;and&#160;instruct&#160;pattern regulation in&#160;vivo,” Molecular&#160;</p>
+<p style="position:absolute;top:194px;left:498px;white-space:nowrap" class="ft41">Biology&#160;of the Cell,&#160;vol.&#160;25,&#160;no.&#160;24,&#160;pp.&#160;3835–3850,&#160;Dec.&#160;2014.&#160;</p>
+<p style="position:absolute;top:210px;left:472px;white-space:nowrap" class="ft41">[12]&#160;&#160;M. Levin, “Reprogramming&#160;cells&#160;and tissue&#160;patterning&#160;via&#160;bioelectrical&#160;</p>
+<p style="position:absolute;top:223px;left:498px;white-space:nowrap" class="ft41">pathways:&#160;molecular&#160;mechanisms&#160;and&#160;biomedical&#160;opportunities,” WIREs&#160;</p>
+<p style="position:absolute;top:236px;left:498px;white-space:nowrap" class="ft41">Systems&#160;Biology&#160;and&#160;Medicine,&#160;vol.&#160;5,&#160;no. 6,&#160;pp.&#160;657–676,&#160;Jul.&#160;2013.&#160;</p>
+<p style="position:absolute;top:253px;left:472px;white-space:nowrap" class="ft41">[13]&#160;&#160;A.&#160;&#160;D.&#160;&#160;G.&#160;&#160;de&#160;&#160;Roos,&#160;&#160;E.&#160;&#160;J.&#160;&#160;J.&#160;&#160;van&#160;&#160;Zoelen,&#160;&#160;and&#160;&#160;A.&#160;&#160;P.&#160;&#160;R.&#160;&#160;Theuvenet,&#160;</p>
+<p style="position:absolute;top:266px;left:498px;white-space:nowrap" class="ft41">“Determination of gap junctional intercellular communication&#160;by&#160;</p>
+<p style="position:absolute;top:279px;left:498px;white-space:nowrap" class="ft41">capacitance measurements,”&#160;Pflugers&#160;Arch.,&#160;no. 431,&#160;pp.&#160;556–563, 1996.&#160;</p>
+<p style="position:absolute;top:295px;left:472px;white-space:nowrap" class="ft41">[14]&#160;&#160;T.&#160;Mert, “Sucrose-gap&#160;technique: Advantages&#160;and limitations,”&#160;</p>
+<p style="position:absolute;top:308px;left:498px;white-space:nowrap" class="ft41">Neurophysiology,&#160;vol.&#160;39, no. 3, pp. 270–274,&#160;May&#160;2007.&#160;</p>
+<p style="position:absolute;top:325px;left:472px;white-space:nowrap" class="ft41">[15]&#160;&#160;C.&#160;Bathany,&#160;D.&#160;L.&#160;Beahm,&#160;S.&#160;Besch, F.&#160;Sachs,&#160;and S.&#160;Z.&#160;Hua, “A&#160;</p>
+<p style="position:absolute;top:338px;left:498px;white-space:nowrap" class="ft41">microfluidic&#160;platform&#160;for&#160;measuring&#160;electrical&#160;activity&#160;across&#160;cells,”&#160;</p>
+<p style="position:absolute;top:351px;left:498px;white-space:nowrap" class="ft41">Biomicrofluidics,&#160;vol.&#160;6,&#160;no. 3,&#160;Sep.&#160;2012.&#160;</p>
+<p style="position:absolute;top:367px;left:472px;white-space:nowrap" class="ft41">[16]&#160;&#160;F.&#160;Badets, J.-G. Coutard,&#160;P.&#160;Russo,&#160;E.&#160;Dina,&#160;E.&#160;Gliere, and S.&#160;Nicoletti,&#160;</p>
+<p style="position:absolute;top:380px;left:498px;white-space:nowrap" class="ft41">“A&#160;1.3&#160;mW, 12-bit&#160;lock-in&#160;amplifier&#160;based readout&#160;circuit&#160;dedicated&#160;to&#160;</p>
+<p style="position:absolute;top:393px;left:498px;white-space:nowrap" class="ft41">photo-acoustic&#160;gas&#160;sensing,”&#160;presented at&#160;the&#160;SENSORS,&#160;2016.&#160;</p>
+<p style="position:absolute;top:410px;left:472px;white-space:nowrap" class="ft41">[17]&#160;&#160;A.&#160;De&#160;Marcellis,&#160;G.&#160;Ferri,&#160;and&#160;A.&#160;D’Amico,&#160;“One-decade&#160;frequency&#160;</p>
+<p style="position:absolute;top:423px;left:498px;white-space:nowrap" class="ft44">range,&#160;in-phase&#160;auto-aligned&#160;1.8 V&#160;2&#160;mW&#160;fully&#160;analog&#160;CMOS&#160;integrated&#160;<br/>lock-in&#160;amplifier&#160;for&#160;small/noisy&#160;signal&#160;detection,”&#160;IEEE Sensors Journal,&#160;</p>
+<p style="position:absolute;top:449px;left:498px;white-space:nowrap" class="ft41">vol.&#160;16,&#160;no.&#160;14,&#160;pp.&#160;5690–5701,&#160;May&#160;2016.&#160;</p>
+<p style="position:absolute;top:465px;left:472px;white-space:nowrap" class="ft41">[18]&#160;&#160;P.&#160;M.&#160;Maya-Hernandez,&#160;M.&#160;T.&#160;Sanz-Pascual,&#160;and&#160;B.&#160;Calvo,&#160;“Micropower&#160;</p>
+<p style="position:absolute;top:478px;left:498px;white-space:nowrap" class="ft41">CMOS&#160;lock-in amplifier&#160;for&#160;portable&#160;applications,”&#160;Electronics&#160;Letters,&#160;</p>
+<p style="position:absolute;top:491px;left:498px;white-space:nowrap" class="ft41">vol.&#160;52,&#160;no.&#160;10,&#160;pp.&#160;828–830,&#160;May&#160;2016.&#160;</p>
+<p style="position:absolute;top:508px;left:472px;white-space:nowrap" class="ft41">[19]&#160;&#160;C.&#160;Qi,&#160;Y. Huang, W.&#160;Zhang,&#160;D. Zhou, Y.&#160;Wang,&#160;and M.&#160;Zhu,&#160;“Design&#160;of&#160;</p>
+<p style="position:absolute;top:521px;left:498px;white-space:nowrap" class="ft41">dual-phase&#160;lock-in&#160;amplifier&#160;used&#160;for&#160;weak signal&#160;detection,” presented&#160;at&#160;</p>
+<p style="position:absolute;top:533px;left:498px;white-space:nowrap" class="ft41">the&#160;Industrial&#160;Electronics&#160;Society&#160;Annual&#160;Conference, 2016.&#160;</p>
+<p style="position:absolute;top:550px;left:472px;white-space:nowrap" class="ft41">[20]&#160;&#160;J.&#160;Xu, G.&#160;Meynants, and P.&#160;Merken,&#160;“Low-power&#160;lock-in amplifier&#160;for&#160;</p>
+<p style="position:absolute;top:563px;left:498px;white-space:nowrap" class="ft41">complex impedance measurement,”&#160;presented&#160;at&#160;the 3rd&#160;International&#160;</p>
+<p style="position:absolute;top:576px;left:498px;white-space:nowrap" class="ft41">Workshop&#160;on&#160;Advances&#160;in&#160;Sensors&#160;and&#160;Interfaces,&#160;2009,&#160;pp.&#160;1–5.&#160;</p>
+<p style="position:absolute;top:593px;left:472px;white-space:nowrap" class="ft41">[21]&#160;&#160;H.&#160;Hong,&#160;M.&#160;Rahal, A.&#160;Demosthenous,&#160;and R.&#160;H.&#160;Bayford,&#160;“Comparison&#160;</p>
+<p style="position:absolute;top:606px;left:498px;white-space:nowrap" class="ft44">of&#160;a&#160;new&#160;integrated&#160;current source&#160;with&#160;the&#160;modified&#160;Howland&#160;circuit&#160;for&#160;<br/>EIT applications.,”&#160;Physiological&#160;Measurement,&#160;vol.&#160;30, no. 10, pp.&#160;999–</p>
+<p style="position:absolute;top:631px;left:498px;white-space:nowrap" class="ft41">1007,&#160;Aug.&#160;2009.&#160;</p>
+<p style="position:absolute;top:648px;left:472px;white-space:nowrap" class="ft41">[22]&#160;&#160;S.&#160;Hong&#160;et al.,&#160;“A&#160;4.9 mȍ-Sensitivity&#160;mobile&#160;electrical&#160;impedance&#160;</p>
+<p style="position:absolute;top:661px;left:498px;white-space:nowrap" class="ft41">tomography&#160;IC&#160;for&#160;early&#160;breast-cancer&#160;detection&#160;system,” IEEE Journal&#160;</p>
+<p style="position:absolute;top:674px;left:498px;white-space:nowrap" class="ft41">of Solid-State Circuits,&#160;vol.&#160;50, no. 1,&#160;pp.&#160;245–257,&#160;Sep.&#160;2014.&#160;</p>
+<p style="position:absolute;top:691px;left:472px;white-space:nowrap" class="ft41">[23]&#160;&#160;L.&#160;Constantinou,&#160;I.&#160;F.&#160;Triantis,&#160;R.&#160;Bayford, and A.&#160;Demosthenous, “High-</p>
+<p style="position:absolute;top:704px;left:498px;white-space:nowrap" class="ft44">power&#160;CMOS&#160;current&#160;driver&#160;with accurate&#160;transconductance&#160;for&#160;electrical&#160;<br/>impedance&#160;tomography,”&#160;IEEE Transactions&#160;on&#160;Biomedical&#160;Circuits and&#160;</p>
+<p style="position:absolute;top:729px;left:498px;white-space:nowrap" class="ft41">Systems,&#160;vol.&#160;8,&#160;no.&#160;4,&#160;pp.&#160;575–583,&#160;Jan.&#160;2014.&#160;</p>
+<p style="position:absolute;top:746px;left:472px;white-space:nowrap" class="ft41">[24]&#160;&#160;S.-C.&#160;Huang,&#160;M.&#160;Ismail,&#160;and&#160;S.&#160;R.&#160;Zarabadi,&#160;“A&#160;wide&#160;range&#160;differential&#160;</p>
+<p style="position:absolute;top:759px;left:498px;white-space:nowrap" class="ft44">difference&#160;amplifier:&#160;a basic&#160;block for&#160;analog&#160;signal&#160;processing&#160;in&#160;MOS&#160;<br/>technology,” IEEE Transactions&#160;on&#160;Circuits&#160;and&#160;Systems II:&#160;Analog&#160;and&#160;</p>
+<p style="position:absolute;top:785px;left:498px;white-space:nowrap" class="ft41">Digital Signal&#160;Processing,&#160;vol.&#160;40,&#160;no. 5,&#160;pp. 289–301,&#160;Aug.&#160;2002.&#160;</p>
+<p style="position:absolute;top:801px;left:472px;white-space:nowrap" class="ft41">[25]&#160;&#160;E. Sackinger&#160;and W.&#160;Guggenbuhl, “A&#160;versatile&#160;building&#160;block:&#160;the&#160;CMOS&#160;</p>
+<p style="position:absolute;top:814px;left:498px;white-space:nowrap" class="ft41">differential&#160;difference&#160;amplifier,” IEEE Journal&#160;of&#160;Solid-State&#160;Circuits,&#160;</p>
+<p style="position:absolute;top:827px;left:498px;white-space:nowrap" class="ft41">vol.&#160;22,&#160;no.&#160;2,&#160;pp. 287–294,&#160;Jan.&#160;2003.&#160;</p>
+<p style="position:absolute;top:844px;left:472px;white-space:nowrap" class="ft41">[26]&#160;&#160;V.&#160;Valente&#160;and A.&#160;Demosthenous, “Wideband fully-programmable&#160;dual-</p>
+<p style="position:absolute;top:857px;left:498px;white-space:nowrap" class="ft41">mode&#160;CMOS&#160;analogue&#160;front-end for&#160;electrical&#160;impedance&#160;spectroscopy,”&#160;</p>
+<p style="position:absolute;top:870px;left:498px;white-space:nowrap" class="ft41">Sensors,&#160;vol.&#160;16,&#160;no. 8,&#160;p.&#160;1159, Jul. 2016.&#160;</p>
+<p style="position:absolute;top:886px;left:472px;white-space:nowrap" class="ft41">[27]&#160;&#160;G.&#160;Pezzulo&#160;and&#160;M. Levin, “Top-down&#160;Models&#160;in&#160;biology:&#160;Explanation and&#160;</p>
+<p style="position:absolute;top:899px;left:498px;white-space:nowrap" class="ft41">control of complex living&#160;systems&#160;above the molecular level,”&#160;Journal of&#160;</p>
+<p style="position:absolute;top:912px;left:498px;white-space:nowrap" class="ft41">the Royal Society&#160;Interface,&#160;vol.&#160;13,&#160;no.&#160;124,&#160;Nov.&#160;2106.&#160;</p>
+<p style="position:absolute;top:929px;left:472px;white-space:nowrap" class="ft41">[28]&#160;&#160;K.&#160;Sullivan,&#160;M.&#160;Emmons-Bell,&#160;and M.&#160;Levin,&#160;“Physiological&#160;inputs&#160;</p>
+<p style="position:absolute;top:942px;left:498px;white-space:nowrap" class="ft44">regulate&#160;species-specific&#160;anatomy&#160;during embryogenesis&#160;and&#160;<br/>regeneration,”&#160;Communicative&#160;and Integrative&#160;Biology,&#160;vol. 9,&#160;no.&#160;4,&#160;p.&#160;</p>
+<p style="position:absolute;top:968px;left:498px;white-space:nowrap" class="ft41">e1192733, Jul. 2016.&#160;</p>
+<p style="position:absolute;top:256px;left:83px;white-space:nowrap" class="ft45">Fig.&#160;7.&#160;&#160;Readout voltage of in-phase&#160;and out-of-phase&#160;channels&#160;of&#160;the&#160;full&#160;<br/>integrated circuit&#160;as&#160;the&#160;load resistance&#160;is&#160;swept of&#160;the&#160;physiologically&#160;relevant<br/>range.&#160;</p>
+<p style="position:absolute;top:1089px;left:452px;white-space:nowrap" class="ft43">59</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:17px;font-family:Times;color:#000000;}
+	.ft11{font-size:9px;font-family:Times;color:#000000;}
+	.ft12{font-size:24px;font-family:Times;color:#000000;}
+	.ft13{font-size:12px;font-family:Times;color:#000000;}
+	.ft14{font-size:7px;font-family:Times;color:#000000;}
+	.ft15{font-size:11px;font-family:Times;color:#000000;}
+	.ft16{font-size:14px;font-family:Times;color:#000000;}
+	.ft17{font-size:37px;font-family:Times;color:#000000;}
+	.ft18{font-size:6px;font-family:Times;color:#000000;}
+	.ft19{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft110{font-size:14px;line-height:17px;font-family:Times;color:#000000;}
+	.ft111{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft112{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:54px;left:662px;white-space:nowrap" class="ft10">Original&#160;Research</p>
+<p style="position:absolute;top:130px;left:543px;white-space:nowrap" class="ft11">Open&#160;camera&#160;or&#160;QR&#160;reader&#160;and</p>
+<p style="position:absolute;top:144px;left:544px;white-space:nowrap" class="ft11">scan&#160;code&#160;to&#160;access&#160;this&#160;article</p>
+<p style="position:absolute;top:159px;left:567px;white-space:nowrap" class="ft11">and&#160;other&#160;resources&#160;online.</p>
+<p style="position:absolute;top:230px;left:217px;white-space:nowrap" class="ft12">A&#160;Computational&#160;Approach&#160;to&#160;Explaining</p>
+<p style="position:absolute;top:259px;left:134px;white-space:nowrap" class="ft12">Bioelectrically&#160;Induced&#160;Persistent,&#160;Stochastic&#160;Changes</p>
+<p style="position:absolute;top:289px;left:206px;white-space:nowrap" class="ft12">of&#160;Axial&#160;Polarity&#160;in&#160;Planarian&#160;Regeneration</p>
+<p style="position:absolute;top:361px;left:303px;white-space:nowrap" class="ft13">Joel&#160;Grodstein,&#160;MS</p>
+<p style="position:absolute;top:358px;left:431px;white-space:nowrap" class="ft14">1&#160;and&#160;Michael&#160;Levin,&#160;PhD2,3</p>
+<p style="position:absolute;top:441px;left:93px;white-space:nowrap" class="ft15">Abstract</p>
+<p style="position:absolute;top:466px;left:93px;white-space:nowrap" class="ft110">Morphogenesis&#160;results&#160;when&#160;cells&#160;cooperate&#160;to&#160;construct&#160;a&#160;specific&#160;anatomical&#160;structure.&#160;The&#160;behavior&#160;of&#160;such<br/>cell&#160;swarms&#160;exhibits&#160;not&#160;only&#160;robustness&#160;but&#160;also&#160;plasticity&#160;with&#160;respect&#160;to&#160;what&#160;specific&#160;anatomies&#160;will&#160;be&#160;built.<br/>Important&#160;aspects&#160;of&#160;evolutionary&#160;biology,&#160;regenerative&#160;medicine,&#160;and&#160;cancer&#160;are&#160;impacted&#160;by&#160;the&#160;algorithms&#160;by<br/>which&#160;instructive&#160;information&#160;guides&#160;invariant&#160;or&#160;stochastic&#160;outcomes&#160;of&#160;such&#160;collective&#160;activity.&#160;Planarian<br/>flatworms&#160;are&#160;an&#160;important&#160;model&#160;system&#160;in&#160;this&#160;field,&#160;as&#160;flatworms&#160;reliably&#160;regenerate&#160;a&#160;primary&#160;body&#160;axis&#160;after<br/>diverse&#160;kinds&#160;of&#160;injury.&#160;Importantly,&#160;the&#160;number&#160;of&#160;heads&#160;to&#160;which&#160;they&#160;regenerate&#160;is&#160;not&#160;determined&#160;geneti-<br/>cally:&#160;lines&#160;of&#160;worms&#160;can&#160;be&#160;produced,&#160;which,&#160;with&#160;no&#160;further&#160;manipulation,&#160;regenerate&#160;as&#160;two-headed&#160;(2H)<br/>worms,&#160;or&#160;as&#160;‘‘Cryptic’’&#160;worms.&#160;When&#160;cut&#160;into&#160;pieces,&#160;Cryptic&#160;worms&#160;produce&#160;one-headed&#160;(1H)&#160;and&#160;2H<br/>regenerates&#160;stochastically.&#160;Neural&#160;and&#160;bioelectric&#160;mechanisms&#160;have&#160;been&#160;proposed&#160;to&#160;explain&#160;aspects&#160;of&#160;the<br/>regenerative&#160;dataset.&#160;However,&#160;these&#160;models&#160;have&#160;not&#160;been&#160;unified&#160;and&#160;do&#160;not&#160;explain&#160;all&#160;of&#160;the&#160;Cryptic&#160;worm<br/>data.&#160;In&#160;this&#160;study,&#160;we&#160;propose&#160;a&#160;model&#160;in&#160;which&#160;two&#160;separate&#160;systems&#160;(a&#160;bioelectric&#160;circuit&#160;and&#160;a&#160;neural&#160;polarity<br/>mechanism)&#160;compete&#160;to&#160;determine&#160;the&#160;anatomical&#160;structure&#160;of&#160;a&#160;regenerate.&#160;We&#160;show&#160;how&#160;our&#160;model&#160;accounts<br/>for&#160;existing&#160;data&#160;and&#160;provides&#160;a&#160;consistent&#160;synthesis&#160;of&#160;mechanisms&#160;that&#160;explain&#160;both&#160;the&#160;robustness&#160;of&#160;planarian<br/>regeneration&#160;and&#160;its&#160;remarkable&#160;re-writability&#160;toward&#160;novel&#160;stable&#160;and&#160;stochastic&#160;anatomical&#160;states.</p>
+<p style="position:absolute;top:733px;left:93px;white-space:nowrap" class="ft15">Keywords:</p>
+<p style="position:absolute;top:732px;left:170px;white-space:nowrap" class="ft16">developmental&#160;bioelectricity,&#160;regeneration,&#160;planaria,&#160;ion&#160;channel,&#160;gap&#160;junction,&#160;morphogenesis,</p>
+<p style="position:absolute;top:750px;left:93px;white-space:nowrap" class="ft16">resting&#160;potential,&#160;voltage</p>
+<p style="position:absolute;top:813px;left:93px;white-space:nowrap" class="ft15">Introduction</p>
+<p style="position:absolute;top:845px;left:92px;white-space:nowrap" class="ft17">Morphogenesis&#160;is&#160;one&#160;of&#160;the&#160;major&#160;grand&#160;mysteries&#160;of</p>
+<p style="position:absolute;top:862px;left:131px;white-space:nowrap" class="ft13">biology.&#160;While&#160;substantial&#160;progress&#160;is&#160;being&#160;made&#160;on</p>
+<p style="position:absolute;top:878px;left:93px;white-space:nowrap" class="ft111">the&#160;mapping&#160;between&#160;genomic&#160;information&#160;and&#160;the&#160;micro-<br/>scale&#160;protein&#160;hardware&#160;available&#160;to&#160;cells,&#160;significant&#160;knowl-<br/>edge&#160;gaps&#160;remain&#160;about&#160;the&#160;design&#160;principles&#160;that&#160;enable<br/>cellular&#160;collectives&#160;to&#160;reliably&#160;construct&#160;complex,&#160;invariant<br/>anatomies.&#160;Especially&#160;critical&#160;is&#160;understanding&#160;not&#160;only&#160;the<br/>molecular&#160;genetic&#160;pathways&#160;that&#160;drive&#160;emergent&#160;morpho-<br/>genesis&#160;but&#160;also&#160;the&#160;signaling&#160;dynamics&#160;that&#160;implement<br/>plasticity&#160;and&#160;adaptive&#160;change&#160;of&#160;large-scale&#160;shape.&#160;Reg-<br/>ulative&#160;development,&#160;remodeling,&#160;and&#160;regeneration&#160;illustrate</p>
+<p style="position:absolute;top:813px;left:470px;white-space:nowrap" class="ft111">the&#160;competence&#160;of&#160;cellular&#160;swarms&#160;in&#160;solving&#160;problems&#160;in<br/>anatomical&#160;morphospace:&#160;these&#160;swarms&#160;are&#160;able&#160;to&#160;work&#160;to-<br/>ward&#160;specific&#160;outcomes&#160;and&#160;cease&#160;growth&#160;and&#160;remodeling<br/>when&#160;structures&#160;are&#160;complete.</p>
+<p style="position:absolute;top:878px;left:485px;white-space:nowrap" class="ft13">Some&#160;of&#160;the&#160;most&#160;interesting&#160;aspects&#160;of&#160;this&#160;field&#160;concern</p>
+<p style="position:absolute;top:895px;left:470px;white-space:nowrap" class="ft13">the&#160;roles&#160;of&#160;physical&#160;forces&#160;(such&#160;as&#160;biomechanics</p>
+<p style="position:absolute;top:892px;left:786px;white-space:nowrap" class="ft14">1,2&#160;and</p>
+<p style="position:absolute;top:911px;left:470px;white-space:nowrap" class="ft13">bioelectricity</p>
+<p style="position:absolute;top:908px;left:548px;white-space:nowrap" class="ft14">3–5)&#160;in&#160;this&#160;process,&#160;and&#160;the&#160;possibility&#160;that&#160;these</p>
+<p style="position:absolute;top:928px;left:470px;white-space:nowrap" class="ft111">modalities&#160;enable&#160;tissue-level&#160;outcomes&#160;different&#160;from&#160;that&#160;of<br/>the&#160;species-specific&#160;default&#160;in&#160;the&#160;absence&#160;of&#160;genomic&#160;chan-<br/>ges.&#160;A&#160;number&#160;of&#160;discoveries&#160;about&#160;the&#160;plasticity&#160;of&#160;anatom-<br/>ical&#160;homeostasis,&#160;and&#160;the&#160;origin&#160;of&#160;instructive&#160;information<br/>that&#160;guides&#160;the&#160;activity&#160;of&#160;cellular&#160;collectives,&#160;have&#160;been&#160;made<br/>in&#160;the&#160;free-living&#160;flatworm&#160;known&#160;as&#160;the&#160;planarian.</p>
+<p style="position:absolute;top:1007px;left:771px;white-space:nowrap" class="ft14">6,7</p>
+<p style="position:absolute;top:1064px;left:106px;white-space:nowrap" class="ft18">1Department&#160;of&#160;Electrical&#160;and&#160;Computer&#160;Engineering,&#160;Tufts&#160;University,&#160;Medford,&#160;Massachusetts,&#160;USA.</p>
+<p style="position:absolute;top:1078px;left:106px;white-space:nowrap" class="ft18">2Allen&#160;Discovery&#160;Center&#160;at&#160;Tufts&#160;University,&#160;Medford,&#160;Massachusetts,&#160;USA.</p>
+<p style="position:absolute;top:1091px;left:106px;white-space:nowrap" class="ft18">3Wyss&#160;Institute&#160;for&#160;Biologically&#160;Inspired&#160;Engineering&#160;at&#160;Harvard&#160;University,&#160;Boston,&#160;Massachusetts,&#160;USA.</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft112">BIOELECTRICITY<br/>Volume&#160;4,&#160;Number&#160;1,&#160;2022<br/>ª&#160;Mary&#160;Ann&#160;Liebert,&#160;Inc.<br/>DOI:&#160;10.1089/bioe.2021.0036</p>
+<p style="position:absolute;top:1127px;left:453px;white-space:nowrap" class="ft15">18</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft19">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:7px;font-family:Times;color:#000000;}
+	.ft22{font-size:11px;font-family:Times;color:#000000;}
+	.ft23{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft24{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:90px;left:105px;white-space:nowrap" class="ft20">Planaria&#160;are&#160;masters&#160;of&#160;regeneration;&#160;when&#160;a&#160;planarian&#160;is</p>
+<p style="position:absolute;top:107px;left:90px;white-space:nowrap" class="ft24">cut&#160;into&#160;fragments,&#160;each&#160;individual&#160;fragment&#160;is&#160;capable&#160;of<br/>regrowing&#160;into&#160;a&#160;fully&#160;functional&#160;entire&#160;worm.</p>
+<p style="position:absolute;top:120px;left:377px;white-space:nowrap" class="ft21">8,9&#160;Progress</p>
+<p style="position:absolute;top:139px;left:90px;white-space:nowrap" class="ft24">is&#160;being&#160;made&#160;on&#160;how&#160;planarian&#160;gradients&#160;of&#160;position-control-<br/>gene&#160;expression&#160;drive&#160;the&#160;creation&#160;of&#160;new&#160;shape,</p>
+<p style="position:absolute;top:153px;left:412px;white-space:nowrap" class="ft21">10&#160;re-</p>
+<p style="position:absolute;top:172px;left:90px;white-space:nowrap" class="ft24">generating&#160;complex&#160;organs&#160;in&#160;the&#160;correct&#160;bodily&#160;position.<br/>However,&#160;the&#160;question&#160;of&#160;how&#160;those&#160;gradients&#160;re-form,<br/>when&#160;a&#160;planarian&#160;fragment&#160;regenerates,&#160;still&#160;remains.&#160;In&#160;the<br/>anterior-posterior&#160;axis,&#160;a&#160;regenerating&#160;planarian&#160;must&#160;deter-<br/>mine&#160;which&#160;end&#160;will&#160;be&#160;the&#160;head&#160;and&#160;which&#160;will&#160;be&#160;the<br/>tail.&#160;This&#160;process&#160;is&#160;highly&#160;reliable,&#160;but&#160;can&#160;go&#160;awry&#160;in&#160;very<br/>interesting&#160;ways&#160;that&#160;shed&#160;light&#160;on&#160;how&#160;cellular&#160;collectives<br/>cooperate&#160;toward&#160;diverse&#160;large-scale&#160;outcomes.&#160;In&#160;this&#160;arti-<br/>cle,&#160;we&#160;unify&#160;existing&#160;models&#160;and&#160;propose&#160;a&#160;new&#160;picture&#160;of<br/>the&#160;processes&#160;that&#160;determine&#160;the&#160;primary&#160;axis&#160;of&#160;planaria.</p>
+<p style="position:absolute;top:337px;left:105px;white-space:nowrap" class="ft20">There&#160;is&#160;no&#160;shortage&#160;of&#160;data&#160;points&#160;for&#160;an&#160;axial-polarity</p>
+<p style="position:absolute;top:353px;left:90px;white-space:nowrap" class="ft24">theory&#160;to&#160;explain.&#160;First,&#160;segments&#160;of&#160;planaria—even&#160;small<br/>segments&#160;from&#160;the&#160;mid-body—always&#160;regenerate&#160;their&#160;head<br/>and&#160;tail&#160;on&#160;the&#160;same&#160;sides&#160;as&#160;the&#160;original.</p>
+<p style="position:absolute;top:383px;left:335px;white-space:nowrap" class="ft21">8,9&#160;If&#160;we&#160;consider&#160;a</p>
+<p style="position:absolute;top:403px;left:90px;white-space:nowrap" class="ft24">single&#160;cut&#160;made&#160;in&#160;mid-body&#160;and&#160;thus&#160;dividing&#160;the&#160;worm&#160;into<br/>two&#160;separate&#160;pieces,&#160;then&#160;the&#160;tissue&#160;anterior&#160;to&#160;the&#160;cut&#160;(being<br/>the&#160;rearmost&#160;portion&#160;of&#160;the&#160;front&#160;piece)&#160;will&#160;regenerate&#160;as&#160;a<br/>tail,&#160;while&#160;the&#160;tissue&#160;just&#160;posterior&#160;of&#160;the&#160;cut&#160;(being&#160;the<br/>frontmost&#160;portion&#160;of&#160;the&#160;rear&#160;piece)&#160;will&#160;regenerate&#160;as&#160;a<br/>head.&#160;Since&#160;before&#160;the&#160;cut&#160;both&#160;tissue&#160;fragments&#160;were&#160;adja-<br/>cent&#160;and&#160;shared&#160;the&#160;same&#160;local&#160;morphogen&#160;concentrations,<br/>clearly&#160;long-range&#160;communication&#160;is&#160;required&#160;for&#160;cells&#160;to<br/>solve&#160;this&#160;problem.</p>
+<p style="position:absolute;top:550px;left:105px;white-space:nowrap" class="ft20">Evolution&#160;discovered&#160;long&#160;ago&#160;(at&#160;about&#160;the&#160;time&#160;of&#160;bac-</p>
+<p style="position:absolute;top:567px;left:90px;white-space:nowrap" class="ft20">terial&#160;biofilms</p>
+<p style="position:absolute;top:564px;left:177px;white-space:nowrap" class="ft21">11,12)&#160;that&#160;electrical&#160;networks&#160;are&#160;excellent</p>
+<p style="position:absolute;top:583px;left:90px;white-space:nowrap" class="ft24">ways&#160;to&#160;propagate&#160;information&#160;long&#160;range&#160;and&#160;make&#160;deci-<br/>sions&#160;about&#160;large-scale&#160;system-level&#160;behaviors.&#160;Before&#160;their<br/>use&#160;in&#160;neural&#160;circuits&#160;to&#160;drive&#160;muscle&#160;motion,&#160;developmental<br/>bioelectricity&#160;enabled&#160;decision-making,&#160;such&#160;as&#160;organ&#160;iden-<br/>tity,&#160;size,&#160;axial&#160;polarity,&#160;and&#160;shape,&#160;in&#160;non-neural&#160;tissues<br/>during&#160;morphogenesis.</p>
+<p style="position:absolute;top:662px;left:228px;white-space:nowrap" class="ft21">13–15&#160;Bioelectricity&#160;has&#160;been&#160;shown</p>
+<p style="position:absolute;top:682px;left:90px;white-space:nowrap" class="ft24">to&#160;coordinate&#160;collective&#160;cell&#160;decisions&#160;during&#160;patterning&#160;of<br/>the&#160;left-right&#160;axis,</p>
+<p style="position:absolute;top:695px;left:194px;white-space:nowrap" class="ft21">16–19&#160;craniofacial&#160;development,20&#160;and&#160;long-</p>
+<p style="position:absolute;top:715px;left:90px;white-space:nowrap" class="ft20">range&#160;influences&#160;on&#160;brain&#160;patterning</p>
+<p style="position:absolute;top:712px;left:312px;white-space:nowrap" class="ft21">21–23&#160;and&#160;carcinogenic</p>
+<p style="position:absolute;top:731px;left:90px;white-space:nowrap" class="ft20">transformation.</p>
+<p style="position:absolute;top:728px;left:181px;white-space:nowrap" class="ft21">24–26</p>
+<p style="position:absolute;top:748px;left:105px;white-space:nowrap" class="ft20">In&#160;prior&#160;work,&#160;we&#160;had&#160;explored&#160;the&#160;hypothesis&#160;that&#160;bio-</p>
+<p style="position:absolute;top:764px;left:90px;white-space:nowrap" class="ft24">electric&#160;signaling,&#160;through&#160;electrical&#160;synapses&#160;known&#160;as&#160;gap<br/>junctions&#160;(GJs),</p>
+<p style="position:absolute;top:777px;left:184px;white-space:nowrap" class="ft21">27&#160;underlies&#160;the&#160;ability&#160;of&#160;planarian&#160;wounds</p>
+<p style="position:absolute;top:797px;left:90px;white-space:nowrap" class="ft24">to&#160;decide&#160;whether&#160;to&#160;make&#160;heads&#160;or&#160;tails,&#160;by&#160;enabling&#160;them&#160;to<br/>integrate&#160;local&#160;states&#160;with&#160;those&#160;of&#160;distant&#160;tissues.</p>
+<p style="position:absolute;top:810px;left:386px;white-space:nowrap" class="ft21">28,29&#160;Loss-</p>
+<p style="position:absolute;top:830px;left:90px;white-space:nowrap" class="ft20">of-function&#160;experiments&#160;with&#160;GJs</p>
+<p style="position:absolute;top:827px;left:292px;white-space:nowrap" class="ft21">30,31&#160;and&#160;ion&#160;channels32,33</p>
+<p style="position:absolute;top:846px;left:90px;white-space:nowrap" class="ft24">revealed&#160;that&#160;indeed&#160;this&#160;system&#160;was&#160;critical&#160;in&#160;the&#160;normal<br/>determination&#160;of&#160;head-tail&#160;polarity,&#160;and&#160;double-head&#160;or&#160;no-<br/>head&#160;worms&#160;were&#160;readily&#160;produced&#160;by&#160;interfering&#160;with&#160;bio-<br/>electrical&#160;signaling&#160;immediately&#160;after&#160;amputation.&#160;However,<br/>many&#160;questions&#160;still&#160;remain&#160;about&#160;the&#160;logic&#160;and&#160;mechanisms<br/>by&#160;which&#160;bioelectric&#160;circuits&#160;control&#160;anatomical&#160;outcomes&#160;in<br/>planaria.</p>
+<p style="position:absolute;top:942px;left:141px;white-space:nowrap" class="ft21">28</p>
+<p style="position:absolute;top:961px;left:105px;white-space:nowrap" class="ft20">There&#160;is&#160;a&#160;notable&#160;head-to-tail&#160;Vmem&#160;gradient&#160;in&#160;planaria,</p>
+<p style="position:absolute;top:978px;left:90px;white-space:nowrap" class="ft24">with&#160;the&#160;head&#160;at&#160;a&#160;higher&#160;(i.e.,&#160;more&#160;depolarized)&#160;Vmem&#160;than<br/>the&#160;tail,</p>
+<p style="position:absolute;top:991px;left:134px;white-space:nowrap" class="ft21">32,34&#160;presumably&#160;resulting&#160;in&#160;an&#160;internal&#160;electric&#160;field.</p>
+<p style="position:absolute;top:1011px;left:90px;white-space:nowrap" class="ft24">It&#160;is&#160;thus&#160;somewhat&#160;unsurprising&#160;that&#160;one&#160;of&#160;the&#160;earliest<br/>experimental&#160;data&#160;points&#160;on&#160;axial&#160;polarity&#160;is&#160;purely&#160;electrical.</p>
+<p style="position:absolute;top:1044px;left:105px;white-space:nowrap" class="ft20">Even&#160;though&#160;segments&#160;of&#160;planaria&#160;in&#160;the&#160;wild&#160;always</p>
+<p style="position:absolute;top:1060px;left:90px;white-space:nowrap" class="ft24">regenerate&#160;their&#160;head&#160;and&#160;tail&#160;on&#160;the&#160;same&#160;sides&#160;as&#160;the&#160;orig-<br/>inal,&#160;application&#160;of&#160;a&#160;strong&#160;electrical&#160;field&#160;during&#160;regenera-<br/>tion,&#160;appropriately&#160;polarized&#160;in&#160;opposition&#160;to&#160;the&#160;internal</p>
+<p style="position:absolute;top:90px;left:466px;white-space:nowrap" class="ft24">field,&#160;reverses&#160;this.&#160;Furthermore,&#160;application&#160;of&#160;a&#160;some-<br/>what&#160;weaker&#160;electrical&#160;field&#160;(intuitively,&#160;strong&#160;enough&#160;to<br/>cancel,&#160;but&#160;not&#160;reverse&#160;the&#160;internal&#160;field)&#160;results&#160;in&#160;a&#160;two-<br/>headed&#160;(2H)&#160;regenerate.</p>
+<p style="position:absolute;top:136px;left:609px;white-space:nowrap" class="ft21">8,35,36&#160;Finally,&#160;directly&#160;altering&#160;V</p>
+<p style="position:absolute;top:145px;left:803px;white-space:nowrap" class="ft21">mem</p>
+<p style="position:absolute;top:156px;left:466px;white-space:nowrap" class="ft24">at&#160;the&#160;head&#160;and&#160;tail&#160;with&#160;ion-channel&#160;drugs&#160;also&#160;changes<br/>which&#160;end&#160;generates&#160;a&#160;head&#160;and&#160;which&#160;a&#160;tail.</p>
+<p style="position:absolute;top:169px;left:743px;white-space:nowrap" class="ft21">32&#160;These&#160;data</p>
+<p style="position:absolute;top:189px;left:466px;white-space:nowrap" class="ft24">strongly&#160;suggest&#160;that&#160;an&#160;electrically&#160;charged&#160;morphogen&#160;is<br/>involved.</p>
+<p style="position:absolute;top:202px;left:522px;white-space:nowrap" class="ft21">37</p>
+<p style="position:absolute;top:222px;left:481px;white-space:nowrap" class="ft20">Later&#160;experiments</p>
+<p style="position:absolute;top:218px;left:591px;white-space:nowrap" class="ft21">30&#160;showed&#160;that&#160;using&#160;octanol&#160;to&#160;block</p>
+<p style="position:absolute;top:238px;left:466px;white-space:nowrap" class="ft24">GJs&#160;also&#160;resulted&#160;in&#160;2H&#160;regenerates.&#160;Perhaps&#160;the&#160;most&#160;well-<br/>known&#160;use&#160;of&#160;GJs&#160;is&#160;conducting&#160;action&#160;potentials&#160;in&#160;mam-<br/>malian&#160;cardiac&#160;tissue.&#160;However,&#160;they&#160;also&#160;play&#160;a&#160;role&#160;in<br/>electrical&#160;communication&#160;of&#160;numerous&#160;small&#160;molecules.</p>
+<p style="position:absolute;top:284px;left:814px;white-space:nowrap" class="ft21">38</p>
+<p style="position:absolute;top:304px;left:466px;white-space:nowrap" class="ft24">The&#160;combination&#160;of&#160;axial-polarity&#160;reversal&#160;and&#160;2H&#160;regener-<br/>ates&#160;by&#160;electrical&#160;fields,&#160;and&#160;producing&#160;2H&#160;regenerates&#160;by<br/>blocking&#160;GJs,&#160;led&#160;to&#160;the&#160;electrodiffusion&#160;hypothesis&#160;of&#160;axial<br/>polarity.</p>
+<p style="position:absolute;top:350px;left:516px;white-space:nowrap" class="ft21">39,40</p>
+<p style="position:absolute;top:370px;left:481px;white-space:nowrap" class="ft20">In&#160;this&#160;hypothesis,&#160;axial&#160;polarity&#160;is&#160;controlled&#160;by&#160;a&#160;charged</p>
+<p style="position:absolute;top:386px;left:466px;white-space:nowrap" class="ft24">morphogen&#160;M&#160;that&#160;is&#160;a&#160;small&#160;ion.&#160;If&#160;it&#160;were&#160;negatively<br/>charged,&#160;then&#160;an&#160;existing&#160;head-to-tail&#160;Vmem&#160;gradient&#160;would<br/>attract&#160;M&#160;to&#160;the&#160;head;&#160;it&#160;would&#160;move&#160;through&#160;GJs&#160;to&#160;travel<br/>between&#160;cells.&#160;With&#160;enough&#160;M&#160;near&#160;the&#160;head,&#160;the&#160;resulting<br/>diffusion&#160;flux&#160;would&#160;move&#160;it&#160;backwards&#160;in&#160;a&#160;manner&#160;very<br/>similar&#160;to&#160;the&#160;Nernst&#160;equation.</p>
+<p style="position:absolute;top:465px;left:655px;white-space:nowrap" class="ft21">41&#160;However,&#160;this&#160;would&#160;not</p>
+<p style="position:absolute;top:485px;left:466px;white-space:nowrap" class="ft24">explain&#160;how&#160;a&#160;Vmem&#160;gradient&#160;gets&#160;regenerated&#160;in&#160;a&#160;small<br/>fragment.&#160;The&#160;hypothesis&#160;thus&#160;adds&#160;positive&#160;feedback;&#160;not<br/>only&#160;does&#160;a&#160;higher&#160;Vmem&#160;attract&#160;M&#160;but&#160;also&#160;a&#160;higher&#160;[M]&#160;gates<br/>ion&#160;channels&#160;to&#160;increase&#160;Vmem.&#160;This&#160;hypothesis&#160;has&#160;been&#160;well<br/>simulated&#160;and&#160;can&#160;be&#160;quite&#160;robust.</p>
+<p style="position:absolute;top:547px;left:671px;white-space:nowrap" class="ft21">40,42</p>
+<p style="position:absolute;top:567px;left:481px;white-space:nowrap" class="ft20">However,&#160;the&#160;electrodiffusion&#160;hypothesis&#160;is&#160;likely&#160;not</p>
+<p style="position:absolute;top:583px;left:466px;white-space:nowrap" class="ft24">complete,&#160;because&#160;the&#160;long-known&#160;role&#160;of&#160;neural&#160;inputs&#160;into<br/>polarity&#160;during&#160;regeneration</p>
+<p style="position:absolute;top:597px;left:634px;white-space:nowrap" class="ft21">43–45&#160;appears&#160;to&#160;be&#160;conserved&#160;in</p>
+<p style="position:absolute;top:616px;left:466px;white-space:nowrap" class="ft20">planaria.</p>
+<p style="position:absolute;top:613px;left:518px;white-space:nowrap" class="ft21">46&#160;As&#160;a&#160;result,&#160;an&#160;axonal&#160;transport&#160;hypothesis&#160;has</p>
+<p style="position:absolute;top:633px;left:466px;white-space:nowrap" class="ft20">been&#160;proposed.</p>
+<p style="position:absolute;top:629px;left:558px;white-space:nowrap" class="ft21">37,47&#160;Neurons&#160;are&#160;very&#160;long&#160;cells,&#160;and&#160;thus</p>
+<p style="position:absolute;top:649px;left:466px;white-space:nowrap" class="ft24">move&#160;nutrients&#160;between&#160;organelles&#160;actively&#160;with&#160;axonal<br/>transport&#160;rather&#160;than&#160;relying&#160;solely&#160;on&#160;diffusion.&#160;The&#160;axonal-<br/>transport&#160;hypothesis&#160;proposes&#160;that&#160;this&#160;same&#160;mechanism<br/>additionally&#160;transports&#160;a&#160;morphogen.&#160;The&#160;largest&#160;mass&#160;of<br/>neurons&#160;in&#160;a&#160;planarian&#160;is&#160;the&#160;ventral&#160;nerve&#160;cord&#160;(VNC),&#160;which<br/>predominantly&#160;runs&#160;from&#160;head&#160;to&#160;tail.&#160;Transport&#160;from&#160;the<br/>front&#160;of&#160;a&#160;planarian&#160;to&#160;the&#160;rear,&#160;combined&#160;with&#160;the&#160;resulting<br/>diffusion&#160;back&#160;toward&#160;the&#160;front,&#160;would&#160;produce&#160;a&#160;classic&#160;mor-<br/>phogen&#160;profile.</p>
+<p style="position:absolute;top:797px;left:481px;white-space:nowrap" class="ft20">There&#160;is&#160;substantial&#160;evidence</p>
+<p style="position:absolute;top:794px;left:663px;white-space:nowrap" class="ft21">48&#160;for&#160;the&#160;involvement&#160;of</p>
+<p style="position:absolute;top:814px;left:466px;white-space:nowrap" class="ft24">WNT&#160;signaling&#160;in&#160;creating&#160;head-to-tail&#160;planarian&#160;morphogen<br/>gradients,&#160;along&#160;with&#160;numerous&#160;gain-of-function&#160;and&#160;loss-of-<br/>function&#160;experiments&#160;on&#160;transcription&#160;factors&#160;(TFs)&#160;involved<br/>with&#160;WNT.&#160;The&#160;hypothesis&#160;thus&#160;proposes&#160;a&#160;gene&#160;regulatory<br/>network&#160;(GRN)&#160;which,&#160;when&#160;combined&#160;with&#160;the&#160;anterograde<br/>transport&#160;of&#160;Hedgehog&#160;and&#160;retrograde&#160;transport&#160;of&#160;a&#160;proposed<br/>Notum&#160;Regulation&#160;Factor&#160;(NRF),&#160;is&#160;consistent&#160;with&#160;the&#160;ex-<br/>isting&#160;RNA&#160;interference&#160;(RNAi)&#160;data.</p>
+<p style="position:absolute;top:945px;left:481px;white-space:nowrap" class="ft20">The&#160;axonal-transport&#160;hypothesis&#160;is&#160;further&#160;supported&#160;as</p>
+<p style="position:absolute;top:961px;left:466px;white-space:nowrap" class="ft20">follows</p>
+<p style="position:absolute;top:958px;left:511px;white-space:nowrap" class="ft21">47:&#160;first,&#160;it&#160;correctly&#160;predicts&#160;the&#160;results&#160;of&#160;RNAi</p>
+<p style="position:absolute;top:978px;left:466px;white-space:nowrap" class="ft24">experiments&#160;on&#160;the&#160;motor&#160;proteins&#160;involved&#160;in&#160;axonal&#160;trans-<br/>port.&#160;Second,&#160;while&#160;the&#160;planarian&#160;VNC&#160;runs&#160;largely&#160;from<br/>head&#160;to&#160;tail,&#160;neurons&#160;in&#160;some&#160;other&#160;areas&#160;run&#160;predominantly<br/>mediolaterally.&#160;New&#160;experiments&#160;that&#160;regenerate&#160;fragments<br/>cut&#160;from&#160;these&#160;areas&#160;consistently&#160;produce&#160;regenerates&#160;whose<br/>head-to-tail&#160;axis&#160;is&#160;now&#160;rotated&#160;90</p>
+<p style="position:absolute;top:1059px;left:664px;white-space:nowrap" class="ft20">—that&#160;is,&#160;which&#160;follow&#160;the</p>
+<p style="position:absolute;top:1077px;left:466px;white-space:nowrap" class="ft24">predominant&#160;neuronal&#160;direction&#160;rather&#160;than&#160;the&#160;direction&#160;of<br/>the&#160;original&#160;head-to-tail&#160;axis.</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft22">ROBUSTNESS&#160;OF&#160;BIOELECTRIC&#160;CIRCUITS</p>
+<p style="position:absolute;top:54px;left:810px;white-space:nowrap" class="ft22">19</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft23">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:7px;font-family:Times;color:#000000;}
+	.ft32{font-size:11px;font-family:Times;color:#000000;}
+	.ft33{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft34{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft35{font-size:12px;line-height:14px;font-family:Times;color:#000000;}
+	.ft36{font-size:7px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:90px;left:108px;white-space:nowrap" class="ft30">While&#160;axonal&#160;transport&#160;is&#160;attractive,&#160;it&#160;does&#160;not&#160;explain&#160;our</p>
+<p style="position:absolute;top:107px;left:93px;white-space:nowrap" class="ft34">electrical-manipulation&#160;data.&#160;Furthermore,&#160;it&#160;does&#160;not&#160;specify<br/>the&#160;mechanism&#160;for&#160;morphogen&#160;transport&#160;between&#160;neurons,<br/>and&#160;we&#160;will&#160;see&#160;below&#160;that&#160;it&#160;also&#160;cannot&#160;explain&#160;all&#160;of&#160;the<br/>GJ&#160;data.&#160;Finally,&#160;neither&#160;it&#160;nor&#160;electrodiffusion&#160;can&#160;explain&#160;a<br/>final&#160;piece&#160;of&#160;experimental&#160;data—Cryptic&#160;worms.</p>
+<p style="position:absolute;top:189px;left:108px;white-space:nowrap" class="ft30">Cryptic&#160;worms&#160;were&#160;discovered&#160;as&#160;a&#160;result&#160;of&#160;a&#160;gap-</p>
+<p style="position:absolute;top:205px;left:93px;white-space:nowrap" class="ft34">junctional-blockade&#160;experiment.&#160;As&#160;noted&#160;above,&#160;this&#160;typi-<br/>cally&#160;produces&#160;2H&#160;regenerates.&#160;However,&#160;there&#160;were&#160;also<br/>some&#160;seemingly&#160;normal,&#160;1H&#160;regenerates.</p>
+<p style="position:absolute;top:255px;left:108px;white-space:nowrap" class="ft30">Our&#160;previous&#160;hypothesis&#160;was&#160;that&#160;the&#160;1H&#160;fraction&#160;of&#160;a&#160;cohort</p>
+<p style="position:absolute;top:271px;left:93px;white-space:nowrap" class="ft34">exposed&#160;to&#160;octanol&#160;was&#160;comprised&#160;of&#160;‘‘escapees,’’&#160;indicative<br/>of&#160;incomplete&#160;penetrance&#160;of&#160;our&#160;treatment&#160;or&#160;some&#160;variability<br/>in&#160;worms’&#160;susceptibility&#160;to&#160;the&#160;reagent.&#160;However,&#160;it&#160;was&#160;ob-<br/>served&#160;that&#160;when&#160;amputated&#160;in&#160;plain&#160;water,&#160;such&#160;animals<br/>maintain&#160;roughly&#160;the&#160;same&#160;proportion&#160;of&#160;1H:2H&#160;resulting<br/>regenerates.</p>
+<p style="position:absolute;top:350px;left:164px;white-space:nowrap" class="ft31">34&#160;This&#160;persists&#160;in&#160;multiple&#160;rounds&#160;(generations)</p>
+<p style="position:absolute;top:370px;left:93px;white-space:nowrap" class="ft34">of&#160;recutting,&#160;despite&#160;a&#160;wild-type&#160;(WT)&#160;genomic&#160;sequence&#160;and<br/>no&#160;further&#160;treatments.&#160;Thus,&#160;rather&#160;than&#160;2H’s&#160;and&#160;WT&#160;escap-<br/>ees,&#160;what&#160;GJ&#160;blockade&#160;really&#160;produces&#160;is&#160;2H’s&#160;and&#160;a&#160;permanent<br/>line&#160;of&#160;animals&#160;in&#160;which&#160;the&#160;head-determining&#160;information<br/>is&#160;destabilized,&#160;fluctuating&#160;stochastically&#160;upon&#160;each&#160;cut.</p>
+<p style="position:absolute;top:452px;left:108px;white-space:nowrap" class="ft30">They&#160;are&#160;called&#160;Cryptic&#160;because&#160;their&#160;normal&#160;anatomy</p>
+<p style="position:absolute;top:468px;left:93px;white-space:nowrap" class="ft34">and&#160;gene&#160;expression&#160;profiles&#160;belie&#160;a&#160;disorder&#160;of&#160;patterning<br/>information&#160;that&#160;is&#160;not&#160;readily&#160;apparent.&#160;The&#160;offspring&#160;of<br/>fragments&#160;from&#160;such&#160;worms,&#160;including&#160;two&#160;lateral&#160;pieces&#160;cut<br/>from&#160;the&#160;same&#160;anterior-posterior&#160;position&#160;of&#160;a&#160;single&#160;Cryptic<br/>worm,&#160;make&#160;independent&#160;decisions&#160;about&#160;whether&#160;they&#160;will<br/>be&#160;2H&#160;or&#160;Cryptic&#160;(one&#160;head,&#160;but&#160;destabilized).&#160;The&#160;models<br/>that&#160;have&#160;been&#160;proposed&#160;to&#160;explain&#160;persistent&#160;bioelectric<br/>memory&#160;of&#160;one&#160;versus&#160;two&#160;head&#160;decisions,&#160;and&#160;Cryptic<br/>worms’&#160;destabilized&#160;morphology,&#160;have&#160;never&#160;been&#160;unified<br/>into&#160;a&#160;single&#160;framework&#160;to&#160;understand&#160;how&#160;head&#160;number&#160;is<br/>determined&#160;by&#160;physiological&#160;signaling.</p>
+<p style="position:absolute;top:90px;left:485px;white-space:nowrap" class="ft30">In&#160;summary,</p>
+<p style="position:absolute;top:111px;left:485px;white-space:nowrap" class="ft30">&#160;The&#160;axonal-transport&#160;hypothesis</p>
+<p style="position:absolute;top:109px;left:688px;white-space:nowrap" class="ft31">47&#160;specifically&#160;chose&#160;its</p>
+<p style="position:absolute;top:128px;left:499px;white-space:nowrap" class="ft34">associated&#160;GRN&#160;so&#160;as&#160;to&#160;explain&#160;numerous&#160;loss-of-function<br/>experiments&#160;on&#160;regulatory&#160;TFs.&#160;It&#160;explains&#160;those&#160;data&#160;quite<br/>well.&#160;Furthermore,&#160;it&#160;correctly&#160;predicts&#160;new&#160;results&#160;for&#160;loss-<br/>of-function&#160;experiments&#160;on&#160;the&#160;motor&#160;proteins&#160;involved&#160;in<br/>axonal&#160;transport&#160;as&#160;well&#160;as&#160;various&#160;new&#160;cutting&#160;scenarios.</p>
+<p style="position:absolute;top:210px;left:485px;white-space:nowrap" class="ft30">&#160;The&#160;electrodiffusion&#160;hypothesis&#160;explains&#160;various&#160;exper-</p>
+<p style="position:absolute;top:227px;left:499px;white-space:nowrap" class="ft34">iments&#160;that&#160;involve&#160;applied&#160;electrical&#160;fields,&#160;as&#160;well<br/>as&#160;experiments&#160;involving&#160;GJ&#160;blockers&#160;and&#160;interventions<br/>targeting&#160;cell&#160;Vmem&#160;(e.g.,&#160;hyperpolarization&#160;or&#160;depo-<br/>larization).</p>
+<p style="position:absolute;top:292px;left:485px;white-space:nowrap" class="ft30">&#160;Neither&#160;hypothesis&#160;explains&#160;the&#160;opposite&#160;set&#160;of&#160;exper-</p>
+<p style="position:absolute;top:309px;left:499px;white-space:nowrap" class="ft34">iments.&#160;This&#160;is&#160;unsurprising—the&#160;axonal-transport&#160;hy-<br/>pothesis&#160;does&#160;not&#160;have&#160;Vmem&#160;or&#160;GJs&#160;as&#160;an&#160;input&#160;and&#160;thus<br/>cannot&#160;explain&#160;electrical&#160;or&#160;GJ&#160;effects.&#160;Similarly,&#160;the<br/>electrodiffusion&#160;hypothesis&#160;does&#160;not&#160;make&#160;any&#160;use&#160;of<br/>any&#160;of&#160;the&#160;TFs&#160;in&#160;the&#160;loss-of-function&#160;experiments.</p>
+<p style="position:absolute;top:390px;left:485px;white-space:nowrap" class="ft30">&#160;Neither&#160;hypothesis&#160;seems&#160;capable&#160;of&#160;proposing&#160;a&#160;mech-</p>
+<p style="position:absolute;top:408px;left:499px;white-space:nowrap" class="ft30">anism&#160;for&#160;Cryptic&#160;worms.</p>
+<p style="position:absolute;top:405px;left:655px;white-space:nowrap" class="ft31">34</p>
+<p style="position:absolute;top:430px;left:485px;white-space:nowrap" class="ft30">In&#160;this&#160;study,&#160;we&#160;propose&#160;a&#160;hybrid&#160;model&#160;that&#160;explains</p>
+<p style="position:absolute;top:447px;left:470px;white-space:nowrap" class="ft34">essentially&#160;all&#160;the&#160;above&#160;data&#160;points.&#160;It&#160;also&#160;explains&#160;Cryptic<br/>worms&#160;quite&#160;simply.&#160;There&#160;are&#160;numerous&#160;data&#160;points&#160;to<br/>explain,&#160;which&#160;our&#160;new&#160;model&#160;addresses:</p>
+<p style="position:absolute;top:500px;left:485px;white-space:nowrap" class="ft30">&#160;The&#160;ability&#160;of&#160;planarian&#160;head-tail&#160;axes&#160;to&#160;regenerate</p>
+<p style="position:absolute;top:518px;left:499px;white-space:nowrap" class="ft30">reliably&#160;from&#160;small&#160;fragments.</p>
+<p style="position:absolute;top:533px;left:485px;white-space:nowrap" class="ft30">&#160;The&#160;effect&#160;of&#160;an&#160;applied&#160;electric&#160;field&#160;to&#160;create&#160;a&#160;2H&#160;re-</p>
+<p style="position:absolute;top:550px;left:499px;white-space:nowrap" class="ft30">generate,&#160;or&#160;a&#160;larger&#160;field&#160;to&#160;reverse&#160;head-tail&#160;polarity.</p>
+<p style="position:absolute;top:547px;left:804px;white-space:nowrap" class="ft31">35,36</p>
+<p style="position:absolute;top:566px;left:485px;white-space:nowrap" class="ft30">&#160;Data&#160;from&#160;Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:564px;left:652px;white-space:nowrap" class="ft31">30&#160;shown&#160;in&#160;Figure&#160;1.&#160;It&#160;in-</p>
+<p style="position:absolute;top:583px;left:499px;white-space:nowrap" class="ft30">cludes&#160;various&#160;cuttings,&#160;with&#160;and&#160;without&#160;octanol.</p>
+<p style="position:absolute;top:599px;left:485px;white-space:nowrap" class="ft30">&#160;Data&#160;from&#160;Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:597px;left:647px;white-space:nowrap" class="ft31">46&#160;showing&#160;how&#160;the&#160;gradually</p>
+<p style="position:absolute;top:616px;left:499px;white-space:nowrap" class="ft34">changing&#160;planar-cell&#160;polarity&#160;in&#160;a&#160;2H&#160;worm&#160;correlates<br/>with&#160;which&#160;cuttings&#160;regenerate&#160;as&#160;2H&#160;(Fig.&#160;2).</p>
+<p style="position:absolute;top:929px;left:93px;white-space:nowrap" class="ft30">FIG.&#160;1.</p>
+<p style="position:absolute;top:929px;left:153px;white-space:nowrap" class="ft30">Summary&#160;of&#160;experiments&#160;from&#160;Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:925px;left:420px;white-space:nowrap" class="ft31">30&#160;This&#160;figure&#160;is&#160;a&#160;simplified&#160;version&#160;of&#160;Oviedo&#160;et&#160;al.,&#160;figure&#160;1C&#160;(see</p>
+<p style="position:absolute;top:944px;left:93px;white-space:nowrap" class="ft35">the&#160;original&#160;for&#160;full&#160;detail).&#160;It&#160;summarizes&#160;the&#160;numerous&#160;planarian&#160;cutting&#160;experiments,&#160;cutting&#160;and&#160;notching&#160;worms&#160;in<br/>different&#160;locations&#160;relative&#160;to&#160;the&#160;VNC.&#160;The&#160;graphs&#160;are&#160;shown&#160;with&#160;the&#160;size&#160;of&#160;each&#160;color&#160;proportional&#160;to&#160;the&#160;frequency&#160;of&#160;the<br/>corresponding&#160;phenotype.&#160;E.g.,&#160;case&#160;III&#160;has&#160;65%&#160;wild-type&#160;and&#160;35%&#160;side-head.&#160;Graph&#160;legend:&#160;WT,&#160;wild&#160;type&#160;(grey),&#160;2H,<br/>two-headed&#160;(red);&#160;4H,&#160;four-headed&#160;(green);&#160;SH,&#160;side-head&#160;(blue);&#160;XX,&#160;other&#160;(yellow).&#160;All&#160;cases&#160;I–X&#160;in&#160;fresh&#160;water&#160;with&#160;no<br/>octanol&#160;resulted&#160;in&#160;WT&#160;outcomes.&#160;A&#160;VNC-only&#160;theory&#160;cannot&#160;easily&#160;explain&#160;that,&#160;but&#160;adding&#160;Vmem&#160;control&#160;makes&#160;it&#160;easier&#160;to<br/>explain&#160;these&#160;results.&#160;Consider&#160;the&#160;notches—when&#160;regenerating&#160;in&#160;water,&#160;the&#160;notches&#160;only&#160;slightly&#160;disturb&#160;the&#160;existing&#160;Vmem<br/>pattern,&#160;with&#160;the&#160;result&#160;that&#160;regeneration&#160;works&#160;correctly.&#160;Even&#160;when&#160;cutting&#160;the&#160;VNC,&#160;the&#160;correct&#160;Vmem&#160;pattern&#160;is&#160;instructive<br/>enough&#160;to&#160;the&#160;GRN&#160;that&#160;we&#160;get&#160;correct&#160;regeneration.&#160;However,&#160;octanol&#160;allows&#160;Vmem&#160;islands&#160;and&#160;breaks&#160;the&#160;Vmem&#160;reference,<br/>yielding&#160;improper&#160;regrowth.&#160;The&#160;combination&#160;of&#160;impairing&#160;the&#160;Vmem&#160;system&#160;with&#160;various&#160;forms&#160;of&#160;breaking&#160;the&#160;VNC&#160;system<br/>yields&#160;unusual&#160;results,&#160;including&#160;a&#160;wide&#160;variety&#160;of&#160;‘‘other’’&#160;cases.&#160;2H,&#160;two&#160;headed;&#160;GRN,&#160;gene&#160;regulatory&#160;network;&#160;VNC,<br/>ventral&#160;nerve&#160;cord;&#160;WT,&#160;wild&#160;type.</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft32">20</p>
+<p style="position:absolute;top:54px;left:671px;white-space:nowrap" class="ft32">GRODSTEIN&#160;AND&#160;LEVIN</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft33">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:7px;font-family:Times;color:#000000;}
+	.ft42{font-size:11px;font-family:Times;color:#000000;}
+	.ft43{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft44{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft45{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft46{font-size:12px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:533px;left:105px;white-space:nowrap" class="ft40">&#160;Data&#160;on&#160;Cryptic&#160;worms&#160;from&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:531px;left:376px;white-space:nowrap" class="ft41">34&#160;(Fig.&#160;3).</p>
+<p style="position:absolute;top:549px;left:105px;white-space:nowrap" class="ft40">&#160;An&#160;unusual&#160;90&#160;rotation&#160;of&#160;the&#160;head-tail&#160;axis&#160;in&#160;Pietak</p>
+<p style="position:absolute;top:567px;left:119px;white-space:nowrap" class="ft40">et&#160;al.</p>
+<p style="position:absolute;top:564px;left:149px;white-space:nowrap" class="ft41">47&#160;(Fig.&#160;4).</p>
+<p style="position:absolute;top:582px;left:105px;white-space:nowrap" class="ft40">&#160;All&#160;the&#160;RNAi&#160;loss-of-function&#160;data&#160;mentioned&#160;in&#160;Pietak</p>
+<p style="position:absolute;top:600px;left:119px;white-space:nowrap" class="ft40">et&#160;al.</p>
+<p style="position:absolute;top:597px;left:149px;white-space:nowrap" class="ft41">47</p>
+<p style="position:absolute;top:90px;left:466px;white-space:nowrap" class="ft42">Results</p>
+<p style="position:absolute;top:115px;left:466px;white-space:nowrap" class="ft44">A&#160;simple&#160;extension&#160;of&#160;the&#160;axonal-transport&#160;hypothesis<br/>still&#160;does&#160;not&#160;explain&#160;all&#160;the&#160;data</p>
+<p style="position:absolute;top:156px;left:481px;white-space:nowrap" class="ft40">Many&#160;interventions&#160;in&#160;the&#160;literature&#160;that&#160;produce&#160;altered</p>
+<p style="position:absolute;top:172px;left:466px;white-space:nowrap" class="ft45">phenotypes&#160;involve&#160;octanol,&#160;a&#160;GJ&#160;blocker&#160;(Figs.&#160;1&#160;and&#160;3).<br/>However,&#160;neither&#160;octanol&#160;nor&#160;GJs&#160;play&#160;any&#160;part&#160;in&#160;the&#160;axonal-<br/>transport&#160;hypothesis,&#160;which&#160;thus&#160;does&#160;not&#160;explain&#160;octanol’s<br/>results.</p>
+<p style="position:absolute;top:238px;left:481px;white-space:nowrap" class="ft40">We&#160;will&#160;propose&#160;a&#160;hybrid&#160;hypothesis,&#160;including&#160;polarity</p>
+<p style="position:absolute;top:255px;left:466px;white-space:nowrap" class="ft45">control&#160;not&#160;only&#160;by&#160;the&#160;VNC&#160;but&#160;also&#160;by&#160;electrodiffusion<br/>through&#160;GJs.&#160;Is&#160;this&#160;unnecessarily&#160;complex?&#160;Could&#160;we&#160;per-<br/>haps&#160;simply&#160;extend&#160;the&#160;axonal-transport&#160;hypothesis&#160;to<br/>include&#160;GJs&#160;and&#160;thus&#160;not&#160;need&#160;electrodiffusion?</p>
+<p style="position:absolute;top:320px;left:481px;white-space:nowrap" class="ft40">One&#160;might&#160;merely&#160;assume&#160;that&#160;the&#160;VNC&#160;neurons&#160;commu-</p>
+<p style="position:absolute;top:337px;left:466px;white-space:nowrap" class="ft45">nicate&#160;through&#160;GJs.&#160;There&#160;is&#160;substantial&#160;precedence&#160;for&#160;this;&#160;the<br/>mammalian&#160;heart&#160;is&#160;dominated&#160;by&#160;excitable&#160;tissue&#160;(cardio-<br/>myocytes)&#160;that&#160;predominantly&#160;communicates&#160;through&#160;GJs.<br/>Furthermore,&#160;many&#160;neurons&#160;in&#160;the&#160;central&#160;nervous&#160;system<br/>communicate&#160;through&#160;GJs&#160;rather&#160;than&#160;chemical&#160;synapses</p>
+<p style="position:absolute;top:399px;left:798px;white-space:nowrap" class="ft41">49–51</p>
+<p style="position:absolute;top:419px;left:466px;white-space:nowrap" class="ft40">and&#160;myocytes&#160;are&#160;known&#160;to&#160;express&#160;position-control&#160;genes.</p>
+<p style="position:absolute;top:416px;left:814px;white-space:nowrap" class="ft41">10</p>
+<p style="position:absolute;top:435px;left:466px;white-space:nowrap" class="ft45">Thus,&#160;it&#160;may&#160;be&#160;reasonable&#160;to&#160;assume&#160;that&#160;the&#160;length&#160;of&#160;the<br/>planarian&#160;VNC&#160;spans&#160;multiple&#160;neurons,&#160;and&#160;that&#160;those&#160;neurons<br/>interconnect&#160;through&#160;GJs.&#160;On&#160;this&#160;hypothesis,&#160;GJs&#160;could&#160;be<br/>part&#160;of&#160;the&#160;VNC&#160;and&#160;thus&#160;octanol&#160;would&#160;affect&#160;VNC&#160;func-<br/>tioning.&#160;Does&#160;this&#160;avoid&#160;the&#160;need&#160;to&#160;use&#160;electrodiffusion&#160;at&#160;all?</p>
+<p style="position:absolute;top:518px;left:481px;white-space:nowrap" class="ft40">Unfortunately,&#160;this&#160;simpler&#160;hypothesis&#160;does&#160;not&#160;fit&#160;the&#160;data.</p>
+<p style="position:absolute;top:534px;left:466px;white-space:nowrap" class="ft40">Figure&#160;1&#160;is&#160;adapted&#160;from&#160;figure&#160;1C&#160;of&#160;Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:531px;left:762px;white-space:nowrap" class="ft41">30&#160;It&#160;shows</p>
+<p style="position:absolute;top:550px;left:466px;white-space:nowrap" class="ft45">that&#160;cutting&#160;the&#160;VNC&#160;alone&#160;is&#160;not&#160;sufficient&#160;to&#160;produce&#160;alt-<br/>ered&#160;phenotypes;&#160;all&#160;cases&#160;in&#160;Figure&#160;1&#160;regenerated&#160;correctly&#160;in<br/>water,&#160;even&#160;with&#160;the&#160;VNC&#160;cut.&#160;Furthermore,&#160;Figure&#160;1&#160;cases&#160;I,<br/>II,&#160;and&#160;X&#160;show&#160;that&#160;blocking&#160;GJs&#160;with&#160;octanol&#160;is&#160;not&#160;sufficient</p>
+<p style="position:absolute;top:335px;left:90px;white-space:nowrap" class="ft40">FIG.&#160;2.</p>
+<p style="position:absolute;top:335px;left:149px;white-space:nowrap" class="ft40">Summary&#160;of&#160;experiments&#160;from&#160;Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:331px;left:408px;white-space:nowrap" class="ft41">46&#160;This</p>
+<p style="position:absolute;top:350px;left:90px;white-space:nowrap" class="ft40">figure&#160;is&#160;condensed&#160;from&#160;Bischof&#160;et&#160;al.,</p>
+<p style="position:absolute;top:346px;left:324px;white-space:nowrap" class="ft41">46&#160;figure&#160;4,&#160;and&#160;sum-</p>
+<p style="position:absolute;top:364px;left:90px;white-space:nowrap" class="ft46">marizes&#160;their&#160;experiments&#160;cutting&#160;and&#160;regenerating&#160;2H&#160;worms.<br/>Start&#160;with&#160;a&#160;2H&#160;worm.&#160;Cut&#160;it&#160;at&#160;one&#160;of&#160;three&#160;cut&#160;lines&#160;shown,<br/>leaving&#160;a&#160;front-of-cut&#160;and&#160;a&#160;rear-of-cut&#160;fragment.&#160;The&#160;two<br/>numbers&#160;at&#160;each&#160;cut&#160;line&#160;are&#160;the&#160;percent&#160;of&#160;2H&#160;worms&#160;that<br/>regrew&#160;as&#160;2H&#160;for&#160;the&#160;given&#160;fragment&#160;on&#160;the&#160;given&#160;day.<br/>Numbers&#160;most&#160;inconsistent&#160;with&#160;an&#160;electrodiffusion-only<br/>model&#160;are&#160;in&#160;red.&#160;The&#160;most&#160;obvious&#160;way&#160;to&#160;fix&#160;this&#160;inconsis-<br/>tency&#160;is&#160;to&#160;assume&#160;substantial&#160;‘‘tail&#160;pressure’’—that&#160;is,&#160;that&#160;the<br/>VNC&#160;tail&#160;pushes&#160;Vmem&#160;more&#160;negative.&#160;Thus,&#160;the&#160;Vmem&#160;profile<br/>would&#160;roughly&#160;match&#160;the&#160;VNC-polarity&#160;profile.</p>
+<p style="position:absolute;top:884px;left:90px;white-space:nowrap" class="ft40">FIG.&#160;3.</p>
+<p style="position:absolute;top:884px;left:150px;white-space:nowrap" class="ft40">Summary&#160;of&#160;Cryptic-worm&#160;experiments.&#160;This&#160;figure&#160;summarizes&#160;the&#160;Cryptic-worm&#160;experiments&#160;from&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:881px;left:814px;white-space:nowrap" class="ft41">34</p>
+<p style="position:absolute;top:899px;left:90px;white-space:nowrap" class="ft46">The&#160;original&#160;WT&#160;worms&#160;are&#160;on&#160;the&#160;left,&#160;which&#160;then&#160;undergo&#160;a&#160;3-day&#160;octanol&#160;treatment&#160;to&#160;temporarily&#160;disrupt&#160;GJs.&#160;This&#160;results&#160;in<br/>some&#160;2H&#160;regenerates,&#160;with&#160;the&#160;remaining&#160;being&#160;Cryptic.&#160;The&#160;Cryptics,&#160;upon&#160;recutting&#160;in&#160;fresh&#160;water,&#160;show&#160;the&#160;same&#160;stochastic<br/>regeneration&#160;as&#160;our&#160;WT&#160;showed&#160;when&#160;exposed&#160;to&#160;octanol.&#160;Why&#160;would&#160;not&#160;octanol&#160;produce,&#160;for&#160;example,&#160;HTHTHT?&#160;Because<br/>even&#160;though&#160;the&#160;octanol&#160;reduces&#160;GJ&#160;conductance&#160;enough&#160;for&#160;such&#160;patterns&#160;to&#160;occur,&#160;they&#160;vanish&#160;as&#160;soon&#160;as&#160;the&#160;octanol&#160;is<br/>removed.&#160;Why&#160;do&#160;not&#160;we&#160;ever&#160;get&#160;THT?&#160;A&#160;reasonably&#160;high&#160;head&#160;pressure&#160;and&#160;low&#160;tail&#160;pressure&#160;would&#160;explain&#160;that—the&#160;head<br/>pressure&#160;would&#160;force&#160;the&#160;VNC&#160;head&#160;to&#160;remain&#160;a&#160;head&#160;(and&#160;outlaw&#160;THT).&#160;The&#160;low&#160;tail&#160;pressure&#160;would&#160;allow&#160;the&#160;VNC&#160;tail&#160;to<br/>become&#160;depolarized.&#160;Of&#160;course,&#160;some&#160;worms&#160;will&#160;have&#160;HTHTHT&#160;flatten&#160;to&#160;just&#160;TH,&#160;but&#160;that’s&#160;fine.&#160;A&#160;VNC-only&#160;theory&#160;cannot<br/>explain&#160;how&#160;WT</p>
+<p style="position:absolute;top:1002px;left:188px;white-space:nowrap" class="ft40">+octanol&#160;could&#160;ever&#160;produce&#160;2H,&#160;since&#160;both&#160;VNCs&#160;remain&#160;intact&#160;and&#160;octanol&#160;is&#160;not&#160;part&#160;of&#160;the&#160;GRN&#160;from&#160;ref.</p>
+<p style="position:absolute;top:1018px;left:90px;white-space:nowrap" class="ft46">47.&#160;We&#160;easily&#160;explain&#160;hyperpolarizing&#160;a&#160;Cryptic.&#160;The&#160;hyperpolarizer&#160;pulls&#160;Vmem&#160;negative&#160;everywhere.&#160;As&#160;soon&#160;as&#160;the&#160;hy-<br/>perpolarizer&#160;is&#160;removed,&#160;VNC&#160;head&#160;and&#160;tail&#160;pressure&#160;will&#160;depolarize&#160;the&#160;head&#160;and&#160;keep&#160;the&#160;tail&#160;hyperpolarized—reliably&#160;giving&#160;a<br/>WT&#160;Vmem&#160;profile.&#160;A&#160;similar&#160;argument&#160;explains&#160;hyperpolarizing&#160;a&#160;2H.&#160;VNC&#160;head&#160;pressure&#160;at&#160;both&#160;ends&#160;will&#160;tend&#160;to&#160;give&#160;us&#160;a&#160;2H<br/>Vmem&#160;profile&#160;rather&#160;than&#160;WT—and&#160;we&#160;indeed&#160;see&#160;only&#160;1/3&#160;of&#160;2H&#160;convert&#160;to&#160;WT.&#160;Perhaps&#160;the&#160;occasional&#160;conversion&#160;to&#160;WT&#160;in&#160;the<br/>data&#160;happens&#160;since&#160;having&#160;both&#160;heads&#160;swing&#160;from&#160;fully&#160;hyperpolarized&#160;to&#160;fully&#160;depolarized&#160;may&#160;be&#160;enough&#160;dynamic&#160;movement<br/>to&#160;occasionally&#160;swing&#160;the&#160;Vmem&#160;system&#160;into&#160;a&#160;WT&#160;profile&#160;(which&#160;is,&#160;after&#160;all,&#160;fully&#160;stable).&#160;GJs,&#160;gap&#160;junctions.</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft42">ROBUSTNESS&#160;OF&#160;BIOELECTRIC&#160;CIRCUITS</p>
+<p style="position:absolute;top:54px;left:810px;white-space:nowrap" class="ft42">21</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft43">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:11px;font-family:Times;color:#000000;}
+	.ft52{font-size:7px;font-family:Times;color:#000000;}
+	.ft53{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft54{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft55{font-size:12px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:486px;left:93px;white-space:nowrap" class="ft54">to&#160;produce&#160;altered&#160;phenotypes&#160;unless&#160;the&#160;VNC&#160;is&#160;cut.&#160;That&#160;is,<br/>neither&#160;cutting&#160;the&#160;VNC&#160;alone&#160;nor&#160;octanol&#160;soaking&#160;alone<br/>hindered&#160;normal&#160;regeneration.&#160;Instead,&#160;breaking&#160;the&#160;regen-<br/>erative&#160;process&#160;required&#160;both&#160;interventions&#160;simultaneously.<br/>If&#160;morphogenetic&#160;cues&#160;were&#160;truly&#160;propagated&#160;through&#160;GJ-<br/>connected&#160;neurons&#160;in&#160;the&#160;VNC,&#160;then&#160;either&#160;of&#160;two&#160;interven-<br/>tions&#160;would&#160;have&#160;been&#160;sufficient&#160;to&#160;disrupt&#160;the&#160;system.</p>
+<p style="position:absolute;top:601px;left:108px;white-space:nowrap" class="ft50">Having&#160;VNC&#160;neurons&#160;communicate&#160;through&#160;GJs&#160;places</p>
+<p style="position:absolute;top:617px;left:93px;white-space:nowrap" class="ft54">axonal&#160;transport&#160;in&#160;series&#160;with&#160;GJs&#160;and&#160;would&#160;require&#160;both<br/>to&#160;function.&#160;We&#160;must&#160;thus&#160;reject&#160;this&#160;attractively&#160;simple<br/>hypothesis—our&#160;hybrid&#160;hypothesis&#160;instead&#160;places&#160;electro-<br/>diffusion&#160;in&#160;parallel&#160;with&#160;axonal&#160;transport,&#160;thus&#160;only&#160;requir-<br/>ing&#160;one&#160;of&#160;the&#160;two&#160;to&#160;function&#160;and&#160;better&#160;matching&#160;the&#160;data.</p>
+<p style="position:absolute;top:724px;left:93px;white-space:nowrap" class="ft51">A&#160;new,&#160;hybrid&#160;hypothesis</p>
+<p style="position:absolute;top:748px;left:108px;white-space:nowrap" class="ft50">We&#160;start&#160;by&#160;hypothesizing&#160;that&#160;both&#160;models&#160;discussed</p>
+<p style="position:absolute;top:764px;left:93px;white-space:nowrap" class="ft54">above—electrodiffusion&#160;and&#160;axonal&#160;transport—exist.&#160;Fur-<br/>thermore,&#160;they&#160;affect&#160;each&#160;other&#160;through&#160;cross-coupling:</p>
+<p style="position:absolute;top:804px;left:108px;white-space:nowrap" class="ft50">&#160;The&#160;VNC&#160;influences&#160;the&#160;electrodiffusion&#160;system&#160;through</p>
+<p style="position:absolute;top:822px;left:123px;white-space:nowrap" class="ft54">head&#160;pressure&#160;and&#160;tail&#160;pressure.&#160;Specifically,&#160;axonal<br/>transport&#160;is&#160;known&#160;to&#160;create&#160;a&#160;gradient&#160;of&#160;various&#160;TFs.<br/>We&#160;hypothesize&#160;that&#160;one&#160;or&#160;more&#160;of&#160;these&#160;TFs&#160;then<br/>leaves&#160;the&#160;VNC&#160;and&#160;(directly&#160;or&#160;indirectly)&#160;gates&#160;ion<br/>channels&#160;so&#160;as&#160;to&#160;hyperpolarize&#160;numerous&#160;non-neural<br/>cells&#160;at&#160;the&#160;worm’s&#160;tail&#160;and&#160;depolarize&#160;non-neural&#160;cells<br/>at&#160;the&#160;head.</p>
+<p style="position:absolute;top:936px;left:108px;white-space:nowrap" class="ft50">&#160;The&#160;GRN&#160;from&#160;Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:934px;left:292px;white-space:nowrap" class="ft52">47&#160;does&#160;not&#160;have&#160;any&#160;elec-</p>
+<p style="position:absolute;top:953px;left:123px;white-space:nowrap" class="ft54">trical&#160;input.&#160;We&#160;add&#160;it—namely,&#160;we&#160;hypothesize&#160;that<br/>Vmem&#160;modulates&#160;(directly&#160;or&#160;indirectly)&#160;the&#160;activity&#160;of<br/>one&#160;or&#160;more&#160;TFs&#160;in&#160;the&#160;GRN.</p>
+<p style="position:absolute;top:1002px;left:108px;white-space:nowrap" class="ft50">&#160;This&#160;cross-coupling&#160;allows&#160;each&#160;system&#160;to&#160;influence&#160;the</p>
+<p style="position:absolute;top:1019px;left:123px;white-space:nowrap" class="ft54">other,&#160;and&#160;hence&#160;allows&#160;both&#160;systems&#160;to&#160;influence&#160;the<br/>final&#160;regenerative&#160;outcome&#160;(Fig.&#160;5).</p>
+<p style="position:absolute;top:1060px;left:108px;white-space:nowrap" class="ft50">We&#160;do&#160;not,&#160;in&#160;this&#160;study,&#160;specify&#160;the&#160;molecular&#160;level&#160;details</p>
+<p style="position:absolute;top:1077px;left:93px;white-space:nowrap" class="ft54">of&#160;the&#160;cross-coupling.&#160;However,&#160;there&#160;are&#160;numerous&#160;mecha-<br/>nisms&#160;in&#160;nature&#160;by&#160;which&#160;chemical&#160;and&#160;electrical&#160;networks</p>
+<p style="position:absolute;top:90px;left:470px;white-space:nowrap" class="ft50">influence&#160;each&#160;other.</p>
+<p style="position:absolute;top:87px;left:596px;white-space:nowrap" class="ft52">14,52&#160;TFs&#160;(being&#160;proteins)&#160;do&#160;not&#160;typi-</p>
+<p style="position:absolute;top:107px;left:470px;white-space:nowrap" class="ft54">cally&#160;cross&#160;a&#160;cell&#160;membrane&#160;and&#160;thus&#160;may&#160;not&#160;be&#160;expected<br/>to&#160;exit&#160;the&#160;VNC.&#160;However,&#160;there&#160;are&#160;exceptions&#160;such&#160;as<br/>Nkx3.1,</p>
+<p style="position:absolute;top:136px;left:517px;white-space:nowrap" class="ft52">53&#160;Pax6,54&#160;and&#160;OTX2,&#160;which&#160;are&#160;secreted&#160;from&#160;neu-</p>
+<p style="position:absolute;top:156px;left:470px;white-space:nowrap" class="ft50">rons&#160;and&#160;transported&#160;within&#160;embryos.</p>
+<p style="position:absolute;top:153px;left:686px;white-space:nowrap" class="ft52">55–59&#160;Moreover,&#160;neurons</p>
+<p style="position:absolute;top:172px;left:470px;white-space:nowrap" class="ft54">are&#160;capable&#160;of&#160;modulating&#160;nearby&#160;cells&#160;through&#160;neurotrans-<br/>mitters,&#160;GJs,&#160;and&#160;repurposed&#160;retrotransposons&#160;like&#160;ARC.</p>
+<p style="position:absolute;top:186px;left:803px;white-space:nowrap" class="ft52">60,61</p>
+<p style="position:absolute;top:230px;left:470px;white-space:nowrap" class="ft51">A&#160;hybrid&#160;system&#160;can&#160;explain&#160;Cryptic&#160;worms</p>
+<p style="position:absolute;top:255px;left:485px;white-space:nowrap" class="ft50">The&#160;key&#160;claim&#160;in&#160;the&#160;hybrid&#160;hypothesis&#160;is&#160;that&#160;two&#160;systems</p>
+<p style="position:absolute;top:271px;left:470px;white-space:nowrap" class="ft54">coexist:&#160;axonal&#160;transport&#160;through&#160;the&#160;VNC&#160;and&#160;electrodiffu-<br/>sion&#160;through&#160;GJs.&#160;Each&#160;system&#160;is&#160;quite&#160;robust,&#160;and&#160;so&#160;under<br/>normal&#160;circumstances,&#160;they&#160;each&#160;tend&#160;to&#160;stabilize&#160;at&#160;a&#160;state<br/>that&#160;induces&#160;a&#160;normal&#160;WT&#160;phenotype—which&#160;means&#160;the&#160;two<br/>systems&#160;are&#160;aligned&#160;with&#160;each&#160;other.&#160;When&#160;one&#160;system,&#160;due&#160;to<br/>occasional&#160;unreliability,&#160;drifts&#160;toward&#160;an&#160;unnatural&#160;pheno-<br/>type,&#160;the&#160;cross-coupling&#160;helps&#160;to&#160;bring&#160;it&#160;back.</p>
+<p style="position:absolute;top:386px;left:485px;white-space:nowrap" class="ft50">We&#160;hypothesize&#160;not&#160;only&#160;that&#160;both&#160;systems&#160;exist&#160;but&#160;also</p>
+<p style="position:absolute;top:403px;left:470px;white-space:nowrap" class="ft54">that&#160;their&#160;state&#160;is&#160;different&#160;in&#160;Cryptics.&#160;We&#160;propose&#160;that&#160;the<br/>destabilized&#160;property&#160;of&#160;Cryptic&#160;worms&#160;arises&#160;because&#160;two<br/>components&#160;of&#160;the&#160;anterior-posterior&#160;axis-determining&#160;sys-<br/>tem&#160;are&#160;out&#160;of&#160;alignment&#160;with&#160;each&#160;other,&#160;leading&#160;to&#160;con-<br/>flicting&#160;signals&#160;and&#160;competing&#160;forces&#160;within&#160;the&#160;cellular<br/>collective.&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:482px;left:609px;white-space:nowrap" class="ft52">34&#160;showed&#160;(their&#160;fig.&#160;3)&#160;that&#160;a&#160;Cryptic</p>
+<p style="position:absolute;top:501px;left:470px;white-space:nowrap" class="ft50">worm’s&#160;VNC&#160;is&#160;still&#160;WT.&#160;They&#160;also&#160;used&#160;DiBAC&#160;staining</p>
+<p style="position:absolute;top:498px;left:803px;white-space:nowrap" class="ft52">62,63</p>
+<p style="position:absolute;top:518px;left:470px;white-space:nowrap" class="ft50">to&#160;measure&#160;a&#160;Cryptic&#160;worm’s&#160;Vmem&#160;profile&#160;to&#160;be&#160;2H.</p>
+<p style="position:absolute;top:534px;left:485px;white-space:nowrap" class="ft50">The&#160;resolution&#160;of&#160;DiBAC&#160;staining&#160;leaves&#160;much&#160;to&#160;be&#160;desired;</p>
+<p style="position:absolute;top:551px;left:470px;white-space:nowrap" class="ft54">improvements&#160;in&#160;voltage&#160;imaging&#160;in&#160;vivo&#160;will&#160;be&#160;necessary&#160;to<br/>acquire&#160;more&#160;definitive,&#160;high-resolution&#160;Vmem&#160;profiles&#160;for&#160;all&#160;the<br/>conditions&#160;discussed&#160;herein&#160;(as&#160;well&#160;as&#160;for&#160;deeper&#160;tissues&#160;that<br/>have&#160;not&#160;yet&#160;been&#160;accessible&#160;to&#160;this&#160;technology).&#160;Thus,&#160;for&#160;the<br/>purposes&#160;of&#160;this&#160;model,&#160;we&#160;will&#160;assume&#160;that&#160;Cryptics&#160;have&#160;the<br/>same&#160;2H&#160;Vmem&#160;profile&#160;as&#160;in&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:630px;left:703px;white-space:nowrap" class="ft52">34</p>
+<p style="position:absolute;top:649px;left:485px;white-space:nowrap" class="ft50">Even&#160;though&#160;the&#160;cross-coupling&#160;is&#160;strong&#160;enough&#160;to&#160;keep</p>
+<p style="position:absolute;top:666px;left:470px;white-space:nowrap" class="ft54">the&#160;two&#160;systems&#160;aligned&#160;in&#160;nature,&#160;it&#160;is&#160;not&#160;strong&#160;enough<br/>to&#160;guarantee&#160;alignment&#160;under&#160;chemical&#160;interventions&#160;such<br/>as&#160;octanol.&#160;We&#160;propose&#160;that&#160;Cryptic&#160;worms&#160;represent&#160;the<br/>combination&#160;of&#160;a&#160;2H&#160;electrodiffusion&#160;state&#160;with&#160;a&#160;WT&#160;VNC<br/>state.&#160;However,&#160;how&#160;exactly&#160;could&#160;octanol&#160;generate&#160;this&#160;mis-<br/>matched&#160;state?</p>
+<p style="position:absolute;top:764px;left:485px;white-space:nowrap" class="ft50">Grodstein&#160;and&#160;Levin</p>
+<p style="position:absolute;top:761px;left:613px;white-space:nowrap" class="ft52">42&#160;showed&#160;that&#160;an&#160;electrodiffusion</p>
+<p style="position:absolute;top:781px;left:470px;white-space:nowrap" class="ft54">model&#160;predicts&#160;that&#160;decreasing&#160;GJ&#160;connectivity&#160;naturally<br/>induces&#160;multiple&#160;swings&#160;between&#160;hyperpolarized&#160;and&#160;depo-<br/>larized&#160;(Fig.&#160;6),&#160;essentially&#160;dividing&#160;the&#160;worm&#160;into&#160;voltage<br/>islands&#160;(as&#160;also&#160;shown&#160;experimentally&#160;in&#160;Emmons-Bell<br/>et&#160;al.</p>
+<p style="position:absolute;top:843px;left:498px;white-space:nowrap" class="ft52">64).&#160;Octanol&#160;is&#160;a&#160;GJ&#160;blocker—its&#160;main&#160;effect&#160;is&#160;precisely</p>
+<p style="position:absolute;top:863px;left:470px;white-space:nowrap" class="ft50">to&#160;decrease&#160;GJ&#160;connectivity.</p>
+<p style="position:absolute;top:860px;left:642px;white-space:nowrap" class="ft52">65,66&#160;Thus,&#160;octanol&#160;will&#160;induce</p>
+<p style="position:absolute;top:879px;left:470px;white-space:nowrap" class="ft54">exactly&#160;these&#160;multipolar&#160;(e.g.,&#160;HTHTHT)&#160;Vmem&#160;patterns.&#160;The<br/>protocol&#160;used&#160;to&#160;create&#160;Cryptic&#160;worms&#160;starts&#160;with&#160;an&#160;octanol<br/>soaking&#160;of&#160;freshly&#160;cut&#160;planaria&#160;fragments,&#160;but&#160;then&#160;removes<br/>the&#160;fragments&#160;from&#160;octanol&#160;and&#160;places&#160;them&#160;into&#160;fresh&#160;water.</p>
+<p style="position:absolute;top:945px;left:485px;white-space:nowrap" class="ft50">This&#160;method&#160;produces&#160;the&#160;previously&#160;described&#160;mixture&#160;of</p>
+<p style="position:absolute;top:962px;left:470px;white-space:nowrap" class="ft54">2H&#160;animals&#160;and&#160;animals&#160;that&#160;look&#160;normal&#160;(one&#160;headed).&#160;but<br/>are&#160;really&#160;Cryptic,&#160;that&#160;is,&#160;that&#160;they&#160;have&#160;a&#160;destabilized,&#160;sto-<br/>chastic&#160;propensity&#160;to&#160;form&#160;Cryptics&#160;or&#160;2H&#160;animals&#160;in&#160;subse-<br/>quent&#160;cuts.</p>
+<p style="position:absolute;top:1008px;left:533px;white-space:nowrap" class="ft52">34&#160;As&#160;the&#160;octanol&#160;in&#160;the&#160;worm&#160;is&#160;gradually&#160;replaced</p>
+<p style="position:absolute;top:1027px;left:470px;white-space:nowrap" class="ft54">by&#160;water,&#160;the&#160;number&#160;of&#160;voltage&#160;islands&#160;will&#160;naturally&#160;dimin-<br/>ish.&#160;If&#160;the&#160;Vmem&#160;pattern&#160;started&#160;as,&#160;for&#160;example,&#160;HTHTHT,&#160;it<br/>should&#160;naturally&#160;swing&#160;through&#160;HTHTH&#160;and&#160;then&#160;HTH.</p>
+<p style="position:absolute;top:1077px;left:485px;white-space:nowrap" class="ft50">As&#160;noted&#160;above,&#160;DiBAC&#160;is&#160;an&#160;imprecise&#160;technique&#160;due&#160;to</p>
+<p style="position:absolute;top:1093px;left:470px;white-space:nowrap" class="ft50">limitations&#160;of&#160;depth&#160;penetration&#160;into&#160;the&#160;opaque&#160;worm,&#160;the</p>
+<p style="position:absolute;top:291px;left:93px;white-space:nowrap" class="ft50">FIG.&#160;4.</p>
+<p style="position:absolute;top:291px;left:154px;white-space:nowrap" class="ft50">Summary&#160;of&#160;the&#160;90</p>
+<p style="position:absolute;top:290px;left:272px;white-space:nowrap" class="ft50">&#160;rotation&#160;from&#160;Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:288px;left:441px;white-space:nowrap" class="ft52">47</p>
+<p style="position:absolute;top:306px;left:93px;white-space:nowrap" class="ft50">Summarized&#160;from&#160;Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:303px;left:275px;white-space:nowrap" class="ft52">47&#160;Planarian&#160;fragments&#160;in&#160;pre-</p>
+<p style="position:absolute;top:321px;left:93px;white-space:nowrap" class="ft55">vious&#160;work&#160;typically&#160;regenerate&#160;either&#160;as&#160;WT&#160;or&#160;with&#160;some<br/>version&#160;of&#160;head&#160;and&#160;tail&#160;in&#160;the&#160;anterior&#160;or&#160;posterior&#160;end&#160;of&#160;the<br/>worm.&#160;This&#160;experiment&#160;showed&#160;an&#160;unusual&#160;90</p>
+<p style="position:absolute;top:350px;left:389px;white-space:nowrap" class="ft50">&#160;rotation.</p>
+<p style="position:absolute;top:366px;left:93px;white-space:nowrap" class="ft55">Although&#160;the&#160;planarian&#160;VNC&#160;runs&#160;from&#160;head&#160;to&#160;tail,&#160;portions<br/>of&#160;its&#160;nervous&#160;system&#160;naturally&#160;run&#160;side-to-side&#160;in&#160;certain<br/>areas&#160;of&#160;the&#160;worm&#160;(as&#160;shown).&#160;This&#160;experiment&#160;took&#160;a<br/>fragment&#160;specifically&#160;from&#160;one&#160;such&#160;location;&#160;the&#160;result&#160;is&#160;a<br/>new&#160;worm&#160;rotated&#160;by&#160;90</p>
+<p style="position:absolute;top:425px;left:237px;white-space:nowrap" class="ft50">.&#160;This&#160;is&#160;exactly&#160;what&#160;a&#160;VNC-based</p>
+<p style="position:absolute;top:441px;left:93px;white-space:nowrap" class="ft50">hypothesis&#160;would&#160;predict.</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft51">22</p>
+<p style="position:absolute;top:54px;left:671px;white-space:nowrap" class="ft51">GRODSTEIN&#160;AND&#160;LEVIN</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft53">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:12px;font-family:Times;color:#000000;}
+	.ft61{font-size:7px;font-family:Times;color:#000000;}
+	.ft62{font-size:11px;font-family:Times;color:#000000;}
+	.ft63{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft64{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft65{font-size:7px;line-height:16px;font-family:Times;color:#000000;}
+	.ft66{font-size:12px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:781px;left:90px;white-space:nowrap" class="ft64">almost&#160;incessant&#160;movement&#160;of&#160;planaria,&#160;and&#160;the&#160;difficulty<br/>of&#160;calibrating&#160;dye&#160;signal&#160;to&#160;absolute&#160;Vmem&#160;electrophysi-<br/>ology;&#160;thus,&#160;we&#160;cannot&#160;claim&#160;to&#160;know&#160;the&#160;exact&#160;shape&#160;of<br/>the&#160;Vmem&#160;profile.&#160;However,&#160;that&#160;is&#160;largely&#160;irrelevant&#160;to&#160;our<br/>hypothesis—we&#160;require&#160;only&#160;that&#160;the&#160;head&#160;region(s)&#160;are<br/>depolarized&#160;relative&#160;to&#160;the&#160;body&#160;regions,&#160;and&#160;that&#160;making<br/>GJs&#160;less&#160;conductive&#160;makes&#160;it&#160;easier&#160;for&#160;regions&#160;of&#160;hyper-<br/>polarization&#160;and&#160;depolarization&#160;to&#160;exist&#160;in&#160;close&#160;physical<br/>proximity.</p>
+<p style="position:absolute;top:928px;left:105px;white-space:nowrap" class="ft60">We&#160;assume&#160;that&#160;default&#160;GJ&#160;connectivity&#160;without&#160;octanol&#160;is</p>
+<p style="position:absolute;top:945px;left:90px;white-space:nowrap" class="ft64">such&#160;that&#160;an&#160;HTH&#160;Vmem&#160;state&#160;is&#160;stable.&#160;Thus,&#160;worms&#160;do&#160;not<br/>pass&#160;through&#160;HTH&#160;on&#160;the&#160;way&#160;to&#160;TH&#160;(i.e.,&#160;to&#160;a&#160;WT&#160;Vmem<br/>profile),&#160;but&#160;instead&#160;stay&#160;at&#160;the&#160;stable&#160;HTH&#160;pattern,&#160;which<br/>corresponds&#160;to&#160;a&#160;2H&#160;phenotype.&#160;Thus,&#160;the&#160;temporary&#160;octanol<br/>intervention&#160;tends&#160;to&#160;result&#160;in&#160;electrodiffusion,&#160;reaching&#160;a<br/>stable&#160;2H&#160;state.&#160;However,&#160;there&#160;has&#160;been&#160;no&#160;intervention&#160;in<br/>the&#160;VNC,&#160;so&#160;the&#160;axonal-transport&#160;GRN&#160;naturally&#160;tends&#160;to<br/>remain&#160;in&#160;a&#160;WT&#160;state.</p>
+<p style="position:absolute;top:1076px;left:105px;white-space:nowrap" class="ft60">In&#160;roughly&#160;1/3&#160;of&#160;worms&#160;(where&#160;again&#160;the&#160;precise&#160;number</p>
+<p style="position:absolute;top:1093px;left:90px;white-space:nowrap" class="ft60">can&#160;vary&#160;in&#160;this&#160;stochastic&#160;phenotype),&#160;the&#160;cross-coupling&#160;is</p>
+<p style="position:absolute;top:781px;left:466px;white-space:nowrap" class="ft64">strong&#160;enough&#160;that&#160;the&#160;2H&#160;electrodiffusion&#160;state&#160;pushes&#160;the<br/>VNC&#160;GRN&#160;into&#160;a&#160;2H&#160;state&#160;and&#160;we&#160;get&#160;a&#160;true&#160;2H&#160;phenotype.<br/>However,&#160;in&#160;the&#160;remaining&#160;roughly&#160;2/3&#160;of&#160;worms,&#160;we&#160;pro-<br/>pose&#160;that&#160;cross-coupling&#160;is&#160;not&#160;strong&#160;enough&#160;to&#160;flip&#160;the<br/>VNC-GRN&#160;state,&#160;thus&#160;resulting&#160;in&#160;a&#160;new&#160;phenotype—<br/>electrodiffusion&#160;in&#160;a&#160;2H&#160;state&#160;and&#160;the&#160;VNC&#160;in&#160;a&#160;WT&#160;state.&#160;We<br/>posit&#160;that&#160;this&#160;is&#160;a&#160;Cryptic&#160;worm.&#160;What&#160;might&#160;cause&#160;this<br/>stochasticity?&#160;Chemical&#160;reactions&#160;are&#160;governed&#160;by&#160;statistical<br/>mechanics;&#160;while&#160;macroscopic&#160;systems&#160;are&#160;typically&#160;quite<br/>deterministic,&#160;cells&#160;are&#160;small&#160;and&#160;thus&#160;have&#160;an&#160;inherently&#160;high<br/>noise&#160;level.</p>
+<p style="position:absolute;top:942px;left:533px;white-space:nowrap" class="ft61">67&#160;When&#160;two&#160;systems&#160;influence&#160;each&#160;other&#160;through</p>
+<p style="position:absolute;top:961px;left:466px;white-space:nowrap" class="ft64">metabolite&#160;amounts&#160;and&#160;reaction&#160;rates&#160;that&#160;are&#160;not&#160;fully&#160;pre-<br/>dictable,&#160;stochasticity&#160;naturally&#160;occurs.</p>
+<p style="position:absolute;top:994px;left:481px;white-space:nowrap" class="ft60">Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:991px;left:562px;white-space:nowrap" class="ft61">34&#160;showed&#160;that&#160;Cryptics&#160;exhibit&#160;stochastic</p>
+<p style="position:absolute;top:1011px;left:466px;white-space:nowrap" class="ft64">regeneration&#160;up&#160;to&#160;8&#160;weeks&#160;after&#160;their&#160;initial&#160;cutting.&#160;Thus,&#160;if<br/>we&#160;accept&#160;that&#160;the&#160;discordance&#160;between&#160;a&#160;Cryptic&#160;worm’s<br/>electrical&#160;state&#160;and&#160;its&#160;VNC&#160;state&#160;is&#160;the&#160;source&#160;of&#160;the&#160;sto-<br/>chasticity,&#160;then&#160;this&#160;discordance&#160;is&#160;long&#160;lived.&#160;That&#160;is,&#160;in&#160;the<br/>Cryptic&#160;state,&#160;both&#160;systems&#160;are&#160;not&#160;only&#160;stable&#160;but&#160;also&#160;can<br/>remain&#160;so&#160;despite&#160;disagreeing&#160;with&#160;each&#160;other—the&#160;cross-</p>
+<p style="position:absolute;top:587px;left:90px;white-space:nowrap" class="ft60">FIG.&#160;5.</p>
+<p style="position:absolute;top:587px;left:150px;white-space:nowrap" class="ft60">Pictorial&#160;of&#160;our&#160;hybrid&#160;hypothesis.&#160;(a)&#160;Our&#160;hypothesis&#160;starts&#160;with&#160;the&#160;axonal-transport&#160;system&#160;from&#160;Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:583px;left:814px;white-space:nowrap" class="ft61">47</p>
+<p style="position:absolute;top:602px;left:90px;white-space:nowrap" class="ft66">HH&#160;and&#160;a&#160;hypothesized&#160;NRF&#160;are&#160;transported&#160;in&#160;an&#160;anterior&#160;and&#160;posterior&#160;direction,&#160;respectively,&#160;and&#160;diffuse&#160;back,&#160;creating<br/>gradients.&#160;Those&#160;gradients&#160;affect&#160;a&#160;GRN&#160;(with&#160;copies&#160;in&#160;each&#160;cell),&#160;which&#160;then&#160;drives&#160;creation&#160;of&#160;a&#160;head&#160;or&#160;tail.&#160;The&#160;other<br/>components&#160;of&#160;the&#160;GRN&#160;are&#160;Wnt,&#160;APC,&#160;b-catenine,&#160;Notum,&#160;and&#160;ERK.&#160;(b)&#160;The&#160;GRN&#160;from&#160;(a)&#160;is&#160;instantiated&#160;in&#160;multiple&#160;cells<br/>on&#160;the&#160;left&#160;of&#160;the&#160;figure.&#160;Electrodiffusion&#160;through&#160;GJs&#160;is&#160;shown&#160;on&#160;the&#160;right&#160;(vertical&#160;blue&#160;arrows).&#160;It&#160;is&#160;drawn&#160;for&#160;simplicity<br/>as&#160;long&#160;arrows;&#160;in&#160;reality,&#160;it&#160;is&#160;many&#160;cells&#160;connected&#160;by&#160;GJs.&#160;The&#160;negatively&#160;charged&#160;morphogen&#160;M&#160;moves&#160;anteriorly&#160;from<br/>drift&#160;and&#160;then&#160;diffuses&#160;posteriorly.&#160;Its&#160;concentration&#160;then&#160;affects&#160;ligand-gated&#160;ion&#160;channels&#160;(for&#160;potassium&#160;in&#160;our&#160;model),<br/>which&#160;in&#160;turn&#160;affect&#160;Vmem&#160;and&#160;drive&#160;the&#160;drift&#160;currents.&#160;The&#160;left-to-right&#160;curved&#160;arrows&#160;show&#160;one&#160;cross-coupling&#160;between&#160;the<br/>two&#160;systems,&#160;with&#160;the&#160;VNC&#160;providing&#160;head&#160;and&#160;tail&#160;pressure&#160;onto&#160;Vmem&#160;by&#160;affecting&#160;K&#160;ion&#160;channels.&#160;The&#160;right-to-left<br/>curved&#160;arrows&#160;show&#160;the&#160;other&#160;cross-coupling,&#160;with&#160;Vmem&#160;as&#160;a&#160;new&#160;input&#160;into&#160;the&#160;GRN.&#160;APC,&#160;adenomatosis&#160;polyposis&#160;coli;<br/>ERK,&#160;extracellular&#160;regulated&#160;receptor&#160;kinase;&#160;HH,&#160;Hedgehog;&#160;NRF,&#160;Notum&#160;Regulation&#160;Factor.</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft62">ROBUSTNESS&#160;OF&#160;BIOELECTRIC&#160;CIRCUITS</p>
+<p style="position:absolute;top:54px;left:810px;white-space:nowrap" class="ft62">23</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft63">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:12px;font-family:Times;color:#000000;}
+	.ft71{font-size:7px;font-family:Times;color:#000000;}
+	.ft72{font-size:11px;font-family:Times;color:#000000;}
+	.ft73{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft74{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft75{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft76{font-size:12px;line-height:14px;font-family:Times;color:#000000;}
+	.ft77{font-size:7px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:532px;left:93px;white-space:nowrap" class="ft74">coupling&#160;between&#160;the&#160;systems&#160;is&#160;not&#160;strong&#160;enough&#160;to<br/>immediately&#160;force&#160;them&#160;into&#160;agreement,&#160;as&#160;revealed&#160;in&#160;the<br/>fact&#160;that&#160;stable&#160;Cryptic&#160;worms&#160;exist.&#160;However,&#160;each&#160;regen-<br/>eration&#160;is&#160;a&#160;statistical&#160;opportunity&#160;for&#160;the&#160;cross-coupling&#160;to<br/>bring&#160;the&#160;two&#160;systems&#160;into&#160;agreement.&#160;Once&#160;the&#160;two&#160;systems<br/>are&#160;consistent&#160;in&#160;any&#160;worm,&#160;future&#160;regeneration&#160;is&#160;no&#160;longer<br/>stochastic.</p>
+<p style="position:absolute;top:647px;left:108px;white-space:nowrap" class="ft70">This&#160;explains&#160;Cryptic&#160;regeneration&#160;in&#160;fresh&#160;water.&#160;With</p>
+<p style="position:absolute;top:664px;left:93px;white-space:nowrap" class="ft74">electrodiffusion&#160;already&#160;in&#160;a&#160;2H&#160;state,&#160;we&#160;have&#160;no&#160;need&#160;of<br/>octanol&#160;to&#160;create&#160;the&#160;2H&#160;state.&#160;However,&#160;the&#160;cross-coupling<br/>mechanism&#160;between&#160;Vmem&#160;and&#160;the&#160;GRN&#160;still&#160;functions<br/>identically,&#160;resulting&#160;in&#160;the&#160;same&#160;roughly&#160;1/3-to-2/3&#160;ratio&#160;of<br/>2H&#160;and&#160;Cryptic&#160;regenerates&#160;as&#160;before,&#160;which&#160;will&#160;continue<br/>indefinitely&#160;across&#160;generations.</p>
+<p style="position:absolute;top:762px;left:108px;white-space:nowrap" class="ft70">Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:759px;left:180px;white-space:nowrap" class="ft71">34&#160;used&#160;hyperpolarization&#160;to&#160;‘‘revert’’&#160;Cryptics</p>
+<p style="position:absolute;top:779px;left:93px;white-space:nowrap" class="ft74">back&#160;to&#160;having&#160;only&#160;one&#160;head.&#160;After&#160;hyperpolarization,<br/>Cryptic&#160;worms&#160;become&#160;WT,&#160;and&#160;thereafter&#160;never&#160;regenerate<br/>in&#160;fresh&#160;water&#160;as&#160;2H.&#160;The&#160;hybrid&#160;hypothesis&#160;explains&#160;these<br/>data&#160;easily.&#160;Hyperpolarization&#160;of&#160;the&#160;worm&#160;brings&#160;all&#160;cells<br/>to&#160;nearly&#160;the&#160;same&#160;Vmem,&#160;thus&#160;mostly&#160;wiping&#160;clean&#160;the&#160;orig-<br/>inal&#160;2H&#160;Vmem&#160;distribution.&#160;However,&#160;the&#160;VNC&#160;GRN&#160;in&#160;a<br/>Cryptic&#160;is&#160;still&#160;WT.&#160;Thus,&#160;as&#160;Vmem&#160;regenerates,&#160;coupling&#160;from<br/>the&#160;GRN&#160;will&#160;naturally&#160;push&#160;Vmem&#160;into&#160;a&#160;WT&#160;pattern,&#160;which&#160;is<br/>exactly&#160;what&#160;data&#160;from&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:907px;left:309px;white-space:nowrap" class="ft71">34&#160;show.</p>
+<p style="position:absolute;top:927px;left:108px;white-space:nowrap" class="ft70">We&#160;have&#160;shown&#160;how&#160;a&#160;hybrid&#160;theory&#160;naturally&#160;explains</p>
+<p style="position:absolute;top:943px;left:93px;white-space:nowrap" class="ft74">Cryptic&#160;worms,&#160;which&#160;have&#160;been&#160;one&#160;of&#160;the&#160;most&#160;puzzling<br/>aspects&#160;of&#160;planarian&#160;regeneration.&#160;We&#160;next&#160;show&#160;how&#160;the&#160;hy-<br/>brid&#160;theory&#160;explains&#160;various&#160;other&#160;pieces&#160;of&#160;data,&#160;one&#160;by&#160;one.</p>
+<p style="position:absolute;top:1019px;left:93px;white-space:nowrap" class="ft75">A&#160;hybrid&#160;theory&#160;explains&#160;numerous&#160;RNAi&#160;interventions<br/>as&#160;well&#160;as&#160;90</p>
+<p style="position:absolute;top:1036px;left:173px;white-space:nowrap" class="ft72">&#160;body&#160;rotation</p>
+<p style="position:absolute;top:1060px;left:108px;white-space:nowrap" class="ft70">Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:1057px;left:176px;white-space:nowrap" class="ft71">47&#160;do&#160;a&#160;very&#160;effective&#160;job&#160;proposing&#160;a&#160;GRN&#160;that</p>
+<p style="position:absolute;top:1077px;left:93px;white-space:nowrap" class="ft74">predicts&#160;the&#160;data&#160;from&#160;numerous&#160;loss-of-function&#160;experi-<br/>ments.&#160;The&#160;hybrid&#160;theory&#160;assumes&#160;that&#160;this&#160;GRN&#160;is&#160;correct</p>
+<p style="position:absolute;top:532px;left:470px;white-space:nowrap" class="ft74">(although&#160;missing&#160;an&#160;input&#160;from&#160;Vmem),&#160;and&#160;that&#160;axonal<br/>transport&#160;feeds&#160;into&#160;it&#160;exactly&#160;as&#160;in&#160;Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:546px;left:748px;white-space:nowrap" class="ft71">47&#160;The&#160;hybrid</p>
+<p style="position:absolute;top:565px;left:470px;white-space:nowrap" class="ft74">theory&#160;thus&#160;explains&#160;all&#160;the&#160;loss-of-function&#160;experiments&#160;that<br/>Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:578px;left:541px;white-space:nowrap" class="ft71">47&#160;do.&#160;Since&#160;none&#160;of&#160;these&#160;experiments&#160;targeted</p>
+<p style="position:absolute;top:598px;left:470px;white-space:nowrap" class="ft74">altering&#160;cellular&#160;Vmem,&#160;our&#160;proposed&#160;Vmem&#160;input&#160;into&#160;the&#160;GRN<br/>would&#160;not&#160;make&#160;any&#160;difference&#160;in&#160;the&#160;results.</p>
+<p style="position:absolute;top:631px;left:485px;white-space:nowrap" class="ft70">Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:628px;left:556px;white-space:nowrap" class="ft71">47&#160;also&#160;predicted&#160;the&#160;results&#160;of&#160;a&#160;new&#160;type&#160;of</p>
+<p style="position:absolute;top:647px;left:470px;white-space:nowrap" class="ft74">planaria&#160;cutting;&#160;a&#160;small&#160;sideways-directed&#160;fragment&#160;from<br/>the&#160;worm’s&#160;side&#160;(Fig.&#160;4),&#160;which&#160;produced&#160;a&#160;worm&#160;oriented<br/>at&#160;90</p>
+<p style="position:absolute;top:679px;left:500px;white-space:nowrap" class="ft70">&#160;to&#160;the&#160;original&#160;A-P&#160;axis.&#160;Our&#160;hybrid&#160;theory&#160;explains</p>
+<p style="position:absolute;top:697px;left:470px;white-space:nowrap" class="ft74">this&#160;by&#160;noting&#160;that&#160;the&#160;geometry&#160;of&#160;this&#160;fragment&#160;set&#160;up&#160;a<br/>conflict&#160;between&#160;the&#160;VNC&#160;direction&#160;(which&#160;had&#160;a&#160;90</p>
+<p style="position:absolute;top:712px;left:789px;white-space:nowrap" class="ft70">&#160;rota-</p>
+<p style="position:absolute;top:730px;left:470px;white-space:nowrap" class="ft74">tion)&#160;and&#160;the&#160;Vmem&#160;gradient&#160;(still&#160;in&#160;the&#160;original&#160;direction).<br/>In&#160;their&#160;experiment,&#160;the&#160;VNC&#160;direction&#160;reliably&#160;won&#160;the<br/>conflict.&#160;However,&#160;we&#160;predict&#160;(see&#160;A&#160;Hybrid&#160;Hypothesis<br/>Makes&#160;Testable&#160;Predictions&#160;section&#160;below)&#160;that&#160;by&#160;making<br/>the&#160;fragment&#160;longer&#160;in&#160;the&#160;A-P&#160;direction,&#160;the&#160;results&#160;could&#160;be<br/>reversed.</p>
+<p style="position:absolute;top:855px;left:470px;white-space:nowrap" class="ft75">VNC&#160;tail&#160;pressure&#160;can&#160;explain&#160;regeneration<br/>of&#160;young&#160;2H&#160;worms</p>
+<p style="position:absolute;top:896px;left:485px;white-space:nowrap" class="ft70">Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:893px;left:569px;white-space:nowrap" class="ft71">46&#160;present&#160;data&#160;showing&#160;the&#160;location&#160;of&#160;a</p>
+<p style="position:absolute;top:912px;left:470px;white-space:nowrap" class="ft74">‘‘collision&#160;zone’’&#160;to&#160;be&#160;a&#160;strong&#160;predictor&#160;of&#160;whether&#160;newly<br/>regenerated&#160;2H&#160;planaria&#160;regenerate&#160;as&#160;2H&#160;or&#160;as&#160;WT.&#160;They<br/>show&#160;the&#160;cilia&#160;direction&#160;to&#160;be&#160;moving&#160;fluid&#160;backwards&#160;on<br/>a&#160;WT&#160;worm;&#160;then,&#160;as&#160;a&#160;newly&#160;regenerated&#160;worm&#160;becomes<br/>2H,&#160;the&#160;flow&#160;direction&#160;of&#160;the&#160;rearmost&#160;portion&#160;of&#160;the&#160;worm<br/>reverses.&#160;The&#160;reverse-direction&#160;tail&#160;segment&#160;grows&#160;longer<br/>over&#160;several&#160;weeks,&#160;until&#160;eventually&#160;the&#160;entire&#160;rear&#160;half&#160;of<br/>the&#160;worm&#160;has&#160;reversed&#160;cilia&#160;direction.&#160;They&#160;denote&#160;the&#160;meet-<br/>ing&#160;point&#160;of&#160;the&#160;two&#160;oppositely&#160;polarized&#160;worm&#160;segments&#160;as<br/>the&#160;collision&#160;zone.</p>
+<p style="position:absolute;top:1077px;left:485px;white-space:nowrap" class="ft70">Figure&#160;2&#160;recaps&#160;their&#160;data,&#160;collected&#160;by&#160;cutting&#160;a&#160;newly</p>
+<p style="position:absolute;top:1093px;left:470px;white-space:nowrap" class="ft70">formed&#160;2H&#160;worm&#160;at&#160;various&#160;time&#160;intervals&#160;after&#160;its&#160;initial</p>
+<p style="position:absolute;top:353px;left:93px;white-space:nowrap" class="ft70">FIG.&#160;6.</p>
+<p style="position:absolute;top:353px;left:154px;white-space:nowrap" class="ft70">Swings&#160;in&#160;Vmem&#160;as&#160;GJscale&#160;changes.&#160;This&#160;picture&#160;is&#160;repurposed&#160;from&#160;figure&#160;1&#160;of&#160;Grodstein&#160;and&#160;Levin.</p>
+<p style="position:absolute;top:350px;left:766px;white-space:nowrap" class="ft71">42&#160;Here,&#160;it</p>
+<p style="position:absolute;top:368px;left:93px;white-space:nowrap" class="ft76">shows&#160;how&#160;a&#160;2H&#160;electrical&#160;system&#160;can&#160;be&#160;the&#160;natural&#160;result&#160;of&#160;a&#160;temporary&#160;octanol&#160;bath.&#160;The&#160;x&#160;axis&#160;represents&#160;GJscale&#160;(i.e.,&#160;the<br/>density&#160;of&#160;GJs&#160;relative&#160;to&#160;an&#160;arbitrary&#160;reference);&#160;the&#160;y&#160;axis&#160;is&#160;DVmem&#160;(the&#160;delta&#160;between&#160;the&#160;highest&#160;and&#160;lowest&#160;Vmem<br/>anywhere&#160;in&#160;the&#160;worm).&#160;Each&#160;portion&#160;of&#160;the&#160;graph&#160;is&#160;also&#160;labeled&#160;with&#160;the&#160;worm’s&#160;overall&#160;pattern&#160;of&#160;heads&#160;and&#160;tails,&#160;as&#160;read<br/>from&#160;peaks&#160;and&#160;valleys&#160;of&#160;Vmem&#160;distribution&#160;across&#160;the&#160;worm.&#160;A&#160;worm&#160;with&#160;octanol&#160;starts&#160;on&#160;the&#160;left&#160;side&#160;of&#160;the&#160;graph&#160;(very<br/>low&#160;GJ&#160;connectivity).&#160;The&#160;‘‘HTHTH’’&#160;label&#160;indicates&#160;that&#160;Vmem&#160;may&#160;range&#160;from&#160;depolarized&#160;(typical&#160;of&#160;a&#160;head,&#160;or&#160;‘‘H’’)&#160;to<br/>hyperpolarized&#160;(typical&#160;of&#160;a&#160;tail,&#160;or&#160;‘‘T’’)&#160;and&#160;swinging&#160;up&#160;and&#160;down&#160;with&#160;a&#160;three-headed,&#160;two-tailed&#160;overall&#160;Vmem&#160;pattern.<br/>This&#160;is&#160;indicative&#160;of&#160;five&#160;voltage&#160;islands.&#160;As&#160;the&#160;octanol&#160;is&#160;washed&#160;away,&#160;we&#160;move&#160;rightwards&#160;on&#160;the&#160;graph&#160;(i.e.,&#160;increased<br/>GJ&#160;conductivity).&#160;This&#160;forces&#160;nearby&#160;cells&#160;to&#160;have&#160;more&#160;nearly&#160;the&#160;same&#160;Vmem;&#160;the&#160;number&#160;of&#160;voltage&#160;islands&#160;diminishes&#160;and<br/>the&#160;Vmem&#160;pattern&#160;drops&#160;to&#160;HTH&#160;(i.e.,&#160;a&#160;2H&#160;worm),&#160;and&#160;then&#160;HT&#160;(i.e.,&#160;wild&#160;type).&#160;We&#160;claim&#160;that&#160;the&#160;default&#160;GJ&#160;density&#160;is&#160;on<br/>the&#160;range&#160;[2.5,9]&#160;on&#160;this&#160;graph,&#160;which&#160;allows&#160;HTH&#160;to&#160;be&#160;stable.&#160;Graph&#160;taken&#160;from&#160;Grodstein&#160;and&#160;Levin.</p>
+<p style="position:absolute;top:499px;left:725px;white-space:nowrap" class="ft71">42</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft72">24</p>
+<p style="position:absolute;top:54px;left:671px;white-space:nowrap" class="ft72">GRODSTEIN&#160;AND&#160;LEVIN</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft73">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:12px;font-family:Times;color:#000000;}
+	.ft81{font-size:7px;font-family:Times;color:#000000;}
+	.ft82{font-size:11px;font-family:Times;color:#000000;}
+	.ft83{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft84{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft85{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft86{font-size:7px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:90px;left:90px;white-space:nowrap" class="ft84">regeneration&#160;as&#160;2H.&#160;It&#160;shows&#160;that&#160;as&#160;the&#160;‘‘collision&#160;zone’’<br/>moves&#160;toward&#160;the&#160;worm’s&#160;center,&#160;the&#160;likelihood&#160;of&#160;various<br/>worm&#160;fragments&#160;regenerating&#160;as&#160;2H&#160;changes&#160;accordingly.<br/>Essentially,&#160;a&#160;fragment&#160;is&#160;much&#160;more&#160;likely&#160;to&#160;regenerate&#160;as<br/>2H&#160;if&#160;it&#160;includes&#160;the&#160;collision&#160;zone.</p>
+<p style="position:absolute;top:172px;left:105px;white-space:nowrap" class="ft80">Why&#160;might&#160;cilia&#160;direction&#160;affect&#160;phenotype&#160;fate?&#160;While</p>
+<p style="position:absolute;top:189px;left:90px;white-space:nowrap" class="ft84">their&#160;experiments&#160;merely&#160;measured&#160;the&#160;direction&#160;of&#160;cilia&#160;flow,<br/>one&#160;might&#160;assume&#160;(and&#160;indeed&#160;we&#160;hypothesize)&#160;that&#160;the<br/>gradual&#160;change&#160;in&#160;cilia&#160;direction&#160;is&#160;a&#160;marker&#160;for&#160;a&#160;change&#160;in<br/>VNC&#160;direction&#160;(an&#160;overall&#160;linkage&#160;to&#160;the&#160;planar&#160;polarity&#160;of&#160;the<br/>tissue</p>
+<p style="position:absolute;top:251px;left:123px;white-space:nowrap" class="ft81">46,68).&#160;If&#160;this&#160;is&#160;the&#160;case,&#160;then&#160;the&#160;model&#160;in&#160;Pietak&#160;et&#160;al.47</p>
+<p style="position:absolute;top:271px;left:90px;white-space:nowrap" class="ft84">is&#160;a&#160;simple&#160;explanation&#160;for&#160;Figure&#160;2—Figure&#160;2&#160;shows&#160;the<br/>head-tail&#160;polarity&#160;following&#160;the&#160;cilia&#160;direction,&#160;which&#160;would<br/>then&#160;be&#160;caused&#160;by&#160;the&#160;VNC&#160;direction.</p>
+<p style="position:absolute;top:320px;left:105px;white-space:nowrap" class="ft80">A&#160;hybrid&#160;theory&#160;explains&#160;these&#160;data&#160;in&#160;two&#160;parts.&#160;First,&#160;as</p>
+<p style="position:absolute;top:337px;left:90px;white-space:nowrap" class="ft84">always,&#160;we&#160;accept&#160;the&#160;VNC&#160;hypothesis&#160;and&#160;thus&#160;accept&#160;the<br/>statement&#160;that&#160;a&#160;fragment&#160;that&#160;starts&#160;regeneration&#160;with&#160;a&#160;2H<br/>VNC-GRN&#160;state&#160;will&#160;tend&#160;to&#160;keep&#160;that&#160;state&#160;as&#160;it&#160;regenerates.<br/>However,&#160;the&#160;most&#160;hyperpolarized&#160;Vmem&#160;in&#160;a&#160;2H&#160;worm&#160;nat-<br/>urally&#160;occurs&#160;somewhere&#160;in&#160;the&#160;worm’s&#160;mid-body&#160;region.</p>
+<p style="position:absolute;top:399px;left:437px;white-space:nowrap" class="ft81">34</p>
+<p style="position:absolute;top:419px;left:90px;white-space:nowrap" class="ft80">Since&#160;the&#160;early-stage&#160;2H&#160;regenerates&#160;from&#160;Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:416px;left:437px;white-space:nowrap" class="ft81">46</p>
+<p style="position:absolute;top:435px;left:90px;white-space:nowrap" class="ft84">still&#160;had&#160;their&#160;collision&#160;zone&#160;near&#160;the&#160;newly&#160;formed&#160;head,<br/>some&#160;fragments,&#160;including&#160;the&#160;middle&#160;of&#160;the&#160;worm,&#160;would<br/>seemingly&#160;have&#160;included&#160;the&#160;Vmem&#160;minimum,&#160;but&#160;only&#160;in-<br/>cluded&#160;a&#160;normal&#160;VNC&#160;polarity.&#160;From&#160;our&#160;previous&#160;discussion,<br/>they&#160;should&#160;have&#160;regenerated&#160;as&#160;Cryptics.&#160;However,&#160;Bischof<br/>et&#160;al.</p>
+<p style="position:absolute;top:514px;left:119px;white-space:nowrap" class="ft81">46&#160;did&#160;not&#160;observe&#160;any&#160;Cryptics—why&#160;not?</p>
+<p style="position:absolute;top:534px;left:105px;white-space:nowrap" class="ft80">Our&#160;hypothesis&#160;posits&#160;coupling&#160;from&#160;the&#160;VNC&#160;to&#160;Vmem,&#160;that</p>
+<p style="position:absolute;top:550px;left:90px;white-space:nowrap" class="ft84">is,&#160;it&#160;posits&#160;that&#160;TFs&#160;located&#160;at&#160;the&#160;VNC&#160;tail&#160;will&#160;affect&#160;ion<br/>channels&#160;that&#160;result&#160;in&#160;hyperpolarizing&#160;Vmem.&#160;This&#160;will&#160;tend&#160;to<br/>move&#160;the&#160;location&#160;of&#160;the&#160;most&#160;hyperpolarized&#160;Vmem&#160;to&#160;near<br/>the&#160;polarization&#160;collision&#160;zone.&#160;In&#160;fact,&#160;since&#160;we&#160;hypothesize<br/>that&#160;the&#160;collision&#160;zone&#160;is&#160;the&#160;meeting&#160;of&#160;two&#160;VNC&#160;tails,&#160;we<br/>would&#160;expect&#160;high&#160;concentrations&#160;of&#160;TFs,&#160;and&#160;this&#160;effect&#160;will<br/>be&#160;still&#160;more&#160;pronounced.&#160;We&#160;thus&#160;expect&#160;that&#160;the&#160;position&#160;of<br/>the&#160;worm’s&#160;minimal&#160;(i.e.,&#160;most&#160;hyperpolarized)&#160;Vmem&#160;value<br/>will&#160;move&#160;along&#160;with&#160;the&#160;collision-zone&#160;location.&#160;In&#160;other<br/>words,&#160;worm&#160;fragments&#160;that&#160;include&#160;the&#160;collision&#160;zone&#160;will<br/>not&#160;only&#160;start&#160;with&#160;a&#160;2H&#160;VNC&#160;state&#160;but&#160;will&#160;also&#160;start&#160;with&#160;a<br/>2H&#160;Vmem&#160;state.&#160;For&#160;both&#160;reasons,&#160;they&#160;are&#160;far&#160;more&#160;likely&#160;to<br/>regenerate&#160;as&#160;2H&#160;than&#160;fragments&#160;that&#160;do&#160;not&#160;include&#160;the<br/>collision&#160;zone.</p>
+<p style="position:absolute;top:806px;left:90px;white-space:nowrap" class="ft85">A&#160;hybrid&#160;hypothesis&#160;explains&#160;the&#160;general&#160;scheme<br/>of&#160;regeneration&#160;with&#160;VNC&#160;notches</p>
+<p style="position:absolute;top:847px;left:105px;white-space:nowrap" class="ft80">Figure&#160;1&#160;(taken&#160;from&#160;Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:843px;left:319px;white-space:nowrap" class="ft81">30&#160;fig.&#160;1C)&#160;shows&#160;the</p>
+<p style="position:absolute;top:863px;left:90px;white-space:nowrap" class="ft84">results&#160;of&#160;regenerating&#160;planaria&#160;after&#160;numerous&#160;interesting<br/>cuts.&#160;With&#160;the&#160;VNC&#160;notched&#160;as&#160;shown,&#160;all&#160;worms&#160;success-<br/>fully&#160;regenerated&#160;as&#160;WT&#160;in&#160;fresh&#160;water.&#160;This&#160;is&#160;challenging&#160;to<br/>explain&#160;with&#160;a&#160;VNC-only&#160;theory;&#160;many&#160;of&#160;the&#160;worms&#160;have<br/>multiple&#160;VNC&#160;cuts&#160;that&#160;should&#160;have&#160;disturbed&#160;VNC&#160;com-<br/>munication&#160;enough&#160;to&#160;break&#160;axonal&#160;transport&#160;and&#160;thus&#160;disturb<br/>regeneration.</p>
+<p style="position:absolute;top:978px;left:105px;white-space:nowrap" class="ft80">However,&#160;it&#160;is&#160;consistent&#160;with&#160;our&#160;hybrid&#160;theory;&#160;notching</p>
+<p style="position:absolute;top:994px;left:90px;white-space:nowrap" class="ft84">the&#160;VNC&#160;should&#160;not&#160;greatly&#160;disturb&#160;electrodiffusion.&#160;The&#160;re-<br/>sulting&#160;fully&#160;normal&#160;WT&#160;Vmem&#160;distribution&#160;couples&#160;into&#160;the<br/>VNC&#160;so&#160;as&#160;to&#160;produce&#160;a&#160;normal&#160;WT&#160;phenotype&#160;even&#160;if&#160;the&#160;VNC<br/>is&#160;no&#160;longer&#160;fully&#160;functional.&#160;However,&#160;when&#160;Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:1041px;left:437px;white-space:nowrap" class="ft81">30</p>
+<p style="position:absolute;top:1060px;left:90px;white-space:nowrap" class="ft84">added&#160;octanol,&#160;the&#160;original&#160;WT&#160;Vmem&#160;instead&#160;becomes&#160;voltage<br/>islands.&#160;A&#160;similar&#160;mechanism&#160;then&#160;occurs&#160;as&#160;with&#160;Cryptic<br/>worms;&#160;as&#160;the&#160;octanol&#160;is&#160;removed,&#160;Vmem&#160;tends&#160;toward&#160;2H.</p>
+<p style="position:absolute;top:90px;left:481px;white-space:nowrap" class="ft80">However,&#160;in&#160;this&#160;case,&#160;the&#160;context&#160;is&#160;far&#160;more&#160;complex.</p>
+<p style="position:absolute;top:107px;left:466px;white-space:nowrap" class="ft84">Consider,&#160;for&#160;example,&#160;Figure&#160;2&#160;drawing&#160;III.&#160;At&#160;the&#160;notch,&#160;the<br/>left-side&#160;VNC&#160;is&#160;split&#160;into&#160;two&#160;segments.&#160;The&#160;VNC&#160;GRN&#160;on<br/>the&#160;front&#160;of&#160;the&#160;segment&#160;below&#160;the&#160;notch&#160;will&#160;attempt&#160;to<br/>regrow&#160;a&#160;head&#160;at&#160;the&#160;notch’s&#160;lower&#160;edge,&#160;while&#160;the&#160;VNC<br/>segment&#160;above&#160;the&#160;notch&#160;will&#160;attempt&#160;to&#160;regrow&#160;a&#160;tail&#160;at&#160;the<br/>notch’s&#160;upper&#160;edge.&#160;As&#160;the&#160;notch&#160;heals,&#160;the&#160;various&#160;TFs&#160;for<br/>the&#160;two&#160;different&#160;outcomes&#160;will&#160;mix&#160;diffusively&#160;with&#160;quite<br/>difficult-to-predict&#160;results.&#160;The&#160;cross-coupling&#160;between&#160;the<br/>Vmem&#160;islands&#160;and&#160;the&#160;VNC&#160;will&#160;complicate&#160;the&#160;system&#160;still<br/>further.</p>
+<p style="position:absolute;top:271px;left:481px;white-space:nowrap" class="ft80">As&#160;a&#160;result,&#160;the&#160;precise&#160;outcome&#160;of&#160;most&#160;of&#160;these&#160;experi-</p>
+<p style="position:absolute;top:287px;left:466px;white-space:nowrap" class="ft84">ments&#160;becomes&#160;challenging&#160;for&#160;a&#160;model&#160;to&#160;predict;&#160;indeed,<br/>Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:301px;left:545px;white-space:nowrap" class="ft81">30&#160;reported&#160;a&#160;statistical&#160;mix&#160;of&#160;numerous&#160;phe-</p>
+<p style="position:absolute;top:320px;left:466px;white-space:nowrap" class="ft84">notypes&#160;in&#160;some&#160;of&#160;these&#160;cuttings.&#160;Note&#160;that&#160;other&#160;VNC<br/>cuttings&#160;(especially&#160;those&#160;that&#160;remove&#160;substantial&#160;pieces&#160;of<br/>flesh&#160;and&#160;hence&#160;disrupt&#160;electrodiffusion)&#160;do&#160;reliably&#160;produce<br/>phenotypes&#160;other&#160;than&#160;WT&#160;even&#160;in&#160;plain&#160;water</p>
+<p style="position:absolute;top:366px;left:744px;white-space:nowrap" class="ft81">47;&#160;it&#160;depends</p>
+<p style="position:absolute;top:386px;left:466px;white-space:nowrap" class="ft80">on&#160;the&#160;precise&#160;cutting&#160;pattern.</p>
+<p style="position:absolute;top:428px;left:466px;white-space:nowrap" class="ft82">A&#160;hybrid&#160;hypothesis&#160;makes&#160;testable&#160;predictions</p>
+<p style="position:absolute;top:452px;left:481px;white-space:nowrap" class="ft80">The&#160;hybrid&#160;hypothesis&#160;makes&#160;new&#160;predictions&#160;in&#160;three</p>
+<p style="position:absolute;top:468px;left:466px;white-space:nowrap" class="ft84">different&#160;categories.&#160;First,&#160;more&#160;predictions&#160;about&#160;Cryptic<br/>worms:</p>
+<p style="position:absolute;top:509px;left:481px;white-space:nowrap" class="ft80">&#160;We&#160;predict&#160;that&#160;the&#160;front&#160;half&#160;of&#160;a&#160;Cryptic&#160;will&#160;always</p>
+<p style="position:absolute;top:526px;left:496px;white-space:nowrap" class="ft84">regenerate&#160;as&#160;WT.&#160;In&#160;the&#160;front&#160;half&#160;of&#160;a&#160;Cryptic&#160;worm,<br/>both&#160;the&#160;electrical&#160;and&#160;VNC&#160;state&#160;agree,&#160;and&#160;both&#160;predict<br/>a&#160;WT&#160;worm.&#160;We&#160;predict&#160;that&#160;all&#160;front&#160;halves,&#160;after<br/>cutting,&#160;will&#160;regenerate&#160;as&#160;WT.&#160;This&#160;should&#160;be&#160;true<br/>whether&#160;or&#160;not&#160;the&#160;fragment&#160;includes&#160;the&#160;Cryptic&#160;head.</p>
+<p style="position:absolute;top:607px;left:481px;white-space:nowrap" class="ft80">&#160;The&#160;rear&#160;half&#160;of&#160;a&#160;Cryptic&#160;will&#160;sometimes&#160;spontaneously</p>
+<p style="position:absolute;top:625px;left:496px;white-space:nowrap" class="ft84">reverse&#160;its&#160;head&#160;and&#160;tail&#160;direction.&#160;In&#160;the&#160;rear&#160;half&#160;of&#160;the<br/>worm,&#160;the&#160;VNC&#160;state&#160;is&#160;that&#160;of&#160;a&#160;WT&#160;worm,&#160;while&#160;the<br/>electrical&#160;state&#160;is&#160;that&#160;of&#160;a&#160;reversed&#160;WT&#160;worm.&#160;We&#160;pre-<br/>dict&#160;that,&#160;when&#160;the&#160;electrical&#160;state&#160;wins&#160;at&#160;both&#160;ends&#160;of<br/>the&#160;worm,&#160;the&#160;result&#160;will&#160;be&#160;a&#160;WT&#160;worm&#160;with&#160;a&#160;flipped<br/>A-P&#160;axis&#160;relative&#160;to&#160;its&#160;parent&#160;worm.&#160;We&#160;also&#160;predict&#160;that<br/>this&#160;will&#160;only&#160;happen&#160;when&#160;the&#160;original&#160;tail&#160;is&#160;removed,<br/>since&#160;otherwise&#160;there&#160;will&#160;not&#160;be&#160;a&#160;rear&#160;blastema.</p>
+<p style="position:absolute;top:764px;left:481px;white-space:nowrap" class="ft80">Second,&#160;we&#160;make&#160;further&#160;predictions&#160;about&#160;the&#160;experi-</p>
+<p style="position:absolute;top:781px;left:466px;white-space:nowrap" class="ft80">ments&#160;in&#160;Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:778px;left:601px;white-space:nowrap" class="ft81">46&#160;and&#160;Pietak&#160;et&#160;al.47:</p>
+<p style="position:absolute;top:804px;left:481px;white-space:nowrap" class="ft80">&#160;Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:802px;left:574px;white-space:nowrap" class="ft81">46&#160;showed&#160;that&#160;worm&#160;fragments&#160;that&#160;inclu-</p>
+<p style="position:absolute;top:822px;left:496px;white-space:nowrap" class="ft84">ded&#160;the&#160;collision&#160;zone&#160;were&#160;more&#160;likely&#160;to&#160;regenerate&#160;as<br/>2H&#160;than&#160;other&#160;worms.&#160;We&#160;suggest&#160;that&#160;measuring&#160;Vmem<br/>as&#160;the&#160;collision&#160;zone&#160;moves&#160;will&#160;show&#160;the&#160;location&#160;of<br/>the&#160;Vmem&#160;minimum&#160;moving&#160;correspondingly.&#160;This&#160;is&#160;a<br/>straightforward&#160;prediction&#160;from&#160;our&#160;hybrid&#160;theory.&#160;It&#160;is<br/>the&#160;result&#160;of&#160;tail&#160;pressure&#160;from&#160;the&#160;VNC&#160;collision&#160;zone<br/>onto&#160;Vmem.</p>
+<p style="position:absolute;top:936px;left:481px;white-space:nowrap" class="ft80">&#160;Pietak&#160;et&#160;al.</p>
+<p style="position:absolute;top:934px;left:568px;white-space:nowrap" class="ft81">47&#160;showed&#160;that&#160;a&#160;sideways&#160;cut&#160;from&#160;a&#160;par-</p>
+<p style="position:absolute;top:953px;left:496px;white-space:nowrap" class="ft80">ticular&#160;worm&#160;location&#160;regenerates&#160;at&#160;a&#160;90</p>
+<p style="position:absolute;top:952px;left:743px;white-space:nowrap" class="ft80">&#160;angle&#160;to&#160;the</p>
+<p style="position:absolute;top:970px;left:496px;white-space:nowrap" class="ft84">original&#160;A-P&#160;axis.&#160;We&#160;predict&#160;that&#160;a&#160;similar,&#160;but&#160;longer<br/>segment&#160;would&#160;not&#160;regenerate&#160;sideways.&#160;As&#160;the&#160;frag-<br/>ment&#160;gets&#160;longer,&#160;it&#160;will&#160;start&#160;with&#160;a&#160;larger&#160;Vmem&#160;gra-<br/>dient,&#160;which&#160;will&#160;eventually&#160;overcome&#160;the&#160;90</p>
+<p style="position:absolute;top:1018px;left:781px;white-space:nowrap" class="ft80">&#160;VNC</p>
+<p style="position:absolute;top:1036px;left:496px;white-space:nowrap" class="ft84">rotation.&#160;(Note&#160;that&#160;this&#160;experiment&#160;currently&#160;presents<br/>technical&#160;difficulties).</p>
+<p style="position:absolute;top:1077px;left:481px;white-space:nowrap" class="ft80">Finally,&#160;and&#160;perhaps&#160;most&#160;importantly,&#160;we&#160;note&#160;that&#160;existing</p>
+<p style="position:absolute;top:1093px;left:466px;white-space:nowrap" class="ft80">experiments&#160;have&#160;involved&#160;either&#160;RNAi</p>
+<p style="position:absolute;top:1090px;left:701px;white-space:nowrap" class="ft81">47,&#160;or&#160;disturbances&#160;of</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft82">ROBUSTNESS&#160;OF&#160;BIOELECTRIC&#160;CIRCUITS</p>
+<p style="position:absolute;top:54px;left:810px;white-space:nowrap" class="ft82">25</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft83">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:12px;font-family:Times;color:#000000;}
+	.ft91{font-size:7px;font-family:Times;color:#000000;}
+	.ft92{font-size:11px;font-family:Times;color:#000000;}
+	.ft93{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft94{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:90px;left:93px;white-space:nowrap" class="ft90">GJs&#160;or&#160;Vmem,</p>
+<p style="position:absolute;top:87px;left:172px;white-space:nowrap" class="ft91">20,33,34—but&#160;never&#160;both&#160;at&#160;once.&#160;This&#160;is&#160;essen-</p>
+<p style="position:absolute;top:107px;left:93px;white-space:nowrap" class="ft94">tially&#160;why&#160;the&#160;two&#160;different&#160;theories&#160;explain&#160;a&#160;nonintersecting<br/>set&#160;of&#160;data&#160;points.&#160;We&#160;propose&#160;combining&#160;both&#160;electrical&#160;and<br/>GRN&#160;interventions&#160;in&#160;the&#160;same&#160;experiment,&#160;thus&#160;allowing&#160;us<br/>to&#160;localize&#160;exactly&#160;where&#160;the&#160;two&#160;systems&#160;interact.&#160;Hy-<br/>perpolarizers&#160;such&#160;as&#160;SCH-28080&#160;electrically&#160;promote&#160;2T<br/>worms.</p>
+<p style="position:absolute;top:186px;left:137px;white-space:nowrap" class="ft91">34&#160;We&#160;can&#160;combine&#160;this&#160;with&#160;any&#160;GRN&#160;intervention</p>
+<p style="position:absolute;top:205px;left:93px;white-space:nowrap" class="ft94">that&#160;creates&#160;2H&#160;worms,&#160;such&#160;as&#160;b-cat&#160;RNAi,&#160;WNT&#160;RNAi;&#160;or&#160;a<br/>cAMP&#160;inhibitor.</p>
+<p style="position:absolute;top:218px;left:190px;white-space:nowrap" class="ft91">47</p>
+<p style="position:absolute;top:238px;left:108px;white-space:nowrap" class="ft90">The&#160;electrical&#160;intervention&#160;will&#160;only&#160;win&#160;if&#160;the&#160;point&#160;where</p>
+<p style="position:absolute;top:255px;left:93px;white-space:nowrap" class="ft94">Vmem&#160;affects&#160;the&#160;GRN&#160;is&#160;downstream&#160;of&#160;the&#160;TF,&#160;which&#160;we<br/>have&#160;interfered&#160;with&#160;through&#160;RNAi.&#160;So&#160;if,&#160;for&#160;example,&#160;the<br/>GRN&#160;intervention&#160;wins&#160;for&#160;b-cat,&#160;but&#160;the&#160;electrical&#160;inter-<br/>vention&#160;wins&#160;for&#160;cAMP,&#160;we&#160;would&#160;conclude&#160;that&#160;Vmem&#160;is<br/>acting&#160;on&#160;cAMP&#160;or&#160;on&#160;adenomatosis&#160;polyposis&#160;coli&#160;(APC;<br/>which&#160;is&#160;the&#160;GRN&#160;predecessor&#160;to&#160;cAMP;&#160;see&#160;Fig.&#160;5).</p>
+<p style="position:absolute;top:353px;left:108px;white-space:nowrap" class="ft90">Ionophores&#160;(e.g.,&#160;nigericin&#160;and&#160;monensin)&#160;act&#160;to&#160;depolarize</p>
+<p style="position:absolute;top:370px;left:93px;white-space:nowrap" class="ft90">cells</p>
+<p style="position:absolute;top:366px;left:120px;white-space:nowrap" class="ft91">33&#160;and&#160;thus&#160;electrically&#160;promote&#160;2H&#160;worms.&#160;Octanol&#160;has</p>
+<p style="position:absolute;top:386px;left:93px;white-space:nowrap" class="ft94">a&#160;similar&#160;effect&#160;at&#160;the&#160;front&#160;and&#160;rear&#160;of&#160;the&#160;worms,&#160;as&#160;dis-<br/>cussed&#160;above.&#160;We&#160;can&#160;combine&#160;either&#160;of&#160;these&#160;with&#160;various<br/>GRN&#160;interventions&#160;that&#160;create&#160;2T&#160;worms,&#160;such&#160;as&#160;RNAi&#160;of<br/>Notum&#160;or&#160;APC.</p>
+<p style="position:absolute;top:432px;left:190px;white-space:nowrap" class="ft91">47&#160;Again,&#160;the&#160;results&#160;showing&#160;which&#160;inter-</p>
+<p style="position:absolute;top:452px;left:93px;white-space:nowrap" class="ft94">ventions&#160;result&#160;in&#160;the&#160;electrical&#160;system&#160;winning&#160;and&#160;which<br/>result&#160;in&#160;the&#160;RNAi&#160;winning&#160;will&#160;localize&#160;the&#160;connections<br/>between&#160;the&#160;two&#160;systems.</p>
+<p style="position:absolute;top:501px;left:108px;white-space:nowrap" class="ft90">Classic&#160;planarian&#160;experiments</p>
+<p style="position:absolute;top:498px;left:291px;white-space:nowrap" class="ft91">35,36&#160;used&#160;an&#160;electric&#160;field</p>
+<p style="position:absolute;top:518px;left:93px;white-space:nowrap" class="ft94">to&#160;reverse&#160;a&#160;worm’s&#160;anterior-posterior&#160;polarity.&#160;Since&#160;there<br/>is&#160;no&#160;known&#160;GRN&#160;intervention&#160;that&#160;produces&#160;a&#160;reversal&#160;of<br/>polarity,&#160;we&#160;can&#160;combine&#160;these&#160;classic&#160;experiments&#160;with&#160;any<br/>GRN&#160;intervention.</p>
+<p style="position:absolute;top:583px;left:108px;white-space:nowrap" class="ft90">We&#160;expect&#160;the&#160;results&#160;of&#160;these&#160;experiments&#160;to&#160;not&#160;only</p>
+<p style="position:absolute;top:600px;left:93px;white-space:nowrap" class="ft94">help&#160;localize&#160;exactly&#160;where&#160;the&#160;cross-coupling&#160;points&#160;are&#160;but<br/>also&#160;to&#160;provide&#160;more&#160;data&#160;that&#160;are&#160;explained&#160;only&#160;by&#160;the<br/>hybrid&#160;hypothesis.</p>
+<p style="position:absolute;top:683px;left:93px;white-space:nowrap" class="ft92">Methods</p>
+<p style="position:absolute;top:707px;left:108px;white-space:nowrap" class="ft90">We&#160;have&#160;tested&#160;our&#160;hybrid&#160;hypothesis&#160;computationally</p>
+<p style="position:absolute;top:723px;left:93px;white-space:nowrap" class="ft94">through&#160;numerous&#160;simulations.&#160;The&#160;electrodiffusion&#160;model<br/>has&#160;various&#160;parameters,&#160;such&#160;as&#160;the&#160;valence&#160;and&#160;diffusion&#160;rate<br/>of&#160;the&#160;morphogen&#160;M,&#160;the&#160;amount&#160;of&#160;cross-coupling&#160;between<br/>the&#160;VNC&#160;and&#160;electrodiffusion&#160;systems,&#160;and&#160;several&#160;others.<br/>Our&#160;hybrid&#160;model&#160;makes&#160;various&#160;assumptions&#160;(e.g.,&#160;that&#160;a&#160;2H<br/>Vmem&#160;profile&#160;would&#160;be&#160;stable,&#160;but&#160;HTHT&#160;would&#160;not&#160;be).<br/>We&#160;have&#160;put&#160;together&#160;a&#160;set&#160;of&#160;simulations&#160;to&#160;find&#160;viable<br/>parameter&#160;combinations&#160;that&#160;create&#160;worms&#160;meeting&#160;all&#160;these<br/>assumptions,&#160;thus&#160;ensuring&#160;that&#160;simulation&#160;results&#160;match<br/>experimental&#160;data.&#160;We&#160;tested&#160;a&#160;wide&#160;range&#160;of&#160;parameter<br/>combinations&#160;to&#160;find&#160;those&#160;that&#160;eventually&#160;satisfied&#160;all&#160;of&#160;the<br/>following&#160;requirements:</p>
+<p style="position:absolute;top:928px;left:108px;white-space:nowrap" class="ft90">&#160;WT&#160;and&#160;2H&#160;worms&#160;are&#160;stable&#160;for&#160;electrodiffusion,&#160;but</p>
+<p style="position:absolute;top:945px;left:123px;white-space:nowrap" class="ft94">more&#160;complex&#160;patterns&#160;(e.g.,&#160;HTHT)&#160;are&#160;not.&#160;This<br/>matches&#160;the&#160;data&#160;from&#160;Oviedo&#160;et&#160;al.</p>
+<p style="position:absolute;top:958px;left:349px;white-space:nowrap" class="ft91">30&#160;and&#160;numerous</p>
+<p style="position:absolute;top:978px;left:123px;white-space:nowrap" class="ft94">other&#160;observations,&#160;as&#160;well&#160;as&#160;being&#160;a&#160;part&#160;of&#160;our<br/>explanation&#160;for&#160;how&#160;Cryptic&#160;worms&#160;form.</p>
+<p style="position:absolute;top:1010px;left:108px;white-space:nowrap" class="ft90">&#160;As&#160;we&#160;move&#160;the&#160;collision&#160;zone,&#160;the&#160;‘‘electrodiffusion</p>
+<p style="position:absolute;top:1027px;left:123px;white-space:nowrap" class="ft94">tail’’&#160;(i.e.,&#160;the&#160;location&#160;of&#160;the&#160;most&#160;hyperpolarized&#160;cell<br/>in&#160;the&#160;worm)&#160;moves&#160;with&#160;it.&#160;This&#160;validates&#160;our&#160;expla-<br/>nation&#160;of&#160;data&#160;in&#160;Bischof&#160;et&#160;al.</p>
+<p style="position:absolute;top:1057px;left:309px;white-space:nowrap" class="ft91">46</p>
+<p style="position:absolute;top:1076px;left:108px;white-space:nowrap" class="ft90">&#160;Hyperpolarization&#160;turns&#160;all&#160;Cryptic&#160;worms&#160;into&#160;WT.</p>
+<p style="position:absolute;top:1093px;left:123px;white-space:nowrap" class="ft90">This&#160;is&#160;from&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:1090px;left:279px;white-space:nowrap" class="ft91">34</p>
+<p style="position:absolute;top:89px;left:485px;white-space:nowrap" class="ft90">&#160;Hyperpolarization&#160;turns&#160;some&#160;2H&#160;worms&#160;into&#160;WT;&#160;also</p>
+<p style="position:absolute;top:107px;left:499px;white-space:nowrap" class="ft90">from&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:103px;left:609px;white-space:nowrap" class="ft91">34</p>
+<p style="position:absolute;top:122px;left:485px;white-space:nowrap" class="ft90">&#160;Depolarizing&#160;turns&#160;some&#160;WT&#160;worms&#160;into&#160;2H.</p>
+<p style="position:absolute;top:120px;left:775px;white-space:nowrap" class="ft91">33</p>
+<p style="position:absolute;top:148px;left:485px;white-space:nowrap" class="ft90">The&#160;simulations&#160;are&#160;all&#160;done&#160;with&#160;BITSEY,&#160;which&#160;is&#160;a</p>
+<p style="position:absolute;top:164px;left:470px;white-space:nowrap" class="ft90">smaller&#160;version&#160;of&#160;the&#160;bioelectric-tissue&#160;simulator&#160;BETSE.</p>
+<p style="position:absolute;top:161px;left:817px;white-space:nowrap" class="ft91">40</p>
+<p style="position:absolute;top:181px;left:470px;white-space:nowrap" class="ft94">BITSEY&#160;is&#160;an&#160;open-source&#160;Python-based&#160;simulator&#160;that&#160;is<br/>available&#160;at&#160;<a href="">https://gitlab.com/grodstein/bitsey.&#160;</a>This&#160;publi-<br/>cally&#160;available&#160;repository&#160;contains&#160;not&#160;only&#160;the&#160;BITSEY<br/>source&#160;code&#160;but&#160;also&#160;the&#160;simulations&#160;supporting&#160;these&#160;exper-<br/>iments&#160;(in&#160;the&#160;worms/hybrid_model&#160;subdirectory).&#160;Note&#160;that<br/>BITSEY&#160;does&#160;not&#160;directly&#160;model&#160;axonal&#160;transport.&#160;Like<br/>BETSE,&#160;it&#160;models&#160;electrodiffusion.&#160;It&#160;has&#160;then&#160;been&#160;aug-<br/>mented&#160;to&#160;know&#160;the&#160;current&#160;direction&#160;of&#160;one&#160;or&#160;more&#160;VNCs,<br/>and&#160;to&#160;model&#160;the&#160;resulting&#160;head&#160;and&#160;tail&#160;pressure&#160;from&#160;the<br/>VNC(s)&#160;onto&#160;a&#160;worm’s&#160;electrical&#160;state.&#160;The&#160;resulting&#160;elec-<br/>trodiffusion&#160;simulation&#160;then&#160;determines&#160;the&#160;simulated&#160;version<br/>of&#160;the&#160;worm’s&#160;final&#160;Vmem&#160;pattern.</p>
+<p style="position:absolute;top:378px;left:485px;white-space:nowrap" class="ft90">We&#160;specifically&#160;tested&#160;over&#160;40,000&#160;parameter&#160;combina-</p>
+<p style="position:absolute;top:394px;left:470px;white-space:nowrap" class="ft94">tions&#160;to&#160;find&#160;those&#160;that&#160;fit&#160;the&#160;requirements&#160;of&#160;the&#160;hybrid<br/>hypothesis.&#160;As&#160;opposed&#160;to&#160;Grodstein&#160;and&#160;Levin</p>
+<p style="position:absolute;top:408px;left:755px;white-space:nowrap" class="ft91">42&#160;where&#160;we</p>
+<p style="position:absolute;top:427px;left:470px;white-space:nowrap" class="ft94">only&#160;needed&#160;to&#160;show&#160;which&#160;parameter&#160;sets&#160;could&#160;regenerate&#160;a<br/>substantial&#160;head-to-tail&#160;Vmem&#160;gradient,&#160;these&#160;new&#160;simulations<br/>also&#160;needed&#160;to&#160;show&#160;the&#160;extra&#160;conditions&#160;noted&#160;above,&#160;to<br/>guarantee&#160;that&#160;they&#160;predicted&#160;the&#160;experimental&#160;data.&#160;Simply<br/>setting&#160;the&#160;correct&#160;range&#160;of&#160;GJ&#160;size&#160;so&#160;that&#160;only&#160;the&#160;desired<br/>patterns&#160;can&#160;exist&#160;was&#160;by&#160;far&#160;the&#160;most&#160;stringent&#160;condition;<br/>only&#160;555&#160;parameter&#160;combinations&#160;met&#160;it.&#160;This&#160;is&#160;not&#160;sur-<br/>prising;&#160;Grodstein&#160;and&#160;Levin</p>
+<p style="position:absolute;top:539px;left:643px;white-space:nowrap" class="ft91">42&#160;showed&#160;that&#160;electrodiffusion</p>
+<p style="position:absolute;top:559px;left:470px;white-space:nowrap" class="ft94">can&#160;only&#160;be&#160;robust&#160;if&#160;a&#160;system&#160;is&#160;in&#160;place&#160;to&#160;regulate&#160;GJ<br/>density&#160;(similar&#160;to&#160;the&#160;mammalian&#160;heart</p>
+<p style="position:absolute;top:572px;left:709px;white-space:nowrap" class="ft91">69).</p>
+<p style="position:absolute;top:592px;left:485px;white-space:nowrap" class="ft90">Of&#160;those&#160;555&#160;parameter&#160;combinations,&#160;we&#160;then&#160;tested&#160;the</p>
+<p style="position:absolute;top:608px;left:470px;white-space:nowrap" class="ft94">tightrope&#160;of&#160;cross-coupling&#160;strength.&#160;If&#160;the&#160;VNC&#160;pressures<br/>the&#160;electrodiffusion&#160;system&#160;too&#160;much,&#160;then&#160;Cryptic&#160;worms<br/>cannot&#160;exist&#160;(they&#160;would&#160;forever&#160;remain&#160;WT&#160;due&#160;to&#160;their<br/>still-WT&#160;VNC).&#160;If,&#160;however,&#160;there&#160;is&#160;too&#160;little&#160;pressure,&#160;then<br/>the&#160;meeting&#160;point&#160;of&#160;the&#160;two&#160;tails&#160;in&#160;a&#160;2H&#160;worm&#160;cannot&#160;move<br/>the&#160;Vmem&#160;profile&#160;and&#160;we&#160;thus&#160;cannot&#160;explain&#160;the&#160;data&#160;from<br/>Figure&#160;2.&#160;Several&#160;other&#160;data&#160;points&#160;from&#160;Durant&#160;et&#160;al.</p>
+<p style="position:absolute;top:703px;left:789px;white-space:nowrap" class="ft91">34&#160;also</p>
+<p style="position:absolute;top:723px;left:470px;white-space:nowrap" class="ft90">depend&#160;on&#160;the&#160;cross-coupling&#160;strength.</p>
+<p style="position:absolute;top:740px;left:485px;white-space:nowrap" class="ft90">With&#160;these&#160;conditions,&#160;only&#160;155&#160;of&#160;the&#160;555&#160;(28%)&#160;parameter</p>
+<p style="position:absolute;top:756px;left:470px;white-space:nowrap" class="ft94">combinations&#160;were&#160;still&#160;successful.&#160;That&#160;is,&#160;there&#160;is&#160;an&#160;extra<br/>burden&#160;on&#160;planarian&#160;robustness,&#160;but&#160;it&#160;is&#160;not&#160;unreasonable.</p>
+<p style="position:absolute;top:806px;left:470px;white-space:nowrap" class="ft92">Discussion</p>
+<p style="position:absolute;top:830px;left:485px;white-space:nowrap" class="ft90">Planaria&#160;exhibiting&#160;divergent&#160;outcomes&#160;with&#160;respect&#160;to</p>
+<p style="position:absolute;top:847px;left:470px;white-space:nowrap" class="ft94">head&#160;number&#160;represent&#160;a&#160;fascinating&#160;aspect&#160;of&#160;collective<br/>emergent&#160;behavior.&#160;While&#160;a&#160;single&#160;worm&#160;may&#160;be&#160;stochastic<br/>at&#160;the&#160;organ&#160;level&#160;(having&#160;one&#160;or&#160;two&#160;heads),&#160;all&#160;the&#160;cells<br/>within&#160;that&#160;animal&#160;are&#160;in&#160;total&#160;agreement&#160;on&#160;what&#160;they&#160;are<br/>building—partial&#160;head/tail&#160;chimeras&#160;were&#160;not&#160;reported&#160;in&#160;any<br/>of&#160;the&#160;relevant&#160;experiments.&#160;Thus,&#160;we&#160;see&#160;a&#160;situation&#160;where<br/>the&#160;collective&#160;agent&#160;makes&#160;a&#160;stochastic&#160;choice,&#160;while&#160;all&#160;of<br/>the&#160;subunits&#160;(cells)&#160;must&#160;agree&#160;and&#160;cooperate&#160;toward&#160;the<br/>same&#160;goal.</p>
+<p style="position:absolute;top:994px;left:485px;white-space:nowrap" class="ft90">This&#160;type&#160;of&#160;phenomenon&#160;is&#160;not&#160;unique&#160;to&#160;planaria.&#160;For</p>
+<p style="position:absolute;top:1011px;left:470px;white-space:nowrap" class="ft94">example,&#160;inducers&#160;of&#160;carcinogenic&#160;conversion&#160;in&#160;tadpoles<br/>(a&#160;vertebrate&#160;model)&#160;that&#160;exhibit&#160;partial&#160;penetrance&#160;do&#160;so<br/>at&#160;the&#160;whole-animal&#160;level.</p>
+<p style="position:absolute;top:1041px;left:626px;white-space:nowrap" class="ft91">70,71&#160;In&#160;a&#160;cohort&#160;of&#160;animals,&#160;some</p>
+<p style="position:absolute;top:1060px;left:470px;white-space:nowrap" class="ft94">percentage&#160;(e.g.,&#160;75%)&#160;may&#160;convert,&#160;while&#160;the&#160;remainder<br/>stay&#160;normal,&#160;in&#160;a&#160;stochastic&#160;manner.&#160;However,&#160;within&#160;a&#160;sin-<br/>gle&#160;animal,&#160;all&#160;the&#160;cells&#160;agree—the&#160;animal&#160;is&#160;either&#160;all</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft92">26</p>
+<p style="position:absolute;top:54px;left:671px;white-space:nowrap" class="ft92">GRODSTEIN&#160;AND&#160;LEVIN</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft93">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:12px;font-family:Times;color:#000000;}
+	.ft101{font-size:7px;font-family:Times;color:#000000;}
+	.ft102{font-size:11px;font-family:Times;color:#000000;}
+	.ft103{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft104{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft105{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:90px;left:90px;white-space:nowrap" class="ft104">hyperpigmented&#160;or&#160;all&#160;normal.&#160;Understanding&#160;these&#160;phe-<br/>nomena&#160;shed&#160;light&#160;not&#160;only&#160;on&#160;specific&#160;examples&#160;of&#160;important<br/>biology&#160;relevant&#160;to&#160;regenerative&#160;medicine&#160;and&#160;cancer&#160;but&#160;also<br/>on&#160;the&#160;relationship&#160;between&#160;control&#160;systems&#160;operating&#160;at<br/>different&#160;levels&#160;of&#160;organization,&#160;and&#160;how&#160;they&#160;relate&#160;to&#160;each<br/>other&#160;within&#160;a&#160;multiscale&#160;living&#160;system.</p>
+<p style="position:absolute;top:189px;left:105px;white-space:nowrap" class="ft100">Planaria&#160;are&#160;an&#160;important&#160;class&#160;of&#160;model&#160;species&#160;because</p>
+<p style="position:absolute;top:205px;left:90px;white-space:nowrap" class="ft104">they&#160;offer&#160;the&#160;possibility&#160;to&#160;study&#160;both&#160;highly&#160;robust&#160;out-<br/>comes&#160;and&#160;stochastic&#160;control,&#160;through&#160;a&#160;combination&#160;of<br/>genetic&#160;and&#160;epigenetic&#160;(in&#160;the&#160;original,&#160;broader&#160;sense&#160;of<br/>the&#160;word)&#160;instructive&#160;factors&#160;that&#160;set&#160;the&#160;target&#160;morphology<br/>toward&#160;which&#160;the&#160;cellular&#160;collective&#160;builds.&#160;Prior&#160;work&#160;of-<br/>fered&#160;several&#160;models&#160;addressing&#160;different&#160;aspects&#160;of&#160;the&#160;data,<br/>but&#160;had&#160;not&#160;been&#160;synthesized&#160;into&#160;a&#160;comprehensive&#160;under-<br/>standing&#160;of&#160;various&#160;controls&#160;of&#160;regenerative&#160;outcomes.&#160;We<br/>have&#160;proposed&#160;a&#160;hybrid&#160;theory&#160;that&#160;relies&#160;on&#160;both&#160;electro-<br/>diffusion&#160;and&#160;axonal&#160;transport&#160;on&#160;an&#160;equal&#160;basis.</p>
+<p style="position:absolute;top:370px;left:105px;white-space:nowrap" class="ft100">While&#160;each&#160;of&#160;those&#160;two&#160;hypotheses&#160;explains&#160;its&#160;own&#160;dis-</p>
+<p style="position:absolute;top:386px;left:90px;white-space:nowrap" class="ft104">joint&#160;subset&#160;of&#160;the&#160;many&#160;planarian-regrowth&#160;experiments,<br/>the&#160;hybrid&#160;theory&#160;explains&#160;all&#160;of&#160;data&#160;that&#160;either&#160;of&#160;the&#160;two<br/>hypotheses&#160;does.&#160;It&#160;further&#160;explains&#160;Cryptic&#160;worms,&#160;which<br/>neither&#160;of&#160;the&#160;two&#160;hypotheses&#160;can&#160;easily&#160;explain.&#160;There&#160;are<br/>many&#160;existing&#160;planarian&#160;experiments.&#160;Some&#160;have&#160;interfered<br/>with&#160;TFs;&#160;others&#160;have&#160;interfered&#160;either&#160;with&#160;Vmem&#160;or&#160;with&#160;GJs;<br/>but&#160;none&#160;to&#160;our&#160;knowledge&#160;has&#160;interfered&#160;with&#160;both.&#160;We<br/>propose&#160;performing&#160;exactly&#160;these&#160;experiments.&#160;If&#160;they&#160;turn<br/>out&#160;as&#160;predicted,&#160;they&#160;should&#160;unambiguously&#160;support&#160;the<br/>hybrid&#160;hypothesis.</p>
+<p style="position:absolute;top:550px;left:105px;white-space:nowrap" class="ft100">Why&#160;would&#160;evolution&#160;have&#160;resulted&#160;in&#160;two&#160;separate&#160;sys-</p>
+<p style="position:absolute;top:567px;left:90px;white-space:nowrap" class="ft104">tems&#160;that&#160;feed&#160;into&#160;each&#160;other&#160;and&#160;into&#160;the&#160;final&#160;outcome?<br/>These&#160;questions&#160;are&#160;often&#160;difficult&#160;to&#160;answer,&#160;but&#160;we&#160;might<br/>speculate.&#160;Redundancy&#160;is&#160;a&#160;marvelous&#160;tool&#160;to&#160;achieve&#160;reli-<br/>ability.&#160;Planaria&#160;can&#160;regrow&#160;from&#160;small&#160;fragments&#160;after&#160;a<br/>predator&#160;attack;&#160;this&#160;rather&#160;expensive&#160;capability&#160;would<br/>only&#160;be&#160;cost&#160;efficient&#160;if&#160;it&#160;worked&#160;reliably.&#160;Axonal&#160;transport<br/>and&#160;electrodiffusion&#160;have&#160;complementary&#160;strengths&#160;and<br/>weaknesses:</p>
+<p style="position:absolute;top:706px;left:105px;white-space:nowrap" class="ft100">&#160;While&#160;planaria&#160;typically&#160;reproduce&#160;by&#160;fission,&#160;they&#160;are</p>
+<p style="position:absolute;top:723px;left:119px;white-space:nowrap" class="ft104">capable&#160;of&#160;sexual&#160;reproduction.&#160;Some&#160;system&#160;must&#160;be<br/>in&#160;place&#160;to&#160;establish&#160;a&#160;coordinate&#160;system&#160;before&#160;the<br/>VNC&#160;exists.</p>
+<p style="position:absolute;top:771px;left:105px;white-space:nowrap" class="ft100">&#160;As&#160;per&#160;Figure&#160;1,&#160;electrodiffusion&#160;is&#160;quite&#160;robust&#160;to</p>
+<p style="position:absolute;top:789px;left:119px;white-space:nowrap" class="ft104">puncture&#160;wounds.&#160;Small&#160;(or&#160;even&#160;large)&#160;punctures&#160;that<br/>can&#160;easily&#160;disrupt&#160;VNC&#160;continuity&#160;make&#160;little&#160;differ-<br/>ence&#160;in&#160;the&#160;overall&#160;Vmem&#160;profile&#160;from&#160;electrodiffusion.</p>
+<p style="position:absolute;top:837px;left:105px;white-space:nowrap" class="ft100">&#160;The&#160;VNC&#160;has&#160;the&#160;ability&#160;to&#160;utilize&#160;the&#160;resources&#160;of&#160;an</p>
+<p style="position:absolute;top:855px;left:119px;white-space:nowrap" class="ft100">intact&#160;brain&#160;to&#160;perform&#160;large-scale&#160;repatterning,</p>
+<p style="position:absolute;top:851px;left:405px;white-space:nowrap" class="ft101">46&#160;a&#160;far</p>
+<p style="position:absolute;top:871px;left:119px;white-space:nowrap" class="ft104">more&#160;sophisticated&#160;capability&#160;than&#160;electrodiffusion&#160;is<br/>capable&#160;of.</p>
+<p style="position:absolute;top:912px;left:105px;white-space:nowrap" class="ft100">A&#160;similar&#160;situation&#160;seems&#160;to&#160;exist&#160;for&#160;the&#160;vertebrate&#160;limb,</p>
+<p style="position:absolute;top:929px;left:90px;white-space:nowrap" class="ft104">where&#160;the&#160;normal&#160;salamander&#160;limb&#160;is&#160;dependent&#160;on&#160;the&#160;nerve<br/>supply&#160;for&#160;regeneration,&#160;but&#160;limbs&#160;that&#160;develop&#160;in&#160;embryos<br/>without&#160;nerves&#160;can&#160;regenerate&#160;using&#160;some&#160;other&#160;signaling<br/>modality&#160;in&#160;its&#160;place.</p>
+<p style="position:absolute;top:975px;left:218px;white-space:nowrap" class="ft101">43,72&#160;This&#160;suggests&#160;two&#160;parallel&#160;regen-</p>
+<p style="position:absolute;top:994px;left:90px;white-space:nowrap" class="ft104">eration&#160;systems,&#160;one&#160;using&#160;neurons&#160;and&#160;one&#160;not.&#160;It&#160;is&#160;also<br/>possible&#160;that&#160;systems&#160;like&#160;this&#160;use&#160;a&#160;division&#160;of&#160;labor&#160;be-<br/>tween&#160;the&#160;developmental&#160;toolkit&#160;genes&#160;supporting&#160;patterning<br/>modules,</p>
+<p style="position:absolute;top:1040px;left:143px;white-space:nowrap" class="ft101">73&#160;and&#160;the&#160;ancient&#160;bioelectric&#160;system.&#160;The&#160;latter</p>
+<p style="position:absolute;top:1060px;left:90px;white-space:nowrap" class="ft104">could&#160;be&#160;part&#160;of&#160;the&#160;biophysical&#160;toolkit&#160;serving&#160;a&#160;kind&#160;of<br/>memory&#160;to&#160;detect,&#160;store,&#160;and&#160;recall&#160;the&#160;morphologies&#160;pro-<br/>duced&#160;by&#160;those&#160;modules.</p>
+<p style="position:absolute;top:90px;left:481px;white-space:nowrap" class="ft100">The&#160;output&#160;of&#160;the&#160;bioelectric&#160;dynamics&#160;can&#160;feed&#160;back&#160;into</p>
+<p style="position:absolute;top:107px;left:466px;white-space:nowrap" class="ft104">these&#160;modules&#160;because&#160;in&#160;addition&#160;to&#160;redistributing&#160;mor-<br/>phogens,&#160;Vmem&#160;change&#160;can&#160;affect&#160;downstream&#160;pathways,<br/>including&#160;KRAS,&#160;Wnt,&#160;and&#160;Shh.</p>
+<p style="position:absolute;top:136px;left:663px;white-space:nowrap" class="ft101">74–78&#160;Future&#160;work&#160;will&#160;test</p>
+<p style="position:absolute;top:156px;left:466px;white-space:nowrap" class="ft104">our&#160;predictions&#160;in&#160;planaria,&#160;as&#160;well&#160;as&#160;construct&#160;synthetic&#160;self-<br/>patterning&#160;systems&#160;using&#160;these&#160;principles&#160;to&#160;produce&#160;novel<br/>proto-organisms&#160;with&#160;useful&#160;functions.</p>
+<p style="position:absolute;top:205px;left:481px;white-space:nowrap" class="ft100">Finally,&#160;there&#160;is&#160;substantial&#160;evidence&#160;of&#160;position-control</p>
+<p style="position:absolute;top:222px;left:466px;white-space:nowrap" class="ft100">genes&#160;being&#160;expressed&#160;in&#160;muscle&#160;fibers.</p>
+<p style="position:absolute;top:218px;left:711px;white-space:nowrap" class="ft101">48&#160;While&#160;the&#160;VNC</p>
+<p style="position:absolute;top:238px;left:466px;white-space:nowrap" class="ft104">hypothesis&#160;relies&#160;on&#160;neurons,&#160;it&#160;is&#160;interesting&#160;that&#160;the&#160;most<br/>prominent&#160;electrically&#160;excitable&#160;cells&#160;in&#160;planaria&#160;other&#160;than<br/>neurons&#160;are,&#160;of&#160;course,&#160;muscles.&#160;Muscles&#160;do&#160;not&#160;utilize&#160;axonal<br/>transport,&#160;and&#160;the&#160;use&#160;of&#160;muscles&#160;to&#160;express&#160;position-control<br/>genes&#160;is&#160;not&#160;universal&#160;across&#160;species.</p>
+<p style="position:absolute;top:301px;left:683px;white-space:nowrap" class="ft101">48&#160;Nonetheless,&#160;it&#160;would</p>
+<p style="position:absolute;top:320px;left:466px;white-space:nowrap" class="ft100">be&#160;interesting&#160;to&#160;look&#160;for&#160;more&#160;synergy&#160;here.</p>
+<p style="position:absolute;top:363px;left:466px;white-space:nowrap" class="ft102">Acknowledgments</p>
+<p style="position:absolute;top:387px;left:481px;white-space:nowrap" class="ft100">We&#160;thank&#160;Johanna&#160;Bischof,&#160;Fallon&#160;Durant,&#160;Chris&#160;Fields,</p>
+<p style="position:absolute;top:404px;left:466px;white-space:nowrap" class="ft104">and&#160;Alexis&#160;Pietak&#160;for&#160;helpful&#160;discussions&#160;about&#160;these&#160;topics.<br/>In&#160;addition,&#160;Johanna&#160;Bischoff&#160;made&#160;extensive&#160;suggestions&#160;to<br/>greatly&#160;improve&#160;earlier&#160;drafts&#160;of&#160;this&#160;article.</p>
+<p style="position:absolute;top:479px;left:466px;white-space:nowrap" class="ft102">Author&#160;Disclosure&#160;Statement</p>
+<p style="position:absolute;top:504px;left:481px;white-space:nowrap" class="ft100">Both&#160;authors&#160;declare&#160;no&#160;conflict&#160;of&#160;interests.</p>
+<p style="position:absolute;top:547px;left:466px;white-space:nowrap" class="ft102">Funding&#160;Information</p>
+<p style="position:absolute;top:571px;left:481px;white-space:nowrap" class="ft100">We&#160;gratefully&#160;acknowledge&#160;support&#160;of&#160;The&#160;Guy&#160;Founda-</p>
+<p style="position:absolute;top:587px;left:466px;white-space:nowrap" class="ft100">tion&#160;and&#160;the&#160;John&#160;Templeton&#160;Foundation.</p>
+<p style="position:absolute;top:630px;left:466px;white-space:nowrap" class="ft102">References</p>
+<p style="position:absolute;top:654px;left:473px;white-space:nowrap" class="ft102">1.&#160;Davidson&#160;LA.&#160;Epithelial&#160;machines&#160;that&#160;shape&#160;the&#160;embryo.</p>
+<p style="position:absolute;top:670px;left:491px;white-space:nowrap" class="ft105">Trends&#160;Cell&#160;Biol&#160;2012;22:82–87.&#160;DOI:&#160;10.1016/j.tcb.2011<br/>.10.005.</p>
+<p style="position:absolute;top:701px;left:473px;white-space:nowrap" class="ft102">2.&#160;Newman&#160;SA.&#160;Inherency&#160;and&#160;homomorphy&#160;in&#160;the&#160;evolution</p>
+<p style="position:absolute;top:717px;left:491px;white-space:nowrap" class="ft105">of&#160;development.&#160;Curr&#160;Opin&#160;Genet&#160;Dev&#160;2019;57:1–8.&#160;DOI:<br/>10.1016/j.gde.2019.05.006.</p>
+<p style="position:absolute;top:748px;left:473px;white-space:nowrap" class="ft102">3.&#160;Harris&#160;MP.&#160;Bioelectric&#160;signaling&#160;as&#160;a&#160;unique&#160;regulator&#160;of</p>
+<p style="position:absolute;top:764px;left:491px;white-space:nowrap" class="ft105">development&#160;and&#160;regeneration.&#160;Development&#160;2021;148.<br/>DOI:&#160;10.1242/dev.180794.</p>
+<p style="position:absolute;top:795px;left:473px;white-space:nowrap" class="ft102">4.&#160;Bates&#160;E.&#160;Ion&#160;channels&#160;in&#160;development&#160;and&#160;cancer.&#160;Annu</p>
+<p style="position:absolute;top:811px;left:491px;white-space:nowrap" class="ft105">Rev&#160;Cell&#160;Dev&#160;Biol&#160;2015;31:231–247.&#160;DOI:&#160;10.1146/<br/>annurev-cellbio-100814-125338.</p>
+<p style="position:absolute;top:843px;left:473px;white-space:nowrap" class="ft102">5.&#160;Levin&#160;M.&#160;Bioelectric&#160;signaling:&#160;Reprogrammable&#160;circuits</p>
+<p style="position:absolute;top:858px;left:491px;white-space:nowrap" class="ft105">underlying&#160;embryogenesis,&#160;regeneration,&#160;and&#160;cancer.&#160;Cell<br/>2021;184:1971–1989.&#160;DOI:&#160;10.1016/j.cell.2021.02.034.</p>
+<p style="position:absolute;top:890px;left:473px;white-space:nowrap" class="ft102">6.&#160;Owlarn&#160;S,&#160;Bartscherer&#160;K.&#160;Go&#160;ahead,&#160;grow&#160;a&#160;head!&#160;A&#160;pla-</p>
+<p style="position:absolute;top:905px;left:491px;white-space:nowrap" class="ft105">narian’s&#160;guide&#160;to&#160;anterior&#160;regeneration.&#160;Regeneration&#160;(Oxf)<br/>2016;3:139–155.&#160;DOI:&#160;10.1002/reg2.56.</p>
+<p style="position:absolute;top:937px;left:473px;white-space:nowrap" class="ft102">7.&#160;Sheiman&#160;IM,&#160;Kreshchenko&#160;ND.&#160;Regeneration&#160;of&#160;planarians:</p>
+<p style="position:absolute;top:952px;left:491px;white-space:nowrap" class="ft102">Experimental&#160;object.&#160;Russ&#160;J&#160;Dev&#160;Biol</p>
+<p style="position:absolute;top:951px;left:710px;white-space:nowrap" class="ft102">+2015;46:1–9.&#160;DOI:</p>
+<p style="position:absolute;top:968px;left:491px;white-space:nowrap" class="ft102">Doi&#160;10.1134/S1062360415010075.</p>
+<p style="position:absolute;top:984px;left:473px;white-space:nowrap" class="ft102">8.&#160;Lobo&#160;D,&#160;Beane&#160;WS,&#160;Levin&#160;M.&#160;Modeling&#160;planarian&#160;regen-</p>
+<p style="position:absolute;top:999px;left:491px;white-space:nowrap" class="ft105">eration:&#160;A&#160;primer&#160;for&#160;reverse-engineering&#160;the&#160;worm.&#160;PLoS<br/>Comput&#160;Biol&#160;2012;8:e1002481.&#160;DOI:&#160;10.1371/journal.pcbi<br/>.1002481.</p>
+<p style="position:absolute;top:1047px;left:473px;white-space:nowrap" class="ft102">9.&#160;Salo´&#160;E,&#160;Abril&#160;JF,&#160;Adell&#160;T,&#160;et&#160;al.&#160;Planarian&#160;regeneration:</p>
+<p style="position:absolute;top:1062px;left:491px;white-space:nowrap" class="ft105">Achievements&#160;and&#160;future&#160;directions&#160;after&#160;20years&#160;of<br/>research.&#160;Int&#160;J&#160;Dev&#160;Biol&#160;2009;53:1317–1327.&#160;DOI:<br/>10.1387/ijdb.072414es.</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft102">ROBUSTNESS&#160;OF&#160;BIOELECTRIC&#160;CIRCUITS</p>
+<p style="position:absolute;top:54px;left:810px;white-space:nowrap" class="ft102">27</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft103">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:11px;font-family:Times;color:#000000;}
+	.ft111{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft112{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:91px;left:93px;white-space:nowrap" class="ft110">10.&#160;Reddien&#160;PW.&#160;The&#160;cellular&#160;and&#160;molecular&#160;basis&#160;for&#160;planarian</p>
+<p style="position:absolute;top:106px;left:117px;white-space:nowrap" class="ft112">regeneration.&#160;Cell&#160;2018;175:327–345.&#160;DOI:&#160;10.1016/j.cell<br/>.2018.09.021.</p>
+<p style="position:absolute;top:138px;left:93px;white-space:nowrap" class="ft110">11.&#160;Prindle&#160;A,&#160;Liu&#160;J,&#160;Asally&#160;M,&#160;et&#160;al.&#160;Ion&#160;channels&#160;enable</p>
+<p style="position:absolute;top:153px;left:117px;white-space:nowrap" class="ft112">electrical&#160;communication&#160;in&#160;bacterial&#160;communities.&#160;Nature<br/>2015;527:59–63.&#160;DOI:&#160;10.1038/nature15709.</p>
+<p style="position:absolute;top:185px;left:93px;white-space:nowrap" class="ft110">12.&#160;Yang&#160;CY,&#160;Bialecka-Fornal&#160;M,&#160;Weatherwax&#160;C,&#160;et&#160;al.</p>
+<p style="position:absolute;top:201px;left:117px;white-space:nowrap" class="ft112">Encoding&#160;membrane-potential-based&#160;memory&#160;within&#160;a<br/>microbial&#160;community.&#160;Cell&#160;Syst&#160;2020;10:417.e3–423.e3.<br/>DOI:&#160;10.1016/j.cels.2020.04.002.</p>
+<p style="position:absolute;top:248px;left:93px;white-space:nowrap" class="ft110">13.&#160;Levin&#160;M,&#160;Martyniuk&#160;CJ.&#160;The&#160;bioelectric&#160;code:&#160;An&#160;ancient</p>
+<p style="position:absolute;top:263px;left:117px;white-space:nowrap" class="ft112">computational&#160;medium&#160;for&#160;dynamic&#160;control&#160;of&#160;growth&#160;and<br/>form.&#160;Biosystems&#160;2018;164:76–93.&#160;DOI:&#160;10.1016/j.bio<br/>systems.2017.08.009.</p>
+<p style="position:absolute;top:310px;left:93px;white-space:nowrap" class="ft110">14.&#160;Levin&#160;M,&#160;Pezzulo,&#160;G,&#160;Finkelstein,&#160;JM.&#160;Endogenous&#160;bio-</p>
+<p style="position:absolute;top:326px;left:117px;white-space:nowrap" class="ft112">electric&#160;signaling&#160;networks:&#160;Exploiting&#160;voltage&#160;gradients<br/>for&#160;control&#160;of&#160;growth&#160;and&#160;form.&#160;Annu&#160;Rev&#160;Biomed&#160;Eng<br/>2017;19:353–387.&#160;DOI:&#160;10.1146/annurev-bioeng-071114-<br/>040647.</p>
+<p style="position:absolute;top:389px;left:93px;white-space:nowrap" class="ft110">15.&#160;Fields&#160;C,&#160;Bischof&#160;J,&#160;Levin&#160;M.&#160;Morphological&#160;coordination:</p>
+<p style="position:absolute;top:405px;left:117px;white-space:nowrap" class="ft112">A&#160;common&#160;ancestral&#160;function&#160;unifying&#160;neural&#160;and&#160;non-<br/>neural&#160;signaling.&#160;Physiology&#160;(Bethesda)&#160;2020;35:16–30.<br/>DOI:&#160;10.1152/physiol.00027.2019.</p>
+<p style="position:absolute;top:452px;left:93px;white-space:nowrap" class="ft110">16.&#160;Levin&#160;M,&#160;Thorlin&#160;T,&#160;Robinson&#160;KR,&#160;et&#160;al.&#160;Asymmetries&#160;in</p>
+<p style="position:absolute;top:467px;left:117px;white-space:nowrap" class="ft110">H</p>
+<p style="position:absolute;top:466px;left:127px;white-space:nowrap" class="ft110">+/K+-ATPase&#160;and&#160;cell&#160;membrane&#160;potentials&#160;comprise&#160;a</p>
+<p style="position:absolute;top:483px;left:117px;white-space:nowrap" class="ft112">very&#160;early&#160;step&#160;in&#160;left-right&#160;patterning.&#160;Cell&#160;2002;111:<br/>77–89.</p>
+<p style="position:absolute;top:514px;left:93px;white-space:nowrap" class="ft110">17.&#160;Aw&#160;S,&#160;Koster&#160;J,&#160;Pearson&#160;W,&#160;et&#160;al.&#160;The&#160;ATP-sensitive&#160;K(</p>
+<p style="position:absolute;top:513px;left:435px;white-space:nowrap" class="ft110">+)-</p>
+<p style="position:absolute;top:530px;left:117px;white-space:nowrap" class="ft112">channel&#160;(K(ATP))&#160;controls&#160;early&#160;left-right&#160;patterning&#160;in<br/>Xenopus&#160;and&#160;chick&#160;embryos.&#160;Dev&#160;Biol&#160;2010;346:39–53.<br/>DOI:&#160;10.1016/j.ydbio.2010.07.011.</p>
+<p style="position:absolute;top:577px;left:93px;white-space:nowrap" class="ft110">18.&#160;Morokuma&#160;J,&#160;Blackiston&#160;D,&#160;Levin&#160;M.&#160;KCNQ1&#160;and&#160;KCNE1</p>
+<p style="position:absolute;top:593px;left:117px;white-space:nowrap" class="ft110">K</p>
+<p style="position:absolute;top:592px;left:127px;white-space:nowrap" class="ft110">+&#160;channel&#160;components&#160;are&#160;involved&#160;in&#160;early&#160;left-right</p>
+<p style="position:absolute;top:609px;left:117px;white-space:nowrap" class="ft112">patterning&#160;in&#160;Xenopus&#160;laevis&#160;embryos.&#160;Cell&#160;Physiol&#160;Bio-<br/>chem&#160;2008;21:357–372.</p>
+<p style="position:absolute;top:640px;left:93px;white-space:nowrap" class="ft110">19.&#160;Aw&#160;S,&#160;Adams&#160;DS,&#160;Qiu&#160;D,&#160;et&#160;al.&#160;H,K-ATPase&#160;protein</p>
+<p style="position:absolute;top:656px;left:117px;white-space:nowrap" class="ft112">localization&#160;and&#160;Kir4.1&#160;function&#160;reveal&#160;concordance&#160;of<br/>three&#160;axes&#160;during&#160;early&#160;determination&#160;of&#160;left-right&#160;asym-<br/>metry.&#160;Mech&#160;Dev&#160;2008;125:353–372.</p>
+<p style="position:absolute;top:703px;left:93px;white-space:nowrap" class="ft110">20.&#160;Vandenberg&#160;LN,&#160;Morrie&#160;RD,&#160;Adams&#160;DS.&#160;V-ATPase-</p>
+<p style="position:absolute;top:718px;left:117px;white-space:nowrap" class="ft112">dependent&#160;ectodermal&#160;voltage&#160;and&#160;pH&#160;regionalization&#160;are<br/>required&#160;for&#160;craniofacial&#160;morphogenesis.&#160;Dev&#160;Dyn&#160;2011;<br/>240:1889–1904.&#160;DOI:&#160;10.1002/dvdy.22685.</p>
+<p style="position:absolute;top:765px;left:93px;white-space:nowrap" class="ft110">21.&#160;Pai&#160;VP,&#160;Cervera&#160;J,&#160;Mafe&#160;S,&#160;et&#160;al.&#160;HCN2&#160;channel-induced</p>
+<p style="position:absolute;top:781px;left:117px;white-space:nowrap" class="ft112">rescue&#160;of&#160;brain&#160;teratogenesis&#160;via&#160;local&#160;and&#160;long-range<br/>bioelectric&#160;repair.&#160;Front&#160;Cell&#160;Neurosci&#160;2020;14.&#160;DOI:<br/>10.3389/fncel.2020.00136.</p>
+<p style="position:absolute;top:828px;left:93px;white-space:nowrap" class="ft110">22.&#160;Pai&#160;VP,&#160;Lemire&#160;JM,&#160;Pare&#160;JF,&#160;et&#160;al.&#160;Endogenous&#160;gradients&#160;of</p>
+<p style="position:absolute;top:844px;left:117px;white-space:nowrap" class="ft112">resting&#160;potential&#160;instructively&#160;pattern&#160;embryonic&#160;neural<br/>tissue&#160;via&#160;notch&#160;signaling&#160;and&#160;regulation&#160;of&#160;proliferation.<br/>J&#160;Neurosci&#160;2015;35:4366–4385.&#160;DOI:&#160;10.1523/JNEURO<br/>SCI.1877-14.2015.</p>
+<p style="position:absolute;top:907px;left:93px;white-space:nowrap" class="ft110">23.&#160;Pai&#160;VP,&#160;Lemire&#160;JM,&#160;Chen&#160;Y,&#160;et&#160;al.&#160;Local&#160;and&#160;long-range</p>
+<p style="position:absolute;top:922px;left:117px;white-space:nowrap" class="ft112">endogenous&#160;resting&#160;potential&#160;gradients&#160;antagonistically<br/>regulate&#160;apoptosis&#160;and&#160;proliferation&#160;in&#160;the&#160;embryonic&#160;CNS.<br/>Int&#160;J&#160;Dev&#160;Biol&#160;2015;59:327–340.&#160;DOI:&#160;10.1387/ijdb<br/>.150197ml.</p>
+<p style="position:absolute;top:985px;left:93px;white-space:nowrap" class="ft110">24.&#160;Chernet&#160;BT,&#160;Fields&#160;C,&#160;Levin&#160;M.&#160;Long-range&#160;gap&#160;junctional</p>
+<p style="position:absolute;top:1001px;left:117px;white-space:nowrap" class="ft112">signaling&#160;controls&#160;oncogene-mediated&#160;tumorigenesis&#160;in<br/>Xenopus&#160;laevis&#160;embryos.&#160;Front&#160;Physiol&#160;2015;5:519.&#160;DOI:<br/>10.3389/fphys.2014.00519.</p>
+<p style="position:absolute;top:1048px;left:93px;white-space:nowrap" class="ft110">25.&#160;Chernet&#160;BT,&#160;Levin&#160;M.&#160;Transmembrane&#160;voltage&#160;potential&#160;of</p>
+<p style="position:absolute;top:1064px;left:117px;white-space:nowrap" class="ft112">somatic&#160;cells&#160;controls&#160;oncogene-mediated&#160;tumorigenesis&#160;at<br/>long-range.&#160;Oncotarget&#160;2014;5:3287–3306.</p>
+<p style="position:absolute;top:91px;left:470px;white-space:nowrap" class="ft110">26.&#160;Chernet&#160;BT,&#160;Levin&#160;M.&#160;Transmembrane&#160;voltage&#160;potential&#160;is</p>
+<p style="position:absolute;top:106px;left:494px;white-space:nowrap" class="ft112">an&#160;essential&#160;cellular&#160;parameter&#160;for&#160;the&#160;detection&#160;and&#160;control<br/>of&#160;tumor&#160;development&#160;in&#160;a&#160;Xenopus&#160;model.&#160;Dis&#160;Models<br/>Mech&#160;2013;6:595–607.&#160;DOI:&#160;10.1242/dmm.010835.</p>
+<p style="position:absolute;top:154px;left:470px;white-space:nowrap" class="ft110">27.&#160;Mathews&#160;J,&#160;Levin&#160;M.&#160;Gap&#160;junctional&#160;signaling&#160;in&#160;pattern</p>
+<p style="position:absolute;top:169px;left:494px;white-space:nowrap" class="ft112">regulation:&#160;Physiological&#160;network&#160;connectivity&#160;instructs<br/>growth&#160;and&#160;form.&#160;Dev&#160;Neurobiol&#160;2017;77:643–673.&#160;DOI:<br/>10.1002/dneu.22405.</p>
+<p style="position:absolute;top:216px;left:470px;white-space:nowrap" class="ft110">28.&#160;Durant&#160;F,&#160;Lobo&#160;D,&#160;Hammelman&#160;J,&#160;et&#160;al.&#160;Physiological</p>
+<p style="position:absolute;top:232px;left:494px;white-space:nowrap" class="ft112">controls&#160;of&#160;large-scale&#160;patterning&#160;in&#160;planarian&#160;regeneration:<br/>A&#160;molecular&#160;and&#160;computational&#160;perspective&#160;on&#160;growth&#160;and<br/>form.&#160;Regeneration&#160;(Oxf)&#160;2016;3:78–102.&#160;DOI:&#160;10.1002/<br/>reg2.54.</p>
+<p style="position:absolute;top:295px;left:470px;white-space:nowrap" class="ft110">29.&#160;Levin&#160;M,&#160;Pietak&#160;AM,&#160;Bischof&#160;J.&#160;Planarian&#160;regeneration&#160;as</p>
+<p style="position:absolute;top:310px;left:494px;white-space:nowrap" class="ft112">a&#160;model&#160;of&#160;anatomical&#160;homeostasis:&#160;Recent&#160;progress&#160;in<br/>biophysical&#160;and&#160;computational&#160;approaches.&#160;Semin&#160;Cell<br/>Dev&#160;Biol&#160;2018;87:125–144.&#160;DOI:&#160;10.1016/j.semcdb.2018<br/>.04.003.</p>
+<p style="position:absolute;top:373px;left:470px;white-space:nowrap" class="ft110">30.&#160;Oviedo&#160;NJ,&#160;Morokuma&#160;J,&#160;Walentek&#160;P,&#160;et&#160;al.&#160;Long-range</p>
+<p style="position:absolute;top:389px;left:494px;white-space:nowrap" class="ft112">neural&#160;and&#160;gap&#160;junction&#160;protein-mediated&#160;cues&#160;control&#160;po-<br/>larity&#160;during&#160;planarian&#160;regeneration.&#160;Dev&#160;Biol&#160;2010;339:<br/>188–199.&#160;DOI:&#160;10.1016/j.ydbio.2009.12.012.</p>
+<p style="position:absolute;top:436px;left:470px;white-space:nowrap" class="ft110">31.&#160;Nogi&#160;T,&#160;Levin&#160;M.&#160;Characterization&#160;of&#160;innexin&#160;gene&#160;expres-</p>
+<p style="position:absolute;top:452px;left:494px;white-space:nowrap" class="ft112">sion&#160;and&#160;functional&#160;roles&#160;of&#160;gap-junctional&#160;communication&#160;in<br/>planarian&#160;regeneration.&#160;Dev&#160;Biol&#160;2005;287:314–335.</p>
+<p style="position:absolute;top:483px;left:470px;white-space:nowrap" class="ft110">32.&#160;Beane&#160;WS,&#160;Morokuma&#160;J,&#160;Adams&#160;DS,&#160;et&#160;al.&#160;A&#160;chemical</p>
+<p style="position:absolute;top:499px;left:494px;white-space:nowrap" class="ft112">genetics&#160;approach&#160;reveals&#160;H,K-ATPase-mediated&#160;mem-<br/>brane&#160;voltage&#160;is&#160;required&#160;for&#160;planarian&#160;head&#160;regeneration.<br/>Chem&#160;Biol&#160;2011;18:77–89.</p>
+<p style="position:absolute;top:546px;left:470px;white-space:nowrap" class="ft110">33.&#160;Durant&#160;F,&#160;Bischof&#160;J,&#160;Fields&#160;C,&#160;et&#160;al.&#160;The&#160;role&#160;of&#160;early</p>
+<p style="position:absolute;top:561px;left:494px;white-space:nowrap" class="ft112">bioelectric&#160;signals&#160;in&#160;the&#160;regeneration&#160;of&#160;planarian&#160;anteri-<br/>or/posterior&#160;polarity.&#160;Biophys&#160;J&#160;2019;116:948–961.&#160;DOI:<br/>10.1016/j.bpj.2019.01.029.</p>
+<p style="position:absolute;top:609px;left:470px;white-space:nowrap" class="ft110">34.&#160;Durant&#160;F,&#160;Morokuma&#160;J,&#160;Fields&#160;C,&#160;et&#160;al.&#160;Long-term,</p>
+<p style="position:absolute;top:624px;left:494px;white-space:nowrap" class="ft112">stochastic&#160;editing&#160;of&#160;regenerative&#160;anatomy&#160;via&#160;targeting<br/>endogenous&#160;bioelectric&#160;gradients.&#160;Biophys&#160;J&#160;2017;112:<br/>2231–2243.&#160;DOI:&#160;10.1016/j.bpj.2017.04.011.</p>
+<p style="position:absolute;top:671px;left:470px;white-space:nowrap" class="ft110">35.&#160;Dimmitt&#160;J,&#160;Marsh&#160;G.&#160;Electrical&#160;control&#160;of&#160;morphogenesis</p>
+<p style="position:absolute;top:687px;left:494px;white-space:nowrap" class="ft112">in&#160;regenerating&#160;Dugesia&#160;tigrina.&#160;II.&#160;Potential&#160;gradient&#160;vs.<br/>current&#160;density&#160;as&#160;control&#160;factors.&#160;J&#160;Cell&#160;Comp&#160;Physiol<br/>1952;40:11–23.&#160;DOI:&#160;10.1002/jcp.1030400103.</p>
+<p style="position:absolute;top:734px;left:470px;white-space:nowrap" class="ft110">36.&#160;Marsh&#160;G,&#160;Beams&#160;HW.&#160;Electrical&#160;control&#160;of&#160;morphogenesis</p>
+<p style="position:absolute;top:750px;left:494px;white-space:nowrap" class="ft112">in&#160;regenerating&#160;Dugesia&#160;tigrina.&#160;I.&#160;Relation&#160;of&#160;axial&#160;polarity<br/>to&#160;field&#160;strength.&#160;J&#160;Cell&#160;Comp&#160;Physiol&#160;1952;39:191–213.<br/>DOI:&#160;10.1002/jcp.1030390203.</p>
+<p style="position:absolute;top:797px;left:470px;white-space:nowrap" class="ft110">37.&#160;Lange&#160;CS,&#160;Steele&#160;VE.&#160;The&#160;mechanism&#160;of&#160;anterior-posterior</p>
+<p style="position:absolute;top:813px;left:494px;white-space:nowrap" class="ft112">polarity&#160;control&#160;in&#160;planarians.&#160;Differentiation&#160;1978;11:<br/>1–12.</p>
+<p style="position:absolute;top:844px;left:470px;white-space:nowrap" class="ft110">38.&#160;Palacios-Prado&#160;N,&#160;Bukauskas&#160;FF.&#160;Modulation&#160;of&#160;metabolic</p>
+<p style="position:absolute;top:860px;left:494px;white-space:nowrap" class="ft112">communication&#160;through&#160;gap&#160;junction&#160;channels&#160;by&#160;trans-<br/>junctional&#160;voltage;&#160;synergistic&#160;and&#160;antagonistic&#160;effects&#160;of<br/>gating&#160;and&#160;ionophoresis.&#160;Biochim&#160;Biophys&#160;Acta&#160;2012;1818:<br/>1884–1894.&#160;DOI:&#160;10.1016/j.bbamem.2011.09.001.</p>
+<p style="position:absolute;top:922px;left:470px;white-space:nowrap" class="ft110">39.&#160;Pietak&#160;A,&#160;Levin&#160;M.&#160;Exploring&#160;instructive&#160;physiological</p>
+<p style="position:absolute;top:938px;left:494px;white-space:nowrap" class="ft112">signaling&#160;with&#160;the&#160;bioelectric&#160;tissue&#160;simulation&#160;engine.<br/>Front&#160;Bioeng&#160;Biotechnol&#160;2016;4:55.&#160;DOI:&#160;10.3389/fbioe<br/>.2016.00055.</p>
+<p style="position:absolute;top:985px;left:470px;white-space:nowrap" class="ft110">40.&#160;Pietak&#160;A,&#160;Levin&#160;M.&#160;Bioelectric&#160;gene&#160;and&#160;reaction&#160;networks:</p>
+<p style="position:absolute;top:1001px;left:494px;white-space:nowrap" class="ft112">Computational&#160;modelling&#160;of&#160;genetic,&#160;biochemical&#160;and<br/>bioelectrical&#160;dynamics&#160;in&#160;pattern&#160;regulation.&#160;J&#160;R&#160;Soc<br/>Interface&#160;2017;14:20170425.&#160;DOI:&#160;10.1098/rsif.2017.0425.</p>
+<p style="position:absolute;top:1048px;left:470px;white-space:nowrap" class="ft110">41.&#160;Nelson&#160;PC,&#160;Radosavljevic´&#160;M,&#160;Bromberg&#160;S.&#160;Biological</p>
+<p style="position:absolute;top:1064px;left:494px;white-space:nowrap" class="ft112">Physics:&#160;Energy,&#160;Information,&#160;Life.&#160;New&#160;York:&#160;W.H.<br/>Freeman&#160;and&#160;Co.,&#160;2004:&#160;xxvi,&#160;598.</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft110">28</p>
+<p style="position:absolute;top:54px;left:671px;white-space:nowrap" class="ft110">GRODSTEIN&#160;AND&#160;LEVIN</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft111">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:11px;font-family:Times;color:#000000;}
+	.ft121{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft122{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:91px;left:90px;white-space:nowrap" class="ft120">42.&#160;Grodstein&#160;J,&#160;Levin&#160;M.&#160;Stability&#160;and&#160;Robustness&#160;Properties</p>
+<p style="position:absolute;top:106px;left:114px;white-space:nowrap" class="ft122">of&#160;Bioelectric&#160;Networks:&#160;A&#160;computational&#160;approach.&#160;Bio-<br/>phys&#160;Rev&#160;2021;2:031305.</p>
+<p style="position:absolute;top:138px;left:90px;white-space:nowrap" class="ft120">43.&#160;Singer&#160;M.&#160;A&#160;theory&#160;of&#160;the&#160;trophic&#160;nervous&#160;control&#160;of</p>
+<p style="position:absolute;top:153px;left:114px;white-space:nowrap" class="ft122">amphibian&#160;limb&#160;regeneration,&#160;including&#160;a&#160;re-evaluation&#160;of<br/>quantitative&#160;nerve&#160;requirements.&#160;In:&#160;Kiortsis&#160;V,&#160;Trampusch<br/>HAL,&#160;eds.&#160;Regeneration&#160;in&#160;Animals&#160;and&#160;Related&#160;Problems.<br/>Amsterdam:&#160;North&#160;Holland&#160;Publ.&#160;Co.,&#160;1965,&#160;pp.&#160;20–32.</p>
+<p style="position:absolute;top:216px;left:90px;white-space:nowrap" class="ft120">44.&#160;Kiortsis&#160;V,&#160;Trampush&#160;HAL.&#160;Regeneration&#160;in&#160;Animals&#160;and</p>
+<p style="position:absolute;top:232px;left:114px;white-space:nowrap" class="ft122">Related&#160;Problems.&#160;Amsterdam:&#160;North-Holland&#160;Publisher,<br/>1965.</p>
+<p style="position:absolute;top:263px;left:90px;white-space:nowrap" class="ft120">45.&#160;Kiortsis&#160;V,&#160;Moraitou&#160;M.&#160;Factors&#160;of&#160;regeneration&#160;in</p>
+<p style="position:absolute;top:279px;left:114px;white-space:nowrap" class="ft122">Spirographis&#160;spallanzanii.&#160;In:&#160;Kiortsis&#160;V,&#160;Trampusch&#160;HAL,<br/>eds.&#160;Regeneration&#160;in&#160;Animals&#160;and&#160;Related&#160;Problems.<br/>Amsterdam:&#160;North&#160;Holland&#160;Publ.&#160;Co.,&#160;1965:&#160;250–261.</p>
+<p style="position:absolute;top:326px;left:90px;white-space:nowrap" class="ft120">46.&#160;Bischof&#160;J,&#160;Day&#160;ME,&#160;Miller&#160;KA,&#160;et&#160;al.&#160;Nervous&#160;system&#160;and</p>
+<p style="position:absolute;top:342px;left:114px;white-space:nowrap" class="ft122">tissue&#160;polarity&#160;dynamically&#160;adapt&#160;to&#160;new&#160;morphologies&#160;in<br/>planaria.&#160;Dev&#160;Biol&#160;2020;467:51–65.&#160;DOI:&#160;10.1016/j<br/>.ydbio.2020.08.009.</p>
+<p style="position:absolute;top:389px;left:90px;white-space:nowrap" class="ft120">47.&#160;Pietak&#160;A,&#160;Bischof&#160;J,&#160;LaPalme&#160;J,&#160;et&#160;al.&#160;Neural&#160;control&#160;of</p>
+<p style="position:absolute;top:405px;left:114px;white-space:nowrap" class="ft122">body-plan&#160;axis&#160;in&#160;regenerating&#160;planaria.&#160;PLoS&#160;Comput&#160;Biol<br/>2019;15:e1006904.&#160;DOI:&#160;10.1371/journal.pcbi.1006904.</p>
+<p style="position:absolute;top:436px;left:90px;white-space:nowrap" class="ft120">48.&#160;Reddien&#160;PW.&#160;Positional&#160;information&#160;and&#160;stem&#160;cells&#160;com-</p>
+<p style="position:absolute;top:452px;left:114px;white-space:nowrap" class="ft122">bine&#160;to&#160;result&#160;in&#160;planarian&#160;regeneration.&#160;Cold&#160;Spring&#160;Harb<br/>Perspect&#160;Biol&#160;2021.&#160;DOI:&#160;10.1101/cshperspect.a040717.</p>
+<p style="position:absolute;top:483px;left:90px;white-space:nowrap" class="ft120">49.&#160;O’Brien&#160;J.&#160;Design&#160;principles&#160;of&#160;electrical&#160;synaptic&#160;plastic-</p>
+<p style="position:absolute;top:499px;left:114px;white-space:nowrap" class="ft122">ity.&#160;Neurosci&#160;Lett&#160;2017;695:4–11.&#160;DOI:&#160;10.1016/j.neulet<br/>.2017.09.003.</p>
+<p style="position:absolute;top:530px;left:90px;white-space:nowrap" class="ft120">50.&#160;Miller&#160;AC,&#160;Pereda&#160;AE.&#160;The&#160;electrical&#160;synapse—Molecular</p>
+<p style="position:absolute;top:546px;left:114px;white-space:nowrap" class="ft122">complexities&#160;at&#160;the&#160;gap&#160;and&#160;beyond.&#160;Dev&#160;Neurobiol&#160;2017;<br/>77:562–574.&#160;DOI:&#160;10.1002/dneu.22484.</p>
+<p style="position:absolute;top:577px;left:90px;white-space:nowrap" class="ft120">51.&#160;Pereda&#160;AE,&#160;Curti&#160;S,&#160;Hoge&#160;G,&#160;et&#160;al.&#160;Gap&#160;junction-mediated</p>
+<p style="position:absolute;top:593px;left:114px;white-space:nowrap" class="ft122">electrical&#160;transmission:&#160;Regulatory&#160;mechanisms&#160;and&#160;plas-<br/>ticity.&#160;Biochim&#160;Biophys&#160;Acta&#160;2013;1828:134–146.&#160;DOI:<br/>10.1016/j.bbamem.2012.05.026.</p>
+<p style="position:absolute;top:640px;left:90px;white-space:nowrap" class="ft120">52.&#160;Pietak&#160;A,&#160;Levin&#160;M.&#160;Bioelectrical&#160;control&#160;of&#160;positional</p>
+<p style="position:absolute;top:656px;left:114px;white-space:nowrap" class="ft122">information&#160;in&#160;development&#160;and&#160;regeneration:&#160;A&#160;review&#160;of<br/>conceptual&#160;and&#160;computational&#160;advances.&#160;Prog&#160;Biophys&#160;Mol<br/>Biol&#160;2018;137:52–68.&#160;DOI:&#160;10.1016/j.pbiomolbio.2018<br/>.03.008.</p>
+<p style="position:absolute;top:718px;left:90px;white-space:nowrap" class="ft120">53.&#160;Zhou&#160;J,&#160;Qin&#160;L,&#160;Tien&#160;JC,&#160;et&#160;al.&#160;Nkx3.1&#160;functions&#160;as&#160;para-</p>
+<p style="position:absolute;top:734px;left:114px;white-space:nowrap" class="ft122">transcription&#160;factor&#160;to&#160;regulate&#160;gene&#160;expression&#160;and&#160;cell<br/>proliferation&#160;in&#160;non-cell&#160;autonomous&#160;manner.&#160;J&#160;Biol&#160;Chem<br/>2012;287:17248–17256.&#160;DOI:&#160;10.1074/jbc.M111.336909.</p>
+<p style="position:absolute;top:781px;left:90px;white-space:nowrap" class="ft120">54.&#160;Lesaffre&#160;B,&#160;Joliot&#160;A,&#160;Prochiantz&#160;A,&#160;et&#160;al.&#160;Direct&#160;non-cell</p>
+<p style="position:absolute;top:797px;left:114px;white-space:nowrap" class="ft122">autonomous&#160;Pax6&#160;activity&#160;regulates&#160;eye&#160;development&#160;in<br/>the&#160;zebrafish.&#160;Neural&#160;Dev&#160;2007;2:2.&#160;DOI:&#160;10.1186/1749-<br/>8104-2-2.</p>
+<p style="position:absolute;top:844px;left:90px;white-space:nowrap" class="ft120">55.&#160;Vincent&#160;C,&#160;Gilabert-Juan&#160;J,&#160;Gibel-Russo&#160;R,&#160;et&#160;al.&#160;Non-cell-</p>
+<p style="position:absolute;top:860px;left:114px;white-space:nowrap" class="ft122">autonomous&#160;OTX2&#160;transcription&#160;factor&#160;regulates&#160;anxiety-<br/>related&#160;behavior&#160;in&#160;the&#160;mouse.&#160;Mol&#160;Psychiatry&#160;2021;26:<br/>6469–6480.&#160;DOI:&#160;10.1038/s41380-021-01132-y.</p>
+<p style="position:absolute;top:907px;left:90px;white-space:nowrap" class="ft120">56.&#160;Torero&#160;Ibad&#160;R,&#160;Mazhar&#160;B,&#160;Vincent&#160;C,&#160;et&#160;al.&#160;OTX2&#160;non-</p>
+<p style="position:absolute;top:922px;left:114px;white-space:nowrap" class="ft122">cell&#160;autonomous&#160;activity&#160;regulates&#160;inner&#160;retinal&#160;function.<br/>eNeuro&#160;2020;7:1–11.&#160;DOI:&#160;10.1523/ENEURO.0012–19.2020.</p>
+<p style="position:absolute;top:954px;left:90px;white-space:nowrap" class="ft120">57.&#160;Planques&#160;A,&#160;Oliveira&#160;Moreira&#160;V,&#160;Dubreuil&#160;C,&#160;et&#160;al.&#160;OTX2</p>
+<p style="position:absolute;top:969px;left:114px;white-space:nowrap" class="ft122">signals&#160;from&#160;the&#160;choroid&#160;plexus&#160;to&#160;regulate&#160;adult&#160;neuro-<br/>genesis.&#160;eNeuro&#160;2019;6:1–11.&#160;DOI:&#160;10.1523/ENEURO.0262-18<br/>.2019.</p>
+<p style="position:absolute;top:1017px;left:90px;white-space:nowrap" class="ft120">58.&#160;Apulei&#160;J,&#160;Kim&#160;N,&#160;Testa&#160;D,&#160;et&#160;al.&#160;Non-cell&#160;autonomous</p>
+<p style="position:absolute;top:1032px;left:114px;white-space:nowrap" class="ft122">OTX2&#160;homeoprotein&#160;regulates&#160;visual&#160;cortex&#160;plasticity<br/>through&#160;Gadd45b/g.&#160;Cereb&#160;Cortex&#160;2019;29:2384–2395.<br/>DOI:&#160;10.1093/cercor/bhy108.</p>
+<p style="position:absolute;top:91px;left:466px;white-space:nowrap" class="ft120">59.&#160;Bernard&#160;C,&#160;Vincent&#160;C,&#160;Testa&#160;D,&#160;et&#160;al.&#160;A&#160;mouse&#160;model&#160;for</p>
+<p style="position:absolute;top:106px;left:491px;white-space:nowrap" class="ft122">conditional&#160;secretion&#160;of&#160;specific&#160;single-chain&#160;antibodies<br/>provides&#160;genetic&#160;evidence&#160;for&#160;regulation&#160;of&#160;cortical&#160;plas-<br/>ticity&#160;by&#160;a&#160;non-cell&#160;autonomous&#160;homeoprotein&#160;transcription<br/>factor.&#160;PLoS&#160;Genet&#160;2016;12:e1006035.&#160;DOI:&#160;10.1371/<br/>journal.pgen.1006035.</p>
+<p style="position:absolute;top:185px;left:466px;white-space:nowrap" class="ft120">60.&#160;Pastuzyn&#160;ED,&#160;Day&#160;CE,&#160;Kearns&#160;RB,&#160;et&#160;al.&#160;The&#160;neuronal</p>
+<p style="position:absolute;top:201px;left:491px;white-space:nowrap" class="ft122">gene&#160;arc&#160;encodes&#160;a&#160;repurposed&#160;retrotransposon&#160;gag&#160;pro-<br/>tein</p>
+<p style="position:absolute;top:216px;left:524px;white-space:nowrap" class="ft120">that</p>
+<p style="position:absolute;top:216px;left:558px;white-space:nowrap" class="ft120">mediates</p>
+<p style="position:absolute;top:216px;left:620px;white-space:nowrap" class="ft120">intercellular</p>
+<p style="position:absolute;top:216px;left:701px;white-space:nowrap" class="ft120">RNA</p>
+<p style="position:absolute;top:216px;left:743px;white-space:nowrap" class="ft120">transfer.</p>
+<p style="position:absolute;top:216px;left:801px;white-space:nowrap" class="ft120">Cell</p>
+<p style="position:absolute;top:232px;left:491px;white-space:nowrap" class="ft120">2018;172:275.e18–288.e18.</p>
+<p style="position:absolute;top:232px;left:667px;white-space:nowrap" class="ft120">DOI:</p>
+<p style="position:absolute;top:232px;left:717px;white-space:nowrap" class="ft120">10.1016/j.cell.2017</p>
+<p style="position:absolute;top:248px;left:491px;white-space:nowrap" class="ft120">.12.024.</p>
+<p style="position:absolute;top:263px;left:466px;white-space:nowrap" class="ft120">61.&#160;Ashley&#160;J,&#160;Cordy&#160;B,&#160;Lucia&#160;D,&#160;et&#160;al.&#160;Retrovirus-like&#160;Gag</p>
+<p style="position:absolute;top:279px;left:491px;white-space:nowrap" class="ft122">protein&#160;Arc1&#160;binds&#160;RNA&#160;and&#160;traffics&#160;across&#160;synaptic&#160;bou-<br/>tons.&#160;Cell&#160;2018;172:262.e11–274.e11.&#160;DOI:&#160;10.1016/j.cell<br/>.2017.12.022.</p>
+<p style="position:absolute;top:326px;left:466px;white-space:nowrap" class="ft120">62.&#160;Oviedo&#160;NJ,&#160;Nicolas&#160;CL,&#160;Adams&#160;DS,&#160;et&#160;al.&#160;Live&#160;imaging&#160;of</p>
+<p style="position:absolute;top:342px;left:491px;white-space:nowrap" class="ft122">planarian&#160;membrane&#160;potential&#160;using&#160;DiBAC4(3).&#160;CSH<br/>Protoc&#160;2008;2008:pdb.prot5055.</p>
+<p style="position:absolute;top:373px;left:466px;white-space:nowrap" class="ft120">63.&#160;Adams&#160;DS,&#160;Levin&#160;M.&#160;Measuring&#160;resting&#160;membrane&#160;poten-</p>
+<p style="position:absolute;top:389px;left:491px;white-space:nowrap" class="ft122">tial&#160;using&#160;the&#160;fluorescent&#160;voltage&#160;reporters&#160;DiBAC4(3)&#160;and<br/>CC2-DMPE.&#160;Cold&#160;Spring&#160;Harbor&#160;protocols&#160;2012;2012:<br/>459–464.&#160;DOI:&#160;10.1101/pdb.prot067702.</p>
+<p style="position:absolute;top:436px;left:466px;white-space:nowrap" class="ft120">64.&#160;Emmons-Bell&#160;M,&#160;Durant&#160;F,&#160;Hammelman&#160;J,&#160;et&#160;al.&#160;Gap</p>
+<p style="position:absolute;top:452px;left:491px;white-space:nowrap" class="ft122">junctional&#160;blockade&#160;stochastically&#160;induces&#160;different&#160;species-<br/>specific&#160;head&#160;anatomies&#160;in&#160;genetically&#160;wild-type&#160;Girardia<br/>dorotocephala&#160;flatworms.&#160;Int&#160;J&#160;Mol&#160;Sci&#160;2015;16:27865–<br/>27896.&#160;DOI:&#160;10.3390/ijms161126065.</p>
+<p style="position:absolute;top:514px;left:466px;white-space:nowrap" class="ft120">65.&#160;Adler&#160;EL,&#160;Woodruff&#160;RI.&#160;Varied&#160;effects&#160;of&#160;1-octanol&#160;on&#160;gap</p>
+<p style="position:absolute;top:530px;left:491px;white-space:nowrap" class="ft122">junctional&#160;communication&#160;between&#160;ovarian&#160;epithelial&#160;cells<br/>and&#160;oocytes&#160;of&#160;Oncopeltus&#160;fasciatus,&#160;Hyalophora&#160;cecropia,<br/>and&#160;Drosophila&#160;melanogaster.&#160;Arch&#160;Insect&#160;Biochem&#160;Phy-<br/>siol&#160;2000;43:22–32.</p>
+<p style="position:absolute;top:593px;left:466px;white-space:nowrap" class="ft120">66.&#160;Pappas&#160;CA,&#160;Rioult&#160;MG,&#160;Ransom&#160;BR.&#160;Octanol,&#160;a&#160;gap</p>
+<p style="position:absolute;top:609px;left:491px;white-space:nowrap" class="ft120">junction&#160;uncoupling&#160;agent,&#160;changes&#160;intracellular&#160;[H</p>
+<p style="position:absolute;top:608px;left:779px;white-space:nowrap" class="ft120">+]&#160;in&#160;rat</p>
+<p style="position:absolute;top:624px;left:491px;white-space:nowrap" class="ft120">astrocytes.&#160;Glia&#160;1996;16:7–15.</p>
+<p style="position:absolute;top:640px;left:466px;white-space:nowrap" class="ft120">67.&#160;McAdams&#160;HH,&#160;Arkin&#160;A.&#160;It’s&#160;a&#160;noisy&#160;business!&#160;Genetic</p>
+<p style="position:absolute;top:656px;left:491px;white-space:nowrap" class="ft122">regulation&#160;at&#160;the&#160;nanomolar&#160;scale.&#160;Trends&#160;Genet&#160;1999;15:<br/>65–69.</p>
+<p style="position:absolute;top:687px;left:466px;white-space:nowrap" class="ft120">68.&#160;Vu&#160;HT,&#160;Mansour&#160;S,&#160;Kucken&#160;M,&#160;et&#160;al.&#160;Dynamic&#160;polarization</p>
+<p style="position:absolute;top:703px;left:491px;white-space:nowrap" class="ft122">of&#160;the&#160;multiciliated&#160;planarian&#160;epidermis&#160;between&#160;body&#160;plan<br/>landmarks.</p>
+<p style="position:absolute;top:718px;left:568px;white-space:nowrap" class="ft120">Dev</p>
+<p style="position:absolute;top:718px;left:607px;white-space:nowrap" class="ft120">Cell</p>
+<p style="position:absolute;top:718px;left:645px;white-space:nowrap" class="ft120">2019;51:526.e6–542.e6.</p>
+<p style="position:absolute;top:718px;left:796px;white-space:nowrap" class="ft120">DOI:</p>
+<p style="position:absolute;top:734px;left:491px;white-space:nowrap" class="ft120">10.1016/j.devcel.2019.10.022.</p>
+<p style="position:absolute;top:750px;left:466px;white-space:nowrap" class="ft120">69.&#160;Kleber&#160;AG,&#160;Jin&#160;Q.&#160;Coupling&#160;between&#160;cardiac&#160;cells-An</p>
+<p style="position:absolute;top:765px;left:491px;white-space:nowrap" class="ft122">important&#160;determinant&#160;of&#160;electrical&#160;impulse&#160;propagation<br/>and&#160;arrhythmogenesis.&#160;Biophys&#160;Rev&#160;2021;2:031301.&#160;DOI:<br/>10.1063/5.0050192.</p>
+<p style="position:absolute;top:813px;left:466px;white-space:nowrap" class="ft120">70.&#160;Lobo&#160;D,&#160;Lobikin&#160;M,&#160;Levin&#160;M.&#160;Discovering&#160;novel&#160;pheno-</p>
+<p style="position:absolute;top:828px;left:491px;white-space:nowrap" class="ft122">types&#160;with&#160;automatically&#160;inferred&#160;dynamic&#160;models:&#160;A&#160;par-<br/>tial&#160;melanocyte&#160;conversion&#160;in&#160;Xenopus.&#160;Sci&#160;Rep&#160;2017;7:<br/>41339.&#160;DOI:&#160;10.1038/srep41339.</p>
+<p style="position:absolute;top:875px;left:466px;white-space:nowrap" class="ft120">71.&#160;Lobikin&#160;M,&#160;Lobo&#160;D,&#160;Blackiston&#160;DJ,&#160;et&#160;al.&#160;Serotonergic</p>
+<p style="position:absolute;top:891px;left:491px;white-space:nowrap" class="ft122">regulation&#160;of&#160;melanocyte&#160;conversion:&#160;A&#160;bioelectrically<br/>regulated&#160;network&#160;for&#160;stochastic&#160;all-or-none&#160;hyperpigmen-<br/>tation.&#160;Sci&#160;Signal&#160;2015;8:ra99.&#160;DOI:&#160;10.1126/scisignal<br/>.aac6609.</p>
+<p style="position:absolute;top:954px;left:466px;white-space:nowrap" class="ft120">72.&#160;Yntema&#160;CL.&#160;Regeneration&#160;in&#160;sparsely&#160;innervated&#160;and</p>
+<p style="position:absolute;top:969px;left:491px;white-space:nowrap" class="ft122">aneurogenic&#160;forelimbs&#160;of&#160;Amblystoma&#160;larvae.&#160;J&#160;Exp&#160;Zool<br/>1959;140:101–123.</p>
+<p style="position:absolute;top:1001px;left:466px;white-space:nowrap" class="ft120">73.&#160;Newman&#160;SA,&#160;Bhat&#160;R.&#160;Dynamical&#160;patterning&#160;modules:&#160;A</p>
+<p style="position:absolute;top:1016px;left:491px;white-space:nowrap" class="ft122">‘‘pattern&#160;language’’&#160;for&#160;development&#160;and&#160;evolution&#160;of<br/>multicellular&#160;form.&#160;The&#160;International&#160;journal&#160;of&#160;develop-<br/>mental</p>
+<p style="position:absolute;top:1048px;left:542px;white-space:nowrap" class="ft120">biology</p>
+<p style="position:absolute;top:1048px;left:597px;white-space:nowrap" class="ft120">2009;53:693–705.</p>
+<p style="position:absolute;top:1048px;left:712px;white-space:nowrap" class="ft120">DOI:</p>
+<p style="position:absolute;top:1048px;left:754px;white-space:nowrap" class="ft120">10.1387/ijdb</p>
+<p style="position:absolute;top:1064px;left:491px;white-space:nowrap" class="ft120">.072481sn.</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft120">ROBUSTNESS&#160;OF&#160;BIOELECTRIC&#160;CIRCUITS</p>
+<p style="position:absolute;top:54px;left:810px;white-space:nowrap" class="ft120">29</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft121">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>77e7af9f5e6382f7f20cec7df76776aa-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:11px;font-family:Times;color:#000000;}
+	.ft131{font-size:7px;font-family:Times;color:#000000;}
+	.ft132{font-size:12px;font-family:Times;color:#000000;}
+	.ft133{font-size:8px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft134{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:91px;left:93px;white-space:nowrap" class="ft130">74.&#160;Borodinsky&#160;LN,&#160;Belgacem&#160;YH,&#160;Swapna&#160;I,&#160;et&#160;al.&#160;Spatio-</p>
+<p style="position:absolute;top:106px;left:117px;white-space:nowrap" class="ft134">temporal&#160;integration&#160;of&#160;developmental&#160;cues&#160;in&#160;neural<br/>development.&#160;Dev&#160;Neurobiol&#160;2015;75:349–359.&#160;DOI:<br/>10.1002/dneu.22254.</p>
+<p style="position:absolute;top:153px;left:93px;white-space:nowrap" class="ft130">75.&#160;Belgacem&#160;YH,&#160;Borodinsky&#160;LN.&#160;Inversion&#160;of&#160;Sonic&#160;hedge-</p>
+<p style="position:absolute;top:169px;left:117px;white-space:nowrap" class="ft134">hog&#160;action&#160;on&#160;its&#160;canonical&#160;pathway&#160;by&#160;electrical&#160;activity.<br/>Proc&#160;Natl&#160;Acad&#160;Sci&#160;U&#160;S&#160;A&#160;2015;112:4140–4145.&#160;DOI:<br/>10.1073/pnas.1419690112.</p>
+<p style="position:absolute;top:216px;left:93px;white-space:nowrap" class="ft130">76.&#160;Atsuta&#160;Y,&#160;Tomizawa&#160;RR,&#160;Levin&#160;M,&#160;et&#160;al.&#160;L-type&#160;voltage-</p>
+<p style="position:absolute;top:232px;left:117px;white-space:nowrap" class="ft130">gated&#160;Ca</p>
+<p style="position:absolute;top:229px;left:174px;white-space:nowrap" class="ft131">2</p>
+<p style="position:absolute;top:228px;left:179px;white-space:nowrap" class="ft131">+</p>
+<p style="position:absolute;top:232px;left:196px;white-space:nowrap" class="ft130">channel&#160;CaV1.2&#160;regulates&#160;chondrogenesis</p>
+<p style="position:absolute;top:248px;left:117px;white-space:nowrap" class="ft134">during&#160;limb&#160;development.&#160;Proc&#160;Natl&#160;Acad&#160;Sci&#160;U&#160;S&#160;A&#160;2019;<br/>116:21592–21601.&#160;DOI:&#160;10.1073/pnas.1908981116.</p>
+<p style="position:absolute;top:279px;left:93px;white-space:nowrap" class="ft130">77.&#160;McLaughlin&#160;KA,&#160;Levin&#160;M.&#160;Bioelectric&#160;signaling&#160;in&#160;regener-</p>
+<p style="position:absolute;top:295px;left:117px;white-space:nowrap" class="ft134">ation:&#160;Mechanisms&#160;of&#160;ionic&#160;controls&#160;of&#160;growth&#160;and&#160;form.&#160;Dev<br/>Biol&#160;2018;433:177–189.&#160;DOI:&#160;10.1016/j.ydbio.2017.08.032.</p>
+<p style="position:absolute;top:91px;left:470px;white-space:nowrap" class="ft130">78.&#160;Zhou&#160;Y,&#160;Wong&#160;CO,&#160;Cho&#160;KJ,&#160;et&#160;al.&#160;Signal&#160;transduction.</p>
+<p style="position:absolute;top:106px;left:494px;white-space:nowrap" class="ft134">Membrane&#160;potential&#160;modulates&#160;plasma&#160;membrane&#160;phos-<br/>pholipid&#160;dynamics&#160;and&#160;K-Ras&#160;signaling.&#160;Science&#160;2015;349:<br/>873–876.&#160;DOI:&#160;10.1126/science.aaa5619.</p>
+<p style="position:absolute;top:196px;left:662px;white-space:nowrap" class="ft132">Address&#160;correspondence&#160;to:</p>
+<p style="position:absolute;top:213px;left:706px;white-space:nowrap" class="ft132">Michael&#160;Levin,&#160;PhD</p>
+<p style="position:absolute;top:229px;left:569px;white-space:nowrap" class="ft132">Allen&#160;Discovery&#160;Center&#160;at&#160;Tufts&#160;University</p>
+<p style="position:absolute;top:246px;left:706px;white-space:nowrap" class="ft132">200&#160;College&#160;Avenue</p>
+<p style="position:absolute;top:262px;left:706px;white-space:nowrap" class="ft132">Medford,&#160;MA&#160;02155</p>
+<p style="position:absolute;top:278px;left:801px;white-space:nowrap" class="ft132">USA</p>
+<p style="position:absolute;top:310px;left:633px;white-space:nowrap" class="ft132">E-mail:&#160;michael.levin@tufts.edu</p>
+<p style="position:absolute;top:54px;left:93px;white-space:nowrap" class="ft130">30</p>
+<p style="position:absolute;top:54px;left:671px;white-space:nowrap" class="ft130">GRODSTEIN&#160;AND&#160;LEVIN</p>
+<p style="position:absolute;top:782px;left:26px;white-space:nowrap" class="ft133">Downloaded by 73.68.43.115 from www.liebertpub.com at 03/21/22. For personal use only.&#160;</p>
+</div>
+</body>
+</html>

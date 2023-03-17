@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:24px;font-family:Times;color:#000000;}
+	.ft11{font-size:12px;font-family:Times;color:#000000;}
+	.ft12{font-size:7px;font-family:Times;color:#000000;}
+	.ft13{font-size:14px;font-family:Times;color:#000000;}
+	.ft14{font-size:39px;font-family:Times;color:#000000;}
+	.ft15{font-size:6px;font-family:Times;color:#000000;}
+	.ft16{font-size:11px;font-family:Times;color:#000000;}
+	.ft17{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft18{font-size:14px;line-height:19px;font-family:Times;color:#000000;}
+	.ft19{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft110{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:200px;left:440px;white-space:nowrap" class="ft10">MoCha:</p>
+<p style="position:absolute;top:233px;left:206px;white-space:nowrap" class="ft10">Molecular&#160;Characterization&#160;of&#160;Unknown&#160;Pathways</p>
+<p style="position:absolute;top:306px;left:260px;white-space:nowrap" class="ft11">DANIEL&#160;LOBO,</p>
+<p style="position:absolute;top:303px;left:362px;white-space:nowrap" class="ft12">1&#160;JENNIFER&#160;HAMMELMAN,2&#160;and&#160;MICHAEL&#160;LEVIN2</p>
+<p style="position:absolute;top:387px;left:440px;white-space:nowrap" class="ft13">ABSTRACT</p>
+<p style="position:absolute;top:426px;left:161px;white-space:nowrap" class="ft18">Automated&#160;methods&#160;for&#160;the&#160;reverse-engineering&#160;of&#160;complex&#160;regulatory&#160;networks&#160;are&#160;paving<br/>the&#160;way&#160;for&#160;the&#160;inference&#160;of&#160;mechanistic&#160;comprehensive&#160;models&#160;directly&#160;from&#160;experimental<br/>data.&#160;These&#160;novel&#160;methods&#160;can&#160;infer&#160;not&#160;only&#160;the&#160;relations&#160;and&#160;parameters&#160;of&#160;the&#160;known<br/>molecules&#160;defined&#160;in&#160;their&#160;input&#160;datasets,&#160;but&#160;also&#160;unknown&#160;components&#160;and&#160;pathways&#160;iden-<br/>tified&#160;as&#160;necessary&#160;by&#160;the&#160;automated&#160;algorithms.&#160;Identifying&#160;the&#160;molecular&#160;nature&#160;of&#160;these<br/>unknown&#160;components&#160;is&#160;a&#160;crucial&#160;step&#160;for&#160;making&#160;testable&#160;predictions&#160;and&#160;experimentally<br/>validating&#160;the&#160;models,&#160;yet&#160;no&#160;specific&#160;and&#160;efficient&#160;tools&#160;exist&#160;to&#160;aid&#160;in&#160;this&#160;process.&#160;To&#160;this&#160;end,<br/>we&#160;present&#160;here&#160;MoCha&#160;(Molecular&#160;Characterization),&#160;a&#160;tool&#160;optimized&#160;for&#160;the&#160;search&#160;of<br/>unknown&#160;proteins&#160;and&#160;their&#160;pathways&#160;from&#160;a&#160;given&#160;set&#160;of&#160;known&#160;interacting&#160;proteins.&#160;MoCha<br/>uses&#160;the&#160;comprehensive&#160;dataset&#160;of&#160;protein–protein&#160;interactions&#160;provided&#160;by&#160;the&#160;STRING<br/>database,&#160;which&#160;currently&#160;includes&#160;more&#160;than&#160;a&#160;billion&#160;interactions&#160;from&#160;over&#160;2,000&#160;organisms.<br/>MoCha&#160;is&#160;highly&#160;optimized,&#160;performing&#160;typical&#160;searches&#160;within&#160;seconds.&#160;We&#160;demonstrate&#160;the<br/>use&#160;of&#160;MoCha&#160;with&#160;the&#160;characterization&#160;of&#160;unknown&#160;components&#160;from&#160;reverse-engineered<br/>models&#160;from&#160;the&#160;literature.&#160;MoCha&#160;is&#160;useful&#160;for&#160;working&#160;on&#160;network&#160;models&#160;by&#160;hand&#160;or&#160;as&#160;a<br/>downstream&#160;step&#160;of&#160;a&#160;model&#160;inference&#160;engine&#160;workflow&#160;and&#160;represents&#160;a&#160;valuable&#160;and&#160;efficient<br/>tool&#160;for&#160;the&#160;characterization&#160;of&#160;unknown&#160;pathways&#160;using&#160;known&#160;data&#160;from&#160;thousands&#160;of<br/>organisms.&#160;MoCha&#160;and&#160;its&#160;source&#160;code&#160;are&#160;freely&#160;available&#160;online&#160;under&#160;the&#160;GPLv3&#160;license.</p>
+<p style="position:absolute;top:776px;left:161px;white-space:nowrap" class="ft13">Key&#160;words:</p>
+<p style="position:absolute;top:776px;left:249px;white-space:nowrap" class="ft13">data&#160;mining,&#160;pathways,&#160;protein–protein&#160;interaction,&#160;regulatory&#160;networks.</p>
+<p style="position:absolute;top:836px;left:408px;white-space:nowrap" class="ft13">1.&#160;INTRODUCTION</p>
+<p style="position:absolute;top:873px;left:161px;white-space:nowrap" class="ft14">Reverse-engineering&#160;computational&#160;methods&#160;can&#160;automatically&#160;infer&#160;regulatory&#160;networks&#160;directly</p>
+<p style="position:absolute;top:891px;left:193px;white-space:nowrap" class="ft11">from&#160;experimental&#160;data&#160;(Hecker&#160;et&#160;al.,&#160;2009;&#160;Sirbu&#160;et&#160;al.,&#160;2010;&#160;Liu&#160;et&#160;al.,&#160;2012).&#160;Taking&#160;biological&#160;data</p>
+<p style="position:absolute;top:909px;left:161px;white-space:nowrap" class="ft19">as&#160;input,&#160;these&#160;algorithms&#160;can&#160;produce&#160;de&#160;novo&#160;the&#160;topology&#160;and&#160;dynamic&#160;parameters&#160;of&#160;a&#160;regulatory&#160;network<br/>that,&#160;when&#160;simulated,&#160;recapitulates&#160;the&#160;dynamics&#160;of&#160;experimental&#160;in&#160;vivo&#160;outcomes.&#160;These&#160;powerful&#160;artificial<br/>intelligence&#160;methods&#160;are&#160;paving&#160;the&#160;way&#160;for&#160;the&#160;discovery&#160;of&#160;regulatory&#160;models&#160;of&#160;previously&#160;puzzling&#160;data,<br/>readily&#160;providing&#160;verifiable&#160;predictions&#160;(Becker&#160;et&#160;al.,&#160;2013).</p>
+<p style="position:absolute;top:980px;left:176px;white-space:nowrap" class="ft11">However,&#160;automatically&#160;inferred&#160;regulatory&#160;networks&#160;may&#160;suggest&#160;that&#160;there&#160;are&#160;regulatory&#160;nodes&#160;that&#160;are</p>
+<p style="position:absolute;top:998px;left:161px;white-space:nowrap" class="ft11">necessary&#160;to&#160;explain&#160;the&#160;data&#160;but&#160;were&#160;not&#160;present&#160;in&#160;the&#160;input&#160;dataset&#160;(not&#160;yet&#160;implicated&#160;by&#160;the&#160;functional</p>
+<p style="position:absolute;top:1041px;left:176px;white-space:nowrap" class="ft15">1Department&#160;of&#160;Biological&#160;Sciences,&#160;University&#160;of&#160;Maryland,&#160;Baltimore&#160;County,&#160;Baltimore,&#160;Maryland.</p>
+<p style="position:absolute;top:1056px;left:176px;white-space:nowrap" class="ft15">2Center&#160;for&#160;Regenerative&#160;and&#160;Developmental&#160;Biology,&#160;and&#160;Department&#160;of&#160;Biology,&#160;Tufts&#160;University,&#160;Medford,</p>
+<p style="position:absolute;top:1074px;left:161px;white-space:nowrap" class="ft16">Massachusetts.</p>
+<p style="position:absolute;top:72px;left:161px;white-space:nowrap" class="ft110">JOURNAL&#160;OF&#160;COMPUTATIONAL&#160;BIOLOGY<br/>Volume&#160;23,&#160;Number&#160;4,&#160;2016<br/>#&#160;Mary&#160;Ann&#160;Liebert,&#160;Inc.<br/>Pp.&#160;291–297<br/>DOI:&#160;10.1089/cmb.2015.0211</p>
+<p style="position:absolute;top:1126px;left:473px;white-space:nowrap" class="ft11">291</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:14px;font-family:Times;color:#000000;}
+	.ft22{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft23{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:105px;left:111px;white-space:nowrap" class="ft23">literature).&#160;Methods&#160;based&#160;on&#160;regression&#160;and&#160;metaheuristics&#160;for&#160;the&#160;reverse-engineering&#160;from&#160;gene&#160;ex-<br/>pression&#160;data&#160;from&#160;microarrays&#160;and&#160;quantitative&#160;PCR&#160;(Yeung&#160;et&#160;al.,&#160;2002;&#160;Gardner&#160;et&#160;al.,&#160;2003;&#160;Tegner<br/>et&#160;al.,&#160;2003;&#160;Kimura&#160;et&#160;al.,&#160;2005;&#160;Bonneau&#160;et&#160;al.,&#160;2006;&#160;Margolin&#160;et&#160;al.,&#160;2006;&#160;Molinelli&#160;et&#160;al.,&#160;2013)&#160;as&#160;well<br/>as&#160;from&#160;in&#160;situ&#160;hybridization&#160;and&#160;immunohistochemical&#160;images&#160;(Reinitz&#160;et&#160;al.,&#160;1995;&#160;Perkins&#160;et&#160;al.,&#160;2006;<br/>Fomekong-Nanfack&#160;et&#160;al.,&#160;2007;&#160;Crombach&#160;et&#160;al.,&#160;2012;&#160;Becker&#160;et&#160;al.,&#160;2013)&#160;statistically&#160;quantify&#160;the&#160;fit<br/>between&#160;the&#160;data&#160;and&#160;model&#160;output.&#160;Whereas&#160;the&#160;overall&#160;fit&#160;can&#160;be&#160;acceptable,&#160;specific&#160;components&#160;may<br/>have&#160;a&#160;low&#160;fit&#160;when&#160;compared&#160;with&#160;the&#160;experimental&#160;data,&#160;indicating&#160;a&#160;possible&#160;missing&#160;component&#160;not<br/>included&#160;in&#160;the&#160;input&#160;dataset.&#160;Furthermore,&#160;novel&#160;methods&#160;for&#160;inferring&#160;regulatory&#160;networks&#160;from&#160;mor-<br/>phological&#160;experimental&#160;data&#160;can&#160;directly&#160;predict&#160;the&#160;existence&#160;of&#160;unknown&#160;products&#160;not&#160;included&#160;in&#160;the<br/>input&#160;datasets,&#160;but&#160;inferred&#160;as&#160;functionally&#160;necessary&#160;by&#160;the&#160;algorithms&#160;for&#160;the&#160;models&#160;to&#160;correctly&#160;re-<br/>produce&#160;the&#160;results&#160;of&#160;the&#160;input&#160;set&#160;of&#160;experiments&#160;(Lobikin&#160;et&#160;al.,&#160;2015;&#160;Lobo&#160;and&#160;Levin,&#160;2015).&#160;Char-<br/>acterizing&#160;the&#160;pathways&#160;represented&#160;by&#160;these&#160;unknown&#160;components&#160;is&#160;a&#160;necessary&#160;step&#160;for&#160;the&#160;experimental<br/>validation&#160;of&#160;the&#160;inferred&#160;model&#160;(Lobo&#160;et&#160;al.,&#160;2013,&#160;2014).</p>
+<p style="position:absolute;top:338px;left:126px;white-space:nowrap" class="ft20">Databases&#160;of&#160;known&#160;molecular&#160;interactions&#160;represent&#160;a&#160;valuable&#160;resource&#160;for&#160;identifying&#160;the&#160;unknown</p>
+<p style="position:absolute;top:356px;left:111px;white-space:nowrap" class="ft23">components&#160;in&#160;these&#160;inferred&#160;regulatory&#160;networks&#160;by&#160;providing&#160;a&#160;searchable&#160;directory&#160;for&#160;molecular&#160;products<br/>and&#160;pathways&#160;with&#160;known&#160;similar&#160;interactions&#160;as&#160;in&#160;the&#160;inferred&#160;model.&#160;However,&#160;searching&#160;for&#160;candidate<br/>molecules&#160;represents&#160;a&#160;significant&#160;computational&#160;challenge&#160;because&#160;of&#160;both&#160;the&#160;size&#160;of&#160;the&#160;interaction<br/>databases&#160;and&#160;the&#160;fact&#160;that&#160;a&#160;single&#160;unknown&#160;component&#160;can&#160;represent&#160;a&#160;multiprotein&#160;subpathway.&#160;The<br/>STRING&#160;database&#160;v10&#160;(Szklarczyk&#160;et&#160;al.,&#160;2015)&#160;contains&#160;more&#160;than&#160;2,000&#160;organisms&#160;and&#160;1&#160;billion&#160;inter-<br/>actions.&#160;Indeed,&#160;finding&#160;candidate&#160;pathways&#160;by&#160;mining&#160;this&#160;enormous&#160;dataset&#160;is&#160;a&#160;demanding&#160;task&#160;in&#160;need&#160;of<br/>specialized&#160;tools.&#160;Software&#160;technology&#160;exists&#160;to&#160;mine&#160;interaction&#160;datasets&#160;with&#160;complex&#160;queries&#160;(Venka-<br/>tesan&#160;et&#160;al.,&#160;2014);&#160;however,&#160;the&#160;computational&#160;cost&#160;of&#160;performing&#160;these&#160;semantically&#160;rich&#160;searches&#160;renders<br/>them&#160;inefficient&#160;for&#160;the&#160;specific&#160;purpose&#160;of&#160;characterizing&#160;partially&#160;defined&#160;pathways&#160;and&#160;hence&#160;impractical<br/>for&#160;use&#160;with&#160;datasets&#160;including&#160;billions&#160;of&#160;interactions.</p>
+<p style="position:absolute;top:535px;left:126px;white-space:nowrap" class="ft20">Here,&#160;we&#160;present&#160;MoCha&#160;(Molecular&#160;Characterization),&#160;a&#160;highly&#160;optimized&#160;tool&#160;to&#160;characterize&#160;unknown</p>
+<p style="position:absolute;top:553px;left:111px;white-space:nowrap" class="ft23">protein&#160;pathway&#160;components&#160;interacting&#160;with&#160;a&#160;given&#160;set&#160;of&#160;proteins.&#160;MoCha&#160;can&#160;efficiently&#160;search&#160;within<br/>seconds&#160;for&#160;pathways&#160;in&#160;a&#160;dataset&#160;containing&#160;more&#160;than&#160;a&#160;billion&#160;protein–protein&#160;interactions&#160;(STRING<br/>database&#160;v10).&#160;The&#160;high&#160;performance&#160;of&#160;the&#160;algorithm&#160;is&#160;because&#160;of&#160;a&#160;specific&#160;preprocessing&#160;of&#160;the<br/>database,&#160;performed&#160;once&#160;during&#160;the&#160;configuration&#160;of&#160;the&#160;tool,&#160;which&#160;allows&#160;the&#160;subsequent&#160;application&#160;of<br/>very&#160;efficient&#160;binary&#160;search&#160;algorithms.</p>
+<p style="position:absolute;top:678px;left:382px;white-space:nowrap" class="ft21">2.&#160;METHODS</p>
+<p style="position:absolute;top:704px;left:111px;white-space:nowrap" class="ft21">2.1.&#160;Database&#160;files</p>
+<p style="position:absolute;top:732px;left:126px;white-space:nowrap" class="ft20">MoCha&#160;uses&#160;the&#160;freely&#160;available&#160;(Creative&#160;Commons&#160;Attribution&#160;3.0&#160;License)&#160;flat-files&#160;from&#160;the&#160;STRING</p>
+<p style="position:absolute;top:750px;left:111px;white-space:nowrap" class="ft23">database&#160;v10&#160;(Szklarczyk&#160;et&#160;al.,&#160;2015).&#160;During&#160;the&#160;initial&#160;configuration&#160;of&#160;the&#160;program&#160;with&#160;an&#160;automated<br/>script,&#160;the&#160;database&#160;files&#160;are&#160;downloaded&#160;and&#160;preprocessed&#160;by&#160;ordering&#160;them&#160;according&#160;to&#160;different&#160;keys<br/>(columns)&#160;and&#160;calculating&#160;and&#160;storing&#160;the&#160;line&#160;offsets&#160;positions&#160;of&#160;the&#160;resultant&#160;files.&#160;These&#160;preprocessed<br/>files&#160;are&#160;then&#160;suitable&#160;for&#160;the&#160;application&#160;of&#160;an&#160;efficient&#160;binary&#160;search&#160;algorithm.</p>
+<p style="position:absolute;top:848px;left:111px;white-space:nowrap" class="ft21">2.2.&#160;Search&#160;algorithm</p>
+<p style="position:absolute;top:876px;left:126px;white-space:nowrap" class="ft20">The&#160;main&#160;input&#160;parameter&#160;of&#160;MoCha&#160;is&#160;a&#160;set&#160;of&#160;proteins&#160;for&#160;which&#160;common&#160;interactor&#160;proteins&#160;and</p>
+<p style="position:absolute;top:894px;left:111px;white-space:nowrap" class="ft23">pathways&#160;are&#160;found.&#160;Proteins&#160;are&#160;specified&#160;with&#160;their&#160;common&#160;names,&#160;and&#160;to&#160;avoid&#160;discrepancies&#160;with<br/>different&#160;protein&#160;nomenclatures&#160;for&#160;different&#160;organisms,&#160;they&#160;are&#160;treated&#160;as&#160;case&#160;insensitive.&#160;The&#160;user&#160;can<br/>specify&#160;the&#160;maximum&#160;number&#160;of&#160;links&#160;(intermediate&#160;interactions)&#160;allowed&#160;in&#160;a&#160;pathway,&#160;the&#160;types&#160;of<br/>evidence&#160;of&#160;the&#160;links&#160;to&#160;consider,&#160;and&#160;the&#160;minimum&#160;evidence&#160;confidence&#160;score&#160;required&#160;for&#160;each&#160;link.&#160;The<br/>types&#160;of&#160;link&#160;evidence&#160;present&#160;in&#160;the&#160;STRING&#160;database&#160;and&#160;selectable&#160;in&#160;the&#160;MoCha&#160;tool&#160;include&#160;conserved<br/>neighborhood,&#160;gene&#160;fusions,&#160;phylogenetic&#160;co-occurrence,&#160;co-expression,&#160;large-scale&#160;experiments,&#160;database<br/>imports,&#160;literature&#160;co-occurrence,&#160;and&#160;a&#160;combined&#160;scored.&#160;A&#160;pathway&#160;score&#160;is&#160;computed&#160;as&#160;the&#160;residual&#160;sum<br/>of&#160;squares&#160;(RSS)&#160;of&#160;the&#160;link&#160;scores.&#160;Shorter&#160;paths&#160;have&#160;preference&#160;over&#160;longer&#160;paths.</p>
+<p style="position:absolute;top:1037px;left:126px;white-space:nowrap" class="ft20">The&#160;search&#160;algorithm&#160;is&#160;based&#160;on&#160;an&#160;efficient&#160;double&#160;deferred&#160;binary&#160;search,&#160;which&#160;has&#160;O(log&#160;n)&#160;(Wirth,</p>
+<p style="position:absolute;top:1055px;left:111px;white-space:nowrap" class="ft23">1983),&#160;to&#160;find&#160;the&#160;lowest&#160;and&#160;highest&#160;indexed&#160;matching&#160;keys.&#160;For&#160;each&#160;input&#160;protein,&#160;the&#160;algorithm&#160;com-<br/>putes&#160;the&#160;graph&#160;with&#160;all&#160;the&#160;proteins&#160;connected&#160;to&#160;that&#160;input&#160;protein&#160;within&#160;the&#160;specified&#160;maximum&#160;number</p>
+<p style="position:absolute;top:72px;left:111px;white-space:nowrap" class="ft20">292</p>
+<p style="position:absolute;top:72px;left:659px;white-space:nowrap" class="ft20">LOBO&#160;ET&#160;AL.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:14px;font-family:Times;color:#000000;}
+	.ft32{font-size:8px;font-family:Times;color:#000000;}
+	.ft33{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft34{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:105px;left:161px;white-space:nowrap" class="ft34">of&#160;links.&#160;The&#160;common&#160;set&#160;of&#160;proteins&#160;is&#160;then&#160;calculated&#160;by&#160;intersecting&#160;all&#160;the&#160;proteins&#160;in&#160;each&#160;graph,&#160;and<br/>then&#160;ordering&#160;them&#160;according&#160;to&#160;their&#160;average&#160;RSS&#160;link&#160;scores&#160;for&#160;each&#160;graph.</p>
+<p style="position:absolute;top:166px;left:161px;white-space:nowrap" class="ft31">2.3.&#160;Implementation</p>
+<p style="position:absolute;top:194px;left:176px;white-space:nowrap" class="ft30">We&#160;implemented&#160;MoCha&#160;in&#160;C</p>
+<p style="position:absolute;top:193px;left:356px;white-space:nowrap" class="ft30">++&#160;using&#160;the&#160;Standard&#160;Library.&#160;A&#160;configuration&#160;shell&#160;script&#160;compatible&#160;with</p>
+<p style="position:absolute;top:212px;left:161px;white-space:nowrap" class="ft34">any&#160;UNIX/Linux&#160;system&#160;is&#160;provided&#160;to&#160;automatically&#160;download&#160;the&#160;necessary&#160;database&#160;files,&#160;process&#160;them,<br/>and&#160;compile&#160;the&#160;program&#160;(Lobo&#160;et&#160;al.,&#160;2016).</p>
+<p style="position:absolute;top:283px;left:437px;white-space:nowrap" class="ft31">3.&#160;RESULTS</p>
+<p style="position:absolute;top:320px;left:176px;white-space:nowrap" class="ft30">We&#160;created&#160;MoCha,&#160;a&#160;tool&#160;for&#160;identifying&#160;candidate&#160;proteins&#160;representing&#160;unknown&#160;nodes&#160;in&#160;pathways</p>
+<p style="position:absolute;top:338px;left:161px;white-space:nowrap" class="ft34">network&#160;models.&#160;MoCha&#160;can&#160;efficiently&#160;search&#160;for&#160;proteins&#160;and&#160;their&#160;pathways&#160;that&#160;interact&#160;within&#160;a&#160;desired<br/>maximum&#160;path&#160;length,&#160;evidence&#160;type,&#160;and&#160;confidence&#160;score&#160;with&#160;all&#160;the&#160;proteins&#160;given&#160;as&#160;an&#160;input&#160;set&#160;(those<br/>suggested&#160;to&#160;be&#160;upstream&#160;or&#160;downstream&#160;within&#160;the&#160;network&#160;model).&#160;MoCha&#160;was&#160;designed&#160;and&#160;optimized<br/>for&#160;speed,&#160;being&#160;able&#160;to&#160;efficiently&#160;search&#160;within&#160;seconds&#160;over&#160;more&#160;than&#160;1&#160;billion&#160;interactions&#160;from&#160;the<br/>STRING&#160;database.</p>
+<p style="position:absolute;top:427px;left:176px;white-space:nowrap" class="ft30">Figure&#160;1&#160;shows&#160;a&#160;use&#160;case&#160;of&#160;MoCha:&#160;characterizing&#160;an&#160;unknown&#160;pathway&#160;from&#160;an&#160;automatically&#160;reverse-</p>
+<p style="position:absolute;top:445px;left:161px;white-space:nowrap" class="ft34">engineered&#160;regulatory&#160;network&#160;of&#160;planarian&#160;regeneration&#160;(Lobo&#160;and&#160;Levin,&#160;2015),&#160;an&#160;organism&#160;studied&#160;over<br/>a&#160;century&#160;for&#160;its&#160;outstanding&#160;regenerative&#160;capabilities&#160;(Lobo&#160;et&#160;al.,&#160;2012).&#160;The&#160;inferred&#160;dynamic&#160;network<br/>explains&#160;the&#160;regulation&#160;of&#160;the&#160;planarian&#160;body&#160;patterning&#160;regeneration&#160;under&#160;different&#160;surgical,&#160;genetic,&#160;and<br/>pharmacological&#160;perturbations.&#160;The&#160;networks&#160;contain&#160;known&#160;products&#160;defined&#160;in&#160;the&#160;input&#160;experiments&#160;(b-<br/>catenin,&#160;wnt1,&#160;apc,&#160;etc.),&#160;as&#160;well&#160;as&#160;two&#160;unknown&#160;components&#160;(labeled&#160;‘‘a’’&#160;and&#160;‘‘b’’)&#160;predicted&#160;as&#160;nec-<br/>essary&#160;by&#160;the&#160;algorithm.&#160;In&#160;this&#160;use&#160;case,&#160;we&#160;used&#160;MoCha&#160;to&#160;characterize&#160;component&#160;‘‘a,’’&#160;using&#160;as&#160;input&#160;for<br/>the&#160;tool&#160;all&#160;the&#160;proteins&#160;that&#160;directly&#160;interact&#160;with&#160;the&#160;unknown&#160;component&#160;(b-catenin,&#160;wnt1,&#160;and&#160;wnt11)<br/>and&#160;specifying&#160;combined&#160;confidence&#160;scores&#160;equal&#160;to&#160;or&#160;higher&#160;than&#160;0.9&#160;in&#160;any&#160;organism&#160;present&#160;in&#160;the<br/>database.&#160;The&#160;tool&#160;searched&#160;through&#160;the&#160;full&#160;database&#160;(76&#160;GB&#160;of&#160;data),&#160;finding&#160;a&#160;total&#160;of&#160;18&#160;candidate<br/>proteins&#160;in&#160;the&#160;Homo&#160;sapiens&#160;and&#160;Mus&#160;musculus&#160;organisms.&#160;The&#160;figure&#160;shows&#160;the&#160;output&#160;of&#160;the&#160;tool<br/>containing&#160;the&#160;found&#160;candidate&#160;proteins&#160;and&#160;their&#160;pathways&#160;ordered&#160;according&#160;to&#160;their&#160;average&#160;score,&#160;with<br/>the&#160;most&#160;likely&#160;candidate&#160;proteins&#160;with&#160;the&#160;highest&#160;confidence&#160;listed&#160;at&#160;the&#160;top.&#160;The&#160;results&#160;show&#160;how&#160;DVL2<br/>is&#160;the&#160;best&#160;candidate&#160;protein&#160;for&#160;the&#160;unknown&#160;component&#160;‘‘a,’’&#160;with&#160;a&#160;high&#160;relative&#160;RSS&#160;score&#160;of&#160;275,<br/>compared&#160;with&#160;the&#160;RSS&#160;score&#160;of&#160;1481&#160;of&#160;the&#160;second&#160;candidate,&#160;FZD7.&#160;This&#160;search&#160;was&#160;performed&#160;in&#160;less<br/>than&#160;1&#160;second&#160;using&#160;a&#160;single&#160;core&#160;in&#160;a&#160;high-end&#160;computer.</p>
+<p style="position:absolute;top:714px;left:176px;white-space:nowrap" class="ft30">As&#160;a&#160;second&#160;case&#160;study,&#160;we&#160;used&#160;MoCha&#160;to&#160;discover&#160;the&#160;missing&#160;products&#160;in&#160;an&#160;inferred&#160;regulatory</p>
+<p style="position:absolute;top:732px;left:161px;white-space:nowrap" class="ft34">network&#160;from&#160;qPCR&#160;expression&#160;data&#160;of&#160;the&#160;SOS&#160;pathway&#160;in&#160;Eschericha&#160;coli&#160;(Gardner&#160;et&#160;al.,&#160;2003).&#160;This<br/>work&#160;presented&#160;a&#160;reverse-engineered&#160;model&#160;from&#160;perturbation&#160;data,&#160;which&#160;suggested&#160;the&#160;existence&#160;of&#160;some<br/>connections&#160;mediated&#160;by&#160;unknown&#160;genes.&#160;In&#160;particular,&#160;the&#160;sigma&#160;factor&#160;rpoD&#160;was&#160;predicted&#160;to&#160;indirectly<br/>interact&#160;with&#160;the&#160;genes&#160;recA,&#160;ssb,&#160;and&#160;dinI.&#160;To&#160;further&#160;investigate&#160;these&#160;predictions,&#160;we&#160;used&#160;MoCha&#160;to&#160;find<br/>possible&#160;interactions&#160;and&#160;components&#160;for&#160;these&#160;unknown&#160;genes&#160;(Fig.&#160;2).&#160;Indeed,&#160;searching&#160;with&#160;MoCha&#160;for<br/>a&#160;direct&#160;link&#160;with&#160;at&#160;least&#160;medium&#160;confidence&#160;score&#160;(link&#160;confidence&#160;score&#160;higher&#160;than&#160;0.5)&#160;did&#160;not&#160;find&#160;any<br/>possible&#160;candidate,&#160;corroborating&#160;the&#160;article’s&#160;original&#160;conclusion&#160;that&#160;such&#160;interactions&#160;must&#160;be&#160;indirect.<br/>We&#160;then&#160;used&#160;MoCha&#160;to&#160;look&#160;for&#160;pathways&#160;with&#160;a&#160;maximum&#160;of&#160;2&#160;links&#160;(and&#160;link&#160;confidence&#160;score&#160;higher<br/>than&#160;0.95).&#160;The&#160;algorithm&#160;then&#160;found&#160;five&#160;sets&#160;of&#160;possible&#160;interactions&#160;in&#160;E.&#160;coli&#160;between&#160;all&#160;the&#160;compo-<br/>nents,&#160;where&#160;the&#160;set&#160;with&#160;the&#160;best&#160;score&#160;contained&#160;the&#160;novel&#160;candidate&#160;gene&#160;recF&#160;as&#160;a&#160;common&#160;interactor<br/>between&#160;the&#160;input&#160;dataset&#160;of&#160;genes.&#160;This&#160;candidate&#160;gene&#160;can&#160;now&#160;be&#160;validated&#160;in&#160;vivo,&#160;illustrating&#160;the<br/>capability&#160;of&#160;our&#160;tool&#160;to&#160;generate&#160;predictions&#160;that&#160;are&#160;testable&#160;at&#160;the&#160;bench.&#160;The&#160;tool&#160;performed&#160;this&#160;search&#160;in<br/>less&#160;than&#160;a&#160;second.</p>
+<p style="position:absolute;top:1000px;left:341px;white-space:nowrap" class="ft31">4.&#160;DISCUSSION&#160;AND&#160;CONCLUSIONS</p>
+<p style="position:absolute;top:1037px;left:176px;white-space:nowrap" class="ft30">To&#160;characterize&#160;unknown&#160;components&#160;in&#160;regulatory&#160;network&#160;models&#160;inferred&#160;with&#160;automated&#160;reverse-</p>
+<p style="position:absolute;top:1055px;left:161px;white-space:nowrap" class="ft34">engineering&#160;methods,&#160;we&#160;need&#160;efficient&#160;tools&#160;that&#160;can&#160;mine&#160;the&#160;huge&#160;interaction&#160;databases&#160;to&#160;find&#160;candidate<br/>pathways&#160;in&#160;known&#160;organisms.&#160;For&#160;this,&#160;we&#160;presented&#160;MoCha,&#160;a&#160;fast&#160;tool&#160;for&#160;characterizing&#160;unknown</p>
+<p style="position:absolute;top:72px;left:161px;white-space:nowrap" class="ft30">MOCHA:&#160;MOLECULAR&#160;CHARACTERIZATION&#160;TOOL</p>
+<p style="position:absolute;top:72px;left:784px;white-space:nowrap" class="ft30">293</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:11px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft41{font-size:12px;font-family:Times;color:#000000;}
+	.ft42{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:1073px;left:711px;white-space:nowrap" class="ft40">FIG.</p>
+<p style="position:absolute;top:1042px;left:711px;white-space:nowrap" class="ft40">1.</p>
+<p style="position:absolute;top:1018px;left:711px;white-space:nowrap" class="ft40">Using</p>
+<p style="position:absolute;top:981px;left:711px;white-space:nowrap" class="ft40">MoCha</p>
+<p style="position:absolute;top:937px;left:711px;white-space:nowrap" class="ft40">to</p>
+<p style="position:absolute;top:922px;left:711px;white-space:nowrap" class="ft40">characterize</p>
+<p style="position:absolute;top:852px;left:711px;white-space:nowrap" class="ft40">the</p>
+<p style="position:absolute;top:831px;left:711px;white-space:nowrap" class="ft40">unknown</p>
+<p style="position:absolute;top:776px;left:711px;white-space:nowrap" class="ft40">component</p>
+<p style="position:absolute;top:712px;left:711px;white-space:nowrap" class="ft40">‘‘a’</p>
+<p style="position:absolute;top:694px;left:711px;white-space:nowrap" class="ft40">’</p>
+<p style="position:absolute;top:685px;left:711px;white-space:nowrap" class="ft40">o</p>
+<p style="position:absolute;top:678px;left:711px;white-space:nowrap" class="ft40">f</p>
+<p style="position:absolute;top:670px;left:711px;white-space:nowrap" class="ft40">a</p>
+<p style="position:absolute;top:659px;left:711px;white-space:nowrap" class="ft40">reverse-engineered</p>
+<p style="position:absolute;top:552px;left:711px;white-space:nowrap" class="ft40">regulatory</p>
+<p style="position:absolute;top:492px;left:711px;white-space:nowrap" class="ft40">network</p>
+<p style="position:absolute;top:443px;left:711px;white-space:nowrap" class="ft40">model</p>
+<p style="position:absolute;top:405px;left:711px;white-space:nowrap" class="ft40">of</p>
+<p style="position:absolute;top:390px;left:711px;white-space:nowrap" class="ft40">planarian</p>
+<p style="position:absolute;top:335px;left:711px;white-space:nowrap" class="ft40">regeneration</p>
+<p style="position:absolute;top:263px;left:711px;white-space:nowrap" class="ft40">by</p>
+<p style="position:absolute;top:245px;left:711px;white-space:nowrap" class="ft40">searching</p>
+<p style="position:absolute;top:189px;left:711px;white-space:nowrap" class="ft40">fo</p>
+<p style="position:absolute;top:178px;left:711px;white-space:nowrap" class="ft40">r</p>
+<p style="position:absolute;top:169px;left:711px;white-space:nowrap" class="ft40">known</p>
+<p style="position:absolute;top:128px;left:711px;white-space:nowrap" class="ft40">pathways</p>
+<p style="position:absolute;top:72px;left:711px;white-space:nowrap" class="ft40">in</p>
+<p style="position:absolute;top:1073px;left:727px;white-space:nowrap" class="ft40">other</p>
+<p style="position:absolute;top:1041px;left:727px;white-space:nowrap" class="ft40">organisms</p>
+<p style="position:absolute;top:980px;left:727px;white-space:nowrap" class="ft40">interacting</p>
+<p style="position:absolute;top:918px;left:727px;white-space:nowrap" class="ft40">directly</p>
+<p style="position:absolute;top:871px;left:727px;white-space:nowrap" class="ft40">or</p>
+<p style="position:absolute;top:855px;left:727px;white-space:nowrap" class="ft40">indirectly</p>
+<p style="position:absolute;top:799px;left:727px;white-space:nowrap" class="ft40">with</p>
+<p style="position:absolute;top:770px;left:727px;white-space:nowrap" class="ft40">the</p>
+<p style="position:absolute;top:748px;left:727px;white-space:nowrap" class="ft40">same</p>
+<p style="position:absolute;top:716px;left:727px;white-space:nowrap" class="ft40">known</p>
+<p style="position:absolute;top:674px;left:727px;white-space:nowrap" class="ft40">proteins.</p>
+<p style="position:absolute;top:623px;left:727px;white-space:nowrap" class="ft40">The</p>
+<p style="position:absolute;top:597px;left:727px;white-space:nowrap" class="ft40">tool</p>
+<p style="position:absolute;top:571px;left:727px;white-space:nowrap" class="ft40">searched</p>
+<p style="position:absolute;top:519px;left:727px;white-space:nowrap" class="ft40">over</p>
+<p style="position:absolute;top:490px;left:727px;white-space:nowrap" class="ft40">1</p>
+<p style="position:absolute;top:478px;left:727px;white-space:nowrap" class="ft40">billion</p>
+<p style="position:absolute;top:438px;left:727px;white-space:nowrap" class="ft40">interactions</p>
+<p style="position:absolute;top:370px;left:727px;white-space:nowrap" class="ft40">in</p>
+<p style="position:absolute;top:355px;left:727px;white-space:nowrap" class="ft40">less</p>
+<p style="position:absolute;top:330px;left:727px;white-space:nowrap" class="ft40">than</p>
+<p style="position:absolute;top:302px;left:727px;white-space:nowrap" class="ft40">a</p>
+<p style="position:absolute;top:291px;left:727px;white-space:nowrap" class="ft40">second,</p>
+<p style="position:absolute;top:245px;left:727px;white-space:nowrap" class="ft40">finding</p>
+<p style="position:absolute;top:202px;left:727px;white-space:nowrap" class="ft40">and</p>
+<p style="position:absolute;top:178px;left:727px;white-space:nowrap" class="ft40">ordering</p>
+<p style="position:absolute;top:127px;left:727px;white-space:nowrap" class="ft40">by</p>
+<p style="position:absolute;top:109px;left:727px;white-space:nowrap" class="ft40">score</p>
+<p style="position:absolute;top:75px;left:727px;white-space:nowrap" class="ft40">18</p>
+<p style="position:absolute;top:1073px;left:743px;white-space:nowrap" class="ft40">candidate</p>
+<p style="position:absolute;top:1017px;left:743px;white-space:nowrap" class="ft40">proteins</p>
+<p style="position:absolute;top:969px;left:743px;white-space:nowrap" class="ft40">and</p>
+<p style="position:absolute;top:945px;left:743px;white-space:nowrap" class="ft40">their</p>
+<p style="position:absolute;top:916px;left:743px;white-space:nowrap" class="ft40">pathways.</p>
+<p style="position:absolute;top:1126px;left:423px;white-space:nowrap" class="ft41">294</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:11px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft51{font-size:12px;font-family:Times;color:#000000;}
+	.ft52{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:1074px;left:804px;white-space:nowrap" class="ft50">FIG.</p>
+<p style="position:absolute;top:1043px;left:804px;white-space:nowrap" class="ft50">2.</p>
+<p style="position:absolute;top:1019px;left:804px;white-space:nowrap" class="ft50">Use</p>
+<p style="position:absolute;top:994px;left:804px;white-space:nowrap" class="ft50">example</p>
+<p style="position:absolute;top:944px;left:804px;white-space:nowrap" class="ft50">of</p>
+<p style="position:absolute;top:929px;left:804px;white-space:nowrap" class="ft50">MoCha</p>
+<p style="position:absolute;top:885px;left:804px;white-space:nowrap" class="ft50">for</p>
+<p style="position:absolute;top:865px;left:804px;white-space:nowrap" class="ft50">finding</p>
+<p style="position:absolute;top:823px;left:804px;white-space:nowrap" class="ft50">a</p>
+<p style="position:absolute;top:813px;left:804px;white-space:nowrap" class="ft50">common</p>
+<p style="position:absolute;top:762px;left:804px;white-space:nowrap" class="ft50">unknown</p>
+<p style="position:absolute;top:708px;left:804px;white-space:nowrap" class="ft50">regulator</p>
+<p style="position:absolute;top:656px;left:804px;white-space:nowrap" class="ft50">between</p>
+<p style="position:absolute;top:607px;left:804px;white-space:nowrap" class="ft50">four</p>
+<p style="position:absolute;top:580px;left:804px;white-space:nowrap" class="ft50">genes</p>
+<p style="position:absolute;top:546px;left:804px;white-space:nowrap" class="ft50">from</p>
+<p style="position:absolute;top:516px;left:804px;white-space:nowrap" class="ft50">a</p>
+<p style="position:absolute;top:506px;left:804px;white-space:nowrap" class="ft50">reverse-engineered</p>
+<p style="position:absolute;top:399px;left:804px;white-space:nowrap" class="ft50">regulatory</p>
+<p style="position:absolute;top:340px;left:804px;white-space:nowrap" class="ft50">network</p>
+<p style="position:absolute;top:292px;left:804px;white-space:nowrap" class="ft50">of</p>
+<p style="position:absolute;top:277px;left:804px;white-space:nowrap" class="ft50">Eschericha</p>
+<p style="position:absolute;top:212px;left:804px;white-space:nowrap" class="ft50">coli</p>
+<p style="position:absolute;top:192px;left:804px;white-space:nowrap" class="ft50">.</p>
+<p style="position:absolute;top:184px;left:804px;white-space:nowrap" class="ft50">A</p>
+<p style="position:absolute;top:171px;left:804px;white-space:nowrap" class="ft50">search</p>
+<p style="position:absolute;top:132px;left:804px;white-space:nowrap" class="ft50">of</p>
+<p style="position:absolute;top:117px;left:804px;white-space:nowrap" class="ft50">a</p>
+<p style="position:absolute;top:107px;left:804px;white-space:nowrap" class="ft50">common</p>
+<p style="position:absolute;top:1074px;left:820px;white-space:nowrap" class="ft50">pathway</p>
+<p style="position:absolute;top:1024px;left:820px;white-space:nowrap" class="ft50">component</p>
+<p style="position:absolute;top:959px;left:820px;white-space:nowrap" class="ft50">between</p>
+<p style="position:absolute;top:910px;left:820px;white-space:nowrap" class="ft50">the</p>
+<p style="position:absolute;top:889px;left:820px;white-space:nowrap" class="ft50">four</p>
+<p style="position:absolute;top:862px;left:820px;white-space:nowrap" class="ft50">genes</p>
+<p style="position:absolute;top:827px;left:820px;white-space:nowrap" class="ft50">found</p>
+<p style="position:absolute;top:791px;left:820px;white-space:nowrap" class="ft50">recF</p>
+<p style="position:absolute;top:761px;left:820px;white-space:nowrap" class="ft50">as</p>
+<p style="position:absolute;top:745px;left:820px;white-space:nowrap" class="ft50">the</p>
+<p style="position:absolute;top:724px;left:820px;white-space:nowrap" class="ft50">most</p>
+<p style="position:absolute;top:693px;left:820px;white-space:nowrap" class="ft50">probable</p>
+<p style="position:absolute;top:642px;left:820px;white-space:nowrap" class="ft50">candidate</p>
+<p style="position:absolute;top:585px;left:820px;white-space:nowrap" class="ft50">directly</p>
+<p style="position:absolute;top:540px;left:820px;white-space:nowrap" class="ft50">or</p>
+<p style="position:absolute;top:524px;left:820px;white-space:nowrap" class="ft50">indirectly</p>
+<p style="position:absolute;top:468px;left:820px;white-space:nowrap" class="ft50">interacting</p>
+<p style="position:absolute;top:405px;left:820px;white-space:nowrap" class="ft50">with</p>
+<p style="position:absolute;top:377px;left:820px;white-space:nowrap" class="ft50">all</p>
+<p style="position:absolute;top:359px;left:820px;white-space:nowrap" class="ft50">the</p>
+<p style="position:absolute;top:338px;left:820px;white-space:nowrap" class="ft50">four</p>
+<p style="position:absolute;top:311px;left:820px;white-space:nowrap" class="ft50">input</p>
+<p style="position:absolute;top:279px;left:820px;white-space:nowrap" class="ft50">components.</p>
+<p style="position:absolute;top:1126px;left:473px;white-space:nowrap" class="ft51">295</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:12px;font-family:Times;color:#000000;}
+	.ft61{font-size:14px;font-family:Times;color:#000000;}
+	.ft62{font-size:11px;font-family:Times;color:#000000;}
+	.ft63{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft64{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:105px;left:111px;white-space:nowrap" class="ft64">components&#160;interacting&#160;with&#160;a&#160;set&#160;of&#160;known&#160;regulatory&#160;proteins.&#160;The&#160;tool&#160;uses&#160;STRING&#160;database&#160;v10&#160;for<br/>searching&#160;over&#160;1&#160;billion&#160;interactions,&#160;yet&#160;its&#160;highly&#160;optimized&#160;algorithm&#160;allows&#160;searches&#160;to&#160;be&#160;completed<br/>within&#160;seconds.</p>
+<p style="position:absolute;top:158px;left:126px;white-space:nowrap" class="ft60">We&#160;illustrated&#160;the&#160;applicability&#160;of&#160;MoCha&#160;with&#160;two&#160;use&#160;cases.&#160;First,&#160;we&#160;used&#160;MoCha&#160;to&#160;search&#160;for&#160;a</p>
+<p style="position:absolute;top:176px;left:111px;white-space:nowrap" class="ft64">candidate&#160;gene&#160;for&#160;an&#160;unknown&#160;reverse-engineered&#160;component&#160;in&#160;a&#160;regulatory&#160;network&#160;of&#160;planarian&#160;re-<br/>generation.&#160;The&#160;tool&#160;found&#160;a&#160;common&#160;novel&#160;gene&#160;with&#160;a&#160;high&#160;chance&#160;to&#160;be&#160;a&#160;direct&#160;common&#160;interactor&#160;with<br/>the&#160;other&#160;three&#160;known&#160;components.&#160;Second,&#160;a&#160;predicted&#160;but&#160;unknown&#160;component&#160;indirectly&#160;interacting&#160;with<br/>a&#160;set&#160;of&#160;genes&#160;from&#160;a&#160;regulatory&#160;network&#160;in&#160;E.&#160;coli&#160;was&#160;searched&#160;with&#160;MoCha.&#160;The&#160;tool&#160;confirmed&#160;that&#160;the<br/>interaction&#160;was&#160;indirect,&#160;finding&#160;a&#160;most&#160;likely&#160;candidate&#160;component&#160;and&#160;a&#160;set&#160;of&#160;pathways&#160;connecting&#160;it&#160;with<br/>all&#160;the&#160;known&#160;components.</p>
+<p style="position:absolute;top:284px;left:126px;white-space:nowrap" class="ft60">MoCha&#160;can&#160;readily&#160;aid&#160;in&#160;the&#160;validation&#160;of&#160;reverse-engineered&#160;regulatory&#160;models,&#160;characterizing&#160;un-</p>
+<p style="position:absolute;top:302px;left:111px;white-space:nowrap" class="ft64">known&#160;components&#160;from&#160;interaction&#160;data&#160;and&#160;pathways&#160;from&#160;other&#160;organisms.&#160;This&#160;is&#160;a&#160;necessary&#160;step&#160;in<br/>the&#160;validation&#160;of&#160;reverse-engineered&#160;models&#160;with&#160;unknown&#160;components,&#160;and&#160;a&#160;further&#160;step&#160;toward&#160;the<br/>automation&#160;of&#160;the&#160;generation&#160;and&#160;validation&#160;of&#160;scientific&#160;hypotheses.</p>
+<p style="position:absolute;top:391px;left:343px;white-space:nowrap" class="ft61">ACKNOWLEDGMENTS</p>
+<p style="position:absolute;top:427px;left:126px;white-space:nowrap" class="ft60">We&#160;thank&#160;the&#160;Levin&#160;Lab&#160;members&#160;for&#160;valuable&#160;discussions&#160;and&#160;suggestions.&#160;This&#160;work&#160;was&#160;supported&#160;by</p>
+<p style="position:absolute;top:445px;left:111px;white-space:nowrap" class="ft64">National&#160;Science&#160;Foundation&#160;(EF-1124651),&#160;National&#160;Institutes&#160;of&#160;Health&#160;(GM078484),&#160;W.M.&#160;Keck<br/>Foundation,&#160;and&#160;G.&#160;Harold&#160;and&#160;Leila&#160;Y.&#160;Mathers&#160;Charitable&#160;Foundation.&#160;Computation&#160;used&#160;equipment<br/>awarded&#160;by&#160;Silicon&#160;Mechanics.</p>
+<p style="position:absolute;top:534px;left:288px;white-space:nowrap" class="ft61">AUTHOR&#160;DISCLOSURE&#160;STATEMENT</p>
+<p style="position:absolute;top:571px;left:126px;white-space:nowrap" class="ft60">No&#160;competing&#160;financial&#160;interests&#160;exist.</p>
+<p style="position:absolute;top:625px;left:379px;white-space:nowrap" class="ft61">REFERENCES</p>
+<p style="position:absolute;top:663px;left:111px;white-space:nowrap" class="ft62">Becker,&#160;K.,&#160;Balsa-Canto,&#160;E.,&#160;Cicin-Sain,&#160;D.,&#160;et&#160;al.&#160;2013.&#160;Reverse-engineering&#160;post-transcriptional&#160;regulation&#160;of&#160;gap</p>
+<p style="position:absolute;top:679px;left:125px;white-space:nowrap" class="ft62">genes&#160;in&#160;Drosophila&#160;melanogaster.&#160;PLoS&#160;Comput.&#160;Biol.&#160;9,&#160;e1003281.</p>
+<p style="position:absolute;top:696px;left:111px;white-space:nowrap" class="ft62">Bonneau,&#160;R.,&#160;Reiss,&#160;D.J.,&#160;Shannon,&#160;P.,&#160;et&#160;al.&#160;2006.&#160;The&#160;Inferelator:&#160;An&#160;algorithm&#160;for&#160;learning&#160;parsimonious&#160;regulatory</p>
+<p style="position:absolute;top:712px;left:125px;white-space:nowrap" class="ft62">networks&#160;from&#160;systems-biology&#160;data&#160;sets&#160;de&#160;novo.&#160;Genome&#160;Biol.&#160;7,&#160;R36.</p>
+<p style="position:absolute;top:729px;left:111px;white-space:nowrap" class="ft62">Crombach,&#160;A.,&#160;Wotton,&#160;K.R.,&#160;Cicin-Sain,&#160;D.,&#160;et&#160;al.&#160;2012.&#160;Efficient&#160;reverse-engineering&#160;of&#160;a&#160;developmental&#160;gene</p>
+<p style="position:absolute;top:745px;left:125px;white-space:nowrap" class="ft62">regulatory&#160;network.&#160;PLoS&#160;Comput.&#160;Biol.&#160;8,&#160;e1002589.</p>
+<p style="position:absolute;top:762px;left:111px;white-space:nowrap" class="ft62">Fomekong-Nanfack,&#160;Y.,&#160;Kaandorp,&#160;J.A.,&#160;and&#160;Blom,&#160;J.&#160;2007.&#160;Efficient&#160;parameter&#160;estimation&#160;for&#160;spatio-temporal&#160;models</p>
+<p style="position:absolute;top:778px;left:125px;white-space:nowrap" class="ft62">of&#160;pattern&#160;formation:&#160;Case&#160;study&#160;of&#160;Drosophila&#160;melanogaster.&#160;Bioinformatics&#160;23,&#160;3356–3363.</p>
+<p style="position:absolute;top:795px;left:111px;white-space:nowrap" class="ft62">Gardner,&#160;T.S.,&#160;di&#160;Bernardo,&#160;D.,&#160;Lorenz,&#160;D.,&#160;and&#160;Collins,&#160;J.J.&#160;2003.&#160;Inferring&#160;genetic&#160;networks&#160;and&#160;identifying&#160;compound</p>
+<p style="position:absolute;top:811px;left:125px;white-space:nowrap" class="ft62">mode&#160;of&#160;action&#160;via&#160;expression&#160;profiling.&#160;Science&#160;301,&#160;102–105.</p>
+<p style="position:absolute;top:827px;left:111px;white-space:nowrap" class="ft62">Hecker,&#160;M.,&#160;Lambeck,&#160;S.,&#160;Toepfer,&#160;S.,&#160;et&#160;al.&#160;2009.&#160;Gene&#160;regulatory&#160;network&#160;inference:&#160;Data&#160;integration&#160;in&#160;dynamic</p>
+<p style="position:absolute;top:844px;left:125px;white-space:nowrap" class="ft62">models—A&#160;review.&#160;Biosystems&#160;96,&#160;86–103.</p>
+<p style="position:absolute;top:860px;left:111px;white-space:nowrap" class="ft62">Kimura,&#160;S.,&#160;Ide,&#160;K.,&#160;Kashihara,&#160;A.,&#160;et&#160;al.&#160;2005.&#160;Inference&#160;of&#160;S-system&#160;models&#160;of&#160;genetic&#160;networks&#160;using&#160;a&#160;cooperative</p>
+<p style="position:absolute;top:877px;left:125px;white-space:nowrap" class="ft62">coevolutionary&#160;algorithm.&#160;Bioinformatics&#160;21,&#160;1154–1163.</p>
+<p style="position:absolute;top:893px;left:111px;white-space:nowrap" class="ft62">Liu,&#160;L.Z.,&#160;Wu,&#160;F.X.,&#160;and&#160;Zhang,&#160;W.J.,&#160;2012.&#160;Reverse&#160;engineering&#160;of&#160;gene&#160;regulatory&#160;networks&#160;from&#160;biological&#160;data.</p>
+<p style="position:absolute;top:910px;left:125px;white-space:nowrap" class="ft62">Wires&#160;Data&#160;Min.&#160;Knowl.&#160;2,&#160;365–385.</p>
+<p style="position:absolute;top:926px;left:111px;white-space:nowrap" class="ft62">Lobikin,&#160;M.,&#160;Lobo,&#160;D.,&#160;Blackiston,&#160;D.J.,&#160;et&#160;al.&#160;2015.&#160;Serotonergic&#160;regulation&#160;of&#160;melanocyte&#160;conversion:&#160;A&#160;bioelec-</p>
+<p style="position:absolute;top:942px;left:125px;white-space:nowrap" class="ft62">trically&#160;regulated&#160;network&#160;for&#160;stochastic&#160;all-or-none&#160;hyperpigmentation.&#160;Sci.&#160;Signal.&#160;8,&#160;ra99.</p>
+<p style="position:absolute;top:959px;left:111px;white-space:nowrap" class="ft62">Lobo,&#160;D.,&#160;Hammelman,&#160;J.,&#160;and&#160;Levin,&#160;M.&#160;2016.&#160;MoCha&#160;software&#160;tool.&#160;Available&#160;at:&#160;lobolab.umbc.edu/mocha.&#160;Accessed</p>
+<p style="position:absolute;top:975px;left:125px;white-space:nowrap" class="ft62">February&#160;16,&#160;2016.</p>
+<p style="position:absolute;top:992px;left:111px;white-space:nowrap" class="ft62">Lobo,&#160;D.,&#160;and&#160;Levin,&#160;M.&#160;2015.&#160;Inferring&#160;regulatory&#160;networks&#160;from&#160;experimental&#160;morphological&#160;phenotypes:&#160;A&#160;com-</p>
+<p style="position:absolute;top:1008px;left:125px;white-space:nowrap" class="ft62">putational&#160;method&#160;reverse-engineers&#160;planarian&#160;regeneration.&#160;PLoS&#160;Comput.&#160;Biol.&#160;11,&#160;e1004295.</p>
+<p style="position:absolute;top:1025px;left:111px;white-space:nowrap" class="ft62">Lobo,&#160;D.,&#160;Beane,&#160;W.S.,&#160;and&#160;Levin,&#160;M.&#160;2012.&#160;Modeling&#160;planarian&#160;regeneration:&#160;A&#160;primer&#160;for&#160;reverse-engineering&#160;the</p>
+<p style="position:absolute;top:1041px;left:125px;white-space:nowrap" class="ft62">worm.&#160;PLoS&#160;Comput.&#160;Biol.&#160;8,&#160;e1002481.</p>
+<p style="position:absolute;top:1058px;left:111px;white-space:nowrap" class="ft62">Lobo,&#160;D.,&#160;Feldman,&#160;E.B.,&#160;Shah,&#160;M.,&#160;et&#160;al.&#160;2014.&#160;A&#160;bioinformatics&#160;expert&#160;system&#160;linking&#160;functional&#160;data&#160;to&#160;anatomical</p>
+<p style="position:absolute;top:1074px;left:125px;white-space:nowrap" class="ft62">outcomes&#160;in&#160;limb&#160;regeneration.&#160;Regeneration&#160;1,&#160;37–56.</p>
+<p style="position:absolute;top:72px;left:111px;white-space:nowrap" class="ft60">296</p>
+<p style="position:absolute;top:72px;left:659px;white-space:nowrap" class="ft60">LOBO&#160;ET&#160;AL.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>fb80d42995e8790f5d184503760fa6fb-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:11px;font-family:Times;color:#000000;}
+	.ft71{font-size:12px;font-family:Times;color:#000000;}
+	.ft72{font-size:8px;font-family:Times;color:#000000;}
+	.ft73{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft74{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:106px;left:161px;white-space:nowrap" class="ft70">Lobo,&#160;D.,&#160;Malone,&#160;T.J.,&#160;and&#160;Levin,&#160;M.&#160;2013.&#160;Towards&#160;a&#160;bioinformatics&#160;of&#160;patterning:&#160;A&#160;computational&#160;approach&#160;to</p>
+<p style="position:absolute;top:122px;left:175px;white-space:nowrap" class="ft70">understanding&#160;regulative&#160;morphogenesis.&#160;Biol.&#160;Open.&#160;2,&#160;156–169.</p>
+<p style="position:absolute;top:138px;left:161px;white-space:nowrap" class="ft70">Margolin,&#160;A.A.,&#160;Nemenman,&#160;I.,&#160;Basso,&#160;K.,&#160;et&#160;al.&#160;2006.&#160;ARACNE:&#160;An&#160;algorithm&#160;for&#160;the&#160;reconstruction&#160;of&#160;gene</p>
+<p style="position:absolute;top:155px;left:175px;white-space:nowrap" class="ft70">regulatory&#160;networks&#160;in&#160;a&#160;mammalian&#160;cellular&#160;context.&#160;BMC&#160;Bioinform.&#160;7&#160;Suppl&#160;1,&#160;S7.</p>
+<p style="position:absolute;top:171px;left:161px;white-space:nowrap" class="ft70">Molinelli,&#160;E.J.,&#160;Korkut,&#160;A.,&#160;Wang,&#160;W.,&#160;et&#160;al.&#160;2013.&#160;Perturbation&#160;biology:&#160;Inferring&#160;signaling&#160;networks&#160;in&#160;cellular</p>
+<p style="position:absolute;top:188px;left:175px;white-space:nowrap" class="ft70">systems.&#160;PLoS&#160;Comput.&#160;Biol.&#160;9,&#160;e1003290.</p>
+<p style="position:absolute;top:204px;left:161px;white-space:nowrap" class="ft70">Perkins,&#160;T.J.,&#160;Jaeger,&#160;J.,&#160;Reinitz,&#160;J.,&#160;and&#160;Glass,&#160;L.&#160;2006.&#160;Reverse&#160;engineering&#160;the&#160;gap&#160;gene&#160;network&#160;of&#160;Drosophila</p>
+<p style="position:absolute;top:221px;left:175px;white-space:nowrap" class="ft70">melanogaster.&#160;PLoS&#160;Comput.&#160;Biol.&#160;2,&#160;417–428.</p>
+<p style="position:absolute;top:237px;left:161px;white-space:nowrap" class="ft70">Reinitz,&#160;J.,&#160;Mjolsness,&#160;E.,&#160;and&#160;Sharp,&#160;D.H.&#160;1995.&#160;Model&#160;for&#160;cooperative&#160;control&#160;of&#160;positional&#160;information&#160;in&#160;Drosophila</p>
+<p style="position:absolute;top:253px;left:175px;white-space:nowrap" class="ft70">by&#160;bicoid&#160;and&#160;maternal&#160;hunchback.&#160;J.&#160;Exp.&#160;Zool.&#160;271,&#160;47–56.</p>
+<p style="position:absolute;top:270px;left:161px;white-space:nowrap" class="ft70">Sirbu,&#160;A.,&#160;Ruskin,&#160;H.,&#160;and&#160;Crane,&#160;M.&#160;2010.&#160;Comparison&#160;of&#160;evolutionary&#160;algorithms&#160;in&#160;gene&#160;regulatory&#160;network&#160;model</p>
+<p style="position:absolute;top:286px;left:175px;white-space:nowrap" class="ft70">inference.&#160;BMC&#160;Bioinform.&#160;11,&#160;59.</p>
+<p style="position:absolute;top:303px;left:161px;white-space:nowrap" class="ft70">Szklarczyk,&#160;D.,&#160;Franceschini,&#160;A.,&#160;Wyder,&#160;S.,&#160;et&#160;al.&#160;2015.&#160;STRING&#160;v10:&#160;Protein–protein&#160;interaction&#160;networks,&#160;integrated</p>
+<p style="position:absolute;top:319px;left:175px;white-space:nowrap" class="ft70">over&#160;the&#160;tree&#160;of&#160;life.&#160;Nucleic&#160;Acids&#160;Res.&#160;43,&#160;D447–D452.</p>
+<p style="position:absolute;top:336px;left:161px;white-space:nowrap" class="ft70">Tegner,&#160;J.,&#160;Yeung,&#160;M.K.,&#160;Hasty,&#160;J.,&#160;and&#160;Collins,&#160;J.J.&#160;2003.&#160;Reverse&#160;engineering&#160;gene&#160;networks:&#160;Integrating&#160;genetic</p>
+<p style="position:absolute;top:352px;left:175px;white-space:nowrap" class="ft70">perturbations&#160;with&#160;dynamical&#160;modeling.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;U&#160;S&#160;A&#160;100,&#160;5944–5949.</p>
+<p style="position:absolute;top:369px;left:161px;white-space:nowrap" class="ft70">Venkatesan,&#160;A.,&#160;Tripathi,&#160;S.,&#160;de&#160;Galdeano,&#160;A.S.,&#160;et&#160;al.&#160;2014.&#160;Finding&#160;gene&#160;regulatory&#160;network&#160;candidates&#160;using&#160;the&#160;gene</p>
+<p style="position:absolute;top:385px;left:175px;white-space:nowrap" class="ft70">expression&#160;knowledge&#160;base.&#160;BMC&#160;Bioinform.&#160;15,&#160;386.</p>
+<p style="position:absolute;top:401px;left:161px;white-space:nowrap" class="ft74">Wirth,&#160;N.,&#160;1983.&#160;Programming&#160;in&#160;MODULA-2.&#160;Springer-Verlag,&#160;New&#160;York.<br/>Yeung,&#160;M.K.S.,&#160;Tegne´r,&#160;J.,&#160;and&#160;Collins,&#160;J.J.&#160;2002.&#160;Reverse&#160;engineering&#160;gene&#160;networks&#160;using&#160;singular&#160;value&#160;decom-</p>
+<p style="position:absolute;top:434px;left:175px;white-space:nowrap" class="ft70">position&#160;and&#160;robust&#160;regression.&#160;Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;U&#160;S&#160;A&#160;99,&#160;6163–6168.</p>
+<p style="position:absolute;top:469px;left:638px;white-space:nowrap" class="ft71">Address&#160;correspondence&#160;to:</p>
+<p style="position:absolute;top:487px;left:684px;white-space:nowrap" class="ft71">Prof.&#160;Michael&#160;Levin</p>
+<p style="position:absolute;top:505px;left:480px;white-space:nowrap" class="ft71">Center&#160;for&#160;Regenerative&#160;and&#160;Developmental&#160;Biology,</p>
+<p style="position:absolute;top:523px;left:639px;white-space:nowrap" class="ft71">and&#160;Department&#160;of&#160;Biology</p>
+<p style="position:absolute;top:541px;left:709px;white-space:nowrap" class="ft71">Tufts&#160;University</p>
+<p style="position:absolute;top:558px;left:615px;white-space:nowrap" class="ft71">200&#160;Boston&#160;Avenue,&#160;Suite&#160;4600</p>
+<p style="position:absolute;top:576px;left:683px;white-space:nowrap" class="ft71">Medford,&#160;MA&#160;02155</p>
+<p style="position:absolute;top:612px;left:609px;white-space:nowrap" class="ft71">E-mail:&#160;michael.levin@tufts.edu</p>
+<p style="position:absolute;top:72px;left:161px;white-space:nowrap" class="ft71">MOCHA:&#160;MOLECULAR&#160;CHARACTERIZATION&#160;TOOL</p>
+<p style="position:absolute;top:72px;left:784px;white-space:nowrap" class="ft71">297</p>
+</div>
+</body>
+</html>

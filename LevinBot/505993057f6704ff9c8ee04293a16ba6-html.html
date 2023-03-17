@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:28px;font-family:Times;color:#000000;}
+	.ft11{font-size:14px;font-family:Times;color:#000000;}
+	.ft12{font-size:9px;font-family:Times;color:#000000;}
+	.ft13{font-size:12px;font-family:Times;color:#000000;}
+	.ft14{font-size:11px;font-family:Times;color:#000000;}
+	.ft15{font-size:15px;font-family:Times;color:#000000;}
+	.ft16{font-size:8px;font-family:Times;color:#000000;}
+	.ft17{font-size:6px;font-family:Times;color:#000000;}
+	.ft18{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft19{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft110{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:131px;left:122px;white-space:nowrap" class="ft10">Adversarial&#160;Takeover&#160;of&#160;Neural&#160;Cellular&#160;Automata</p>
+<p style="position:absolute;top:175px;left:209px;white-space:nowrap" class="ft11">Lorenzo&#160;Cavuoti1,&#160;Francesco&#160;Sacco2,&#160;Ettore&#160;Randazzo3&#160;and&#160;Michael&#160;Levin4</p>
+<p style="position:absolute;top:208px;left:154px;white-space:nowrap" class="ft12">1University&#160;of&#160;Trieste,&#160;2University&#160;of&#160;Pisa,&#160;3Google&#160;Research,&#160;4Allen&#160;Discovery&#160;Center</p>
+<p style="position:absolute;top:229px;left:299px;white-space:nowrap" class="ft11">lorenzocav97@gmail.com,&#160;francesco215@live.it</p>
+<p style="position:absolute;top:289px;left:232px;white-space:nowrap" class="ft13">Abstract</p>
+<p style="position:absolute;top:315px;left:111px;white-space:nowrap" class="ft14">The&#160;biggest&#160;open&#160;problems&#160;in&#160;the&#160;life&#160;sciences&#160;concern&#160;the</p>
+<p style="position:absolute;top:330px;left:96px;white-space:nowrap" class="ft19">algorithms&#160;by&#160;which&#160;competent&#160;subunits&#160;(cells)&#160;could&#160;coop-<br/>erate&#160;to&#160;form&#160;large-scale&#160;structures&#160;with&#160;new,&#160;system-level<br/>properties.&#160;In&#160;synthetic&#160;bioengineering,&#160;multiple&#160;cells&#160;of&#160;di-<br/>verse&#160;origin&#160;can&#160;be&#160;included&#160;in&#160;chimeric&#160;constructs.&#160;To&#160;fa-<br/>cilitate&#160;progress&#160;in&#160;this&#160;field,&#160;we&#160;sought&#160;an&#160;understanding<br/>of&#160;multi-scale&#160;decision-making&#160;by&#160;diverse&#160;subunits&#160;beyond<br/>those&#160;observed&#160;in&#160;frozen&#160;accidents&#160;of&#160;biological&#160;phylogeny:<br/>abstract&#160;models&#160;of&#160;life-as-it-can-be.</p>
+<p style="position:absolute;top:434px;left:310px;white-space:nowrap" class="ft14">Neural&#160;Cellular&#160;Au-</p>
+<p style="position:absolute;top:449px;left:96px;white-space:nowrap" class="ft19">tomata&#160;(NCA)&#160;are&#160;a&#160;very&#160;good&#160;inspiration&#160;for&#160;understanding<br/>current&#160;and&#160;possible&#160;living&#160;organisms:&#160;researchers&#160;managed<br/>to&#160;create&#160;NCA&#160;that&#160;are&#160;able&#160;to&#160;converge&#160;to&#160;any&#160;morphology.&#160;In<br/>order&#160;to&#160;simulate&#160;a&#160;more&#160;dynamic&#160;situation,&#160;we&#160;took&#160;the&#160;NCA<br/>model&#160;and&#160;generalized&#160;it&#160;to&#160;consider&#160;multiple&#160;NCA&#160;rules.&#160;We<br/>then&#160;used&#160;this&#160;generalized&#160;model&#160;to&#160;change&#160;the&#160;behavior&#160;of&#160;a<br/>NCA&#160;by&#160;injecting&#160;other&#160;types&#160;of&#160;cells&#160;(adversaries)&#160;and&#160;let-<br/>ting&#160;them&#160;take&#160;over&#160;the&#160;entire&#160;organism&#160;to&#160;solve&#160;a&#160;different<br/>task.&#160;Next&#160;we&#160;demonstrate&#160;that&#160;it&#160;is&#160;possible&#160;to&#160;stop&#160;aging&#160;in<br/>an&#160;existing&#160;NCA&#160;by&#160;injecting&#160;adversaries&#160;that&#160;follow&#160;a&#160;differ-<br/>ent&#160;rule.&#160;Finally,&#160;we&#160;quantify&#160;a&#160;distance&#160;between&#160;NCAs&#160;and<br/>develop&#160;a&#160;procedure&#160;that&#160;allows&#160;us&#160;to&#160;find&#160;adversaries&#160;close&#160;to<br/>the&#160;original&#160;cells.</p>
+<p style="position:absolute;top:678px;left:211px;white-space:nowrap" class="ft15">Introduction</p>
+<p style="position:absolute;top:702px;left:81px;white-space:nowrap" class="ft110">Biology&#160;operates&#160;in&#160;a&#160;multiscale&#160;competency&#160;architecture:<br/>cells&#160;follow&#160;local&#160;rules&#160;in&#160;ways&#160;that&#160;result&#160;in&#160;interesting&#160;and<br/>robust&#160;large-scale&#160;patterns.&#160;Major&#160;knowledge&#160;gaps,&#160;despite<br/>progress&#160;in&#160;molecular&#160;genetics,&#160;include&#160;the&#160;policies&#160;guiding<br/>individual&#160;cell&#160;behaviors&#160;toward&#160;body-level&#160;anatomical<br/>structures.&#160;This&#160;especially&#160;concerns&#160;the&#160;algorithms&#160;needed<br/>to&#160;reliably&#160;reach&#160;a&#160;consistent&#160;form&#160;under&#160;a&#160;range&#160;of&#160;chang-<br/>ing&#160;conditions.</p>
+<p style="position:absolute;top:828px;left:191px;white-space:nowrap" class="ft13">Cellular&#160;behavior&#160;is&#160;guided&#160;in&#160;part&#160;by</p>
+<p style="position:absolute;top:846px;left:81px;white-space:nowrap" class="ft110">gene-regulatory&#160;networks&#160;inside&#160;cells,&#160;and&#160;coordinated&#160;by<br/>biochemical&#160;and&#160;bioelectrical&#160;networks&#160;at&#160;the&#160;tissue&#160;level.<br/>Both&#160;of&#160;these&#160;can&#160;be&#160;represented&#160;as&#160;neural&#160;networks&#160;that<br/>guide&#160;the&#160;mechanisms&#160;determining&#160;the&#160;cell’s&#160;activity&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Moore<br/>et&#160;al.&#160;(2018);&#160;Biswas&#160;S&#160;(2016).</a></p>
+<p style="position:absolute;top:953px;left:96px;white-space:nowrap" class="ft13">Neural&#160;Cellular&#160;Automata&#160;(NCA)&#160;represent&#160;a&#160;recent&#160;de-</p>
+<p style="position:absolute;top:971px;left:81px;white-space:nowrap" class="ft110">velopment&#160;of&#160;Cellular&#160;Automata,&#160;where&#160;the&#160;underlying&#160;rule<br/>is&#160;represented&#160;as&#160;a&#160;neural&#160;network&#160;and&#160;is&#160;learned&#160;using<br/>gradient-based&#160;optimization&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Mordvintsev&#160;et&#160;al.&#160;(2020);&#160;</a>the<br/>NCA&#160;starts&#160;from&#160;a&#160;seed&#160;state&#160;and&#160;is&#160;trained&#160;to&#160;reach&#160;a&#160;target<br/>state&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#1">1).</a></p>
+<p style="position:absolute;top:414px;left:479px;white-space:nowrap" class="ft110">Figure&#160;1:&#160;Example&#160;of&#160;seed&#160;and&#160;target&#160;state,&#160;left:&#160;the&#160;seed<br/>state,&#160;right:&#160;the&#160;target&#160;state.</p>
+<p style="position:absolute;top:472px;left:494px;white-space:nowrap" class="ft13">In&#160;recent&#160;advances&#160;in&#160;this&#160;field,&#160;scientists&#160;have&#160;managed</p>
+<p style="position:absolute;top:490px;left:479px;white-space:nowrap" class="ft110">to&#160;change&#160;the&#160;global&#160;properties&#160;of&#160;a&#160;NCA&#160;by&#160;adding&#160;some<br/>cells&#160;that&#160;follow&#160;a&#160;different&#160;rule&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Randazzo&#160;et&#160;al.&#160;(2021);&#160;</a>this<br/>corresponds&#160;to&#160;biological&#160;situations&#160;when&#160;cells&#160;of&#160;diverse<br/>genetics&#160;are&#160;assembled&#160;into&#160;chimeras&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Nanos&#160;V&#160;(2021).<br/></a>However&#160;these&#160;cells&#160;remain&#160;fixed&#160;and&#160;can’t&#160;expand&#160;in&#160;space.</p>
+<p style="position:absolute;top:598px;left:494px;white-space:nowrap" class="ft13">This&#160;is&#160;a&#160;problem,&#160;because&#160;the&#160;number&#160;of&#160;new&#160;cells&#160;(aka.</p>
+<p style="position:absolute;top:616px;left:479px;white-space:nowrap" class="ft110">adversaries)&#160;required&#160;must&#160;be&#160;relatively&#160;high&#160;in&#160;order&#160;to&#160;steer<br/>the&#160;behavior&#160;of&#160;the&#160;whole&#160;organism,&#160;however,&#160;substituting<br/>a&#160;high&#160;number&#160;of&#160;cells&#160;in&#160;a&#160;biological&#160;organism&#160;could&#160;be<br/>difficult.&#160;In&#160;general,&#160;one&#160;task&#160;in&#160;biomedical&#160;interventions<br/>and&#160;in&#160;guided&#160;self-assembly&#160;(bioengineering)&#160;contexts&#160;is&#160;to<br/>find&#160;the&#160;minimal&#160;intervention&#160;that&#160;achieves&#160;a&#160;given&#160;outcome.</p>
+<p style="position:absolute;top:723px;left:494px;white-space:nowrap" class="ft13">One&#160;way&#160;to&#160;minimize&#160;the&#160;intervention&#160;is&#160;to&#160;generalize</p>
+<p style="position:absolute;top:741px;left:479px;white-space:nowrap" class="ft110">NCA&#160;to&#160;multiple&#160;rules,&#160;allowing&#160;us&#160;to&#160;simulate&#160;what&#160;hap-<br/>pens&#160;when&#160;one&#160;type&#160;of&#160;cell&#160;overtakes&#160;the&#160;other.&#160;This&#160;way<br/>we&#160;can&#160;inject&#160;very&#160;few&#160;adversaries&#160;and&#160;let&#160;them&#160;take&#160;over<br/>other&#160;types&#160;of&#160;cells&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#1">2).&#160;</a>Furthermore,&#160;this&#160;model&#160;is&#160;a<br/>generalization&#160;of&#160;the&#160;NCA&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#1">model1&#160;</a>that&#160;is&#160;more&#160;biologically<br/>plausible,&#160;since&#160;it&#160;can&#160;simulate&#160;the&#160;growth&#160;of&#160;a&#160;group&#160;of&#160;cells<br/>at&#160;the&#160;expense&#160;of&#160;another.</p>
+<p style="position:absolute;top:963px;left:479px;white-space:nowrap" class="ft110">Figure&#160;2:&#160;In&#160;orange&#160;we&#160;indicate&#160;the&#160;original&#160;cells&#160;while&#160;in<br/>blue&#160;the&#160;adversarial&#160;cells.&#160;The&#160;adversaries&#160;take&#160;over&#160;the&#160;orig-<br/>inal&#160;cells&#160;and&#160;change&#160;the&#160;behavior&#160;of&#160;the&#160;whole&#160;organism.</p>
+<p style="position:absolute;top:1026px;left:498px;white-space:nowrap" class="ft17">1Because,&#160;if&#160;all&#160;the&#160;rules&#160;are&#160;the&#160;same,&#160;the&#160;model&#160;behaves&#160;like</p>
+<p style="position:absolute;top:1044px;left:479px;white-space:nowrap" class="ft14">evolving&#160;with&#160;a&#160;single&#160;rule.</p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft18">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:8px;font-family:Times;color:#000000;}
+	.ft22{font-size:15px;font-family:Times;color:#000000;}
+	.ft23{font-size:14px;font-family:Times;color:#000000;}
+	.ft24{font-size:6px;font-family:Times;color:#000000;}
+	.ft25{font-size:11px;font-family:Times;color:#000000;}
+	.ft26{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft27{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft28{font-size:8px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:96px;white-space:nowrap" class="ft20">We&#160;then&#160;apply&#160;the&#160;model&#160;to&#160;two&#160;different&#160;scenarios:</p>
+<p style="position:absolute;top:118px;left:83px;white-space:nowrap" class="ft20">•&#160;Changing&#160;static&#160;properties&#160;of&#160;a&#160;NCA:&#160;Examples&#160;of&#160;such</p>
+<p style="position:absolute;top:136px;left:96px;white-space:nowrap" class="ft27">properties&#160;are&#160;changing&#160;the&#160;color&#160;of&#160;an&#160;organism&#160;(figure<br/><a href="505993057f6704ff9c8ee04293a16ba6s.html#2">3),&#160;</a>adding&#160;or&#160;removing&#160;a&#160;limb,&#160;making&#160;the&#160;tail&#160;longer,&#160;and<br/>so&#160;on.&#160;All&#160;of&#160;these&#160;properties&#160;can&#160;be&#160;observed&#160;with&#160;a&#160;be-<br/>fore/after&#160;photo&#160;of&#160;the&#160;organism.</p>
+<p style="position:absolute;top:207px;left:83px;white-space:nowrap" class="ft20">•&#160;Changing&#160;dynamical&#160;properties&#160;of&#160;a&#160;NCA:&#160;Examples</p>
+<p style="position:absolute;top:225px;left:96px;white-space:nowrap" class="ft27">of&#160;these&#160;properties&#160;are&#160;altering&#160;the&#160;lifespan&#160;of&#160;an&#160;organ-<br/>ism,&#160;or&#160;the&#160;ability&#160;to&#160;regenerate&#160;damage.&#160;These&#160;properties<br/>are&#160;much&#160;more&#160;interesting&#160;from&#160;an&#160;aging&#160;and&#160;regenerative<br/>medicine&#160;point&#160;of&#160;view,&#160;however,&#160;as&#160;we&#160;will&#160;see,&#160;they&#160;are<br/>much&#160;harder&#160;to&#160;train&#160;than&#160;the&#160;static&#160;ones.</p>
+<p style="position:absolute;top:470px;left:81px;white-space:nowrap" class="ft27">Figure&#160;3:&#160;Example&#160;of&#160;changing&#160;a&#160;static&#160;property,&#160;the&#160;lizard<br/>color&#160;turns&#160;from&#160;green&#160;to&#160;red.</p>
+<p style="position:absolute;top:531px;left:96px;white-space:nowrap" class="ft20">Lastly,&#160;the&#160;parameters&#160;of&#160;the&#160;adversaries&#160;can&#160;become&#160;dras-</p>
+<p style="position:absolute;top:549px;left:81px;white-space:nowrap" class="ft27">tically&#160;different&#160;from&#160;the&#160;original&#160;cells&#160;they&#160;replace,&#160;which<br/>presents&#160;biologists&#160;with&#160;the&#160;challenge&#160;of&#160;identifying&#160;DNA&#160;or<br/>pharmacological&#160;reagents&#160;that&#160;change&#160;some&#160;of&#160;the&#160;cells’&#160;be-<br/>haviors&#160;in&#160;the&#160;necessary&#160;fashion.&#160;This&#160;gives&#160;rise&#160;to&#160;an&#160;impor-<br/>tant&#160;inverse&#160;problem&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Lobo&#160;D&#160;(2014):&#160;</a>what&#160;can&#160;be&#160;tweaked<br/>at&#160;the&#160;lowest&#160;level&#160;(e.g.,&#160;DNA&#160;mutations)&#160;to&#160;give&#160;rise&#160;to&#160;de-<br/>sired&#160;changes&#160;at&#160;the&#160;system&#160;level&#160;(anatomy)?&#160;The&#160;difficulty<br/>of&#160;solving&#160;this&#160;problem&#160;is&#160;what&#160;prevents&#160;true&#160;Lamarckian&#160;in-<br/>heritance,&#160;and&#160;also&#160;limits&#160;regenerative&#160;medicine&#160;applications<br/>of&#160;modern&#160;technologies&#160;such&#160;as&#160;CRISPR.</p>
+<p style="position:absolute;top:729px;left:96px;white-space:nowrap" class="ft20">Therefore,&#160;we&#160;explore&#160;ways&#160;to&#160;make&#160;the&#160;parameters&#160;of&#160;the</p>
+<p style="position:absolute;top:747px;left:81px;white-space:nowrap" class="ft27">adversarial&#160;cells&#160;as&#160;similar&#160;as&#160;possible&#160;to&#160;the&#160;original&#160;cells,<br/>while&#160;still&#160;being&#160;able&#160;to&#160;accomplish&#160;the&#160;given&#160;task,&#160;demon-<br/>strating&#160;that&#160;only&#160;a&#160;small&#160;change&#160;in&#160;the&#160;parameters&#160;is&#160;suffi-<br/>cient&#160;to&#160;turn&#160;an&#160;original&#160;cell&#160;into&#160;an&#160;adversarial&#160;one.</p>
+<p style="position:absolute;top:819px;left:96px;white-space:nowrap" class="ft20">Figures&#160;in&#160;video&#160;form&#160;and&#160;the&#160;code&#160;is&#160;available&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#2">here2.</a></p>
+<p style="position:absolute;top:853px;left:219px;white-space:nowrap" class="ft22">The&#160;model</p>
+<p style="position:absolute;top:881px;left:81px;white-space:nowrap" class="ft23">NCA&#160;model</p>
+<p style="position:absolute;top:907px;left:81px;white-space:nowrap" class="ft27">Before&#160;diving&#160;into&#160;the&#160;generalization&#160;of&#160;NCA,&#160;we&#160;summa-<br/>rize&#160;how&#160;the&#160;NCA&#160;model&#160;works;&#160;a&#160;better&#160;explanation&#160;can&#160;be<br/>found&#160;in&#160;the&#160;original&#160;paper&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Mordvintsev&#160;et&#160;al.&#160;(2020).</a></p>
+<p style="position:absolute;top:961px;left:96px;white-space:nowrap" class="ft20">A&#160;Cellular&#160;Automata&#160;(CA)&#160;consists&#160;of&#160;a&#160;grid&#160;of&#160;cells&#160;that</p>
+<p style="position:absolute;top:979px;left:81px;white-space:nowrap" class="ft27">is&#160;iteratively&#160;updated&#160;using&#160;the&#160;same&#160;update&#160;rule&#160;at&#160;each&#160;step<br/><a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Neumann&#160;and&#160;Burks&#160;(1966),&#160;</a>the&#160;only&#160;requirement&#160;is&#160;that&#160;the</p>
+<p style="position:absolute;top:1026px;left:100px;white-space:nowrap" class="ft24"><a href="https://letteraunica.github.io/neural_cellular_automata/extra">2https://letteraunica.github.io/neural_</a></p>
+<p style="position:absolute;top:1045px;left:81px;white-space:nowrap" class="ft25"><a href="https://letteraunica.github.io/neural_cellular_automata/extra">cellular_automata/extra</a></p>
+<p style="position:absolute;top:86px;left:479px;white-space:nowrap" class="ft28">next&#160;state&#160;of&#160;each&#160;cell&#160;depends&#160;only&#160;on&#160;its&#160;previous&#160;state,&#160;xt<br/>and&#160;the&#160;state&#160;of&#160;its&#160;neighbors,&#160;N&#160;(xt).</p>
+<p style="position:absolute;top:149px;left:594px;white-space:nowrap" class="ft20">xt+1&#160;=&#160;f&#160;(xt,&#160;N&#160;(xt))</p>
+<p style="position:absolute;top:195px;left:479px;white-space:nowrap" class="ft27">Neural&#160;Cellular&#160;Automata&#160;(NCA)&#160;use&#160;a&#160;neural&#160;network&#160;to<br/>model&#160;the&#160;function&#160;f&#160;and&#160;consider&#160;the&#160;states&#160;xt&#160;to&#160;be&#160;contin-<br/>uous,&#160;this&#160;allows&#160;training&#160;f&#160;using&#160;gradient-based&#160;optimiza-<br/>tion.&#160;The&#160;cell&#160;state&#160;xt&#160;is&#160;represented&#160;by&#160;a&#160;vector&#160;where&#160;the<br/>first&#160;4&#160;components&#160;represent&#160;the&#160;RGBA&#160;channels&#160;of&#160;the&#160;pixel<br/>and&#160;the&#160;remaining&#160;are&#160;hidden&#160;channels&#160;that&#160;allow&#160;the&#160;NCA<br/>to&#160;pass&#160;information&#160;between&#160;its&#160;cells&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#3">5&#160;</a>left).</p>
+<p style="position:absolute;top:327px;left:494px;white-space:nowrap" class="ft20">The&#160;α&#160;channel&#160;(transparency)&#160;has&#160;an&#160;important&#160;role:&#160;if</p>
+<p style="position:absolute;top:345px;left:479px;white-space:nowrap" class="ft27">a&#160;cell&#160;has&#160;α&#160;&gt;&#160;0.1&#160;it&#160;means&#160;that&#160;the&#160;cell&#160;is&#160;mature,&#160;other-<br/>wise&#160;it’s&#160;dead.&#160;This&#160;distinction&#160;is&#160;essential&#160;because&#160;a&#160;cell<br/>can&#160;change&#160;its&#160;state&#160;if&#160;at&#160;least&#160;one&#160;of&#160;its&#160;immediate&#160;neigh-<br/><a href="505993057f6704ff9c8ee04293a16ba6s.html#2">bors3,&#160;</a>or&#160;itself,&#160;is&#160;mature&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#2">4),&#160;</a>if&#160;this&#160;is&#160;not&#160;the&#160;case&#160;its<br/>state&#160;is&#160;set&#160;to&#160;0.&#160;The&#160;evolution&#160;starts&#160;with&#160;only&#160;one&#160;mature<br/>cell&#160;in&#160;the&#160;center&#160;of&#160;the&#160;canvas,&#160;then&#160;the&#160;cells&#160;are&#160;evolved&#160;and<br/>reach&#160;the&#160;target&#160;image&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#1">1).</a></p>
+<p style="position:absolute;top:515px;left:729px;white-space:nowrap" class="ft25">Mature</p>
+<p style="position:absolute;top:559px;left:729px;white-space:nowrap" class="ft25">Growing</p>
+<p style="position:absolute;top:605px;left:729px;white-space:nowrap" class="ft25">Empty</p>
+<p style="position:absolute;top:655px;left:479px;white-space:nowrap" class="ft27">Figure&#160;4:&#160;Illustration&#160;of&#160;mature,&#160;growing&#160;and&#160;empty&#160;cells,<br/>growing&#160;cells&#160;are&#160;in&#160;the&#160;immediate&#160;neighborhood&#160;of&#160;ma-<br/>ture&#160;ones.&#160;Image&#160;adapted&#160;from&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Mordvintsev&#160;et&#160;al.&#160;(2020),<br/></a>licensed&#160;under&#160;CC&#160;BY&#160;4.0.</p>
+<p style="position:absolute;top:769px;left:479px;white-space:nowrap" class="ft23">Multiple&#160;NCA&#160;model</p>
+<p style="position:absolute;top:811px;left:479px;white-space:nowrap" class="ft28">We&#160;call&#160;our&#160;new&#160;model&#160;Multiple&#160;NCA&#160;because&#160;it&#160;generalizes<br/>a&#160;single&#160;NCA&#160;to&#160;multiple&#160;update&#160;rules.&#160;For&#160;ease&#160;of&#160;explana-<br/>tion,&#160;we&#160;are&#160;going&#160;to&#160;consider&#160;the&#160;case&#160;of&#160;only&#160;2&#160;rules,&#160;f1<br/>and&#160;f2.</p>
+<p style="position:absolute;top:917px;left:479px;white-space:nowrap" class="ft20">Masking</p>
+<p style="position:absolute;top:917px;left:550px;white-space:nowrap" class="ft20">Since&#160;the&#160;α&#160;channel&#160;tells&#160;whether&#160;a&#160;cell&#160;is&#160;alive</p>
+<p style="position:absolute;top:935px;left:479px;white-space:nowrap" class="ft27">or&#160;dead,&#160;if&#160;we&#160;have&#160;two&#160;different&#160;types&#160;of&#160;cells&#160;we&#160;need&#160;two<br/>alpha&#160;channels,&#160;α1&#160;and&#160;α2.&#160;In&#160;this&#160;new&#160;model&#160;we&#160;decided&#160;to<br/>put&#160;the&#160;alpha&#160;channels&#160;at&#160;the&#160;end&#160;of&#160;the&#160;state&#160;vector&#160;(figure<br/><a href="505993057f6704ff9c8ee04293a16ba6s.html#3">5).</a></p>
+<p style="position:absolute;top:1041px;left:498px;white-space:nowrap" class="ft24">3We&#160;consider&#160;a&#160;Moore&#160;neighborhood.</p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft26">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:15px;font-family:Times;color:#ffffff;}
+	.ft31{font-size:20px;font-family:Times;color:#ffffff;}
+	.ft32{font-size:13px;font-family:Times;color:#000000;}
+	.ft33{font-size:9px;font-family:Times;color:#ffffff;}
+	.ft34{font-size:12px;font-family:Times;color:#000000;}
+	.ft35{font-size:8px;font-family:Times;color:#000000;}
+	.ft36{font-size:17px;font-family:Times;color:#000000;}
+	.ft37{font-size:10px;font-family:Times;color:#000000;}
+	.ft38{font-size:14px;font-family:Times;color:#000000;}
+	.ft39{font-size:30px;font-family:Times;color:#000000;}
+	.ft310{font-size:17px;font-family:Times;color:#000000;}
+	.ft311{font-size:30px;font-family:Times;color:#4d4d4d;}
+	.ft312{font-size:18px;font-family:Times;color:#ffffff;}
+	.ft313{font-size:24px;font-family:Times;color:#ffffff;}
+	.ft314{font-size:11px;font-family:Times;color:#ffffff;}
+	.ft315{font-size:6px;font-family:Times;color:#000000;}
+	.ft316{font-size:11px;font-family:Times;color:#000000;}
+	.ft317{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft318{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft319{font-size:14px;line-height:32px;font-family:Times;color:#000000;}
+	.ft320{font-size:8px;line-height:17px;font-family:Times;color:#000000;}
+	.ft321{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:82px;left:175px;white-space:nowrap" class="ft30">R</p>
+<p style="position:absolute;top:134px;left:175px;white-space:nowrap" class="ft30">B</p>
+<p style="position:absolute;top:108px;left:174px;white-space:nowrap" class="ft30">G</p>
+<p style="position:absolute;top:82px;left:332px;white-space:nowrap" class="ft30">R</p>
+<p style="position:absolute;top:134px;left:332px;white-space:nowrap" class="ft30">B</p>
+<p style="position:absolute;top:108px;left:331px;white-space:nowrap" class="ft30">G</p>
+<p style="position:absolute;top:156px;left:175px;white-space:nowrap" class="ft31">α</p>
+<p style="position:absolute;top:169px;left:220px;white-space:nowrap" class="ft32">12 hidden</p>
+<p style="position:absolute;top:186px;left:225px;white-space:nowrap" class="ft32">channels</p>
+<p style="position:absolute;top:258px;left:329px;white-space:nowrap" class="ft31">α</p>
+<p style="position:absolute;top:271px;left:342px;white-space:nowrap" class="ft33">1</p>
+<p style="position:absolute;top:284px;left:329px;white-space:nowrap" class="ft31">α</p>
+<p style="position:absolute;top:297px;left:342px;white-space:nowrap" class="ft33">2</p>
+<p style="position:absolute;top:329px;left:81px;white-space:nowrap" class="ft318">Figure&#160;5:&#160;left:&#160;location&#160;of&#160;the&#160;channels&#160;in&#160;the&#160;NCA&#160;model,<br/>right:&#160;channels&#160;location&#160;in&#160;the&#160;Multiple&#160;NCA&#160;model.</p>
+<p style="position:absolute;top:388px;left:96px;white-space:nowrap" class="ft34">To&#160;make&#160;the&#160;model&#160;more&#160;realistic&#160;we&#160;added&#160;some&#160;con-</p>
+<p style="position:absolute;top:406px;left:81px;white-space:nowrap" class="ft34">straints:</p>
+<p style="position:absolute;top:437px;left:77px;white-space:nowrap" class="ft34">1.&#160;A&#160;cell&#160;can&#160;be&#160;mature&#160;in&#160;only&#160;one&#160;channel,&#160;this&#160;means&#160;that</p>
+<p style="position:absolute;top:455px;left:96px;white-space:nowrap" class="ft318">no&#160;cell&#160;can&#160;have&#160;both&#160;alphas&#160;&gt;&#160;0.1&#160;.&#160;We&#160;do&#160;this&#160;because<br/>we&#160;consider&#160;the&#160;two&#160;cells&#160;as&#160;having&#160;different&#160;DNA,&#160;so&#160;they<br/>must&#160;have&#160;different&#160;rules&#160;and&#160;there&#160;is&#160;no&#160;in-between.</p>
+<p style="position:absolute;top:521px;left:77px;white-space:nowrap" class="ft34">2.&#160;We&#160;impose&#160;that&#160;new&#160;cells&#160;can&#160;only&#160;grow&#160;near&#160;mature&#160;ones</p>
+<p style="position:absolute;top:539px;left:96px;white-space:nowrap" class="ft318">of&#160;the&#160;same&#160;type,&#160;example:&#160;cells&#160;of&#160;type&#160;2&#160;can&#160;only&#160;grow<br/>near&#160;mature&#160;cells&#160;of&#160;type&#160;2.</p>
+<p style="position:absolute;top:588px;left:77px;white-space:nowrap" class="ft34">3.&#160;When&#160;both&#160;alphas&#160;are&#160;in&#160;0&#160;≤&#160;α&#160;&lt;&#160;0.1,&#160;and&#160;the&#160;cell&#160;is&#160;near</p>
+<p style="position:absolute;top:606px;left:96px;white-space:nowrap" class="ft318">a&#160;mature&#160;one&#160;of&#160;both&#160;f1&#160;and&#160;f2,&#160;the&#160;cell&#160;evolves&#160;follow-<br/>ing&#160;the&#160;average&#160;of&#160;both&#160;rules&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#3">6).&#160;</a>Biologically&#160;this<br/>means&#160;that&#160;two&#160;kinds&#160;of&#160;cells&#160;are&#160;fighting&#160;for&#160;the&#160;control&#160;of<br/>one&#160;spot.&#160;Mathematically,&#160;we&#160;did&#160;this&#160;because&#160;otherwise<br/>we&#160;would&#160;have&#160;a&#160;privileged&#160;rule.&#160;This&#160;also&#160;implies&#160;that,&#160;if<br/>the&#160;two&#160;rules&#160;are&#160;the&#160;same,&#160;the&#160;system&#160;acts&#160;identically&#160;to<br/>what&#160;it&#160;did&#160;if&#160;it&#160;was&#160;evolved&#160;with&#160;only&#160;one&#160;rule.</p>
+<p style="position:absolute;top:754px;left:354px;white-space:nowrap" class="ft319"><i>f</i>1&#160;&#160;Mature<br/><i>f</i>1&#160;&#160;Growing<br/><i>f</i>2&#160;&#160;Mature</p>
+<p style="position:absolute;top:884px;left:354px;white-space:nowrap" class="ft36"><i>f</i>1&#160;<i>+ f</i>2</p>
+<p style="position:absolute;top:852px;left:354px;white-space:nowrap" class="ft36"><i>f</i>2&#160;&#160;Growing</p>
+<p style="position:absolute;top:800px;left:133px;white-space:nowrap" class="ft39"><i>f</i>1</p>
+<p style="position:absolute;top:800px;left:242px;white-space:nowrap" class="ft39"><i>f</i>2</p>
+<p style="position:absolute;top:929px;left:81px;white-space:nowrap" class="ft318">Figure&#160;6:&#160;Representation&#160;of&#160;two&#160;different&#160;rules&#160;evolving<br/>toghether&#160;in&#160;the&#160;Multiple&#160;NCA&#160;model.&#160;Magenta&#160;cells&#160;are<br/>growing&#160;cells&#160;of&#160;both&#160;f1&#160;and&#160;f2,&#160;so&#160;they&#160;evolve&#160;following<br/>the&#160;average&#160;of&#160;both&#160;rules.</p>
+<p style="position:absolute;top:1025px;left:96px;white-space:nowrap" class="ft34">Furthermore,&#160;we&#160;change&#160;the&#160;perception&#160;stage&#160;and&#160;the&#160;out-</p>
+<p style="position:absolute;top:1043px;left:81px;white-space:nowrap" class="ft34">put&#160;of&#160;the&#160;NCA&#160;as&#160;follows.</p>
+<p style="position:absolute;top:86px;left:479px;white-space:nowrap" class="ft34">Perception</p>
+<p style="position:absolute;top:86px;left:563px;white-space:nowrap" class="ft34">The&#160;Multiple&#160;NCA&#160;model&#160;perceives&#160;only&#160;the</p>
+<p style="position:absolute;top:104px;left:479px;white-space:nowrap" class="ft318">sum&#160;of&#160;all&#160;alpha&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#3">channels4,&#160;</a>and&#160;not&#160;the&#160;individual&#160;channels,<br/>we&#160;do&#160;it&#160;for&#160;two&#160;main&#160;reasons:</p>
+<p style="position:absolute;top:153px;left:481px;white-space:nowrap" class="ft34">•&#160;Computational:&#160;we&#160;have&#160;2&#160;alpha&#160;channels,&#160;however,&#160;the</p>
+<p style="position:absolute;top:171px;left:494px;white-space:nowrap" class="ft318">NCA&#160;model&#160;uses&#160;only&#160;one&#160;alpha&#160;channel,&#160;which&#160;means<br/>that&#160;we&#160;need&#160;to&#160;find&#160;a&#160;function&#160;that&#160;reduces&#160;the&#160;number&#160;of<br/>alpha&#160;channels&#160;before&#160;passing&#160;the&#160;state&#160;to&#160;the&#160;NCA&#160;model<br/>to&#160;be&#160;evolved;&#160;summing&#160;up&#160;the&#160;two&#160;alpha&#160;is&#160;one&#160;of&#160;the<br/>simplest&#160;ways&#160;to&#160;do&#160;this&#160;without&#160;having&#160;a&#160;privileged&#160;rule.</p>
+<p style="position:absolute;top:260px;left:481px;white-space:nowrap" class="ft34">•&#160;Biological:&#160;Summing&#160;up&#160;the&#160;two&#160;alpha&#160;has&#160;a&#160;nice&#160;biolog-</p>
+<p style="position:absolute;top:278px;left:494px;white-space:nowrap" class="ft318">ical&#160;interpretation,&#160;it&#160;assumes&#160;that&#160;a&#160;cell&#160;is&#160;aware&#160;of&#160;its<br/>surroundings&#160;but&#160;can’t&#160;distinguish&#160;the&#160;type&#160;of&#160;the&#160;neigh-<br/>boring&#160;cells&#160;trivially,&#160;since&#160;it&#160;doesn’t&#160;have&#160;access&#160;to&#160;α1<br/>and&#160;α2;&#160;this&#160;encourages&#160;a&#160;NCA&#160;to&#160;take&#160;advantage&#160;of&#160;the<br/>hidden&#160;channels&#160;to&#160;be&#160;able&#160;to&#160;distinguish&#160;itself&#160;from&#160;the<br/>other&#160;NCAs.</p>
+<p style="position:absolute;top:399px;left:494px;white-space:nowrap" class="ft34">From&#160;an&#160;implementation&#160;standpoint&#160;we&#160;only&#160;need&#160;a&#160;func-</p>
+<p style="position:absolute;top:417px;left:479px;white-space:nowrap" class="ft318">tion&#160;that&#160;takes&#160;a&#160;state&#160;x,&#160;sums&#160;the&#160;alpha,&#160;and&#160;places&#160;the&#160;sum<br/>right&#160;after&#160;the&#160;RGB&#160;components&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#3">7);&#160;</a>this&#160;new&#160;state<br/>can&#160;now&#160;be&#160;passed&#160;to&#160;the&#160;NCA&#160;to&#160;be&#160;evolved.</p>
+<p style="position:absolute;top:704px;left:629px;white-space:nowrap" class="ft311">+</p>
+<p style="position:absolute;top:487px;left:728px;white-space:nowrap" class="ft312">R</p>
+<p style="position:absolute;top:547px;left:728px;white-space:nowrap" class="ft312">B</p>
+<p style="position:absolute;top:516px;left:727px;white-space:nowrap" class="ft312">G</p>
+<p style="position:absolute;top:572px;left:727px;white-space:nowrap" class="ft313">α</p>
+<p style="position:absolute;top:486px;left:574px;white-space:nowrap" class="ft312">R</p>
+<p style="position:absolute;top:547px;left:574px;white-space:nowrap" class="ft312">B</p>
+<p style="position:absolute;top:516px;left:573px;white-space:nowrap" class="ft312">G</p>
+<p style="position:absolute;top:691px;left:571px;white-space:nowrap" class="ft313">α</p>
+<p style="position:absolute;top:706px;left:585px;white-space:nowrap" class="ft314">1</p>
+<p style="position:absolute;top:721px;left:571px;white-space:nowrap" class="ft313">α</p>
+<p style="position:absolute;top:736px;left:585px;white-space:nowrap" class="ft314">2</p>
+<p style="position:absolute;top:771px;left:479px;white-space:nowrap" class="ft318">Figure&#160;7:&#160;Before&#160;passing&#160;the&#160;state&#160;to&#160;f1&#160;or&#160;f2&#160;to&#160;be&#160;evolved,<br/>we&#160;sum&#160;up&#160;α1&#160;and&#160;α2&#160;then&#160;place&#160;the&#160;sum&#160;in&#160;the&#160;right&#160;location<br/>in&#160;the&#160;state&#160;vector.</p>
+<p style="position:absolute;top:848px;left:479px;white-space:nowrap" class="ft34">Output</p>
+<p style="position:absolute;top:848px;left:541px;white-space:nowrap" class="ft34">We&#160;impose&#160;that&#160;each&#160;NCA&#160;can&#160;only&#160;update&#160;its&#160;al-</p>
+<p style="position:absolute;top:866px;left:479px;white-space:nowrap" class="ft318">pha&#160;channel&#160;and&#160;not&#160;the&#160;other&#160;ones&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#4">8).&#160;</a>This&#160;makes<br/>sense&#160;because&#160;we&#160;don’t&#160;want&#160;a&#160;cell&#160;of&#160;type&#160;1&#160;to&#160;edit&#160;the&#160;al-<br/>pha&#160;channel&#160;of&#160;a&#160;cell&#160;of&#160;type&#160;2&#160;and&#160;therefore&#160;kill&#160;it&#160;trivially.</p>
+<p style="position:absolute;top:928px;left:498px;white-space:nowrap" class="ft315">4Other&#160;possible&#160;functions&#160;could&#160;have&#160;been:</p>
+<p style="position:absolute;top:957px;left:477px;white-space:nowrap" class="ft316">1.&#160;Weighted&#160;sum&#160;of&#160;the&#160;alphas.&#160;However,&#160;this&#160;implies&#160;that&#160;there&#160;is</p>
+<p style="position:absolute;top:972px;left:494px;white-space:nowrap" class="ft316">a&#160;privileged&#160;rule.</p>
+<p style="position:absolute;top:999px;left:477px;white-space:nowrap" class="ft316">2.&#160;Randomly&#160;choose&#160;an&#160;alpha&#160;channel&#160;to&#160;be&#160;perceived.&#160;However,</p>
+<p style="position:absolute;top:1014px;left:494px;white-space:nowrap" class="ft321">this&#160;doesn’t&#160;have&#160;a&#160;nice&#160;biological&#160;interpretation&#160;like&#160;summing<br/>up&#160;the&#160;alpha&#160;channels.</p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft317">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:15px;font-family:Times;color:#ffffff;}
+	.ft42{font-size:20px;font-family:Times;color:#ffffff;}
+	.ft43{font-size:9px;font-family:Times;color:#ffffff;}
+	.ft44{font-size:8px;font-family:Times;color:#000000;}
+	.ft45{font-size:14px;font-family:Times;color:#000000;}
+	.ft46{font-size:5px;font-family:Times;color:#000000;}
+	.ft47{font-size:6px;font-family:Times;color:#000000;}
+	.ft48{font-size:11px;font-family:Times;color:#000000;}
+	.ft49{font-size:15px;font-family:Times;color:#000000;}
+	.ft410{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft411{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft412{font-size:8px;line-height:17px;font-family:Times;color:#000000;}
+	.ft413{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft411">Instead,&#160;if&#160;the&#160;adversaries&#160;want&#160;to&#160;take&#160;over,&#160;they&#160;must&#160;rely<br/>on&#160;changing&#160;their&#160;internal&#160;state&#160;in&#160;such&#160;a&#160;way&#160;that&#160;makes&#160;the<br/>original&#160;cells&#160;undergo&#160;the&#160;process&#160;of&#160;apoptosis.</p>
+<p style="position:absolute;top:154px;left:207px;white-space:nowrap" class="ft41">R</p>
+<p style="position:absolute;top:206px;left:207px;white-space:nowrap" class="ft41">B</p>
+<p style="position:absolute;top:180px;left:206px;white-space:nowrap" class="ft41">G</p>
+<p style="position:absolute;top:228px;left:207px;white-space:nowrap" class="ft42">α</p>
+<p style="position:absolute;top:154px;left:300px;white-space:nowrap" class="ft41">R</p>
+<p style="position:absolute;top:206px;left:300px;white-space:nowrap" class="ft41">B</p>
+<p style="position:absolute;top:180px;left:299px;white-space:nowrap" class="ft41">G</p>
+<p style="position:absolute;top:330px;left:297px;white-space:nowrap" class="ft42">α</p>
+<p style="position:absolute;top:343px;left:310px;white-space:nowrap" class="ft43">1</p>
+<p style="position:absolute;top:357px;left:300px;white-space:nowrap" class="ft42">0</p>
+<p style="position:absolute;top:398px;left:81px;white-space:nowrap" class="ft411">Figure&#160;8:&#160;After&#160;f1&#160;computes&#160;the&#160;update&#160;we&#160;take&#160;α1&#160;and&#160;put<br/>it&#160;at&#160;the&#160;end&#160;of&#160;the&#160;state&#160;vector,&#160;leaving&#160;α2&#160;unchanged.</p>
+<p style="position:absolute;top:456px;left:96px;white-space:nowrap" class="ft40">The&#160;whole&#160;update&#160;step&#160;can&#160;be&#160;seen&#160;in&#160;figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#5">9.</a></p>
+<p style="position:absolute;top:486px;left:81px;white-space:nowrap" class="ft45">Training&#160;technique</p>
+<p style="position:absolute;top:509px;left:81px;white-space:nowrap" class="ft411">One&#160;of&#160;the&#160;first&#160;issues&#160;we&#160;encountered,&#160;was&#160;that&#160;the&#160;adver-<br/>sarial&#160;cells&#160;never&#160;tried&#160;to&#160;overtake&#160;the&#160;original&#160;cells,&#160;so&#160;they<br/>never&#160;took&#160;over&#160;the&#160;organism.&#160;We&#160;solved&#160;this&#160;problem&#160;by<br/>penalizing&#160;the&#160;percentage&#160;of&#160;old&#160;cells&#160;still&#160;present,&#160;like&#160;so:</p>
+<p style="position:absolute;top:592px;left:195px;white-space:nowrap" class="ft40">L&#160;=&#160;Ltarget&#160;+&#160;λNold</p>
+<p style="position:absolute;top:623px;left:96px;white-space:nowrap" class="ft40">Where&#160;Ltarget&#160;is&#160;the&#160;distance&#160;to&#160;the&#160;target&#160;image,&#160;Nold&#160;is</p>
+<p style="position:absolute;top:641px;left:81px;white-space:nowrap" class="ft411">the&#160;number&#160;of&#160;old&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#4">cells5,&#160;</a>and&#160;λ&#160;is&#160;a&#160;hyperparameter.<br/>Considering&#160;a&#160;loss&#160;function&#160;like&#160;this,&#160;nevertheless,&#160;leads&#160;to<br/>another&#160;problem:&#160;when&#160;we&#160;first&#160;introduce&#160;the&#160;new&#160;cells&#160;Nold<br/>is&#160;very&#160;high,&#160;which&#160;in&#160;turn&#160;makes&#160;the&#160;loss&#160;very&#160;high.&#160;This<br/>means&#160;that&#160;the&#160;adversaries&#160;will&#160;trade&#160;some&#160;of&#160;the&#160;image&#160;qual-<br/>ity&#160;in&#160;favor&#160;of&#160;a&#160;faster&#160;cell&#160;replacement.&#160;A&#160;solution&#160;could&#160;be<br/>to&#160;give&#160;the&#160;NCA&#160;plenty&#160;of&#160;time&#160;before&#160;evaluating&#160;the&#160;loss,<br/>however,&#160;the&#160;NCA&#160;might&#160;learn&#160;to&#160;destroy&#160;the&#160;image&#160;at&#160;the<br/>start,&#160;just&#160;to&#160;rebuild&#160;it&#160;before&#160;the&#160;loss&#160;evaluation.&#160;To&#160;address<br/>both&#160;these&#160;problems&#160;we&#160;made&#160;a&#160;custom&#160;loss&#160;function&#160;that&#160;is<br/>dependent&#160;on&#160;the&#160;number&#160;of&#160;steps&#160;n.</p>
+<p style="position:absolute;top:876px;left:117px;white-space:nowrap" class="ft40">L&#160;=</p>
+<p style="position:absolute;top:860px;left:159px;white-space:nowrap" class="ft44">nend</p>
+<p style="position:absolute;top:872px;left:161px;white-space:nowrap" class="ft40">X</p>
+<p style="position:absolute;top:896px;left:147px;white-space:nowrap" class="ft44">n=nstart</p>
+<p style="position:absolute;top:876px;left:199px;white-space:nowrap" class="ft40">λ1(n)Ltarget(n)&#160;+&#160;λ2(n)Nold(n)</p>
+<p style="position:absolute;top:920px;left:96px;white-space:nowrap" class="ft40">Now&#160;the&#160;hyperparameters&#160;λ1&#160;and&#160;λ2&#160;are&#160;functions&#160;that</p>
+<p style="position:absolute;top:938px;left:81px;white-space:nowrap" class="ft411">depend&#160;on&#160;the&#160;number&#160;of&#160;steps&#160;n,&#160;while&#160;Ltarget&#160;and&#160;Nold<br/>represent&#160;respectively&#160;the&#160;distance&#160;from&#160;the&#160;target&#160;image&#160;and<br/>the&#160;number&#160;of&#160;old&#160;cells&#160;at&#160;the&#160;n-th&#160;step.</p>
+<p style="position:absolute;top:996px;left:100px;white-space:nowrap" class="ft47">5This&#160;is&#160;slightly&#160;wrong&#160;since&#160;Nold&#160;is&#160;not&#160;differentiable,&#160;so&#160;in</p>
+<p style="position:absolute;top:1014px;left:81px;white-space:nowrap" class="ft413">practice&#160;we&#160;used&#160;the&#160;sum&#160;of&#160;the&#160;α1&#160;channel&#160;over&#160;the&#160;entire&#160;image.<br/>However,&#160;it&#160;is&#160;more&#160;intuitive&#160;to&#160;think&#160;about&#160;penalizing&#160;Nold&#160;rather<br/>than&#160;α1.</p>
+<p style="position:absolute;top:84px;left:609px;white-space:nowrap" class="ft49">Experiments</p>
+<p style="position:absolute;top:109px;left:479px;white-space:nowrap" class="ft45">Changing&#160;static&#160;properties</p>
+<p style="position:absolute;top:133px;left:479px;white-space:nowrap" class="ft411">As&#160;we&#160;stated&#160;in&#160;the&#160;introduction,&#160;static&#160;properties&#160;include<br/>changing&#160;the&#160;color&#160;of&#160;an&#160;organism,&#160;adding&#160;or&#160;removing&#160;a<br/>limb,&#160;making&#160;the&#160;tail&#160;longer,&#160;and&#160;so&#160;on.&#160;We&#160;decided&#160;to&#160;apply<br/>our&#160;model&#160;to&#160;3&#160;cases&#160;of&#160;increasing&#160;difficulty&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#4">10):</a></p>
+<p style="position:absolute;top:218px;left:476px;white-space:nowrap" class="ft40">1.&#160;Turning&#160;the&#160;lizard&#160;from&#160;green&#160;to&#160;red:&#160;the&#160;shape&#160;remains</p>
+<p style="position:absolute;top:236px;left:494px;white-space:nowrap" class="ft40">fixed&#160;but&#160;the&#160;color&#160;of&#160;the&#160;organism&#160;changes.</p>
+<p style="position:absolute;top:266px;left:476px;white-space:nowrap" class="ft40">2.&#160;Removing&#160;the&#160;tail&#160;of&#160;the&#160;lizard:&#160;the&#160;shape&#160;of&#160;the&#160;organism</p>
+<p style="position:absolute;top:284px;left:494px;white-space:nowrap" class="ft40">changes&#160;but&#160;the&#160;color&#160;remains&#160;the&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#4">same6.</a></p>
+<p style="position:absolute;top:314px;left:476px;white-space:nowrap" class="ft40">3.&#160;Turning&#160;a&#160;bug&#160;into&#160;a&#160;butterfly:&#160;both&#160;the&#160;shape&#160;and&#160;the&#160;color</p>
+<p style="position:absolute;top:332px;left:494px;white-space:nowrap" class="ft40">pattern&#160;change&#160;dramatically.</p>
+<p style="position:absolute;top:363px;left:494px;white-space:nowrap" class="ft40">In&#160;every&#160;case&#160;we&#160;start&#160;with&#160;a&#160;pre-trained&#160;Persistent&#160;NCA</p>
+<p style="position:absolute;top:381px;left:479px;white-space:nowrap" class="ft411">(which&#160;means&#160;it&#160;reaches&#160;the&#160;final&#160;image&#160;and&#160;keeps&#160;it&#160;for&#160;an<br/>infinite&#160;amount&#160;of&#160;time)&#160;and&#160;inject&#160;a&#160;small&#160;percentage&#160;of&#160;ad-<br/>versaries&#160;in&#160;it,&#160;then&#160;we&#160;only&#160;train&#160;the&#160;adversaries&#160;in&#160;order&#160;to<br/>change&#160;the&#160;appearance&#160;of&#160;the&#160;entire&#160;organism.</p>
+<p style="position:absolute;top:910px;left:498px;white-space:nowrap" class="ft40">Figure&#160;10:&#160;Illustration&#160;of&#160;the&#160;three&#160;static&#160;experiments.</p>
+<p style="position:absolute;top:1011px;left:498px;white-space:nowrap" class="ft47">6We&#160;found&#160;that&#160;altering&#160;the&#160;shape&#160;is&#160;harder&#160;because&#160;the&#160;adver-</p>
+<p style="position:absolute;top:1029px;left:479px;white-space:nowrap" class="ft413">saries&#160;have&#160;to&#160;learn&#160;to&#160;overtake&#160;the&#160;organism&#160;first,&#160;and,&#160;once&#160;the<br/>original&#160;cells&#160;are&#160;gone,&#160;they&#160;have&#160;to&#160;remove&#160;the&#160;tail.</p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft410">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:8px;font-family:Times;color:#000000;}
+	.ft52{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft53{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft54{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:78px;left:431px;white-space:nowrap" class="ft50">Output 1</p>
+<p style="position:absolute;top:258px;left:431px;white-space:nowrap" class="ft50">Output 2</p>
+<p style="position:absolute;top:434px;left:81px;white-space:nowrap" class="ft53">Figure&#160;9:&#160;Illustration&#160;of&#160;the&#160;entire&#160;forward&#160;pass&#160;of&#160;the&#160;Multiple&#160;NCA&#160;model.&#160;f1&#160;and&#160;f2&#160;represent&#160;the&#160;two&#160;NCA&#160;rules,&#160;while<br/>masking&#160;refers&#160;to&#160;the&#160;3&#160;operations&#160;described&#160;in&#160;the&#160;Masking&#160;subsection.</p>
+<p style="position:absolute;top:502px;left:81px;white-space:nowrap" class="ft50">Results</p>
+<p style="position:absolute;top:503px;left:142px;white-space:nowrap" class="ft50">In&#160;figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#5">12&#160;</a>we&#160;plotted&#160;the&#160;evolution&#160;of&#160;the&#160;NCAs,</p>
+<p style="position:absolute;top:521px;left:81px;white-space:nowrap" class="ft53">the&#160;time&#160;indicates&#160;the&#160;number&#160;of&#160;steps&#160;since&#160;the&#160;adversaries<br/>are&#160;first&#160;injected,&#160;we&#160;always&#160;inject&#160;the&#160;adversaries&#160;in&#160;a&#160;2x2<br/>square&#160;randomly&#160;located&#160;inside&#160;the&#160;organism.&#160;As&#160;you&#160;can<br/>see,&#160;the&#160;adversaries&#160;learn&#160;to&#160;influence&#160;the&#160;original&#160;cells&#160;to<br/>undergo&#160;the&#160;process&#160;of&#160;apoptosis,&#160;thus&#160;taking&#160;over&#160;the&#160;whole<br/>organism.&#160;Furthermore,&#160;as&#160;they&#160;are&#160;expanding,&#160;they&#160;try&#160;to<br/>match&#160;the&#160;color&#160;and&#160;target&#160;shape.</p>
+<p style="position:absolute;top:649px;left:96px;white-space:nowrap" class="ft50">From&#160;a&#160;biological&#160;point&#160;of&#160;view,&#160;we&#160;think&#160;that&#160;adding&#160;the</p>
+<p style="position:absolute;top:667px;left:81px;white-space:nowrap" class="ft53">adversaries&#160;in&#160;a&#160;small&#160;square&#160;is&#160;more&#160;interesting&#160;than&#160;using,<br/>for&#160;example,&#160;a&#160;spray&#160;pattern&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#5">11),&#160;</a>because&#160;it&#160;shows<br/>that&#160;we&#160;can&#160;edit&#160;the&#160;cells&#160;in&#160;a&#160;single&#160;location&#160;then&#160;the&#160;change<br/>propagates&#160;throughout&#160;the&#160;body.</p>
+<p style="position:absolute;top:868px;left:81px;white-space:nowrap" class="ft53">Figure&#160;11:&#160;Examples&#160;of&#160;spray&#160;patterns&#160;with&#160;different&#160;per-<br/>centages&#160;of&#160;adversaries,&#160;in&#160;blue,&#160;of&#160;respectively,&#160;5%,&#160;25%<br/>and&#160;50%.</p>
+<p style="position:absolute;top:953px;left:96px;white-space:nowrap" class="ft50">From&#160;a&#160;practical&#160;perspective,&#160;we&#160;noticed&#160;that&#160;training&#160;a</p>
+<p style="position:absolute;top:971px;left:81px;white-space:nowrap" class="ft53">model&#160;with&#160;adversaries&#160;that&#160;start&#160;from&#160;a&#160;small&#160;square&#160;is&#160;much<br/>harder&#160;than&#160;training&#160;starting&#160;from&#160;a&#160;spray&#160;pattern&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#5">11),<br/></a>however,&#160;models&#160;that&#160;are&#160;able&#160;to&#160;take&#160;over&#160;starting&#160;from&#160;a<br/>small&#160;square&#160;generalize&#160;well&#160;to&#160;spray&#160;patterns,&#160;while&#160;the&#160;op-<br/>posite&#160;isn’t&#160;true,&#160;these&#160;results&#160;can&#160;be&#160;found&#160;<a href="https://letteraunica.github.io/neural_cellular_automata/extra#static-properties">here.</a></p>
+<p style="position:absolute;top:496px;left:521px;white-space:nowrap" class="ft51">t=60</p>
+<p style="position:absolute;top:496px;left:581px;white-space:nowrap" class="ft51">t=100</p>
+<p style="position:absolute;top:496px;left:645px;white-space:nowrap" class="ft51">t=150</p>
+<p style="position:absolute;top:496px;left:703px;white-space:nowrap" class="ft51">t=200</p>
+<p style="position:absolute;top:496px;left:764px;white-space:nowrap" class="ft51">t=500</p>
+<p style="position:absolute;top:926px;left:479px;white-space:nowrap" class="ft54">Figure&#160;12:&#160;Results&#160;of&#160;the&#160;static&#160;experiments,&#160;first&#160;we&#160;plot<br/>the&#160;evolution&#160;of&#160;the&#160;organism,&#160;and&#160;right&#160;below&#160;it&#160;the&#160;cell<br/>mask,&#160;which&#160;tells&#160;where&#160;the&#160;original&#160;(orange)&#160;and&#160;the<br/>adversarial&#160;(blue)&#160;cells&#160;are&#160;located.&#160;t&#160;refers&#160;to&#160;the&#160;number<br/>of&#160;steps&#160;since&#160;the&#160;beginning&#160;of&#160;the&#160;evolution,&#160;we&#160;inject&#160;the<br/>adversaries&#160;always&#160;at&#160;step&#160;60.&#160;We&#160;encourage&#160;the&#160;reader&#160;to<br/>take&#160;a&#160;look&#160;at&#160;the&#160;videos&#160;of&#160;this&#160;evolution&#160;at&#160;<a href="https://letteraunica.github.io/neural_cellular_automata/extra#static-properties">https://<br/>letteraunica.github.io/neural_cellular_</a></p>
+<p style="position:absolute;top:1070px;left:479px;white-space:nowrap" class="ft50"><a href="https://letteraunica.github.io/neural_cellular_automata/extra#static-properties">automata/extra#static-properties</a></p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft52">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:14px;font-family:Times;color:#000000;}
+	.ft61{font-size:12px;font-family:Times;color:#000000;}
+	.ft62{font-size:9px;font-family:Times;color:#000000;}
+	.ft63{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft64{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft65{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:85px;left:81px;white-space:nowrap" class="ft60">Changing&#160;dynamic&#160;properties</p>
+<p style="position:absolute;top:113px;left:81px;white-space:nowrap" class="ft64">Changing&#160;a&#160;dynamic&#160;property&#160;means&#160;to&#160;change&#160;the&#160;whole<br/>NCA&#160;evolution,&#160;for&#160;example&#160;avoiding&#160;the&#160;decayment&#160;of&#160;a<br/>Growing&#160;NCA&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#6">13).&#160;</a>In&#160;this&#160;part&#160;we&#160;focus&#160;on&#160;turning<br/>3&#160;Growing&#160;NCA&#160;into&#160;Persistent&#160;ones,&#160;this&#160;is&#160;much&#160;harder<br/>than&#160;the&#160;previous&#160;experiment&#160;because&#160;the&#160;organism&#160;remains<br/>in&#160;the&#160;final&#160;state&#160;only&#160;for&#160;a&#160;limited&#160;amount&#160;of&#160;time,&#160;so&#160;the<br/>adversaries&#160;have&#160;to&#160;take&#160;over&#160;the&#160;whole&#160;organism&#160;before&#160;it<br/>decays.</p>
+<p style="position:absolute;top:274px;left:81px;white-space:nowrap" class="ft61">Results</p>
+<p style="position:absolute;top:274px;left:142px;white-space:nowrap" class="ft61">In&#160;figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#6">13&#160;</a>we&#160;plot&#160;the&#160;evolution&#160;of&#160;3&#160;Growing</p>
+<p style="position:absolute;top:292px;left:81px;white-space:nowrap" class="ft64">NCA&#160;before&#160;we&#160;turn&#160;them&#160;into&#160;Persisting&#160;ones,&#160;in&#160;all&#160;cases<br/>we&#160;perform&#160;the&#160;adversarial&#160;injection&#160;at&#160;step&#160;t=60,&#160;which&#160;cor-<br/>responds&#160;to&#160;the&#160;time&#160;the&#160;Growing&#160;NCA&#160;reaches&#160;the&#160;target<br/>state.</p>
+<p style="position:absolute;top:376px;left:101px;white-space:nowrap" class="ft61">t=60</p>
+<p style="position:absolute;top:376px;left:194px;white-space:nowrap" class="ft61">t=80</p>
+<p style="position:absolute;top:376px;left:283px;white-space:nowrap" class="ft61">t=120</p>
+<p style="position:absolute;top:376px;left:370px;white-space:nowrap" class="ft61">t=240</p>
+<p style="position:absolute;top:707px;left:81px;white-space:nowrap" class="ft64">Figure&#160;13:&#160;Growing&#160;NCA&#160;rules&#160;that&#160;we&#160;used&#160;in&#160;the&#160;dynamic<br/>experiment.&#160;After&#160;some&#160;steps&#160;they&#160;degenerate.</p>
+<p style="position:absolute;top:771px;left:96px;white-space:nowrap" class="ft61">The&#160;Growing&#160;lizard&#160;was&#160;the&#160;easiest&#160;to&#160;turn&#160;into&#160;Persistent,</p>
+<p style="position:absolute;top:789px;left:81px;white-space:nowrap" class="ft64">because&#160;it&#160;decays&#160;at&#160;about&#160;step&#160;200.&#160;This&#160;leaves&#160;about&#160;140<br/>steps&#160;for&#160;the&#160;adversaries&#160;to&#160;take&#160;over&#160;the&#160;organism,&#160;which<br/>are&#160;sufficient&#160;even&#160;when&#160;injecting&#160;the&#160;adversaries&#160;in&#160;a&#160;small<br/>3x3&#160;square&#160;seed&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#6">14).</a></p>
+<p style="position:absolute;top:862px;left:96px;white-space:nowrap" class="ft61">The&#160;butterfly&#160;was&#160;a&#160;little&#160;harder.&#160;In&#160;this&#160;case&#160;the&#160;organ-</p>
+<p style="position:absolute;top:880px;left:81px;white-space:nowrap" class="ft64">ism&#160;decays&#160;by&#160;vanishing&#160;at&#160;about&#160;step&#160;120.&#160;We&#160;see&#160;that&#160;the<br/>adversaries&#160;exploit&#160;this&#160;feature&#160;and&#160;take&#160;over&#160;the&#160;organism<br/>exactly&#160;when&#160;it&#160;vanishes.&#160;We&#160;weren’t&#160;able&#160;to&#160;train&#160;this&#160;NCA<br/>with&#160;a&#160;square&#160;seed,&#160;which&#160;indicates&#160;the&#160;difficulty&#160;of&#160;the&#160;task.<br/>Still,&#160;we&#160;managed&#160;to&#160;reduce&#160;the&#160;initial&#160;number&#160;of&#160;adversaries<br/>to&#160;a&#160;very&#160;low&#160;number,&#160;only&#160;3%&#160;of&#160;the&#160;total&#160;cells.</p>
+<p style="position:absolute;top:989px;left:96px;white-space:nowrap" class="ft61">Finally,&#160;to&#160;turn&#160;a&#160;Growing&#160;NCA&#160;of&#160;the&#160;firework&#160;into&#160;a</p>
+<p style="position:absolute;top:1007px;left:81px;white-space:nowrap" class="ft64">Persistent&#160;one,&#160;we&#160;needed&#160;about&#160;50%&#160;of&#160;cells&#160;substituted,<br/>much&#160;higher&#160;than&#160;the&#160;lizard&#160;and&#160;the&#160;butterfly.&#160;We&#160;think&#160;this<br/>is&#160;due&#160;to&#160;2&#160;factors:</p>
+<p style="position:absolute;top:86px;left:476px;white-space:nowrap" class="ft61">1.&#160;Unlike&#160;the&#160;butterfly,&#160;the&#160;firework&#160;decays&#160;by&#160;exploding</p>
+<p style="position:absolute;top:104px;left:494px;white-space:nowrap" class="ft61">rather&#160;than&#160;vanishing&#160;(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#6">13).</a></p>
+<p style="position:absolute;top:148px;left:476px;white-space:nowrap" class="ft61">2.&#160;Unlike&#160;the&#160;lizard,&#160;the&#160;firework&#160;decays&#160;at&#160;about&#160;step&#160;140</p>
+<p style="position:absolute;top:166px;left:494px;white-space:nowrap" class="ft64">(figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#6">13),&#160;</a>since&#160;we&#160;perform&#160;the&#160;adversarial&#160;injection&#160;at<br/>step&#160;60,&#160;this&#160;leaves&#160;only&#160;80&#160;steps&#160;for&#160;the&#160;adversaries&#160;to<br/>take&#160;over.</p>
+<p style="position:absolute;top:242px;left:494px;white-space:nowrap" class="ft61">These&#160;two&#160;factors&#160;combined&#160;mean&#160;that&#160;the&#160;adversaries</p>
+<p style="position:absolute;top:260px;left:479px;white-space:nowrap" class="ft64">must&#160;take&#160;over&#160;before&#160;the&#160;growing&#160;cells&#160;explode.&#160;However,<br/>this&#160;time&#160;is&#160;very&#160;limited,&#160;which&#160;leads&#160;to&#160;a&#160;high&#160;initial&#160;number<br/>of&#160;adversaries.</p>
+<p style="position:absolute;top:317px;left:494px;white-space:nowrap" class="ft61">From&#160;these&#160;experiments&#160;we&#160;can&#160;hypothesize&#160;that&#160;the&#160;more</p>
+<p style="position:absolute;top:335px;left:479px;white-space:nowrap" class="ft64">time&#160;it&#160;takes&#160;for&#160;the&#160;organism&#160;to&#160;decay&#160;the&#160;lower&#160;the&#160;initial<br/>percentage&#160;of&#160;adversaries&#160;is&#160;needed.</p>
+<p style="position:absolute;top:391px;left:497px;white-space:nowrap" class="ft62">t=60</p>
+<p style="position:absolute;top:391px;left:568px;white-space:nowrap" class="ft62">t=100</p>
+<p style="position:absolute;top:391px;left:642px;white-space:nowrap" class="ft62">t=150</p>
+<p style="position:absolute;top:391px;left:711px;white-space:nowrap" class="ft62">t=200</p>
+<p style="position:absolute;top:391px;left:782px;white-space:nowrap" class="ft62">t=500</p>
+<p style="position:absolute;top:894px;left:479px;white-space:nowrap" class="ft65">Figure&#160;14:&#160;Results&#160;of&#160;the&#160;dynamic&#160;experiments,&#160;as&#160;before,<br/>first&#160;we&#160;plot&#160;the&#160;evolution&#160;of&#160;the&#160;organism,&#160;and&#160;right&#160;below<br/>it&#160;the&#160;cell&#160;mask,&#160;which&#160;tells&#160;where&#160;the&#160;original&#160;(orange)&#160;and<br/>the&#160;adversarial&#160;(blue)&#160;cells&#160;are&#160;located.&#160;t&#160;refers&#160;to&#160;the&#160;number<br/>of&#160;steps&#160;since&#160;the&#160;beginning&#160;of&#160;the&#160;evolution,&#160;we&#160;inject&#160;the<br/>adversaries&#160;always&#160;at&#160;step&#160;60.&#160;We&#160;encourage&#160;the&#160;reader&#160;to<br/>take&#160;a&#160;look&#160;at&#160;the&#160;videos&#160;of&#160;this&#160;evolution&#160;at&#160;<a href="https://letteraunica.github.io/neural_cellular_automata/extra#dynamic-properties">https://<br/>letteraunica.github.io/neural_cellular_</a></p>
+<p style="position:absolute;top:1038px;left:479px;white-space:nowrap" class="ft61"><a href="https://letteraunica.github.io/neural_cellular_automata/extra#dynamic-properties">automata/extra#dynamic-properties</a></p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft63">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:15px;font-family:Times;color:#000000;}
+	.ft71{font-size:12px;font-family:Times;color:#000000;}
+	.ft72{font-size:14px;font-family:Times;color:#000000;}
+	.ft73{font-size:8px;font-family:Times;color:#000000;}
+	.ft74{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft75{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft76{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:84px;left:173px;white-space:nowrap" class="ft70">Adding&#160;a&#160;perturbation</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft75">Iterated&#160;maps,&#160;like&#160;cellular&#160;automata&#160;and&#160;differential&#160;equa-<br/>tions,&#160;oftentimes&#160;lead&#160;to&#160;chaotic&#160;systems.&#160;This&#160;implies&#160;that<br/>small&#160;changes&#160;to&#160;the&#160;initial&#160;conditions&#160;or&#160;to&#160;the&#160;function&#160;pa-<br/>rameters,&#160;will&#160;lead&#160;to&#160;completely&#160;different&#160;results&#160;after&#160;some<br/>time&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Berto&#160;and&#160;Tagliabue&#160;(2022).</a></p>
+<p style="position:absolute;top:201px;left:96px;white-space:nowrap" class="ft71">This&#160;is&#160;a&#160;double-edged&#160;sword:</p>
+<p style="position:absolute;top:234px;left:83px;white-space:nowrap" class="ft71">•&#160;On&#160;one&#160;hand,&#160;chaotic&#160;systems,&#160;by&#160;definition,&#160;are&#160;very&#160;hard</p>
+<p style="position:absolute;top:252px;left:96px;white-space:nowrap" class="ft71">to&#160;predict&#160;and&#160;understand.</p>
+<p style="position:absolute;top:270px;left:83px;white-space:nowrap" class="ft71">•&#160;On&#160;the&#160;other&#160;hand,&#160;lying&#160;at&#160;the&#160;edge&#160;of&#160;chaos&#160;gives&#160;us&#160;the</p>
+<p style="position:absolute;top:288px;left:96px;white-space:nowrap" class="ft75">power&#160;of&#160;influencing&#160;the&#160;system&#160;by&#160;a&#160;lot,&#160;with&#160;very&#160;lit-<br/>tle&#160;changes&#160;to&#160;its&#160;parameters&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Berto&#160;and&#160;Tagliabue&#160;(2022).<br/></a>Mother&#160;nature&#160;knows&#160;this&#160;very&#160;well,&#160;for&#160;example,&#160;humans<br/>have&#160;99%&#160;of&#160;the&#160;DNA&#160;in&#160;common&#160;with&#160;chimpanzees,&#160;yet<br/>we&#160;are&#160;very&#160;different&#160;from&#160;them.</p>
+<p style="position:absolute;top:392px;left:96px;white-space:nowrap" class="ft71">In&#160;the&#160;previous&#160;paragraphs,&#160;when&#160;training&#160;the&#160;adversaries,</p>
+<p style="position:absolute;top:410px;left:81px;white-space:nowrap" class="ft75">oftentimes&#160;the&#160;parameters&#160;become&#160;widely&#160;different&#160;from&#160;the<br/>ones&#160;of&#160;the&#160;original&#160;cells.&#160;This&#160;is&#160;a&#160;problem,&#160;because&#160;in&#160;a<br/>real&#160;organism&#160;we&#160;would&#160;like&#160;to&#160;edit&#160;the&#160;cells&#160;as&#160;little&#160;as&#160;pos-<br/>sible.&#160;In&#160;this&#160;section&#160;we&#160;try&#160;to&#160;fix&#160;this&#160;problem&#160;by&#160;finding<br/>adversaries&#160;with&#160;parameters&#160;close&#160;to&#160;the&#160;original&#160;NCA&#160;pa-<br/>rameters.</p>
+<p style="position:absolute;top:533px;left:81px;white-space:nowrap" class="ft72">The&#160;model</p>
+<p style="position:absolute;top:559px;left:81px;white-space:nowrap" class="ft75">As&#160;we&#160;said,&#160;we’d&#160;like&#160;to&#160;have&#160;adversaries&#160;with&#160;weights&#160;that<br/>are&#160;only&#160;a&#160;little&#160;perturbation&#160;off&#160;the&#160;original&#160;ones:</p>
+<p style="position:absolute;top:611px;left:199px;white-space:nowrap" class="ft71">wnew&#160;=&#160;wold&#160;+&#160;∆w</p>
+<p style="position:absolute;top:646px;left:81px;white-space:nowrap" class="ft75">To&#160;be&#160;sure&#160;that&#160;the&#160;perturbation&#160;∆w&#160;remains&#160;as&#160;small&#160;as&#160;pos-<br/>sible,&#160;we&#160;added&#160;an&#160;additional&#160;term&#160;in&#160;the&#160;loss,&#160;which&#160;penal-<br/>izes&#160;the&#160;L2&#160;norm&#160;of&#160;the&#160;perturbation&#160;|∆w|2,&#160;so&#160;the&#160;total&#160;loss<br/>will&#160;be:</p>
+<p style="position:absolute;top:739px;left:155px;white-space:nowrap" class="ft71">L&#160;=&#160;Ltarget&#160;+&#160;λ1Nold&#160;+&#160;λ2|∆w|2</p>
+<p style="position:absolute;top:769px;left:96px;white-space:nowrap" class="ft71">Where&#160;Ltarget&#160;is&#160;the&#160;distance&#160;to&#160;the&#160;target&#160;image&#160;and&#160;λ1,</p>
+<p style="position:absolute;top:787px;left:81px;white-space:nowrap" class="ft75">λ2&#160;are&#160;hyperparameters.&#160;We&#160;used&#160;two&#160;different&#160;metrics&#160;to<br/>evaluate&#160;the&#160;results,&#160;the&#160;norm&#160;of&#160;the&#160;perturbation&#160;|∆w|2&#160;and<br/>the&#160;the&#160;cosine&#160;similarity&#160;between&#160;wold&#160;and&#160;wnew.</p>
+<p style="position:absolute;top:867px;left:159px;white-space:nowrap" class="ft71">cos(wold,&#160;wnew)&#160;=</p>
+<p style="position:absolute;top:856px;left:280px;white-space:nowrap" class="ft71">⟨wold,&#160;wnew⟩</p>
+<p style="position:absolute;top:877px;left:281px;white-space:nowrap" class="ft71">|wold||wnew|</p>
+<p style="position:absolute;top:911px;left:81px;white-space:nowrap" class="ft72">Results</p>
+<p style="position:absolute;top:937px;left:81px;white-space:nowrap" class="ft75">In&#160;figure&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#7">15&#160;</a>you&#160;can&#160;see&#160;the&#160;metrics&#160;for&#160;turning&#160;a&#160;green&#160;Per-<br/>sistent&#160;lizard&#160;into&#160;a&#160;red&#160;Persistent&#160;lizard&#160;for&#160;lower&#160;and&#160;lower<br/>initial&#160;percentage&#160;of&#160;adversaries&#160;and&#160;for&#160;the&#160;following&#160;train-<br/>ing&#160;regimes.</p>
+<p style="position:absolute;top:1025px;left:77px;white-space:nowrap" class="ft71">1.&#160;When&#160;training&#160;the&#160;adversaries&#160;starting&#160;from&#160;a&#160;random&#160;ini-</p>
+<p style="position:absolute;top:1043px;left:96px;white-space:nowrap" class="ft71">tialization&#160;of&#160;the&#160;weights&#160;and&#160;set&#160;λ2&#160;=&#160;0.01</p>
+<p style="position:absolute;top:86px;left:476px;white-space:nowrap" class="ft71">2.&#160;When&#160;training&#160;the&#160;adversaries&#160;starting&#160;from&#160;the&#160;same</p>
+<p style="position:absolute;top:104px;left:494px;white-space:nowrap" class="ft75">weights&#160;of&#160;the&#160;original&#160;cells,&#160;wnew&#160;=&#160;wold,&#160;and&#160;set<br/>λ2&#160;=&#160;0.01</p>
+<p style="position:absolute;top:152px;left:476px;white-space:nowrap" class="ft71">3.&#160;When&#160;training&#160;the&#160;adversaries&#160;starting&#160;from&#160;the&#160;same</p>
+<p style="position:absolute;top:169px;left:494px;white-space:nowrap" class="ft75">weights&#160;of&#160;the&#160;original&#160;cells,&#160;wnew&#160;=&#160;wold,&#160;and&#160;set<br/>λ2&#160;=&#160;0</p>
+<p style="position:absolute;top:217px;left:476px;white-space:nowrap" class="ft71">4.&#160;When&#160;training&#160;the&#160;adversaries&#160;starting&#160;from&#160;a&#160;random&#160;ini-</p>
+<p style="position:absolute;top:235px;left:494px;white-space:nowrap" class="ft71">tialization&#160;of&#160;the&#160;weights&#160;and&#160;set&#160;λ2&#160;=&#160;0</p>
+<p style="position:absolute;top:267px;left:494px;white-space:nowrap" class="ft71">We&#160;train&#160;each&#160;model&#160;until&#160;it&#160;has&#160;a&#160;loss&#160;&lt;&#160;0.01,&#160;which</p>
+<p style="position:absolute;top:285px;left:479px;white-space:nowrap" class="ft75">we&#160;found&#160;was&#160;an&#160;appropriate&#160;value&#160;to&#160;have&#160;visually&#160;indistin-<br/>guishable&#160;images.</p>
+<p style="position:absolute;top:814px;left:479px;white-space:nowrap" class="ft75">Figure&#160;15:&#160;|∆w|&#160;and&#160;cosine&#160;similarity&#160;measures&#160;in&#160;different<br/>training&#160;regimes.&#160;By&#160;penalizing&#160;|∆w|&#160;we&#160;manage&#160;to&#160;find&#160;ad-<br/>versaries&#160;close&#160;to&#160;the&#160;original&#160;cells&#160;even&#160;when&#160;starting&#160;from&#160;a<br/>random&#160;initialization.&#160;Furthermore,&#160;as&#160;we&#160;decrease&#160;the&#160;num-<br/>ber&#160;of&#160;initial&#160;cells,&#160;|∆w|&#160;increases&#160;and&#160;the&#160;cosine&#160;similarity<br/>decreases.</p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft74">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>505993057f6704ff9c8ee04293a16ba6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:15px;font-family:Times;color:#000000;}
+	.ft81{font-size:12px;font-family:Times;color:#000000;}
+	.ft82{font-size:11px;font-family:Times;color:#000000;}
+	.ft83{font-size:7px;font-family:Times;color:#000000;-moz-transform: matrix(         0,          1,         -1,          0, 0, 0);-webkit-transform: matrix(         0,          1,         -1,          0, 0, 0);-o-transform: matrix(         0,          1,         -1,          0, 0, 0);-ms-transform: matrix(         0,          1,         -1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft84{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft85{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft86{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:84px;left:207px;white-space:nowrap" class="ft80">Related&#160;Work</p>
+<p style="position:absolute;top:108px;left:81px;white-space:nowrap" class="ft84">The&#160;paper&#160;Adversarial&#160;Reprogramming&#160;of&#160;Neural&#160;Cellular<br/>Automata</p>
+<p style="position:absolute;top:126px;left:145px;white-space:nowrap" class="ft81"><a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Randazzo&#160;et&#160;al.&#160;(2021)&#160;</a>laid&#160;the&#160;foundations&#160;for</p>
+<p style="position:absolute;top:144px;left:81px;white-space:nowrap" class="ft84">this&#160;work,&#160;while&#160;the&#160;talk&#160;given&#160;by&#160;Michael&#160;Levin&#160;at&#160;NeurIPS<br/>2018&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Levin&#160;(2018)&#160;</a>provided&#160;biological&#160;insight&#160;and&#160;ideas&#160;for<br/>multiple&#160;experiments.<br/>The&#160;field&#160;of&#160;Neural&#160;Cellular&#160;Automata&#160;is&#160;already&#160;vast,&#160;NCAs<br/>have&#160;been&#160;used&#160;in&#160;texture&#160;generation&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Niklasson&#160;et&#160;al.&#160;(2021),<br/></a>image&#160;classification&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Randazzo&#160;et&#160;al.&#160;(2020),&#160;</a>and&#160;image&#160;seg-<br/>mentation&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Sandler&#160;et&#160;al.&#160;(2020).&#160;</a>Furthermore,&#160;researchers<br/>managed&#160;to&#160;find&#160;the&#160;NCA&#160;that&#160;converges&#160;to&#160;a&#160;given&#160;image<br/>without&#160;training&#160;the&#160;NCA&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Chen&#160;and&#160;Wang&#160;(2020),&#160;</a>in&#160;other<br/>words,&#160;the&#160;authors&#160;use&#160;a&#160;neural&#160;net&#160;to&#160;encode&#160;an&#160;image&#160;in<br/>the&#160;weights&#160;of&#160;a&#160;NCA.&#160;Other&#160;relevant&#160;works&#160;include&#160;the&#160;ap-<br/>plication&#160;of&#160;NCA&#160;to&#160;reaction-diffusion&#160;systems&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Mordvintsev<br/>et&#160;al.&#160;(2021),&#160;</a>in&#160;this&#160;case&#160;the&#160;learned&#160;rule&#160;is&#160;more&#160;general<br/>because&#160;it&#160;doesn’t&#160;depend&#160;on&#160;the&#160;structure&#160;of&#160;the&#160;grid,&#160;this<br/>allows&#160;a&#160;NCA&#160;trained&#160;on&#160;a&#160;2D&#160;grid&#160;to&#160;be&#160;used&#160;on&#160;different<br/>geometries.<br/>The&#160;kinds&#160;of&#160;adversarial&#160;attacks&#160;shown&#160;in&#160;this&#160;paper&#160;stem<br/>from&#160;the&#160;Generative&#160;Advesarial&#160;Networks&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Goodfellow&#160;et&#160;al.<br/>(2014)&#160;</a>area&#160;of&#160;research&#160;and&#160;in&#160;particular&#160;Adversarial&#160;Repro-<br/>gramming&#160;of&#160;Neural&#160;Netowrks</p>
+<p style="position:absolute;top:484px;left:269px;white-space:nowrap" class="ft81"><a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Elsayed&#160;et&#160;al.&#160;(2018),&#160;</a>where</p>
+<p style="position:absolute;top:502px;left:81px;white-space:nowrap" class="ft85">a&#160;target&#160;model&#160;is&#160;kept&#160;frozen&#160;while&#160;ad-hoc&#160;inputs&#160;are&#160;used&#160;to<br/>change&#160;the&#160;functional&#160;behaviour&#160;of&#160;the&#160;original&#160;model.<br/>Additionally,&#160;computer-to-in-vivo&#160;experiments&#160;were&#160;con-<br/>ducted&#160;in&#160;which&#160;organisms&#160;were&#160;developed&#160;from&#160;scratch&#160;to<br/>perform&#160;specific&#160;tasks&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Kriegman&#160;et&#160;al.&#160;(2020).&#160;</a>Other&#160;exam-<br/>ples&#160;of&#160;significantly&#160;modifying&#160;anatomical&#160;outcomes&#160;with-<br/>out&#160;altering&#160;the&#160;genome&#160;include&#160;lines&#160;of&#160;flatworms&#160;that&#160;re-<br/>generate&#160;with&#160;two&#160;heads&#160;following&#160;alteration&#160;of&#160;bioelectric<br/>signaling&#160;<a href="505993057f6704ff9c8ee04293a16ba6s.html#8">Durant&#160;F&#160;(2016).</a></p>
+<p style="position:absolute;top:678px;left:217px;white-space:nowrap" class="ft80">Conclusion</p>
+<p style="position:absolute;top:702px;left:81px;white-space:nowrap" class="ft85">We&#160;demonstrated&#160;that&#160;it&#160;is&#160;possible&#160;to&#160;change&#160;global&#160;prop-<br/>erties&#160;of&#160;a&#160;Neural&#160;Cellular&#160;Automata,&#160;by&#160;injecting&#160;very&#160;few<br/>adversaries&#160;that&#160;gradually&#160;take&#160;over&#160;the&#160;entire&#160;organism.&#160;For<br/>some&#160;tasks,&#160;where&#160;the&#160;time&#160;is&#160;a&#160;major&#160;factor,&#160;a&#160;larger&#160;injec-<br/>tion&#160;of&#160;adversaries&#160;will&#160;be&#160;needed;&#160;for&#160;example,&#160;if&#160;we&#160;want<br/>to&#160;make&#160;a&#160;mortal&#160;organism&#160;immortal,&#160;the&#160;adversaries&#160;must<br/>be&#160;able&#160;to&#160;take&#160;over&#160;before&#160;the&#160;organism&#160;dies.&#160;Finally,&#160;we<br/>showed&#160;that&#160;the&#160;parameters&#160;of&#160;the&#160;adversaries&#160;can&#160;be&#160;chosen<br/>to&#160;be&#160;close&#160;to&#160;the&#160;original&#160;cells&#160;that&#160;they&#160;replace.<br/>The&#160;many&#160;similarities&#160;between&#160;Neural&#160;Cellular&#160;Automata<br/>and&#160;real&#160;biological&#160;organisms,&#160;may&#160;indicate&#160;that&#160;a&#160;more&#160;re-<br/>fined&#160;technique&#160;could&#160;be&#160;used&#160;to&#160;bioengineer&#160;already&#160;living<br/>organisms.</p>
+<p style="position:absolute;top:949px;left:190px;white-space:nowrap" class="ft80">Acknowledgments</p>
+<p style="position:absolute;top:973px;left:81px;white-space:nowrap" class="ft81">We&#160;thank&#160;Alessio&#160;Ansuini&#160;for&#160;his&#160;feedback&#160;and&#160;support.</p>
+<p style="position:absolute;top:1005px;left:218px;white-space:nowrap" class="ft80">References</p>
+<p style="position:absolute;top:1029px;left:81px;white-space:nowrap" class="ft82">Berto,&#160;F.&#160;and&#160;Tagliabue,&#160;J.&#160;(2022).&#160;Cellular&#160;Automata.&#160;In&#160;Zalta,</p>
+<p style="position:absolute;top:1044px;left:111px;white-space:nowrap" class="ft82">E.&#160;N.,&#160;editor,&#160;The&#160;Stanford&#160;Encyclopedia&#160;of&#160;Philosophy.</p>
+<p style="position:absolute;top:87px;left:509px;white-space:nowrap" class="ft86">Metaphysics&#160;Research&#160;Lab,&#160;Stanford&#160;University,&#160;Spring&#160;2022<br/>edition.</p>
+<p style="position:absolute;top:129px;left:479px;white-space:nowrap" class="ft82">Biswas&#160;S,&#160;A.&#160;S.&#160;(2016).&#160;Neural&#160;model&#160;of&#160;gene&#160;regulatory&#160;net-</p>
+<p style="position:absolute;top:144px;left:509px;white-space:nowrap" class="ft86">work:&#160;a&#160;survey&#160;on&#160;supportive&#160;meta-heuristics.&#160;Theory&#160;Biosci.<br/>https://pubmed.ncbi.nlm.nih.gov/27048512/.</p>
+<p style="position:absolute;top:185px;left:479px;white-space:nowrap" class="ft82">Chen,&#160;M.&#160;and&#160;Wang,&#160;Z.&#160;(2020).&#160;Image&#160;generation&#160;with&#160;neural&#160;cel-</p>
+<p style="position:absolute;top:200px;left:509px;white-space:nowrap" class="ft82">lular&#160;automatas.</p>
+<p style="position:absolute;top:227px;left:479px;white-space:nowrap" class="ft82">Durant&#160;F,&#160;Lobo&#160;D,&#160;H.&#160;J.&#160;L.&#160;M.&#160;(2016).&#160;Physiological&#160;controls&#160;of</p>
+<p style="position:absolute;top:242px;left:509px;white-space:nowrap" class="ft86">large-scale&#160;patterning&#160;in&#160;planarian&#160;regeneration:&#160;a&#160;molecular<br/>and&#160;computational&#160;perspective&#160;on&#160;growth&#160;and&#160;form.</p>
+<p style="position:absolute;top:284px;left:479px;white-space:nowrap" class="ft82">Elsayed,&#160;G.&#160;F.,&#160;Goodfellow,&#160;I.,&#160;and&#160;Sohl-Dickstein,&#160;J.&#160;(2018).&#160;Ad-</p>
+<p style="position:absolute;top:299px;left:509px;white-space:nowrap" class="ft82">versarial&#160;reprogramming&#160;of&#160;neural&#160;networks.</p>
+<p style="position:absolute;top:326px;left:479px;white-space:nowrap" class="ft82">Goodfellow,&#160;I.&#160;J.,&#160;Pouget-Abadie,&#160;J.,&#160;Mirza,&#160;M.,&#160;Xu,&#160;B.,&#160;Warde-</p>
+<p style="position:absolute;top:341px;left:509px;white-space:nowrap" class="ft86">Farley,&#160;D.,&#160;Ozair,&#160;S.,&#160;Courville,&#160;A.,&#160;and&#160;Bengio,&#160;Y.&#160;(2014).<br/>Generative&#160;adversarial&#160;networks.</p>
+<p style="position:absolute;top:383px;left:479px;white-space:nowrap" class="ft82">Kriegman,&#160;S.,&#160;Blackiston,&#160;D.,&#160;Levin,&#160;M.,&#160;and&#160;Bongard,&#160;J.&#160;(2020).</p>
+<p style="position:absolute;top:398px;left:509px;white-space:nowrap" class="ft86">A&#160;scalable&#160;pipeline&#160;for&#160;designing&#160;reconfigurable&#160;organ-<br/>isms.</p>
+<p style="position:absolute;top:413px;left:551px;white-space:nowrap" class="ft82">Proceedings&#160;of&#160;the&#160;National&#160;Academy&#160;of&#160;Sciences</p>
+<p style="position:absolute;top:413px;left:834px;white-space:nowrap" class="ft82">,</p>
+<p style="position:absolute;top:428px;left:509px;white-space:nowrap" class="ft82">117(4):1853–1859.</p>
+<p style="position:absolute;top:454px;left:479px;white-space:nowrap" class="ft82">Levin,&#160;M.&#160;(2018).&#160;What&#160;bodies&#160;think&#160;about:&#160;Bioelectric&#160;computa-</p>
+<p style="position:absolute;top:469px;left:509px;white-space:nowrap" class="ft82">tion&#160;outside&#160;the&#160;nervous&#160;system.&#160;NeurIPS&#160;2018.</p>
+<p style="position:absolute;top:496px;left:479px;white-space:nowrap" class="ft82">Lobo&#160;D,&#160;Solano&#160;M,&#160;B.&#160;G.&#160;L.&#160;M.&#160;(2014).&#160;A&#160;linear-encoding&#160;model</p>
+<p style="position:absolute;top:511px;left:509px;white-space:nowrap" class="ft86">explains&#160;the&#160;variability&#160;of&#160;the&#160;target&#160;morphology&#160;in&#160;regenera-<br/>tion.</p>
+<p style="position:absolute;top:553px;left:479px;white-space:nowrap" class="ft82">Moore,&#160;D.&#160;G.,&#160;Walker,&#160;S.&#160;I.,&#160;and&#160;Levin,&#160;M.&#160;(2018).&#160;Pattern&#160;regen-</p>
+<p style="position:absolute;top:568px;left:509px;white-space:nowrap" class="ft86">eration&#160;in&#160;coupled&#160;networks.&#160;ALIFE&#160;2018:&#160;The&#160;2018&#160;Confer-<br/>ence&#160;on&#160;Artificial&#160;Life:204–205.</p>
+<p style="position:absolute;top:610px;left:479px;white-space:nowrap" class="ft82">Mordvintsev,&#160;A.,&#160;Randazzo,&#160;E.,&#160;and&#160;Niklasson,&#160;E.&#160;(2021).&#160;Differ-</p>
+<p style="position:absolute;top:625px;left:509px;white-space:nowrap" class="ft82">entiable&#160;programming&#160;of&#160;reaction-diffusion&#160;patterns.</p>
+<p style="position:absolute;top:652px;left:479px;white-space:nowrap" class="ft82">Mordvintsev,&#160;A.,&#160;Randazzo,&#160;E.,&#160;Niklasson,&#160;E.,&#160;and&#160;Levin,</p>
+<p style="position:absolute;top:667px;left:509px;white-space:nowrap" class="ft82">M.&#160;(2020).</p>
+<p style="position:absolute;top:667px;left:588px;white-space:nowrap" class="ft82">Growing&#160;neural&#160;cellular&#160;automata.</p>
+<p style="position:absolute;top:667px;left:800px;white-space:nowrap" class="ft82">Distill</p>
+<p style="position:absolute;top:667px;left:834px;white-space:nowrap" class="ft82">.</p>
+<p style="position:absolute;top:682px;left:509px;white-space:nowrap" class="ft82">https://distill.pub/2020/growing-ca.</p>
+<p style="position:absolute;top:708px;left:479px;white-space:nowrap" class="ft82">Nanos&#160;V,&#160;L.&#160;M.&#160;(2021).</p>
+<p style="position:absolute;top:708px;left:667px;white-space:nowrap" class="ft82">Multi-scale&#160;chimerism:</p>
+<p style="position:absolute;top:708px;left:821px;white-space:nowrap" class="ft82">An</p>
+<p style="position:absolute;top:723px;left:509px;white-space:nowrap" class="ft86">experimental&#160;window&#160;on&#160;the&#160;algorithms&#160;of&#160;anatomi-<br/>cal&#160;control.</p>
+<p style="position:absolute;top:739px;left:609px;white-space:nowrap" class="ft82">Cells&#160;Dev.</p>
+<p style="position:absolute;top:738px;left:703px;white-space:nowrap" class="ft82">Epub&#160;ahead&#160;of&#160;print,</p>
+<p style="position:absolute;top:753px;left:509px;white-space:nowrap" class="ft82">https://pubmed.ncbi.nlm.nih.gov/34974205/.</p>
+<p style="position:absolute;top:780px;left:479px;white-space:nowrap" class="ft82">Neumann,&#160;J.&#160;V.&#160;and&#160;Burks,&#160;A.&#160;W.&#160;(1966).</p>
+<p style="position:absolute;top:780px;left:749px;white-space:nowrap" class="ft82">Theory&#160;of&#160;Self-</p>
+<p style="position:absolute;top:795px;left:509px;white-space:nowrap" class="ft82">Reproducing&#160;Automata</p>
+<p style="position:absolute;top:795px;left:633px;white-space:nowrap" class="ft82">.&#160;University&#160;of&#160;Illinois&#160;Press,&#160;USA.</p>
+<p style="position:absolute;top:822px;left:479px;white-space:nowrap" class="ft82">Niklasson,&#160;E.,&#160;Mordvintsev,&#160;A.,&#160;Randazzo,&#160;E.,&#160;and&#160;Levin,&#160;M.</p>
+<p style="position:absolute;top:837px;left:509px;white-space:nowrap" class="ft82">(2021).&#160;Self-organising&#160;textures.&#160;Distill.</p>
+<p style="position:absolute;top:864px;left:479px;white-space:nowrap" class="ft82">Randazzo,&#160;E.,&#160;Mordvintsev,&#160;A.,&#160;Niklasson,&#160;E.,&#160;and&#160;Levin,&#160;M.</p>
+<p style="position:absolute;top:879px;left:509px;white-space:nowrap" class="ft82">(2021).</p>
+<p style="position:absolute;top:879px;left:560px;white-space:nowrap" class="ft82">Adversarial&#160;reprogramming&#160;of&#160;neural&#160;cellular&#160;au-</p>
+<p style="position:absolute;top:894px;left:509px;white-space:nowrap" class="ft82">tomata.&#160;Distill.&#160;https://distill.pub/selforg/2021/adversarial.</p>
+<p style="position:absolute;top:921px;left:479px;white-space:nowrap" class="ft82">Randazzo,&#160;E.,&#160;Mordvintsev,&#160;A.,&#160;Niklasson,&#160;E.,&#160;Levin,&#160;M.,&#160;and</p>
+<p style="position:absolute;top:936px;left:509px;white-space:nowrap" class="ft86">Greydanus,&#160;S.&#160;(2020).&#160;Self-classifying&#160;mnist&#160;digits.&#160;Distill.<br/>https://distill.pub/2020/selforg/mnist.</p>
+<p style="position:absolute;top:977px;left:479px;white-space:nowrap" class="ft82">Sandler,&#160;M.,&#160;Zhmoginov,&#160;A.,&#160;Luo,&#160;L.,&#160;Mordvintsev,&#160;A.,&#160;Randazzo,</p>
+<p style="position:absolute;top:992px;left:509px;white-space:nowrap" class="ft86">E.,&#160;and&#160;y&#160;Arcas,&#160;B.&#160;A.&#160;(2020).&#160;Image&#160;segmentation&#160;via&#160;cellu-<br/>lar&#160;automata.</p>
+<p style="position:absolute;top:345px;left:883px;white-space:nowrap" class="ft83">Downloaded from http://direct.mit.edu/isal/proceedings-pdf/isal/34/38/2035417/isal_a_00521.pdf by guest on 23 July 2022</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:19px;font-family:Times;color:#000000;}
+	.ft11{font-size:15px;font-family:Times;color:#000000;}
+	.ft12{font-size:9px;font-family:Times;color:#000000;}
+	.ft13{font-size:8px;font-family:Times;color:#000000;}
+	.ft14{font-size:12px;font-family:Times;color:#000000;}
+	.ft15{font-size:11px;font-family:Times;color:#000000;}
+	.ft16{font-size:5px;font-family:Times;color:#000000;}
+	.ft17{font-size:10px;font-family:Times;color:#595959;}
+	.ft18{font-size:16px;font-family:Times;color:#000000;}
+	.ft19{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft110{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:143px;left:82px;white-space:nowrap" class="ft10">Investigating&#160;the&#160;Effects&#160;of&#160;Noise&#160;on&#160;a&#160;Cell-to-Cell&#160;Communication&#160;Mechanism&#160;for</p>
+<p style="position:absolute;top:167px;left:351px;white-space:nowrap" class="ft10">Structure&#160;Regeneration</p>
+<p style="position:absolute;top:207px;left:223px;white-space:nowrap" class="ft11">Giordano&#160;B.&#160;S.&#160;Ferreira1,&#160;Matthias&#160;Scheutz1&#160;and&#160;Michael&#160;Levin2</p>
+<p style="position:absolute;top:242px;left:221px;white-space:nowrap" class="ft13">1Human&#160;Robot&#160;Interaction&#160;Laboratory&#160;at&#160;Tufts&#160;University,&#160;Medford,&#160;MA&#160;02155</p>
+<p style="position:absolute;top:259px;left:262px;white-space:nowrap" class="ft13">2Allen&#160;Discovery&#160;Center&#160;at&#160;Tufts&#160;University,&#160;Medford,&#160;MA&#160;02155</p>
+<p style="position:absolute;top:279px;left:271px;white-space:nowrap" class="ft14">{giordano.ferreira,&#160;matthias.scheutz,&#160;michael.levin}@tufts.edu</p>
+<p style="position:absolute;top:329px;left:232px;white-space:nowrap" class="ft14">Abstract</p>
+<p style="position:absolute;top:362px;left:96px;white-space:nowrap" class="ft19">In&#160;this&#160;paper&#160;we&#160;modified&#160;a&#160;previous&#160;cell-cell&#160;communication<br/>mechanism&#160;of&#160;dynamic&#160;structure&#160;discovery&#160;and&#160;regeneration<br/>to&#160;account&#160;for&#160;the&#160;presence&#160;of&#160;noise&#160;that&#160;could&#160;alter&#160;the&#160;route<br/>of&#160;messages&#160;transmitted&#160;across&#160;cells.&#160;We&#160;report&#160;results&#160;from<br/>a&#160;large&#160;number&#160;of&#160;simulation&#160;runs&#160;where&#160;noise&#160;was&#160;applied<br/>to&#160;the&#160;distance&#160;and&#160;direction&#160;of&#160;messages&#160;dispatched&#160;by&#160;cells.<br/>Based&#160;on&#160;our&#160;analysis&#160;of&#160;the&#160;results,&#160;we&#160;proposed&#160;an&#160;“activa-<br/>tion”&#160;mechanism&#160;where&#160;missing&#160;cells&#160;need&#160;to&#160;receive&#160;a&#160;cer-<br/>tain&#160;number&#160;of&#160;messages&#160;first&#160;before&#160;they&#160;divide&#160;and&#160;recreate<br/>missing&#160;cells.&#160;We&#160;then&#160;show&#160;that,&#160;due&#160;to&#160;the&#160;inherent&#160;mes-<br/>sage&#160;redundancy&#160;in&#160;the&#160;organism&#160;this&#160;mechanism&#160;improved<br/>the&#160;performance&#160;of&#160;the&#160;model&#160;even&#160;when&#160;noise&#160;is&#160;present&#160;on<br/>packets.</p>
+<p style="position:absolute;top:587px;left:211px;white-space:nowrap" class="ft11">Introduction</p>
+<p style="position:absolute;top:612px;left:81px;white-space:nowrap" class="ft110">Several&#160;biological&#160;organisms&#160;are&#160;capable&#160;of&#160;regenerating<br/>some&#160;of&#160;their&#160;cellular&#160;structures.&#160;For&#160;example,&#160;it&#160;is&#160;well-<br/>known&#160;that&#160;some&#160;animals&#160;can&#160;fully&#160;regrow&#160;their&#160;liver&#160;after<br/>the&#160;removal&#160;of&#160;two&#160;thirds&#160;of&#160;its&#160;tissue&#160;(Higgins,&#160;1931),&#160;deer<br/>can&#160;regrow&#160;the&#160;correct&#160;pattern&#160;of&#160;their&#160;antlers&#160;at&#160;a&#160;rate&#160;of<br/>over&#160;1&#160;cm/day&#160;of&#160;new&#160;bone,&#160;nerve&#160;and&#160;skin&#160;(Price&#160;et&#160;al.,<br/>2005),&#160;and&#160;planarian&#160;flatworms&#160;can&#160;recover&#160;their&#160;shapes<br/>from&#160;any&#160;fragment&#160;of&#160;the&#160;body&#160;as&#160;small&#160;as</p>
+<p style="position:absolute;top:734px;left:368px;white-space:nowrap" class="ft13">1</p>
+<p style="position:absolute;top:745px;left:357px;white-space:nowrap" class="ft13">279</p>
+<p style="position:absolute;top:745px;left:375px;white-space:nowrap" class="ft16">th</p>
+<p style="position:absolute;top:738px;left:393px;white-space:nowrap" class="ft14">of&#160;their</p>
+<p style="position:absolute;top:756px;left:81px;white-space:nowrap" class="ft110">entire&#160;area&#160;(Morgan,&#160;1898).&#160;Regeneration&#160;of&#160;complex&#160;pat-<br/>tern&#160;(as&#160;distinct&#160;from&#160;simple&#160;wound&#160;healing)&#160;requires&#160;group<br/>decision-making&#160;that&#160;coordinates&#160;cells&#160;toward&#160;forming&#160;the<br/>right&#160;anatomical&#160;structures&#160;of&#160;the&#160;correct&#160;size,&#160;contents,<br/>and&#160;topological&#160;relationship&#160;to&#160;the&#160;rest&#160;of&#160;the&#160;tissue&#160;(Birn-<br/>baum&#160;and&#160;Alvarado,&#160;2008).&#160;Understanding&#160;the&#160;dynamics<br/>that&#160;guide&#160;regenerative&#160;processes&#160;will&#160;shed&#160;light&#160;on&#160;other<br/>research&#160;areas&#160;such&#160;as&#160;regenerative&#160;medicine,&#160;aging,&#160;birth<br/>defects,&#160;and&#160;even&#160;the&#160;pattern&#160;dysregulation&#160;known&#160;as&#160;cancer.</p>
+<p style="position:absolute;top:917px;left:96px;white-space:nowrap" class="ft14">Progress&#160;has&#160;been&#160;made&#160;in&#160;explaining&#160;some&#160;aspects&#160;of</p>
+<p style="position:absolute;top:935px;left:81px;white-space:nowrap" class="ft110">the&#160;regeneration&#160;process&#160;using&#160;models&#160;of&#160;gene&#160;regulation<br/>(Umesono&#160;et&#160;al.,&#160;2013;&#160;Werner&#160;et&#160;al.,&#160;2015;&#160;Owlarn&#160;and<br/>Bartscherer,&#160;2016).&#160;Although&#160;it&#160;is&#160;important&#160;to&#160;identify&#160;gene<br/>products&#160;involved&#160;in&#160;(necessary&#160;for)&#160;regeneration,&#160;future<br/>progress&#160;in&#160;evolutionary&#160;biology,&#160;biomedicine,&#160;and&#160;synthetic<br/>bioengineering&#160;requires&#160;gaining&#160;algorithmic&#160;understanding<br/>of&#160;how&#160;a&#160;network&#160;of&#160;cells&#160;maintains&#160;information&#160;about&#160;the</p>
+<p style="position:absolute;top:329px;left:479px;white-space:nowrap" class="ft110">large-scale&#160;shape&#160;of&#160;the&#160;organism&#160;and&#160;correctly&#160;creates&#160;miss-<br/>ing&#160;structures&#160;(Levin,&#160;2012).</p>
+<p style="position:absolute;top:372px;left:494px;white-space:nowrap" class="ft14">Cell-cell&#160;communication&#160;is&#160;a&#160;crucial&#160;aspect&#160;of&#160;this&#160;pro-</p>
+<p style="position:absolute;top:390px;left:479px;white-space:nowrap" class="ft14">cess.</p>
+<p style="position:absolute;top:390px;left:523px;white-space:nowrap" class="ft14">For&#160;example,&#160;planarian&#160;flatworms&#160;bisected&#160;at&#160;any</p>
+<p style="position:absolute;top:408px;left:479px;white-space:nowrap" class="ft110">point&#160;along&#160;their&#160;length&#160;will&#160;give&#160;rise&#160;to&#160;normal&#160;worms:&#160;the<br/>anterior-facing&#160;wound&#160;makes&#160;a&#160;head,&#160;while&#160;the&#160;posterior-<br/>facing&#160;wound&#160;makes&#160;a&#160;tail.&#160;The&#160;cut&#160;ends&#160;of&#160;each&#160;fragment<br/>create&#160;radically&#160;different&#160;anatomical&#160;structures&#160;despite&#160;the<br/>fact&#160;that&#160;they&#160;were&#160;adjacent&#160;neighbors&#160;before&#160;the&#160;cut.&#160;Thus,<br/>the&#160;information&#160;needed&#160;to&#160;make&#160;this&#160;anatomical&#160;decision<br/>is&#160;not&#160;local&#160;(cannot&#160;be&#160;specified&#160;by&#160;positional&#160;information,<br/>which&#160;is&#160;the&#160;same&#160;for&#160;wounds&#160;on&#160;either&#160;side&#160;of&#160;the&#160;scalpel<br/>cut).&#160;Instead,&#160;the&#160;wound&#160;cells&#160;must&#160;communicate&#160;with&#160;the<br/>rest&#160;of&#160;the&#160;body&#160;to&#160;determine&#160;which&#160;structures&#160;to&#160;make&#160;based<br/>on&#160;what&#160;is&#160;present&#160;and&#160;where&#160;the&#160;wound&#160;is&#160;located&#160;with&#160;re-<br/>spect&#160;to&#160;the&#160;remaining&#160;body.&#160;This&#160;information&#160;must&#160;be&#160;com-<br/>puted&#160;in&#160;real&#160;time&#160;during&#160;the&#160;life&#160;of&#160;the&#160;animal&#160;(the&#160;genome<br/>encodes&#160;the&#160;computational&#160;machinery&#160;to&#160;cope&#160;with&#160;unpre-<br/>dictable&#160;injuries).</p>
+<p style="position:absolute;top:684px;left:494px;white-space:nowrap" class="ft14">Importantly,&#160;the&#160;target&#160;morphology&#160;(TM,&#160;the&#160;shape&#160;to</p>
+<p style="position:absolute;top:702px;left:479px;white-space:nowrap" class="ft110">which&#160;an&#160;animal&#160;regenerates&#160;upon&#160;damage)&#160;of&#160;a&#160;given&#160;an-<br/>imal&#160;is&#160;not&#160;invariant&#160;-&#160;it&#160;is&#160;not&#160;hardcoded,&#160;nor&#160;is&#160;it&#160;directly<br/>specified&#160;in&#160;the&#160;genome&#160;(Levin,&#160;2014).&#160;It&#160;is&#160;well-known&#160;that<br/>genomes&#160;do&#160;not&#160;specify&#160;shape&#160;directly;&#160;anatomy&#160;is&#160;an&#160;emer-<br/>gent&#160;feature&#160;of&#160;the&#160;computational&#160;and&#160;physical&#160;processes&#160;car-<br/>ried&#160;out&#160;by&#160;the&#160;proteins&#160;encoded&#160;with&#160;the&#160;genome.&#160;Less<br/>well-appreciated&#160;is&#160;the&#160;fact&#160;that&#160;this&#160;middle&#160;layer&#160;between<br/>the&#160;genome&#160;and&#160;the&#160;anatomical&#160;outcomes&#160;is&#160;an&#160;attractive&#160;and<br/>tractable&#160;target&#160;for&#160;interventions&#160;that&#160;can&#160;alter&#160;anatomy&#160;from<br/>its&#160;genome-default&#160;outcome&#160;despite&#160;a&#160;normal&#160;wild-time&#160;ge-<br/>netic&#160;sequence&#160;(Levin,&#160;2013;&#160;Sullivan&#160;et&#160;al.,&#160;2016).&#160;Research<br/>on&#160;long-term&#160;changes&#160;of&#160;regenerative&#160;pattern&#160;has&#160;revealed<br/>that&#160;the&#160;target&#160;morphology&#160;can&#160;be&#160;altered&#160;and&#160;re-written,<br/>without&#160;editing&#160;the&#160;genomic&#160;sequence&#160;(reviewed&#160;in&#160;Lobo<br/>et&#160;al.&#160;(2014)).&#160;For&#160;instance,&#160;studies&#160;with&#160;deer&#160;showed&#160;that&#160;lo-<br/>calized&#160;injury&#160;(not&#160;mutation)&#160;of&#160;a&#160;deer’s&#160;antlers&#160;result&#160;in&#160;ec-<br/>topic&#160;branches&#160;at&#160;that&#160;same&#160;location,&#160;in&#160;subsequent&#160;years&#160;of<br/>antler&#160;regrowth,&#160;revealing&#160;a&#160;pattern&#160;memory&#160;that&#160;can&#160;be&#160;al-<br/>tered&#160;by&#160;experience&#160;not&#160;requiring&#160;genetic&#160;change&#160;(Bubenik,<br/>1990).&#160;Similarly,&#160;planarian&#160;flatworms&#160;can&#160;be&#160;converted&#160;to&#160;a</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft17">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft17">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft17">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft17">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft17">170</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft17">Oral presentation</p>
+<p style="position:absolute;top:52px;left:463px;white-space:nowrap" class="ft18">ECAL&#160;2017</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:8px;font-family:Times;color:#000000;}
+	.ft22{font-size:6px;font-family:Times;color:#000000;}
+	.ft23{font-size:11px;font-family:Times;color:#000000;}
+	.ft24{font-size:10px;font-family:Times;color:#595959;}
+	.ft25{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft26{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft25">permanent&#160;biaxial&#160;two-headed&#160;form&#160;after&#160;a&#160;brief&#160;(transient)<br/>physiological&#160;perturbation&#160;of&#160;the&#160;cells’&#160;electrical&#160;connectiv-<br/>ity&#160;(Oviedo&#160;et&#160;al.,&#160;2010).&#160;More&#160;recent&#160;work&#160;reveals&#160;how&#160;en-<br/>dogenous&#160;bioelectric&#160;states&#160;within&#160;tissues&#160;serve&#160;as&#160;instructive<br/>elements&#160;that&#160;specify&#160;regenerative&#160;patterns&#160;for&#160;future&#160;rounds<br/>of&#160;injury&#160;(Durant&#160;et&#160;al.,&#160;2017).&#160;A&#160;significant&#160;body&#160;of&#160;knowl-<br/>edge&#160;now&#160;reveals&#160;how&#160;real-time&#160;signaling&#160;among&#160;cell&#160;groups<br/>can&#160;alter&#160;the&#160;patterning&#160;of&#160;embryogenesis,&#160;regeneration,&#160;and<br/>remodeling&#160;from&#160;its&#160;default&#160;TM&#160;despite&#160;a&#160;wild-type&#160;genome<br/>(Herrera-Rincon&#160;et&#160;al.,&#160;2017;&#160;Sullivan&#160;et&#160;al.,&#160;2016).</p>
+<p style="position:absolute;top:265px;left:96px;white-space:nowrap" class="ft20">These&#160;kinds&#160;of&#160;stable&#160;changes&#160;to&#160;the&#160;TM&#160;without&#160;ge-</p>
+<p style="position:absolute;top:283px;left:81px;white-space:nowrap" class="ft25">nomic&#160;editing,&#160;occurring&#160;during&#160;the&#160;life&#160;span&#160;of&#160;an&#160;organ-<br/>ism,&#160;reveal&#160;the&#160;importance&#160;of&#160;dynamic&#160;cell-cell&#160;communica-<br/>tion&#160;networks&#160;for&#160;establishing&#160;large-scale&#160;anatomy&#160;(Sullivan<br/>et&#160;al.,&#160;2016).&#160;Likewise,&#160;the&#160;disorganization&#160;of&#160;patterning&#160;has<br/>been&#160;suggested&#160;as&#160;a&#160;source&#160;of&#160;the&#160;systems-level&#160;circuit&#160;disor-<br/>der&#160;that&#160;leads&#160;to&#160;cancer&#160;(Chernet&#160;and&#160;Levin,&#160;2013;&#160;Soto&#160;and<br/>Sonnenschein,&#160;2005;&#160;Huang&#160;et&#160;al.,&#160;2009).&#160;Rational&#160;control<br/>of&#160;growth&#160;and&#160;form,&#160;for&#160;biomedical&#160;purposes&#160;as&#160;well&#160;as&#160;syn-<br/>thetic&#160;bioengineering,&#160;thus&#160;requires&#160;addressing&#160;a&#160;major&#160;gap<br/>in&#160;this&#160;field:&#160;the&#160;dearth&#160;of&#160;models&#160;of&#160;communication&#160;during<br/>regenerative&#160;decision-making,&#160;especially&#160;those&#160;that&#160;are&#160;algo-<br/>rithmic&#160;(are&#160;sufficiently&#160;specified&#160;to&#160;be&#160;used&#160;as&#160;simulations<br/>that&#160;can&#160;generate&#160;predictions).</p>
+<p style="position:absolute;top:516px;left:96px;white-space:nowrap" class="ft20">In&#160;Ferreira&#160;et&#160;al.&#160;(2016),&#160;we&#160;introduced&#160;a&#160;cell-cell&#160;commu-</p>
+<p style="position:absolute;top:534px;left:81px;white-space:nowrap" class="ft25">nication&#160;mechanism&#160;by&#160;which&#160;cells&#160;perfectly&#160;communicate<br/>with&#160;their&#160;neighbors&#160;and&#160;could&#160;therefore&#160;dynamically&#160;dis-<br/>cover&#160;and&#160;maintain&#160;the&#160;structure&#160;of&#160;a&#160;group&#160;of&#160;cells&#160;while<br/>some&#160;cells&#160;randomly&#160;die.&#160;In&#160;another&#160;set&#160;of&#160;experiments,<br/>we&#160;confirmed&#160;that&#160;even&#160;for&#160;cuts&#160;that&#160;removed&#160;tissue&#160;areas<br/>as&#160;large&#160;as&#160;half&#160;of&#160;the&#160;organism&#160;this&#160;communication&#160;mecha-<br/>nism&#160;could&#160;regenerate&#160;the&#160;entire&#160;shape.&#160;The&#160;communication<br/>mechanism&#160;consists&#160;of&#160;cells&#160;exchanging&#160;morphological&#160;in-<br/>formation&#160;–&#160;defined&#160;here&#160;as&#160;“packets”&#160;–&#160;among&#160;neighbors<br/>and&#160;then&#160;using&#160;this&#160;information&#160;to&#160;regenerate&#160;any&#160;missing<br/>part&#160;in&#160;the&#160;shape&#160;of&#160;the&#160;organism.&#160;We&#160;implemented&#160;this<br/>mechanism&#160;in&#160;an&#160;agent-based&#160;model&#160;(ABM)&#160;in&#160;which&#160;cells<br/>are&#160;modeled&#160;as&#160;agents&#160;that&#160;send&#160;packets&#160;to&#160;and&#160;receive&#160;pack-<br/>ets&#160;from&#160;their&#160;neighbors.&#160;Packets&#160;travel&#160;across&#160;the&#160;structure<br/>in&#160;order&#160;to&#160;trace&#160;and&#160;discover&#160;the&#160;morphological&#160;shape.&#160;The<br/>set&#160;of&#160;existing&#160;packets&#160;at&#160;any&#160;given&#160;time&#160;can&#160;be&#160;seen&#160;to&#160;de-<br/>scribe&#160;some&#160;aspect&#160;of&#160;the&#160;shape&#160;of&#160;the&#160;organism&#160;because&#160;all<br/>packets&#160;previously&#160;passed&#160;through&#160;at&#160;least&#160;one&#160;cell.&#160;Thus,<br/>after&#160;a&#160;packet&#160;has&#160;traveled&#160;through&#160;the&#160;structure&#160;for&#160;a&#160;while,<br/>it&#160;returns&#160;(i.e.,&#160;backtracks)&#160;on&#160;the&#160;same&#160;path&#160;along&#160;which&#160;it<br/>had&#160;previously&#160;traveled.&#160;If&#160;there&#160;is&#160;a&#160;missing&#160;cell&#160;in&#160;any&#160;po-<br/>sition&#160;along&#160;the&#160;path,&#160;the&#160;cell&#160;that&#160;needs&#160;to&#160;relay&#160;this&#160;packet<br/>to&#160;the&#160;missing&#160;cell&#160;starts&#160;to&#160;divide&#160;and&#160;regrows&#160;a&#160;new&#160;cell&#160;in<br/>that&#160;position&#160;of&#160;the&#160;missing&#160;cell,&#160;thus&#160;completing&#160;the&#160;path.</p>
+<p style="position:absolute;top:964px;left:96px;white-space:nowrap" class="ft20">Figure&#160;1&#160;shows&#160;a&#160;functional&#160;diagram&#160;of&#160;the&#160;cell-cell&#160;com-</p>
+<p style="position:absolute;top:982px;left:81px;white-space:nowrap" class="ft20">munication&#160;model.1</p>
+<p style="position:absolute;top:982px;left:218px;white-space:nowrap" class="ft20">The&#160;simulation&#160;iterates&#160;through&#160;all</p>
+<p style="position:absolute;top:1000px;left:81px;white-space:nowrap" class="ft20">cells&#160;sensing&#160;all&#160;packets&#160;received&#160;from&#160;neighbors,&#160;as&#160;well</p>
+<p style="position:absolute;top:1026px;left:100px;white-space:nowrap" class="ft22">1The&#160;version&#160;of&#160;the&#160;simulator&#160;used&#160;in&#160;this&#160;paper&#160;can&#160;be&#160;down-</p>
+<p style="position:absolute;top:1044px;left:81px;white-space:nowrap" class="ft23">loaded&#160;from:&#160;http://hrilab.tufts.edu/software/ecal17.zip</p>
+<p style="position:absolute;top:86px;left:479px;white-space:nowrap" class="ft25">as&#160;all&#160;packets&#160;held&#160;in&#160;the&#160;last&#160;cycle&#160;and&#160;the&#160;new&#160;pack-<br/>ets&#160;this&#160;cell&#160;creates&#160;in&#160;this&#160;cycle&#160;(defined&#160;by&#160;the&#160;param-<br/>eter&#160;P&#160;acketF&#160;req).</p>
+<p style="position:absolute;top:122px;left:614px;white-space:nowrap" class="ft20">This&#160;process&#160;persists&#160;until&#160;the&#160;cur-</p>
+<p style="position:absolute;top:139px;left:479px;white-space:nowrap" class="ft25">rent&#160;cycle&#160;is&#160;different&#160;from&#160;the&#160;defined&#160;maximum&#160;num-<br/>ber&#160;of&#160;cycles.</p>
+<p style="position:absolute;top:157px;left:579px;white-space:nowrap" class="ft20">For&#160;each&#160;packet&#160;the&#160;cell&#160;sensed,&#160;the&#160;cell</p>
+<p style="position:absolute;top:175px;left:479px;white-space:nowrap" class="ft25">decides&#160;the&#160;next&#160;owner&#160;of&#160;this&#160;packet&#160;in&#160;the&#160;next&#160;cycle.<br/>Each&#160;parameter&#160;then&#160;plays&#160;a&#160;role&#160;in&#160;this&#160;decision.&#160;First,<br/>M&#160;inBends&#160;determines&#160;when&#160;the&#160;packet&#160;has&#160;to&#160;backtrack<br/>(i.e.,&#160;after&#160;this&#160;cycle,&#160;the&#160;packet&#160;will&#160;start&#160;to&#160;regenerate&#160;miss-<br/>ing&#160;cells).&#160;M&#160;inT&#160;opLengthT&#160;oHold&#160;and&#160;HoldP&#160;rob&#160;deter-<br/>mine&#160;whether&#160;the&#160;packet&#160;will&#160;be&#160;held&#160;in&#160;the&#160;next&#160;cycle&#160;(i.e.,<br/>will&#160;remain&#160;in&#160;the&#160;same&#160;cell).&#160;BendP&#160;rob&#160;defines&#160;the&#160;proba-<br/>bility&#160;of&#160;a&#160;packet&#160;changing&#160;direction&#160;(i.e.,&#160;bending).&#160;In&#160;sum-<br/>mary,&#160;P&#160;acketF&#160;req&#160;defines&#160;the&#160;number&#160;of&#160;new&#160;packets&#160;each<br/>cell&#160;creates&#160;at&#160;each&#160;cycle.&#160;M&#160;inBends&#160;and&#160;BendP&#160;rob&#160;de-<br/>fine&#160;the&#160;variability&#160;of&#160;the&#160;packet’s&#160;path&#160;in&#160;the&#160;structure.&#160;Fi-<br/>nally,&#160;M&#160;inT&#160;opLengthT&#160;oHold&#160;and&#160;HoldP&#160;rob&#160;define&#160;how<br/>long&#160;a&#160;packet&#160;can&#160;stay&#160;in&#160;the&#160;structure.</p>
+<p style="position:absolute;top:912px;left:479px;white-space:nowrap" class="ft25">Figure&#160;1:&#160;Functional&#160;diagram&#160;of&#160;the&#160;cell-cell&#160;communication<br/>model.</p>
+<p style="position:absolute;top:971px;left:494px;white-space:nowrap" class="ft20">In&#160;Ferreira&#160;et&#160;al.&#160;(2016)&#160;we&#160;did&#160;not&#160;want&#160;to&#160;map&#160;the&#160;mech-</p>
+<p style="position:absolute;top:989px;left:479px;white-space:nowrap" class="ft25">anism&#160;to&#160;a&#160;specific&#160;biological&#160;process,&#160;but&#160;instead&#160;proposed<br/>a&#160;new&#160;procedure&#160;by&#160;which&#160;cells&#160;could&#160;obtain,&#160;store,&#160;and&#160;then<br/>use&#160;morphological&#160;information&#160;to&#160;repair&#160;the&#160;arrangement&#160;of<br/>those&#160;cells.&#160;However,&#160;a&#160;first&#160;step&#160;towards&#160;finding&#160;a&#160;mapping</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft24">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft24">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft24">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft24">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft24">171</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft24">Oral presentation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:15px;font-family:Times;color:#000000;}
+	.ft32{font-size:8px;font-family:Times;color:#000000;}
+	.ft33{font-size:12px;font-family:Times;color:#000000;}
+	.ft34{font-size:10px;font-family:Times;color:#595959;}
+	.ft35{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft36{font-size:8px;line-height:17px;font-family:Times;color:#000000;}
+	.ft37{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft38{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft35">from&#160;the&#160;model&#160;mechanism&#160;to&#160;cell&#160;communication&#160;mecha-<br/>nisms&#160;(if&#160;such&#160;a&#160;mapping&#160;exists)&#160;is&#160;to&#160;verify&#160;the&#160;reliability&#160;of<br/>the&#160;model&#160;mechanism&#160;under&#160;conditions&#160;of&#160;noise&#160;that&#160;could<br/>affect&#160;the&#160;routing&#160;process&#160;performed&#160;by&#160;packets&#160;exchanged<br/>between&#160;cells.&#160;Thus,&#160;in&#160;this&#160;paper&#160;we&#160;are&#160;interested&#160;in&#160;ex-<br/>ploring&#160;the&#160;effects&#160;of&#160;noise&#160;regarding&#160;the&#160;distance&#160;and&#160;direc-<br/>tion&#160;those&#160;packets&#160;travel&#160;across&#160;the&#160;structure.&#160;To&#160;do&#160;that,&#160;we<br/>implemented&#160;the&#160;previous&#160;cell-cell&#160;communication&#160;mecha-<br/>nism&#160;in&#160;a&#160;3D&#160;group&#160;of&#160;cells&#160;with&#160;a&#160;shape&#160;resembling&#160;the<br/>planarian&#160;worm.&#160;We&#160;then&#160;performed&#160;a&#160;cut&#160;to&#160;remove&#160;the&#160;top<br/>part&#160;of&#160;the&#160;simulated&#160;worm&#160;and&#160;verified&#160;if&#160;the&#160;mechanism<br/>was&#160;capable&#160;of&#160;regrowing&#160;all&#160;missing&#160;cells&#160;even&#160;though&#160;some<br/>packets&#160;were&#160;not&#160;perfectly&#160;transmitted.</p>
+<p style="position:absolute;top:333px;left:126px;white-space:nowrap" class="ft31">Experiments&#160;with&#160;Noise&#160;on&#160;Packets</p>
+<p style="position:absolute;top:358px;left:81px;white-space:nowrap" class="ft36">We&#160;added&#160;independent&#160;Gaussian&#160;noise&#160;in&#160;the&#160;packet&#160;distance<br/>and&#160;direction&#160;according&#160;to&#160;the&#160;parameters&#160;σDistanceNoise<br/>and&#160;σDirectionNoise.</p>
+<p style="position:absolute;top:393px;left:227px;white-space:nowrap" class="ft30">At&#160;the&#160;moment&#160;the&#160;packet&#160;starts</p>
+<p style="position:absolute;top:411px;left:81px;white-space:nowrap" class="ft35">backtracking,&#160;both&#160;noise&#160;elements&#160;are&#160;independently&#160;ap-<br/>plied&#160;to&#160;each&#160;vector&#160;in&#160;the&#160;packet.</p>
+<p style="position:absolute;top:429px;left:320px;white-space:nowrap" class="ft30">The&#160;distance&#160;noise</p>
+<p style="position:absolute;top:447px;left:81px;white-space:nowrap" class="ft30">nv</p>
+<p style="position:absolute;top:454px;left:90px;white-space:nowrap" class="ft32">Distance&#160;is&#160;calculated&#160;by&#160;a&#160;Gaussian&#160;distribution&#160;with</p>
+<p style="position:absolute;top:465px;left:81px;white-space:nowrap" class="ft35">mean&#160;µDistance&#160;=&#160;0&#160;and&#160;standard&#160;deviation&#160;σDistanceNoise.<br/>Then&#160;f&#160;loor</p>
+<p style="position:absolute;top:482px;left:153px;white-space:nowrap" class="ft30">(nv</p>
+<p style="position:absolute;top:490px;left:168px;white-space:nowrap" class="ft32">distance)&#160;is&#160;added&#160;to&#160;the&#160;distance&#160;of&#160;vector</p>
+<p style="position:absolute;top:501px;left:81px;white-space:nowrap" class="ft35">vDistance.&#160;Therefore,&#160;after&#160;applying&#160;noise,&#160;the&#160;packet&#160;can&#160;ei-<br/>ther&#160;backtrack&#160;by&#160;the&#160;same&#160;number&#160;of&#160;cells,&#160;by&#160;a&#160;longer&#160;dis-<br/>tance&#160;or&#160;a&#160;shorter&#160;distance.&#160;The&#160;direction&#160;noise&#160;nv</p>
+<p style="position:absolute;top:544px;left:371px;white-space:nowrap" class="ft32">Direction&#160;is</p>
+<p style="position:absolute;top:555px;left:81px;white-space:nowrap" class="ft35">also&#160;calculated&#160;based&#160;on&#160;a&#160;Gaussian&#160;distribution&#160;with&#160;mean<br/>µDirection&#160;=&#160;0&#160;and&#160;standard&#160;deviation&#160;σDirectionNoise.&#160;If<br/>abs</p>
+<p style="position:absolute;top:590px;left:102px;white-space:nowrap" class="ft30">(nv</p>
+<p style="position:absolute;top:598px;left:117px;white-space:nowrap" class="ft32">Direction)&#160;≥&#160;1&#160;then&#160;the&#160;packet&#160;changes&#160;direction,&#160;oth-</p>
+<p style="position:absolute;top:609px;left:81px;white-space:nowrap" class="ft35">erwise&#160;it&#160;maintains&#160;its&#160;original&#160;direction.&#160;Thus,&#160;if&#160;the&#160;noise<br/>modifies&#160;the&#160;direction&#160;of&#160;vector&#160;v,&#160;this&#160;new&#160;direction&#160;is&#160;uni-<br/>formly&#160;selected&#160;from&#160;the&#160;four&#160;options&#160;in&#160;which&#160;the&#160;sender<br/>and&#160;receiver&#160;cells&#160;have&#160;the&#160;same&#160;neighbors.</p>
+<p style="position:absolute;top:680px;left:96px;white-space:nowrap" class="ft30">We&#160;expected&#160;to&#160;see&#160;some&#160;“overgrowth”&#160;in&#160;the&#160;shape&#160;of&#160;the</p>
+<p style="position:absolute;top:698px;left:81px;white-space:nowrap" class="ft35">organism&#160;due&#160;to&#160;noise&#160;applied&#160;on&#160;packets&#160;for&#160;the&#160;following<br/>reasons:&#160;first,&#160;if&#160;a&#160;packet&#160;that&#160;passes&#160;through&#160;one&#160;cell&#160;on&#160;the<br/>edges&#160;of&#160;the&#160;worm&#160;backtracks&#160;by&#160;a&#160;longer&#160;distance&#160;than&#160;it&#160;is<br/>supposed&#160;to,&#160;new&#160;cells&#160;will&#160;be&#160;created&#160;in&#160;that&#160;direction;&#160;sec-<br/>ond,&#160;if&#160;due&#160;to&#160;noise&#160;a&#160;packet&#160;near&#160;one&#160;edge&#160;changes&#160;its&#160;direc-<br/>tion&#160;(e.g.,&#160;a&#160;packet&#160;in&#160;the&#160;topmost&#160;layer&#160;has&#160;a&#160;vector&#160;v&#160;with<br/>vDirection&#160;=&#160;east&#160;and&#160;vDistance&#160;=&#160;10&#160;and&#160;noise&#160;changes<br/>the&#160;direction&#160;of&#160;v&#160;to&#160;a&#160;supposed&#160;neighbor&#160;on&#160;top&#160;of&#160;the&#160;cell,<br/>this&#160;packet&#160;will&#160;create&#160;10&#160;cells&#160;on&#160;the&#160;top&#160;of&#160;the&#160;worm).&#160;Thus,<br/>there&#160;are&#160;two&#160;goals&#160;for&#160;these&#160;evaluation&#160;experiments:&#160;first,<br/>we&#160;need&#160;to&#160;confirm&#160;the&#160;reliability&#160;of&#160;the&#160;model&#160;even&#160;when<br/>noise&#160;is&#160;applied&#160;to&#160;packets&#160;and&#160;second,&#160;we&#160;need&#160;to&#160;compare<br/>the&#160;similarity&#160;between&#160;the&#160;original&#160;worm&#160;and&#160;the&#160;regener-<br/>ated&#160;worm&#160;when&#160;noise&#160;causes&#160;overgrowth.&#160;Thus,&#160;there&#160;are<br/>two&#160;dependent&#160;variables&#160;of&#160;our&#160;model:&#160;<i>RegenerationRatio<br/></i>and&#160;<i>Sim</i>.&#160;The&#160;<i>RegenerationRatio&#160;</i>is&#160;the&#160;proportion&#160;of&#160;regen-<br/>erated&#160;cells&#160;over&#160;removed&#160;cells&#160;(equation&#160;1).</p>
+<p style="position:absolute;top:1040px;left:124px;white-space:nowrap" class="ft30">RegenerationRatio</p>
+<p style="position:absolute;top:1039px;left:257px;white-space:nowrap" class="ft30">=</p>
+<p style="position:absolute;top:1030px;left:274px;white-space:nowrap" class="ft30">RegeneratedCells</p>
+<p style="position:absolute;top:1050px;left:286px;white-space:nowrap" class="ft30">RemovedCells</p>
+<p style="position:absolute;top:1040px;left:421px;white-space:nowrap" class="ft30">(1)</p>
+<p style="position:absolute;top:86px;left:479px;white-space:nowrap" class="ft35">where&#160;<i>RemovedCells&#160;</i>is&#160;the&#160;number&#160;of&#160;cells&#160;removed&#160;by<br/>the&#160;cut,&#160;including&#160;any&#160;overgrowth.&#160;<i>RegeneratedCells&#160;</i>is&#160;the<br/>number&#160;of&#160;cells&#160;regenerated&#160;in&#160;positions&#160;that&#160;had&#160;removed<br/>cells.&#160;Therefore,&#160;a&#160;value&#160;of&#160;RegenerationRatio</p>
+<p style="position:absolute;top:139px;left:784px;white-space:nowrap" class="ft30">=&#160;1&#160;rep-</p>
+<p style="position:absolute;top:157px;left:479px;white-space:nowrap" class="ft35">resents&#160;full&#160;regeneration&#160;of&#160;the&#160;worm&#160;that&#160;existed&#160;at&#160;the&#160;mo-<br/>ment&#160;of&#160;the&#160;cut.</p>
+<p style="position:absolute;top:193px;left:494px;white-space:nowrap" class="ft30">However,&#160;it&#160;is&#160;also&#160;important&#160;to&#160;verify&#160;how&#160;similar&#160;the&#160;re-</p>
+<p style="position:absolute;top:211px;left:479px;white-space:nowrap" class="ft35">generated&#160;worm&#160;is&#160;to&#160;its&#160;original&#160;shape.&#160;For&#160;instance,&#160;we<br/>need&#160;to&#160;verify&#160;whether&#160;the&#160;worm&#160;has&#160;missing&#160;cells&#160;in&#160;posi-<br/>tions&#160;where&#160;cells&#160;previously&#160;existed,&#160;or&#160;whether&#160;the&#160;worm<br/>has&#160;cells&#160;in&#160;locations&#160;where&#160;no&#160;cells&#160;existed&#160;before.&#160;Equa-<br/>tion&#160;2&#160;shows&#160;the&#160;similarity&#160;metric&#160;Sim.</p>
+<p style="position:absolute;top:339px;left:486px;white-space:nowrap" class="ft30">Sim</p>
+<p style="position:absolute;top:338px;left:518px;white-space:nowrap" class="ft30">=</p>
+<p style="position:absolute;top:329px;left:536px;white-space:nowrap" class="ft30">AliveCells</p>
+<p style="position:absolute;top:328px;left:610px;white-space:nowrap" class="ft30">−&#160;(Overgrowth&#160;+&#160;M&#160;issingCells)</p>
+<p style="position:absolute;top:349px;left:647px;white-space:nowrap" class="ft30">T&#160;otalCells</p>
+<p style="position:absolute;top:361px;left:820px;white-space:nowrap" class="ft30">(2)</p>
+<p style="position:absolute;top:379px;left:479px;white-space:nowrap" class="ft37">where&#160;<i>TotalCells&#160;</i>is&#160;the&#160;total&#160;number&#160;of&#160;cells&#160;in&#160;the&#160;organism.<br/><i>AliveCells</i></p>
+<p style="position:absolute;top:397px;left:546px;white-space:nowrap" class="ft30">is&#160;the&#160;number&#160;of&#160;alive&#160;cells&#160;in&#160;locations&#160;where</p>
+<p style="position:absolute;top:415px;left:479px;white-space:nowrap" class="ft35">there&#160;was&#160;a&#160;cell&#160;in&#160;the&#160;original&#160;worm.&#160;<i>Overgrowth&#160;</i>is&#160;the<br/>number&#160;of&#160;alive&#160;cells&#160;in&#160;locations&#160;where&#160;there&#160;was&#160;not&#160;an<br/>alive&#160;cell&#160;in&#160;the&#160;original&#160;shape&#160;(i.e.,&#160;cells&#160;that&#160;grew&#160;due&#160;to<br/>noise).&#160;<i>MissingCells&#160;</i>is&#160;the&#160;number&#160;of&#160;locations&#160;where&#160;there<br/>existed&#160;a&#160;cell&#160;in&#160;the&#160;original&#160;worm,&#160;but&#160;the&#160;model&#160;did&#160;not<br/>get&#160;to&#160;regrow&#160;a&#160;new&#160;cell.&#160;Therefore,&#160;a&#160;value&#160;of&#160;Sim</p>
+<p style="position:absolute;top:504px;left:811px;white-space:nowrap" class="ft30">=&#160;1</p>
+<p style="position:absolute;top:522px;left:479px;white-space:nowrap" class="ft30">represents&#160;a&#160;full&#160;regeneration&#160;with&#160;no&#160;overgrowth.</p>
+<p style="position:absolute;top:540px;left:494px;white-space:nowrap" class="ft30">To&#160;explore&#160;the&#160;performance&#160;of&#160;the&#160;model&#160;with&#160;the&#160;two</p>
+<p style="position:absolute;top:558px;left:479px;white-space:nowrap" class="ft35">metrics,&#160;we&#160;fixed&#160;some&#160;model&#160;parameters&#160;and&#160;varied&#160;others.<br/>Specifically,&#160;we&#160;fixed&#160;the&#160;parameters&#160;related&#160;to&#160;cells&#160;hold-<br/>ing&#160;packets,&#160;since&#160;they&#160;are&#160;not&#160;affected&#160;by&#160;the&#160;applied&#160;noise,<br/>M&#160;inT&#160;opLen</p>
+<p style="position:absolute;top:611px;left:567px;white-space:nowrap" class="ft30">=&#160;3&#160;and&#160;HoldP&#160;rob&#160;=&#160;0.5.&#160;Hence,&#160;packets</p>
+<p style="position:absolute;top:630px;left:479px;white-space:nowrap" class="ft35">with&#160;top&#160;vector&#160;longer&#160;than&#160;3&#160;cells&#160;could&#160;be&#160;held&#160;with&#160;50%<br/>probability.&#160;We&#160;also&#160;fixed&#160;a&#160;3D&#160;planarian-like&#160;structure&#160;with<br/>three&#160;distinct&#160;areas&#160;grouped&#160;together:&#160;a&#160;head&#160;containing&#160;167<br/>cells&#160;per&#160;layer,&#160;a&#160;body&#160;containing&#160;255&#160;cells&#160;per&#160;layer&#160;and<br/>a&#160;tail&#160;containing&#160;103&#160;cells&#160;per&#160;layer.&#160;It&#160;is&#160;worth&#160;noting&#160;that<br/>although&#160;cells&#160;belong&#160;to&#160;different&#160;groups,&#160;they&#160;have&#160;no&#160;struc-<br/>tural&#160;or&#160;functional&#160;differences.&#160;The&#160;structure&#160;contains&#160;4&#160;lay-<br/>ers&#160;stacked&#160;on&#160;top&#160;of&#160;each&#160;other,&#160;totaling&#160;2100&#160;cells.&#160;Figure&#160;2<br/>shows&#160;the&#160;topmost&#160;layer&#160;with&#160;the&#160;three&#160;groups&#160;of&#160;cells&#160;high-<br/>lighted.&#160;We&#160;performed&#160;a&#160;cut&#160;on&#160;the&#160;worm&#160;structure&#160;in&#160;which<br/>we&#160;removed&#160;cells&#160;from&#160;the&#160;top&#160;of&#160;the&#160;head&#160;until&#160;we&#160;removed<br/>half&#160;of&#160;the&#160;worm.&#160;If&#160;there&#160;was&#160;any&#160;overgrowth&#160;on&#160;the&#160;top&#160;part<br/>of&#160;the&#160;worm&#160;before&#160;the&#160;cut,&#160;those&#160;cells&#160;were&#160;also&#160;removed.<br/>If&#160;there&#160;was&#160;no&#160;overgrowth,&#160;1054&#160;cells&#160;(50.19%)&#160;were&#160;re-<br/>moved.&#160;This&#160;cut&#160;happens&#160;at&#160;the&#160;cycle&#160;CutT&#160;ime</p>
+<p style="position:absolute;top:880px;left:773px;white-space:nowrap" class="ft30">=&#160;60.&#160;The</p>
+<p style="position:absolute;top:899px;left:479px;white-space:nowrap" class="ft35">simulation&#160;runs&#160;for&#160;100&#160;cycles,&#160;therefore&#160;there&#160;were&#160;40&#160;cy-<br/>cles&#160;left&#160;in&#160;which&#160;the&#160;model&#160;could&#160;regrow&#160;any&#160;missing&#160;cells.</p>
+<p style="position:absolute;top:935px;left:494px;white-space:nowrap" class="ft30">We&#160;decided&#160;to&#160;vary&#160;some&#160;parameters&#160;that&#160;we&#160;hypoth-</p>
+<p style="position:absolute;top:953px;left:479px;white-space:nowrap" class="ft35">esized&#160;could&#160;be&#160;relevant&#160;to&#160;the&#160;performance&#160;of&#160;the&#160;task.<br/>First,&#160;we&#160;varied&#160;the&#160;number&#160;of&#160;packets&#160;created&#160;at&#160;each&#160;cycle<br/>P&#160;acketF&#160;req</p>
+<p style="position:absolute;top:988px;left:566px;white-space:nowrap" class="ft30">∈&#160;{25,&#160;28,&#160;31}.&#160;Previously,&#160;we&#160;verified&#160;that</p>
+<p style="position:absolute;top:1007px;left:479px;white-space:nowrap" class="ft35">increasing&#160;the&#160;number&#160;of&#160;packets&#160;produced&#160;at&#160;each&#160;cycle&#160;in-<br/>creases&#160;the&#160;capacity&#160;of&#160;the&#160;model&#160;for&#160;regeneration&#160;until&#160;the<br/>number&#160;of&#160;redundant&#160;packets&#160;is&#160;greater&#160;than&#160;the&#160;new&#160;ones,</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft34">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft34">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft34">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft34">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft34">172</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft34">Oral presentation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:8px;font-family:Times;color:#000000;}
+	.ft42{font-size:15px;font-family:Times;color:#000000;}
+	.ft43{font-size:11px;font-family:Times;color:#000000;}
+	.ft44{font-size:10px;font-family:Times;color:#595959;}
+	.ft45{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft46{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft47{font-size:12px;line-height:16px;font-family:Times;color:#000000;}
+	.ft48{font-size:12px;line-height:19px;font-family:Times;color:#000000;}
+	.ft49{font-size:8px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:196px;left:81px;white-space:nowrap" class="ft45">Figure&#160;2:&#160;Shape&#160;of&#160;the&#160;topmost&#160;layer&#160;of&#160;the&#160;worm&#160;with&#160;525<br/>cells.&#160;Red&#160;cells&#160;belong&#160;to&#160;the&#160;head,&#160;gray&#160;cells&#160;belong&#160;to&#160;the<br/>body&#160;and&#160;blue&#160;cells&#160;are&#160;from&#160;the&#160;tail.</p>
+<p style="position:absolute;top:282px;left:81px;white-space:nowrap" class="ft45">maintaining&#160;an&#160;asymptote.&#160;We&#160;expected&#160;the&#160;same&#160;behavior<br/>when&#160;noise&#160;was&#160;added&#160;to&#160;packets.&#160;However,&#160;we&#160;expected<br/>that&#160;it&#160;would&#160;also&#160;increase&#160;the&#160;overgrowth&#160;due&#160;to&#160;a&#160;higher<br/>probability&#160;of&#160;more&#160;packets&#160;containing&#160;noise&#160;that&#160;would&#160;cre-<br/>ate&#160;cells&#160;in&#160;locations&#160;with&#160;no&#160;previous&#160;cells.</p>
+<p style="position:absolute;top:372px;left:96px;white-space:nowrap" class="ft40">We&#160;varied&#160;the&#160;number&#160;of&#160;bends&#160;–&#160;vectors&#160;inside&#160;a&#160;packet</p>
+<p style="position:absolute;top:390px;left:81px;white-space:nowrap" class="ft40">–&#160;before&#160;a&#160;packet&#160;backtracks&#160;M&#160;inBends</p>
+<p style="position:absolute;top:389px;left:340px;white-space:nowrap" class="ft40">∈&#160;{3,&#160;5,&#160;7}.&#160;We</p>
+<p style="position:absolute;top:408px;left:81px;white-space:nowrap" class="ft45">expected&#160;a&#160;positive&#160;correlation&#160;between&#160;M&#160;inBends&#160;and<br/>RegenerationRatio.&#160;Because&#160;packets&#160;with&#160;a&#160;higher&#160;value<br/>of&#160;M&#160;inBends&#160;have&#160;more&#160;vectors,&#160;there&#160;was&#160;a&#160;higher&#160;prob-<br/>ability&#160;of&#160;noise&#160;affecting&#160;the&#160;direction&#160;or&#160;distance&#160;of&#160;those<br/>packets,&#160;possibly&#160;causing&#160;more&#160;overgrowth.&#160;Another&#160;pa-<br/>rameter&#160;responsible&#160;for&#160;modifying&#160;patterns&#160;of&#160;navigation&#160;is<br/>the&#160;probability&#160;of&#160;a&#160;packet&#160;changing&#160;direction&#160;BendP&#160;rob.<br/>A&#160;lower&#160;value&#160;of&#160;this&#160;parameter&#160;represents&#160;packets&#160;with<br/>longer&#160;vectors,&#160;i.e.,&#160;moving&#160;across&#160;more&#160;cells&#160;in&#160;the&#160;same<br/>direction.&#160;We&#160;varied&#160;BendP&#160;rob</p>
+<p style="position:absolute;top:568px;left:288px;white-space:nowrap" class="ft40">∈&#160;{0.1,&#160;0.2,&#160;0.3}&#160;and&#160;we</p>
+<p style="position:absolute;top:587px;left:81px;white-space:nowrap" class="ft45">expected&#160;a&#160;negative&#160;correlation&#160;between&#160;BendP&#160;rob&#160;and<br/>RegenerationRatio.&#160;In&#160;order&#160;to&#160;regenerate&#160;cells&#160;located<br/>far&#160;from&#160;the&#160;edges&#160;of&#160;the&#160;cut,&#160;it&#160;is&#160;necessary&#160;for&#160;packets&#160;to<br/>move&#160;through&#160;a&#160;long&#160;straight&#160;path.&#160;We&#160;also&#160;expected&#160;a&#160;neg-<br/>ative&#160;correlation&#160;between&#160;BendP&#160;rob&#160;and&#160;Sim&#160;due&#160;to&#160;the<br/>fact&#160;that&#160;if&#160;noise&#160;caused&#160;a&#160;packet&#160;to&#160;change&#160;direction,&#160;then&#160;a<br/>larger&#160;overgrowth&#160;could&#160;happen.</p>
+<p style="position:absolute;top:713px;left:96px;white-space:nowrap" class="ft40">Finally,&#160;we&#160;varied&#160;both&#160;noise&#160;parameters&#160;σDistanceNoise</p>
+<p style="position:absolute;top:731px;left:81px;white-space:nowrap" class="ft45">and&#160;σDirectionNoise.&#160;We&#160;wanted&#160;to&#160;verify&#160;the&#160;model&#160;perfor-<br/>mance&#160;for&#160;simulations&#160;either&#160;with&#160;both&#160;noise&#160;elements&#160;ap-<br/>plied&#160;to&#160;packets&#160;or&#160;to&#160;just&#160;one&#160;of&#160;them.&#160;We&#160;also&#160;ran&#160;simula-<br/>tions&#160;where&#160;no&#160;noise&#160;was&#160;applied&#160;as&#160;the&#160;baseline.&#160;Thus,&#160;we<br/>varied&#160;σDistanceNoise&#160;∈&#160;{0,&#160;0.33}&#160;and&#160;σDirectionNoise&#160;∈<br/>{0,&#160;0.25}.&#160;We&#160;expected&#160;that&#160;increasing&#160;noise&#160;would&#160;decrease<br/>both&#160;RegenerationRatio&#160;and&#160;Sim&#160;because&#160;packets&#160;would<br/>not&#160;backtrack&#160;through&#160;the&#160;paths&#160;they&#160;came&#160;from,&#160;therefore<br/>losing&#160;shape&#160;information&#160;and&#160;moving&#160;to&#160;incorrect&#160;areas.&#160;For<br/>each&#160;point&#160;in&#160;the&#160;parameter&#160;space&#160;we&#160;ran&#160;100&#160;distinct&#160;simu-<br/>lations,&#160;resulting&#160;in&#160;a&#160;total&#160;of&#160;10800&#160;simulations.</p>
+<p style="position:absolute;top:943px;left:121px;white-space:nowrap" class="ft42">Results&#160;of&#160;Experiments&#160;with&#160;Packets</p>
+<p style="position:absolute;top:964px;left:194px;white-space:nowrap" class="ft42">Containing&#160;Noise</p>
+<p style="position:absolute;top:989px;left:81px;white-space:nowrap" class="ft45">Our&#160;results&#160;showed&#160;that&#160;while&#160;1752&#160;(out&#160;of&#160;2700)&#160;sim-<br/>ulation&#160;runs&#160;with&#160;no&#160;noise&#160;were&#160;capable&#160;of&#160;fully&#160;regen-<br/>erating&#160;the&#160;worm’s&#160;shape,&#160;no&#160;runs&#160;with&#160;noise&#160;could&#160;to-<br/>tally&#160;regenerate&#160;the&#160;structure.&#160;The&#160;maximum&#160;value&#160;found</p>
+<p style="position:absolute;top:86px;left:479px;white-space:nowrap" class="ft45">for&#160;RegenerationRatio&#160;on&#160;simulations&#160;which&#160;contained<br/>noise&#160;was&#160;91.236.&#160;Table&#160;1&#160;shows&#160;the&#160;average&#160;value&#160;and<br/>standard&#160;deviation&#160;for&#160;each&#160;pair&#160;of&#160;σDistanceNoise&#160;and<br/>σDirectionNoise.&#160;As&#160;the&#160;value&#160;of&#160;σDistanceNoise&#160;is&#160;higher<br/>than&#160;σDirectionNoise,&#160;there&#160;is&#160;more&#160;noise&#160;applied&#160;to&#160;the<br/>length&#160;of&#160;the&#160;packets’&#160;vectors&#160;than&#160;to&#160;their&#160;directions.&#160;Look-<br/>ing&#160;at&#160;the&#160;results&#160;for&#160;Sim&#160;in&#160;Table&#160;2,&#160;we&#160;can&#160;see&#160;that&#160;these<br/>noise&#160;levels&#160;led&#160;to&#160;a&#160;very&#160;high&#160;overgrow.&#160;For&#160;example,&#160;the<br/>combination&#160;of&#160;both&#160;noise&#160;types&#160;led&#160;to&#160;an&#160;average&#160;similar-<br/>ity&#160;of&#160;19.6%,&#160;i.e.,&#160;a&#160;shapeless&#160;structure&#160;existed&#160;at&#160;the&#160;end<br/>of&#160;simulation.&#160;Some&#160;examples&#160;of&#160;simulation&#160;runs&#160;can&#160;be<br/>seen&#160;in&#160;Figure&#160;3.</p>
+<p style="position:absolute;top:283px;left:602px;white-space:nowrap" class="ft40">Figure&#160;3a&#160;shows&#160;a&#160;completely&#160;regen-</p>
+<p style="position:absolute;top:301px;left:479px;white-space:nowrap" class="ft40">erated&#160;worm&#160;with&#160;no&#160;overgrowth&#160;(Sim</p>
+<p style="position:absolute;top:300px;left:733px;white-space:nowrap" class="ft40">=&#160;1)&#160;while&#160;Fig-</p>
+<p style="position:absolute;top:319px;left:479px;white-space:nowrap" class="ft40">ure&#160;3b&#160;shows&#160;the&#160;most&#160;similar&#160;worm&#160;after&#160;noise&#160;(Sim</p>
+<p style="position:absolute;top:318px;left:825px;white-space:nowrap" class="ft40">=</p>
+<p style="position:absolute;top:336px;left:479px;white-space:nowrap" class="ft46">0.828,&#160;σDistanceNoise&#160;=&#160;0&#160;σDirectionNoise&#160;=&#160;0.25)&#160;and<br/>Figure&#160;3c&#160;shows&#160;the&#160;least&#160;similar&#160;worm&#160;(Sim</p>
+<p style="position:absolute;top:354px;left:779px;white-space:nowrap" class="ft40">=&#160;0.181,</p>
+<p style="position:absolute;top:372px;left:479px;white-space:nowrap" class="ft40">σDistanceNoise&#160;=&#160;0.33&#160;σDirectionNoise&#160;=&#160;0.25).</p>
+<p style="position:absolute;top:414px;left:488px;white-space:nowrap" class="ft40">Dis</p>
+<p style="position:absolute;top:408px;left:530px;white-space:nowrap" class="ft40">Dir</p>
+<p style="position:absolute;top:410px;left:621px;white-space:nowrap" class="ft40">0</p>
+<p style="position:absolute;top:410px;left:748px;white-space:nowrap" class="ft40">0.25</p>
+<p style="position:absolute;top:428px;left:496px;white-space:nowrap" class="ft40">0</p>
+<p style="position:absolute;top:428px;left:565px;white-space:nowrap" class="ft40">99.004%</p>
+<p style="position:absolute;top:427px;left:623px;white-space:nowrap" class="ft40">±&#160;2.468%</p>
+<p style="position:absolute;top:428px;left:702px;white-space:nowrap" class="ft40">79.711%</p>
+<p style="position:absolute;top:427px;left:759px;white-space:nowrap" class="ft40">±&#160;4.014%</p>
+<p style="position:absolute;top:447px;left:496px;white-space:nowrap" class="ft40">0.33</p>
+<p style="position:absolute;top:447px;left:565px;white-space:nowrap" class="ft40">66.287%</p>
+<p style="position:absolute;top:445px;left:623px;white-space:nowrap" class="ft40">±&#160;4.135%</p>
+<p style="position:absolute;top:447px;left:702px;white-space:nowrap" class="ft40">64.137%</p>
+<p style="position:absolute;top:445px;left:759px;white-space:nowrap" class="ft40">±&#160;3.727%</p>
+<p style="position:absolute;top:480px;left:479px;white-space:nowrap" class="ft45">Table&#160;1:&#160;Average&#160;RegenerationRatio&#160;for&#160;all&#160;combinations<br/>of&#160;noise&#160;applied&#160;on&#160;packets.</p>
+<p style="position:absolute;top:559px;left:520px;white-space:nowrap" class="ft40">Dis</p>
+<p style="position:absolute;top:554px;left:562px;white-space:nowrap" class="ft40">Dir</p>
+<p style="position:absolute;top:555px;left:637px;white-space:nowrap" class="ft40">0</p>
+<p style="position:absolute;top:555px;left:732px;white-space:nowrap" class="ft40">0.25</p>
+<p style="position:absolute;top:574px;left:528px;white-space:nowrap" class="ft40">0</p>
+<p style="position:absolute;top:574px;left:598px;white-space:nowrap" class="ft40">0.990</p>
+<p style="position:absolute;top:572px;left:635px;white-space:nowrap" class="ft40">±&#160;0.023</p>
+<p style="position:absolute;top:574px;left:702px;white-space:nowrap" class="ft40">0.616</p>
+<p style="position:absolute;top:572px;left:739px;white-space:nowrap" class="ft40">±&#160;0.099</p>
+<p style="position:absolute;top:592px;left:528px;white-space:nowrap" class="ft40">0.33</p>
+<p style="position:absolute;top:592px;left:598px;white-space:nowrap" class="ft40">0.219</p>
+<p style="position:absolute;top:591px;left:635px;white-space:nowrap" class="ft40">±&#160;0.016</p>
+<p style="position:absolute;top:592px;left:702px;white-space:nowrap" class="ft40">0.196</p>
+<p style="position:absolute;top:591px;left:739px;white-space:nowrap" class="ft40">±&#160;0.013</p>
+<p style="position:absolute;top:626px;left:479px;white-space:nowrap" class="ft45">Table&#160;2:&#160;Average&#160;Sim&#160;for&#160;all&#160;combinations&#160;of&#160;noise&#160;applied<br/>on&#160;packets.</p>
+<p style="position:absolute;top:830px;left:514px;white-space:nowrap" class="ft43">(a)</p>
+<p style="position:absolute;top:830px;left:605px;white-space:nowrap" class="ft43">(b)</p>
+<p style="position:absolute;top:830px;left:696px;white-space:nowrap" class="ft43">(c)</p>
+<p style="position:absolute;top:830px;left:787px;white-space:nowrap" class="ft43">(d)</p>
+<p style="position:absolute;top:861px;left:479px;white-space:nowrap" class="ft45">Figure&#160;3:&#160;A&#160;dorsal&#160;view&#160;of&#160;the&#160;simulated&#160;worm&#160;structure&#160;in<br/>four&#160;different&#160;simulation&#160;runs.&#160;(a)&#160;Sim</p>
+<p style="position:absolute;top:878px;left:734px;white-space:nowrap" class="ft40">=&#160;1&#160;(b)&#160;Sim&#160;=</p>
+<p style="position:absolute;top:896px;left:479px;white-space:nowrap" class="ft40">0.828&#160;(c)&#160;Sim&#160;=&#160;0.181&#160;(d)&#160;Sim&#160;=&#160;0.664</p>
+<p style="position:absolute;top:935px;left:494px;white-space:nowrap" class="ft40">We</p>
+<p style="position:absolute;top:935px;left:528px;white-space:nowrap" class="ft40">performed</p>
+<p style="position:absolute;top:935px;left:605px;white-space:nowrap" class="ft40">two</p>
+<p style="position:absolute;top:935px;left:641px;white-space:nowrap" class="ft40">ANOVAs</p>
+<p style="position:absolute;top:935px;left:713px;white-space:nowrap" class="ft40">with</p>
+<p style="position:absolute;top:935px;left:754px;white-space:nowrap" class="ft40">P&#160;acketF&#160;req,</p>
+<p style="position:absolute;top:953px;left:479px;white-space:nowrap" class="ft49">M&#160;inBends,&#160;BendP&#160;rob,&#160;σDistanceNoise,&#160;σDirectionNoise<br/>as</p>
+<p style="position:absolute;top:971px;left:509px;white-space:nowrap" class="ft40">independent</p>
+<p style="position:absolute;top:971px;left:599px;white-space:nowrap" class="ft40">variables</p>
+<p style="position:absolute;top:971px;left:670px;white-space:nowrap" class="ft40">and</p>
+<p style="position:absolute;top:971px;left:709px;white-space:nowrap" class="ft40">RegenerationRatio</p>
+<p style="position:absolute;top:989px;left:479px;white-space:nowrap" class="ft40">and&#160;Sim&#160;as&#160;dependent&#160;variables.</p>
+<p style="position:absolute;top:989px;left:725px;white-space:nowrap" class="ft40">The&#160;ANOVA&#160;for</p>
+<p style="position:absolute;top:1007px;left:479px;white-space:nowrap" class="ft46">RegenerationRatio&#160;showed&#160;significant&#160;main&#160;effects<br/>for&#160;all&#160;variables&#160;(p&#160;&lt;&#160;.</p>
+<p style="position:absolute;top:1024px;left:644px;white-space:nowrap" class="ft40">001).</p>
+<p style="position:absolute;top:1025px;left:694px;white-space:nowrap" class="ft40">It&#160;also&#160;showed&#160;signif-</p>
+<p style="position:absolute;top:1043px;left:479px;white-space:nowrap" class="ft40">icant&#160;two-way&#160;interactions&#160;between&#160;all&#160;variables&#160;and</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft44">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft44">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft44">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft44">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft44">173</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft44">Oral presentation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:8px;font-family:Times;color:#000000;}
+	.ft52{font-size:15px;font-family:Times;color:#000000;}
+	.ft53{font-size:10px;font-family:Times;color:#595959;}
+	.ft54{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft55{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft50">three-way</p>
+<p style="position:absolute;top:86px;left:156px;white-space:nowrap" class="ft50">interactions</p>
+<p style="position:absolute;top:86px;left:241px;white-space:nowrap" class="ft50">with</p>
+<p style="position:absolute;top:86px;left:282px;white-space:nowrap" class="ft50">all</p>
+<p style="position:absolute;top:86px;left:312px;white-space:nowrap" class="ft50">combinations</p>
+<p style="position:absolute;top:86px;left:408px;white-space:nowrap" class="ft50">other</p>
+<p style="position:absolute;top:104px;left:81px;white-space:nowrap" class="ft50">than&#160;(P&#160;acketF&#160;req,</p>
+<p style="position:absolute;top:103px;left:222px;white-space:nowrap" class="ft50">BendP&#160;rob,</p>
+<p style="position:absolute;top:103px;left:309px;white-space:nowrap" class="ft50">σDistanceNoise)&#160;and</p>
+<p style="position:absolute;top:122px;left:81px;white-space:nowrap" class="ft50">(P&#160;acketF&#160;req,</p>
+<p style="position:absolute;top:121px;left:184px;white-space:nowrap" class="ft50">M&#160;inBends,</p>
+<p style="position:absolute;top:121px;left:276px;white-space:nowrap" class="ft50">σDirectionNoise)&#160;(all&#160;p’s</p>
+<p style="position:absolute;top:139px;left:81px;white-space:nowrap" class="ft50">&lt;&#160;.</p>
+<p style="position:absolute;top:139px;left:106px;white-space:nowrap" class="ft50">001).&#160;The&#160;ANOVA&#160;also&#160;showed&#160;a&#160;four-way&#160;interac-</p>
+<p style="position:absolute;top:157px;left:81px;white-space:nowrap" class="ft54">tion&#160;with&#160;the&#160;combination&#160;of&#160;(M&#160;inBends,&#160;BendP&#160;rob,<br/>σDistanceNoise,&#160;σDirectionNoise)&#160;(p&#160;&lt;&#160;.001).</p>
+<p style="position:absolute;top:195px;left:96px;white-space:nowrap" class="ft50">Figure&#160;4a&#160;shows&#160;the&#160;interactions&#160;between&#160;the&#160;three</p>
+<p style="position:absolute;top:213px;left:81px;white-space:nowrap" class="ft54">independent&#160;variables&#160;(P&#160;acketF&#160;req,&#160;M&#160;inBends&#160;and<br/>BendP&#160;rob)&#160;on&#160;RegenerationRatio&#160;for&#160;the&#160;four&#160;combi-<br/>nations&#160;of&#160;noise.&#160;Our&#160;first&#160;conclusion&#160;from&#160;these&#160;results<br/>is&#160;that,&#160;different&#160;from&#160;what&#160;we&#160;expected,&#160;increasing&#160;the<br/>value&#160;of&#160;P&#160;acketF&#160;req&#160;did&#160;not&#160;increase&#160;RegenerationRatio<br/>when&#160;noise&#160;was&#160;applied&#160;on&#160;packets.&#160;When&#160;no&#160;noise&#160;was<br/>applied&#160;on&#160;packets,&#160;we&#160;find&#160;the&#160;positive&#160;correlation&#160;be-<br/>tween&#160;P&#160;acketF&#160;req&#160;and&#160;RegenerationRatio.</p>
+<p style="position:absolute;top:339px;left:391px;white-space:nowrap" class="ft50">We&#160;can</p>
+<p style="position:absolute;top:357px;left:81px;white-space:nowrap" class="ft54">also&#160;see&#160;that&#160;for&#160;simulations&#160;with&#160;σDistanceNoise&#160;6=&#160;0,&#160;in-<br/>creasing&#160;P&#160;acketF&#160;req&#160;did&#160;not&#160;significantly&#160;change&#160;the&#160;av-<br/>erage&#160;RegenerationRatio.&#160;However,&#160;if&#160;σDirectionNoise&#160;=<br/>0.25&#160;∧&#160;σDistanceNoise&#160;=&#160;0,&#160;increasing&#160;the&#160;number&#160;of&#160;pack-<br/>ets&#160;decreased&#160;RegenerationRatio.&#160;This&#160;can&#160;be&#160;explained<br/>by&#160;the&#160;fact&#160;that&#160;σDistanceNoise&#160;does&#160;not&#160;change&#160;the&#160;path&#160;tra-<br/>versed&#160;by&#160;packets,&#160;therefore,&#160;missing&#160;cells&#160;in&#160;the&#160;path&#160;are&#160;re-<br/>generated,&#160;maintaining&#160;the&#160;same&#160;RegenerationRatio.&#160;On<br/>the&#160;other&#160;hand,&#160;σDirectionNoise&#160;changes&#160;the&#160;direction&#160;of<br/>backtracking&#160;packets,&#160;consequently&#160;a&#160;long&#160;path&#160;could&#160;be<br/>lost.&#160;In&#160;summary,&#160;increasing&#160;P&#160;acketF&#160;req&#160;increased&#160;over-<br/>growth&#160;before&#160;the&#160;cut,&#160;hence&#160;increasing&#160;the&#160;number&#160;of&#160;cells<br/>that&#160;needed&#160;to&#160;be&#160;regenerated&#160;after&#160;the&#160;cut.&#160;However,&#160;due<br/>to&#160;packets&#160;changing&#160;direction,&#160;some&#160;of&#160;these&#160;cells&#160;were&#160;not<br/>regenerated,&#160;reducing&#160;RegenerationRatio.</p>
+<p style="position:absolute;top:628px;left:96px;white-space:nowrap" class="ft50">The&#160;number&#160;of&#160;bends&#160;before&#160;backtracking&#160;was&#160;very&#160;im-</p>
+<p style="position:absolute;top:646px;left:81px;white-space:nowrap" class="ft54">portant&#160;to&#160;RegenerationRatio&#160;because&#160;more&#160;bends&#160;led&#160;to<br/>packets&#160;discovering&#160;a&#160;larger&#160;area&#160;of&#160;the&#160;structure,&#160;there-<br/>fore&#160;regenerating&#160;more&#160;missing&#160;cells.</p>
+<p style="position:absolute;top:682px;left:340px;white-space:nowrap" class="ft50">However,&#160;when</p>
+<p style="position:absolute;top:700px;left:81px;white-space:nowrap" class="ft55">σDirectionNoise&#160;6=&#160;0&#160;∧&#160;σDistanceNoise&#160;=&#160;0,&#160;increasing&#160;the<br/>value&#160;of&#160;M&#160;inBends&#160;increased&#160;the&#160;probability&#160;of&#160;packets<br/>moving&#160;to&#160;different&#160;directions&#160;than&#160;they&#160;came&#160;from.&#160;Hence,<br/>increasing&#160;M&#160;inBends&#160;decreased&#160;RegenerationRatio.&#160;Fi-<br/>nally,&#160;as&#160;expected,&#160;we&#160;found&#160;a&#160;negative&#160;correlation&#160;between<br/>BendP&#160;rob&#160;and&#160;RegenerationRatio.&#160;We&#160;found&#160;that&#160;for<br/>packets&#160;with&#160;no&#160;noise,&#160;BendP&#160;rob</p>
+<p style="position:absolute;top:806px;left:306px;white-space:nowrap" class="ft50">=&#160;0.2&#160;is&#160;almost&#160;suf-</p>
+<p style="position:absolute;top:825px;left:81px;white-space:nowrap" class="ft54">ficient&#160;to&#160;fully&#160;regenerate&#160;the&#160;worm.&#160;Moreover,&#160;increas-<br/>ing&#160;BendP&#160;rob&#160;was&#160;more&#160;detrimental&#160;to&#160;simulations&#160;that<br/>contained&#160;noise&#160;on&#160;packet&#160;distances&#160;due&#160;to&#160;the&#160;fact&#160;that<br/>BendP&#160;rob&#160;has&#160;a&#160;direct&#160;influence&#160;on&#160;the&#160;length&#160;of&#160;packets.</p>
+<p style="position:absolute;top:899px;left:96px;white-space:nowrap" class="ft50">The&#160;second&#160;ANOVA&#160;for&#160;Sim&#160;showed&#160;significant&#160;main</p>
+<p style="position:absolute;top:917px;left:81px;white-space:nowrap" class="ft50">effects&#160;for&#160;all&#160;variables&#160;(p&#160;&lt;&#160;.</p>
+<p style="position:absolute;top:916px;left:271px;white-space:nowrap" class="ft50">001).&#160;It&#160;showed&#160;significant</p>
+<p style="position:absolute;top:935px;left:81px;white-space:nowrap" class="ft54">two-way&#160;interactions&#160;between&#160;all&#160;variables&#160;other&#160;than<br/>(P&#160;acketF&#160;req,&#160;σDistanceNoise)&#160;(p&#160;&lt;&#160;.001).&#160;It&#160;also&#160;showed<br/>significant&#160;three-way&#160;interactions&#160;among&#160;all&#160;combinations<br/>of</p>
+<p style="position:absolute;top:989px;left:107px;white-space:nowrap" class="ft50">variables</p>
+<p style="position:absolute;top:989px;left:174px;white-space:nowrap" class="ft50">other</p>
+<p style="position:absolute;top:989px;left:218px;white-space:nowrap" class="ft50">than</p>
+<p style="position:absolute;top:989px;left:258px;white-space:nowrap" class="ft50">(P&#160;acketF&#160;req,</p>
+<p style="position:absolute;top:989px;left:362px;white-space:nowrap" class="ft50">M&#160;inBends,</p>
+<p style="position:absolute;top:1007px;left:81px;white-space:nowrap" class="ft50">σDirectionNoise)</p>
+<p style="position:absolute;top:1007px;left:204px;white-space:nowrap" class="ft50">and</p>
+<p style="position:absolute;top:1007px;left:250px;white-space:nowrap" class="ft50">(P&#160;acketF&#160;req,</p>
+<p style="position:absolute;top:1007px;left:367px;white-space:nowrap" class="ft50">BendP&#160;rob,</p>
+<p style="position:absolute;top:1025px;left:81px;white-space:nowrap" class="ft50">σDirectionNoise)&#160;(p&#160;&lt;&#160;.001).</p>
+<p style="position:absolute;top:1025px;left:283px;white-space:nowrap" class="ft50">And&#160;we&#160;obtained&#160;signif-</p>
+<p style="position:absolute;top:1043px;left:81px;white-space:nowrap" class="ft50">icant&#160;four-way&#160;interactions&#160;for&#160;(P&#160;acketF&#160;req,&#160;M&#160;inBends,</p>
+<p style="position:absolute;top:85px;left:479px;white-space:nowrap" class="ft54">BendP&#160;rob,&#160;σDistanceNoise),&#160;(P&#160;acketF&#160;req,&#160;M&#160;inBends,<br/>BendP&#160;rob,</p>
+<p style="position:absolute;top:103px;left:583px;white-space:nowrap" class="ft50">σDirectionNoise)</p>
+<p style="position:absolute;top:104px;left:708px;white-space:nowrap" class="ft50">and</p>
+<p style="position:absolute;top:104px;left:755px;white-space:nowrap" class="ft50">(M&#160;inBends,</p>
+<p style="position:absolute;top:121px;left:479px;white-space:nowrap" class="ft54">BendP&#160;rob,&#160;σDistanceNoise&#160;σDirectionNoise)&#160;(p&#160;&lt;&#160;.001).<br/>Finally,&#160;it&#160;showed&#160;a&#160;significant&#160;five-way&#160;interaction&#160;among<br/>all&#160;variables&#160;(p&#160;&lt;&#160;.</p>
+<p style="position:absolute;top:156px;left:592px;white-space:nowrap" class="ft50">001).</p>
+<p style="position:absolute;top:176px;left:494px;white-space:nowrap" class="ft50">Looking&#160;at&#160;the&#160;interactions&#160;between&#160;the&#160;independent&#160;vari-</p>
+<p style="position:absolute;top:194px;left:479px;white-space:nowrap" class="ft54">ables&#160;and&#160;Sim&#160;(Figure&#160;4b),&#160;we&#160;first&#160;verified&#160;that&#160;the&#160;fre-<br/>quency&#160;of&#160;packets&#160;did&#160;not&#160;increase&#160;the&#160;average&#160;similarity&#160;of<br/>the&#160;worm&#160;when&#160;there&#160;was&#160;no&#160;noise&#160;applied&#160;to&#160;packets.&#160;How-<br/>ever,&#160;increasing&#160;P&#160;acketF&#160;req&#160;was&#160;detrimental&#160;to&#160;the&#160;Sim<br/>because&#160;a&#160;higher&#160;value&#160;of&#160;P&#160;acketF&#160;req&#160;led&#160;to&#160;a&#160;higher&#160;num-<br/>ber&#160;of&#160;new&#160;cells&#160;(overgrowth)&#160;due&#160;to&#160;packets&#160;moving&#160;across<br/>wrong&#160;paths.&#160;In&#160;general,&#160;increasing&#160;the&#160;number&#160;of&#160;bends&#160;be-<br/>fore&#160;backtracking&#160;aid&#160;worm&#160;similarity&#160;because&#160;all&#160;cells&#160;that<br/>existed&#160;since&#160;the&#160;beginning&#160;of&#160;the&#160;simulation&#160;are&#160;transmit-<br/>ting&#160;new&#160;packets.&#160;In&#160;addition,&#160;if&#160;packets&#160;have&#160;more&#160;bends,<br/>then&#160;they&#160;describe&#160;a&#160;larger&#160;area&#160;of&#160;the&#160;structure,&#160;thereafter<br/>regenerating&#160;more&#160;missing&#160;cells.&#160;However,&#160;when&#160;packets<br/>contained&#160;noise&#160;on&#160;their&#160;directions,&#160;increasing&#160;the&#160;number<br/>of&#160;bends&#160;increased&#160;the&#160;probability&#160;that&#160;packets&#160;backtracking<br/>in&#160;wrong&#160;directions,&#160;consequently&#160;creating&#160;cells&#160;outside&#160;the<br/>original&#160;bounds&#160;of&#160;the&#160;worm&#160;and&#160;reducing&#160;Sim.&#160;Finally,<br/>in&#160;order&#160;to&#160;fully&#160;regenerate&#160;the&#160;worm,&#160;it&#160;is&#160;necessary&#160;that<br/>packets&#160;created&#160;by&#160;cells&#160;on&#160;the&#160;top&#160;of&#160;the&#160;worm&#160;reach&#160;the<br/>edge&#160;of&#160;the&#160;cut.&#160;This&#160;behavior&#160;requires&#160;packets&#160;with&#160;longer<br/>vectors.&#160;For&#160;that&#160;reason,&#160;in&#160;experiments&#160;with&#160;no&#160;noise&#160;in-<br/>creasing&#160;the&#160;value&#160;of&#160;BendP&#160;rob&#160;decreased&#160;the&#160;final&#160;simi-<br/>larity&#160;of&#160;the&#160;worm&#160;(i.e.,&#160;fewer&#160;cells&#160;were&#160;regenerated).&#160;In<br/>experiments&#160;with&#160;noise&#160;applied&#160;to&#160;distance&#160;of&#160;the&#160;vectors,<br/>increasing&#160;the&#160;value&#160;of&#160;BendP&#160;rob&#160;was&#160;bad,&#160;but&#160;not&#160;as&#160;detri-<br/>mental&#160;to&#160;the&#160;performance&#160;as&#160;in&#160;experiments&#160;with&#160;no&#160;noise.<br/>This&#160;is&#160;explained&#160;by&#160;the&#160;fact&#160;that&#160;although&#160;high&#160;values&#160;of<br/>BendP&#160;rob&#160;led&#160;to&#160;shorter&#160;packets,&#160;the&#160;noise&#160;could&#160;increase<br/>the&#160;distance&#160;of&#160;this&#160;packet,&#160;therefore&#160;regenerating&#160;a&#160;cell&#160;that<br/>would&#160;not&#160;regenerate&#160;otherwise.&#160;However,&#160;in&#160;experiments<br/>with&#160;noise&#160;applied&#160;only&#160;to&#160;the&#160;direction&#160;of&#160;the&#160;vectors,&#160;longer<br/>packets&#160;(low&#160;BendP&#160;rob)&#160;were&#160;detrimental&#160;because&#160;when<br/>packets&#160;located&#160;close&#160;to&#160;the&#160;edges&#160;changed&#160;direction,&#160;they<br/>created&#160;new&#160;cells&#160;in&#160;locations&#160;where&#160;there&#160;were&#160;no&#160;cells&#160;in<br/>the&#160;original&#160;worm.</p>
+<p style="position:absolute;top:819px;left:487px;white-space:nowrap" class="ft52">Experiments&#160;with&#160;the&#160;Activation&#160;Mechanism</p>
+<p style="position:absolute;top:845px;left:479px;white-space:nowrap" class="ft54">In&#160;the&#160;previous&#160;section,&#160;we&#160;showed&#160;that&#160;applying&#160;Gaussian<br/>noise&#160;on&#160;packets,&#160;as&#160;expected,&#160;reduced&#160;the&#160;reliability&#160;of&#160;the<br/>model,&#160;thus&#160;making&#160;it&#160;impossible&#160;fully&#160;regenerate&#160;the&#160;worm.<br/>Hence,&#160;the&#160;question&#160;that&#160;arises&#160;is&#160;the&#160;following:&#160;what&#160;could<br/>be&#160;the&#160;evolved&#160;mechanisms&#160;that&#160;may&#160;lead&#160;organisms&#160;to&#160;con-<br/>tinue&#160;their&#160;regeneration&#160;even&#160;when&#160;cell-cell&#160;communication<br/>is&#160;error-prone?&#160;We&#160;hypothesized&#160;that&#160;organisms&#160;could&#160;have<br/>an&#160;“activation”&#160;mechanism&#160;by&#160;which&#160;cells&#160;only&#160;regenerate<br/>missing&#160;cells&#160;if&#160;they&#160;receives&#160;various&#160;packets&#160;confirming&#160;the<br/>previous&#160;existence&#160;of&#160;the&#160;missing&#160;cell.&#160;To&#160;validate&#160;our&#160;hy-<br/>pothesis,&#160;we&#160;modified&#160;our&#160;model&#160;to&#160;account&#160;for&#160;this&#160;activa-<br/>tion&#160;mechanism.&#160;Each&#160;location</p>
+<p style="position:absolute;top:1042px;left:674px;white-space:nowrap" class="ft50">(x,&#160;y,&#160;z)&#160;that&#160;could&#160;contain</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft53">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft53">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft53">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft53">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft53">174</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft53">Oral presentation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:4px;font-family:Times;color:#4d4d4d;}
+	.ft61{font-size:6px;font-family:Times;color:#000000;}
+	.ft62{font-size:6px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft63{font-size:4px;font-family:Times;color:#000000;}
+	.ft64{font-size:11px;font-family:Times;color:#000000;}
+	.ft65{font-size:12px;font-family:Times;color:#000000;}
+	.ft66{font-size:8px;font-family:Times;color:#000000;}
+	.ft67{font-size:5px;font-family:Times;color:#000000;}
+	.ft68{font-size:15px;font-family:Times;color:#000000;}
+	.ft69{font-size:10px;font-family:Times;color:#595959;}
+	.ft610{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft611{font-size:8px;line-height:11px;font-family:Times;color:#000000;}
+	.ft612{font-size:12px;line-height:20px;font-family:Times;color:#000000;}
+	.ft613{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft614{font-size:5px;line-height:7px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:396px;left:101px;white-space:nowrap" class="ft60">60</p>
+<p style="position:absolute;top:321px;left:101px;white-space:nowrap" class="ft60">70</p>
+<p style="position:absolute;top:247px;left:101px;white-space:nowrap" class="ft60">80</p>
+<p style="position:absolute;top:172px;left:101px;white-space:nowrap" class="ft60">90</p>
+<p style="position:absolute;top:98px;left:97px;white-space:nowrap" class="ft60">100</p>
+<p style="position:absolute;top:417px;left:125px;white-space:nowrap" class="ft60">25</p>
+<p style="position:absolute;top:417px;left:154px;white-space:nowrap" class="ft60">28</p>
+<p style="position:absolute;top:417px;left:182px;white-space:nowrap" class="ft60">31</p>
+<p style="position:absolute;top:425px;left:124px;white-space:nowrap" class="ft61">Packet&#160;Frequency</p>
+<p style="position:absolute;top:277px;left:91px;white-space:nowrap" class="ft62">Regenerat</p>
+<p style="position:absolute;top:239px;left:91px;white-space:nowrap" class="ft62">ionRat</p>
+<p style="position:absolute;top:215px;left:91px;white-space:nowrap" class="ft62">io</p>
+<p style="position:absolute;top:397px;left:227px;white-space:nowrap" class="ft60">60</p>
+<p style="position:absolute;top:322px;left:227px;white-space:nowrap" class="ft60">70</p>
+<p style="position:absolute;top:247px;left:227px;white-space:nowrap" class="ft60">80</p>
+<p style="position:absolute;top:173px;left:227px;white-space:nowrap" class="ft60">90</p>
+<p style="position:absolute;top:98px;left:223px;white-space:nowrap" class="ft60">100</p>
+<p style="position:absolute;top:418px;left:253px;white-space:nowrap" class="ft60">3</p>
+<p style="position:absolute;top:418px;left:282px;white-space:nowrap" class="ft60">5</p>
+<p style="position:absolute;top:418px;left:310px;white-space:nowrap" class="ft60">7</p>
+<p style="position:absolute;top:427px;left:248px;white-space:nowrap" class="ft61">Bends&#160;to&#160;Backtrack</p>
+<p style="position:absolute;top:278px;left:217px;white-space:nowrap" class="ft62">Regenerat</p>
+<p style="position:absolute;top:240px;left:217px;white-space:nowrap" class="ft62">ionRat</p>
+<p style="position:absolute;top:216px;left:217px;white-space:nowrap" class="ft62">io</p>
+<p style="position:absolute;top:396px;left:353px;white-space:nowrap" class="ft60">60</p>
+<p style="position:absolute;top:321px;left:353px;white-space:nowrap" class="ft60">70</p>
+<p style="position:absolute;top:247px;left:353px;white-space:nowrap" class="ft60">80</p>
+<p style="position:absolute;top:172px;left:353px;white-space:nowrap" class="ft60">90</p>
+<p style="position:absolute;top:98px;left:349px;white-space:nowrap" class="ft60">100</p>
+<p style="position:absolute;top:417px;left:376px;white-space:nowrap" class="ft60">0.1</p>
+<p style="position:absolute;top:417px;left:405px;white-space:nowrap" class="ft60">0.2</p>
+<p style="position:absolute;top:417px;left:433px;white-space:nowrap" class="ft60">0.3</p>
+<p style="position:absolute;top:425px;left:369px;white-space:nowrap" class="ft61">Prob.&#160;of&#160;Changing&#160;Dir.</p>
+<p style="position:absolute;top:277px;left:343px;white-space:nowrap" class="ft62">Regenerat</p>
+<p style="position:absolute;top:239px;left:343px;white-space:nowrap" class="ft62">ionRat</p>
+<p style="position:absolute;top:215px;left:343px;white-space:nowrap" class="ft62">io</p>
+<p style="position:absolute;top:445px;left:133px;white-space:nowrap" class="ft61">Noise&#160;</p>
+<p style="position:absolute;top:443px;left:157px;white-space:nowrap" class="ft61">σ:</p>
+<p style="position:absolute;top:446px;left:182px;white-space:nowrap" class="ft63">Dis=0&#160;Dir=0</p>
+<p style="position:absolute;top:446px;left:233px;white-space:nowrap" class="ft63">Dis=0&#160;Dir=0.25</p>
+<p style="position:absolute;top:446px;left:293px;white-space:nowrap" class="ft63">Dis=0.33&#160;Dir=0</p>
+<p style="position:absolute;top:446px;left:353px;white-space:nowrap" class="ft63">Dis=0.33&#160;Dir=0.25</p>
+<p style="position:absolute;top:469px;left:81px;white-space:nowrap" class="ft610">(a)&#160;Box&#160;plots&#160;of&#160;the&#160;independent&#160;variables&#160;(P&#160;acketF&#160;req,&#160;M&#160;inBends<br/>and&#160;BendP&#160;rob)&#160;and&#160;RegenerationRatio&#160;for&#160;all&#160;types&#160;of&#160;noise.</p>
+<p style="position:absolute;top:346px;left:475px;white-space:nowrap" class="ft60">0.25</p>
+<p style="position:absolute;top:263px;left:475px;white-space:nowrap" class="ft60">0.50</p>
+<p style="position:absolute;top:180px;left:475px;white-space:nowrap" class="ft60">0.75</p>
+<p style="position:absolute;top:98px;left:475px;white-space:nowrap" class="ft60">1.00</p>
+<p style="position:absolute;top:417px;left:505px;white-space:nowrap" class="ft60">25</p>
+<p style="position:absolute;top:417px;left:533px;white-space:nowrap" class="ft60">28</p>
+<p style="position:absolute;top:417px;left:560px;white-space:nowrap" class="ft60">31</p>
+<p style="position:absolute;top:425px;left:503px;white-space:nowrap" class="ft61">Packet&#160;Frequency</p>
+<p style="position:absolute;top:260px;left:469px;white-space:nowrap" class="ft62">S</p>
+<p style="position:absolute;top:254px;left:469px;white-space:nowrap" class="ft62">imilarit</p>
+<p style="position:absolute;top:230px;left:469px;white-space:nowrap" class="ft62">y</p>
+<p style="position:absolute;top:347px;left:601px;white-space:nowrap" class="ft60">0.25</p>
+<p style="position:absolute;top:264px;left:601px;white-space:nowrap" class="ft60">0.50</p>
+<p style="position:absolute;top:181px;left:601px;white-space:nowrap" class="ft60">0.75</p>
+<p style="position:absolute;top:98px;left:601px;white-space:nowrap" class="ft60">1.00</p>
+<p style="position:absolute;top:418px;left:633px;white-space:nowrap" class="ft60">3</p>
+<p style="position:absolute;top:418px;left:660px;white-space:nowrap" class="ft60">5</p>
+<p style="position:absolute;top:418px;left:688px;white-space:nowrap" class="ft60">7</p>
+<p style="position:absolute;top:427px;left:627px;white-space:nowrap" class="ft61">Bends&#160;to&#160;Backtrack</p>
+<p style="position:absolute;top:261px;left:595px;white-space:nowrap" class="ft62">S</p>
+<p style="position:absolute;top:255px;left:595px;white-space:nowrap" class="ft62">imilarit</p>
+<p style="position:absolute;top:231px;left:595px;white-space:nowrap" class="ft62">y</p>
+<p style="position:absolute;top:346px;left:727px;white-space:nowrap" class="ft60">0.25</p>
+<p style="position:absolute;top:263px;left:727px;white-space:nowrap" class="ft60">0.50</p>
+<p style="position:absolute;top:180px;left:727px;white-space:nowrap" class="ft60">0.75</p>
+<p style="position:absolute;top:98px;left:727px;white-space:nowrap" class="ft60">1.00</p>
+<p style="position:absolute;top:417px;left:756px;white-space:nowrap" class="ft60">0.1</p>
+<p style="position:absolute;top:417px;left:784px;white-space:nowrap" class="ft60">0.2</p>
+<p style="position:absolute;top:417px;left:812px;white-space:nowrap" class="ft60">0.3</p>
+<p style="position:absolute;top:425px;left:747px;white-space:nowrap" class="ft61">Prob.&#160;of&#160;Changing&#160;Dir.</p>
+<p style="position:absolute;top:260px;left:721px;white-space:nowrap" class="ft62">S</p>
+<p style="position:absolute;top:254px;left:721px;white-space:nowrap" class="ft62">imilarit</p>
+<p style="position:absolute;top:230px;left:721px;white-space:nowrap" class="ft62">y</p>
+<p style="position:absolute;top:445px;left:511px;white-space:nowrap" class="ft61">Noise&#160;</p>
+<p style="position:absolute;top:443px;left:535px;white-space:nowrap" class="ft61">σ:</p>
+<p style="position:absolute;top:446px;left:560px;white-space:nowrap" class="ft63">Dis=0&#160;Dir=0</p>
+<p style="position:absolute;top:446px;left:611px;white-space:nowrap" class="ft63">Dis=0&#160;Dir=0.25</p>
+<p style="position:absolute;top:446px;left:671px;white-space:nowrap" class="ft63">Dis=0.33&#160;Dir=0</p>
+<p style="position:absolute;top:446px;left:731px;white-space:nowrap" class="ft63">Dis=0.33&#160;Dir=0.25</p>
+<p style="position:absolute;top:469px;left:459px;white-space:nowrap" class="ft610">(b)&#160;Box&#160;plots&#160;of&#160;the&#160;independent&#160;variables&#160;(P&#160;acketF&#160;req,&#160;M&#160;inBends<br/>and&#160;BendP&#160;rob)&#160;and&#160;Sim&#160;for&#160;all&#160;types&#160;of&#160;noise.</p>
+<p style="position:absolute;top:515px;left:81px;white-space:nowrap" class="ft65">Figure&#160;4:</p>
+<p style="position:absolute;top:515px;left:154px;white-space:nowrap" class="ft65">Distribution&#160;of&#160;the&#160;interaction&#160;between&#160;the&#160;three&#160;independent&#160;variables&#160;and&#160;the&#160;two&#160;performance&#160;metrics</p>
+<p style="position:absolute;top:533px;left:81px;white-space:nowrap" class="ft65">(RegenerationRatio&#160;and&#160;Sim).</p>
+<p style="position:absolute;top:584px;left:81px;white-space:nowrap" class="ft65">a&#160;cell&#160;has&#160;an&#160;activation&#160;value&#160;c</p>
+<p style="position:absolute;top:579px;left:272px;white-space:nowrap" class="ft611">(x,y,z)<br/>act</p>
+<p style="position:absolute;top:584px;left:314px;white-space:nowrap" class="ft65">between&#160;0&#160;and&#160;1.&#160;If</p>
+<p style="position:absolute;top:604px;left:81px;white-space:nowrap" class="ft65">c</p>
+<p style="position:absolute;top:599px;left:87px;white-space:nowrap" class="ft611">(x,y,z)<br/>act</p>
+<p style="position:absolute;top:603px;left:131px;white-space:nowrap" class="ft65">≥&#160;1,&#160;then&#160;there&#160;is&#160;an&#160;alive&#160;cell&#160;located&#160;in&#160;position</p>
+<p style="position:absolute;top:622px;left:81px;white-space:nowrap" class="ft65">(x,&#160;y,&#160;z),&#160;otherwise&#160;there&#160;is&#160;no&#160;cell&#160;in&#160;this&#160;position.</p>
+<p style="position:absolute;top:641px;left:96px;white-space:nowrap" class="ft65">The&#160;backtrack&#160;mechanism&#160;now&#160;works&#160;as&#160;follows.&#160;When</p>
+<p style="position:absolute;top:659px;left:81px;white-space:nowrap" class="ft65">a&#160;cell&#160;c&#160;in&#160;location</p>
+<p style="position:absolute;top:658px;left:201px;white-space:nowrap" class="ft65">(x,&#160;y,&#160;z)&#160;backtracks&#160;a&#160;packet&#160;to&#160;a&#160;loca-</p>
+<p style="position:absolute;top:677px;left:81px;white-space:nowrap" class="ft65">tion</p>
+<p style="position:absolute;top:676px;left:110px;white-space:nowrap" class="ft65">(x</p>
+<p style="position:absolute;top:676px;left:124px;white-space:nowrap" class="ft66">′&#160;,&#160;y′,&#160;z′),&#160;the&#160;cell&#160;checks&#160;if&#160;there&#160;is&#160;an&#160;alive&#160;cell&#160;in</p>
+<p style="position:absolute;top:694px;left:81px;white-space:nowrap" class="ft65">(x</p>
+<p style="position:absolute;top:694px;left:95px;white-space:nowrap" class="ft66">′&#160;,&#160;y′,&#160;z′).&#160;If&#160;there&#160;is&#160;an&#160;alive&#160;cell&#160;to&#160;receive&#160;the&#160;packet,</p>
+<p style="position:absolute;top:713px;left:81px;white-space:nowrap" class="ft65">the&#160;packet&#160;continues&#160;its&#160;path.&#160;Otherwise,&#160;a&#160;new&#160;cell&#160;is&#160;not</p>
+<p style="position:absolute;top:734px;left:81px;white-space:nowrap" class="ft65">immediately&#160;regrown,&#160;but&#160;the&#160;activation&#160;in&#160;c</p>
+<p style="position:absolute;top:729px;left:353px;white-space:nowrap" class="ft611">(x′,y′,z′)<br/>act</p>
+<p style="position:absolute;top:734px;left:407px;white-space:nowrap" class="ft65">is&#160;in-</p>
+<p style="position:absolute;top:756px;left:81px;white-space:nowrap" class="ft65">creased&#160;by&#160;a&#160;value&#160;βact.&#160;If&#160;c</p>
+<p style="position:absolute;top:750px;left:266px;white-space:nowrap" class="ft611">(x′,y′,z′)<br/>act</p>
+<p style="position:absolute;top:754px;left:323px;white-space:nowrap" class="ft65">≥&#160;1,&#160;then&#160;the&#160;cell</p>
+<p style="position:absolute;top:774px;left:81px;white-space:nowrap" class="ft65">regrows&#160;another&#160;cell&#160;at</p>
+<p style="position:absolute;top:773px;left:226px;white-space:nowrap" class="ft65">(x</p>
+<p style="position:absolute;top:772px;left:240px;white-space:nowrap" class="ft66">′&#160;,&#160;y′,&#160;z′)&#160;and&#160;the&#160;packet&#160;is&#160;subse-</p>
+<p style="position:absolute;top:792px;left:81px;white-space:nowrap" class="ft612">quently&#160;forwarded.&#160;At&#160;the&#160;end&#160;of&#160;each&#160;cycle,&#160;a&#160;decay&#160;value<br/>δact&#160;is&#160;subtracted&#160;from&#160;all&#160;c</p>
+<p style="position:absolute;top:807px;left:255px;white-space:nowrap" class="ft611">(x,y,z)<br/>act</p>
+<p style="position:absolute;top:812px;left:291px;white-space:nowrap" class="ft65">.&#160;Thus,&#160;various&#160;packets</p>
+<p style="position:absolute;top:830px;left:81px;white-space:nowrap" class="ft613">need&#160;to&#160;quickly&#160;reach&#160;a&#160;location&#160;to&#160;regrow&#160;a&#160;new&#160;cell&#160;there.<br/>Equation&#160;3&#160;more&#160;formally&#160;details&#160;the&#160;activation&#160;update&#160;for<br/>each</p>
+<p style="position:absolute;top:865px;left:112px;white-space:nowrap" class="ft65">(x,&#160;y,&#160;z)&#160;and&#160;at&#160;each&#160;cycle&#160;i.</p>
+<p style="position:absolute;top:904px;left:136px;white-space:nowrap" class="ft65">c</p>
+<p style="position:absolute;top:899px;left:142px;white-space:nowrap" class="ft611">(x,y,z)<br/>act</p>
+<p style="position:absolute;top:904px;left:183px;white-space:nowrap" class="ft65">=&#160;(Σ</p>
+<p style="position:absolute;top:901px;left:215px;white-space:nowrap" class="ft66">|</p>
+<p style="position:absolute;top:899px;left:219px;white-space:nowrap" class="ft66">c</p>
+<p style="position:absolute;top:897px;left:224px;white-space:nowrap" class="ft614">i<br/>ReceivedP&#160;ackets&#160;|</p>
+<p style="position:absolute;top:911px;left:215px;white-space:nowrap" class="ft66">0</p>
+<p style="position:absolute;top:904px;left:311px;white-space:nowrap" class="ft65">βact)&#160;−&#160;δact</p>
+<p style="position:absolute;top:905px;left:421px;white-space:nowrap" class="ft65">(3)</p>
+<p style="position:absolute;top:934px;left:81px;white-space:nowrap" class="ft65">where&#160;ci</p>
+<p style="position:absolute;top:942px;left:128px;white-space:nowrap" class="ft66">ReceivedP&#160;ackets&#160;is&#160;the&#160;list&#160;of&#160;received&#160;packets&#160;by&#160;lo-</p>
+<p style="position:absolute;top:952px;left:81px;white-space:nowrap" class="ft65">cation</p>
+<p style="position:absolute;top:951px;left:121px;white-space:nowrap" class="ft65">(x,&#160;y,&#160;z)&#160;at&#160;cycle&#160;i.</p>
+<p style="position:absolute;top:971px;left:96px;white-space:nowrap" class="ft65">We&#160;wanted&#160;to&#160;explore&#160;the&#160;same&#160;parameter&#160;space&#160;we&#160;pre-</p>
+<p style="position:absolute;top:989px;left:81px;white-space:nowrap" class="ft613">viously&#160;explored&#160;in&#160;experiments&#160;with&#160;noise,&#160;but&#160;now&#160;with<br/>a&#160;new&#160;dimension&#160;where&#160;we&#160;inserted&#160;the&#160;activation&#160;mech-<br/>anism.&#160;Thus,&#160;we&#160;ran&#160;simulations&#160;with&#160;the&#160;same&#160;parame-<br/>ters&#160;described&#160;in&#160;the&#160;previous&#160;experiments&#160;but&#160;varied&#160;βact&#160;∈</p>
+<p style="position:absolute;top:582px;left:479px;white-space:nowrap" class="ft65">{0.2,&#160;0.34,&#160;1}&#160;and&#160;fixed&#160;δact&#160;=</p>
+<p style="position:absolute;top:579px;left:670px;white-space:nowrap" class="ft66">βact</p>
+<p style="position:absolute;top:591px;left:678px;white-space:nowrap" class="ft66">5&#160;.&#160;For&#160;βact&#160;=&#160;1,&#160;the&#160;sim-</p>
+<p style="position:absolute;top:601px;left:479px;white-space:nowrap" class="ft613">ulation&#160;worked&#160;exactly&#160;the&#160;same&#160;way&#160;as&#160;with&#160;no&#160;activation<br/>level.&#160;We&#160;used&#160;those&#160;runs&#160;as&#160;the&#160;baseline.</p>
+<p style="position:absolute;top:638px;left:494px;white-space:nowrap" class="ft65">Since&#160;the&#160;simulated&#160;worms&#160;now&#160;need&#160;more&#160;packets&#160;to&#160;re-</p>
+<p style="position:absolute;top:656px;left:479px;white-space:nowrap" class="ft613">grow&#160;new&#160;cells&#160;with&#160;low&#160;values&#160;of&#160;βact,&#160;we&#160;expected&#160;a&#160;neg-<br/>ative&#160;correlation&#160;between&#160;βact&#160;and&#160;the&#160;extent&#160;of&#160;overgrowth<br/>on&#160;the&#160;shape&#160;of&#160;the&#160;worm.&#160;However,&#160;low&#160;values&#160;of&#160;βact&#160;could<br/>lead&#160;to&#160;more&#160;difficulty&#160;in&#160;regenerating&#160;cells&#160;far&#160;from&#160;the&#160;lo-<br/>cation&#160;of&#160;the&#160;cut&#160;(i.e.,&#160;cells&#160;on&#160;top&#160;of&#160;the&#160;head).&#160;Thus,&#160;we<br/>expected&#160;a&#160;moderate&#160;value&#160;of&#160;βact&#160;to&#160;perform&#160;best&#160;regard-<br/>ing&#160;the&#160;RegenerationRatio&#160;and&#160;Sim.&#160;For&#160;each&#160;point&#160;in<br/>the&#160;parameter&#160;space,&#160;we&#160;ran&#160;100&#160;simulations&#160;with&#160;different<br/>random&#160;seeds,&#160;resulting&#160;in&#160;a&#160;total&#160;of&#160;32400&#160;simulations.</p>
+<p style="position:absolute;top:834px;left:494px;white-space:nowrap" class="ft68">Results&#160;of&#160;Experiments&#160;with&#160;the&#160;Activation</p>
+<p style="position:absolute;top:855px;left:614px;white-space:nowrap" class="ft68">Mechanism</p>
+<p style="position:absolute;top:881px;left:479px;white-space:nowrap" class="ft613">There&#160;were&#160;8100&#160;simulations&#160;with&#160;no&#160;noise&#160;applied&#160;on&#160;pack-<br/>ets&#160;(2700&#160;runs&#160;for&#160;each&#160;possible&#160;value&#160;of&#160;βact).&#160;From&#160;these<br/>simulations,&#160;3189&#160;were&#160;capable&#160;of&#160;completely&#160;regenerating<br/>the&#160;worm.&#160;Although&#160;this&#160;mechanism&#160;reduced&#160;the&#160;propor-<br/>tion&#160;of&#160;simulations&#160;that&#160;fully&#160;regenerated&#160;the&#160;worm&#160;with&#160;no<br/>noise&#160;applied&#160;on&#160;packets,&#160;in&#160;1400&#160;out&#160;of&#160;24300&#160;simulations<br/>with&#160;noise&#160;the&#160;worm&#160;was&#160;totally&#160;regrown.&#160;However,&#160;all&#160;of<br/>these&#160;fully&#160;regrown&#160;simulations&#160;happened&#160;with&#160;noise&#160;applied<br/>only&#160;on&#160;the&#160;direction&#160;of&#160;packets.&#160;Table&#160;3&#160;shows&#160;the&#160;aver-<br/>age&#160;RegenerationRatio&#160;and&#160;standard&#160;deviation&#160;for&#160;all&#160;val-</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft69">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft69">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft69">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft69">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft69">175</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft69">Oral presentation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:12px;font-family:Times;color:#000000;}
+	.ft71{font-size:8px;font-family:Times;color:#000000;}
+	.ft72{font-size:15px;font-family:Times;color:#000000;}
+	.ft73{font-size:4px;font-family:Times;color:#4d4d4d;}
+	.ft74{font-size:5px;font-family:Times;color:#000000;}
+	.ft75{font-size:3px;font-family:Times;color:#000000;}
+	.ft76{font-size:5px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft77{font-size:4px;font-family:Times;color:#000000;}
+	.ft78{font-size:10px;font-family:Times;color:#595959;}
+	.ft79{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft710{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft79">ues&#160;of&#160;noise&#160;applied&#160;on&#160;packets&#160;after&#160;adding&#160;the&#160;activation<br/>mechanism.&#160;Comparing&#160;with&#160;previous&#160;results,&#160;we&#160;can&#160;con-<br/>firm&#160;that&#160;the&#160;activation&#160;mechanism&#160;was&#160;a&#160;little&#160;detrimental<br/>for&#160;simulations&#160;with&#160;no&#160;noise,&#160;but&#160;it&#160;increased&#160;performance<br/>of&#160;simulations&#160;that&#160;contained&#160;any&#160;noise.&#160;The&#160;same&#160;conclu-<br/>sion&#160;is&#160;valid&#160;for&#160;Sim&#160;as&#160;shown&#160;in&#160;Table&#160;4.&#160;For&#160;example,<br/>Figure&#160;3d&#160;shows&#160;the&#160;least&#160;similar&#160;worm&#160;after&#160;adding&#160;the&#160;ac-<br/>tivation&#160;mechanism&#160;(Sim</p>
+<p style="position:absolute;top:210px;left:241px;white-space:nowrap" class="ft70">=&#160;0.664,&#160;σDistanceNoise&#160;=&#160;0.33</p>
+<p style="position:absolute;top:229px;left:81px;white-space:nowrap" class="ft710">σDirectionNoise&#160;=&#160;0.25&#160;and&#160;δact&#160;=&#160;0.34).&#160;In&#160;summary,&#160;this<br/>activation&#160;mechanism&#160;reduced&#160;the&#160;level&#160;of&#160;overgrowth.</p>
+<p style="position:absolute;top:289px;left:82px;white-space:nowrap" class="ft70">Dis</p>
+<p style="position:absolute;top:283px;left:124px;white-space:nowrap" class="ft70">Dir</p>
+<p style="position:absolute;top:285px;left:219px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:285px;left:354px;white-space:nowrap" class="ft70">0.25</p>
+<p style="position:absolute;top:303px;left:90px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:303px;left:160px;white-space:nowrap" class="ft70">92.499%</p>
+<p style="position:absolute;top:302px;left:217px;white-space:nowrap" class="ft70">±&#160;12.251%</p>
+<p style="position:absolute;top:303px;left:304px;white-space:nowrap" class="ft70">86.066%</p>
+<p style="position:absolute;top:302px;left:361px;white-space:nowrap" class="ft70">±&#160;12.347%</p>
+<p style="position:absolute;top:322px;left:90px;white-space:nowrap" class="ft70">0.33</p>
+<p style="position:absolute;top:322px;left:160px;white-space:nowrap" class="ft70">75.867%</p>
+<p style="position:absolute;top:320px;left:217px;white-space:nowrap" class="ft70">±&#160;12.282%</p>
+<p style="position:absolute;top:322px;left:304px;white-space:nowrap" class="ft70">74.891%</p>
+<p style="position:absolute;top:320px;left:361px;white-space:nowrap" class="ft70">±&#160;12.691%</p>
+<p style="position:absolute;top:355px;left:81px;white-space:nowrap" class="ft79">Table&#160;3:&#160;Average&#160;RegenerationRatio&#160;for&#160;all&#160;combinations<br/>of&#160;noise&#160;with&#160;addition&#160;of&#160;the&#160;activation&#160;mechanism.</p>
+<p style="position:absolute;top:434px;left:122px;white-space:nowrap" class="ft70">Dis</p>
+<p style="position:absolute;top:428px;left:164px;white-space:nowrap" class="ft70">Dir</p>
+<p style="position:absolute;top:430px;left:239px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:430px;left:334px;white-space:nowrap" class="ft70">0.25</p>
+<p style="position:absolute;top:449px;left:130px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:449px;left:199px;white-space:nowrap" class="ft70">0.933</p>
+<p style="position:absolute;top:447px;left:237px;white-space:nowrap" class="ft70">±&#160;0.104</p>
+<p style="position:absolute;top:449px;left:304px;white-space:nowrap" class="ft70">0.809</p>
+<p style="position:absolute;top:447px;left:341px;white-space:nowrap" class="ft70">±&#160;0.176</p>
+<p style="position:absolute;top:467px;left:130px;white-space:nowrap" class="ft70">0.33</p>
+<p style="position:absolute;top:467px;left:199px;white-space:nowrap" class="ft70">0.563</p>
+<p style="position:absolute;top:466px;left:237px;white-space:nowrap" class="ft70">±&#160;0.257</p>
+<p style="position:absolute;top:467px;left:304px;white-space:nowrap" class="ft70">0.552</p>
+<p style="position:absolute;top:466px;left:341px;white-space:nowrap" class="ft70">±&#160;0.265</p>
+<p style="position:absolute;top:501px;left:81px;white-space:nowrap" class="ft79">Table&#160;4:&#160;Average&#160;Sim&#160;for&#160;all&#160;combinations&#160;of&#160;noise&#160;with<br/>addition&#160;of&#160;the&#160;activation&#160;mechanism.</p>
+<p style="position:absolute;top:556px;left:96px;white-space:nowrap" class="ft70">Figure&#160;5&#160;shows&#160;the&#160;distribution&#160;of&#160;βact&#160;and&#160;both&#160;depen-</p>
+<p style="position:absolute;top:574px;left:81px;white-space:nowrap" class="ft79">dent&#160;variables&#160;(RegenerationRatio&#160;and&#160;Sim)&#160;for&#160;all&#160;com-<br/>binations&#160;of&#160;noise&#160;applied&#160;to&#160;packets.&#160;As&#160;expected,&#160;we&#160;found<br/>that&#160;increasing&#160;the&#160;value&#160;of&#160;βact&#160;increased&#160;the&#160;ratio&#160;of&#160;cells<br/>regenerated&#160;in&#160;simulations&#160;with&#160;no&#160;noise&#160;applied&#160;to&#160;packets.<br/>On&#160;the&#160;other&#160;hand,&#160;increasing&#160;the&#160;value&#160;of&#160;βact&#160;decreased<br/>RegenerationRatio&#160;when&#160;there&#160;was&#160;noise&#160;on&#160;the&#160;length&#160;of<br/>the&#160;packets’&#160;vectors.&#160;However,&#160;looking&#160;at&#160;simulation&#160;runs<br/>with&#160;βact&#160;&lt;&#160;1,&#160;and&#160;noise&#160;applied&#160;only&#160;to&#160;the&#160;direction&#160;of&#160;the<br/>packets,&#160;we&#160;found&#160;the&#160;same&#160;result&#160;from&#160;runs&#160;with&#160;no&#160;noise.<br/>This&#160;is&#160;evidence&#160;that&#160;an&#160;activation&#160;mechanism&#160;could&#160;be&#160;im-<br/>portant&#160;for&#160;the&#160;regeneration&#160;process&#160;in&#160;order&#160;to&#160;fix&#160;errors&#160;on<br/>the&#160;directions&#160;of&#160;packets.&#160;Looking&#160;at&#160;the&#160;value&#160;of&#160;Sim,&#160;when<br/>there&#160;was&#160;noise&#160;applied&#160;to&#160;packets,&#160;a&#160;lower&#160;value&#160;of&#160;βact&#160;re-<br/>duced&#160;the&#160;overgrowth&#160;and&#160;improved&#160;the&#160;similarity&#160;of&#160;the&#160;fi-<br/>nal&#160;worm&#160;to&#160;the&#160;original&#160;one.&#160;On&#160;the&#160;other&#160;hand,&#160;when&#160;there<br/>was&#160;no&#160;noise,&#160;it&#160;was&#160;harder&#160;to&#160;regrow&#160;cells&#160;located&#160;far&#160;from<br/>the&#160;cut,&#160;therefore&#160;it&#160;reduced&#160;the&#160;similarity&#160;of&#160;the&#160;final&#160;worm.</p>
+<p style="position:absolute;top:893px;left:220px;white-space:nowrap" class="ft72">Discussion</p>
+<p style="position:absolute;top:917px;left:81px;white-space:nowrap" class="ft79">In&#160;planarians,&#160;only&#160;adult&#160;stem&#160;cells&#160;(called&#160;neoblasts)&#160;can<br/>create&#160;and&#160;differentiate&#160;into&#160;any&#160;cell&#160;type&#160;Lobo&#160;et&#160;al.&#160;(2012).<br/>Instead,&#160;in&#160;our&#160;model&#160;any&#160;cell&#160;can&#160;create&#160;a&#160;new&#160;cell.&#160;Thus,<br/>the&#160;results&#160;show&#160;that&#160;when&#160;there&#160;is&#160;noise&#160;applied&#160;to&#160;pack-<br/>ets,&#160;each&#160;new&#160;cell&#160;in&#160;a&#160;wrong&#160;location&#160;increases&#160;the&#160;likeli-<br/>hood&#160;of&#160;an&#160;even&#160;larger&#160;overgrowth.&#160;For&#160;instance,&#160;the&#160;worm<br/>sends</p>
+<p style="position:absolute;top:1024px;left:119px;white-space:nowrap" class="ft70">2100&#160;×&#160;P&#160;acketF&#160;req&#160;packets&#160;per&#160;cycle.&#160;If&#160;one&#160;new</p>
+<p style="position:absolute;top:1043px;left:81px;white-space:nowrap" class="ft70">cell&#160;grows&#160;in&#160;a&#160;wrong&#160;location,&#160;then&#160;at&#160;each&#160;cycle&#160;after&#160;that</p>
+<p style="position:absolute;top:377px;left:498px;white-space:nowrap" class="ft73">50</p>
+<p style="position:absolute;top:321px;left:498px;white-space:nowrap" class="ft73">60</p>
+<p style="position:absolute;top:265px;left:498px;white-space:nowrap" class="ft73">70</p>
+<p style="position:absolute;top:209px;left:498px;white-space:nowrap" class="ft73">80</p>
+<p style="position:absolute;top:153px;left:498px;white-space:nowrap" class="ft73">90</p>
+<p style="position:absolute;top:97px;left:495px;white-space:nowrap" class="ft73">100</p>
+<p style="position:absolute;top:397px;left:531px;white-space:nowrap" class="ft73">0.2</p>
+<p style="position:absolute;top:397px;left:575px;white-space:nowrap" class="ft73">0.34</p>
+<p style="position:absolute;top:397px;left:625px;white-space:nowrap" class="ft73">1</p>
+<p style="position:absolute;top:403px;left:575px;white-space:nowrap" class="ft74">βact</p>
+<p style="position:absolute;top:266px;left:489px;white-space:nowrap" class="ft76">Regenerat</p>
+<p style="position:absolute;top:230px;left:489px;white-space:nowrap" class="ft76">ionRat</p>
+<p style="position:absolute;top:207px;left:489px;white-space:nowrap" class="ft76">io</p>
+<p style="position:absolute;top:331px;left:673px;white-space:nowrap" class="ft73">0.25</p>
+<p style="position:absolute;top:253px;left:673px;white-space:nowrap" class="ft73">0.50</p>
+<p style="position:absolute;top:175px;left:673px;white-space:nowrap" class="ft73">0.75</p>
+<p style="position:absolute;top:97px;left:673px;white-space:nowrap" class="ft73">1.00</p>
+<p style="position:absolute;top:397px;left:712px;white-space:nowrap" class="ft73">0.2</p>
+<p style="position:absolute;top:397px;left:755px;white-space:nowrap" class="ft73">0.34</p>
+<p style="position:absolute;top:397px;left:804px;white-space:nowrap" class="ft73">1</p>
+<p style="position:absolute;top:403px;left:755px;white-space:nowrap" class="ft74">βact</p>
+<p style="position:absolute;top:249px;left:668px;white-space:nowrap" class="ft76">S</p>
+<p style="position:absolute;top:244px;left:668px;white-space:nowrap" class="ft76">imilarit</p>
+<p style="position:absolute;top:222px;left:668px;white-space:nowrap" class="ft76">y</p>
+<p style="position:absolute;top:426px;left:529px;white-space:nowrap" class="ft74">Noise&#160;</p>
+<p style="position:absolute;top:423px;left:551px;white-space:nowrap" class="ft74">σ:</p>
+<p style="position:absolute;top:426px;left:575px;white-space:nowrap" class="ft77">Dis=0&#160;Dir=0</p>
+<p style="position:absolute;top:426px;left:623px;white-space:nowrap" class="ft77">Dis=0&#160;Dir=0.25</p>
+<p style="position:absolute;top:426px;left:680px;white-space:nowrap" class="ft77">Dis=0.33&#160;Dir=0</p>
+<p style="position:absolute;top:426px;left:737px;white-space:nowrap" class="ft77">Dis=0.33&#160;Dir=0.25</p>
+<p style="position:absolute;top:463px;left:479px;white-space:nowrap" class="ft70">Figure&#160;5:</p>
+<p style="position:absolute;top:463px;left:553px;white-space:nowrap" class="ft70">Distribution&#160;of&#160;the&#160;interaction&#160;between&#160;βact</p>
+<p style="position:absolute;top:481px;left:479px;white-space:nowrap" class="ft79">and&#160;the&#160;two&#160;performance&#160;metrics&#160;(RegenerationRatio&#160;and<br/>Sim).</p>
+<p style="position:absolute;top:551px;left:479px;white-space:nowrap" class="ft70">the&#160;worm&#160;sends</p>
+<p style="position:absolute;top:550px;left:579px;white-space:nowrap" class="ft70">2101&#160;×&#160;P&#160;acketF&#160;req&#160;packets,&#160;which&#160;has&#160;a</p>
+<p style="position:absolute;top:569px;left:479px;white-space:nowrap" class="ft70">higher&#160;chance&#160;of&#160;inaccurate&#160;creating&#160;another&#160;cell.</p>
+<p style="position:absolute;top:587px;left:494px;white-space:nowrap" class="ft70">The&#160;reliability&#160;of&#160;our&#160;model&#160;is&#160;based&#160;on&#160;shape&#160;informa-</p>
+<p style="position:absolute;top:605px;left:479px;white-space:nowrap" class="ft79">tion&#160;existing&#160;across&#160;the&#160;network&#160;of&#160;cells.&#160;Moreover,&#160;this<br/>information&#160;has&#160;a&#160;high&#160;degree&#160;of&#160;partial&#160;redundancy&#160;(i.e.,<br/>various&#160;packets&#160;could&#160;regrow&#160;the&#160;same&#160;cell,&#160;even&#160;though<br/>they&#160;do&#160;not&#160;traversed&#160;the&#160;same&#160;path).&#160;Partial&#160;redundancy<br/>is&#160;very&#160;common&#160;and&#160;important&#160;in&#160;natural&#160;organisms&#160;because<br/>it&#160;preserves&#160;the&#160;organism&#160;against&#160;a&#160;variety&#160;of&#160;damages&#160;in&#160;its<br/>body&#160;or&#160;even&#160;genes&#160;(Brodsky,&#160;2015).&#160;The&#160;inherent&#160;partial<br/>redundancy&#160;of&#160;our&#160;model&#160;allow&#160;various&#160;packets&#160;to&#160;reach&#160;lo-<br/>cations&#160;of&#160;missing&#160;cells,&#160;thus&#160;improving&#160;the&#160;performance&#160;of<br/>our&#160;model&#160;when&#160;there&#160;is&#160;noise&#160;applied&#160;to&#160;packets.&#160;Therefore,<br/>a&#160;method&#160;for&#160;confirming&#160;evidence&#160;from&#160;different&#160;sources<br/>within&#160;a&#160;given&#160;time&#160;span&#160;before&#160;regenerating&#160;cells&#160;like&#160;the<br/>activation&#160;mechanism&#160;we&#160;proposed&#160;might&#160;have&#160;evolved&#160;in<br/>organisms&#160;with&#160;regeneration&#160;capabilities.&#160;This&#160;is&#160;a&#160;concrete<br/>model&#160;prediction&#160;that&#160;might&#160;be&#160;able&#160;to&#160;guide&#160;future&#160;biologi-<br/>cal&#160;research.</p>
+<p style="position:absolute;top:909px;left:615px;white-space:nowrap" class="ft72">Conclusion</p>
+<p style="position:absolute;top:935px;left:479px;white-space:nowrap" class="ft79">As&#160;a&#160;first&#160;step&#160;towards&#160;finding&#160;a&#160;mapping&#160;between&#160;our&#160;cell-<br/>cell&#160;communication&#160;mechanism&#160;of&#160;cell&#160;regeneration&#160;and&#160;a<br/>possible&#160;biological&#160;equivalent,&#160;we&#160;modified&#160;our&#160;previous<br/>model&#160;to&#160;account&#160;for&#160;noise&#160;that&#160;could&#160;occur&#160;on&#160;cellular&#160;com-<br/>munication.&#160;In&#160;an&#160;initial&#160;set&#160;of&#160;experiments&#160;we&#160;verified&#160;that<br/>noise&#160;was&#160;very&#160;detrimental&#160;to&#160;the&#160;overall&#160;performance&#160;of&#160;the<br/>model,&#160;not&#160;only&#160;with&#160;respect&#160;to&#160;the&#160;ratio&#160;of&#160;regenerated&#160;cells</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft78">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft78">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft78">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft78">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft78">176</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft78">Oral presentation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>f57e6d3b9f70a32180fd14be1258f47f-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:12px;font-family:Times;color:#000000;}
+	.ft81{font-size:12px;font-family:Times;color:#000000;}
+	.ft82{font-size:15px;font-family:Times;color:#000000;}
+	.ft83{font-size:11px;font-family:Times;color:#000000;}
+	.ft84{font-size:11px;font-family:Times;color:#000000;}
+	.ft85{font-size:10px;font-family:Times;color:#595959;}
+	.ft86{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft87{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft88{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+	.ft89{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft810{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:81px;white-space:nowrap" class="ft86">but&#160;also&#160;the&#160;similarity&#160;of&#160;the&#160;final&#160;worm&#160;compared&#160;to&#160;the<br/>original&#160;worm.&#160;We&#160;then&#160;presented&#160;an&#160;activation&#160;mechanism<br/>which&#160;improved&#160;the&#160;performance&#160;of&#160;the&#160;model&#160;in&#160;configura-<br/>tions&#160;where&#160;noise&#160;existed&#160;–&#160;the&#160;first&#160;steps&#160;toward&#160;modeling<br/>the&#160;robustness&#160;observed&#160;in&#160;regenerative&#160;biological&#160;systems.</p>
+<p style="position:absolute;top:176px;left:96px;white-space:nowrap" class="ft80">In&#160;the&#160;future,&#160;we&#160;intend&#160;to&#160;confirm&#160;whether&#160;our&#160;model&#160;can</p>
+<p style="position:absolute;top:194px;left:81px;white-space:nowrap" class="ft86">replicate&#160;other&#160;aspects&#160;that&#160;<i>in&#160;vivo&#160;</i>worms&#160;show.&#160;For&#160;exam-<br/>ple,&#160;gap&#160;junctional&#160;communication&#160;(GJC)&#160;can&#160;be&#160;inhibited<br/>through&#160;contact&#160;with&#160;alcohols&#160;such&#160;as&#160;octanol.&#160;This&#160;isola-<br/>tion&#160;in&#160;GJC&#160;leads&#160;to&#160;the&#160;creation&#160;of&#160;another&#160;head&#160;in&#160;the&#160;pos-<br/>terior&#160;part&#160;of&#160;the&#160;worm&#160;(Nogi&#160;and&#160;Levin,&#160;2005).&#160;A&#160;first&#160;step<br/>towards&#160;replicating&#160;this&#160;result&#160;could&#160;be&#160;to&#160;generate&#160;“mirror<br/>image”&#160;packets&#160;that&#160;would&#160;create&#160;a&#160;head&#160;instead&#160;of&#160;a&#160;tail.<br/>Another&#160;direction&#160;would&#160;be&#160;to&#160;investigate&#160;the&#160;limits&#160;of&#160;re-<br/>generation&#160;based&#160;on&#160;the&#160;shape&#160;of&#160;the&#160;organism.&#160;For&#160;instance,<br/>we&#160;hypothesize&#160;that&#160;more&#160;bends&#160;would&#160;be&#160;necessary&#160;to&#160;re-<br/>grow&#160;a&#160;complex&#160;limb&#160;compared&#160;to&#160;the&#160;planarian&#160;body&#160;which<br/>has&#160;fewer&#160;corners&#160;and&#160;turns&#160;in&#160;the&#160;shape.&#160;Finally,&#160;it&#160;would&#160;be<br/>interesting&#160;to&#160;extend&#160;the&#160;model&#160;to&#160;other&#160;biological&#160;processes<br/>such&#160;as&#160;the&#160;growth&#160;of&#160;tumors&#160;and&#160;anatomical&#160;remodeling.</p>
+<p style="position:absolute;top:461px;left:218px;white-space:nowrap" class="ft82">References</p>
+<p style="position:absolute;top:486px;left:81px;white-space:nowrap" class="ft83">Birnbaum,&#160;K.&#160;D.&#160;and&#160;Alvarado,&#160;A.&#160;S.&#160;(2008).&#160;Slicing&#160;across&#160;king-</p>
+<p style="position:absolute;top:501px;left:111px;white-space:nowrap" class="ft87">doms:&#160;regeneration&#160;in&#160;plants&#160;and&#160;animals.&#160;<i>Cell</i>,&#160;132(4):697–<br/>710.</p>
+<p style="position:absolute;top:547px;left:81px;white-space:nowrap" class="ft83">Brodsky,&#160;M.&#160;(2015).&#160;Partial&#160;redundancy&#160;and&#160;morphological&#160;home-</p>
+<p style="position:absolute;top:562px;left:111px;white-space:nowrap" class="ft88">ostasis:&#160;Reliable&#160;development&#160;through&#160;overlapping&#160;mecha-<br/>nisms.&#160;In&#160;<i>Proceedings&#160;of&#160;the&#160;13th&#160;Europen&#160;Conference&#160;on<br/>Artificial&#160;Life&#160;(ECAL)</i></p>
+<p style="position:absolute;top:592px;left:228px;white-space:nowrap" class="ft83">,&#160;pages&#160;59–66.&#160;MIT&#160;Press.</p>
+<p style="position:absolute;top:622px;left:81px;white-space:nowrap" class="ft83">Bubenik,&#160;G.&#160;A.&#160;(1990).&#160;The&#160;role&#160;of&#160;the&#160;nervous&#160;system&#160;in&#160;the</p>
+<p style="position:absolute;top:637px;left:111px;white-space:nowrap" class="ft87">growth&#160;of&#160;antlers.&#160;In&#160;<i>Horns,&#160;pronghorns,&#160;and&#160;antlers</i>,&#160;pages<br/>339–358.&#160;Springer.</p>
+<p style="position:absolute;top:682px;left:81px;white-space:nowrap" class="ft83">Chernet,&#160;B.&#160;and&#160;Levin,&#160;M.&#160;(2013).&#160;Endogenous&#160;voltage&#160;potentials</p>
+<p style="position:absolute;top:697px;left:111px;white-space:nowrap" class="ft88">and&#160;the&#160;microenvironment:&#160;bioelectric&#160;signals&#160;that&#160;reveal,&#160;in-<br/>duce&#160;and&#160;normalize&#160;cancer.&#160;<i>Journal&#160;of&#160;clinical&#160;&amp;&#160;experimen-<br/>tal&#160;oncology</i></p>
+<p style="position:absolute;top:727px;left:178px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:758px;left:81px;white-space:nowrap" class="ft83">Durant,&#160;F.,&#160;Morokuma,&#160;J.,&#160;Fields,&#160;C.,&#160;Williams,&#160;K.,&#160;Adams,&#160;D.&#160;S.,</p>
+<p style="position:absolute;top:773px;left:111px;white-space:nowrap" class="ft87">and&#160;Levin,&#160;M.&#160;(2017).&#160;Long-term,&#160;stochastic&#160;editing&#160;of&#160;re-<br/>generative&#160;anatomy&#160;via&#160;targeting&#160;endogenous&#160;bioelectric&#160;gra-<br/>dients.&#160;<i>Biophysical&#160;Journal</i>,&#160;112(10):2231&#160;–&#160;2243.</p>
+<p style="position:absolute;top:833px;left:81px;white-space:nowrap" class="ft83">Ferreira,&#160;G.&#160;B.&#160;S.,&#160;Smiley,&#160;M.,&#160;Scheutz,&#160;M.,&#160;and&#160;Levin,&#160;M.&#160;(2016).</p>
+<p style="position:absolute;top:848px;left:111px;white-space:nowrap" class="ft89">Dynamic&#160;structure&#160;discovery&#160;and&#160;repair&#160;for&#160;3d&#160;cell&#160;assem-<br/>blages.&#160;In&#160;<i>Proceedings&#160;of&#160;the&#160;Fifteenth&#160;International&#160;Con-<br/>ference&#160;on&#160;the&#160;Synthesis&#160;and&#160;Simulation&#160;of&#160;Living&#160;Systems<br/>(ALIFEXV)</i></p>
+<p style="position:absolute;top:893px;left:173px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:924px;left:81px;white-space:nowrap" class="ft83">Herrera-Rincon,&#160;C.,&#160;Guay,&#160;J.&#160;A.,&#160;and&#160;Levin,&#160;M.&#160;(2017).&#160;Bioelec-</p>
+<p style="position:absolute;top:938px;left:111px;white-space:nowrap" class="ft88">trical&#160;coordination&#160;of&#160;cell&#160;activity&#160;toward&#160;anatomical&#160;target<br/>states:&#160;an&#160;engineering&#160;perspective&#160;on&#160;regeneration.&#160;In&#160;Gar-<br/>diner,&#160;D.&#160;M.,&#160;editor,&#160;<i>Regenerative&#160;Engineering&#160;and&#160;Devel-<br/>opmental&#160;Biology:&#160;Principles&#160;and&#160;Applications</i></p>
+<p style="position:absolute;top:983px;left:372px;white-space:nowrap" class="ft83">.&#160;Taylor&#160;and</p>
+<p style="position:absolute;top:998px;left:111px;white-space:nowrap" class="ft83">Francis.</p>
+<p style="position:absolute;top:1029px;left:81px;white-space:nowrap" class="ft83">Higgins,&#160;G.&#160;M.&#160;(1931).&#160;Experimental&#160;pathology&#160;of&#160;the&#160;liver.&#160;<i>Arch.</i></p>
+<p style="position:absolute;top:1044px;left:111px;white-space:nowrap" class="ft84"><i>Pathol.</i></p>
+<p style="position:absolute;top:1044px;left:149px;white-space:nowrap" class="ft83">,&#160;12:186–202.</p>
+<p style="position:absolute;top:87px;left:479px;white-space:nowrap" class="ft83">Huang,&#160;S.,&#160;Ernberg,&#160;I.,&#160;and&#160;Kauffman,&#160;S.&#160;(2009).&#160;Cancer&#160;attractors:</p>
+<p style="position:absolute;top:102px;left:509px;white-space:nowrap" class="ft88">A&#160;systems&#160;view&#160;of&#160;tumors&#160;from&#160;a&#160;gene&#160;network&#160;dynamics&#160;and<br/>developmental&#160;perspective.&#160;<i>Seminars&#160;in&#160;Cell&#160;&amp;&#160;Developmen-<br/>tal&#160;Biology</i></p>
+<p style="position:absolute;top:132px;left:568px;white-space:nowrap" class="ft83">,&#160;20(7):869&#160;–&#160;876.</p>
+<p style="position:absolute;top:158px;left:479px;white-space:nowrap" class="ft83">Levin,&#160;M.&#160;(2012).&#160;Morphogenetic&#160;fields&#160;in&#160;embryogenesis,&#160;regen-</p>
+<p style="position:absolute;top:173px;left:509px;white-space:nowrap" class="ft810">eration,&#160;and&#160;cancer:&#160;non-local&#160;control&#160;of&#160;complex&#160;patterning.<br/><i>Biosystems</i></p>
+<p style="position:absolute;top:188px;left:569px;white-space:nowrap" class="ft83">,&#160;109(3):243–261.</p>
+<p style="position:absolute;top:214px;left:479px;white-space:nowrap" class="ft83">Levin,&#160;M.&#160;(2013).&#160;Reprogramming&#160;cells&#160;and&#160;tissue&#160;patterning&#160;via</p>
+<p style="position:absolute;top:229px;left:509px;white-space:nowrap" class="ft88">bioelectrical&#160;pathways:&#160;molecular&#160;mechanisms&#160;and&#160;biomed-<br/>ical&#160;opportunities.&#160;<i>Wiley&#160;Interdisciplinary&#160;Reviews:&#160;Systems<br/>Biology&#160;and&#160;Medicine</i></p>
+<p style="position:absolute;top:259px;left:628px;white-space:nowrap" class="ft83">,&#160;5(6):657–676.</p>
+<p style="position:absolute;top:286px;left:479px;white-space:nowrap" class="ft83">Levin,&#160;M.&#160;(2014).&#160;Endogenous&#160;bioelectrical&#160;networks&#160;store&#160;non-</p>
+<p style="position:absolute;top:301px;left:509px;white-space:nowrap" class="ft87">genetic&#160;patterning&#160;information&#160;during&#160;development&#160;and&#160;re-<br/>generation.&#160;<i>The&#160;Journal&#160;of&#160;physiology</i>,&#160;592(11):2295–2305.</p>
+<p style="position:absolute;top:342px;left:479px;white-space:nowrap" class="ft83">Lobo,&#160;D.,&#160;Beane,&#160;W.&#160;S.,&#160;and&#160;Levin,&#160;M.&#160;(2012).&#160;Modeling&#160;planarian</p>
+<p style="position:absolute;top:357px;left:509px;white-space:nowrap" class="ft810">regeneration:&#160;a&#160;primer&#160;for&#160;reverse-engineering&#160;the&#160;worm.<br/><i>PLoS&#160;Comput&#160;Biol</i></p>
+<p style="position:absolute;top:372px;left:610px;white-space:nowrap" class="ft83">,&#160;8(4):e1002481.</p>
+<p style="position:absolute;top:399px;left:479px;white-space:nowrap" class="ft83">Lobo,&#160;D.,&#160;Solano,&#160;M.,&#160;Bubenik,&#160;G.&#160;A.,&#160;and&#160;Levin,&#160;M.&#160;(2014).&#160;A</p>
+<p style="position:absolute;top:414px;left:509px;white-space:nowrap" class="ft88">linear-encoding&#160;model&#160;explains&#160;the&#160;variability&#160;of&#160;the&#160;target<br/>morphology&#160;in&#160;regeneration.&#160;<i>Journal&#160;of&#160;The&#160;Royal&#160;Society<br/>Interface</i></p>
+<p style="position:absolute;top:443px;left:558px;white-space:nowrap" class="ft83">,&#160;11(92):20130918.</p>
+<p style="position:absolute;top:470px;left:479px;white-space:nowrap" class="ft83">Morgan,&#160;T.&#160;H.&#160;(1898).&#160;Experimental&#160;studies&#160;of&#160;the&#160;regeneration</p>
+<p style="position:absolute;top:485px;left:509px;white-space:nowrap" class="ft83">of&#160;planaria&#160;maculata.</p>
+<p style="position:absolute;top:485px;left:640px;white-space:nowrap" class="ft84"><i>Development&#160;Genes&#160;and&#160;Evolution</i></p>
+<p style="position:absolute;top:485px;left:834px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:500px;left:509px;white-space:nowrap" class="ft83">7(2):364–397.</p>
+<p style="position:absolute;top:526px;left:479px;white-space:nowrap" class="ft83">Nogi,&#160;T.&#160;and&#160;Levin,&#160;M.&#160;(2005).&#160;Characterization&#160;of&#160;innexin&#160;gene</p>
+<p style="position:absolute;top:541px;left:509px;white-space:nowrap" class="ft87">expression&#160;and&#160;functional&#160;roles&#160;of&#160;gap-junctional&#160;commu-<br/>nication&#160;in&#160;planarian&#160;regeneration.&#160;<i>Developmental&#160;biology</i>,<br/>287(2):314–335.</p>
+<p style="position:absolute;top:598px;left:479px;white-space:nowrap" class="ft83">Oviedo,&#160;N.&#160;J.,&#160;Morokuma,&#160;J.,&#160;Walentek,&#160;P.,&#160;Kema,&#160;I.&#160;P.,&#160;Gu,&#160;M.&#160;B.,</p>
+<p style="position:absolute;top:613px;left:509px;white-space:nowrap" class="ft88">Ahn,&#160;J.-M.,&#160;Hwang,&#160;J.&#160;S.,&#160;Gojobori,&#160;T.,&#160;and&#160;Levin,&#160;M.&#160;(2010).<br/>Long-range&#160;neural&#160;and&#160;gap&#160;junction&#160;protein-mediated&#160;cues<br/>control&#160;polarity&#160;during&#160;planarian&#160;regeneration.&#160;<i>Developmen-<br/>tal&#160;biology</i></p>
+<p style="position:absolute;top:658px;left:567px;white-space:nowrap" class="ft83">,&#160;339(1):188–199.</p>
+<p style="position:absolute;top:684px;left:479px;white-space:nowrap" class="ft83">Owlarn,&#160;S.&#160;and&#160;Bartscherer,&#160;K.&#160;(2016).&#160;Go&#160;ahead,&#160;grow&#160;a&#160;head!&#160;a</p>
+<p style="position:absolute;top:699px;left:509px;white-space:nowrap" class="ft83">planarian’s&#160;guide&#160;to&#160;anterior&#160;regeneration.&#160;<i>Regeneration</i>.</p>
+<p style="position:absolute;top:726px;left:479px;white-space:nowrap" class="ft83">Price,&#160;J.&#160;S.,&#160;Allen,&#160;S.,&#160;Faucheux,&#160;C.,&#160;Althnaian,&#160;T.,&#160;and&#160;Mount,</p>
+<p style="position:absolute;top:740px;left:509px;white-space:nowrap" class="ft88">J.&#160;G.&#160;(2005).&#160;Deer&#160;antlers:&#160;a&#160;zoological&#160;curiosity&#160;or&#160;the&#160;key<br/>to&#160;understanding&#160;organ&#160;regeneration&#160;in&#160;mammals?&#160;<i>Journal&#160;of<br/>Anatomy</i></p>
+<p style="position:absolute;top:770px;left:557px;white-space:nowrap" class="ft83">,&#160;207(5):603–618.</p>
+<p style="position:absolute;top:797px;left:479px;white-space:nowrap" class="ft83">Soto,&#160;A.&#160;M.&#160;and&#160;Sonnenschein,&#160;C.&#160;(2005).&#160;Emergentism&#160;as&#160;a&#160;de-</p>
+<p style="position:absolute;top:812px;left:509px;white-space:nowrap" class="ft88">fault:&#160;cancer&#160;as&#160;a&#160;problem&#160;of&#160;tissue&#160;organization.&#160;<i>Journal&#160;of<br/>biosciences</i></p>
+<p style="position:absolute;top:827px;left:571px;white-space:nowrap" class="ft83">,&#160;30(1):103–118.</p>
+<p style="position:absolute;top:853px;left:479px;white-space:nowrap" class="ft83">Sullivan,&#160;K.&#160;G.,&#160;Emmons-Bell,&#160;M.,&#160;and&#160;Levin,&#160;M.&#160;(2016).&#160;Physi-</p>
+<p style="position:absolute;top:868px;left:509px;white-space:nowrap" class="ft88">ological&#160;inputs&#160;regulate&#160;species-specific&#160;anatomy&#160;during&#160;em-<br/>bryogenesis&#160;and&#160;regeneration.&#160;<i>Communicative&#160;&amp;&#160;integrative<br/>biology</i></p>
+<p style="position:absolute;top:898px;left:549px;white-space:nowrap" class="ft83">,&#160;9(4):e1192733.</p>
+<p style="position:absolute;top:925px;left:479px;white-space:nowrap" class="ft83">Umesono,&#160;Y.,&#160;Tasaki,&#160;J.,&#160;Nishimura,&#160;Y.,&#160;Hrouda,&#160;M.,&#160;Kawaguchi,</p>
+<p style="position:absolute;top:940px;left:509px;white-space:nowrap" class="ft87">E.,&#160;Yazawa,&#160;S.,&#160;Nishimura,&#160;O.,&#160;Hosoda,&#160;K.,&#160;Inoue,&#160;T.,&#160;and<br/>Agata,&#160;K.&#160;(2013).&#160;The&#160;molecular&#160;logic&#160;for&#160;planarian&#160;regenera-<br/>tion&#160;along&#160;the&#160;anterior-posterior&#160;axis.&#160;<i>Nature</i>,&#160;500(7460):73–<br/>76.</p>
+<p style="position:absolute;top:1011px;left:479px;white-space:nowrap" class="ft83">Werner,&#160;S.,&#160;St¨uckemann,&#160;T.,&#160;Amigo,&#160;M.&#160;B.,&#160;Rink,&#160;J.&#160;C.,&#160;J¨ulicher,&#160;F.,</p>
+<p style="position:absolute;top:1026px;left:509px;white-space:nowrap" class="ft87">and&#160;Friedrich,&#160;B.&#160;M.&#160;(2015).&#160;Scaling&#160;and&#160;regeneration&#160;of&#160;self-<br/>organized&#160;patterns.&#160;<i>Physical&#160;review&#160;letters</i>,&#160;114(13):138101.</p>
+<p style="position:absolute;top:1097px;left:81px;white-space:nowrap" class="ft85">Carole&#160;Knibbe et al, eds., Proceedings of the ECAL 2017, &#160;Lyon, France, 4-8 September&#160;2017, &#160;</p>
+<p style="position:absolute;top:1112px;left:81px;white-space:nowrap" class="ft85">(Cambridge,&#160;MA: The MIT Press, ©2017 Massachusetts Institute&#160;of Technology). &#160;</p>
+<p style="position:absolute;top:1126px;left:81px;white-space:nowrap" class="ft85">This work is licensed&#160;to the public&#160;under a Creative&#160;Commons Attribution&#160;- NonCommercial&#160;- NoDerivatives&#160;</p>
+<p style="position:absolute;top:1141px;left:81px;white-space:nowrap" class="ft85">4.0 license&#160;(international):&#160;http://creativecommons.org/licenses/by-nc-nd/4.0/</p>
+<p style="position:absolute;top:1093px;left:819px;white-space:nowrap" class="ft85">177</p>
+<p style="position:absolute;top:36px;left:754px;white-space:nowrap" class="ft85">Oral presentation</p>
+</div>
+</body>
+</html>

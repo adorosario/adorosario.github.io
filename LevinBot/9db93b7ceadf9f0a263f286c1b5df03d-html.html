@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:13px;font-family:Times;color:#839097;}
+	.ft11{font-size:10px;font-family:Times;color:#839097;}
+	.ft12{font-size:10px;font-family:Times;color:#000000;}
+	.ft13{font-size:10px;font-family:Times;color:#839097;}
+	.ft14{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft15{font-size:37px;font-family:Times;color:#000000;}
+	.ft16{font-size:13px;font-family:Times;color:#000000;}
+	.ft17{font-size:7px;font-family:Times;color:#000000;}
+	.ft18{font-size:11px;font-family:Times;color:#000000;}
+	.ft19{font-size:11px;font-family:Times;color:#000000;}
+	.ft110{font-size:11px;font-family:Times;color:#000000;}
+	.ft111{font-size:6px;font-family:Times;color:#000000;}
+	.ft112{font-size:11px;font-family:Times;color:#000000;}
+	.ft113{font-size:25px;font-family:Times;color:#f58220;}
+	.ft114{font-size:37px;line-height:55px;font-family:Times;color:#000000;}
+	.ft115{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:1132px;left:825px;white-space:nowrap" class="ft10">1</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft11">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:19px;left:585px;white-space:nowrap" class="ft14">www.nature.com/scientificreports</p>
+<p style="position:absolute;top:220px;left:233px;white-space:nowrap" class="ft114"><b>Towards&#160;a Physarum&#160;learning&#160;chip<br/>James&#160;G.&#160;H.&#160;Whiting1,&#160;Jeff&#160;Jones1, Larry&#160;Bull1, Michael&#160;Levin2&#160;&amp;&#160;Andrew&#160;Adamatzky1</b></p>
+<p style="position:absolute;top:307px;left:233px;white-space:nowrap" class="ft115"><b>Networks&#160;of protoplasmic&#160;tubes of organism&#160;<i>Physarum&#160;polycehpalum</i></b><b>&#160;are&#160;macro-scale&#160;structures&#160;<br/>which&#160;optimally&#160;span multiple&#160;food sources&#160;to&#160;avoid&#160;repellents yet maximize&#160;coverage&#160;of attractants.&#160;<br/>When&#160;data&#160;are&#160;presented&#160;by&#160;configurations&#160;of&#160;attractants&#160;and&#160;behaviour&#160;of&#160;the&#160;slime&#160;mould&#160;is&#160;tuned&#160;<br/>by&#160;a&#160;range&#160;of&#160;repellents,&#160;the&#160;organism&#160;preforms&#160;computation.&#160;It&#160;maps&#160;given&#160;data&#160;configuration&#160;into&#160;<br/>a protoplasmic network.&#160;To discover physical&#160;means&#160;of programming the slime mould computers&#160;<br/>we explore conductivity of the protoplasmic&#160;tubes; proposing&#160;that the network connectivity&#160;of&#160;<br/>protoplasmic&#160;tubes shows&#160;pathway-dependent&#160;plasticity.&#160;To demonstrate&#160;this we encourage&#160;the&#160;<br/>slime mould to span a grid&#160;of electrodes&#160;and&#160;apply&#160;AC&#160;stimuli to the network. Learning&#160;and&#160;weighted&#160;<br/>connections&#160;within&#160;a grid&#160;of electrodes&#160;is produced&#160;using&#160;negative&#160;and&#160;positive&#160;voltage stimulation&#160;<br/>of&#160;the&#160;network&#160;at&#160;desired&#160;nodes;&#160;low&#160;frequency&#160;(10&#160;Hz)&#160;sinusoidal&#160;(0.5&#160;V&#160;peak-to-peak)&#160;voltage&#160;<br/>increases&#160;connectivity&#160;between stimulated electrodes&#160;while decreasing&#160;connectivity&#160;elsewhere,&#160;high&#160;<br/>frequency&#160;(1000&#160;Hz)&#160;sinusoidal&#160;(2.5&#160;V&#160;peak-to-peak)&#160;voltage&#160;stimulation&#160;decreases&#160;network&#160;connectivity&#160;<br/>between stimulated electrodes.&#160;We corroborate&#160;in a particle&#160;model.&#160;This phenomenon&#160;may be used&#160;<br/>for computation in the same way that neural&#160;networks&#160;process&#160;information&#160;and&#160;has&#160;the potential to&#160;<br/>shed&#160;light&#160;on the dynamics&#160;of learning&#160;and&#160;information&#160;processing&#160;in non-neural&#160;metazoan&#160;somatic cell&#160;<br/>networks.</b></p>
+<p style="position:absolute;top:601px;left:233px;white-space:nowrap" class="ft110">Most work in biology and bio-inspired engineering focuses on neural systems as the medium for memory and&#160;</p>
+<p style="position:absolute;top:616px;left:233px;white-space:nowrap" class="ft110">computation in living tissues. However, neural-like information-processing, decision-making, and learning have&#160;</p>
+<p style="position:absolute;top:631px;left:233px;white-space:nowrap" class="ft110">been reported in a wide range of systems well beyond the traditional CNS, including sperm<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">1</a>, amoebae<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">2</a>,&#160;yeast<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">3,&#160;</a></p>
+<p style="position:absolute;top:647px;left:233px;white-space:nowrap" class="ft110">and&#160;plant<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">s4–10</a>. These appear to be mediated by well-conserved, ubiquitously-present mechanisms that appear to&#160;</p>
+<p style="position:absolute;top:662px;left:233px;white-space:nowrap" class="ft110">be also involved in neural information processing, such as the cytoskeleton<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">11</a>&#160;and electrical signaling<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">12,13. S</a>ingle&#160;</p>
+<p style="position:absolute;top:677px;left:233px;white-space:nowrap" class="ft110">somatic cel&#160;s perform subtraction, addition, low- and band-pass filtering, normalization, gain control, saturation,&#160;</p>
+<p style="position:absolute;top:692px;left:233px;white-space:nowrap" class="ft110">amplification, multiplication, and thresholdin<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">g14. I</a>t is becoming clear that neural networks have no monopoly&#160;</p>
+<p style="position:absolute;top:707px;left:233px;white-space:nowrap" class="ft110">on&#160;such&#160;functions,&#160;and&#160;indeed&#160;fascinating&#160;examples&#160;of&#160;memory&#160;and&#160;neural-like&#160;dynamics&#160;have&#160;been&#160;found&#160;in&#160;the&#160;</p>
+<p style="position:absolute;top:722px;left:233px;white-space:nowrap" class="ft110">immune&#160;system<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">15</a>,<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">16</a>,&#160;bon<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">e17,18</a>,&#160;heart<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">19,20</a>,&#160;and&#160;physiological&#160;disorders&#160;such&#160;as&#160;diabete<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">s21.</a>&#160;A&#160;better&#160;understanding&#160;</p>
+<p style="position:absolute;top:737px;left:233px;white-space:nowrap" class="ft110">of fundamental aspects of computation and memory in living tissues (not limited to the special case of nerve&#160;</p>
+<p style="position:absolute;top:752px;left:233px;white-space:nowrap" class="ft110">networks) would have implications not only for evolutionary biology, but also for regenerative biomedicine, syn-</p>
+<p style="position:absolute;top:767px;left:233px;white-space:nowrap" class="ft110">thetic bioengineering, and the information sciences<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">22</a>. Thus, it is important to study tractable non-neural systems&#160;</p>
+<p style="position:absolute;top:782px;left:233px;white-space:nowrap" class="ft110">in which plasticity and learning can&#160;be mechanistical&#160;y&#160;dissected.&#160;One such&#160;versatile&#160;model&#160;is represented by&#160;the&#160;</p>
+<p style="position:absolute;top:797px;left:233px;white-space:nowrap" class="ft110">slime moulds.</p>
+<p style="position:absolute;top:812px;left:251px;white-space:nowrap" class="ft110">The plasmodial stage of the slime mould&#160;<i>Physarum&#160;polycephalum</i>&#160;is a macroscopic multinucleate single celled&#160;</p>
+<p style="position:absolute;top:827px;left:233px;white-space:nowrap" class="ft110">organism,&#160;it&#160;is visible&#160;by&#160;the&#160;naked&#160;eye&#160;as a&#160;yellow&#160;mass&#160;and or&#160;network&#160;of&#160;strands&#160;which&#160;may span&#160;tens&#160;of&#160;centi-</p>
+<p style="position:absolute;top:841px;left:233px;white-space:nowrap" class="ft110">metr<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">es23.&#160;</a>The&#160;strands&#160;are&#160;protoplasmic&#160;tubes&#160;which&#160;are&#160;extended&#160;to&#160;forage&#160;for&#160;food&#160;matter;&#160;these&#160;tubes&#160;move&#160;by&#160;</p>
+<p style="position:absolute;top:857px;left:233px;white-space:nowrap" class="ft110">a process known as shuttle streaming, where cytoplasm is forced rhythmical&#160;y back and forth towards a desirable&#160;</p>
+<p style="position:absolute;top:872px;left:233px;white-space:nowrap" class="ft110">location<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">24</a>.&#160;The&#160;frequency&#160;of&#160;this&#160;streaming&#160;is&#160;determined&#160;by&#160;the&#160;environmental&#160;conditions&#160;such&#160;as&#160;temperature&#160;</p>
+<p style="position:absolute;top:887px;left:233px;white-space:nowrap" class="ft110">and degree of attraction to a food source; as such it may change as new stimuli are sense<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">d25.</a></p>
+<p style="position:absolute;top:902px;left:251px;white-space:nowrap" class="ft110">Computing with biological substrates is a relatively young topic of research, however much progress has been&#160;</p>
+<p style="position:absolute;top:917px;left:233px;white-space:nowrap" class="ft110">made in recent years. The slime mould&#160;<i>Physarum&#160;polycephalum</i>&#160;has been the centre of attention for a number of&#160;</p>
+<p style="position:absolute;top:932px;left:233px;white-space:nowrap" class="ft110">years as it has been suggested that the organism can be used to compute various complex tasks<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">26,27. Th</a>e organism&#160;</p>
+<p style="position:absolute;top:947px;left:233px;white-space:nowrap" class="ft110">follows fairly basic behavioural patterns, growing towards food and away from ligh<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">t28. Thi</a>s innate behaviour&#160;</p>
+<p style="position:absolute;top:962px;left:233px;white-space:nowrap" class="ft110">can be interpreted as computation when inputs and outputs of a function are given as data in the form of spatial&#160;</p>
+<p style="position:absolute;top:977px;left:233px;white-space:nowrap" class="ft110">configurations of food and other environmental conditions that can be understood by the organi<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">sm27; u</a>sing this&#160;</p>
+<p style="position:absolute;top:992px;left:233px;white-space:nowrap" class="ft110">analogy, various computational operations have been demonstrated.&#160;<i>Physarum&#160;polycephalum</i>&#160;can solve shortest&#160;</p>
+<p style="position:absolute;top:1007px;left:233px;white-space:nowrap" class="ft110">path and other network problem<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">s29–31, s</a>olve mazes and has been shown to closely approximate human transport&#160;</p>
+<p style="position:absolute;top:1022px;left:233px;white-space:nowrap" class="ft110">networks&#160;on&#160;flat<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">32&#160;a</a>nd&#160;3D&#160;terrain<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">33</a>.&#160;It&#160;has been&#160;suggested&#160;that&#160;the&#160;apparent&#160;intel&#160;igence&#160;of&#160;the&#160;slime&#160;moulds&#160;is&#160;</p>
+<p style="position:absolute;top:1063px;left:233px;white-space:nowrap" class="ft111">1International&#160;Centre in&#160;Unconventional&#160;Computing,&#160;University of the&#160;West of England, Bristol,&#160;UK.&#160;2Tufts Center&#160;</p>
+<p style="position:absolute;top:1078px;left:233px;white-space:nowrap" class="ft12">for Regenerative and Developmental Biology,&#160;Tufts&#160;University, Medford,&#160;USA.&#160;Correspondence and requests for&#160;</p>
+<p style="position:absolute;top:1093px;left:233px;white-space:nowrap" class="ft12">materials&#160;should be&#160;addressed&#160;to&#160;J.G.H.W. (email:&#160;<a href="mailto:james.whiting@uwe.ac.uk">james.whiting@uwe.ac.uk)</a></p>
+<p style="position:absolute;top:363px;left:100px;white-space:nowrap" class="ft12">Received:&#160;08&#160;July&#160;2015</p>
+<p style="position:absolute;top:384px;left:66px;white-space:nowrap" class="ft12">Accepted:&#160;04&#160;December&#160;2015</p>
+<p style="position:absolute;top:405px;left:71px;white-space:nowrap" class="ft12">Published:&#160;03&#160;February&#160;2016</p>
+<p style="position:absolute;top:221px;left:141px;white-space:nowrap" class="ft113"><b>OPEN</b></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft21{font-size:13px;font-family:Times;color:#839097;}
+	.ft22{font-size:10px;font-family:Times;color:#839097;}
+	.ft23{font-size:10px;font-family:Times;color:#000000;}
+	.ft24{font-size:10px;font-family:Times;color:#839097;}
+	.ft25{font-size:11px;font-family:Times;color:#000000;}
+	.ft26{font-size:6px;font-family:Times;color:#000000;}
+	.ft27{font-size:11px;font-family:Times;color:#000000;}
+	.ft28{font-size:14px;font-family:Times;color:#000000;}
+	.ft29{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft20">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft21">2</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft22">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:465px;left:233px;white-space:nowrap" class="ft25">an observed phenomenon called emergent intelligen<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">ce34; s</a>eemingly complex behavior emerges from a set of&#160;</p>
+<p style="position:absolute;top:480px;left:233px;white-space:nowrap" class="ft25">biochemical rules whose actions are the result of a set of interpretations of their environment made at the cel&#160;ular&#160;</p>
+<p style="position:absolute;top:495px;left:233px;white-space:nowrap" class="ft25">level. This is why when applying multiple positive stimuli, the organism appears to make decisions on which stim-</p>
+<p style="position:absolute;top:510px;left:233px;white-space:nowrap" class="ft25">uli to respond to; sensitive receptors in the cell detect various changes in&#160;the environment and act accordingly.&#160;</p>
+<p style="position:absolute;top:525px;left:233px;white-space:nowrap" class="ft25">While the organism is not inherently intelligent, we can take advantage of its environmental response and apply&#160;</p>
+<p style="position:absolute;top:540px;left:233px;white-space:nowrap" class="ft25">criteria of computation which approximate responses of traditional computation such as those aforementioned&#160;</p>
+<p style="position:absolute;top:555px;left:233px;white-space:nowrap" class="ft25">shortest path approximations which merely take advantage of the foraging behavior of the organism.</p>
+<p style="position:absolute;top:570px;left:251px;white-space:nowrap" class="ft25">Logic gates have also been produced using&#160;<i>P.&#160;polycephalum</i>:</p>
+<p style="position:absolute;top:601px;left:233px;white-space:nowrap" class="ft25">•	&#160;First recognisable Boolean logic gate using propagation of plasmodial&#160;<i>P.&#160;polycephalum</i>&#160;along agar channels&#160;</p>
+<p style="position:absolute;top:616px;left:254px;white-space:nowrap" class="ft25">whose geometry was encoding the Boolean function<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">s34.</a></p>
+<p style="position:absolute;top:631px;left:233px;white-space:nowrap" class="ft25">•	&#160;Ballistic based approach to implement logic gates on agar geometry and simulated a one-bit half-adder using&#160;</p>
+<p style="position:absolute;top:646px;left:254px;white-space:nowrap" class="ft25">combinations of individual gates into one geometry<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">27.</a></p>
+<p style="position:absolute;top:661px;left:233px;white-space:nowrap" class="ft25">•	&#160;Experimental&#160;y derived model of plasmodial propagation on agar and simulated a 1 bit ha<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">lf adder35.</a></p>
+<p style="position:absolute;top:676px;left:233px;white-space:nowrap" class="ft25">•	&#160;Logic gates based on microfluidic properties of protoplasmic tubes of the slime mould, meaning agar geom-</p>
+<p style="position:absolute;top:691px;left:254px;white-space:nowrap" class="ft25">etry was no longer a constraint<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">36</a>.</p>
+<p style="position:absolute;top:706px;left:233px;white-space:nowrap" class="ft25">•	&#160;Logic gates using environmental stimuli as inputs and measured the slime mould’s bioelectric respons<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">e28,37</a>, a&#160;</p>
+<p style="position:absolute;top:721px;left:254px;white-space:nowrap" class="ft25">process which took minutes rather than hours to compute a logical operation.</p>
+<p style="position:absolute;top:736px;left:233px;white-space:nowrap" class="ft25">•	&#160;Logic gates with light inhibition as a repellent<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">38</a>.</p>
+<p style="position:absolute;top:751px;left:233px;white-space:nowrap" class="ft25">•	&#160;Quantative transformation&#160;of&#160;inputs for simplification of&#160;computation in unconventional computing sub-</p>
+<p style="position:absolute;top:766px;left:254px;white-space:nowrap" class="ft25">strates such as&#160;<i>P.&#160;polycehpalum</i><a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">39</a>.</p>
+<p style="position:absolute;top:797px;left:251px;white-space:nowrap" class="ft25">The recent surge of interest in this topic has also led to other discoveries; there have been a number of publica-</p>
+<p style="position:absolute;top:812px;left:233px;white-space:nowrap" class="ft25">tions regarding the electrical interface of protoplasmic tubes with electronic components for the purpose of novel&#160;</p>
+<p style="position:absolute;top:827px;left:233px;white-space:nowrap" class="ft25">biosensors and bioelectronics. Biosensors have been produced which detect chemicals in the environment<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">40,41,&#160;</a></p>
+<p style="position:absolute;top:842px;left:233px;white-space:nowrap" class="ft25">tactile stimulatio<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">n42,43&#160;a</a>nd colours of ligh<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">t44. Th</a>ese sensors have the benefit of a very long shelf life, and can grow&#160;</p>
+<p style="position:absolute;top:857px;left:233px;white-space:nowrap" class="ft25">on a variety of substrates; advantages over bacterial and fungal biosensors have been previously discussed in&#160;</p>
+<p style="position:absolute;top:872px;left:233px;white-space:nowrap" class="ft25">detail<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">40</a>.&#160;The slime mould has&#160;interesting&#160;properties,&#160;it&#160;is conductive&#160;with&#160;apparent&#160;low-pass&#160;filter&#160;properties<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">45</a>,<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">46&#160;</a></p>
+<p style="position:absolute;top:887px;left:233px;white-space:nowrap" class="ft25">and can be used as an electronic component. The protoplasm has also been interfaced with an FPGA to facili-</p>
+<p style="position:absolute;top:902px;left:233px;white-space:nowrap" class="ft25">tate implementation of arithmetic calculations and bioelectric measurement<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">47</a>. It has been shown&#160;that&#160;adding&#160;</p>
+<p style="position:absolute;top:917px;left:233px;white-space:nowrap" class="ft25">nano-particles can alter the conductive properties of protoplasmic tub<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">es48,49</a>; this concept has been extended into&#160;</p>
+<p style="position:absolute;top:932px;left:233px;white-space:nowrap" class="ft25">producing working electronic components with funtionalised protoplasmic tubes of&#160;<i>P.&#160;polycephalum</i><a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">50.</a></p>
+<p style="position:absolute;top:947px;left:251px;white-space:nowrap" class="ft25">It is the purpose of this paper to report findings of a programmable grid of protoplasmic tubes which can&#160;</p>
+<p style="position:absolute;top:962px;left:233px;white-space:nowrap" class="ft25">change morphology in response to electrical stimulation.</p>
+<p style="position:absolute;top:992px;left:233px;white-space:nowrap" class="ft28"><b>Method</b></p>
+<p style="position:absolute;top:1010px;left:233px;white-space:nowrap" class="ft25">Plasmodium of&#160;<i>P.&#160;polycephalum</i>&#160;was cultured from dried sclerodia on filter paper; re-hydrating the sclerotia and&#160;</p>
+<p style="position:absolute;top:1025px;left:233px;white-space:nowrap" class="ft25">placing it on 2% non-nutrient agar in a 9&#160;cm diameter Petri-dish (Fisher Scientific, UK). The plasmodium was&#160;</p>
+<p style="position:absolute;top:1040px;left:233px;white-space:nowrap" class="ft25">fed daily with several rolled oat flakes; the culture was transplanted to a fresh agar Petri-dish weekly to minimise&#160;</p>
+<p style="position:absolute;top:1055px;left:233px;white-space:nowrap" class="ft25">unwanted microbial growth.</p>
+<p style="position:absolute;top:1070px;left:251px;white-space:nowrap" class="ft25">The programmable grid of plasmodial connections is produced using agar as a supporting medium, alumin-</p>
+<p style="position:absolute;top:1085px;left:233px;white-space:nowrap" class="ft25">ium tape electrodes&#160;and a&#160;12&#160;cm square&#160;Petri-dish;&#160;this&#160;set&#160;up is shown&#160;<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#2">in Fig. 1. F</a>rom&#160;the&#160;10&#160;mm wide aluminium&#160;</p>
+<p style="position:absolute;top:389px;left:233px;white-space:nowrap" class="ft29"><b>Figure 1.</b>&#160;&#160;<b>The unconnected grid array, seeded with plasmodium on the center agar hemisphere, from which&#160;</b></p>
+<p style="position:absolute;top:404px;left:233px;white-space:nowrap" class="ft29"><b>it grows out and connects each tube.&#160;</b></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft31{font-size:13px;font-family:Times;color:#839097;}
+	.ft32{font-size:10px;font-family:Times;color:#839097;}
+	.ft33{font-size:10px;font-family:Times;color:#000000;}
+	.ft34{font-size:10px;font-family:Times;color:#839097;}
+	.ft35{font-size:11px;font-family:Times;color:#000000;}
+	.ft36{font-size:11px;font-family:Times;color:#000000;}
+	.ft37{font-size:6px;font-family:Times;color:#000000;}
+	.ft38{font-size:7px;font-family:Times;color:#000000;}
+	.ft39{font-size:14px;font-family:Times;color:#000000;}
+	.ft310{font-size:11px;font-family:Times;color:#000000;}
+	.ft311{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft30">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:825px;white-space:nowrap" class="ft31">3</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft32">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:481px;left:233px;white-space:nowrap" class="ft35">tape (RS Components, UK), thin 5mm sections are cut which are placed in the Petri-dish, 4 electrodes are placed&#160;</p>
+<p style="position:absolute;top:496px;left:233px;white-space:nowrap" class="ft35">on&#160;the left of the&#160;Petri-dish and 4 on the right, these are spaced 3&#160;cm apart and&#160;6&#160;cm across from each&#160;other.&#160;On&#160;</p>
+<p style="position:absolute;top:511px;left:233px;white-space:nowrap" class="ft35">the&#160;tip&#160;of&#160;each&#160;tape&#160;electrode,&#160;1&#160;ml&#160;of&#160;2%&#160;non-nutrient&#160;agar&#160;is&#160;placed&#160;to&#160;maintain&#160;the&#160;organism&#160;at&#160;each&#160;electrode;&#160;</p>
+<p style="position:absolute;top:526px;left:233px;white-space:nowrap" class="ft35">2&#160;ml of agar is placed in the centre of the Petri-dish to help facilitate protoplasmic tubes to span the gaps between&#160;</p>
+<p style="position:absolute;top:541px;left:233px;white-space:nowrap" class="ft35">every electrode. A rolled oat flake is placed on top each agar electrode to provide a source of nutrients and to act&#160;</p>
+<p style="position:absolute;top:556px;left:233px;white-space:nowrap" class="ft35">as an attractant to induce the protoplasmic tubes to reach every electrode.</p>
+<p style="position:absolute;top:571px;left:251px;white-space:nowrap" class="ft35">Plasmodium taken from the culture is placed on the centre agar, from which it may grow and colonise every&#160;</p>
+<p style="position:absolute;top:586px;left:233px;white-space:nowrap" class="ft35">electrode; ful&#160;y grown connections are demonstrated in&#160;<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#3">Fig. 2. T</a>o facilitate optimum growth conditions, the lid&#160;</p>
+<p style="position:absolute;top:601px;left:233px;white-space:nowrap" class="ft35">of the Petri-dish was placed over a source of steam until it was saturated with condensate water; the lid is then&#160;</p>
+<p style="position:absolute;top:616px;left:233px;white-space:nowrap" class="ft35">placed on&#160;the&#160;base and&#160;sealed&#160;with&#160;Para-film&#160;to&#160;maintain humidity and sterility.&#160;The&#160;Petri-dish&#160;should then&#160;be&#160;</p>
+<p style="position:absolute;top:631px;left:233px;white-space:nowrap" class="ft35">placed in a dark location of approximately 20 degrees Celsius and allowed to grow until it has colonised every agar&#160;</p>
+<p style="position:absolute;top:646px;left:233px;white-space:nowrap" class="ft35">hemisphere; this process should take between 2 and 4 days.</p>
+<p style="position:absolute;top:661px;left:251px;white-space:nowrap" class="ft35">In&#160;order&#160;to&#160;mimic&#160;a&#160;learning&#160;system,&#160;one&#160;must&#160;apply&#160;teaching&#160;rules&#160;to&#160;change&#160;the&#160;state&#160;of&#160;the&#160;system; in order&#160;</p>
+<p style="position:absolute;top:676px;left:233px;white-space:nowrap" class="ft35">to stimulate or inhibit the organism, we must stimulate the grown network of protoplasmic tubes. It is known that&#160;</p>
+<p style="position:absolute;top:691px;left:233px;white-space:nowrap" class="ft35">heat, food sources and light all induce positive and negative stimulation effects, however in a closed loop system&#160;</p>
+<p style="position:absolute;top:706px;left:233px;white-space:nowrap" class="ft35">they are more complex and difficult to control. It was hypothesised that a sinusoidal voltage may also be used as a&#160;</p>
+<p style="position:absolute;top:721px;left:233px;white-space:nowrap" class="ft35">stimulant for&#160;the protoplasmic&#160;tubes,&#160;and&#160;is&#160;tested in&#160;this&#160;paper.&#160;High&#160;amplitude&#160;high&#160;frequency&#160;(HAHF)&#160;voltage&#160;</p>
+<p style="position:absolute;top:736px;left:233px;white-space:nowrap" class="ft35">stimulation between two electrodes causes the tube to be abandoned while low amplitude low frequency (LALF)&#160;</p>
+<p style="position:absolute;top:751px;left:233px;white-space:nowrap" class="ft35">voltage stimulation causes increased growth between electrodes and abandonment of non-stimulated electrodes;&#160;</p>
+<p style="position:absolute;top:766px;left:233px;white-space:nowrap" class="ft35">HAHF voltage was 2.5&#160;V peak-to-peak at 1000 Hertz, while LALF voltage was 0.5&#160;V peak-to-peak at 10 Hertz.&#160;</p>
+<p style="position:absolute;top:781px;left:233px;white-space:nowrap" class="ft35">Both&#160;voltages&#160;were&#160;produced using an&#160;Aim-TTi TG550 Function&#160;Generator (RS&#160;Components,&#160;UK).&#160;In order to&#160;</p>
+<p style="position:absolute;top:796px;left:233px;white-space:nowrap" class="ft35">test this stimulation, 10 HAHF and 10 LALF experiments were run using ful&#160;y grown Petri-dishes of&#160;protoplasmic&#160;</p>
+<p style="position:absolute;top:811px;left:233px;white-space:nowrap" class="ft35">tubes; the voltage was applied between a left and right electrode, both chosen at random for each experiment. To&#160;</p>
+<p style="position:absolute;top:826px;left:233px;white-space:nowrap" class="ft35">determine if stimulation had any effect on the tube, the resistance of each left to right tube network was measured&#160;</p>
+<p style="position:absolute;top:841px;left:233px;white-space:nowrap" class="ft35">before and after stimulation to detect changes in tube thickness and connectivity; the stimulation was applied for&#160;</p>
+<p style="position:absolute;top:856px;left:233px;white-space:nowrap" class="ft35">a total of 12&#160;hours.</p>
+<p style="position:absolute;top:871px;left:251px;white-space:nowrap" class="ft35">The result of stimulation is a function of the resistance (<i>R</i>), before and the stimulation type between given&#160;</p>
+<p style="position:absolute;top:887px;left:233px;white-space:nowrap" class="ft35">electrodes. On the left we have&#160;<i>X</i>1…,&#160;<i>X</i>4&#160;and on the right we have&#160;<i>Y</i>1…,&#160;<i>Y</i>4, so&#160;&#160;(&#160;,&#160;)</p>
+<p style="position:absolute;top:888px;left:651px;white-space:nowrap" class="ft36"><i>R&#160;X&#160;Y</i></p>
+<p style="position:absolute;top:895px;left:676px;white-space:nowrap" class="ft38"><i>i</i></p>
+<p style="position:absolute;top:895px;left:698px;white-space:nowrap" class="ft38"><i>j&#160;</i>,&#160;1&#160;≤&#160;&#160;<i>i</i>,&#160;<i>j</i>&#160;≤&#160;&#160;4.&#160;&#160;Measuring&#160;</p>
+<p style="position:absolute;top:902px;left:233px;white-space:nowrap" class="ft35">each combination allows us to determine if the resistance between the stimulated electrodes is significantly differ-</p>
+<p style="position:absolute;top:917px;left:233px;white-space:nowrap" class="ft35">ent to those not stimulated, for both types of stimulation.</p>
+<p style="position:absolute;top:948px;left:233px;white-space:nowrap" class="ft39"><b>Results</b></p>
+<p style="position:absolute;top:965px;left:233px;white-space:nowrap" class="ft35">In 10 repetitions of HAHF stimulation, 8 experiments showed a marked increase in resistance in the network&#160;</p>
+<p style="position:absolute;top:980px;left:233px;white-space:nowrap" class="ft35">between the stimulated electrodes while the resistance between non-stimulated electrodes was similar to the&#160;</p>
+<p style="position:absolute;top:995px;left:233px;white-space:nowrap" class="ft35">starting resistance. In the remaining 2 experiments, the resistance between the stimulated electrodes was compa-</p>
+<p style="position:absolute;top:1010px;left:233px;white-space:nowrap" class="ft35">rable to the unstimulated electrodes. Statistical analysis was performed using the two-tailed, Mann-Whitney U&#160;</p>
+<p style="position:absolute;top:1025px;left:233px;white-space:nowrap" class="ft35">test; a 95% confidence interval was used, with statistical significance demonstrated by a p value of 0.02. An exam-</p>
+<p style="position:absolute;top:1040px;left:233px;white-space:nowrap" class="ft35">ple output is demonstrate<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#4">d in Fig. 3 w</a>here the relative resistance is calculated from the start and finish resistances;&#160;</p>
+<p style="position:absolute;top:1055px;left:233px;white-space:nowrap" class="ft35">stimulation occurred between electrodes&#160;<i>X</i>1&#160;and&#160;<i>Y</i>4&#160;and it can be seen that the relative resistance change is twice&#160;</p>
+<p style="position:absolute;top:1070px;left:233px;white-space:nowrap" class="ft35">as high at this electrode pair compared to the other electrode pairs.</p>
+<p style="position:absolute;top:375px;left:233px;white-space:nowrap" class="ft310"><b>Figure 2.</b>&#160;&#160;<b>The programmable grid array connected by protoplasmic tubes of&#160;<i>Physarum&#160;polycephalum</i></b><b>&#160;</b></p>
+<p style="position:absolute;top:390px;left:233px;white-space:nowrap" class="ft310"><b>clearly visible as yellow tubes connecting the agar electrodes.&#160;</b>High network connectivity is visible before&#160;</p>
+<p style="position:absolute;top:405px;left:233px;white-space:nowrap" class="ft35">LALF stimulation between X3 and Y3; after stimulation the network connectivity remains between the&#160;</p>
+<p style="position:absolute;top:420px;left:233px;white-space:nowrap" class="ft35">stimulated electrodes while other connections have been abandoned.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft41{font-size:13px;font-family:Times;color:#839097;}
+	.ft42{font-size:10px;font-family:Times;color:#839097;}
+	.ft43{font-size:10px;font-family:Times;color:#000000;}
+	.ft44{font-size:10px;font-family:Times;color:#839097;}
+	.ft45{font-size:11px;font-family:Times;color:#000000;}
+	.ft46{font-size:11px;font-family:Times;color:#000000;}
+	.ft47{font-size:6px;font-family:Times;color:#000000;}
+	.ft48{font-size:14px;font-family:Times;color:#000000;}
+	.ft49{font-size:11px;font-family:Times;color:#000000;}
+	.ft410{font-size:11px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft40">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft41">4</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft42">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:733px;left:251px;white-space:nowrap" class="ft45">In&#160;10&#160;repetitions&#160;of&#160;LALF&#160;stimulation,&#160;7&#160;experiments&#160;showed&#160;a&#160;marked&#160;increase&#160;in&#160;resistance&#160;for&#160;the&#160;electrodes&#160;</p>
+<p style="position:absolute;top:748px;left:233px;white-space:nowrap" class="ft45">that were unstimulated; the resistance between stimulated electrodes remained similar to the starting resistance.&#160;</p>
+<p style="position:absolute;top:763px;left:233px;white-space:nowrap" class="ft45">In 1 experiment, the resistance between all electrodes remained relatively similar to the starting resistances; in&#160;</p>
+<p style="position:absolute;top:778px;left:233px;white-space:nowrap" class="ft45">the remaining 2 experiments, all resistances increased. Statistical analysis was performed using the two-tailed,&#160;</p>
+<p style="position:absolute;top:793px;left:233px;white-space:nowrap" class="ft45">Mann-Whitney&#160;U&#160;test;&#160;a&#160;95%&#160;confidence&#160;interval&#160;was&#160;used,&#160;with&#160;statistical&#160;significance&#160;demonstrated&#160;by&#160;a&#160;p&#160;value&#160;</p>
+<p style="position:absolute;top:808px;left:233px;white-space:nowrap" class="ft45">of 0.042. An example output is demonstrate<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#4">d in Fig. 4 w</a>here the relative resistance is calculated from the start and&#160;</p>
+<p style="position:absolute;top:823px;left:233px;white-space:nowrap" class="ft45">finish resistances; stimulation occurred between electrodes&#160;<i>X</i>2&#160;and&#160;<i>Y</i>3&#160;and it can be seen that the relative resistance&#160;</p>
+<p style="position:absolute;top:838px;left:233px;white-space:nowrap" class="ft45">change is between 3 and 16 times lower at this electrode pair compared to the other electrode pairs.</p>
+<p style="position:absolute;top:853px;left:251px;white-space:nowrap" class="ft45">The&#160;paired&#160;output&#160;for&#160;10&#160;repetitions&#160;of&#160;LALF&#160;(a)&#160;and&#160;HALF&#160;(b)&#160;stimulation&#160;are&#160;shown&#160;in&#160;<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#5">Fig. 5,</a>&#160;demonstrating&#160;</p>
+<p style="position:absolute;top:868px;left:233px;white-space:nowrap" class="ft45">the difference in relative change in resistance of the stimulated tube and the mean relative change of the unstim-</p>
+<p style="position:absolute;top:883px;left:233px;white-space:nowrap" class="ft410">ulated tubes.<br/><b>Modelling Experiments</b></p>
+<p style="position:absolute;top:925px;left:233px;white-space:nowrap" class="ft45">The&#160;experimental&#160;results&#160;presented&#160;in&#160;this&#160;paper&#160;show&#160;promising&#160;steps&#160;towards the&#160;goal&#160;of&#160;controlling&#160;the&#160;shape&#160;</p>
+<p style="position:absolute;top:940px;left:233px;white-space:nowrap" class="ft45">of the body plan of&#160;<i>Physarum</i>&#160;plasmodium at wil&#160;. However, because it is a living organism, the plasmodium is&#160;</p>
+<p style="position:absolute;top:955px;left:233px;white-space:nowrap" class="ft45">relatively unpredictable and difficult to directly control. We must turn to modelling to explore the potential of&#160;</p>
+<p style="position:absolute;top:970px;left:233px;white-space:nowrap" class="ft45">dynamical&#160;y ‘re-wiring’ the organism. We can frame the LALF and HAHF stimuli as generic&#160;+&#160;ve&#160;&#160;and&#160;&#160;−&#160;ve&#160;&#160;stim-</p>
+<p style="position:absolute;top:985px;left:233px;white-space:nowrap" class="ft45">uli respectively. These stimuli affect the behaviour of the plasmodium directly at the spatial locations where the&#160;</p>
+<p style="position:absolute;top:1000px;left:233px;white-space:nowrap" class="ft45">stimuli are presented. These local stimuli then affect the&#160;<i>global</i>&#160;pattern of the plasmodial network as the organism&#160;</p>
+<p style="position:absolute;top:1015px;left:233px;white-space:nowrap" class="ft45">adapts its body plan in response to the stimuli.</p>
+<p style="position:absolute;top:1030px;left:251px;white-space:nowrap" class="ft45">We use the multi-agent model of&#160;<i>Physarum</i>&#160;introduced in<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">51</a>. The purpose of the model is to demonstrate how&#160;</p>
+<p style="position:absolute;top:1045px;left:233px;white-space:nowrap" class="ft45">the complex behaviours of&#160;<i>Physarum</i>&#160;can emerge from very simple components and their local interactions–</p>
+<p style="position:absolute;top:1060px;left:233px;white-space:nowrap" class="ft45">using no specialised component parts. The model has been successful in reproducing the biological behaviour of&#160;</p>
+<p style="position:absolute;top:1075px;left:233px;white-space:nowrap" class="ft45">the&#160;<i>Physarum</i>&#160;plasmodium, including its dynamical pattern formation phenomen<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">a52, os</a>cil&#160;atory phenomen<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">a53,54,&#160;</a></p>
+<p style="position:absolute;top:1090px;left:233px;white-space:nowrap" class="ft45">coarsening phenomena<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">55</a>&#160;and&#160;response&#160;to electrical&#160;stimu<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">li56.&#160;</a>From&#160;a&#160;computational&#160;perspective the&#160;model can&#160;</p>
+<p style="position:absolute;top:324px;left:233px;white-space:nowrap" class="ft49"><b>Figure 3.</b>&#160;&#160;<b>An example of high amplitude high frequency voltage stimulation after 12&#160;hours.&#160;</b>Stimulation&#160;</p>
+<p style="position:absolute;top:340px;left:233px;white-space:nowrap" class="ft45">occurred between electrodes X1 and Y4.</p>
+<p style="position:absolute;top:658px;left:233px;white-space:nowrap" class="ft49"><b>Figure 4.</b>&#160;&#160;<b>An example of low amplitude low frequency voltage stimulation after 12&#160;hours.&#160;</b>Stimulation&#160;</p>
+<p style="position:absolute;top:673px;left:233px;white-space:nowrap" class="ft45">occurred between electrodes&#160;<i>X</i>2&#160;and&#160;<i>Y</i>3.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft51{font-size:13px;font-family:Times;color:#839097;}
+	.ft52{font-size:10px;font-family:Times;color:#839097;}
+	.ft53{font-size:10px;font-family:Times;color:#000000;}
+	.ft54{font-size:10px;font-family:Times;color:#839097;}
+	.ft55{font-size:11px;font-family:Times;color:#000000;}
+	.ft56{font-size:6px;font-family:Times;color:#000000;}
+	.ft57{font-size:11px;font-family:Times;color:#000000;}
+	.ft58{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft50">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:825px;white-space:nowrap" class="ft51">5</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft52">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:544px;left:233px;white-space:nowrap" class="ft55">reproduce&#160;the&#160;spatial&#160;y&#160;represented&#160;embedded&#160;unconventional&#160;computations&#160;approximated&#160;by&#160;the&#160;organism&#160;(for&#160;</p>
+<p style="position:absolute;top:559px;left:233px;white-space:nowrap" class="ft55">more information, se<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">e57).</a></p>
+<p style="position:absolute;top:574px;left:251px;white-space:nowrap" class="ft55">This modelling approach uses a population of indirectly coupled mobile particles with very simple behaviours,&#160;</p>
+<p style="position:absolute;top:589px;left:233px;white-space:nowrap" class="ft55">residing within a 2D diffusive lattice which stores particle positions and the concentration of a generic diffusive&#160;</p>
+<p style="position:absolute;top:604px;left:233px;white-space:nowrap" class="ft55">factor referred to as chemo-attractant. Particles deposit this chemo-attractant as they move and also sense the&#160;</p>
+<p style="position:absolute;top:619px;left:233px;white-space:nowrap" class="ft55">local concentration of chemo-attractant, orienting their position to face the strongest source. The particle popu-</p>
+<p style="position:absolute;top:634px;left:233px;white-space:nowrap" class="ft55">lation spontaneously forms&#160;self-organised networks corresponding&#160;to&#160;Turing-type Reaction-Diffusion pattern<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">s58.&#160;</a></p>
+<p style="position:absolute;top:649px;left:233px;white-space:nowrap" class="ft55">These networks also&#160;exhibit quasi-material behaviours&#160;such as&#160;spontaneous branching&#160;of&#160;new&#160;networks or net-</p>
+<p style="position:absolute;top:664px;left:233px;white-space:nowrap" class="ft55">work minimisation. The type of network (for example, highly reticulated, or strongly minimising) can be selected&#160;</p>
+<p style="position:absolute;top:679px;left:233px;white-space:nowrap" class="ft55">by altering two main sensory parameters<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">58. Th</a>ese parameters are the particle sensor angle (<i>SA</i>) and particle&#160;</p>
+<p style="position:absolute;top:694px;left:233px;white-space:nowrap" class="ft55">rotation angle (<i>RA</i>). These parameters affect the area coupling the particles and also the response of the particles&#160;</p>
+<p style="position:absolute;top:709px;left:233px;white-space:nowrap" class="ft55">to local concentration changes. A third parameter (<i>SO</i>) specifies the distance of the particles’ sensors from its&#160;</p>
+<p style="position:absolute;top:724px;left:233px;white-space:nowrap" class="ft55">location in space and acts as a scaling parameter for the resultant networks. Collective particle positions represent&#160;</p>
+<p style="position:absolute;top:739px;left:233px;white-space:nowrap" class="ft55">the global pattern of the plasmodium and collective particle motion represents flux within the plasmodium. The&#160;</p>
+<p style="position:absolute;top:754px;left:233px;white-space:nowrap" class="ft55">particles act independently and iteration of the particle population is performed randomly to avoid any artifacts&#160;</p>
+<p style="position:absolute;top:769px;left:233px;white-space:nowrap" class="ft55">from sequential ordering.</p>
+<p style="position:absolute;top:784px;left:251px;white-space:nowrap" class="ft55">The&#160;evolution&#160;of&#160;the&#160;model&#160;transport&#160;network&#160;can&#160;be&#160;influenced&#160;and&#160;constrained&#160;by&#160;externally&#160;presented&#160;</p>
+<p style="position:absolute;top:799px;left:233px;white-space:nowrap" class="ft55">spatial stimuli. The stimuli are projected onto the 2D lattice as real valued numbers. The stimuli from concen-</p>
+<p style="position:absolute;top:814px;left:233px;white-space:nowrap" class="ft55">tration gradients within the lattice. Diffusion within the lattice is implemented by a simple mean filter kernel (in&#160;</p>
+<p style="position:absolute;top:829px;left:233px;white-space:nowrap" class="ft55">this case, size 5&#160;×&#160;5). The mean value is multiplied by a damping factor (0.9) to limit the diffusion distance of the&#160;</p>
+<p style="position:absolute;top:844px;left:233px;white-space:nowrap" class="ft55">chemo-attractant within the lattice. Positively weighted stimuli correspond to chemo-attractants and act to attract&#160;</p>
+<p style="position:absolute;top:859px;left:233px;white-space:nowrap" class="ft55">nearby particles and also constrain the evolution of the particle networks. Negatively weighted stimuli correspond&#160;</p>
+<p style="position:absolute;top:874px;left:233px;white-space:nowrap" class="ft55">to chemo-repellents and repel nearby particles, causing the network to avoid these locations.</p>
+<p style="position:absolute;top:889px;left:251px;white-space:nowrap" class="ft55">There&#160;is&#160;no&#160;explicit&#160;representation&#160;of&#160;electrical&#160;stimulation&#160;of&#160;the&#160;plasmodium&#160;in&#160;the&#160;model.&#160;However&#160;i<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">n56&#160;</a></p>
+<p style="position:absolute;top:904px;left:233px;white-space:nowrap" class="ft55">we found that we could reproduce the short-term and long-term changes in electrical potential within the plas-</p>
+<p style="position:absolute;top:919px;left:233px;white-space:nowrap" class="ft55">modium by using the generic attractant stimuli to alter flux within the particle networks. To reproduce the effect&#160;</p>
+<p style="position:absolute;top:934px;left:233px;white-space:nowrap" class="ft55">of the LALF (+&#160;ve) and HAHF (−&#160;ve) stimuli we can use differences in attractant concentration to alter network&#160;</p>
+<p style="position:absolute;top:949px;left:233px;white-space:nowrap" class="ft55">behaviour.</p>
+<p style="position:absolute;top:964px;left:251px;white-space:nowrap" class="ft55">Because the plasmodial networks in the experimental array with 8 stimulus locations were relatively simple in&#160;</p>
+<p style="position:absolute;top:979px;left:233px;white-space:nowrap" class="ft55">their structure (2), for the modelling experiments we used a slightly more complex array consisting of 25 stimulus&#160;</p>
+<p style="position:absolute;top:994px;left:233px;white-space:nowrap" class="ft55">points in a 5&#160;×&#160;5 regular pattern. This allows the effect of changes in spatial stimuli to be more easily observed.</p>
+<p style="position:absolute;top:1009px;left:251px;white-space:nowrap" class="ft55">We used&#160;a&#160;fixed size population&#160;consisting&#160;of&#160;8000&#160;particles&#160;to&#160;represent&#160;the&#160;<i>Physarum</i>&#160;plasmodium. Particle&#160;</p>
+<p style="position:absolute;top:1024px;left:233px;white-space:nowrap" class="ft55">parameters were&#160;<i>SA</i>&#160;60,&#160;<i>RA</i>&#160;60 and&#160;<i>SO</i>&#160;9 and the deposition level for all particles was 5 units per step. The popu-</p>
+<p style="position:absolute;top:1039px;left:233px;white-space:nowrap" class="ft55">lation was inoculated and confined in a 5&#160;×&#160;5 grid mask patter<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#6">n (Fig. 6a) b</a>y means of strong attractant stimuli.&#160;</p>
+<p style="position:absolute;top:1054px;left:233px;white-space:nowrap" class="ft55">The grid pattern was then removed, leaving only a the 5&#160;×&#160;5 point source array stimu<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#6">li (Fig. 6b). Th</a>e default level&#160;</p>
+<p style="position:absolute;top:1069px;left:233px;white-space:nowrap" class="ft55">of stimuli at the array nodes was 5 units per scheduler step, matching the trail value deposited by the particles.&#160;</p>
+<p style="position:absolute;top:1084px;left:233px;white-space:nowrap" class="ft55">The structure of the model plasmodium is show<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#6">n in Fig. 6c w</a>hich also indicates the regions in the array (circled)&#160;</p>
+<p style="position:absolute;top:475px;left:233px;white-space:nowrap" class="ft58"><b>Figure 5.</b>&#160;&#160;<b>Relative changes in resistance with LALF (a)&#160;</b>and HALF (<b>b</b>) stimulation. Each pair of columns&#160;</p>
+<p style="position:absolute;top:491px;left:233px;white-space:nowrap" class="ft55">represents the relative resistance change for one experiment.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft61{font-size:13px;font-family:Times;color:#839097;}
+	.ft62{font-size:10px;font-family:Times;color:#839097;}
+	.ft63{font-size:10px;font-family:Times;color:#000000;}
+	.ft64{font-size:10px;font-family:Times;color:#839097;}
+	.ft65{font-size:11px;font-family:Times;color:#000000;}
+	.ft66{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft60">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft61">6</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft62">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:1040px;left:233px;white-space:nowrap" class="ft65">used to measure the particle population size at each node point in the array. This region was a 13&#160;×&#160;13 square win-</p>
+<p style="position:absolute;top:1055px;left:233px;white-space:nowrap" class="ft65">dow centred around each stimulus point. The spatial pattern flux within the particle population in the diffusive&#160;</p>
+<p style="position:absolute;top:1070px;left:233px;white-space:nowrap" class="ft65">lattice is indicate<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#6">d in Fig. 6d w</a>here the grey lines are particle flux and the bright point sources represent stimulus&#160;</p>
+<p style="position:absolute;top:1085px;left:233px;white-space:nowrap" class="ft65">locations.</p>
+<p style="position:absolute;top:465px;left:233px;white-space:nowrap" class="ft66"><b>Figure 6.</b>&#160;&#160;<b>Setup of modelling experiments.&#160;</b>(<b>a</b>) virtual Petri dish (grey) and grid mask (white) to initialise&#160;</p>
+<p style="position:absolute;top:480px;left:233px;white-space:nowrap" class="ft65">particles, (<b>b</b>) location of 5&#160;×&#160;5 stimulus locations, (<b>c</b>) stabilised particle positions with sensor regions indicated&#160;</p>
+<p style="position:absolute;top:495px;left:233px;white-space:nowrap" class="ft65">by circles, (<b>d</b>) greyscale indication of flux within the particle population and attractant sources (lighter points).</p>
+<p style="position:absolute;top:946px;left:233px;white-space:nowrap" class="ft66"><b>Figure 7.</b>&#160;&#160;<b>Effect of&#160;+ve stimuli on particle network distribution.&#160;</b>(<b>a</b>)&#160;+&#160;ve stimuli introduced after t&#160;=&#160;&#160;500&#160;&#160;at&#160;</p>
+<p style="position:absolute;top:962px;left:233px;white-space:nowrap" class="ft65">nodes column, row (2,2) and (3,5) (pale square regions), (<b>b</b>–<b>d</b>) particles from nearby areas are attracted to these&#160;</p>
+<p style="position:absolute;top:977px;left:233px;white-space:nowrap" class="ft65">stimulated nodes.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft71{font-size:13px;font-family:Times;color:#839097;}
+	.ft72{font-size:10px;font-family:Times;color:#839097;}
+	.ft73{font-size:10px;font-family:Times;color:#000000;}
+	.ft74{font-size:10px;font-family:Times;color:#839097;}
+	.ft75{font-size:13px;font-family:Times;color:#000000;}
+	.ft76{font-size:11px;font-family:Times;color:#000000;}
+	.ft77{font-size:11px;font-family:Times;color:#000000;}
+	.ft78{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft70">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:826px;white-space:nowrap" class="ft71">7</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft72">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:988px;left:233px;white-space:nowrap" class="ft75"><b>Model&#160;Response to&#160;Addition and Removal&#160;of&#160;</b></p>
+<p style="position:absolute;top:988px;left:517px;white-space:nowrap" class="ft75"><b>+ve Stimuli.&#160;&#160;</b><a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#6">Figure 7 in</a>dicates the response of the par-</p>
+<p style="position:absolute;top:1004px;left:233px;white-space:nowrap" class="ft76">ticle model to&#160;+&#160;ve stimuli at two nodes located at positions (2,2) and (3,5) where&#160;<i>(c,r)</i>&#160;indicates column number&#160;</p>
+<p style="position:absolute;top:1019px;left:233px;white-space:nowrap" class="ft76">and row number respectively (nodes annotated with pale square border). When these nodes are presented with&#160;</p>
+<p style="position:absolute;top:1035px;left:233px;white-space:nowrap" class="ft76">+</p>
+<p style="position:absolute;top:1034px;left:244px;white-space:nowrap" class="ft76">&#160;ve stimuli (500 units per scheduler step, compared to 5 units for particle movement deposition) particles are&#160;</p>
+<p style="position:absolute;top:1049px;left:233px;white-space:nowrap" class="ft76">drawn to these nodes from nearby nodes. When lower values are used for the&#160;+&#160;ve stimuli sources, the effect is&#160;</p>
+<p style="position:absolute;top:1064px;left:233px;white-space:nowrap" class="ft76">migration to these nodes is the same but less pronounced (not shown).</p>
+<p style="position:absolute;top:466px;left:233px;white-space:nowrap" class="ft78"><b>Figure 8.</b>&#160;&#160;<b>Removal of&#160;+ve stimuli redistributes particle distribution to nearby nodes.&#160;</b>(<b>a</b>)&#160;+&#160;ve&#160;&#160;stimuli&#160;</p>
+<p style="position:absolute;top:481px;left:233px;white-space:nowrap" class="ft76">removed after t&#160;=&#160;2500 at nodes column, row (2,2) and (3,5) (pale square regions), (<b>b–d</b>) particles from&#160;</p>
+<p style="position:absolute;top:496px;left:233px;white-space:nowrap" class="ft76">previously stimulated nodes are redistributed between adjoining nodes.</p>
+<p style="position:absolute;top:909px;left:233px;white-space:nowrap" class="ft78"><b>Figure 9.</b>&#160;&#160;<b>Space-time plot of particle population flux at 25 nodes of 5&#160;×&#160;5&#160;array.&#160;</b>Time proceeds downwards,&#160;</p>
+<p style="position:absolute;top:924px;left:233px;white-space:nowrap" class="ft76">x-axis is array node number, y-axis is time. Nodes 7 and 23 received&#160;+&#160;ve stimuli at 500 steps which was&#160;</p>
+<p style="position:absolute;top:939px;left:233px;white-space:nowrap" class="ft76">removed after 2500 steps. Greater ‘warmth’ (online) indicates increase in flux.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft81{font-size:13px;font-family:Times;color:#839097;}
+	.ft82{font-size:10px;font-family:Times;color:#839097;}
+	.ft83{font-size:10px;font-family:Times;color:#000000;}
+	.ft84{font-size:10px;font-family:Times;color:#839097;}
+	.ft85{font-size:11px;font-family:Times;color:#000000;}
+	.ft86{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft80">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft81">8</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft82">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:942px;left:251px;white-space:nowrap" class="ft85">The removal of&#160;+&#160;ve stimuli from (2,2) and (3,5), which returns them to the same bacground level as the&#160;</p>
+<p style="position:absolute;top:957px;left:233px;white-space:nowrap" class="ft85">remainder&#160;of&#160;the&#160;array,&#160;causes&#160;an&#160;efflux&#160;of&#160;particles&#160;away&#160;from&#160;these&#160;nodes&#160;(<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#7">Fig. 8)</a>.&#160;The&#160;particles&#160;are&#160;redistributed&#160;</p>
+<p style="position:absolute;top:972px;left:233px;white-space:nowrap" class="ft85">amongst nearby no<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#7">des (Fig. 8d). Th</a>e flux&#160;of the particle population during the addition and removal of&#160;+&#160;ve&#160;&#160;stim-</p>
+<p style="position:absolute;top:987px;left:233px;white-space:nowrap" class="ft85">uli can be observe<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#7">d in Fig. 9, w</a>hich shows a space-time plot of changing population size at each node point. The&#160;</p>
+<p style="position:absolute;top:1002px;left:233px;white-space:nowrap" class="ft85">stimulated nodes correspond to columns 7 and 23 in the chart and the ‘temperature’ based changes in brightness&#160;</p>
+<p style="position:absolute;top:1017px;left:233px;white-space:nowrap" class="ft85">(online) correspond to increases (hotter) and decreases (colder) in flux respectively. The chart shows that when&#160;</p>
+<p style="position:absolute;top:1032px;left:233px;white-space:nowrap" class="ft85">+</p>
+<p style="position:absolute;top:1032px;left:244px;white-space:nowrap" class="ft85">&#160;ve stimuli are initiated at nodes 7 and 23, the population at these nodes increases, attracting particles from&#160;</p>
+<p style="position:absolute;top:1047px;left:233px;white-space:nowrap" class="ft85">nearby&#160;nodes.&#160;When&#160;the&#160;stimuli are removed,&#160;the&#160;flux&#160;through&#160;these nodes decreases again&#160;whilst&#160;the&#160;flux near&#160;</p>
+<p style="position:absolute;top:1062px;left:233px;white-space:nowrap" class="ft85">neighbouring nodes increases.</p>
+<p style="position:absolute;top:319px;left:233px;white-space:nowrap" class="ft86"><b>Figure 10.</b>&#160;&#160;<b>Repeated stimulus at same location results in increase in baseline occupancy.&#160;</b>Plot shows regular&#160;</p>
+<p style="position:absolute;top:335px;left:233px;white-space:nowrap" class="ft85">periodic stimulation (dashed line) at node 7 of 25 (a<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#6">s in Fig. 7). S</a>olid line shows plot of node 7 occupancy at&#160;</p>
+<p style="position:absolute;top:350px;left:233px;white-space:nowrap" class="ft85">periods of stimulation and baseline occupancy. Note how baseline non-stimulated activity rises over repeated&#160;</p>
+<p style="position:absolute;top:365px;left:233px;white-space:nowrap" class="ft85">applications.</p>
+<p style="position:absolute;top:843px;left:233px;white-space:nowrap" class="ft86"><b>Figure 11.</b>&#160;&#160;<b>Representing&#160;−ve stimuli by lowered stimulus value at target nodes.&#160;</b>(<b>a</b>)&#160;−&#160;ve relative stimuli&#160;</p>
+<p style="position:absolute;top:858px;left:233px;white-space:nowrap" class="ft85">introduced at column, row (1,4) and (2,4) (pale square regions), (<b>b–c</b>) particles migrate from lower valued&#160;</p>
+<p style="position:absolute;top:873px;left:233px;white-space:nowrap" class="ft85">nodes and are redistributed between adjoining nodes, (<b>d</b>) after resetting stimulus nodes to value of other nodes&#160;</p>
+<p style="position:absolute;top:888px;left:233px;white-space:nowrap" class="ft85">there is a slow recovery in occupancy.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft91{font-size:13px;font-family:Times;color:#839097;}
+	.ft92{font-size:10px;font-family:Times;color:#839097;}
+	.ft93{font-size:10px;font-family:Times;color:#000000;}
+	.ft94{font-size:10px;font-family:Times;color:#839097;}
+	.ft95{font-size:11px;font-family:Times;color:#000000;}
+	.ft96{font-size:13px;font-family:Times;color:#000000;}
+	.ft97{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft90">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft91">9</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft92">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:733px;left:251px;white-space:nowrap" class="ft95">Repeated application of&#160;+&#160;ve stimuli at the same location causes a gradual redistribution of particles to nodes&#160;</p>
+<p style="position:absolute;top:748px;left:233px;white-space:nowrap" class="ft95">nearby&#160;the&#160;stimulus&#160;point.&#160;This&#160;redistribution&#160;ensures&#160;that&#160;the&#160;baseline&#160;‘activity’&#160;(occupancy)&#160;around&#160;the&#160;node&#160;</p>
+<p style="position:absolute;top:763px;left:233px;white-space:nowrap" class="ft95">increases even when the node is not being stimulated. A plot of the increased occupancy after repeated stimulus&#160;</p>
+<p style="position:absolute;top:778px;left:233px;white-space:nowrap" class="ft95">for node 7 is show<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#8">n in Fig. 10. Th</a>e stimulus on and off periods are indicated by the dashed lines (blue, online)&#160;</p>
+<p style="position:absolute;top:793px;left:233px;white-space:nowrap" class="ft95">and the baseline&#160;activity (measure&#160;of&#160;particle flux at the&#160;node)&#160;is represented by the&#160;solid&#160;line&#160;(red,&#160;online). This&#160;</p>
+<p style="position:absolute;top:808px;left:233px;white-space:nowrap" class="ft95">increase in baseline activity after repeated stimulation may be interpreted as a primitive spatial&#160;y implemented&#160;</p>
+<p style="position:absolute;top:823px;left:233px;white-space:nowrap" class="ft95">memory of the stimulus.</p>
+<p style="position:absolute;top:855px;left:233px;white-space:nowrap" class="ft96"><b>Model&#160;Response to&#160;Addition and Removal&#160;of&#160;</b></p>
+<p style="position:absolute;top:855px;left:531px;white-space:nowrap" class="ft96"><b>−ve Stimuli.&#160;&#160;</b>The&#160;representation&#160;of&#160;−&#160;ve stimuli&#160;at&#160;</p>
+<p style="position:absolute;top:871px;left:233px;white-space:nowrap" class="ft95">certain nodes can be achieved in two ways. Firstly, by decreasing the projection of attractant at stimulated nodes&#160;</p>
+<p style="position:absolute;top:886px;left:233px;white-space:nowrap" class="ft95">below the baseline level of the remaining nodes (baseline stimulus level 5 units per step and target node stimu-</p>
+<p style="position:absolute;top:901px;left:233px;white-space:nowrap" class="ft95">lus of 1 unit per step). In this case all nodes still receive&#160;+&#160;ve stimuli but the target nodes are&#160;−&#160;ve relative to the&#160;</p>
+<p style="position:absolute;top:916px;left:233px;white-space:nowrap" class="ft95">remaining nodes. Under this condition there is a gradual fall in occupancy at the target nodes after stimulation&#160;</p>
+<p style="position:absolute;top:931px;left:233px;white-space:nowrap" class="ft95"><a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#8">(Fig. 11a–c). W</a>hen the target nodes are restored to the same baseline value as the remaining nodes, there is a&#160;</p>
+<p style="position:absolute;top:946px;left:233px;white-space:nowrap" class="ft95">small gradual increase in occupanc<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#8">y (Fig. 11d). Thi</a>s is reflected in the plot of occupancy show<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#9">n in Fig. 12a.</a></p>
+<p style="position:absolute;top:961px;left:251px;white-space:nowrap" class="ft95">Negative stimuli can also be achieved by projecting (repellent) negatively weighted values at the target nodes.&#160;</p>
+<p style="position:absolute;top:976px;left:233px;white-space:nowrap" class="ft95">The response of the model plasmodium in this instance is a much quicker response as individual particles migrate&#160;</p>
+<p style="position:absolute;top:991px;left:233px;white-space:nowrap" class="ft95">away from the diffusing repellent fie<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#10">ld (Fig. 13a–c). W</a>hen the&#160;−&#160;ve stimulus is at high concentrations (500 units&#160;</p>
+<p style="position:absolute;top:1006px;left:233px;white-space:nowrap" class="ft95">per scheduler step) there is no re-occupancy of the target nodes even after the&#160;−&#160;ve stimulus is remove<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#10">d (Fig. 13d,</a>&#160;</p>
+<p style="position:absolute;top:1021px;left:233px;white-space:nowrap" class="ft95">and plo<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#9">t in Fig. 12b).</a></p>
+<p style="position:absolute;top:1036px;left:251px;white-space:nowrap" class="ft95">The 23&#160;nodes with unchanging&#160;stimulus&#160;levels&#160;are&#160;not&#160;plotted&#160;in&#160;<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#9">Fig. 12&#160;</a>and&#160;have&#160;relatively&#160;uniform&#160;pop-</p>
+<p style="position:absolute;top:1051px;left:233px;white-space:nowrap" class="ft95">ulation flux at the nodes. The role of stimulus differences in changing flux at the stimulated nodes can be seen&#160;</p>
+<p style="position:absolute;top:1066px;left:233px;white-space:nowrap" class="ft95">by plotting&#160;the variance of signal&#160;level at al&#160;&#160;nodes. As<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#11">&#160;Fig. 14&#160;de</a>monstrates,&#160;the directly stimulated&#160;nodes&#160;have&#160;</p>
+<p style="position:absolute;top:599px;left:233px;white-space:nowrap" class="ft97"><b>Figure 12.</b>&#160;&#160;<b>Plots of node 4 (red, online) and node 17 (green, online) flux levels in response to&#160;−ve stimuli.&#160;</b></p>
+<p style="position:absolute;top:615px;left:233px;white-space:nowrap" class="ft95">(<b>a</b>) plot in response to relative lower stimuli levels shows gradual fall in occupancy after activation (leftmost&#160;</p>
+<p style="position:absolute;top:630px;left:233px;white-space:nowrap" class="ft95">vertical bar). When the nodes are reset to the baseline value (rightmost vertical bar) there is a gradual increase&#160;</p>
+<p style="position:absolute;top:645px;left:233px;white-space:nowrap" class="ft95">in occupancy (se<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#8">e Fig. 11), (</a><b>b</b>) plot in response to negatively weighted repellent stimuli shows a sudden fall&#160;</p>
+<p style="position:absolute;top:660px;left:233px;white-space:nowrap" class="ft95">in occupancy after activation as particles abandon the locations of repellents. When the nodes are set to the&#160;</p>
+<p style="position:absolute;top:675px;left:233px;white-space:nowrap" class="ft95">baseline value there is no re-occupancy of the nodes (se<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#10">e Fig. 13) a</a>nd baseline activity remains at zero.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft101{font-size:13px;font-family:Times;color:#839097;}
+	.ft102{font-size:10px;font-family:Times;color:#839097;}
+	.ft103{font-size:10px;font-family:Times;color:#000000;}
+	.ft104{font-size:10px;font-family:Times;color:#839097;}
+	.ft105{font-size:11px;font-family:Times;color:#000000;}
+	.ft106{font-size:14px;font-family:Times;color:#000000;}
+	.ft107{font-size:11px;font-family:Times;color:#000000;}
+	.ft108{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft100">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:816px;white-space:nowrap" class="ft101">10</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft102">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:575px;left:233px;white-space:nowrap" class="ft105">a much higher signal variance than unstimulated nodes, although the efflux of particles away from stimulated&#160;</p>
+<p style="position:absolute;top:590px;left:233px;white-space:nowrap" class="ft105">nodes does cause minor changes in neighbouring nodes.</p>
+<p style="position:absolute;top:621px;left:233px;white-space:nowrap" class="ft106"><b>Discussion</b></p>
+<p style="position:absolute;top:638px;left:233px;white-space:nowrap" class="ft105">As demonstrated by the results, HAHF voltage applied between two electrodes in a network of protoplasmic&#160;</p>
+<p style="position:absolute;top:653px;left:233px;white-space:nowrap" class="ft105">tubes of&#160;<i>P.&#160;polycephalum</i>&#160;causes abandonment of the stimulated tube while not affecting the unstimulated tubes.&#160;</p>
+<p style="position:absolute;top:668px;left:233px;white-space:nowrap" class="ft105">Likewise it was demonstrated that LALF voltage applied between two electrodes in the network maintains the&#160;</p>
+<p style="position:absolute;top:683px;left:233px;white-space:nowrap" class="ft105">stimulated tube and encourages abandonment of other tubes. As show<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#4">n in Figs 3 a</a>n<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#4">d 4, e</a>ven the resistance of the&#160;</p>
+<p style="position:absolute;top:698px;left:233px;white-space:nowrap" class="ft105">stimulated tube increases over time, however the increase is marginal and can be attributed to tube aging and or&#160;</p>
+<p style="position:absolute;top:713px;left:233px;white-space:nowrap" class="ft105">drying as this occurs in all tubes regardless of stimulation type.</p>
+<p style="position:absolute;top:728px;left:251px;white-space:nowrap" class="ft105">There&#160;are&#160;an&#160;vast&#160;number&#160;of&#160;combinations&#160;of&#160;frequency&#160;and&#160;amplitude&#160;which&#160;could&#160;be&#160;tested&#160;for&#160;response&#160;</p>
+<p style="position:absolute;top:743px;left:233px;white-space:nowrap" class="ft105">to stimulation; this is a task which is to be the subject of future work, as different combinations may produce a&#160;</p>
+<p style="position:absolute;top:758px;left:233px;white-space:nowrap" class="ft105">diverse range of responses. Stepwise changes in frequency and amplitude will be performed to investigate any&#160;</p>
+<p style="position:absolute;top:773px;left:233px;white-space:nowrap" class="ft105">other phenomena which could be useful in a future PhyChip; it is acknowledged that it is not possible to test every&#160;</p>
+<p style="position:absolute;top:788px;left:233px;white-space:nowrap" class="ft105">combination&#160;of&#160;frequency&#160;due&#160;to&#160;the&#160;time&#160;taken&#160;to&#160;test&#160;just&#160;a&#160;single&#160;combination.&#160;It&#160;is&#160;probable&#160;that&#160;there&#160;will&#160;be&#160;</p>
+<p style="position:absolute;top:803px;left:233px;white-space:nowrap" class="ft105">an upper and lower limit of frequency, beyond which there will be no more noticeable affect; likewise an upper&#160;</p>
+<p style="position:absolute;top:818px;left:233px;white-space:nowrap" class="ft105">limit on amplitude, above which the organism will likely die.</p>
+<p style="position:absolute;top:833px;left:251px;white-space:nowrap" class="ft105">The custom Petri-dish is far from ideal, as manufacture is time consuming and satisfactory growth is not&#160;</p>
+<p style="position:absolute;top:848px;left:233px;white-space:nowrap" class="ft105">always achieved. Multi-electrode arrays (MEA), also called micro-electrode arrays are devices which contain sev-</p>
+<p style="position:absolute;top:863px;left:233px;white-space:nowrap" class="ft105">eral&#160;recording&#160;electrodes,&#160;often&#160;in&#160;the&#160;space&#160;of&#160;several&#160;millimetres&#160;square;&#160;they&#160;usual&#160;y&#160;have&#160;a&#160;central&#160;well&#160;for&#160;cell&#160;</p>
+<p style="position:absolute;top:878px;left:233px;white-space:nowrap" class="ft105">culture and surface adhesion. Typical&#160;y MEAs are used for recording neuronal electrical activity at multiple sites&#160;</p>
+<p style="position:absolute;top:893px;left:233px;white-space:nowrap" class="ft105">within a small area; when neurons are excited, ionic currents are generated through the cell membrane which can&#160;</p>
+<p style="position:absolute;top:908px;left:233px;white-space:nowrap" class="ft105">be detected as a change in voltage between several of these electrodes. It is envisaged that instead of using the large&#160;</p>
+<p style="position:absolute;top:923px;left:233px;white-space:nowrap" class="ft105">custom Petri-dish, that a custom MEA could be used for&#160;<i>P.&#160;polycehpalum</i>&#160;network growth and subsequent meas-</p>
+<p style="position:absolute;top:938px;left:233px;white-space:nowrap" class="ft105">urement and stimulation. The size of the MEA would need to be larger than that of the neuronal MEAs, because&#160;</p>
+<p style="position:absolute;top:953px;left:233px;white-space:nowrap" class="ft105">one protoplasmic tube could cover the same area as the whole mass of neurons; this may require a custom MEA&#160;</p>
+<p style="position:absolute;top:968px;left:233px;white-space:nowrap" class="ft105">design with an area of several centimetres square and the possibility of agar as a supporting medium.</p>
+<p style="position:absolute;top:983px;left:251px;white-space:nowrap" class="ft105">The associated response to negative and positive stimuli in the form of voltage application, can be regarded&#160;</p>
+<p style="position:absolute;top:998px;left:233px;white-space:nowrap" class="ft105">as&#160;a&#160;form of learning. Observing the stimuli-response correlation,&#160;it&#160;could be&#160;said&#160;that&#160;voltage stimulation&#160;in&#160;</p>
+<p style="position:absolute;top:1013px;left:233px;white-space:nowrap" class="ft105">networks of protoplasmic tubes of&#160;<i>Physarum&#160;polycephalum</i>&#160;is equivalent to negative and positive reinforcement&#160;</p>
+<p style="position:absolute;top:1028px;left:233px;white-space:nowrap" class="ft105">learning;&#160;connectivity in&#160;the network&#160;is directly&#160;correlated&#160;to&#160;applied stimulation.&#160;Abandonment of&#160;tubes is&#160;a&#160;</p>
+<p style="position:absolute;top:1043px;left:233px;white-space:nowrap" class="ft105">behavior which is caused by conditioning. Tubes can be abandoned and then regrow to reform connections;&#160;</p>
+<p style="position:absolute;top:1058px;left:233px;white-space:nowrap" class="ft105">this has been observed by the authors; it is possible that the learned state could be changed or reset by changing&#160;</p>
+<p style="position:absolute;top:1073px;left:233px;white-space:nowrap" class="ft105">localised conditions such as light or temperature to initiate regrowth, or even reinforce the learning performed.&#160;</p>
+<p style="position:absolute;top:1088px;left:233px;white-space:nowrap" class="ft105">One drawback to this method is the time taken to regrow tubes, typical&#160;y a few hours, however this is a living&#160;</p>
+<p style="position:absolute;top:477px;left:233px;white-space:nowrap" class="ft108"><b>Figure 13.</b>&#160;&#160;<b>Representing&#160;−ve stimuli by negatively weighted repellent stimulus value at target nodes.&#160;</b>(<b>a</b>)&#160;</p>
+<p style="position:absolute;top:493px;left:233px;white-space:nowrap" class="ft105">−</p>
+<p style="position:absolute;top:492px;left:244px;white-space:nowrap" class="ft105">&#160;ve negatively weighted stimuli introduced at column, row (1,4) and (2,4) (pale square regions), (<b>b</b>–<b>c</b>) particles&#160;</p>
+<p style="position:absolute;top:507px;left:233px;white-space:nowrap" class="ft105">are repelled from stimulus nodes and are redistributed between adjoining nodes, (<b>d</b>) at strong&#160;−&#160;ve&#160;&#160;stimulus&#160;</p>
+<p style="position:absolute;top:522px;left:233px;white-space:nowrap" class="ft105">levels there is no re-occupancy of nodes after resetting the target nodes to baseline values.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft111{font-size:13px;font-family:Times;color:#839097;}
+	.ft112{font-size:10px;font-family:Times;color:#839097;}
+	.ft113{font-size:10px;font-family:Times;color:#000000;}
+	.ft114{font-size:10px;font-family:Times;color:#839097;}
+	.ft115{font-size:11px;font-family:Times;color:#000000;}
+	.ft116{font-size:11px;font-family:Times;color:#000000;}
+	.ft117{font-size:6px;font-family:Times;color:#000000;}
+	.ft118{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft110">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:817px;white-space:nowrap" class="ft111">11</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft112">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:727px;left:233px;white-space:nowrap" class="ft115">system,&#160;much&#160;like&#160;the&#160;plasticity&#160;of&#160;neurons&#160;in&#160;the&#160;brain,&#160;rather&#160;than&#160;electronic&#160;solid&#160;state&#160;hardware&#160;which&#160;can&#160;be&#160;</p>
+<p style="position:absolute;top:742px;left:233px;white-space:nowrap" class="ft115">reset&#160;in&#160;a matter&#160;of&#160;mil&#160;iseconds. The&#160;biggest&#160;limitation&#160;of&#160;this&#160;biological&#160;hybrid&#160;technology&#160;is&#160;the&#160;time&#160;taken&#160;for&#160;</p>
+<p style="position:absolute;top:757px;left:233px;white-space:nowrap" class="ft115">the&#160;system to learn;&#160;the&#160;stimulation time of&#160;several&#160;hours is&#160;currently a&#160;limiting&#160;factor.&#160;Future&#160;work&#160;will&#160;also&#160;be&#160;</p>
+<p style="position:absolute;top:772px;left:233px;white-space:nowrap" class="ft115">aimed at minimising this time.</p>
+<p style="position:absolute;top:787px;left:251px;white-space:nowrap" class="ft115">These responses to negative and positive stimuli are more clearly visible in the modelling experiments. This&#160;</p>
+<p style="position:absolute;top:802px;left:233px;white-space:nowrap" class="ft115">is perhaps because adaptation of the model networks are not constrained by adhesion of the slime capsule in the&#160;</p>
+<p style="position:absolute;top:817px;left:233px;white-space:nowrap" class="ft116"><i>Physarum</i>&#160;plasmodium. There is avoidance of&#160;−&#160;ve stimuli in the model which slowly reverses after the stimuli&#160;</p>
+<p style="position:absolute;top:832px;left:233px;white-space:nowrap" class="ft115">are withdrawn. With very strong&#160;−&#160;ve stimuli the model networks withdraw completely from the site and do not&#160;</p>
+<p style="position:absolute;top:847px;left:233px;white-space:nowrap" class="ft115">return&#160;after&#160;withdrawal&#160;of&#160;the&#160;stimuli.&#160;This&#160;is&#160;suggestive&#160;of&#160;negative&#160;reinforcement&#160;learning.&#160;For&#160;+&#160;ve&#160;stimuli&#160;there&#160;</p>
+<p style="position:absolute;top:862px;left:233px;white-space:nowrap" class="ft115">is an aggregation of the model population towards the stimulated nodes during&#160;+&#160;ve stimuli. After the stimulus&#160;</p>
+<p style="position:absolute;top:877px;left:233px;white-space:nowrap" class="ft115">is withdrawn, however, the population withdraws from the stimulated nodes and is distributed around nearby&#160;</p>
+<p style="position:absolute;top:892px;left:233px;white-space:nowrap" class="ft115">nodes. On repeated application of&#160;+&#160;ve&#160;stimuli we found that the baseline population&#160;level&#160;of the stimulated node&#160;</p>
+<p style="position:absolute;top:907px;left:233px;white-space:nowrap" class="ft115">locations&#160;gradual&#160;y&#160;increased&#160;after&#160;each&#160;stimulus&#160;period.&#160;This&#160;might&#160;correspond&#160;to&#160;a&#160;spatial&#160;y&#160;implemented&#160;form&#160;</p>
+<p style="position:absolute;top:922px;left:233px;white-space:nowrap" class="ft115">of positive reinforcement learning.</p>
+<p style="position:absolute;top:937px;left:251px;white-space:nowrap" class="ft115">It&#160;is&#160;difficult&#160;to&#160;directly&#160;relate&#160;the&#160;potential&#160;spatial learning&#160;effects&#160;of&#160;the&#160;<i>Physarum</i>&#160;plasmodium&#160;to&#160;neural&#160;y&#160;</p>
+<p style="position:absolute;top:952px;left:233px;white-space:nowrap" class="ft115">implemented learning. The amorphous nature of the plasmodium and the homogeneous nature of its constituent&#160;</p>
+<p style="position:absolute;top:967px;left:233px;white-space:nowrap" class="ft115">parts suggest that different learning mechanisms might be at work. The work of R<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">eid59&#160;s</a>uggests an environmen-</p>
+<p style="position:absolute;top:982px;left:233px;white-space:nowrap" class="ft115">tal&#160;y mediated&#160;spatial learning&#160;and the work&#160;within&#160;this report suggests&#160;possible&#160;stimulus response effects&#160;and&#160;</p>
+<p style="position:absolute;top:997px;left:233px;white-space:nowrap" class="ft115">spatial&#160;aggregation&#160;effects&#160;that&#160;may&#160;also&#160;play&#160;a&#160;role.&#160;Nevertheless,&#160;recent&#160;advances&#160;in&#160;the&#160;understanding&#160;of&#160;elec-</p>
+<p style="position:absolute;top:1012px;left:233px;white-space:nowrap" class="ft115">trical synapses as mediators of network connectivity during learning and memory<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">60–63, a</a>nd extension of these&#160;</p>
+<p style="position:absolute;top:1027px;left:233px;white-space:nowrap" class="ft115">paradigms to non-neural tissues including bone and pancreas<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#12">17,20,21</a>&#160;suggest that important parallels may exist.&#160;</p>
+<p style="position:absolute;top:1042px;left:233px;white-space:nowrap" class="ft115">Future work will compare the results of&#160;<i>in&#160;vitro</i>&#160;learning in cultured neural networ<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">ks64–66</a>&#160;with circuits composed&#160;</p>
+<p style="position:absolute;top:1057px;left:233px;white-space:nowrap" class="ft115">of Physarum.</p>
+<p style="position:absolute;top:1072px;left:251px;white-space:nowrap" class="ft115">With more complex equipment, multiple tubes could be stimulated simultaneously, with negative and positive&#160;</p>
+<p style="position:absolute;top:1087px;left:233px;white-space:nowrap" class="ft115">voltage stimulation; this could have the advantage of complex input-output processing. Much like the logic gates&#160;</p>
+<p style="position:absolute;top:607px;left:233px;white-space:nowrap" class="ft118"><b>Figure 14.</b>&#160;&#160;<b>Plots of signal variance (blue, online) and standard deviation (red, online) for all nodes.&#160;</b>(<b>a</b>) plot in&#160;</p>
+<p style="position:absolute;top:623px;left:233px;white-space:nowrap" class="ft115">response to relative lower stimuli levels shows large variance at nodes 4 and 17 compared to remaining nodes. Smaller&#160;</p>
+<p style="position:absolute;top:638px;left:233px;white-space:nowrap" class="ft115">peaks occur at nodes close to the stimulated nodes, (<b>b</b>) plot in response to negatively weighted repellent stimuli shows&#160;</p>
+<p style="position:absolute;top:653px;left:233px;white-space:nowrap" class="ft115">large variance in nodes 4 and 17 in response to repellent stimuli at these nodes. Variance at unstimulated nodes is&#160;</p>
+<p style="position:absolute;top:668px;left:233px;white-space:nowrap" class="ft115">much smaller, indicating that the stimuli are responsible for changes in flux at nodes 4 and 17.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft121{font-size:13px;font-family:Times;color:#839097;}
+	.ft122{font-size:10px;font-family:Times;color:#839097;}
+	.ft123{font-size:10px;font-family:Times;color:#000000;}
+	.ft124{font-size:10px;font-family:Times;color:#839097;}
+	.ft125{font-size:11px;font-family:Times;color:#000000;}
+	.ft126{font-size:11px;font-family:Times;color:#000000;}
+	.ft127{font-size:6px;font-family:Times;color:#000000;}
+	.ft128{font-size:14px;font-family:Times;color:#000000;}
+	.ft129{font-size:9px;font-family:Times;color:#000000;}
+	.ft1210{font-size:9px;font-family:Times;color:#000000;}
+	.ft1211{font-size:9px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft120">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:816px;white-space:nowrap" class="ft121">12</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft122">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:71px;left:233px;white-space:nowrap" class="ft125">or&#160;geometric&#160;computation&#160;which&#160;can&#160;be&#160;performed&#160;by&#160;protoplasmic&#160;tubes,&#160;this&#160;system&#160;could&#160;enable&#160;the&#160;advance-</p>
+<p style="position:absolute;top:86px;left:233px;white-space:nowrap" class="ft125">ment of the first Physarum Chip; a processor whose processing power is derived from real biological components&#160;</p>
+<p style="position:absolute;top:101px;left:233px;white-space:nowrap" class="ft125">and their inherent learning ability with negative and positive reinforcement. If the network of protoplasmic con-</p>
+<p style="position:absolute;top:116px;left:233px;white-space:nowrap" class="ft125">nectivity&#160;could&#160;be&#160;trained&#160;and&#160;retrained&#160;with&#160;negative&#160;and&#160;positive&#160;reinforcement&#160;in&#160;the&#160;form&#160;of&#160;HAHF&#160;and&#160;LALF&#160;</p>
+<p style="position:absolute;top:131px;left:233px;white-space:nowrap" class="ft125">voltage stimulation, then the possibilities for computation are broad; geometric processing could be performed&#160;</p>
+<p style="position:absolute;top:146px;left:233px;white-space:nowrap" class="ft125">using&#160;inputs as&#160;weighted training functions, multiple input&#160;combination&#160;logic gates could&#160;be implemented, in a&#160;</p>
+<p style="position:absolute;top:161px;left:233px;white-space:nowrap" class="ft125">matter of hours,&#160;not&#160;including the&#160;time&#160;taken&#160;to produce the&#160;PhyChip.&#160;Protoplasmic tubes&#160;are&#160;self&#160;repairing and&#160;</p>
+<p style="position:absolute;top:176px;left:233px;white-space:nowrap" class="ft125">can occasional&#160;y reconnect or reconfigure themselves after trauma, so the possibility of an adaptive and reconfig-</p>
+<p style="position:absolute;top:191px;left:233px;white-space:nowrap" class="ft125">urable network or protoplasmic tubes appears feasible from the findings presented here.</p>
+<p style="position:absolute;top:206px;left:251px;white-space:nowrap" class="ft125">The mechanism of action for HAHF and LALF voltage stimulation is unknown. The most likely cause is that&#160;</p>
+<p style="position:absolute;top:221px;left:233px;white-space:nowrap" class="ft125">the&#160;voltage&#160;affects&#160;the&#160;trans-membrane&#160;voltage&#160;and&#160;therefore&#160;the&#160;voltage&#160;gated&#160;ion&#160;channels&#160;which&#160;control&#160;move-</p>
+<p style="position:absolute;top:236px;left:233px;white-space:nowrap" class="ft125">ment, environment sensing or decision making. It is possible that HAHF and LALF operate in different ways, for&#160;</p>
+<p style="position:absolute;top:251px;left:233px;white-space:nowrap" class="ft125">example it has been observed by the authors that applying high direct current voltages to a tube causes it to stop&#160;</p>
+<p style="position:absolute;top:266px;left:233px;white-space:nowrap" class="ft125">being conductive after a short time, possibly due to the tube being burnt with the high level of current. HAHF&#160;</p>
+<p style="position:absolute;top:281px;left:233px;white-space:nowrap" class="ft125">could simply be burning the stimulated tubes causing the organism to abandon this tube in the network and&#160;</p>
+<p style="position:absolute;top:296px;left:233px;white-space:nowrap" class="ft125">increase growth elsewhere in the network. It is however unclear why a LALF waveform would act in the opposite&#160;</p>
+<p style="position:absolute;top:311px;left:233px;white-space:nowrap" class="ft125">way and cause abandonment of non-stimulated tubes.</p>
+<p style="position:absolute;top:326px;left:251px;white-space:nowrap" class="ft125">Our findings share many features with results reported from stimulating dissociated neuronal cell cultures&#160;</p>
+<p style="position:absolute;top:341px;left:233px;white-space:nowrap" class="ft125">grown on multi-electrode arrays. For example, Jimbo&#160;<i>et&#160;al.</i><a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">67</a>&#160;reported how volleys of electrical stimulation can&#160;</p>
+<p style="position:absolute;top:356px;left:233px;white-space:nowrap" class="ft125">induce excitatory, inhibitory or neutral responses to subsequent electrical stimulation. This ability has subse-</p>
+<p style="position:absolute;top:371px;left:233px;white-space:nowrap" class="ft125">quently been exploited for simple pattern recognition<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">68</a>.</p>
+<p style="position:absolute;top:386px;left:251px;white-space:nowrap" class="ft125">For more complex scenarios, Bull&#160;<i>et a<a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">l.</i>69&#160;h</a>ave suggested the use of machine learning techniques to control&#160;</p>
+<p style="position:absolute;top:401px;left:233px;white-space:nowrap" class="ft125">stimulation to induce required behaviour, using reinforcement learning in particular. The approach was shown&#160;</p>
+<p style="position:absolute;top:416px;left:233px;white-space:nowrap" class="ft125">able to control both cultured neurons and a non-linear chemical system. Future work with larger Physarum Chips&#160;</p>
+<p style="position:absolute;top:431px;left:233px;white-space:nowrap" class="ft125">will explore machine learning control of both the type and spacing of stimulation. This work has demonstrated an&#160;</p>
+<p style="position:absolute;top:446px;left:233px;white-space:nowrap" class="ft125">amorphous system which is capable of learning and adapting to negative and positive stimulation by rearranging&#160;</p>
+<p style="position:absolute;top:461px;left:233px;white-space:nowrap" class="ft125">network connectivity; this is inherently similar to the machine learning approach developed by Bull&#160;<i>et&#160;al.</i><a href="9db93b7ceadf9f0a263f286c1b5df03ds.html#13">69&#160;u</a>sing&#160;</p>
+<p style="position:absolute;top:476px;left:233px;white-space:nowrap" class="ft125">a neuronal culture grown on an MEA dish; stimulating the neuronal culture produced a “pathway-dependant&#160;</p>
+<p style="position:absolute;top:491px;left:233px;white-space:nowrap" class="ft125">plasticity”. The similarities between this and the results produced in this article are clear; positive and negative&#160;</p>
+<p style="position:absolute;top:506px;left:233px;white-space:nowrap" class="ft125">stimulation causes changes in network connectivity on a grid of electrodes which is classified as learning.</p>
+<p style="position:absolute;top:537px;left:233px;white-space:nowrap" class="ft128"><b>References</b></p>
+<p style="position:absolute;top:554px;left:239px;white-space:nowrap" class="ft129">1.&#160;&#160;Alvarez, L., Friedrich, B. M., Gompper, G. &amp; Kaupp, U. B. The computational sperm cel&#160;.&#160;<i>Trends in cell biology</i>&#160;<b>24,</b>&#160;198–207 (2014).</p>
+<p style="position:absolute;top:567px;left:239px;white-space:nowrap" class="ft129">2.&#160;&#160;Zhu, L., Aono, M., Kim, S.-J. &amp; Hara, M. Amoeba-based computing for traveling salesman problem: long-term correlations between&#160;</p>
+<p style="position:absolute;top:580px;left:251px;white-space:nowrap" class="ft129">spatial&#160;y separated individual cel&#160;s of Physarum polycephalum.&#160;<i>Bio Systems</i>&#160;<b>112,</b>&#160;1–10 (2013).</p>
+<p style="position:absolute;top:593px;left:239px;white-space:nowrap" class="ft129">3.&#160;&#160;Caudron, F. &amp; Barral, Y. A super-assembly of Whi3 encodes memory of deceptive encounters by single cel&#160;s during yeast courtship.&#160;</p>
+<p style="position:absolute;top:605px;left:251px;white-space:nowrap" class="ft1210"><i>Cell</i>&#160;<b>155,</b>&#160;1244–57 (2013).</p>
+<p style="position:absolute;top:618px;left:239px;white-space:nowrap" class="ft129">4.&#160;&#160;Gagliano, M., Renton, M., Depczynski, M. &amp; Mancuso, S. Experience teaches plants to learn faster and forget slower in environments&#160;</p>
+<p style="position:absolute;top:631px;left:251px;white-space:nowrap" class="ft129">where it matters.&#160;<i>Oecologia</i>&#160;<b>175,</b>&#160;63–72 (2014).</p>
+<p style="position:absolute;top:644px;left:239px;white-space:nowrap" class="ft129">5.&#160;&#160;Grémiaux, A., Yokawa, K., Mancuso, S. &amp; Baluška, F. Plant anesthesia supports similarities between animals and plants:&#160;<i>Claude&#160;</i></p>
+<p style="position:absolute;top:656px;left:251px;white-space:nowrap" class="ft1210"><i>Bernard’s forgotten studies</i>.&#160;<b>9,</b>&#160;e27886 (2014).</p>
+<p style="position:absolute;top:669px;left:239px;white-space:nowrap" class="ft129">6.&#160;&#160;Scialdone, A.&#160;<i>et al.</i>&#160;Arabidopsis plants perform arithmetic division to prevent starvation at night.&#160;<i>eLife</i>&#160;<b>2,</b>&#160;e00669 (2013).</p>
+<p style="position:absolute;top:682px;left:239px;white-space:nowrap" class="ft129">7.&#160;&#160;Trewavas, A. How plants learn.&#160;<i>Proceedings of the National Academy of Sciences</i>&#160;<b>96,</b>&#160;4216–4218 (1999).</p>
+<p style="position:absolute;top:695px;left:239px;white-space:nowrap" class="ft129">8.&#160;&#160;Trewavas, A. Aspects of plant intelligence.&#160;<i>Annals&#160;of&#160;botany</i>&#160;<b>92,</b>&#160;1–20 (2003).</p>
+<p style="position:absolute;top:707px;left:239px;white-space:nowrap" class="ft129">9.&#160;&#160;Bose, I. &amp; Karmakar, R. Simple Models of Plant Learning and Memory.&#160;<i>Physica&#160;Scripta</i>&#160;<b>T106,</b>&#160;9 (2003).</p>
+<p style="position:absolute;top:720px;left:234px;white-space:nowrap" class="ft129">10.&#160;&#160;Masi, E.&#160;<i>et al.</i>&#160;Spatiotemporal dynamics of the electrical network activity in the root apex.&#160;<i>Proceedings of the National Academy of&#160;</i></p>
+<p style="position:absolute;top:733px;left:251px;white-space:nowrap" class="ft1210"><i>Sciences of the United States of America</i>&#160;<b>106,</b>&#160;4048–53 (2009).</p>
+<p style="position:absolute;top:746px;left:234px;white-space:nowrap" class="ft129">11.&#160;&#160;Sahu, S., Ghosh, S., Hirata, K., Fujita, D. &amp; Bandyopadhyay, A. Multi-level memory-switching properties of a single brain&#160;</p>
+<p style="position:absolute;top:758px;left:251px;white-space:nowrap" class="ft129">microtubule.&#160;<i>Applied Physics Letters</i>&#160;<b>102,</b>&#160;123701 (2013).</p>
+<p style="position:absolute;top:771px;left:234px;white-space:nowrap" class="ft129">12.&#160;&#160;Volkov,&#160;A.&#160;G.,&#160;Carrel&#160;,&#160;H.,&#160;Adesina, T.,&#160;Markin,&#160;V.&#160;S.&#160;&amp;&#160;Jovanov,&#160;E. Plant electrical&#160;memory.&#160;<i>Plant&#160;Signaling&#160;&amp;&#160;Behavior</i>&#160;<b>3,</b>&#160;490–492&#160;</p>
+<p style="position:absolute;top:784px;left:251px;white-space:nowrap" class="ft129">(2008).</p>
+<p style="position:absolute;top:797px;left:234px;white-space:nowrap" class="ft129">13.&#160;&#160;Inoue, J.-i. A simple Hopfield-like cel&#160;ular network model of plant intelligence.&#160;<i>Progress&#160;in&#160;brain&#160;research</i>&#160;<b>168,</b>&#160;169–74 (2008).</p>
+<p style="position:absolute;top:809px;left:234px;white-space:nowrap" class="ft129">14.&#160;&#160;Koch, C. &amp; Segev, I. The role of single neurons in information processing.&#160;<i>Nature neuroscience</i>&#160;<b>3</b>&#160;Suppl, 1171–7 (2000).</p>
+<p style="position:absolute;top:822px;left:234px;white-space:nowrap" class="ft129">15.&#160;&#160;Cohen, I. R. The cognitive paradigm and the immunological homunculus.&#160;<i>Immunology&#160;today</i>&#160;<b>13,</b>&#160;490–4 (1992).</p>
+<p style="position:absolute;top:835px;left:234px;white-space:nowrap" class="ft129">16.&#160;&#160;Cohen, I. R. The cognitive principle challenges clonal selection.&#160;<i>Immunology&#160;today</i>&#160;<b>13,</b>&#160;441–4 (1992).</p>
+<p style="position:absolute;top:848px;left:234px;white-space:nowrap" class="ft129">17.&#160;&#160;Turner, C. H., Robling, A. G., Duncan, R. L. &amp; Burr, D. B. Do bone cel&#160;s behave like a neuronal network?&#160;<i>Calcified&#160;tissue&#160;international</i>&#160;</p>
+<p style="position:absolute;top:860px;left:251px;white-space:nowrap" class="ft1211"><b>70,</b>&#160;435–42 (2002).</p>
+<p style="position:absolute;top:873px;left:234px;white-space:nowrap" class="ft129">18.&#160;&#160;Spencer,&#160;G.&#160;J.&#160;&amp;&#160;Genever,&#160;P.&#160;G.&#160;Long-term&#160;potentiation&#160;in&#160;bone-a role&#160;for glutamate in strain-induced&#160;cel&#160;ular&#160;memory?&#160;<i>BMC&#160;cell&#160;</i></p>
+<p style="position:absolute;top:886px;left:251px;white-space:nowrap" class="ft1210"><i>biology</i>&#160;<b>4,</b>&#160;9 (2003).</p>
+<p style="position:absolute;top:899px;left:234px;white-space:nowrap" class="ft129">19.&#160;&#160;Zoghi,&#160;M.&#160;Cardiac&#160;memory:&#160;do&#160;the&#160;heart&#160;and&#160;the&#160;brain&#160;remember&#160;the&#160;same?&#160;<i>Journal&#160;of&#160;interventional&#160;cardiac&#160;electrophysiology</i>&#160;<b>11,</b>&#160;</p>
+<p style="position:absolute;top:911px;left:251px;white-space:nowrap" class="ft129">177–82 (2004).</p>
+<p style="position:absolute;top:924px;left:234px;white-space:nowrap" class="ft129">20.&#160;&#160;Chakravarthy, S. V. &amp; Ghosh, J. On Hebbian-like adaptation in heart muscle: a proposal for ‘cardiac memory’.&#160;<i>Biological&#160;cybernetics</i>&#160;</p>
+<p style="position:absolute;top:936px;left:251px;white-space:nowrap" class="ft1211"><b>76,</b>&#160;207–15 (1997).</p>
+<p style="position:absolute;top:950px;left:234px;white-space:nowrap" class="ft129">21.&#160;&#160;Goel, P. &amp; Mehta, A. Learning theories reveal loss of pancreatic electrical connectivity in diabetes as an adaptive response.&#160;<i>PloS one</i>&#160;</p>
+<p style="position:absolute;top:962px;left:251px;white-space:nowrap" class="ft1211"><b>8,</b>&#160;e70366 (2013).</p>
+<p style="position:absolute;top:975px;left:234px;white-space:nowrap" class="ft129">22.&#160;&#160;Levin, M. &amp; Pezzulo, G. Re-Membering the Body: applications of computational neuroscience to the top-down control of&#160;</p>
+<p style="position:absolute;top:988px;left:251px;white-space:nowrap" class="ft129">regeneration of limbs and other complex organs.&#160;<i>Annual&#160;Review&#160;of&#160;Biomedical&#160;Engineering</i>&#160;<b>17</b>&#160;(2015). doi: 10.1146/annurev-</p>
+<p style="position:absolute;top:1000px;left:251px;white-space:nowrap" class="ft129">bioeng-071114-040647.</p>
+<p style="position:absolute;top:1013px;left:234px;white-space:nowrap" class="ft129">23.&#160;&#160;Stephenson, S. &amp; Stempen, H.&#160;<i>Myxomycetes: A handbook of slime moulds</i>&#160;(Timber Press, 2000).</p>
+<p style="position:absolute;top:1026px;left:234px;white-space:nowrap" class="ft129">24.&#160;&#160;Kamiya, N. Physical and chemical basis of cyptoplasmic streaming.&#160;<i>Annual Review of Plant Physiology</i>&#160;<b>32,</b>&#160;205–236 (1981).</p>
+<p style="position:absolute;top:1039px;left:234px;white-space:nowrap" class="ft129">25.&#160;&#160;Durham,&#160;A.&#160;C.&#160;H.&#160;&amp;&#160;Ridgway,&#160;E.&#160;Control&#160;of&#160;chemotaxis&#160;in&#160;Physarum&#160;polycephalum.&#160;<i>The&#160;Journal&#160;of Cell Biology</i>&#160;<b>69,</b>&#160;218–223&#160;(1976).</p>
+<p style="position:absolute;top:1051px;left:234px;white-space:nowrap" class="ft129">26.&#160;&#160;Aono, M. &amp; Gunji, Y.-P. Beyond input-output computings: error-driven emergence with parallel non-distributed slime mold&#160;</p>
+<p style="position:absolute;top:1064px;left:251px;white-space:nowrap" class="ft129">computer.&#160;<i>Biosystems</i>&#160;<b>71,</b>&#160;257–287 (2003).</p>
+<p style="position:absolute;top:1077px;left:234px;white-space:nowrap" class="ft129">27.&#160;&#160;Adamatzky, A.&#160;<i>Physarum Machines: Computers from Slime Mould</i>&#160;(World Scientific Publishing Co. Pte. Ltd., London, 2010).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft131{font-size:13px;font-family:Times;color:#839097;}
+	.ft132{font-size:10px;font-family:Times;color:#839097;}
+	.ft133{font-size:10px;font-family:Times;color:#000000;}
+	.ft134{font-size:10px;font-family:Times;color:#839097;}
+	.ft135{font-size:9px;font-family:Times;color:#000000;}
+	.ft136{font-size:9px;font-family:Times;color:#000000;}
+	.ft137{font-size:9px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft130">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:817px;white-space:nowrap" class="ft131">13</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft132">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:71px;left:234px;white-space:nowrap" class="ft135">28.&#160;&#160;Whiting, J., de Lacy Costello, B. &amp; Adamatzky, A. Sensory fusion in Physarum polycephalum and implementing multi-sensory&#160;</p>
+<p style="position:absolute;top:84px;left:251px;white-space:nowrap" class="ft135">functional computation.&#160;<i>Biosystems</i>&#160;<b>119,</b>&#160;45–52 (2014).</p>
+<p style="position:absolute;top:97px;left:234px;white-space:nowrap" class="ft135">29.&#160;&#160;Nakagaki, T.,&#160;Yamada,&#160;H.&#160;&amp; Tóth,&#160;A.&#160;Path&#160;finding&#160;by tube morphogenesis&#160;in&#160;an amoeboid&#160;organism.&#160;<i>Biophysical&#160;chemistry</i>&#160;<b>92,</b>&#160;47–52&#160;</p>
+<p style="position:absolute;top:110px;left:251px;white-space:nowrap" class="ft135">(2001).</p>
+<p style="position:absolute;top:122px;left:234px;white-space:nowrap" class="ft135">30.&#160;&#160;Nakagaki, T., Yamada, H. &amp; Hara, M. Smart network solutions in an amoeboid organism.&#160;<i>Biophysical&#160;chemistry</i>&#160;<b>107,</b>&#160;1–5 (2004).</p>
+<p style="position:absolute;top:135px;left:234px;white-space:nowrap" class="ft135">31.&#160;&#160;Shirakawa,&#160;T.&#160;&amp;&#160;Gunji,&#160;Y.-P.&#160;Emergence&#160;of&#160;morphological&#160;order&#160;in&#160;the&#160;network&#160;formation&#160;of&#160;Physarum&#160;polycephalum.&#160;<i>Biophysical&#160;</i></p>
+<p style="position:absolute;top:148px;left:251px;white-space:nowrap" class="ft136"><i>chemistry</i>&#160;<b>128,</b>&#160;253–60 (2007).</p>
+<p style="position:absolute;top:161px;left:234px;white-space:nowrap" class="ft135">32.&#160;&#160;Adamatzky, A. &amp; Jones, J. Road planning with slime mould: if Physarum built motorways it would route M6/M74 through&#160;</p>
+<p style="position:absolute;top:173px;left:251px;white-space:nowrap" class="ft135">Newcastle.&#160;<i>International&#160;Journal&#160;of&#160;Bifurcation&#160;and&#160;Chaos</i>&#160;<b>20,</b>&#160;3065–3084 (2010).</p>
+<p style="position:absolute;top:186px;left:234px;white-space:nowrap" class="ft135">33.&#160;&#160;Adamatzky, A. I. Route 20, autobahn 7, and slime mold: approximating the longest roads in usa and germany with slime mold on&#160;</p>
+<p style="position:absolute;top:199px;left:251px;white-space:nowrap" class="ft135">3-d terrains.&#160;<i>Cybernetics, IEEE Transactions on</i>&#160;<b>44,</b>&#160;126–136 (2014).</p>
+<p style="position:absolute;top:212px;left:234px;white-space:nowrap" class="ft135">34.&#160;&#160;Tsuda, S., Aono, M. &amp; Gunji, Y.-P. Robust and emergent Physarum logical-computing.&#160;<i>Biosystems</i>&#160;<b>73,</b>&#160;45–55 (2004).</p>
+<p style="position:absolute;top:224px;left:234px;white-space:nowrap" class="ft135">35.&#160;&#160;Jones, J. &amp; Adamatzky, A. Towards Physarum binary adders.&#160;<i>Bio Systems</i>&#160;<b>101,</b>&#160;51–8 (2010).</p>
+<p style="position:absolute;top:237px;left:234px;white-space:nowrap" class="ft135">36.&#160;&#160;Adamatzky, A. &amp; Schubert, T. Slime mold microfluidic logical gates.&#160;<i>Materials&#160;Today</i>&#160;<b>17,</b>&#160;86–91 (2014).</p>
+<p style="position:absolute;top:250px;left:234px;white-space:nowrap" class="ft135">37.&#160;&#160;Whiting,&#160;J.,&#160;de&#160;Lacy&#160;Costel&#160;o,&#160;B.&#160;&amp;&#160;Adamatzky,&#160;A.&#160;Slime&#160;Mould&#160;Logic&#160;Gates&#160;Based&#160;on&#160;Frequency&#160;Changes&#160;of&#160;Electrical&#160;Potential&#160;</p>
+<p style="position:absolute;top:263px;left:251px;white-space:nowrap" class="ft135">Oscil&#160;ation.&#160;<i>Biosystems</i>&#160;<b>124,</b>&#160;21–25 (2014).</p>
+<p style="position:absolute;top:275px;left:234px;white-space:nowrap" class="ft135">38.&#160;&#160;Mayne, R. &amp; Adamatzky, A. Slime mould foraging behaviour as optical&#160;y-coupled logical operations.&#160;<i>International Journal of General&#160;</i></p>
+<p style="position:absolute;top:288px;left:251px;white-space:nowrap" class="ft136"><i>Systems</i>&#160;<b>44,</b>&#160;305–313 (2015).</p>
+<p style="position:absolute;top:301px;left:234px;white-space:nowrap" class="ft135">39.&#160;&#160;Jones,&#160;J.,&#160;Whiting,&#160;J.&#160;&amp;&#160;Adamatzky,&#160;A.&#160;Quantitative&#160;Transformation&#160;for&#160;Implementation&#160;of&#160;Adder&#160;Circuits&#160;in&#160;Physical&#160;Systems.&#160;</p>
+<p style="position:absolute;top:313px;left:251px;white-space:nowrap" class="ft136"><i>Biosystems</i>&#160;<b>134,</b>&#160;16–23 (2015).</p>
+<p style="position:absolute;top:326px;left:234px;white-space:nowrap" class="ft135">40.&#160;&#160;Whiting, J., de Lacy Costello, B. &amp; Adamatzky, A. Towards slime mould chemical sensor: Mapping chemical inputs onto electrical&#160;</p>
+<p style="position:absolute;top:339px;left:251px;white-space:nowrap" class="ft135">potential dynamics of Physarum Polycephalum.&#160;<i>Sensors and Actuators B: Chemical</i>&#160;<b>191,</b>&#160;844–853 (2014).</p>
+<p style="position:absolute;top:352px;left:234px;white-space:nowrap" class="ft135">41.&#160;&#160;Whiting, J., de Lacy Costello, B. &amp; Adamatzky, A. Development and Initial Testing of a Novel Slime Mould Biosensor. In&#160;<i>Annual&#160;</i></p>
+<p style="position:absolute;top:364px;left:251px;white-space:nowrap" class="ft136"><i>International Conference of the IEEE Engineering in Medicine and Biology Society.</i>&#160;4042–4045 (2014).</p>
+<p style="position:absolute;top:377px;left:234px;white-space:nowrap" class="ft135">42.&#160;&#160;Adamatzky, A. Slime mould tactile sensor.&#160;<i>Sensors and Actuators B: Chemical</i>&#160;<b>188,</b>&#160;38–44 (2013).</p>
+<p style="position:absolute;top:390px;left:234px;white-space:nowrap" class="ft135">43.&#160;&#160;Adamatzky, A. Tactile Bristle Sensors Made With Slime Mold.&#160;<i>IEEE Sensors Journal</i>&#160;<b>14,</b>&#160;324–332 (2014).</p>
+<p style="position:absolute;top:403px;left:234px;white-space:nowrap" class="ft135">44.&#160;&#160;Adamatzky, A. Towards slime mould colour sensor: Recognition of colours by Physarum polycephalum.&#160;<i>Organic&#160;Electronics</i>&#160;<b>14,</b>&#160;</p>
+<p style="position:absolute;top:416px;left:251px;white-space:nowrap" class="ft135">3147–3500 (2013).</p>
+<p style="position:absolute;top:428px;left:234px;white-space:nowrap" class="ft135">45.&#160;&#160;Whiting, J., de Lacy Costello, B. &amp; Adamatzky, A. Transfer function of protoplasmic tubes of Physarum polycephalum.&#160;<i>Biosystems</i>&#160;</p>
+<p style="position:absolute;top:441px;left:251px;white-space:nowrap" class="ft137"><b>128,</b>&#160;48–51 (2015).</p>
+<p style="position:absolute;top:454px;left:234px;white-space:nowrap" class="ft135">46.&#160;&#160;Whiting, J., de Lacy Costello, B. &amp; Adamatzky, A. In&#160;<i>UCNC: Unconventional Computation in Europe Workshop,</i><a href="http://conferences.csd.uwo.ca/ucnc2014/files/Whiting_Phychip2.docx">&#160;3. URL http://</a></p>
+<p style="position:absolute;top:467px;left:251px;white-space:nowrap" class="ft135"><a href="http://conferences.csd.uwo.ca/ucnc2014/files/Whiting_Phychip2.docx">conferences.csd.uwo.ca/ucnc2014/files/Whiting_Phychip2.docx. A</a>ccessed: 10-3-2015.</p>
+<p style="position:absolute;top:479px;left:234px;white-space:nowrap" class="ft135">47.&#160;&#160;Mayne,&#160;R.,&#160;Tsompanas,&#160;M.-A.,&#160;Sirakoulis,&#160;G.&#160;&amp;&#160;Adamatzky,&#160;A.&#160;Towards&#160;a&#160;slime&#160;Mould-FPGA&#160;interface.&#160;<i>Biomedical&#160;Engineering&#160;</i></p>
+<p style="position:absolute;top:492px;left:251px;white-space:nowrap" class="ft136"><i>Letters</i>&#160;<b>5,</b>&#160;51–57 (2015).</p>
+<p style="position:absolute;top:505px;left:234px;white-space:nowrap" class="ft135">48.&#160;&#160;Mayne, R., Patton, D., Costello, B. D. L., Adamatzky, A. &amp; Patton, R. On the Internalisation, Intraplasmodial Carriage and Excretion&#160;</p>
+<p style="position:absolute;top:517px;left:251px;white-space:nowrap" class="ft135">of Metallic Nanoparticles in the Slime Mould, Physarum Polycephalum.&#160;<i>International Journal of Nanotechnology and Molecular&#160;</i></p>
+<p style="position:absolute;top:530px;left:251px;white-space:nowrap" class="ft136"><i>Computation</i>&#160;<b>3,</b>&#160;1–14 (2013).</p>
+<p style="position:absolute;top:543px;left:234px;white-space:nowrap" class="ft135">49.&#160;&#160;de Lacy Costello, B., Mayne, R. &amp; Adamatzky, A. Conducting polymer-coated Physarum polycephalum towards the synthesis of&#160;</p>
+<p style="position:absolute;top:556px;left:251px;white-space:nowrap" class="ft135">bio-hybrid electronic devices.&#160;<i>International Journal of General Systems</i>&#160;<b>44,</b>&#160;409–420 (2015).</p>
+<p style="position:absolute;top:568px;left:234px;white-space:nowrap" class="ft135">50.&#160;&#160;Tarabel&#160;a, G.&#160;<i>et&#160;al.</i>&#160;A hybrid living/organic electrochemical transistor based on the Physarum polycephalum cell endowed with both&#160;</p>
+<p style="position:absolute;top:581px;left:251px;white-space:nowrap" class="ft135">sensing and memristive properties.&#160;<i>Chem. Sci</i>.&#160;<b>6,</b>&#160;2859–2868 (2015).</p>
+<p style="position:absolute;top:594px;left:234px;white-space:nowrap" class="ft135">51.&#160;&#160;Jones, J. The emergence and dynamical evolution of complex transport networks from simple low-level behaviours.&#160;<i>International&#160;</i></p>
+<p style="position:absolute;top:607px;left:251px;white-space:nowrap" class="ft136"><i>Journal&#160;of&#160;Unconventional&#160;Computing</i>&#160;<b>6,</b>&#160;125–144 (2010).</p>
+<p style="position:absolute;top:619px;left:234px;white-space:nowrap" class="ft135">52.&#160;&#160;Jones, J. Mechanisms inducing parallel computation in a model of&#160;<i>Physarum&#160;polycephalum</i>&#160;transport networks.&#160;<i>Paral&#160;el&#160;Processing&#160;</i></p>
+<p style="position:absolute;top:632px;left:251px;white-space:nowrap" class="ft136"><i>Letters</i>&#160;<b>25,</b>&#160;1540004 (2015).</p>
+<p style="position:absolute;top:645px;left:234px;white-space:nowrap" class="ft135">53.&#160;&#160;Tsuda,&#160;S. &amp; Jones, J. The&#160;emergence&#160;of&#160;synchronization&#160;behavior in&#160;<i>Physarum&#160;polycephalum</i>&#160;and its&#160;particle&#160;approximation.&#160;</p>
+<p style="position:absolute;top:658px;left:251px;white-space:nowrap" class="ft136"><i>Biosystems</i>&#160;<b>103,</b>&#160;331–341 (2010).</p>
+<p style="position:absolute;top:670px;left:234px;white-space:nowrap" class="ft135">54.&#160;&#160;Jones, J. &amp; Adamatzky, A. Emergence of self-organized amoeboid movement in a multi-agent approximation of&#160;<i>Physarum&#160;</i></p>
+<p style="position:absolute;top:683px;left:251px;white-space:nowrap" class="ft136"><i>polycephalum</i>.&#160;<i>Bioinspiration&#160;and&#160;Biomimetics</i>&#160;<b>7,</b>&#160;016009 (2012).</p>
+<p style="position:absolute;top:696px;left:234px;white-space:nowrap" class="ft135">55.&#160;&#160;Baumgarten, W., Jones, J. &amp; Hauser, M. Network coarsening dynamics in a plasmodial slime mould: Modelling and experiments.&#160;</p>
+<p style="position:absolute;top:709px;left:251px;white-space:nowrap" class="ft136"><i>Acta&#160;Physica&#160;Polonica&#160;B</i>&#160;<b>46,</b>&#160;1201–1218 (2015).</p>
+<p style="position:absolute;top:721px;left:234px;white-space:nowrap" class="ft135">56.&#160;&#160;Adamatzky., A. &amp; Jones, J. On electrical correlates of&#160;<i>Physarum&#160;polycephalum</i>&#160;spatial activity: Can we see&#160;<i>Physarum</i>&#160;machine in the&#160;</p>
+<p style="position:absolute;top:734px;left:251px;white-space:nowrap" class="ft135">dark?&#160;<i>Biophysical Reviews and Letters</i>&#160;<b>6,</b>&#160;29–57 (2011).</p>
+<p style="position:absolute;top:747px;left:234px;white-space:nowrap" class="ft135">57.&#160;&#160;Jones, J.&#160;<i>From Pattern Formation to Material Computation: Multi-agent Model&#160;ing of Physarum polycephalum</i>&#160;(Springer, 2015).</p>
+<p style="position:absolute;top:760px;left:234px;white-space:nowrap" class="ft135">58.&#160;&#160;Jones, J. Characteristics of pattern formation and evolution in approximations of&#160;<i>Physarum</i>&#160;transport networks.&#160;<i>Artificial&#160;Life</i>&#160;<b>16,</b>&#160;</p>
+<p style="position:absolute;top:772px;left:251px;white-space:nowrap" class="ft135">127–153 (2010).</p>
+<p style="position:absolute;top:785px;left:234px;white-space:nowrap" class="ft135">59.&#160;&#160;Reid, C. R., Latty, T., Dussutour, A. &amp; Beekman, M. Slime mold uses an externalized spatial “memory” to navigate in complex&#160;</p>
+<p style="position:absolute;top:798px;left:251px;white-space:nowrap" class="ft135">environments.&#160;<i>Proceedings of the National Academy of Sciences of the United States of America</i>&#160;<b>109,</b>&#160;17490–4 (2012).</p>
+<p style="position:absolute;top:811px;left:234px;white-space:nowrap" class="ft135">60.&#160;&#160;Palacios-Prado,&#160;N.&#160;&amp;&#160;Bukauskas,&#160;F.&#160;F.&#160;Heterotypic&#160;gap&#160;junction&#160;channels&#160;as&#160;voltage-sensitive&#160;valves&#160;for&#160;intercellular&#160;signaling.&#160;</p>
+<p style="position:absolute;top:823px;left:251px;white-space:nowrap" class="ft136"><i>Proceedings of the National Academy of Sciences of the United States of America</i>&#160;<b>106,</b>&#160;14855–60 (2009).</p>
+<p style="position:absolute;top:836px;left:234px;white-space:nowrap" class="ft135">61.&#160;&#160;Palacios-Prado, N. &amp; Bukauskas, F. F. Modulation of metabolic communication through gap junction channels by transjunctional&#160;</p>
+<p style="position:absolute;top:849px;left:251px;white-space:nowrap" class="ft135">voltage; synergistic and antagonistic effects of gating and ionophoresis.&#160;<i>Biochimica&#160;et&#160;biophysica&#160;acta</i>&#160;<b>1818,</b>&#160;1884–94 (2012).</p>
+<p style="position:absolute;top:862px;left:234px;white-space:nowrap" class="ft135">62.&#160;&#160;Al&#160;en,&#160;K.,&#160;Fuchs,&#160;E.&#160;C.,&#160;Jaschonek,&#160;H.,&#160;Bannerman,&#160;D.&#160;M.&#160;&amp;&#160;Monyer,&#160;H.&#160;Gap&#160;junctions&#160;between&#160;interneurons&#160;are&#160;required&#160;for&#160;normal&#160;</p>
+<p style="position:absolute;top:874px;left:251px;white-space:nowrap" class="ft135">spatial coding in the hippocampus and short-term spatial memory.&#160;<i>The Journal of neuroscience: the official journal of the Society for&#160;</i></p>
+<p style="position:absolute;top:887px;left:251px;white-space:nowrap" class="ft136"><i>Neuroscience</i>&#160;<b>31,</b>&#160;6542–52 (2011).</p>
+<p style="position:absolute;top:900px;left:234px;white-space:nowrap" class="ft135">63.&#160;&#160;Bissiere, S.&#160;<i>et al.</i>&#160;Electrical synapses control hippocampal contributions to fear learning and memory.&#160;<i>Science&#160;</i>(New York, N.Y.)&#160;<b>331,</b>&#160;</p>
+<p style="position:absolute;top:913px;left:251px;white-space:nowrap" class="ft135">87–91 (2011).</p>
+<p style="position:absolute;top:925px;left:234px;white-space:nowrap" class="ft135">64.&#160;&#160;DeMarse, T. &amp; Dockendorf, K. Adaptive flight control with living neuronal networks on microelectrode arrays. In&#160;<i>Proceedings. 2005&#160;</i></p>
+<p style="position:absolute;top:938px;left:251px;white-space:nowrap" class="ft136"><i>IEEE International Joint Conference on Neural Networks,&#160;</i>&#160;vol. 3, 1548–1551 (IEEE) (2005)<i>.</i></p>
+<p style="position:absolute;top:951px;left:234px;white-space:nowrap" class="ft135">65.&#160;&#160;Baruchi, I. &amp; Ben-Jacob, E. Towards neuro-memory-chip: imprinting multiple memories in cultured neural networks.&#160;<i>Physical&#160;</i></p>
+<p style="position:absolute;top:963px;left:251px;white-space:nowrap" class="ft136"><i>review. E, Statistical, nonlinear, and soft matter physics</i>&#160;<b>75,</b>&#160;050901 (2007).</p>
+<p style="position:absolute;top:976px;left:234px;white-space:nowrap" class="ft135">66.&#160;&#160;Le Feber, J., Stegenga, J. &amp; Rutten, W. L. C. The effect of slow electrical stimuli to achieve learning in cultured networks of rat cortical&#160;</p>
+<p style="position:absolute;top:989px;left:251px;white-space:nowrap" class="ft135">neurons.&#160;<i>PloS one</i>&#160;<b>5,</b>&#160;e8871 (2010).</p>
+<p style="position:absolute;top:1002px;left:234px;white-space:nowrap" class="ft135">67.&#160;&#160;Jimbo, Y., Tateno, T. &amp; Robinson, H. Simultaneous induction of pathway-specific potentiation and depression in networks of cortical&#160;</p>
+<p style="position:absolute;top:1015px;left:251px;white-space:nowrap" class="ft135">neurons.&#160;<i>Biophysical&#160;Journal</i>&#160;<b>76,</b>&#160;670–678 (1999).</p>
+<p style="position:absolute;top:1027px;left:234px;white-space:nowrap" class="ft135">68.&#160;&#160;Ruaro, M. E., Bonifazi, P. &amp; Torre, V. Toward the neurocomputer: image processing and pattern recognition with neuronal cultures.&#160;</p>
+<p style="position:absolute;top:1040px;left:251px;white-space:nowrap" class="ft136"><i>Biomedical Engineering, IEEE Transactions on</i>&#160;<b>52,</b>&#160;371–383 (2005).</p>
+<p style="position:absolute;top:1053px;left:234px;white-space:nowrap" class="ft135">69.&#160;&#160;Bul&#160;,&#160;L.&#160;<i>et&#160;al.</i>&#160;Towards&#160;unconventional&#160;computing&#160;through&#160;simulated&#160;evolution:&#160;control&#160;of nonlinear media&#160;by&#160;a&#160;learning&#160;classifier&#160;</p>
+<p style="position:absolute;top:1066px;left:251px;white-space:nowrap" class="ft135">system.&#160;<i>Artificial&#160;life</i>&#160;<b>14,</b>&#160;203–22 (2008).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>9db93b7ceadf9f0a263f286c1b5df03d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft141{font-size:13px;font-family:Times;color:#839097;}
+	.ft142{font-size:10px;font-family:Times;color:#839097;}
+	.ft143{font-size:10px;font-family:Times;color:#000000;}
+	.ft144{font-size:10px;font-family:Times;color:#839097;}
+	.ft145{font-size:14px;font-family:Times;color:#000000;}
+	.ft146{font-size:11px;font-family:Times;color:#000000;}
+	.ft147{font-size:11px;font-family:Times;color:#000000;}
+	.ft148{font-size:11px;font-family:Times;color:#000000;}
+	.ft149{font-size:11px;line-height:24px;font-family:Times;color:#000000;}
+	.ft1410{font-size:11px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft140">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:816px;white-space:nowrap" class="ft141">14</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft142">Scientific&#160;<b>RepoRts</b>&#160;|&#160;6:19948&#160;|&#160;DOI:&#160;10.1038/srep19948</p>
+<p style="position:absolute;top:69px;left:233px;white-space:nowrap" class="ft145"><b>Acknowledgements</b></p>
+<p style="position:absolute;top:86px;left:233px;white-space:nowrap" class="ft146">JGHW,&#160;JJ,&#160;AA&#160;and&#160;LB&#160;acknowledge&#160;the&#160;support&#160;of&#160;the&#160;EU&#160;research&#160;project&#160;“Physarum&#160;Chip:&#160;Growing&#160;Computers&#160;</p>
+<p style="position:absolute;top:101px;left:233px;white-space:nowrap" class="ft146">from Slime Mould” (FP7 ICT Ref 316366). M.L. grateful&#160;y acknowledges support from the The G. Harold and&#160;</p>
+<p style="position:absolute;top:116px;left:233px;white-space:nowrap" class="ft149">Leila Y. Mathers Charitable Foundation and the Templeton World Charity Foundation - TWCF0089/AB55.<br/><b>Author Contributions</b></p>
+<p style="position:absolute;top:158px;left:233px;white-space:nowrap" class="ft146">J.G.H.W. Performed experiments, analysed results and wrote the manuscript; J.J. Performed simulation,&#160;</p>
+<p style="position:absolute;top:173px;left:233px;white-space:nowrap" class="ft146">intellectual contribution and edited manuscript; L.B. intellectual contribution and edited manuscript; M.L.&#160;</p>
+<p style="position:absolute;top:188px;left:233px;white-space:nowrap" class="ft149">intellectual contribution and edited manuscript; A.A. intellectual contribution and edited manuscript.<br/><b>Additional&#160;Information</b></p>
+<p style="position:absolute;top:230px;left:233px;white-space:nowrap" class="ft1410"><b>Competing financial interests:&#160;</b>The authors declare no competing financial interests.<br/><b>How to cite this article</b>: Whiting, J. G. H.&#160;<i>et al.</i>&#160;Towards a Physarum learning chip.&#160;<i>Sci. Rep.</i>&#160;<b>6</b>, 19948;&#160;&#160;</p>
+<p style="position:absolute;top:267px;left:233px;white-space:nowrap" class="ft146">doi: 10.1038/srep19948 (2016).</p>
+<p style="position:absolute;top:289px;left:300px;white-space:nowrap" class="ft146">This work is licensed under a Creative Commons Attribution 4.0 International License. The images&#160;</p>
+<p style="position:absolute;top:304px;left:300px;white-space:nowrap" class="ft146">or other third party material in this article are included in the article’s Creative Commons license,&#160;</p>
+<p style="position:absolute;top:319px;left:233px;white-space:nowrap" class="ft146">unless indicated otherwise in the credit line; if the material is not included under the Creative Commons license,&#160;</p>
+<p style="position:absolute;top:334px;left:233px;white-space:nowrap" class="ft146">users will need to obtain permission from the license holder to reproduce the material. To view a copy of this&#160;</p>
+<p style="position:absolute;top:349px;left:233px;white-space:nowrap" class="ft146"><a href="http://creativecommons.org/licenses/by/4.0/">license, visit http://creativecommons.org/licenses/by/4.0/</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:13px;font-family:Times;color:#839097;}
+	.ft11{font-size:10px;font-family:Times;color:#839097;}
+	.ft12{font-size:10px;font-family:Times;color:#000000;}
+	.ft13{font-size:10px;font-family:Times;color:#839097;}
+	.ft14{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft15{font-size:37px;font-family:Times;color:#000000;}
+	.ft16{font-size:37px;font-family:Times;color:#000000;}
+	.ft17{font-size:13px;font-family:Times;color:#000000;}
+	.ft18{font-size:7px;font-family:Times;color:#000000;}
+	.ft19{font-size:11px;font-family:Times;color:#000000;}
+	.ft110{font-size:11px;font-family:Times;color:#000000;}
+	.ft111{font-size:11px;font-family:Times;color:#000000;}
+	.ft112{font-size:6px;font-family:Times;color:#000000;}
+	.ft113{font-size:11px;font-family:Times;color:#000000;}
+	.ft114{font-size:25px;font-family:Times;color:#f58220;}
+	.ft115{font-size:37px;line-height:55px;font-family:Times;color:#000000;}
+	.ft116{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:1132px;left:825px;white-space:nowrap" class="ft10">1</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft11">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:19px;left:585px;white-space:nowrap" class="ft14">www.nature.com/scientificreports</p>
+<p style="position:absolute;top:220px;left:233px;white-space:nowrap" class="ft15"><b>Discovering&#160;novel phenotypes with&#160;</b></p>
+<p style="position:absolute;top:265px;left:233px;white-space:nowrap" class="ft15"><b>automatically inferred&#160;dynamic&#160;</b></p>
+<p style="position:absolute;top:310px;left:233px;white-space:nowrap" class="ft15"><b>models: a partial&#160;melanocyte&#160;</b></p>
+<p style="position:absolute;top:355px;left:233px;white-space:nowrap" class="ft115"><b>conversion&#160;in&#160;<i>Xenopus<br/></i></b><b>Daniel&#160;Lobo1, Maria&#160;Lobikin2&#160;&amp; Michael&#160;Levin2</b></p>
+<p style="position:absolute;top:442px;left:233px;white-space:nowrap" class="ft116"><b>Progress&#160;in regenerative&#160;medicine&#160;requires&#160;reverse-engineering&#160;cellular&#160;control networks&#160;to infer&#160;<br/>perturbations&#160;with desired&#160;systems-level&#160;outcomes.&#160;Such dynamic&#160;models allow&#160;phenotypic&#160;<br/>predictions&#160;for novel&#160;perturbations&#160;to be rapidly&#160;assessed&#160;<i>in silico</i></b><b>.&#160;Here, we analyzed&#160;a&#160;<i>Xenopus</i></b><b>&#160;model&#160;<br/>of conversion&#160;of melanocytes&#160;to a metastatic-like phenotype&#160;only previously observed&#160;in an all-or-<br/>none&#160;manner.&#160;Prior&#160;<i>in vivo</i></b><b>&#160;genetic&#160;and&#160;pharmacological&#160;experiments&#160;showed&#160;that individual&#160;animals&#160;<br/>either&#160;fully&#160;convert or remain&#160;normal,&#160;at some characteristic&#160;frequency&#160;after a given&#160;perturbation.&#160;We&#160;<br/>developed a Machine&#160;Learning&#160;method which&#160;inferred&#160;a model explaining&#160;this complex, stochastic&#160;all-<br/>or-none&#160;dataset.&#160;We then used&#160;this model to&#160;ask how a new phenotype could be generated:&#160;animals&#160;<br/>in which&#160;only some of the melanocytes converted.&#160;Systematically performing&#160;<i>in silico</i></b><b>&#160;perturbations,&#160;<br/>the&#160;model&#160;predicted&#160;that&#160;a&#160;combination&#160;of&#160;altanserin&#160;(5HTR2&#160;inhibitor),&#160;reserpine&#160;(VMAT&#160;inhibitor),&#160;<br/>and&#160;VP16-XlCreb1&#160;(constitutively&#160;active&#160;CREB)&#160;would&#160;break&#160;the&#160;all-or-none&#160;concordance.&#160;Remarkably,&#160;<br/>applying&#160;the predicted combination&#160;of three&#160;reagents&#160;<i>in vivo</i></b><b>&#160;revealed precisely&#160;the expected novel&#160;<br/>outcome,&#160;resulting&#160;in&#160;partial&#160;conversion&#160;of&#160;melanocytes&#160;within&#160;individuals.&#160;This&#160;work&#160;demonstrates&#160;the&#160;<br/>capability&#160;of automated analysis&#160;of&#160;dynamic&#160;models of signaling&#160;networks&#160;to discover&#160;novel phenotypes&#160;<br/>and&#160;predictively&#160;identify&#160;specific&#160;manipulations&#160;that&#160;can&#160;reach&#160;them.</b></p>
+<p style="position:absolute;top:720px;left:233px;white-space:nowrap" class="ft111">One of the key areas in which artificial intelligence and the information sciences can contribute to biology is by&#160;</p>
+<p style="position:absolute;top:735px;left:233px;white-space:nowrap" class="ft111">helping&#160;human scientists understand cel&#160;ular behavior in the context of&#160;a complex&#160;organism<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">1,2</a>.&#160;Computational&#160;</p>
+<p style="position:absolute;top:750px;left:233px;white-space:nowrap" class="ft111">methods&#160;can reverse-engineer&#160;mechanistic models&#160;of&#160;tissue&#160;patterning&#160;and&#160;shape&#160;formation&#160;from&#160;expression&#160;</p>
+<p style="position:absolute;top:765px;left:233px;white-space:nowrap" class="ft111">data and experimental phenotypes<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">3–9. Th</a>e utility of these methods is their ability to find novel regulatory inter-</p>
+<p style="position:absolute;top:780px;left:233px;white-space:nowrap" class="ft111">actions<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">10</a>&#160;and even novel necessary regulatory genes<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">11</a>. These methods are indeed becoming indispensable for&#160;</p>
+<p style="position:absolute;top:795px;left:233px;white-space:nowrap" class="ft111">understanding the complex coordination of signals necessary to develop and maintain correct body shapes and&#160;</p>
+<p style="position:absolute;top:810px;left:233px;white-space:nowrap" class="ft111">organs.&#160;Moreover,&#160;such&#160;methods&#160;are&#160;required&#160;in&#160;order&#160;to&#160;develop&#160;interventions&#160;to&#160;make&#160;rational&#160;changes&#160;to&#160;com-</p>
+<p style="position:absolute;top:825px;left:233px;white-space:nowrap" class="ft111">plex anatomy and physiology, in the context&#160;of regenerative&#160;medicine and systems-level diseases such as can<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">cer12.</a></p>
+<p style="position:absolute;top:840px;left:251px;white-space:nowrap" class="ft111">The coordination of cel&#160;ular behavior towards the anatomical needs of the host organism, and away from tum-</p>
+<p style="position:absolute;top:855px;left:233px;white-space:nowrap" class="ft111">origenesis, is achieved in part via bioelectrical communication among many cell typ<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">es13–19. R</a>ecent work showed&#160;</p>
+<p style="position:absolute;top:870px;left:233px;white-space:nowrap" class="ft111">that depolarization of resting potential in a special cell population in&#160;<i>Xenopus</i>&#160;embryos, so-called instructor cel&#160;s,&#160;</p>
+<p style="position:absolute;top:885px;left:233px;white-space:nowrap" class="ft111">results in a metastatic-like conversion of normal melanocytes<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">20</a>. Throughout the body (including at considerable&#160;</p>
+<p style="position:absolute;top:900px;left:233px;white-space:nowrap" class="ft111">distance from the depolarized region), these pigment cel&#160;s become hyper-proliferative, acquire a highly arborized&#160;</p>
+<p style="position:absolute;top:915px;left:233px;white-space:nowrap" class="ft111">morphology, and invade organs and blood vessels, colonizing ectopic regions of the body. This conversion reca-</p>
+<p style="position:absolute;top:930px;left:233px;white-space:nowrap" class="ft111">pitulates the main features of a melanoma-like phenotype (including up-regulation of cancer-related gen<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">es)21.</a>&#160;It&#160;</p>
+<p style="position:absolute;top:945px;left:233px;white-space:nowrap" class="ft111">is quite distinct from pigment changes occurring due to light exposur<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">e22–24&#160;b</a>ecause it affects not the pigment level&#160;</p>
+<p style="position:absolute;top:960px;left:233px;white-space:nowrap" class="ft111">of individual melanocytes but instead triggers drastic invasiveness that does not significantly change as a function&#160;</p>
+<p style="position:absolute;top:975px;left:233px;white-space:nowrap" class="ft111">of light level. The molecular pathway involved is only partial&#160;y understood, and comprises voltage-dependent&#160;</p>
+<p style="position:absolute;top:990px;left:233px;white-space:nowrap" class="ft111">movement of serotonin and subsequent serotonergic signaling<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">25</a>. This pathway is an important proof-of-principle&#160;</p>
+<p style="position:absolute;top:1005px;left:233px;white-space:nowrap" class="ft111">of activating a melanoma-like invasive phenotype in the absence of oncogenic mutation or carcinogen<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">s26.</a></p>
+<p style="position:absolute;top:1048px;left:233px;white-space:nowrap" class="ft112">1Department&#160;of&#160;Biological&#160;Sciences,&#160;University&#160;of&#160;Maryland,&#160;Baltimore&#160;County,&#160;1000&#160;Hil&#160;top&#160;Circle,&#160;Baltimore,&#160;MD&#160;</p>
+<p style="position:absolute;top:1063px;left:233px;white-space:nowrap" class="ft12">21250,&#160;USA.&#160;2Allen&#160;Discovery&#160;Center&#160;at&#160;Tufts&#160;University,&#160;and&#160;Department&#160;of&#160;Biology,&#160;Tufts&#160;University,&#160;200&#160;Boston&#160;</p>
+<p style="position:absolute;top:1078px;left:233px;white-space:nowrap" class="ft12">Avenue,&#160;Suite&#160;4600,&#160;Medford,&#160;MA&#160;02155,&#160;USA.&#160;Correspondence&#160;and&#160;requests&#160;for&#160;materials&#160;should&#160;be&#160;addressed&#160;to&#160;</p>
+<p style="position:absolute;top:1093px;left:233px;white-space:nowrap" class="ft12">M.L.&#160;(<a href="mailto:michael.levin@tufts.edu">email:&#160;michael.levin@tufts.edu)</a></p>
+<p style="position:absolute;top:363px;left:79px;white-space:nowrap" class="ft12">received:&#160;28&#160;October&#160;2016</p>
+<p style="position:absolute;top:384px;left:66px;white-space:nowrap" class="ft12">Accepted:&#160;16&#160;December&#160;2016</p>
+<p style="position:absolute;top:405px;left:77px;white-space:nowrap" class="ft12">Published:&#160;27&#160;January&#160;2017</p>
+<p style="position:absolute;top:221px;left:141px;white-space:nowrap" class="ft114"><b>OPEN</b></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft21{font-size:13px;font-family:Times;color:#839097;}
+	.ft22{font-size:10px;font-family:Times;color:#839097;}
+	.ft23{font-size:10px;font-family:Times;color:#000000;}
+	.ft24{font-size:10px;font-family:Times;color:#839097;}
+	.ft25{font-size:11px;font-family:Times;color:#000000;}
+	.ft26{font-size:11px;font-family:Times;color:#000000;}
+	.ft27{font-size:6px;font-family:Times;color:#000000;}
+	.ft28{font-size:14px;font-family:Times;color:#000000;}
+	.ft29{font-size:13px;font-family:Times;color:#000000;}
+	.ft210{font-size:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft20">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft21">2</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft22">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:71px;left:251px;white-space:nowrap" class="ft25">Although the background rate in control populations is very low (1% of the animals), the incidence of conver-</p>
+<p style="position:absolute;top:86px;left:233px;white-space:nowrap" class="ft25">sion&#160;from&#160;a&#160;depolarization&#160;treatment&#160;(such&#160;as&#160;the&#160;chloride&#160;channel&#160;opener&#160;ivermectin,&#160;which&#160;in&#160;<i>Xenopus</i>&#160;depolar-</p>
+<p style="position:absolute;top:101px;left:233px;white-space:nowrap" class="ft25">izes cel&#160;s bearing the GlyR channel<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">20,27</a>) i<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">s ~98%21. O</a>ther treatments (e.g., those interfering with serotonergic steps&#160;</p>
+<p style="position:absolute;top:116px;left:233px;white-space:nowrap" class="ft25">that&#160;mediate&#160;bioelectric&#160;control&#160;of&#160;melanocytes)&#160;result in&#160;intermediate&#160;penetrance of&#160;the&#160;phenotype,&#160;with&#160;each&#160;of&#160;</p>
+<p style="position:absolute;top:131px;left:233px;white-space:nowrap" class="ft25">them&#160;occurring&#160;in&#160;various&#160;characteristic&#160;percentages&#160;of&#160;a&#160;treated&#160;population<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">21</a>.&#160;However,&#160;a&#160;most&#160;striking&#160;aspect&#160;</p>
+<p style="position:absolute;top:146px;left:233px;white-space:nowrap" class="ft25">is&#160;that it is&#160;all-or-none at&#160;the&#160;level&#160;of&#160;the&#160;individual.&#160;While&#160;the decision&#160;to&#160;convert&#160;or&#160;not&#160;is&#160;stochastic&#160;within&#160;the&#160;</p>
+<p style="position:absolute;top:161px;left:233px;white-space:nowrap" class="ft25">treated cohor<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">t21</a>, it is always made at the level of the whole animal: no partial&#160;y converted tadpoles have been seen&#160;</p>
+<p style="position:absolute;top:176px;left:233px;white-space:nowrap" class="ft25">in any of the experiments (including dozens of different reagents and means of altering serotonergic or bioelectric&#160;</p>
+<p style="position:absolute;top:191px;left:233px;white-space:nowrap" class="ft25">properties of cel&#160;s&#160;<i>in&#160;vivo</i>). Each animal is either ful&#160;y covered with the ectopic, highly-arborized melanocytes, or&#160;</p>
+<p style="position:absolute;top:206px;left:233px;white-space:nowrap" class="ft25">it looks completely norma<a href="39ca259dc915aae5bc5302061b2b554ds.html#3">l (Fig. 1). Th</a>e cel&#160;ular network either reaches a ful&#160;y-converted outcome or not, but the&#160;</p>
+<p style="position:absolute;top:221px;left:233px;white-space:nowrap" class="ft25">entire larva does it as a coordinated unit. For any given treatment, each individual makes a stochastic decision to&#160;</p>
+<p style="position:absolute;top:236px;left:233px;white-space:nowrap" class="ft25">convert or not (so that the population converts at a rate specific for that perturbation), but that decision is coordi-</p>
+<p style="position:absolute;top:251px;left:233px;white-space:nowrap" class="ft25">nated among all the cel&#160;s. A salt-and-pepper pattern, which would be expected from cel&#160;s that made independent&#160;</p>
+<p style="position:absolute;top:266px;left:233px;white-space:nowrap" class="ft25">stochastic decisions, has not been reported in this context. Despite the detailed molecular and cell-level dissection&#160;</p>
+<p style="position:absolute;top:281px;left:233px;white-space:nowrap" class="ft25">of the signaling pathway involved, the stochastic nature and whole-body coordination in this system remains&#160;</p>
+<p style="position:absolute;top:296px;left:233px;white-space:nowrap" class="ft25">largely&#160;mysterious. We&#160;thus&#160;turned to Machine&#160;Learning&#160;as&#160;a&#160;way&#160;to&#160;discover models&#160;that&#160;could&#160;help&#160;understand&#160;</p>
+<p style="position:absolute;top:311px;left:233px;white-space:nowrap" class="ft25">the global systems properties of this event.</p>
+<p style="position:absolute;top:326px;left:251px;white-space:nowrap" class="ft25">Attempting to understand this synchronized stochasticity, a recent computational approach inferred a ful&#160;y&#160;</p>
+<p style="position:absolute;top:341px;left:233px;white-space:nowrap" class="ft25">specified signaling network that quantitatively explained the dynamics of this syst<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">em21. U</a>sing incidence of con-</p>
+<p style="position:absolute;top:356px;left:233px;white-space:nowrap" class="ft25">version from&#160;each perturbation experiment as input, together with a basic pathway that had been uncovered&#160;</p>
+<p style="position:absolute;top:371px;left:233px;white-space:nowrap" class="ft25">between&#160;the&#160;relevant&#160;signaling&#160;components<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">20,25</a>,&#160;the&#160;method&#160;reverse-engineered&#160;a&#160;complete&#160;signaling&#160;network&#160;</p>
+<p style="position:absolute;top:386px;left:233px;white-space:nowrap" class="ft25">including all the necessary and sufficient regulatory elements, interactions, and parameters that could recapitulate&#160;</p>
+<p style="position:absolute;top:401px;left:233px;white-space:nowrap" class="ft25">the frequencies of converted vs. wild-type larvae observed&#160;<i>in&#160;vivo</i>&#160;in each experiment.</p>
+<p style="position:absolute;top:416px;left:251px;white-space:nowrap" class="ft25">The&#160;use&#160;of&#160;machine&#160;learning to&#160;understand&#160;complex&#160;dynamics&#160;from&#160;molecular&#160;functional&#160;data&#160;is an&#160;important&#160;</p>
+<p style="position:absolute;top:431px;left:233px;white-space:nowrap" class="ft25">strategy&#160;for&#160;addressing&#160;the&#160;gap&#160;between&#160;increasingly&#160;available&#160;genetic&#160;data&#160;and&#160;the&#160;control&#160;of&#160;large-scale&#160;system&#160;</p>
+<p style="position:absolute;top:446px;left:233px;white-space:nowrap" class="ft25">behaviors in biomedicine<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">28–31</a>. The ultimate goal for such systems is not only to explain available data, but to be&#160;</p>
+<p style="position:absolute;top:461px;left:233px;white-space:nowrap" class="ft25">used to rapidly identify treatments that would give rise to desired outcomes, especial&#160;y in situations too complex&#160;</p>
+<p style="position:absolute;top:476px;left:233px;white-space:nowrap" class="ft25">for human scientists to infer by hand what course of action will lead to a desired systems-level response. Thus,&#160;</p>
+<p style="position:absolute;top:491px;left:233px;white-space:nowrap" class="ft25">we sought to validate the identified network and approach using a most stringent test: interrogating the network&#160;</p>
+<p style="position:absolute;top:506px;left:233px;white-space:nowrap" class="ft25">to discover a treatment that produced a capability not reached in any of the previous experiments in this field.&#160;</p>
+<p style="position:absolute;top:521px;left:233px;white-space:nowrap" class="ft25">Specifical&#160;y, we asked what experimental condition could break the synchrony and achieve partial&#160;y-converted&#160;</p>
+<p style="position:absolute;top:536px;left:233px;white-space:nowrap" class="ft25">tadpoles. Our results validate the approach, identifying a treatment that for the first time produced partial mel-</p>
+<p style="position:absolute;top:551px;left:233px;white-space:nowrap" class="ft25">anocyte conversion within individual animals.</p>
+<p style="position:absolute;top:579px;left:233px;white-space:nowrap" class="ft28"><b>Results</b></p>
+<p style="position:absolute;top:596px;left:233px;white-space:nowrap" class="ft29"><i><b>In&#160;silico</b></i><b>&#160;discovery&#160;of a&#160;novel phenotype.&#160;&#160;</b>We employed&#160;a&#160;stochastic&#160;model&#160;of&#160;the&#160;regulation&#160;of&#160;melano-</p>
+<p style="position:absolute;top:612px;left:233px;white-space:nowrap" class="ft25">cyte conversion in&#160;<i>Xenopus</i>, uncovered by a Machine Learning approach<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">21</a>, to computational&#160;y discover a novel&#160;</p>
+<p style="position:absolute;top:627px;left:233px;white-space:nowrap" class="ft25">phenotype and the pharmacological perturbations necessary to produce i<a href="39ca259dc915aae5bc5302061b2b554ds.html#4">t. Figure 2A s</a>hows the inferred dynamic&#160;</p>
+<p style="position:absolute;top:642px;left:233px;white-space:nowrap" class="ft25">model, including the entities used to perturb the system in past wor<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">k21, t</a>he signaling elements participating in&#160;</p>
+<p style="position:absolute;top:657px;left:233px;white-space:nowrap" class="ft25">the pathwa<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">y20,25</a>, the incidence of conversion produced by various phenotypes, unknown required components&#160;</p>
+<p style="position:absolute;top:672px;left:233px;white-space:nowrap" class="ft25">inferred (predicted) by the system, and all the&#160;interactions between all the components. The perturbation exper-</p>
+<p style="position:absolute;top:687px;left:233px;white-space:nowrap" class="ft25">iments consist in the application of a precise combination of reagents during&#160;<i>Xenopus</i>&#160;development,&#160;which&#160;sto-</p>
+<p style="position:absolute;top:702px;left:233px;white-space:nowrap" class="ft25">chastical&#160;y results in a wild-type phenotype (correct numbers of round melanocytes in their normal locations) or&#160;</p>
+<p style="position:absolute;top:717px;left:233px;white-space:nowrap" class="ft25">a&#160;completely converted&#160;phenotype&#160;(embryo&#160;covered&#160;extensively&#160;with&#160;highly-arborized&#160;melanocytes&#160;that&#160;invade&#160;</p>
+<p style="position:absolute;top:732px;left:233px;white-space:nowrap" class="ft25">many&#160;internal&#160;tissues&#160;and blood&#160;vessels<a href="39ca259dc915aae5bc5302061b2b554ds.html#3">) (Fig. 1)</a>. Interestingly,&#160;no&#160;intermediate&#160;phenotype&#160;was&#160;observed in&#160;the&#160;</p>
+<p style="position:absolute;top:747px;left:233px;white-space:nowrap" class="ft25">training data set (20 experiments with none, one, or two reagents applied) or the validation data set (seven exper-</p>
+<p style="position:absolute;top:762px;left:233px;white-space:nowrap" class="ft25">iments with two or three reagents applied)–tadpoles converted or not, stochastical&#160;y but always in an all-or-none&#160;</p>
+<p style="position:absolute;top:777px;left:233px;white-space:nowrap" class="ft25">manner for each anima<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">l21. C</a>ould this coordination be broken, and if so, how?</p>
+<p style="position:absolute;top:792px;left:251px;white-space:nowrap" class="ft25">We then performed&#160;<i>in&#160;silico</i>&#160;all possible experiments involving the application of up to three reagents, for a&#160;</p>
+<p style="position:absolute;top:807px;left:233px;white-space:nowrap" class="ft25">total&#160;of&#160;576&#160;different&#160;experiments,&#160;each&#160;repeated&#160;100&#160;times.&#160;<a href="39ca259dc915aae5bc5302061b2b554ds.html#4">Figure 2B&#160;</a>shows,&#160;for&#160;each&#160;experiment,&#160;the&#160;average&#160;</p>
+<p style="position:absolute;top:822px;left:233px;white-space:nowrap" class="ft25">distance from the resultant phenotype (degree of conversion) to either of the extreme phenotypes: normal or&#160;</p>
+<p style="position:absolute;top:837px;left:233px;white-space:nowrap" class="ft25">complete conversion (see methods section for the&#160;exact formulation of&#160;the distance metric). In&#160;green are&#160;those&#160;</p>
+<p style="position:absolute;top:852px;left:233px;white-space:nowrap" class="ft25">experiments (combination of reagents) used in the training dataset to infer the model, in red are those used in&#160;</p>
+<p style="position:absolute;top:867px;left:233px;white-space:nowrap" class="ft25">the validation dataset, and in blue are all the experiments that had never been performed&#160;<i>in&#160;vivo</i>. The results&#160;</p>
+<p style="position:absolute;top:882px;left:233px;white-space:nowrap" class="ft25">show that all except one experiment (red arrow) are below the 0.1 threshold to an extreme phenotype (normal or&#160;</p>
+<p style="position:absolute;top:897px;left:233px;white-space:nowrap" class="ft25">converted). The experiment above the 0.1 threshold indicates an intermediate phenotype between the previously&#160;</p>
+<p style="position:absolute;top:912px;left:233px;white-space:nowrap" class="ft25">observed wild-type normal pigmentation and the converted phenotype (i.e., a novel situation in which only some&#160;</p>
+<p style="position:absolute;top:927px;left:233px;white-space:nowrap" class="ft25">melanocytes within a single animal convert to the metastatic-like phenotype). This phenotype is predicted by the&#160;</p>
+<p style="position:absolute;top:942px;left:233px;white-space:nowrap" class="ft25">inferred model to result from a combined application of altanserin (an R2 inhibitor), reserpine (a VMAT inhibi-</p>
+<p style="position:absolute;top:957px;left:233px;white-space:nowrap" class="ft25">tor), and VP16-XlCreb1 (constitutively active CREB).</p>
+<p style="position:absolute;top:986px;left:233px;white-space:nowrap" class="ft210"><b>Dynamics&#160;of the&#160;partially&#160;converted&#160;phenotype.&#160;&#160;</b>We first&#160;investigated&#160;<i>in&#160;silico</i>&#160;the dynamic charac-</p>
+<p style="position:absolute;top:1002px;left:233px;white-space:nowrap" class="ft25">teristics&#160;of&#160;the&#160;predicted&#160;partial&#160;y&#160;converted&#160;phenotype&#160;with&#160;the&#160;inferred&#160;model&#160;using&#160;the&#160;combined&#160;application&#160;</p>
+<p style="position:absolute;top:1017px;left:233px;white-space:nowrap" class="ft25">of the drugs altanserin and reserpine, and constitutively active CREB<a href="39ca259dc915aae5bc5302061b2b554ds.html#5">. Figure 3 s</a>hows the phase portraits of 100&#160;</p>
+<p style="position:absolute;top:1032px;left:233px;white-space:nowrap" class="ft25">simulations of the wild type and the treated embryos with the trajectories of the state of two serotonin recep-</p>
+<p style="position:absolute;top:1047px;left:233px;white-space:nowrap" class="ft25">tors (5HT-R1 and 5HT-R2) and the degree of conversion through time. The simulation starts in the instable&#160;</p>
+<p style="position:absolute;top:1062px;left:233px;white-space:nowrap" class="ft25">initial state (yellow dot) and, due to the inherent stochasticity of the model, ends in one of several stable attrac-</p>
+<p style="position:absolute;top:1077px;left:233px;white-space:nowrap" class="ft25">tors, representing a final partial converted state. Without treatment (wild type,<a href="39ca259dc915aae5bc5302061b2b554ds.html#5">&#160;Fig. 3A</a>), the embryos&#160;stochasti-</p>
+<p style="position:absolute;top:1092px;left:233px;white-space:nowrap" class="ft25">cal&#160;y develop&#160;normal&#160;y (blue dot, 99%&#160;of simulations) or high conversion levels (red dot, 1% of simulations). In&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft31{font-size:13px;font-family:Times;color:#839097;}
+	.ft32{font-size:10px;font-family:Times;color:#839097;}
+	.ft33{font-size:10px;font-family:Times;color:#000000;}
+	.ft34{font-size:10px;font-family:Times;color:#839097;}
+	.ft35{font-size:11px;font-family:Times;color:#000000;}
+	.ft36{font-size:11px;font-family:Times;color:#000000;}
+	.ft37{font-size:11px;font-family:Times;color:#000000;}
+	.ft38{font-size:6px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft30">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:825px;white-space:nowrap" class="ft31">3</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft32">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:1048px;left:233px;white-space:nowrap" class="ft35">contrast, applying the discovered treatment with three drugs, the embryos stochastical&#160;y develop with an inter-</p>
+<p style="position:absolute;top:1063px;left:233px;white-space:nowrap" class="ft35">mediate conversion level (green dot, 75% of simulations) or a normal conversion level like the wild type (blue dot,&#160;</p>
+<p style="position:absolute;top:1078px;left:233px;white-space:nowrap" class="ft35">25% of simulations).</p>
+<p style="position:absolute;top:789px;left:233px;white-space:nowrap" class="ft36"><b>Figure 1.</b>&#160;&#160;<b>Conversion of melanocytes to a metastatic-like state.&#160;</b>(<b>A</b>) Dorsal view of a wild-type st. 45&#160;<i>Xenopus&#160;</i></p>
+<p style="position:absolute;top:804px;left:233px;white-space:nowrap" class="ft37"><i>laevis</i>&#160;tadpole; note the small melanocytes, absent from large areas of the head (green arrowhead). (<b>B</b>) In&#160;</p>
+<p style="position:absolute;top:819px;left:233px;white-space:nowrap" class="ft35">contrast, animals resulting from any of several treatmen<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">ts20,39</a>&#160;that depolarize instructor (GlyR-expressing) cel&#160;s&#160;</p>
+<p style="position:absolute;top:834px;left:233px;white-space:nowrap" class="ft35">or perturb their downstream serotonergic signaling exhibit extensive overabundance and uniform coverage&#160;</p>
+<p style="position:absolute;top:849px;left:233px;white-space:nowrap" class="ft35">with highly arborized melanocytes (red arrowhead). This occurs in an all-or-none manner in some percentage&#160;</p>
+<p style="position:absolute;top:864px;left:233px;white-space:nowrap" class="ft35">of the animals (frequency depending on the specific manipulatio<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">n)21,25</a>. Sectioning (level of section shown in&#160;</p>
+<p style="position:absolute;top:879px;left:233px;white-space:nowrap" class="ft35">schematics to the right) reveals the main features of melanoma-like phenotype: over-proliferation, arborization,&#160;</p>
+<p style="position:absolute;top:894px;left:233px;white-space:nowrap" class="ft35">and invasiveness. (<b>C)</b>&#160;Normal&#160;y round melanocytes dorsal to the neural tube (green arrow) become highly&#160;</p>
+<p style="position:absolute;top:909px;left:233px;white-space:nowrap" class="ft35">arborized and drop down over the neural tube itself (<b>D</b>, red arrows). Inset panels show blood vessels, normal&#160;</p>
+<p style="position:absolute;top:924px;left:233px;white-space:nowrap" class="ft35">in c’ and covered by invasive melanocytes in d’, as occurs in melanoma. Sections further along the tail likewise&#160;</p>
+<p style="position:absolute;top:939px;left:233px;white-space:nowrap" class="ft35">show small numbers of round melanocytes in control larvae (<b>E</b>, green arrows) compared to the excess of long,&#160;</p>
+<p style="position:absolute;top:954px;left:233px;white-space:nowrap" class="ft35">abnormal&#160;y extended and ectopical&#160;y localized melanocytes in converted animals (<b>F</b>, red arrows). In converted&#160;</p>
+<p style="position:absolute;top:969px;left:233px;white-space:nowrap" class="ft35">animals, cel&#160;s can be seen invading the lumen (<b>G</b>) or neural tissue (<b>H</b>) of the neural tube, also often forming&#160;</p>
+<p style="position:absolute;top:984px;left:233px;white-space:nowrap" class="ft35">networks (<b>I</b>) as has been observed in vasculogenic mimicry of mammalian melanom<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">a40. Th</a>e authors thank&#160;</p>
+<p style="position:absolute;top:999px;left:233px;white-space:nowrap" class="ft35">Vaibhav Pai for allowing us to use his drawing of a st. 45&#160;<i>Xenopus&#160;laevis</i>&#160;tadpole in this figure.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft41{font-size:13px;font-family:Times;color:#839097;}
+	.ft42{font-size:10px;font-family:Times;color:#839097;}
+	.ft43{font-size:10px;font-family:Times;color:#000000;}
+	.ft44{font-size:10px;font-family:Times;color:#839097;}
+	.ft45{font-size:11px;font-family:Times;color:#000000;}
+	.ft46{font-size:11px;font-family:Times;color:#000000;}
+	.ft47{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft40">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft41">4</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft42">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:947px;left:233px;white-space:nowrap" class="ft45"><b>Figure 2.</b>&#160;&#160;<b>Inferred signaling network model and&#160;<i>in&#160;silico</i></b><b>&#160;predictions.&#160;</b>(<b>A</b>) A computational method&#160;</p>
+<p style="position:absolute;top:962px;left:233px;white-space:nowrap" class="ft46">reverse-engineered a signaling network able to recapitulate the level of conversion stochasticity of a series of&#160;</p>
+<p style="position:absolute;top:977px;left:233px;white-space:nowrap" class="ft46">pharmacological experiments. (<b>B</b>) Phenotypic predictions of the model for all experimental combinations of&#160;</p>
+<p style="position:absolute;top:992px;left:233px;white-space:nowrap" class="ft46">up to three reagents. Each point represents the mean distance of 100 simulations of a specific experiment (i.e.,&#160;</p>
+<p style="position:absolute;top:1007px;left:233px;white-space:nowrap" class="ft46">a specific combination of reagents) to the two extreme tadpole phenotypes (normal and total conversion).&#160;</p>
+<p style="position:absolute;top:1022px;left:233px;white-space:nowrap" class="ft46">Training dataset in green, validation dataset in red, new experiments in blue. Only one combination of three&#160;</p>
+<p style="position:absolute;top:1037px;left:233px;white-space:nowrap" class="ft46">reagents (red arrow) is far from the two extreme phenotypes, indicating a partial&#160;y converted phenotype.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft51{font-size:13px;font-family:Times;color:#839097;}
+	.ft52{font-size:10px;font-family:Times;color:#839097;}
+	.ft53{font-size:10px;font-family:Times;color:#000000;}
+	.ft54{font-size:10px;font-family:Times;color:#839097;}
+	.ft55{font-size:11px;font-family:Times;color:#000000;}
+	.ft56{font-size:11px;font-family:Times;color:#000000;}
+	.ft57{font-size:6px;font-family:Times;color:#000000;}
+	.ft58{font-size:13px;font-family:Times;color:#000000;}
+	.ft59{font-size:13px;font-family:Times;color:#000000;}
+	.ft510{font-size:14px;font-family:Times;color:#000000;}
+	.ft511{font-size:11px;font-family:Times;color:#000000;}
+	.ft512{font-size:11px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft50">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:825px;white-space:nowrap" class="ft51">5</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft52">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:465px;left:251px;white-space:nowrap" class="ft55">The “partial&#160;y converted” attractor (green dot) was not observed in any previous simulation or experiment&#160;</p>
+<p style="position:absolute;top:480px;left:233px;white-space:nowrap" class="ft56"><i>in&#160;vivo</i><a href="39ca259dc915aae5bc5302061b2b554ds.html#10">21</a>, representing a novel bifurcation in the signaling network’s dynamics due to the specific perturbation&#160;</p>
+<p style="position:absolute;top:495px;left:233px;white-space:nowrap" class="ft55">caused&#160;by&#160;the application&#160;of the three&#160;reagents.&#160;In&#160;this&#160;way, the&#160;inferred&#160;model&#160;predicted a partial&#160;y&#160;converted&#160;</p>
+<p style="position:absolute;top:510px;left:233px;white-space:nowrap" class="ft55">phenotype at about 25% between wild-type and total&#160;y converted.</p>
+<p style="position:absolute;top:525px;left:251px;white-space:nowrap" class="ft55">The&#160;effects&#160;of&#160;the&#160;three&#160;reagents&#160;in&#160;the&#160;treatment&#160;can&#160;be&#160;observed&#160;in&#160;the&#160;temporal&#160;dynamics&#160;of&#160;the&#160;level&#160;of&#160;con-</p>
+<p style="position:absolute;top:540px;left:233px;white-space:nowrap" class="ft55">version and pathway components targeted by the dr<a href="39ca259dc915aae5bc5302061b2b554ds.html#6">ugs (Fig. 4). Em</a>bryos with no treatment (wild type<a href="39ca259dc915aae5bc5302061b2b554ds.html#6">, Fig. 4A)&#160;</a></p>
+<p style="position:absolute;top:555px;left:233px;white-space:nowrap" class="ft55">stochastical&#160;y develop normal levels of conversion (99% of the simulations) or high levels of conversion (1% of&#160;</p>
+<p style="position:absolute;top:570px;left:233px;white-space:nowrap" class="ft55">the simulations). These embryos always have high levels of VMAT and low levels of CREB. However, the levels&#160;</p>
+<p style="position:absolute;top:585px;left:233px;white-space:nowrap" class="ft55">of&#160;serotonin&#160;receptor&#160;R2&#160;are&#160;stochastical&#160;y&#160;either&#160;low&#160;(blue&#160;line,&#160;corresponding&#160;to&#160;high&#160;levels&#160;of&#160;conversion)&#160;or&#160;</p>
+<p style="position:absolute;top:600px;left:233px;white-space:nowrap" class="ft55">high (all other colors, corresponding to normal levels of conversion). Embryos under the three drugs treatment&#160;</p>
+<p style="position:absolute;top:615px;left:233px;white-space:nowrap" class="ft55"><a href="39ca259dc915aae5bc5302061b2b554ds.html#6">(Fig. 4B</a>),&#160;stochastical&#160;y&#160;develop&#160;either&#160;the&#160;normal&#160;level&#160;of&#160;conversion&#160;(25% of&#160;the&#160;simulations)&#160;or&#160;the&#160;partial&#160;con-</p>
+<p style="position:absolute;top:630px;left:233px;white-space:nowrap" class="ft55">version phenotype (75% of simulations). The plots show how the inhibition drugs reserpine and altanserin causes&#160;</p>
+<p style="position:absolute;top:645px;left:233px;white-space:nowrap" class="ft55">VMAT and R2, respectively, to converge to a low level, whereas the constitutively active CREB causes CREB levels&#160;</p>
+<p style="position:absolute;top:660px;left:233px;white-space:nowrap" class="ft55">to reach a high transient state and then converge to a lower level, but overall staying higher than the wild type.</p>
+<p style="position:absolute;top:687px;left:233px;white-space:nowrap" class="ft58"><i><b>In vivo</b></i><b>&#160;validation of the computationally discovered treatment&#160;and phenotype.&#160;&#160;</b>We then sought&#160;</p>
+<p style="position:absolute;top:703px;left:233px;white-space:nowrap" class="ft55">to validate the partially converted phenotype predicted by the inferred model by applying&#160;<i>in&#160;vivo</i>&#160;the&#160;newly&#160;</p>
+<p style="position:absolute;top:718px;left:233px;white-space:nowrap" class="ft55">discovered combination of reagents. Control embryos exposed to vehicle alone were 99% normal (N&#160;=&#160;&#160;&#160;258,&#160;</p>
+<p style="position:absolute;top:733px;left:233px;white-space:nowrap" class="ft55"><a href="39ca259dc915aae5bc5302061b2b554ds.html#7">Fig. 5A-A”). Em</a>bryos exposed to&#160;ivermectin (which&#160;depolarizes&#160;instructor cel&#160;s; the effect&#160;has been characterized&#160;</p>
+<p style="position:absolute;top:748px;left:233px;white-space:nowrap" class="ft55">extensivel<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">y20,25</a>) exhibited 97% conversion (N&#160;=&#160;<a href="39ca259dc915aae5bc5302061b2b554ds.html#7">313, Fig. 5B-B”). I</a>n contrast, embryos expressing constitutively&#160;</p>
+<p style="position:absolute;top:763px;left:233px;white-space:nowrap" class="ft55">active CREB (tom-VP16-XlCreb1) and simultaneously treated with a cocktail of Altanserin (R2 blocker, 10&#160;uM)&#160;</p>
+<p style="position:absolute;top:778px;left:233px;white-space:nowrap" class="ft55">and Reserpine (VMAT&#160;blocker, 100&#160;uM)&#160;exhibited the&#160;predicted never before-seen&#160;partial conversion in 22%&#160;</p>
+<p style="position:absolute;top:793px;left:233px;white-space:nowrap" class="ft55">of the animals (N&#160;=&#160;<a href="39ca259dc915aae5bc5302061b2b554ds.html#7">167, Fig. 5C-D”), w</a>hile 24% were completely normal, and 54% exhibited the standard ful&#160;&#160;</p>
+<p style="position:absolute;top:808px;left:233px;white-space:nowrap" class="ft512">conversion phenotype.<br/><b>Discussion</b></p>
+<p style="position:absolute;top:852px;left:233px;white-space:nowrap" class="ft55">Here, we have presented the discovery of a novel&#160;<i>in&#160;vivo</i>&#160;phenotype, and the precise intervention required to&#160;</p>
+<p style="position:absolute;top:867px;left:233px;white-space:nowrap" class="ft55">obtain it, by means of a computational methodology. From a reverse-engineered signaling network able to reca-</p>
+<p style="position:absolute;top:882px;left:233px;white-space:nowrap" class="ft55">pitulate the stochasticity of two phenotypes representing wild-type and extreme levels of melanocyte conversion&#160;</p>
+<p style="position:absolute;top:897px;left:233px;white-space:nowrap" class="ft55">in&#160;<i>Xenopus&#160;laevis</i>&#160;larvae, we sought to discover a pharmacological intervention that could generate a never-seen&#160;</p>
+<p style="position:absolute;top:912px;left:233px;white-space:nowrap" class="ft55">partial&#160;y converted phenotype. We performed&#160;<i>in&#160;silico</i>&#160;all the possible experiments combining one, two, or three&#160;</p>
+<p style="position:absolute;top:927px;left:233px;white-space:nowrap" class="ft55">reagents and found that only one specific combination that was able to produce an intermediate phenotype. The&#160;</p>
+<p style="position:absolute;top:942px;left:233px;white-space:nowrap" class="ft55">model dynamics of this intervention showed that this precise combination produced a bifurcation in the dynami-</p>
+<p style="position:absolute;top:957px;left:233px;white-space:nowrap" class="ft55">cal system, generating an attractor corresponding to a phenotype 25% in between the known wild type and total&#160;y&#160;</p>
+<p style="position:absolute;top:972px;left:233px;white-space:nowrap" class="ft55">converted phenotypes. Almost a decade of highly diverse experiments focused on this pathway had not revealed&#160;</p>
+<p style="position:absolute;top:987px;left:233px;white-space:nowrap" class="ft55">such an outcome<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">20,25. W</a>hile detailed mechanistic dissection of the pathway explained signaling on a single cel&#160;&#160;</p>
+<p style="position:absolute;top:1002px;left:233px;white-space:nowrap" class="ft55">level, explanations&#160;for&#160;the&#160;stochastic concordance&#160;throughout each&#160;animal,&#160;the possibility&#160;of&#160;partial conversion,&#160;</p>
+<p style="position:absolute;top:1017px;left:233px;white-space:nowrap" class="ft55">or the reagents that could achieve it, had all remained unknown without the described automated approach that&#160;</p>
+<p style="position:absolute;top:1032px;left:233px;white-space:nowrap" class="ft55">strongly augmented human analysis of this complex dynamical system.</p>
+<p style="position:absolute;top:1047px;left:251px;white-space:nowrap" class="ft55">We validated these predictions&#160;<i>in&#160;vivo</i>, confirming the&#160;<i>in&#160;silico</i>&#160;discovery of the novel phenotype. When we&#160;</p>
+<p style="position:absolute;top:1062px;left:233px;white-space:nowrap" class="ft55">applied the discovered combination of three reagents, two drugs and constituently active CREB, we observed for&#160;</p>
+<p style="position:absolute;top:1077px;left:233px;white-space:nowrap" class="ft55">the first time the predicted partial converted phenotype–animals in which some melanocytes and melanocyte-free&#160;</p>
+<p style="position:absolute;top:1092px;left:233px;white-space:nowrap" class="ft55">regions were normal, while others were converted and colonizing ectopic sites. It is crucial to note that each&#160;of&#160;</p>
+<p style="position:absolute;top:293px;left:233px;white-space:nowrap" class="ft511"><b>Figure 3.</b>&#160;&#160;<b>Phase space of the wild type and the experiment predicted to produce a partially pigmented&#160;</b></p>
+<p style="position:absolute;top:308px;left:233px;white-space:nowrap" class="ft511"><b>phenotype.&#160;</b>The trajectories of the state of two serotonin receptors (5HT-R1 and 5HT-R2) and the degree of&#160;</p>
+<p style="position:absolute;top:323px;left:233px;white-space:nowrap" class="ft55">conversion is shown among 100 simulations. (<b>A)</b>&#160;Without any treatment (wild type), the dynamical system&#160;</p>
+<p style="position:absolute;top:338px;left:233px;white-space:nowrap" class="ft55">transitions from the initial instable state (embryo, yellow dot) stochastical&#160;y towards a final stable state with a&#160;</p>
+<p style="position:absolute;top:353px;left:233px;white-space:nowrap" class="ft55">normal conversion level (0, blue dot) or towards a final state with a high conversion level (0.92, red dot).&#160;&#160;</p>
+<p style="position:absolute;top:368px;left:233px;white-space:nowrap" class="ft55">(<b>B)</b>&#160;Applying the treatment combining the discovered three reagents (altanserin, reserpine, and constitutively&#160;</p>
+<p style="position:absolute;top:383px;left:233px;white-space:nowrap" class="ft55">active CREB), the dynamics reveal a bifurcation in the dynamical system and the appearance of a new attractor&#160;</p>
+<p style="position:absolute;top:398px;left:233px;white-space:nowrap" class="ft55">with a partial conversion level (0.25, green dot) in addition to another attractor with a normal conversion level&#160;</p>
+<p style="position:absolute;top:413px;left:233px;white-space:nowrap" class="ft55">(0, blue dot). The attractor dot size is proportional to the number of converging trajectories to that final state.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft61{font-size:13px;font-family:Times;color:#839097;}
+	.ft62{font-size:10px;font-family:Times;color:#839097;}
+	.ft63{font-size:10px;font-family:Times;color:#000000;}
+	.ft64{font-size:10px;font-family:Times;color:#839097;}
+	.ft65{font-size:11px;font-family:Times;color:#000000;}
+	.ft66{font-size:11px;font-family:Times;color:#000000;}
+	.ft67{font-size:6px;font-family:Times;color:#000000;}
+	.ft68{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft60">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft61">6</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft62">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:733px;left:233px;white-space:nowrap" class="ft65">these&#160;reagents&#160;alone&#160;causes&#160;some&#160;incidence&#160;of&#160;full&#160;conversion–the&#160;individual&#160;reagents&#160;have&#160;already&#160;been&#160;validated&#160;</p>
+<p style="position:absolute;top:748px;left:233px;white-space:nowrap" class="ft65">to&#160;work&#160;in&#160;<i>Xenopus</i>&#160;(i.e.,&#160;they&#160;do&#160;penetrate&#160;the&#160;embryo,&#160;reach&#160;target&#160;cel&#160;s,&#160;and&#160;affect&#160;this&#160;pathway&#160;sufficiently&#160;to&#160;</p>
+<p style="position:absolute;top:763px;left:233px;white-space:nowrap" class="ft65">ful&#160;y convert some percentage of each treated samp<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">le)21; h</a>owever it is of an all-or-none character. Moreover, we&#160;</p>
+<p style="position:absolute;top:778px;left:233px;white-space:nowrap" class="ft65">have&#160;previously&#160;shown&#160;that&#160;injection of&#160;just&#160;a&#160;few&#160;cel&#160;s&#160;in&#160;the&#160;embryo&#160;(for&#160;example,&#160;with&#160;depolarizing&#160;reagents)&#160;</p>
+<p style="position:absolute;top:793px;left:233px;white-space:nowrap" class="ft65">is sufficient to cause complete conversio<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">n21,25</a>–the partial&#160;conversion here is&#160;<i>not</i>&#160;due to mosaic expression of the&#160;</p>
+<p style="position:absolute;top:808px;left:233px;white-space:nowrap" class="ft65">CREB&#160;construct,&#160;as injected alone, in one&#160;cell&#160;of&#160;the&#160;32-cell&#160;stage&#160;embryos&#160;as&#160;above,&#160;causes an&#160;incidence&#160;of&#160;~45%&#160;</p>
+<p style="position:absolute;top:823px;left:233px;white-space:nowrap" class="ft66"><i>complete</i>&#160;conversion. The model predicted the wild-type phenotype within 1% (24%&#160;<i>in&#160;vivo</i>&#160;vs 25%&#160;<i>in&#160;silico</i>), yet it&#160;</p>
+<p style="position:absolute;top:838px;left:233px;white-space:nowrap" class="ft65">aggregated the partial&#160;y and ful&#160;y converted phenotypes observed&#160;<i>in&#160;vivo</i>&#160;(22% partial, 54% ful&#160;y converted) into a&#160;</p>
+<p style="position:absolute;top:853px;left:233px;white-space:nowrap" class="ft65">single partial phenotype (75% partial). This difference in the frequency of partial and ful&#160;y converted phenotypes&#160;</p>
+<p style="position:absolute;top:868px;left:233px;white-space:nowrap" class="ft65">between the&#160;<i>in&#160;silico</i>&#160;and&#160;<i>in&#160;vivo</i>&#160;results may be explained by the lack of time information in the training dataset&#160;</p>
+<p style="position:absolute;top:883px;left:233px;white-space:nowrap" class="ft65">and the observed dynamics of the syst<a href="39ca259dc915aae5bc5302061b2b554ds.html#5">em (Figs 3 a</a>n<a href="39ca259dc915aae5bc5302061b2b554ds.html#6">d 4). I</a>n particular, a number of trajectories ending in the par-</p>
+<p style="position:absolute;top:898px;left:233px;white-space:nowrap" class="ft65">tial&#160;y converted phenotype actual&#160;y are crossing the levels of highly converted phenotypes. This observation may&#160;</p>
+<p style="position:absolute;top:913px;left:233px;white-space:nowrap" class="ft65">indicate that the full conversion that we observed&#160;<i>in&#160;vivo</i>&#160;may be transient. Further investigations, and methods&#160;</p>
+<p style="position:absolute;top:928px;left:233px;white-space:nowrap" class="ft65">that enabled the tadpoles to survive to older stages for tracking any subsequent changes in melanocyte status,&#160;</p>
+<p style="position:absolute;top:943px;left:233px;white-space:nowrap" class="ft65">would&#160;be necessary&#160;to validate predictions of transient (time-dependent) changes of the phenotypes&#160;predicted&#160;</p>
+<p style="position:absolute;top:958px;left:233px;white-space:nowrap" class="ft65">by the model. Indeed, the training dataset does not contain any time information, and hence the current system&#160;</p>
+<p style="position:absolute;top:973px;left:233px;white-space:nowrap" class="ft65">does not yet capture realistic timing, which would allow a finer-course analysis of trajectories and comparison&#160;</p>
+<p style="position:absolute;top:988px;left:233px;white-space:nowrap" class="ft65">with&#160;<i>in&#160;vivo</i>&#160;results; in future work we will extend this platform to&#160;include time-series data,&#160;so that these transient&#160;</p>
+<p style="position:absolute;top:1003px;left:233px;white-space:nowrap" class="ft65">phenotypes can be better investigated.</p>
+<p style="position:absolute;top:1018px;left:251px;white-space:nowrap" class="ft65">Identification of interventions that alter system-level physiology or pattern formation is a crucial nascent field&#160;</p>
+<p style="position:absolute;top:1033px;left:233px;white-space:nowrap" class="ft65">with many implications for biomedicin<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">e32,33</a>. The complexity of biological regulation makes it very hard to com-</p>
+<p style="position:absolute;top:1048px;left:233px;white-space:nowrap" class="ft65">pletely and mechanistical&#160;y understand signaling networks, the prediction of resultant experimental outcomes,&#160;</p>
+<p style="position:absolute;top:1063px;left:233px;white-space:nowrap" class="ft65">and hence the discovery of novel phenotypes. Computational dynamic modeling of complex regulatory networks&#160;</p>
+<p style="position:absolute;top:1078px;left:233px;white-space:nowrap" class="ft65">is essential for the discovery of new capabilities of biological systems and prediction of specific perturbations&#160;</p>
+<p style="position:absolute;top:560px;left:233px;white-space:nowrap" class="ft68"><b>Figure 4.</b>&#160;&#160;<b>Dynamics of the degree of conversion and perturbed pathway components in the untreated&#160;</b></p>
+<p style="position:absolute;top:575px;left:233px;white-space:nowrap" class="ft68"><b>and treated experiments.&#160;</b>The panels show the dynamics of the degree of conversion and levels of the affected&#160;</p>
+<p style="position:absolute;top:591px;left:233px;white-space:nowrap" class="ft65">components by the drugs in the treatment through time over 100 simulations. (<b>A)</b>&#160;With no treatment (wild&#160;</p>
+<p style="position:absolute;top:606px;left:233px;white-space:nowrap" class="ft65">type), only extreme phenotypes (normal or high conversion levels) are stochastical&#160;y produced. VMAT&#160;</p>
+<p style="position:absolute;top:621px;left:233px;white-space:nowrap" class="ft65">converges to high levels, R2 to stochastical&#160;y either high or low levels, and CREB to low levels. (<b>B)</b>&#160;The treatment&#160;</p>
+<p style="position:absolute;top:636px;left:233px;white-space:nowrap" class="ft65">combining reserpine (inhibiting VMAT), altanserin (inhibiting R2), and constitutively active CREB (increasing&#160;</p>
+<p style="position:absolute;top:651px;left:233px;white-space:nowrap" class="ft65">CREB) produces the expected changes in the levels of the affected pathway components, lowering the levels&#160;</p>
+<p style="position:absolute;top:666px;left:233px;white-space:nowrap" class="ft65">in the case of inhibitors (VMAT and R2) or increasing them in the case of adding constitutively active CREB.&#160;</p>
+<p style="position:absolute;top:681px;left:233px;white-space:nowrap" class="ft65">Notice that in both A and B there are trajectories converging at 0 conversion level (normal).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft71{font-size:13px;font-family:Times;color:#839097;}
+	.ft72{font-size:10px;font-family:Times;color:#839097;}
+	.ft73{font-size:10px;font-family:Times;color:#000000;}
+	.ft74{font-size:10px;font-family:Times;color:#839097;}
+	.ft75{font-size:11px;font-family:Times;color:#000000;}
+	.ft76{font-size:6px;font-family:Times;color:#000000;}
+	.ft77{font-size:11px;font-family:Times;color:#000000;}
+	.ft78{font-size:14px;font-family:Times;color:#000000;}
+	.ft79{font-size:13px;font-family:Times;color:#000000;}
+	.ft710{font-size:11px;font-family:Times;color:#000000;}
+	.ft711{font-size:11px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft70">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:826px;white-space:nowrap" class="ft71">7</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft72">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:906px;left:233px;white-space:nowrap" class="ft75">that&#160;result&#160;in&#160;desired&#160;outcomes.&#160;Using&#160;these&#160;models,&#160;we&#160;can&#160;computational&#160;y&#160;and&#160;systematical&#160;y&#160;interrogate&#160;the&#160;</p>
+<p style="position:absolute;top:921px;left:233px;white-space:nowrap" class="ft75">system to find the precise interventions necessary for the development of specific phenotyp<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">es33. Th</a>e computa-</p>
+<p style="position:absolute;top:936px;left:233px;white-space:nowrap" class="ft75">tional methodology presented here shows how a reverse-engineered signaling system can be used in this way to&#160;</p>
+<p style="position:absolute;top:951px;left:233px;white-space:nowrap" class="ft75">precisely find a set of reagents that produce a never before seen outcome at the intersection of embryogenesis and&#160;</p>
+<p style="position:absolute;top:966px;left:233px;white-space:nowrap" class="ft75">metastatic-like&#160;conversion.&#160;These&#160;computational&#160;methods&#160;are&#160;paving&#160;the&#160;way&#160;for&#160;the&#160;discovery&#160;and&#160;further&#160;under-</p>
+<p style="position:absolute;top:981px;left:233px;white-space:nowrap" class="ft75">standing and manipulations of multicel&#160;ular, stochastic, and multidimensional biological phenomena, as well as&#160;</p>
+<p style="position:absolute;top:996px;left:233px;white-space:nowrap" class="ft75">for the discovery of novel and effective therapies that target cooperative or group aspects of cell function&#160;<i>in&#160;vivo</i>.</p>
+<p style="position:absolute;top:1027px;left:233px;white-space:nowrap" class="ft78"><b>Methods</b></p>
+<p style="position:absolute;top:1043px;left:233px;white-space:nowrap" class="ft79"><b>Animal&#160;husbandry.&#160;&#160;</b><i>Xenopus</i>&#160;embryos were maintained according to standard protocols<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">34</a>&#160;in 0.1×&#160;&#160;Marc’s&#160;</p>
+<p style="position:absolute;top:1059px;left:233px;white-space:nowrap" class="ft75">Modified Ringers (MMR; pH 7.8).&#160;<i>Xenopus</i>&#160;embryos were staged according to Nieuwkoop and Faber<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">35</a>.&#160;All&#160;</p>
+<p style="position:absolute;top:1074px;left:233px;white-space:nowrap" class="ft75">experimental procedures&#160;involving&#160;<i>Xenopus</i>&#160;embryos were&#160;approved&#160;by&#160;the&#160;Institutional Animal&#160;Care&#160;and&#160;</p>
+<p style="position:absolute;top:1089px;left:233px;white-space:nowrap" class="ft75">Use Committees (IACUC) and Tufts University Department of Laboratory Animal Medicine under protocol&#160;</p>
+<p style="position:absolute;top:583px;left:233px;white-space:nowrap" class="ft710"><b>Figure 5.</b>&#160;&#160;<i><b>In&#160;vivo</b></i><b>&#160;validation of the computationally discovered partially converted phenotype.&#160;</b>Normal&#160;</p>
+<p style="position:absolute;top:599px;left:233px;white-space:nowrap" class="ft75">melanocytes are indicated with blue arrowheads, while areas populated with converted melanocytes are&#160;</p>
+<p style="position:absolute;top:614px;left:233px;white-space:nowrap" class="ft75">indicated with red arrowheads. (<b>A)</b>&#160;Control animals exhibit smal&#160;, round melanocytes confined to stripes&#160;</p>
+<p style="position:absolute;top:629px;left:233px;white-space:nowrap" class="ft75">around the spinal cord and over the brain (<b>A</b>). Note the absence of melanocytes in the periocular region (<b>A</b>’).&#160;&#160;</p>
+<p style="position:absolute;top:644px;left:233px;white-space:nowrap" class="ft75">In normal animals’ tails, melanocytes never exit the stripes of axial muscle (do not venture into the fin).&#160;&#160;</p>
+<p style="position:absolute;top:659px;left:233px;white-space:nowrap" class="ft75">(<b>B)</b>&#160;Converted animals produced by Ivermectin-induced depolarization exhibit spread-out (arborized)&#160;</p>
+<p style="position:absolute;top:674px;left:233px;white-space:nowrap" class="ft75">melanocytes all along the flank (<b>B</b>) and around the eyes (<b>B</b>’)–they colonize every region of the head. The&#160;</p>
+<p style="position:absolute;top:689px;left:233px;white-space:nowrap" class="ft75">arborized melanocytes also leave the mid-body and colonize the fin (<b>B</b>”). (<b>C)</b>&#160;In contrast, embryos treated with&#160;</p>
+<p style="position:absolute;top:704px;left:233px;white-space:nowrap" class="ft75">VP16-XlCreb1and exposed to 5HT-R2 and VMAT blockers revealed a never before-seen phenotype where&#160;</p>
+<p style="position:absolute;top:719px;left:233px;white-space:nowrap" class="ft75">some regions of the animal were converted (<b>C</b>, periocular region of the right eye, red arrowhead), and some&#160;</p>
+<p style="position:absolute;top:734px;left:233px;white-space:nowrap" class="ft75">were wild-type (<b>C</b>, periocular region of left eye, blue arrowhead). This can be also seen in the transformation&#160;</p>
+<p style="position:absolute;top:749px;left:233px;white-space:nowrap" class="ft75">of cell shape over the brain (<b>C’</b>, red arrowhead) but normal melanocyte morphology elsewhere (<b>C</b>’, blue&#160;</p>
+<p style="position:absolute;top:764px;left:233px;white-space:nowrap" class="ft75">arrowhead). In the tail (<b>C</b>”,<b>C</b>’”) we observed some cel&#160;s invading the fin, but they had normal morphology. We&#160;</p>
+<p style="position:absolute;top:779px;left:233px;white-space:nowrap" class="ft75">observed a great diversity of different combinations that were intermediate between normal and converted&#160;</p>
+<p style="position:absolute;top:794px;left:233px;white-space:nowrap" class="ft75">outcomes (only a representative sample is shown here), which otherwise never occurred in the same animal.&#160;</p>
+<p style="position:absolute;top:809px;left:233px;white-space:nowrap" class="ft75">(<b>D)</b>&#160;Furthermore, we noticed a new, cancer-like behavior that had not occurred in any previous experiment.&#160;</p>
+<p style="position:absolute;top:824px;left:233px;white-space:nowrap" class="ft75">This included the induction of individual nodules, which were both pigmented and unpigmented (<b>D,D</b>’); this&#160;</p>
+<p style="position:absolute;top:839px;left:233px;white-space:nowrap" class="ft75">occurred in ~10% of the animals that likewise exhibited partial conversion (<b>D</b>”, red arrowhead region vs. blue&#160;</p>
+<p style="position:absolute;top:854px;left:233px;white-space:nowrap" class="ft75">arrowhead region).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft81{font-size:13px;font-family:Times;color:#839097;}
+	.ft82{font-size:10px;font-family:Times;color:#839097;}
+	.ft83{font-size:10px;font-family:Times;color:#000000;}
+	.ft84{font-size:10px;font-family:Times;color:#839097;}
+	.ft85{font-size:11px;font-family:Times;color:#000000;}
+	.ft86{font-size:13px;font-family:Times;color:#000000;}
+	.ft87{font-size:6px;font-family:Times;color:#000000;}
+	.ft88{font-size:11px;font-family:Times;color:#000000;}
+	.ft89{font-size:10px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft80">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft81">8</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft82">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:71px;left:233px;white-space:nowrap" class="ft85">M2014-79.&#160;All experiments&#160;were performed in&#160;accordance&#160;with&#160;relevant guidelines&#160;and&#160;regulations. Although&#160;</p>
+<p style="position:absolute;top:86px;left:233px;white-space:nowrap" class="ft85">we have not observed light to make any difference to the converted phenotype, all groups were subjected to the&#160;</p>
+<p style="position:absolute;top:101px;left:233px;white-space:nowrap" class="ft85">same light conditions.</p>
+<p style="position:absolute;top:133px;left:233px;white-space:nowrap" class="ft86"><b>Microinjection, drug exposure, sectioning, and image collection.&#160;&#160;</b>Embryos&#160;were&#160;injected&#160;with&#160;</p>
+<p style="position:absolute;top:149px;left:233px;white-space:nowrap" class="ft85">mRNA encoding constitutively active CREB (tom-VP16-XlCreb1<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">36) a</a>t 1/32 cell stage and then exposed to a&#160;</p>
+<p style="position:absolute;top:164px;left:233px;white-space:nowrap" class="ft85">mix of Altanserin (5HT-R2 blocker, 10&#160;uM) and Reserpine (VMAT blocker, 100 uM) using the same methods&#160;</p>
+<p style="position:absolute;top:179px;left:233px;white-space:nowrap" class="ft85">described previousl<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">y20,21,37,38. S</a>ections were made at 40&#160;μ&#160;&#160;on a Leica vibratome after JB4 embedding. Images were&#160;</p>
+<p style="position:absolute;top:194px;left:233px;white-space:nowrap" class="ft85">collected using a Nikon SMZ-1500 microscope and each phenotype was visual&#160;y characterized as having normal&#160;</p>
+<p style="position:absolute;top:209px;left:233px;white-space:nowrap" class="ft85">melanocyte status, partial conversion, or full conversion; these three classes are discrete and readily distinguished&#160;</p>
+<p style="position:absolute;top:224px;left:233px;white-space:nowrap" class="ft85">as categorical data; the quantification of the definition of these states was described in r<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">efs 20 a</a>n<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">d 39.</a></p>
+<p style="position:absolute;top:256px;left:233px;white-space:nowrap" class="ft86"><b>Dynamic&#160;signaling&#160;model of melanocyte&#160;conversion.&#160;&#160;</b>We&#160;used&#160;the&#160;dynamic&#160;signaling&#160;model of&#160;</p>
+<p style="position:absolute;top:272px;left:233px;white-space:nowrap" class="ft88"><i>Xenopus</i>&#160;melanocyte conversion presented&#160;in&#160;ref<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">. 21.&#160;</a>The&#160;model&#160;is&#160;based&#160;on Hill-kinetics and&#160;includes&#160;14&#160;sto-</p>
+<p style="position:absolute;top:287px;left:233px;white-space:nowrap" class="ft85">chastic ordinary differential equations describing the interactions of signaling molecules, pharmacological com-</p>
+<p style="position:absolute;top:302px;left:233px;white-space:nowrap" class="ft85">pounds&#160;(drugs,&#160;set&#160;to&#160;0&#160;when&#160;not&#160;applied&#160;and&#160;1&#160;when&#160;applied),&#160;and&#160;the&#160;level&#160;of&#160;melanocyte&#160;conversion&#160;(the&#160;</p>
+<p style="position:absolute;top:317px;left:233px;white-space:nowrap" class="ft85">phenotype, equivalent to the pigmentation level) of a developing embryo. The interaction between signaling&#160;</p>
+<p style="position:absolute;top:332px;left:233px;white-space:nowrap" class="ft85">molecules and drugs are modeled with a combination of Hill functions, each of them representing the interaction&#160;</p>
+<p style="position:absolute;top:347px;left:233px;white-space:nowrap" class="ft85">between&#160;two&#160;products.&#160;When multiple&#160;interactions regulate a&#160;product, they&#160;can be grouped&#160;as&#160;sufficient, neces-</p>
+<p style="position:absolute;top:362px;left:233px;white-space:nowrap" class="ft85">sary, or a combination of them. Sufficient interactions can regulate the production of the target product inde-</p>
+<p style="position:absolute;top:377px;left:233px;white-space:nowrap" class="ft85">pendently of other sufficient interactions (modeled with a max operator, similar to a logic OR interaction; hence,&#160;</p>
+<p style="position:absolute;top:392px;left:233px;white-space:nowrap" class="ft85">activation has preference over inhibition). In contrast, all the necessary interactions need to be coordinated to&#160;</p>
+<p style="position:absolute;top:407px;left:233px;white-space:nowrap" class="ft85">regulate the production of the target product (modeled with a min operator, similar to a logic AND interaction;&#160;</p>
+<p style="position:absolute;top:422px;left:233px;white-space:nowrap" class="ft85">hence, inhibition has preference over activation). This scheme allows the modeling of a rich variety of regulatory&#160;</p>
+<p style="position:absolute;top:437px;left:233px;white-space:nowrap" class="ft85">interaction combinations. In addition, each product includes a decay term (with a specific decay constant) and a&#160;</p>
+<p style="position:absolute;top:452px;left:233px;white-space:nowrap" class="ft85">Gaussian random noise of zero mean to model the stochasticity of the system.</p>
+<p style="position:absolute;top:467px;left:251px;white-space:nowrap" class="ft85">The&#160;following&#160;set of differential equations, including&#160;all the kinetic parameters, define the complete&#160;model&#160;</p>
+<p style="position:absolute;top:482px;left:233px;white-space:nowrap" class="ft85">(<i>ξ</i>(<i>t</i>) represents a Gaussian random noise of zero mean):</p>
+<p style="position:absolute;top:554px;left:451px;white-space:nowrap" class="ft89"><i>ξ</i></p>
+<p style="position:absolute;top:665px;left:717px;white-space:nowrap" class="ft89"><i>ξ</i></p>
+<p style="position:absolute;top:747px;left:733px;white-space:nowrap" class="ft89"><i>ξ</i></p>
+<p style="position:absolute;top:523px;left:356px;white-space:nowrap" class="ft83">=&#160;.</p>
+<p style="position:absolute;top:523px;left:398px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:511px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:536px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:518px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:528px;left:432px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:533px;left:479px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:512px;left:556px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:535px;left:556px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:519px;left:556px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:530px;left:556px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:533px;left:597px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:516px;left:688px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:533px;left:671px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:533px;left:701px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:512px;left:733px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:535px;left:733px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:518px;left:733px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:531px;left:733px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:511px;left:739px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:536px;left:739px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:517px;left:739px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:530px;left:739px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:554px;left:374px;white-space:nowrap" class="ft83">−&#160;.</p>
+<p style="position:absolute;top:554px;left:411px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:554px;left:438px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:582px;left:356px;white-space:nowrap" class="ft83">=&#160;.</p>
+<p style="position:absolute;top:582px;left:398px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:571px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:594px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:579px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:589px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:575px;left:470px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:592px;left:444px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:592px;left:466px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:592px;left:528px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:592px;left:557px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:612px;left:460px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:634px;left:460px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:619px;left:460px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:630px;left:460px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:633px;left:501px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:615px;left:575px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:633px;left:555px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:633px;left:585px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:633px;left:639px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:633px;left:668px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:675px;left:442px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:675px;left:471px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:675px;left:556px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:675px;left:585px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:654px;left:618px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:676px;left:618px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:660px;left:618px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:673px;left:618px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:652px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:678px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:659px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:671px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:665px;left:632px;white-space:nowrap" class="ft83">−&#160;.</p>
+<p style="position:absolute;top:665px;left:670px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:665px;left:703px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:706px;left:356px;white-space:nowrap" class="ft83">=&#160;.</p>
+<p style="position:absolute;top:706px;left:398px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:696px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:718px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:703px;left:432px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:713px;left:432px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:717px;left:479px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:699px;left:569px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:717px;left:542px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:717px;left:571px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:740px;left:485px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:757px;left:445px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:757px;left:475px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:740px;left:587px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:757px;left:567px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:757px;left:596px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:736px;left:635px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:759px;left:635px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:742px;left:635px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:755px;left:635px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:747px;left:644px;white-space:nowrap" class="ft83">−&#160;.</p>
+<p style="position:absolute;top:747px;left:681px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:747px;left:720px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:513px;left:486px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:531px;left:468px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:531px;left:513px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:513px;left:620px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:531px;left:587px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:531px;left:644px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:513px;left:707px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:531px;left:690px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:531px;left:725px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:572px;left:586px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:590px;left:547px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:590px;left:610px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:613px;left:512px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:631px;left:490px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:631px;left:536px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:613px;left:596px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:631px;left:575px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:631px;left:617px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:613px;left:689px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:631px;left:657px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:631px;left:712px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:655px;left:510px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:673px;left:461px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:673px;left:534px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:655px;left:585px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:673px;left:575px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:673px;left:610px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:697px;left:493px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:714px;left:468px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:714px;left:520px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:697px;left:587px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:714px;left:560px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:714px;left:614px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:737px;left:504px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:755px;left:464px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:755px;left:544px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:737px;left:606px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:755px;left:586px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:755px;left:626px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:515px;left:324px;white-space:nowrap" class="ft89"><i>dHP</i></p>
+<p style="position:absolute;top:532px;left:331px;white-space:nowrap" class="ft89"><i>dt</i></p>
+<p style="position:absolute;top:515px;left:466px;white-space:nowrap" class="ft89"><i>HP</i></p>
+<p style="position:absolute;top:533px;left:493px;white-space:nowrap" class="ft89"><i>HP</i></p>
+<p style="position:absolute;top:515px;left:586px;white-space:nowrap" class="ft89"><i>CREB</i></p>
+<p style="position:absolute;top:533px;left:610px;white-space:nowrap" class="ft89"><i>CREB</i></p>
+<p style="position:absolute;top:533px;left:714px;white-space:nowrap" class="ft89"><i>a</i></p>
+<p style="position:absolute;top:553px;left:418px;white-space:nowrap" class="ft89"><i>HP</i></p>
+<p style="position:absolute;top:553px;left:463px;white-space:nowrap" class="ft89"><i>t</i></p>
+<p style="position:absolute;top:574px;left:313px;white-space:nowrap" class="ft89"><i>d&#160;HT</i></p>
+<p style="position:absolute;top:591px;left:322px;white-space:nowrap" class="ft89"><i>dt</i></p>
+<p style="position:absolute;top:592px;left:480px;white-space:nowrap" class="ft89"><i>SERT</i></p>
+<p style="position:absolute;top:574px;left:546px;white-space:nowrap" class="ft89"><i>VMAT</i></p>
+<p style="position:absolute;top:592px;left:571px;white-space:nowrap" class="ft89"><i>VMAT</i></p>
+<p style="position:absolute;top:615px;left:490px;white-space:nowrap" class="ft89"><i>HP</i></p>
+<p style="position:absolute;top:632px;left:514px;white-space:nowrap" class="ft89"><i>HP</i></p>
+<p style="position:absolute;top:632px;left:599px;white-space:nowrap" class="ft89"><i>R</i></p>
+<p style="position:absolute;top:615px;left:658px;white-space:nowrap" class="ft89"><i>MSH</i></p>
+<p style="position:absolute;top:632px;left:682px;white-space:nowrap" class="ft89"><i>MSH</i></p>
+<p style="position:absolute;top:657px;left:461px;white-space:nowrap" class="ft89"><i>Med&#160;HT</i></p>
+<p style="position:absolute;top:674px;left:484px;white-space:nowrap" class="ft89"><i>Med&#160;HT</i></p>
+<p style="position:absolute;top:657px;left:575px;white-space:nowrap" class="ft89"><i>b</i></p>
+<p style="position:absolute;top:674px;left:599px;white-space:nowrap" class="ft89"><i>b</i></p>
+<p style="position:absolute;top:664px;left:683px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:664px;left:728px;white-space:nowrap" class="ft89"><i>t</i></p>
+<p style="position:absolute;top:698px;left:313px;white-space:nowrap" class="ft89"><i>dSERT</i></p>
+<p style="position:absolute;top:715px;left:325px;white-space:nowrap" class="ft89"><i>dt</i></p>
+<p style="position:absolute;top:698px;left:466px;white-space:nowrap" class="ft89"><i>IVM</i></p>
+<p style="position:absolute;top:716px;left:492px;white-space:nowrap" class="ft89"><i>IVM</i></p>
+<p style="position:absolute;top:716px;left:584px;white-space:nowrap" class="ft89"><i>MSH</i></p>
+<p style="position:absolute;top:757px;left:488px;white-space:nowrap" class="ft89"><i>Fluoxetine</i></p>
+<p style="position:absolute;top:757px;left:610px;white-space:nowrap" class="ft89"><i>R</i></p>
+<p style="position:absolute;top:746px;left:689px;white-space:nowrap" class="ft89"><i>SERT</i></p>
+<p style="position:absolute;top:746px;left:745px;white-space:nowrap" class="ft89"><i>t</i></p>
+<p style="position:absolute;top:522px;left:374px;white-space:nowrap" class="ft83">0&#160;53</p>
+<p style="position:absolute;top:522px;left:412px;white-space:nowrap" class="ft83">min</p>
+<p style="position:absolute;top:533px;left:438px;white-space:nowrap" class="ft83">0&#160;028</p>
+<p style="position:absolute;top:522px;left:522px;white-space:nowrap" class="ft83">,&#160;max</p>
+<p style="position:absolute;top:533px;left:562px;white-space:nowrap" class="ft83">0&#160;44</p>
+<p style="position:absolute;top:522px;left:654px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:515px;left:682px;white-space:nowrap" class="ft83">0&#160;28</p>
+<p style="position:absolute;top:533px;left:665px;white-space:nowrap" class="ft83">0&#160;28</p>
+<p style="position:absolute;top:553px;left:387px;white-space:nowrap" class="ft83">0&#160;57</p>
+<p style="position:absolute;top:553px;left:459px;white-space:nowrap" class="ft83">(&#160;)</p>
+<p style="position:absolute;top:574px;left:319px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:582px;left:374px;white-space:nowrap" class="ft83">0&#160;65</p>
+<p style="position:absolute;top:582px;left:412px;white-space:nowrap" class="ft83">min</p>
+<p style="position:absolute;top:574px;left:464px;white-space:nowrap" class="ft83">0&#160;51</p>
+<p style="position:absolute;top:592px;left:438px;white-space:nowrap" class="ft83">0&#160;51</p>
+<p style="position:absolute;top:582px;left:514px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:592px;left:522px;white-space:nowrap" class="ft83">0&#160;23</p>
+<p style="position:absolute;top:582px;left:619px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:622px;left:438px;white-space:nowrap" class="ft83">max</p>
+<p style="position:absolute;top:633px;left:466px;white-space:nowrap" class="ft83">0&#160;44</p>
+<p style="position:absolute;top:622px;left:545px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:615px;left:570px;white-space:nowrap" class="ft83">0&#160;37</p>
+<p style="position:absolute;top:633px;left:549px;white-space:nowrap" class="ft83">0&#160;37</p>
+<p style="position:absolute;top:633px;left:606px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:622px;left:625px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:633px;left:633px;white-space:nowrap" class="ft83">0&#160;21</p>
+<p style="position:absolute;top:622px;left:721px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:657px;left:482px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:674px;left:436px;white-space:nowrap" class="ft83">0&#160;84</p>
+<p style="position:absolute;top:674px;left:506px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:664px;left:543px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:674px;left:551px;white-space:nowrap" class="ft83">0&#160;44</p>
+<p style="position:absolute;top:664px;left:646px;white-space:nowrap" class="ft83">0&#160;78&#160;5</p>
+<p style="position:absolute;top:664px;left:724px;white-space:nowrap" class="ft83">(&#160;)</p>
+<p style="position:absolute;top:706px;left:374px;white-space:nowrap" class="ft83">0&#160;86</p>
+<p style="position:absolute;top:706px;left:412px;white-space:nowrap" class="ft83">min</p>
+<p style="position:absolute;top:716px;left:438px;white-space:nowrap" class="ft83">0&#160;028</p>
+<p style="position:absolute;top:706px;left:529px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:699px;left:563px;white-space:nowrap" class="ft83">0&#160;24</p>
+<p style="position:absolute;top:716px;left:536px;white-space:nowrap" class="ft83">0&#160;24</p>
+<p style="position:absolute;top:706px;left:623px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:739px;left:479px;white-space:nowrap" class="ft83">0&#160;28</p>
+<p style="position:absolute;top:757px;left:439px;white-space:nowrap" class="ft83">0&#160;28</p>
+<p style="position:absolute;top:747px;left:553px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:739px;left:581px;white-space:nowrap" class="ft83">0&#160;24</p>
+<p style="position:absolute;top:757px;left:561px;white-space:nowrap" class="ft83">0&#160;24</p>
+<p style="position:absolute;top:757px;left:617px;white-space:nowrap" class="ft83">1</p>
+<p style="position:absolute;top:747px;left:657px;white-space:nowrap" class="ft83">0&#160;43</p>
+<p style="position:absolute;top:747px;left:740px;white-space:nowrap" class="ft83">(&#160;)</p>
+<p style="position:absolute;top:513px;left:482px;white-space:nowrap" class="ft87">1&#160;6</p>
+<p style="position:absolute;top:531px;left:464px;white-space:nowrap" class="ft87">1&#160;6</p>
+<p style="position:absolute;top:531px;left:509px;white-space:nowrap" class="ft87">1&#160;6</p>
+<p style="position:absolute;top:513px;left:616px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:531px;left:582px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:531px;left:640px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:513px;left:703px;white-space:nowrap" class="ft87">4&#160;6</p>
+<p style="position:absolute;top:531px;left:686px;white-space:nowrap" class="ft87">4&#160;6</p>
+<p style="position:absolute;top:531px;left:720px;white-space:nowrap" class="ft87">4&#160;6</p>
+<p style="position:absolute;top:572px;left:483px;white-space:nowrap" class="ft87">3</p>
+<p style="position:absolute;top:590px;left:458px;white-space:nowrap" class="ft87">3</p>
+<p style="position:absolute;top:590px;left:508px;white-space:nowrap" class="ft87">3</p>
+<p style="position:absolute;top:572px;left:582px;white-space:nowrap" class="ft87">1&#160;7</p>
+<p style="position:absolute;top:590px;left:542px;white-space:nowrap" class="ft87">1&#160;7</p>
+<p style="position:absolute;top:590px;left:606px;white-space:nowrap" class="ft87">1&#160;7</p>
+<p style="position:absolute;top:613px;left:507px;white-space:nowrap" class="ft87">4&#160;3</p>
+<p style="position:absolute;top:630px;left:486px;white-space:nowrap" class="ft87">4&#160;3</p>
+<p style="position:absolute;top:630px;left:531px;white-space:nowrap" class="ft87">4&#160;3</p>
+<p style="position:absolute;top:613px;left:591px;white-space:nowrap" class="ft87">4&#160;5</p>
+<p style="position:absolute;top:630px;left:571px;white-space:nowrap" class="ft87">4&#160;5</p>
+<p style="position:absolute;top:630px;left:612px;white-space:nowrap" class="ft87">4&#160;5</p>
+<p style="position:absolute;top:613px;left:684px;white-space:nowrap" class="ft87">2&#160;2</p>
+<p style="position:absolute;top:630px;left:653px;white-space:nowrap" class="ft87">2&#160;2</p>
+<p style="position:absolute;top:630px;left:708px;white-space:nowrap" class="ft87">2&#160;2</p>
+<p style="position:absolute;top:655px;left:506px;white-space:nowrap" class="ft87">2&#160;1</p>
+<p style="position:absolute;top:672px;left:457px;white-space:nowrap" class="ft87">2&#160;1</p>
+<p style="position:absolute;top:672px;left:530px;white-space:nowrap" class="ft87">2&#160;1</p>
+<p style="position:absolute;top:655px;left:581px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:672px;left:571px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:672px;left:605px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:696px;left:489px;white-space:nowrap" class="ft87">1&#160;6</p>
+<p style="position:absolute;top:714px;left:464px;white-space:nowrap" class="ft87">1&#160;6</p>
+<p style="position:absolute;top:714px;left:515px;white-space:nowrap" class="ft87">1&#160;6</p>
+<p style="position:absolute;top:696px;left:583px;white-space:nowrap" class="ft87">1&#160;8</p>
+<p style="position:absolute;top:714px;left:556px;white-space:nowrap" class="ft87">1&#160;8</p>
+<p style="position:absolute;top:714px;left:610px;white-space:nowrap" class="ft87">1&#160;8</p>
+<p style="position:absolute;top:737px;left:499px;white-space:nowrap" class="ft87">3&#160;3</p>
+<p style="position:absolute;top:755px;left:460px;white-space:nowrap" class="ft87">3&#160;3</p>
+<p style="position:absolute;top:755px;left:540px;white-space:nowrap" class="ft87">3&#160;3</p>
+<p style="position:absolute;top:737px;left:601px;white-space:nowrap" class="ft87">2&#160;2</p>
+<p style="position:absolute;top:755px;left:582px;white-space:nowrap" class="ft87">2&#160;2</p>
+<p style="position:absolute;top:755px;left:622px;white-space:nowrap" class="ft87">2&#160;2</p>
+<p style="position:absolute;top:849px;left:713px;white-space:nowrap" class="ft89"><i>ξ</i></p>
+<p style="position:absolute;top:933px;left:745px;white-space:nowrap" class="ft89"><i>ξ</i></p>
+<p style="position:absolute;top:1047px;left:422px;white-space:nowrap" class="ft89"><i>ξ</i></p>
+<p style="position:absolute;top:807px;left:330px;white-space:nowrap" class="ft83">=&#160;.</p>
+<p style="position:absolute;top:807px;left:372px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:796px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:819px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:804px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:814px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:800px;left:464px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:818px;left:418px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:818px;left:441px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:800px;left:574px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:818px;left:546px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:818px;left:577px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:838px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:861px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:846px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:856px;left:433px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:859px;left:475px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:859px;left:538px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:859px;left:566px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:838px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:861px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:844px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:857px;left:624px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:837px;left:629px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:862px;left:629px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:843px;left:629px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:856px;left:629px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:849px;left:638px;white-space:nowrap" class="ft83">−&#160;.</p>
+<p style="position:absolute;top:849px;left:675px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:849px;left:700px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:891px;left:330px;white-space:nowrap" class="ft83">=&#160;.</p>
+<p style="position:absolute;top:891px;left:372px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:880px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:903px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:888px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:898px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:884px;left:438px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:901px;left:418px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:901px;left:448px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:884px;left:527px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:901px;left:500px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:901px;left:530px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:922px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:945px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:929px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:940px;left:433px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:943px;left:486px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:926px;left:589px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:943px;left:550px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:943px;left:579px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:922px;left:656px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:945px;left:656px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:928px;left:656px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:941px;left:656px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:921px;left:662px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:946px;left:662px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:927px;left:662px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:940px;left:662px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:933px;left:670px;white-space:nowrap" class="ft83">−&#160;.</p>
+<p style="position:absolute;top:933px;left:708px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:933px;left:732px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:975px;left:330px;white-space:nowrap" class="ft83">=&#160;.</p>
+<p style="position:absolute;top:975px;left:372px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:964px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:986px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:971px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:982px;left:406px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:967px;left:455px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:985px;left:418px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:985px;left:448px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:967px;left:561px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:985px;left:534px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:985px;left:564px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:1006px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1028px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1013px;left:433px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1024px;left:433px;white-space:nowrap" class="ft83">&#160;.</p>
+<p style="position:absolute;top:1027px;left:474px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:1009px;left:567px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:1027px;left:538px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:1027px;left:568px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:1027px;left:637px;white-space:nowrap" class="ft83">.</p>
+<p style="position:absolute;top:1027px;left:678px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:1006px;left:710px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1028px;left:710px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1012px;left:710px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1025px;left:710px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1005px;left:716px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1030px;left:716px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1011px;left:716px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1024px;left:716px;white-space:nowrap" class="ft83"></p>
+<p style="position:absolute;top:1047px;left:347px;white-space:nowrap" class="ft83">−&#160;.</p>
+<p style="position:absolute;top:1047px;left:384px;white-space:nowrap" class="ft83">⋅</p>
+<p style="position:absolute;top:1047px;left:408px;white-space:nowrap" class="ft83">+</p>
+<p style="position:absolute;top:798px;left:593px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:815px;left:566px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:815px;left:621px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:839px;left:491px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:857px;left:464px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:857px;left:515px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:839px;left:591px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:857px;left:555px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:857px;left:615px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:881px;left:457px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:899px;left:437px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:899px;left:477px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:881px;left:547px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:899px;left:520px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:899px;left:574px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:923px;left:497px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:941px;left:475px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:941px;left:527px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:923px;left:608px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:941px;left:568px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:941px;left:647px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:965px;left:474px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:983px;left:437px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:983px;left:511px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:965px;left:580px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:983px;left:554px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:983px;left:608px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1007px;left:491px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1025px;left:464px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1025px;left:516px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1007px;left:587px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1025px;left:558px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1025px;left:615px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1007px;left:672px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1025px;left:668px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:1025px;left:701px;white-space:nowrap" class="ft87">.</p>
+<p style="position:absolute;top:799px;left:301px;white-space:nowrap" class="ft89"><i>dR</i></p>
+<p style="position:absolute;top:816px;left:306px;white-space:nowrap" class="ft89"><i>dt</i></p>
+<p style="position:absolute;top:817px;left:455px;white-space:nowrap" class="ft89"><i>Cyanopindolol</i></p>
+<p style="position:absolute;top:817px;left:590px;white-space:nowrap" class="ft89"><i>MTP</i></p>
+<p style="position:absolute;top:841px;left:469px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:859px;left:494px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:841px;left:556px;white-space:nowrap" class="ft89"><i>cAMP</i></p>
+<p style="position:absolute;top:859px;left:580px;white-space:nowrap" class="ft89"><i>cAMP</i></p>
+<p style="position:absolute;top:848px;left:683px;white-space:nowrap" class="ft89"><i>R</i></p>
+<p style="position:absolute;top:848px;left:725px;white-space:nowrap" class="ft89"><i>t</i></p>
+<p style="position:absolute;top:883px;left:301px;white-space:nowrap" class="ft89"><i>dR</i></p>
+<p style="position:absolute;top:900px;left:306px;white-space:nowrap" class="ft89"><i>dt</i></p>
+<p style="position:absolute;top:901px;left:461px;white-space:nowrap" class="ft89"><i>R</i></p>
+<p style="position:absolute;top:901px;left:544px;white-space:nowrap" class="ft89"><i>MTP</i></p>
+<p style="position:absolute;top:925px;left:475px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:943px;left:505px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:943px;left:592px;white-space:nowrap" class="ft89"><i>Altanserin</i></p>
+<p style="position:absolute;top:932px;left:715px;white-space:nowrap" class="ft89"><i>R</i></p>
+<p style="position:absolute;top:932px;left:757px;white-space:nowrap" class="ft89"><i>t</i></p>
+<p style="position:absolute;top:967px;left:301px;white-space:nowrap" class="ft89"><i>dR</i></p>
+<p style="position:absolute;top:984px;left:306px;white-space:nowrap" class="ft89"><i>dt</i></p>
+<p style="position:absolute;top:985px;left:461px;white-space:nowrap" class="ft89"><i>SB</i></p>
+<p style="position:absolute;top:985px;left:577px;white-space:nowrap" class="ft89"><i>MTP</i></p>
+<p style="position:absolute;top:1009px;left:469px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:1026px;left:493px;white-space:nowrap" class="ft89"><i>HT</i></p>
+<p style="position:absolute;top:1026px;left:582px;white-space:nowrap" class="ft89"><i>SERT</i></p>
+<p style="position:absolute;top:1009px;left:662px;white-space:nowrap" class="ft89"><i>c</i></p>
+<p style="position:absolute;top:1026px;left:692px;white-space:nowrap" class="ft89"><i>c</i></p>
+<p style="position:absolute;top:1047px;left:392px;white-space:nowrap" class="ft89"><i>R</i></p>
+<p style="position:absolute;top:1047px;left:434px;white-space:nowrap" class="ft89"><i>t</i></p>
+<p style="position:absolute;top:799px;left:315px;white-space:nowrap" class="ft83">1</p>
+<p style="position:absolute;top:807px;left:348px;white-space:nowrap" class="ft83">0&#160;34</p>
+<p style="position:absolute;top:807px;left:385px;white-space:nowrap" class="ft83">min</p>
+<p style="position:absolute;top:799px;left:459px;white-space:nowrap" class="ft83">0&#160;76</p>
+<p style="position:absolute;top:817px;left:412px;white-space:nowrap" class="ft83">0&#160;76</p>
+<p style="position:absolute;top:807px;left:533px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:799px;left:568px;white-space:nowrap" class="ft83">0&#160;38</p>
+<p style="position:absolute;top:817px;left:541px;white-space:nowrap" class="ft83">0&#160;38</p>
+<p style="position:absolute;top:807px;left:630px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:849px;left:412px;white-space:nowrap" class="ft83">max</p>
+<p style="position:absolute;top:841px;left:463px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:859px;left:439px;white-space:nowrap" class="ft83">0&#160;27</p>
+<p style="position:absolute;top:859px;left:488px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:849px;left:524px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:859px;left:532px;white-space:nowrap" class="ft83">0&#160;21</p>
+<p style="position:absolute;top:849px;left:651px;white-space:nowrap" class="ft83">0&#160;19</p>
+<p style="position:absolute;top:849px;left:690px;white-space:nowrap" class="ft83">1</p>
+<p style="position:absolute;top:849px;left:720px;white-space:nowrap" class="ft83">(&#160;)</p>
+<p style="position:absolute;top:883px;left:315px;white-space:nowrap" class="ft83">2</p>
+<p style="position:absolute;top:891px;left:348px;white-space:nowrap" class="ft83">0&#160;56</p>
+<p style="position:absolute;top:891px;left:385px;white-space:nowrap" class="ft83">min</p>
+<p style="position:absolute;top:883px;left:432px;white-space:nowrap" class="ft83">0&#160;29</p>
+<p style="position:absolute;top:901px;left:412px;white-space:nowrap" class="ft83">0&#160;29</p>
+<p style="position:absolute;top:901px;left:469px;white-space:nowrap" class="ft83">1</p>
+<p style="position:absolute;top:891px;left:486px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:883px;left:521px;white-space:nowrap" class="ft83">0&#160;17</p>
+<p style="position:absolute;top:901px;left:494px;white-space:nowrap" class="ft83">0&#160;17</p>
+<p style="position:absolute;top:891px;left:583px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:932px;left:411px;white-space:nowrap" class="ft83">max</p>
+<p style="position:absolute;top:925px;left:469px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:943px;left:439px;white-space:nowrap" class="ft83">0&#160;0095</p>
+<p style="position:absolute;top:943px;left:499px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:932px;left:536px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:925px;left:583px;white-space:nowrap" class="ft83">0&#160;64</p>
+<p style="position:absolute;top:943px;left:544px;white-space:nowrap" class="ft83">0&#160;64</p>
+<p style="position:absolute;top:932px;left:684px;white-space:nowrap" class="ft83">0&#160;25</p>
+<p style="position:absolute;top:932px;left:723px;white-space:nowrap" class="ft83">2</p>
+<p style="position:absolute;top:932px;left:753px;white-space:nowrap" class="ft83">(&#160;)</p>
+<p style="position:absolute;top:967px;left:315px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:974px;left:348px;white-space:nowrap" class="ft83">0&#160;43</p>
+<p style="position:absolute;top:974px;left:385px;white-space:nowrap" class="ft83">min</p>
+<p style="position:absolute;top:967px;left:449px;white-space:nowrap" class="ft83">0&#160;76</p>
+<p style="position:absolute;top:985px;left:412px;white-space:nowrap" class="ft83">0&#160;76</p>
+<p style="position:absolute;top:985px;left:474px;white-space:nowrap" class="ft83">699551</p>
+<p style="position:absolute;top:974px;left:520px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:967px;left:555px;white-space:nowrap" class="ft83">0&#160;27</p>
+<p style="position:absolute;top:985px;left:528px;white-space:nowrap" class="ft83">0&#160;27</p>
+<p style="position:absolute;top:974px;left:617px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:1016px;left:411px;white-space:nowrap" class="ft83">max</p>
+<p style="position:absolute;top:1009px;left:463px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:1027px;left:439px;white-space:nowrap" class="ft83">0&#160;54</p>
+<p style="position:absolute;top:1027px;left:487px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:1016px;left:525px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:1009px;left:561px;white-space:nowrap" class="ft83">0&#160;67</p>
+<p style="position:absolute;top:1027px;left:532px;white-space:nowrap" class="ft83">0&#160;67</p>
+<p style="position:absolute;top:1016px;left:624px;white-space:nowrap" class="ft83">,</p>
+<p style="position:absolute;top:1027px;left:632px;white-space:nowrap" class="ft83">0&#160;0095</p>
+<p style="position:absolute;top:1047px;left:360px;white-space:nowrap" class="ft83">0&#160;23</p>
+<p style="position:absolute;top:1047px;left:399px;white-space:nowrap" class="ft83">5</p>
+<p style="position:absolute;top:1047px;left:429px;white-space:nowrap" class="ft83">(&#160;)</p>
+<p style="position:absolute;top:797px;left:480px;white-space:nowrap" class="ft87">4</p>
+<p style="position:absolute;top:815px;left:433px;white-space:nowrap" class="ft87">4</p>
+<p style="position:absolute;top:815px;left:526px;white-space:nowrap" class="ft87">4</p>
+<p style="position:absolute;top:797px;left:589px;white-space:nowrap" class="ft87">4&#160;3</p>
+<p style="position:absolute;top:815px;left:561px;white-space:nowrap" class="ft87">4&#160;3</p>
+<p style="position:absolute;top:815px;left:616px;white-space:nowrap" class="ft87">4&#160;3</p>
+<p style="position:absolute;top:839px;left:486px;white-space:nowrap" class="ft87">1&#160;9</p>
+<p style="position:absolute;top:857px;left:460px;white-space:nowrap" class="ft87">1&#160;9</p>
+<p style="position:absolute;top:857px;left:511px;white-space:nowrap" class="ft87">1&#160;9</p>
+<p style="position:absolute;top:839px;left:587px;white-space:nowrap" class="ft87">1&#160;4</p>
+<p style="position:absolute;top:857px;left:551px;white-space:nowrap" class="ft87">1&#160;4</p>
+<p style="position:absolute;top:857px;left:611px;white-space:nowrap" class="ft87">1&#160;4</p>
+<p style="position:absolute;top:881px;left:453px;white-space:nowrap" class="ft87">1&#160;2</p>
+<p style="position:absolute;top:899px;left:433px;white-space:nowrap" class="ft87">1&#160;2</p>
+<p style="position:absolute;top:899px;left:472px;white-space:nowrap" class="ft87">1&#160;2</p>
+<p style="position:absolute;top:881px;left:543px;white-space:nowrap" class="ft87">4&#160;9</p>
+<p style="position:absolute;top:899px;left:516px;white-space:nowrap" class="ft87">4&#160;9</p>
+<p style="position:absolute;top:899px;left:570px;white-space:nowrap" class="ft87">4&#160;9</p>
+<p style="position:absolute;top:923px;left:492px;white-space:nowrap" class="ft87">3&#160;7</p>
+<p style="position:absolute;top:941px;left:471px;white-space:nowrap" class="ft87">3&#160;7</p>
+<p style="position:absolute;top:941px;left:523px;white-space:nowrap" class="ft87">3&#160;7</p>
+<p style="position:absolute;top:923px;left:603px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:941px;left:564px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:941px;left:643px;white-space:nowrap" class="ft87">3&#160;6</p>
+<p style="position:absolute;top:965px;left:469px;white-space:nowrap" class="ft87">2&#160;7</p>
+<p style="position:absolute;top:983px;left:433px;white-space:nowrap" class="ft87">2&#160;7</p>
+<p style="position:absolute;top:983px;left:507px;white-space:nowrap" class="ft87">2&#160;7</p>
+<p style="position:absolute;top:965px;left:576px;white-space:nowrap" class="ft87">3&#160;4</p>
+<p style="position:absolute;top:983px;left:549px;white-space:nowrap" class="ft87">3&#160;4</p>
+<p style="position:absolute;top:983px;left:603px;white-space:nowrap" class="ft87">3&#160;4</p>
+<p style="position:absolute;top:1007px;left:487px;white-space:nowrap" class="ft87">2&#160;4</p>
+<p style="position:absolute;top:1024px;left:459px;white-space:nowrap" class="ft87">2&#160;4</p>
+<p style="position:absolute;top:1024px;left:511px;white-space:nowrap" class="ft87">2&#160;4</p>
+<p style="position:absolute;top:1007px;left:583px;white-space:nowrap" class="ft87">4&#160;1</p>
+<p style="position:absolute;top:1024px;left:554px;white-space:nowrap" class="ft87">4&#160;1</p>
+<p style="position:absolute;top:1024px;left:611px;white-space:nowrap" class="ft87">4&#160;1</p>
+<p style="position:absolute;top:1007px;left:667px;white-space:nowrap" class="ft87">3&#160;7</p>
+<p style="position:absolute;top:1024px;left:663px;white-space:nowrap" class="ft87">3&#160;7</p>
+<p style="position:absolute;top:1024px;left:697px;white-space:nowrap" class="ft87">3&#160;7</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft91{font-size:13px;font-family:Times;color:#839097;}
+	.ft92{font-size:10px;font-family:Times;color:#839097;}
+	.ft93{font-size:10px;font-family:Times;color:#000000;}
+	.ft94{font-size:10px;font-family:Times;color:#839097;}
+	.ft95{font-size:11px;font-family:Times;color:#000000;}
+	.ft96{font-size:11px;font-family:Times;color:#000000;}
+	.ft97{font-size:7px;font-family:Times;color:#000000;}
+	.ft98{font-size:6px;font-family:Times;color:#000000;}
+	.ft99{font-size:13px;font-family:Times;color:#000000;}
+	.ft910{font-size:16px;font-family:Times;color:#000000;}
+	.ft911{font-size:7px;font-family:Times;color:#000000;}
+	.ft912{font-size:6px;font-family:Times;color:#000000;}
+	.ft913{font-size:11px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft90">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:824px;white-space:nowrap" class="ft91">9</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft92">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:182px;left:659px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:225px;left:639px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:310px;left:684px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:441px;left:662px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:97px;left:352px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:97px;left:406px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:84px;left:443px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:111px;left:443px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:92px;left:443px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:103px;left:443px;white-space:nowrap" class="ft96">&#160;.</p>
+<p style="position:absolute;top:109px;left:496px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:86px;left:617px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:93px;left:617px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:105px;left:617px;white-space:nowrap" class="ft96">&#160;.</p>
+<p style="position:absolute;top:109px;left:663px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:152px;left:451px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:152px;left:484px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:152px;left:544px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:152px;left:576px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:132px;left:666px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:152px;left:634px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:152px;left:667px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:174px;left:483px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:193px;left:450px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:193px;left:483px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:170px;left:546px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:177px;left:546px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:192px;left:546px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:169px;left:552px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:195px;left:552px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:176px;left:552px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:190px;left:552px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:182px;left:561px;white-space:nowrap" class="ft96">−&#160;.</p>
+<p style="position:absolute;top:182px;left:604px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:182px;left:644px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:236px;left:313px;white-space:nowrap" class="ft96">∂</p>
+<p style="position:absolute;top:225px;left:352px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:225px;left:399px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:217px;left:456px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:236px;left:415px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:236px;left:448px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:225px;left:532px;white-space:nowrap" class="ft96">−&#160;.</p>
+<p style="position:absolute;top:225px;left:574px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:225px;left:625px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:267px;left:352px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:267px;left:399px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:255px;left:437px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:263px;left:437px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:274px;left:437px;white-space:nowrap" class="ft96">&#160;.</p>
+<p style="position:absolute;top:278px;left:503px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:278px;left:578px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:278px;left:611px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:302px;left:499px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:322px;left:451px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:322px;left:484px;white-space:nowrap" class="ft96">+&#160;′&#160;′&#160;−</p>
+<p style="position:absolute;top:299px;left:578px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:306px;left:578px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:320px;left:578px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:310px;left:588px;white-space:nowrap" class="ft96">−&#160;.&#160;⋅</p>
+<p style="position:absolute;top:310px;left:670px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:354px;left:352px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:354px;left:399px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:342px;left:437px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:350px;left:437px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:361px;left:437px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:345px;left:469px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:365px;left:451px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:365px;left:476px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:345px;left:556px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:365px;left:526px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:365px;left:558px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:345px;left:667px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:365px;left:631px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:365px;left:670px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:388px;left:469px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:408px;left:450px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:408px;left:483px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:385px;left:558px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:393px;left:558px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:404px;left:558px;white-space:nowrap" class="ft96">&#160;.</p>
+<p style="position:absolute;top:408px;left:605px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:408px;left:682px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:408px;left:714px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:452px;left:447px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:452px;left:486px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:430px;left:545px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:436px;left:545px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:451px;left:545px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:428px;left:551px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:455px;left:551px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:435px;left:551px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:449px;left:551px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:441px;left:560px;white-space:nowrap" class="ft96">−&#160;.</p>
+<p style="position:absolute;top:441px;left:603px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:441px;left:647px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:87px;left:537px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:106px;left:483px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:106px;left:568px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:87px;left:687px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:106px;left:651px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:106px;left:714px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:130px;left:490px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:149px;left:472px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:149px;left:518px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:130px;left:582px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:149px;left:564px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:149px;left:609px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:130px;left:687px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:149px;left:655px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:149px;left:719px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:171px;left:504px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:191px;left:471px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:191px;left:537px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:215px;left:477px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:234px;left:436px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:234px;left:518px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:257px;left:515px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:276px;left:491px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:276px;left:553px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:257px;left:652px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:276px;left:599px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:276px;left:680px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:300px;left:520px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:319px;left:472px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:319px;left:569px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:343px;left:576px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:362px;left:547px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:362px;left:606px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:343px;left:695px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:362px;left:658px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:362px;left:731px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:386px;left:491px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:406px;left:472px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:406px;left:510px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:386px;left:629px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:406px;left:593px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:406px;left:657px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:386px;left:731px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:406px;left:702px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:406px;left:757px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:431px;left:505px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:450px;left:475px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:450px;left:535px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:88px;left:296px;white-space:nowrap" class="ft95"><i>dMSH</i></p>
+<p style="position:absolute;top:107px;left:308px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:88px;left:480px;white-space:nowrap" class="ft95"><i>SHU</i></p>
+<p style="position:absolute;top:108px;left:511px;white-space:nowrap" class="ft95"><i>SHU</i></p>
+<p style="position:absolute;top:88px;left:650px;white-space:nowrap" class="ft95"><i>SERT</i></p>
+<p style="position:absolute;top:108px;left:678px;white-space:nowrap" class="ft95"><i>SERT</i></p>
+<p style="position:absolute;top:132px;left:471px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:151px;left:499px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:132px;left:564px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:151px;left:591px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:151px;left:682px;white-space:nowrap" class="ft95"><i>MRIF</i></p>
+<p style="position:absolute;top:193px;left:498px;white-space:nowrap" class="ft95"><i>cAMP</i></p>
+<p style="position:absolute;top:181px;left:612px;white-space:nowrap" class="ft95"><i>MSH</i></p>
+<p style="position:absolute;top:181px;left:671px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:216px;left:296px;white-space:nowrap" class="ft95"><i>dVMAT</i></p>
+<p style="position:absolute;top:235px;left:321px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:236px;left:463px;white-space:nowrap" class="ft95"><i>Reserpine</i></p>
+<p style="position:absolute;top:225px;left:582px;white-space:nowrap" class="ft95"><i>VMAT</i></p>
+<p style="position:absolute;top:225px;left:652px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:258px;left:296px;white-space:nowrap" class="ft95"><i>dcAMP</i></p>
+<p style="position:absolute;top:277px;left:311px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:258px;left:481px;white-space:nowrap" class="ft95"><i>MSH</i></p>
+<p style="position:absolute;top:278px;left:518px;white-space:nowrap" class="ft95"><i>MSH</i></p>
+<p style="position:absolute;top:258px;left:598px;white-space:nowrap" class="ft95"><i>Forskolin</i></p>
+<p style="position:absolute;top:278px;left:626px;white-space:nowrap" class="ft95"><i>Forskolin</i></p>
+<p style="position:absolute;top:321px;left:537px;white-space:nowrap" class="ft95"><i>DDA</i></p>
+<p style="position:absolute;top:310px;left:632px;white-space:nowrap" class="ft95"><i>cAMP</i></p>
+<p style="position:absolute;top:310px;left:697px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:345px;left:296px;white-space:nowrap" class="ft95"><i>dCREB</i></p>
+<p style="position:absolute;top:364px;left:310px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:364px;left:491px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:364px;left:573px;white-space:nowrap" class="ft95"><i>MSH</i></p>
+<p style="position:absolute;top:364px;left:685px;white-space:nowrap" class="ft95"><i>ACREB</i></p>
+<p style="position:absolute;top:407px;left:498px;white-space:nowrap" class="ft95"><i>a</i></p>
+<p style="position:absolute;top:388px;left:591px;white-space:nowrap" class="ft95"><i>CREB</i></p>
+<p style="position:absolute;top:407px;left:620px;white-space:nowrap" class="ft95"><i>CREB</i></p>
+<p style="position:absolute;top:388px;left:702px;white-space:nowrap" class="ft95"><i>PKA</i></p>
+<p style="position:absolute;top:407px;left:729px;white-space:nowrap" class="ft95"><i>PKA</i></p>
+<p style="position:absolute;top:432px;left:471px;white-space:nowrap" class="ft95"><i>VP</i></p>
+<p style="position:absolute;top:452px;left:501px;white-space:nowrap" class="ft95"><i>VP</i></p>
+<p style="position:absolute;top:441px;left:611px;white-space:nowrap" class="ft95"><i>CREB</i></p>
+<p style="position:absolute;top:441px;left:674px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:97px;left:372px;white-space:nowrap" class="ft96">0&#160;077</p>
+<p style="position:absolute;top:97px;left:421px;white-space:nowrap" class="ft96">min</p>
+<p style="position:absolute;top:89px;left:506px;white-space:nowrap" class="ft96">9119</p>
+<p style="position:absolute;top:108px;left:450px;white-space:nowrap" class="ft96">0&#160;061</p>
+<p style="position:absolute;top:108px;left:537px;white-space:nowrap" class="ft96">9119</p>
+<p style="position:absolute;top:97px;left:578px;white-space:nowrap" class="ft96">,&#160;max</p>
+<p style="position:absolute;top:108px;left:623px;white-space:nowrap" class="ft96">0&#160;88</p>
+<p style="position:absolute;top:97px;left:724px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:132px;left:480px;white-space:nowrap" class="ft96">2</p>
+<p style="position:absolute;top:151px;left:444px;white-space:nowrap" class="ft96">0&#160;69</p>
+<p style="position:absolute;top:151px;left:507px;white-space:nowrap" class="ft96">2</p>
+<p style="position:absolute;top:140px;left:528px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:132px;left:572px;white-space:nowrap" class="ft96">5</p>
+<p style="position:absolute;top:151px;left:537px;white-space:nowrap" class="ft96">0&#160;43</p>
+<p style="position:absolute;top:151px;left:599px;white-space:nowrap" class="ft96">5</p>
+<p style="position:absolute;top:140px;left:619px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:132px;left:659px;white-space:nowrap" class="ft96">0&#160;28</p>
+<p style="position:absolute;top:151px;left:627px;white-space:nowrap" class="ft96">0&#160;28</p>
+<p style="position:absolute;top:140px;left:729px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:173px;left:477px;white-space:nowrap" class="ft96">0&#160;65</p>
+<p style="position:absolute;top:193px;left:444px;white-space:nowrap" class="ft96">0&#160;65</p>
+<p style="position:absolute;top:182px;left:576px;white-space:nowrap" class="ft96">0&#160;68</p>
+<p style="position:absolute;top:182px;left:667px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:225px;left:372px;white-space:nowrap" class="ft96">0&#160;74</p>
+<p style="position:absolute;top:217px;left:450px;white-space:nowrap" class="ft96">0&#160;23</p>
+<p style="position:absolute;top:236px;left:409px;white-space:nowrap" class="ft96">0&#160;23</p>
+<p style="position:absolute;top:225px;left:547px;white-space:nowrap" class="ft96">0&#160;83</p>
+<p style="position:absolute;top:225px;left:647px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:267px;left:372px;white-space:nowrap" class="ft96">0&#160;48</p>
+<p style="position:absolute;top:267px;left:414px;white-space:nowrap" class="ft96">min</p>
+<p style="position:absolute;top:278px;left:443px;white-space:nowrap" class="ft96">0&#160;00028</p>
+<p style="position:absolute;top:267px;left:562px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:278px;left:571px;white-space:nowrap" class="ft96">0&#160;79</p>
+<p style="position:absolute;top:267px;left:689px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:302px;left:493px;white-space:nowrap" class="ft96">0&#160;53</p>
+<p style="position:absolute;top:321px;left:444px;white-space:nowrap" class="ft96">0&#160;53</p>
+<p style="position:absolute;top:321px;left:499px;white-space:nowrap" class="ft96">2&#160;5</p>
+<p style="position:absolute;top:310px;left:603px;white-space:nowrap" class="ft96">0&#160;5</p>
+<p style="position:absolute;top:310px;left:692px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:353px;left:372px;white-space:nowrap" class="ft96">0&#160;81</p>
+<p style="position:absolute;top:353px;left:414px;white-space:nowrap" class="ft96">min</p>
+<p style="position:absolute;top:345px;left:462px;white-space:nowrap" class="ft96">0&#160;65</p>
+<p style="position:absolute;top:364px;left:444px;white-space:nowrap" class="ft96">0&#160;65</p>
+<p style="position:absolute;top:364px;left:499px;white-space:nowrap" class="ft96">1</p>
+<p style="position:absolute;top:353px;left:511px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:345px;left:549px;white-space:nowrap" class="ft96">0&#160;24</p>
+<p style="position:absolute;top:364px;left:519px;white-space:nowrap" class="ft96">0&#160;24</p>
+<p style="position:absolute;top:353px;left:616px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:345px;left:661px;white-space:nowrap" class="ft96">0&#160;027</p>
+<p style="position:absolute;top:364px;left:624px;white-space:nowrap" class="ft96">0&#160;027</p>
+<p style="position:absolute;top:353px;left:741px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:388px;left:463px;white-space:nowrap" class="ft96">0&#160;72</p>
+<p style="position:absolute;top:407px;left:444px;white-space:nowrap" class="ft96">0&#160;72</p>
+<p style="position:absolute;top:396px;left:519px;white-space:nowrap" class="ft96">,&#160;max</p>
+<p style="position:absolute;top:407px;left:565px;white-space:nowrap" class="ft96">0&#160;49</p>
+<p style="position:absolute;top:396px;left:666px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:407px;left:676px;white-space:nowrap" class="ft96">0&#160;41</p>
+<p style="position:absolute;top:396px;left:766px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:433px;left:487px;white-space:nowrap" class="ft96">16</p>
+<p style="position:absolute;top:452px;left:440px;white-space:nowrap" class="ft96">0&#160;026</p>
+<p style="position:absolute;top:452px;left:518px;white-space:nowrap" class="ft96">16</p>
+<p style="position:absolute;top:441px;left:575px;white-space:nowrap" class="ft96">0&#160;82</p>
+<p style="position:absolute;top:441px;left:670px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:86px;left:533px;white-space:nowrap" class="ft97">4&#160;8</p>
+<p style="position:absolute;top:106px;left:479px;white-space:nowrap" class="ft97">4&#160;8</p>
+<p style="position:absolute;top:106px;left:563px;white-space:nowrap" class="ft97">4&#160;8</p>
+<p style="position:absolute;top:86px;left:682px;white-space:nowrap" class="ft97">3&#160;4</p>
+<p style="position:absolute;top:106px;left:646px;white-space:nowrap" class="ft97">3&#160;4</p>
+<p style="position:absolute;top:106px;left:709px;white-space:nowrap" class="ft97">3&#160;4</p>
+<p style="position:absolute;top:130px;left:486px;white-space:nowrap" class="ft97">2&#160;6</p>
+<p style="position:absolute;top:149px;left:467px;white-space:nowrap" class="ft97">2&#160;6</p>
+<p style="position:absolute;top:149px;left:513px;white-space:nowrap" class="ft97">2&#160;6</p>
+<p style="position:absolute;top:130px;left:577px;white-space:nowrap" class="ft97">1&#160;7</p>
+<p style="position:absolute;top:149px;left:559px;white-space:nowrap" class="ft97">1&#160;7</p>
+<p style="position:absolute;top:149px;left:604px;white-space:nowrap" class="ft97">1&#160;7</p>
+<p style="position:absolute;top:130px;left:683px;white-space:nowrap" class="ft97">2&#160;9</p>
+<p style="position:absolute;top:149px;left:651px;white-space:nowrap" class="ft97">2&#160;9</p>
+<p style="position:absolute;top:149px;left:715px;white-space:nowrap" class="ft97">2&#160;9</p>
+<p style="position:absolute;top:171px;left:499px;white-space:nowrap" class="ft97">2&#160;9</p>
+<p style="position:absolute;top:191px;left:466px;white-space:nowrap" class="ft97">2&#160;9</p>
+<p style="position:absolute;top:191px;left:532px;white-space:nowrap" class="ft97">2&#160;9</p>
+<p style="position:absolute;top:214px;left:473px;white-space:nowrap" class="ft97">3&#160;5</p>
+<p style="position:absolute;top:234px;left:432px;white-space:nowrap" class="ft97">3&#160;5</p>
+<p style="position:absolute;top:234px;left:514px;white-space:nowrap" class="ft97">3&#160;5</p>
+<p style="position:absolute;top:256px;left:511px;white-space:nowrap" class="ft97">4&#160;4</p>
+<p style="position:absolute;top:276px;left:486px;white-space:nowrap" class="ft97">4&#160;4</p>
+<p style="position:absolute;top:276px;left:548px;white-space:nowrap" class="ft97">4&#160;4</p>
+<p style="position:absolute;top:256px;left:648px;white-space:nowrap" class="ft97">1&#160;2</p>
+<p style="position:absolute;top:276px;left:594px;white-space:nowrap" class="ft97">1&#160;2</p>
+<p style="position:absolute;top:276px;left:675px;white-space:nowrap" class="ft97">1&#160;2</p>
+<p style="position:absolute;top:299px;left:515px;white-space:nowrap" class="ft97">2&#160;5</p>
+<p style="position:absolute;top:319px;left:467px;white-space:nowrap" class="ft97">2&#160;5</p>
+<p style="position:absolute;top:319px;left:564px;white-space:nowrap" class="ft97">2&#160;5</p>
+<p style="position:absolute;top:343px;left:485px;white-space:nowrap" class="ft97">5</p>
+<p style="position:absolute;top:362px;left:467px;white-space:nowrap" class="ft97">5</p>
+<p style="position:absolute;top:362px;left:503px;white-space:nowrap" class="ft97">5</p>
+<p style="position:absolute;top:343px;left:572px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:362px;left:542px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:362px;left:601px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:343px;left:690px;white-space:nowrap" class="ft97">1&#160;4</p>
+<p style="position:absolute;top:362px;left:654px;white-space:nowrap" class="ft97">1&#160;4</p>
+<p style="position:absolute;top:362px;left:726px;white-space:nowrap" class="ft97">1&#160;4</p>
+<p style="position:absolute;top:386px;left:486px;white-space:nowrap" class="ft97">4&#160;3</p>
+<p style="position:absolute;top:405px;left:467px;white-space:nowrap" class="ft97">4&#160;3</p>
+<p style="position:absolute;top:405px;left:505px;white-space:nowrap" class="ft97">4&#160;3</p>
+<p style="position:absolute;top:386px;left:624px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:405px;left:588px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:405px;left:652px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:386px;left:726px;white-space:nowrap" class="ft97">3&#160;3</p>
+<p style="position:absolute;top:405px;left:697px;white-space:nowrap" class="ft97">3&#160;3</p>
+<p style="position:absolute;top:405px;left:752px;white-space:nowrap" class="ft97">3&#160;3</p>
+<p style="position:absolute;top:430px;left:500px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:450px;left:470px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:450px;left:531px;white-space:nowrap" class="ft97">2&#160;7</p>
+<p style="position:absolute;top:536px;left:455px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:598px;left:420px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:629px;left:695px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:668px;left:464px;white-space:nowrap" class="ft95"><i>ξ</i></p>
+<p style="position:absolute;top:505px;left:343px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:505px;left:390px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:494px;left:427px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:501px;left:427px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:513px;left:427px;white-space:nowrap" class="ft96">&#160;.</p>
+<p style="position:absolute;top:516px;left:472px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:516px;left:548px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:516px;left:580px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:497px;left:686px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:516px;left:659px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:516px;left:691px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:494px;left:742px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:500px;left:742px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:515px;left:742px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:536px;left:361px;white-space:nowrap" class="ft96">−&#160;.</p>
+<p style="position:absolute;top:536px;left:403px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:536px;left:441px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:567px;left:343px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:567px;left:390px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:555px;left:427px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:563px;left:427px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:574px;left:427px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:559px;left:472px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:578px;left:440px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:578px;left:474px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:559px;left:572px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:578px;left:550px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:578px;left:582px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:578px;left:639px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:578px;left:679px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:555px;left:721px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:562px;left:721px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:577px;left:721px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:598px;left:361px;white-space:nowrap" class="ft96">−&#160;⋅&#160;+</p>
+<p style="position:absolute;top:629px;left:343px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:629px;left:396px;white-space:nowrap" class="ft96">⋅</p>
+<p style="position:absolute;top:617px;left:436px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:625px;left:436px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:636px;left:436px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:621px;left:472px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:640px;left:449px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:640px;left:482px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:621px;left:560px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:640px;left:541px;white-space:nowrap" class="ft96">.</p>
+<p style="position:absolute;top:640px;left:574px;white-space:nowrap" class="ft96">+</p>
+<p style="position:absolute;top:617px;left:610px;white-space:nowrap" class="ft913"><br/></p>
+<p style="position:absolute;top:624px;left:610px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:638px;left:610px;white-space:nowrap" class="ft96"></p>
+<p style="position:absolute;top:629px;left:619px;white-space:nowrap" class="ft96">−&#160;.</p>
+<p style="position:absolute;top:629px;left:661px;white-space:nowrap" class="ft96">⋅&#160;+</p>
+<p style="position:absolute;top:668px;left:343px;white-space:nowrap" class="ft96">=&#160;.</p>
+<p style="position:absolute;top:668px;left:390px;white-space:nowrap" class="ft96">−&#160;.</p>
+<p style="position:absolute;top:668px;left:432px;white-space:nowrap" class="ft96">⋅&#160;+</p>
+<p style="position:absolute;top:495px;left:497px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:514px;left:461px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:514px;left:524px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:495px;left:607px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:514px;left:568px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:514px;left:634px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:495px;left:706px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:514px;left:680px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:514px;left:733px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:556px;left:493px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:576px;left:461px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:576px;left:525px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:556px;left:592px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:576px;left:570px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:576px;left:614px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:556px;left:682px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:576px;left:667px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:576px;left:712px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:618px;left:493px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:638px;left:471px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:638px;left:516px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:618px;left:581px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:638px;left:562px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:638px;left:600px;white-space:nowrap" class="ft97">.</p>
+<p style="position:absolute;top:496px;left:300px;white-space:nowrap" class="ft95"><i>dPKA</i></p>
+<p style="position:absolute;top:515px;left:310px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:496px;left:460px;white-space:nowrap" class="ft95"><i>SERT</i></p>
+<p style="position:absolute;top:516px;left:487px;white-space:nowrap" class="ft95"><i>SERT</i></p>
+<p style="position:absolute;top:496px;left:568px;white-space:nowrap" class="ft95"><i>cAMP</i></p>
+<p style="position:absolute;top:516px;left:595px;white-space:nowrap" class="ft95"><i>cAMP</i></p>
+<p style="position:absolute;top:516px;left:706px;white-space:nowrap" class="ft95"><i>H</i></p>
+<p style="position:absolute;top:536px;left:411px;white-space:nowrap" class="ft95"><i>PKA</i></p>
+<p style="position:absolute;top:536px;left:468px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:558px;left:318px;white-space:nowrap" class="ft95"><i>da</i></p>
+<p style="position:absolute;top:577px;left:319px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:578px;left:488px;white-space:nowrap" class="ft95"><i>SERT</i></p>
+<p style="position:absolute;top:578px;left:597px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:558px;left:663px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:578px;left:693px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:597px;left:394px;white-space:nowrap" class="ft95"><i>a</i></p>
+<p style="position:absolute;top:597px;left:432px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:620px;left:318px;white-space:nowrap" class="ft95"><i>db</i></p>
+<p style="position:absolute;top:639px;left:319px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:639px;left:497px;white-space:nowrap" class="ft95"><i>R</i></p>
+<p style="position:absolute;top:639px;left:588px;white-space:nowrap" class="ft95"><i>b</i></p>
+<p style="position:absolute;top:628px;left:670px;white-space:nowrap" class="ft95"><i>b</i></p>
+<p style="position:absolute;top:628px;left:708px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:659px;left:320px;white-space:nowrap" class="ft95"><i>dc</i></p>
+<p style="position:absolute;top:678px;left:320px;white-space:nowrap" class="ft95"><i>dt</i></p>
+<p style="position:absolute;top:667px;left:440px;white-space:nowrap" class="ft95"><i>c</i></p>
+<p style="position:absolute;top:667px;left:477px;white-space:nowrap" class="ft95"><i>t</i></p>
+<p style="position:absolute;top:505px;left:362px;white-space:nowrap" class="ft96">0&#160;31</p>
+<p style="position:absolute;top:505px;left:405px;white-space:nowrap" class="ft96">min</p>
+<p style="position:absolute;top:516px;left:434px;white-space:nowrap" class="ft96">0&#160;31</p>
+<p style="position:absolute;top:505px;left:533px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:516px;left:541px;white-space:nowrap" class="ft96">0&#160;21</p>
+<p style="position:absolute;top:505px;left:643px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:497px;left:679px;white-space:nowrap" class="ft96">0&#160;12</p>
+<p style="position:absolute;top:516px;left:652px;white-space:nowrap" class="ft96">0&#160;12</p>
+<p style="position:absolute;top:516px;left:716px;white-space:nowrap" class="ft96">89</p>
+<p style="position:absolute;top:536px;left:375px;white-space:nowrap" class="ft96">0&#160;66</p>
+<p style="position:absolute;top:536px;left:463px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:566px;left:362px;white-space:nowrap" class="ft96">0&#160;96</p>
+<p style="position:absolute;top:566px;left:405px;white-space:nowrap" class="ft96">min</p>
+<p style="position:absolute;top:558px;left:465px;white-space:nowrap" class="ft96">0&#160;13</p>
+<p style="position:absolute;top:578px;left:434px;white-space:nowrap" class="ft96">0&#160;13</p>
+<p style="position:absolute;top:566px;left:534px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:558px;left:566px;white-space:nowrap" class="ft96">0&#160;15</p>
+<p style="position:absolute;top:578px;left:544px;white-space:nowrap" class="ft96">0&#160;15</p>
+<p style="position:absolute;top:578px;left:605px;white-space:nowrap" class="ft96">1</p>
+<p style="position:absolute;top:566px;left:624px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:558px;left:671px;white-space:nowrap" class="ft96">2</p>
+<p style="position:absolute;top:578px;left:633px;white-space:nowrap" class="ft96">0&#160;092</p>
+<p style="position:absolute;top:578px;left:702px;white-space:nowrap" class="ft96">2</p>
+<p style="position:absolute;top:598px;left:375px;white-space:nowrap" class="ft96">1</p>
+<p style="position:absolute;top:598px;left:428px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:628px;left:362px;white-space:nowrap" class="ft96">0&#160;041</p>
+<p style="position:absolute;top:628px;left:411px;white-space:nowrap" class="ft96">max</p>
+<p style="position:absolute;top:620px;left:465px;white-space:nowrap" class="ft96">0&#160;27</p>
+<p style="position:absolute;top:640px;left:442px;white-space:nowrap" class="ft96">0&#160;27</p>
+<p style="position:absolute;top:640px;left:505px;white-space:nowrap" class="ft96">2</p>
+<p style="position:absolute;top:628px;left:526px;white-space:nowrap" class="ft96">,</p>
+<p style="position:absolute;top:620px;left:553px;white-space:nowrap" class="ft96">0&#160;14</p>
+<p style="position:absolute;top:640px;left:534px;white-space:nowrap" class="ft96">0&#160;14</p>
+<p style="position:absolute;top:628px;left:634px;white-space:nowrap" class="ft96">0&#160;31</p>
+<p style="position:absolute;top:628px;left:703px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:668px;left:362px;white-space:nowrap" class="ft96">0&#160;25</p>
+<p style="position:absolute;top:668px;left:404px;white-space:nowrap" class="ft96">0&#160;48</p>
+<p style="position:absolute;top:668px;left:472px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:677px;left:816px;white-space:nowrap" class="ft96">(1)</p>
+<p style="position:absolute;top:494px;left:493px;white-space:nowrap" class="ft97">4&#160;1</p>
+<p style="position:absolute;top:514px;left:456px;white-space:nowrap" class="ft97">4&#160;1</p>
+<p style="position:absolute;top:514px;left:519px;white-space:nowrap" class="ft97">4&#160;1</p>
+<p style="position:absolute;top:494px;left:602px;white-space:nowrap" class="ft97">2&#160;4</p>
+<p style="position:absolute;top:514px;left:563px;white-space:nowrap" class="ft97">2&#160;4</p>
+<p style="position:absolute;top:514px;left:629px;white-space:nowrap" class="ft97">2&#160;4</p>
+<p style="position:absolute;top:494px;left:702px;white-space:nowrap" class="ft97">1&#160;1</p>
+<p style="position:absolute;top:514px;left:675px;white-space:nowrap" class="ft97">1&#160;1</p>
+<p style="position:absolute;top:514px;left:728px;white-space:nowrap" class="ft97">1&#160;1</p>
+<p style="position:absolute;top:556px;left:488px;white-space:nowrap" class="ft97">2&#160;6</p>
+<p style="position:absolute;top:576px;left:457px;white-space:nowrap" class="ft97">2&#160;6</p>
+<p style="position:absolute;top:576px;left:520px;white-space:nowrap" class="ft97">2&#160;6</p>
+<p style="position:absolute;top:556px;left:587px;white-space:nowrap" class="ft97">1&#160;8</p>
+<p style="position:absolute;top:576px;left:565px;white-space:nowrap" class="ft97">1&#160;8</p>
+<p style="position:absolute;top:576px;left:609px;white-space:nowrap" class="ft97">1&#160;8</p>
+<p style="position:absolute;top:556px;left:677px;white-space:nowrap" class="ft97">1&#160;4</p>
+<p style="position:absolute;top:576px;left:662px;white-space:nowrap" class="ft97">1&#160;4</p>
+<p style="position:absolute;top:576px;left:707px;white-space:nowrap" class="ft97">1&#160;4</p>
+<p style="position:absolute;top:618px;left:489px;white-space:nowrap" class="ft97">2&#160;8</p>
+<p style="position:absolute;top:637px;left:466px;white-space:nowrap" class="ft97">2&#160;8</p>
+<p style="position:absolute;top:637px;left:511px;white-space:nowrap" class="ft97">2&#160;8</p>
+<p style="position:absolute;top:618px;left:576px;white-space:nowrap" class="ft97">4&#160;4</p>
+<p style="position:absolute;top:637px;left:557px;white-space:nowrap" class="ft97">4&#160;4</p>
+<p style="position:absolute;top:637px;left:595px;white-space:nowrap" class="ft97">4&#160;4</p>
+<p style="position:absolute;top:701px;left:251px;white-space:nowrap" class="ft96">This&#160;set&#160;of&#160;equations&#160;(defined&#160;in&#160;the&#160;model)&#160;together&#160;with&#160;a&#160;set&#160;of&#160;initial&#160;conditions&#160;of&#160;the&#160;signaling&#160;products&#160;</p>
+<p style="position:absolute;top:716px;left:233px;white-space:nowrap" class="ft96">(defined in the model) and the drugs (defined in the experiment) form an initial value problem which is then&#160;</p>
+<p style="position:absolute;top:731px;left:233px;white-space:nowrap" class="ft96">numerical&#160;y solved until reaching a steady state. Due to the stochastic nature of the equations, different runs with&#160;</p>
+<p style="position:absolute;top:746px;left:233px;white-space:nowrap" class="ft96">the same initial conditions (same experiment) can result in different phenotypic outcomes (level of melanocyte&#160;</p>
+<p style="position:absolute;top:761px;left:233px;white-space:nowrap" class="ft96">conversion) as observed&#160;<i>in&#160;vivo</i>. The model was reverse-engineered directly from a dataset of 20 experiments&#160;</p>
+<p style="position:absolute;top:776px;left:233px;white-space:nowrap" class="ft96">combining different pharmacological drugs and resulting in a specific&#160;frequency of two different and extreme&#160;</p>
+<p style="position:absolute;top:791px;left:233px;white-space:nowrap" class="ft96">phenotypes (within each phenotype, the animal-to-animal variation in pigmentation level was not visually&#160;</p>
+<p style="position:absolute;top:806px;left:233px;white-space:nowrap" class="ft96">detectable): either normal (pigmentation level 0) or high level (pigmentation level 1) of melanocyte conversion,&#160;</p>
+<p style="position:absolute;top:821px;left:233px;white-space:nowrap" class="ft96">never an intermediate level as described in ref<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">. 21. Th</a>e model was further validated with an additional dataset of&#160;</p>
+<p style="position:absolute;top:836px;left:233px;white-space:nowrap" class="ft96">7&#160;experiments&#160;not&#160;used&#160;during&#160;the&#160;trainin<a href="39ca259dc915aae5bc5302061b2b554ds.html#10">g21.</a>&#160;The&#160;model&#160;kinetic&#160;constants,&#160;also&#160;inferred&#160;from&#160;the&#160;experimental&#160;</p>
+<p style="position:absolute;top:851px;left:233px;white-space:nowrap" class="ft96">data, are in arbitrary units.</p>
+<p style="position:absolute;top:883px;left:233px;white-space:nowrap" class="ft99"><b>Phenotype distance metric.&#160;&#160;</b>To discover phenotypes different from the two extreme levels of conversion&#160;</p>
+<p style="position:absolute;top:899px;left:233px;white-space:nowrap" class="ft96">(normal or high) previously observed&#160;<i>in&#160;silico</i>&#160;with the model and&#160;<i>in&#160;vivo</i>&#160;with&#160;<i>Xenopus</i>&#160;experiments, we defined a&#160;</p>
+<p style="position:absolute;top:914px;left:233px;white-space:nowrap" class="ft96">distance metric for simulated phenotypes obtained with the model. The metric quantifies the level of intermediate&#160;</p>
+<p style="position:absolute;top:929px;left:233px;white-space:nowrap" class="ft96">conversion obtained in a set of resultant&#160;<i>in&#160;silico</i>&#160;phenotypes simulated with the model for a specific experiment&#160;</p>
+<p style="position:absolute;top:944px;left:233px;white-space:nowrap" class="ft96">(combination of reagents). The distance metric is defined with the following equation:</p>
+<p style="position:absolute;top:980px;left:504px;white-space:nowrap" class="ft910">∑</p>
+<p style="position:absolute;top:982px;left:467px;white-space:nowrap" class="ft96">=</p>
+<p style="position:absolute;top:982px;left:526px;white-space:nowrap" class="ft96">.&#160;−&#160;.&#160;−</p>
+<p style="position:absolute;top:1000px;left:508px;white-space:nowrap" class="ft97">=</p>
+<p style="position:absolute;top:981px;left:436px;white-space:nowrap" class="ft95"><i>d&#160;E</i></p>
+<p style="position:absolute;top:981px;left:595px;white-space:nowrap" class="ft95"><i>p</i></p>
+<p style="position:absolute;top:981px;left:445px;white-space:nowrap" class="ft96">(&#160;)</p>
+<p style="position:absolute;top:973px;left:489px;white-space:nowrap" class="ft96">1</p>
+<p style="position:absolute;top:992px;left:482px;white-space:nowrap" class="ft96">100</p>
+<p style="position:absolute;top:981px;left:520px;white-space:nowrap" class="ft96">0&#160;5</p>
+<p style="position:absolute;top:981px;left:559px;white-space:nowrap" class="ft96">0&#160;5</p>
+<p style="position:absolute;top:993px;left:816px;white-space:nowrap" class="ft96">(2)</p>
+<p style="position:absolute;top:999px;left:505px;white-space:nowrap" class="ft911"><i>i</i></p>
+<p style="position:absolute;top:990px;left:602px;white-space:nowrap" class="ft911"><i>i</i></p>
+<p style="position:absolute;top:999px;left:516px;white-space:nowrap" class="ft97">1</p>
+<p style="position:absolute;top:971px;left:505px;white-space:nowrap" class="ft97">100</p>
+<p style="position:absolute;top:1018px;left:233px;white-space:nowrap" class="ft96">where&#160;<i>d</i>(<i>E</i>) is the mean distance of experiment&#160;<i>E</i>&#160;(a combination of reagents) when simulated 100 times with the&#160;</p>
+<p style="position:absolute;top:1033px;left:233px;white-space:nowrap" class="ft96">model and resulting in phenotypes with level of conversion&#160;<i>pi</i>&#160;(the level of conversion is a dynamic variable in the&#160;</p>
+<p style="position:absolute;top:1048px;left:233px;white-space:nowrap" class="ft96">model, with values from 0 for the wild type to 1 for a total conversion).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft101{font-size:13px;font-family:Times;color:#839097;}
+	.ft102{font-size:10px;font-family:Times;color:#839097;}
+	.ft103{font-size:10px;font-family:Times;color:#000000;}
+	.ft104{font-size:10px;font-family:Times;color:#839097;}
+	.ft105{font-size:14px;font-family:Times;color:#000000;}
+	.ft106{font-size:9px;font-family:Times;color:#000000;}
+	.ft107{font-size:9px;font-family:Times;color:#000000;}
+	.ft108{font-size:9px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft100">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:816px;white-space:nowrap" class="ft101">10</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft102">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:69px;left:233px;white-space:nowrap" class="ft105"><b>References</b></p>
+<p style="position:absolute;top:86px;left:239px;white-space:nowrap" class="ft106">1.&#160;&#160;King, R. D.&#160;<i>et al.</i>&#160;The automation of science.&#160;<i>Science</i>&#160;<b>324,</b>&#160;85–89, doi: 10.1126/science.1165620 (2009).</p>
+<p style="position:absolute;top:99px;left:239px;white-space:nowrap" class="ft106">2.&#160;&#160;Soldatova,&#160;L.&#160;N.,&#160;Clare,&#160;A.,&#160;Sparkes,&#160;A.&#160;&amp;&#160;King,&#160;R.&#160;D.&#160;An&#160;ontology&#160;for&#160;a&#160;Robot&#160;Scientist.&#160;<i>Bioinformatics</i>&#160;<b>22,</b>&#160;e464–471,&#160;doi:&#160;10.1093/</p>
+<p style="position:absolute;top:112px;left:251px;white-space:nowrap" class="ft106">bioinformatics/btl207 (2006).</p>
+<p style="position:absolute;top:125px;left:239px;white-space:nowrap" class="ft106">3.&#160;&#160;Reinitz, J., Mjolsness, E. &amp; Sharp, D. H. Model for Cooperative Control of Positional Information in Drosophila by Bicoid and&#160;</p>
+<p style="position:absolute;top:137px;left:251px;white-space:nowrap" class="ft106">Maternal Hunchback.&#160;<i>Journal of Experimental Zoology</i>&#160;<b>271,</b>&#160;47–56, doi: 10.1002/jez.1402710106 (1995).</p>
+<p style="position:absolute;top:150px;left:239px;white-space:nowrap" class="ft106">4.&#160;&#160;Reinitz, J., Kosman, D., Vanario-Alonso, C. E. &amp; Sharp, D. H. Stripe forming architecture of the gap gene system.&#160;<i>Dev&#160;Genet</i>&#160;<b>23,</b>&#160;</p>
+<p style="position:absolute;top:163px;left:251px;white-space:nowrap" class="ft106">11–27, doi: 10.1002/(Sici)1520-6408(1998)23:1&lt;&#160;11::Aid-Dvg2&gt;&#160;3.0.Co;2-9&#160;&#160;(1998).</p>
+<p style="position:absolute;top:176px;left:239px;white-space:nowrap" class="ft106">5.&#160;&#160;Jaeger,&#160;J.&#160;<i>et&#160;al.</i>&#160;Dynamic&#160;control&#160;of&#160;positional&#160;information&#160;in&#160;the&#160;early&#160;Drosophila&#160;embryo.&#160;<i>Nature</i>&#160;<b>430,</b>&#160;368–371,&#160;doi:&#160;10.1038/</p>
+<p style="position:absolute;top:188px;left:251px;white-space:nowrap" class="ft106">Nature02678 (2004).</p>
+<p style="position:absolute;top:201px;left:239px;white-space:nowrap" class="ft106">6.&#160;&#160;Perkins, T. J., Jaeger, J., Reinitz, J. &amp; Glass, L. Reverse engineering the gap gene network of Drosophila melanogaster.&#160;<i>PLoS&#160;</i></p>
+<p style="position:absolute;top:214px;left:251px;white-space:nowrap" class="ft107"><i>Computational&#160;Biology</i>&#160;<b>2,</b>&#160;417–428, doi: 10.1371/journal.pcbi.0020051 (2006).</p>
+<p style="position:absolute;top:227px;left:239px;white-space:nowrap" class="ft106">7.&#160;&#160;Manu&#160;<i>et al.</i>&#160;Canalization of&#160;gene&#160;expression&#160;and&#160;domain shifts&#160;in&#160;the&#160;Drosophila blastoderm by&#160;dynamical attractors.&#160;<i>PLoS&#160;</i></p>
+<p style="position:absolute;top:239px;left:251px;white-space:nowrap" class="ft107"><i>Computational&#160;Biology</i>&#160;<b>5,</b>&#160;e1000303, doi: 10.1371/journal.pcbi.1000303 (2009).</p>
+<p style="position:absolute;top:252px;left:239px;white-space:nowrap" class="ft106">8.&#160;&#160;Crombach, A., Wotton, K. R., Cicin-Sain, D., Ashyraliyev, M. &amp; Jaeger, J. Efficient reverse-engineering of a developmental gene&#160;</p>
+<p style="position:absolute;top:265px;left:251px;white-space:nowrap" class="ft106">regulatory network.&#160;<i>PLoS&#160;Computational&#160;Biology</i>&#160;<b>8,</b>&#160;e1002589, doi: 10.1371/journal.pcbi.1002589 (2012).</p>
+<p style="position:absolute;top:278px;left:239px;white-space:nowrap" class="ft106">9.&#160;&#160;Becker, K.&#160;<i>et al.</i>&#160;Reverse-Engineering Post-Transcriptional Regulation of Gap Genes in Drosophila melanogaster.&#160;<i>PLoS&#160;</i></p>
+<p style="position:absolute;top:290px;left:251px;white-space:nowrap" class="ft107"><i>Computational&#160;Biology</i>&#160;<b>9,</b>&#160;e1003281, doi: 10.1371/journal.pcbi.1003281 (2013).</p>
+<p style="position:absolute;top:303px;left:234px;white-space:nowrap" class="ft106">10.&#160;&#160;Lobo, D. &amp; Levin, M. Inferring Regulatory Networks from Experimental Morphological Phenotypes: A Computational Method&#160;</p>
+<p style="position:absolute;top:316px;left:251px;white-space:nowrap" class="ft106">Reverse-Engineers Planarian Regeneration.&#160;<i>PLoS&#160;computational&#160;biology</i>&#160;<b>11,</b>&#160;e1004295, doi: 10.1371/journal.pcbi.1004295 (2015).</p>
+<p style="position:absolute;top:329px;left:234px;white-space:nowrap" class="ft106">11.&#160;&#160;Lobo, D., Morokuma, J. &amp; Levin, M. Computational discovery and&#160;<i>in&#160;vivo</i>&#160;validation of hnf4 as a regulatory gene in planarian&#160;</p>
+<p style="position:absolute;top:341px;left:251px;white-space:nowrap" class="ft106">regeneration.&#160;<i>Bioinformatics</i>&#160;<b>32,</b>&#160;2681–2685, doi: 10.1093/bioinformatics/btw299 (2016).</p>
+<p style="position:absolute;top:354px;left:234px;white-space:nowrap" class="ft106">12.&#160;&#160;Levin, M. Reprogramming cells and tissue patterning via bioelectrical pathways: molecular mechanisms and biomedical&#160;</p>
+<p style="position:absolute;top:367px;left:251px;white-space:nowrap" class="ft106">opportunities.&#160;<i>Wiley Interdisciplinary Reviews: Systems Biology and Medicine</i>&#160;<b>5,</b>&#160;657–676, doi: 10.1002/wsbm.1236 (2013).</p>
+<p style="position:absolute;top:380px;left:234px;white-space:nowrap" class="ft106">13.&#160;&#160;Levin, M. Endogenous bioelectrical networks store non-genetic patterning information during development and regeneration.&#160;<i>The&#160;</i></p>
+<p style="position:absolute;top:392px;left:251px;white-space:nowrap" class="ft107"><i>Journal of Physiology</i>&#160;<b>592,</b>&#160;2295–2305, doi: 10.1113/jphysiol.2014.271940 (2014).</p>
+<p style="position:absolute;top:405px;left:234px;white-space:nowrap" class="ft106">14.&#160;&#160;Levin, M. Molecular bioelectricity: how endogenous voltage potentials control cell behavior and instruct pattern regulation&#160;<i>in&#160;vivo</i>.&#160;</p>
+<p style="position:absolute;top:418px;left:251px;white-space:nowrap" class="ft107"><i>Mol&#160;Biol&#160;Cell</i>&#160;<b>25,</b>&#160;3835–3850, doi: 10.1091/mbc.E13-12-0708 (2014).</p>
+<p style="position:absolute;top:431px;left:234px;white-space:nowrap" class="ft106">15.&#160;&#160;Levin, M. Molecular bioelectricity in developmental biology: new tools and recent discoveries: control of cell behavior and pattern&#160;</p>
+<p style="position:absolute;top:443px;left:251px;white-space:nowrap" class="ft106">formation by transmembrane potential gradients.&#160;<i>BioEssays</i>&#160;<b>34,</b>&#160;205–217, doi: 10.1002/bies.201100136 (2012).</p>
+<p style="position:absolute;top:456px;left:234px;white-space:nowrap" class="ft106">16.&#160;&#160;Bates, E. Ion Channels in Development and Cancer.&#160;<i>Annu&#160;Rev&#160;Cell&#160;Dev&#160;Biol</i>&#160;<b>31,</b>&#160;231–247, doi: 10.1146/annurev-cellbio-&#160;</p>
+<p style="position:absolute;top:469px;left:251px;white-space:nowrap" class="ft106">100814-125338 (2015).</p>
+<p style="position:absolute;top:482px;left:234px;white-space:nowrap" class="ft106">17.&#160;&#160;Lang, F. &amp; Stournaras, C. Ion channels in cancer: future perspectives and clinical potential.&#160;<i>Philosophical&#160;transactions&#160;of&#160;the&#160;Royal&#160;</i></p>
+<p style="position:absolute;top:494px;left:251px;white-space:nowrap" class="ft107"><i>Society of London. Series B, Biological sciences</i>&#160;<b>369,</b>&#160;20130108, doi: 10.1098/rstb.2013.0108 (2014).</p>
+<p style="position:absolute;top:507px;left:234px;white-space:nowrap" class="ft106">18.&#160;&#160;Yang,&#160;M.&#160;&amp;&#160;Brackenbury,&#160;W.&#160;J.&#160;Membrane&#160;potential&#160;and&#160;cancer&#160;progression.&#160;<i>Front&#160;Physiol</i>&#160;<b>4,</b>&#160;185,&#160;doi:&#160;10.3389/fphys.2013.00185&#160;</p>
+<p style="position:absolute;top:520px;left:251px;white-space:nowrap" class="ft106">(2013).</p>
+<p style="position:absolute;top:532px;left:234px;white-space:nowrap" class="ft106">19.&#160;&#160;Arcangeli, A.&#160;<i>et&#160;al.</i>&#160;Targeting ion channels in cancer: a novel frontier in antineoplastic therapy.&#160;<i>Current&#160;medicinal&#160;chemistry</i>&#160;<b>16,</b>&#160;</p>
+<p style="position:absolute;top:545px;left:251px;white-space:nowrap" class="ft106">66–93 (2009).</p>
+<p style="position:absolute;top:558px;left:234px;white-space:nowrap" class="ft106">20.&#160;&#160;Blackiston, D., Adams, D. S., Lemire, J. M., Lobikin, M. &amp; Levin, M. Transmembrane potential of GlyCl-expressing instructor cel&#160;s&#160;</p>
+<p style="position:absolute;top:571px;left:251px;white-space:nowrap" class="ft106">induces&#160;a&#160;neoplastic-like&#160;conversion&#160;of&#160;melanocytes&#160;via&#160;a&#160;serotonergic&#160;pathway.&#160;<i>Disease&#160;models&#160;&amp;&#160;mechanisms</i>&#160;<b>4,</b>&#160;67–85,&#160;doi:&#160;</p>
+<p style="position:absolute;top:583px;left:251px;white-space:nowrap" class="ft106">10.1242/dmm.005561 (2011).</p>
+<p style="position:absolute;top:596px;left:234px;white-space:nowrap" class="ft106">21.&#160;&#160;Lobikin, M.&#160;<i>et&#160;al.</i>&#160;Serotonergic regulation of melanocyte conversion: A bioelectrical&#160;y regulated network for stochastic all-or-none&#160;</p>
+<p style="position:absolute;top:609px;left:251px;white-space:nowrap" class="ft106">hyperpigmentation.&#160;<i>Sci Signal</i>&#160;<b>8,</b>&#160;ra99, doi: 10.1126/scisignal.aac6609 (2015).</p>
+<p style="position:absolute;top:622px;left:234px;white-space:nowrap" class="ft106">22.&#160;&#160;Roubos, E. W. Background adaptation by Xenopus laevis: a model for studying neuronal information processing in the pituitary pars&#160;</p>
+<p style="position:absolute;top:634px;left:251px;white-space:nowrap" class="ft106">intermedia.&#160;<i>Comp. Biochem. Physiol. A. Physiol</i>.&#160;<b>118,</b>&#160;533–550 (1997).</p>
+<p style="position:absolute;top:647px;left:234px;white-space:nowrap" class="ft106">23.&#160;&#160;Daniolos, A., Lerner, A. B. &amp; Lerner, M. R. Action of light on frog pigment cel&#160;s in culture.&#160;<i>Pigment Cell Res</i>&#160;<b>3,</b>&#160;38–43 (1990).</p>
+<p style="position:absolute;top:660px;left:234px;white-space:nowrap" class="ft106">24.&#160;&#160;Dulcis, D. &amp; Spitzer, N. C. Illumination controls differentiation of dopamine neurons regulating behaviour.&#160;<i>Nature</i>&#160;<b>456,</b>&#160;195–201,&#160;</p>
+<p style="position:absolute;top:673px;left:251px;white-space:nowrap" class="ft106">doi: 10.1038/nature07569 (2008).</p>
+<p style="position:absolute;top:685px;left:234px;white-space:nowrap" class="ft106">25.&#160;&#160;Lobikin, M., Chernet, B., Lobo, D. &amp; Levin, M. Resting potential, oncogene-induced tumorigenesis, and metastasis: the bioelectric&#160;</p>
+<p style="position:absolute;top:698px;left:251px;white-space:nowrap" class="ft106">basis of cancer&#160;<i>in&#160;vivo</i>.&#160;<i>Physical&#160;biology</i>&#160;<b>9,</b>&#160;065002, doi: 10.1088/1478-3975/9/6/065002 (2012).</p>
+<p style="position:absolute;top:711px;left:234px;white-space:nowrap" class="ft106">26.&#160;&#160;Chernet, B. &amp; Levin, M. Endogenous Voltage Potentials and the Microenvironment: Bioelectric Signals that Reveal, Induce and&#160;</p>
+<p style="position:absolute;top:724px;left:251px;white-space:nowrap" class="ft106">Normalize Cancer.&#160;<i>J Clin Exp Oncol</i>&#160;Suppl 1, doi: 10.4172/2324-9110.S1-002 (2013).</p>
+<p style="position:absolute;top:736px;left:234px;white-space:nowrap" class="ft106">27.&#160;&#160;Blackiston, D. J., Anderson, G. M., Rahman, N., Bieck, C. &amp; Levin, M. A novel method for inducing nerve growth via modulation of&#160;</p>
+<p style="position:absolute;top:749px;left:251px;white-space:nowrap" class="ft106">host resting potential: gap junction-mediated and serotonergic signaling mechanisms.&#160;<i>Neurotherapeutics</i>&#160;<b>12,</b>&#160;170–184, doi: 10.1007/</p>
+<p style="position:absolute;top:762px;left:251px;white-space:nowrap" class="ft106">s13311-014-0317-7 (2015).</p>
+<p style="position:absolute;top:775px;left:234px;white-space:nowrap" class="ft106">28.&#160;&#160;Liu, Z. P. Reverse Engineering of Genome-wide Gene Regulatory Networks from Gene Expression Data.&#160;<i>Curr Genomics</i>&#160;<b>16,</b>&#160;3–22&#160;</p>
+<p style="position:absolute;top:787px;left:251px;white-space:nowrap" class="ft106">(2015).</p>
+<p style="position:absolute;top:800px;left:234px;white-space:nowrap" class="ft106">29.&#160;&#160;Uzkudun, M., Marcon, L. &amp; Sharpe, J. Data-driven modelling of a gene regulatory network for cell fate decisions in the growing limb&#160;</p>
+<p style="position:absolute;top:813px;left:251px;white-space:nowrap" class="ft106">bud.&#160;<i>Mol&#160;Syst&#160;Biol</i>&#160;<b>11</b>&#160;(2015).</p>
+<p style="position:absolute;top:826px;left:234px;white-space:nowrap" class="ft106">30.&#160;&#160;Vil&#160;averde, A. F. &amp; Banga, J. R. Reverse engineering&#160;and identification&#160;in&#160;systems biology:&#160;strategies, perspectives&#160;and chal&#160;enges.&#160;</p>
+<p style="position:absolute;top:838px;left:251px;white-space:nowrap" class="ft107"><i>Journal of the Royal Society Interface</i>&#160;<b>11,</b>&#160;doi: 10.1098/rsif.2013.0505 (2014).</p>
+<p style="position:absolute;top:851px;left:234px;white-space:nowrap" class="ft106">31.&#160;&#160;Lobo, D. &amp; Levin, M. Computing a worm: reverse-engineering planarian regeneration. In&#160;<i>Advances&#160;in&#160;Unconventional&#160;Computing:&#160;</i></p>
+<p style="position:absolute;top:864px;left:251px;white-space:nowrap" class="ft107"><i>Volume 2: Prototypes, Models and Algorithms</i>&#160;(ed Andrew Adamatzky) 637–654 (Springer International Publishing, 2016).</p>
+<p style="position:absolute;top:877px;left:234px;white-space:nowrap" class="ft106">32.&#160;&#160;Marguet,&#160;S.&#160;L.&#160;<i>et&#160;al.</i>&#160;Treatment&#160;during&#160;a&#160;vulnerable&#160;developmental&#160;period&#160;rescues&#160;a&#160;genetic&#160;epilepsy.&#160;<i>Nat&#160;Med</i>&#160;<b>21,</b>&#160;1436–1444,&#160;doi:&#160;</p>
+<p style="position:absolute;top:889px;left:251px;white-space:nowrap" class="ft106">10.1038/nm.3987 (2015).</p>
+<p style="position:absolute;top:902px;left:234px;white-space:nowrap" class="ft106">33.&#160;&#160;Smolen,&#160;P.,&#160;Baxter, D. A.&#160;&amp;&#160;Byrne,&#160;J.&#160;H.&#160;Simulations&#160;suggest&#160;pharmacological methods&#160;for&#160;rescuing long-term&#160;potentiation.&#160;<i>J&#160;Theor&#160;</i></p>
+<p style="position:absolute;top:915px;left:251px;white-space:nowrap" class="ft107"><i>Biol</i>&#160;<b>360,</b>&#160;243–250, doi: 10.1016/j.jtbi.2014.07.006 (2014).</p>
+<p style="position:absolute;top:928px;left:234px;white-space:nowrap" class="ft106">34.&#160;&#160;Sive,&#160;H.&#160;L.,&#160;Grainger,&#160;R.&#160;M.&#160;&amp;&#160;Harland,&#160;R.&#160;M.&#160;<i>Early&#160;development&#160;of&#160;Xenopus&#160;laevis:&#160;a&#160;laboratory&#160;manual</i>&#160;(Cold&#160;Spring&#160;Harbor&#160;</p>
+<p style="position:absolute;top:940px;left:251px;white-space:nowrap" class="ft106">Laboratory Press, 2000).</p>
+<p style="position:absolute;top:953px;left:234px;white-space:nowrap" class="ft106">35.&#160;&#160;Nieuwkoop, P. &amp; Faber, J.&#160;<i>Normal&#160;table&#160;of&#160;Xenopus&#160;laevis&#160;(Daudin):&#160;a&#160;systematic&#160;and&#160;chronological&#160;survey of&#160;the&#160;development&#160;from&#160;the&#160;</i></p>
+<p style="position:absolute;top:966px;left:251px;white-space:nowrap" class="ft107"><i>fertilized egg till the end of metamorphosis</i>&#160;(North-Hol&#160;and, 1967).</p>
+<p style="position:absolute;top:979px;left:234px;white-space:nowrap" class="ft106">36.&#160;&#160;Barco, A., Alarcon, J. M. &amp; Kandel, E. R. Expression of constitutively active CREB protein facilitates the late phase of long-term&#160;</p>
+<p style="position:absolute;top:991px;left:251px;white-space:nowrap" class="ft106">potentiation by enhancing synaptic capture.&#160;<i>Cell</i>&#160;<b>108,</b>&#160;689–703, doi: 10.1016/S0092-8674(02)00657-8 (2002).</p>
+<p style="position:absolute;top:1004px;left:234px;white-space:nowrap" class="ft106">37.&#160;&#160;Chernet,&#160;B.&#160;T.,&#160;Adams,&#160;D.&#160;S.,&#160;Lobikin,&#160;M.&#160;&amp;&#160;Levin,&#160;M.&#160;Use&#160;of&#160;genetically&#160;encoded,&#160;light-gated&#160;ion&#160;translocators&#160;to&#160;control&#160;</p>
+<p style="position:absolute;top:1017px;left:251px;white-space:nowrap" class="ft106">tumorigenesis.&#160;<i>Oncotarget</i>, doi: 10.18632/oncotarget.8036 (2016).</p>
+<p style="position:absolute;top:1030px;left:234px;white-space:nowrap" class="ft106">38.&#160;&#160;Lobikin, M., Pare, J. F., Kaplan, D. L. &amp; Levin, M. Selective depolarization of transmembrane potential alters muscle patterning and muscle&#160;</p>
+<p style="position:absolute;top:1042px;left:251px;white-space:nowrap" class="ft106">cell localization in Xenopus laevis embryos.&#160;<i>The International journal of developmental biology</i>, doi: 10.1387/ijdb.150198ml (2015).</p>
+<p style="position:absolute;top:1055px;left:234px;white-space:nowrap" class="ft106">39.&#160;&#160;Morokuma, J.&#160;<i>et al.</i>&#160;Modulation of potassium channel function confers a hyperproliferative invasive phenotype on embryonic stem&#160;</p>
+<p style="position:absolute;top:1068px;left:251px;white-space:nowrap" class="ft106">cel&#160;s.&#160;<i>Proc Natl Acad Sci USA</i>&#160;<b>105,</b>&#160;16608–16613 (2008).</p>
+<p style="position:absolute;top:1081px;left:234px;white-space:nowrap" class="ft106">40.&#160;&#160;Hendrix, M. J., Seftor, E. A., Hess, A. R. &amp; Seftor, R. E. Vasculogenic mimicry and tumour-cell plasticity: lessons from melanoma.&#160;</p>
+<p style="position:absolute;top:1093px;left:251px;white-space:nowrap" class="ft107"><i>Nature reviews. Cancer</i>&#160;<b>3,</b>&#160;411–421, doi: 10.1038/nrc1092 (2003).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>39ca259dc915aae5bc5302061b2b554d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:13px;font-family:Times;color:#ffffff;}
+	.ft111{font-size:13px;font-family:Times;color:#839097;}
+	.ft112{font-size:10px;font-family:Times;color:#839097;}
+	.ft113{font-size:10px;font-family:Times;color:#000000;}
+	.ft114{font-size:10px;font-family:Times;color:#839097;}
+	.ft115{font-size:14px;font-family:Times;color:#000000;}
+	.ft116{font-size:11px;font-family:Times;color:#000000;}
+	.ft117{font-size:11px;font-family:Times;color:#000000;}
+	.ft118{font-size:11px;font-family:Times;color:#000000;}
+	.ft119{font-size:11px;line-height:24px;font-family:Times;color:#000000;}
+	.ft1110{font-size:11px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:892px;height:1173px;">
+<p style="position:absolute;top:19px;left:61px;white-space:nowrap" class="ft110">www.nature.com/scientificreports/</p>
+<p style="position:absolute;top:1132px;left:817px;white-space:nowrap" class="ft111">11</p>
+<p style="position:absolute;top:1135px;left:61px;white-space:nowrap" class="ft112">Scientific&#160;<b>RepoRts</b>&#160;|&#160;7:41339&#160;|&#160;DOI:&#160;10.1038/srep41339</p>
+<p style="position:absolute;top:69px;left:233px;white-space:nowrap" class="ft115"><b>Acknowledgements</b></p>
+<p style="position:absolute;top:86px;left:233px;white-space:nowrap" class="ft116">This work has been supported by an Allen Discovery Center award from the Paul G. Allen Frontiers Group&#160;</p>
+<p style="position:absolute;top:101px;left:233px;white-space:nowrap" class="ft116">(12171), NSF grant EF-1124651, and The G. Harold and Leila Y. Mathers Charitable Foundation (TFU141).&#160;</p>
+<p style="position:absolute;top:116px;left:233px;white-space:nowrap" class="ft116">Computation used the Extreme Science and Engineering Discovery Environment (XSEDE), which is supported&#160;</p>
+<p style="position:absolute;top:131px;left:233px;white-space:nowrap" class="ft119">by NSF grant ACI-1053575, and a cluster computer awarded by Silicon Mechanics.<br/><b>Author&#160;Contributions</b></p>
+<p style="position:absolute;top:173px;left:233px;white-space:nowrap" class="ft116">M. Levin prepared Figures 1 and 5; D. Lobo prepared the other figures and was responsible for the computational&#160;</p>
+<p style="position:absolute;top:188px;left:233px;white-space:nowrap" class="ft116">portion of this manuscript. M. Lobikin was responsible for all experiments involving&#160;<i>Xenopus</i>&#160;embryos. All&#160;</p>
+<p style="position:absolute;top:203px;left:233px;white-space:nowrap" class="ft119">authors wrote the manuscript together.<br/><b>Additional&#160;Information</b></p>
+<p style="position:absolute;top:245px;left:233px;white-space:nowrap" class="ft1110"><b>Competing financial interests:&#160;</b>The authors declare no competing financial interests.<br/><b>How to cite this article:</b>&#160;Lobo, D.&#160;<i>et al.</i>&#160;Discovering novel phenotypes with automatical&#160;y inferred dynamic&#160;</p>
+<p style="position:absolute;top:282px;left:233px;white-space:nowrap" class="ft1110">models: a partial melanocyte conversion in&#160;<i>Xenopus</i>.&#160;<i>Sci. Rep.</i>&#160;<b>7</b>, 41339; doi: 10.1038/srep41339 (2017).<br/><b>Publisher's note:</b>&#160;Springer Nature remains neutral with regard to jurisdictional claims in published maps and&#160;</p>
+<p style="position:absolute;top:319px;left:233px;white-space:nowrap" class="ft116">institutional affiliations.</p>
+<p style="position:absolute;top:341px;left:300px;white-space:nowrap" class="ft116">This work is licensed under a Creative Commons Attribution 4.0 International License. The images&#160;</p>
+<p style="position:absolute;top:356px;left:300px;white-space:nowrap" class="ft116">or other third party material in this article are included in the article’s Creative Commons license,&#160;</p>
+<p style="position:absolute;top:371px;left:233px;white-space:nowrap" class="ft116">unless indicated otherwise in the credit line; if the material is not included under the Creative Commons license,&#160;</p>
+<p style="position:absolute;top:386px;left:233px;white-space:nowrap" class="ft116">users will need to obtain permission from the license holder to reproduce the material. To view a copy of this&#160;</p>
+<p style="position:absolute;top:401px;left:233px;white-space:nowrap" class="ft116"><a href="http://creativecommons.org/licenses/by/4.0/">license, visit http://creativecommons.org/licenses/by/4.0/</a></p>
+<p style="position:absolute;top:416px;left:233px;white-space:nowrap" class="ft116">&#160;</p>
+<p style="position:absolute;top:431px;left:233px;white-space:nowrap" class="ft116">© The Author(s) 2017</p>
+</div>
+</body>
+</html>

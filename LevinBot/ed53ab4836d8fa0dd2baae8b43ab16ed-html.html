@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:13px;font-family:Times;color:#231f20;}
+	.ft11{font-size:34px;font-family:Times;color:#231f20;}
+	.ft12{font-size:25px;font-family:Times;color:#27439f;}
+	.ft13{font-size:16px;font-family:Times;color:#231f20;}
+	.ft14{font-size:16px;font-family:Times;color:#27439f;}
+	.ft15{font-size:14px;font-family:Times;color:#27439f;}
+	.ft16{font-size:16px;font-family:Times;color:#231f20;}
+	.ft17{font-size:34px;line-height:67px;font-family:Times;color:#231f20;}
+	.ft18{font-size:16px;line-height:30px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:997px;left:652px;white-space:nowrap" class="ft10">117</p>
+<p style="position:absolute;top:80px;left:81px;white-space:nowrap" class="ft17"><a href=""><i><b>Chapter&#160;6<br/>Toward Modeling Regeneration via&#160;</b></i></a></p>
+<p style="position:absolute;top:178px;left:81px;white-space:nowrap" class="ft12"><a href=""><i><b>Adaptable Echo State Networks</b></i></a></p>
+<p style="position:absolute;top:239px;left:81px;white-space:nowrap" class="ft13"><i><b>Jennifer Hammelman, Hava Siegelmann,&#160;</b></i></p>
+<p style="position:absolute;top:260px;left:81px;white-space:nowrap" class="ft13"><i><b>Santosh Manicka, and Michael Levin</b></i></p>
+<p style="position:absolute;top:638px;left:81px;white-space:nowrap" class="ft18"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.1&#160;&#160;&#160;Introduction<br/>6.1.1&#160;&#160;&#160;Biological pattern formation: an important&#160;</b></a></p>
+<p style="position:absolute;top:688px;left:134px;white-space:nowrap" class="ft15"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>problem of information processing</b></a></p>
+<p style="position:absolute;top:716px;left:102px;white-space:nowrap" class="ft10">Pattern formation in embryogenesis, and its repair in regeneration, illustrate&#160;</p>
+<p style="position:absolute;top:734px;left:81px;white-space:nowrap" class="ft10">remarkable plasticity and information processing by living tissues (Levin et al., 2017;&#160;</p>
+<p style="position:absolute;top:752px;left:81px;white-space:nowrap" class="ft10"><a href="">Pezzulo and Levin, 2015, 2016, 2017</a>). Though our understanding of development and&#160;</p>
+<p style="position:absolute;top:770px;left:81px;white-space:nowrap" class="ft10">regeneration&#160;has&#160;greatly&#160;benefited&#160;from&#160;advances&#160;in&#160;molecular&#160;genetics,&#160;we&#160;have&#160;yet&#160;to&#160;</p>
+<p style="position:absolute;top:788px;left:81px;white-space:nowrap" class="ft10">understand how animals such as planaria have the capacity to drive total and perfect&#160;</p>
+<p style="position:absolute;top:806px;left:81px;white-space:nowrap" class="ft10">body regeneration, even from fragments as small as 1/276th of their body (Morgan,&#160;</p>
+<p style="position:absolute;top:824px;left:81px;white-space:nowrap" class="ft10">189<a href="">8; Levin et al., 2018</a>).&#160;It is&#160;essential to begin to&#160;complement molecular&#160;models&#160;of&#160;</p>
+<p style="position:absolute;top:842px;left:81px;white-space:nowrap" class="ft10">cell-level biophysical events with formalisms of information processing that harness&#160;</p>
+<p style="position:absolute;top:860px;left:81px;white-space:nowrap" class="ft10">individual&#160;cell&#160;activity&#160;towards&#160;a&#160;specific&#160;large-scale&#160;anatomical&#160;outcome&#160;(<a href="">Pezzulo&#160;and</a>&#160;</p>
+<p style="position:absolute;top:878px;left:81px;white-space:nowrap" class="ft10"><a href="">Levin,&#160;2015</a>).</p>
+<p style="position:absolute;top:896px;left:102px;white-space:nowrap" class="ft10">We selected planaria,&#160;complex metazoans with&#160;a central&#160;nervous&#160;system and brain&#160;</p>
+<p style="position:absolute;top:914px;left:81px;white-space:nowrap" class="ft10"><a href="">(Cebrià, 2008; Pagán, 2014; Sarnat and Netsky, 1985), for our study for the following&#160;</a></p>
+<p style="position:absolute;top:932px;left:81px;white-space:nowrap" class="ft10">two reasons.&#160;First,&#160;planaria exemplify morphological plasticity through&#160;their&#160;excep-</p>
+<p style="position:absolute;top:950px;left:81px;white-space:nowrap" class="ft10">tional&#160;regenerative&#160;capacities.&#160;Planaria&#160;are&#160;remarkable&#160;for&#160;the&#160;ability to&#160;regenerate&#160;</p>
+<p style="position:absolute;top:-87px;left:-524px;white-space:nowrap" class="ft16">From Parallel to Emergent Computing</p>
+<p style="position:absolute;top:-87px;left:736px;white-space:nowrap" class="ft16">Toward Modeling Regeneration via Adaptable Echo State Networks</p>
+<p style="position:absolute;top:302px;left:81px;white-space:nowrap" class="ft10"><a href="">6.1&#160;Introduction&#160;...........................................................................................................&#160;117</a></p>
+<p style="position:absolute;top:320px;left:115px;white-space:nowrap" class="ft10"><a href="">6.1.1&#160;&#160;Biological pattern formation: an important problem of information&#160;</a></p>
+<p style="position:absolute;top:338px;left:161px;white-space:nowrap" class="ft10"><a href="">processing&#160;...................................................................................................&#160;117</a></p>
+<p style="position:absolute;top:356px;left:115px;white-space:nowrap" class="ft10"><a href="">6.1.2&#160;&#160;Reservoir network structures – artificial neural networks studied&#160;</a></p>
+<p style="position:absolute;top:374px;left:161px;white-space:nowrap" class="ft10"><a href="">under&#160;perturbation&#160;.....................................................................................120</a></p>
+<p style="position:absolute;top:392px;left:81px;white-space:nowrap" class="ft10"><a href="">6.2&#160;Methods&#160;.................................................................................................................122</a></p>
+<p style="position:absolute;top:410px;left:115px;white-space:nowrap" class="ft10"><a href="">6.2.1&#160;&#160;Reservoir network&#160;......................................................................................122</a></p>
+<p style="position:absolute;top:428px;left:115px;white-space:nowrap" class="ft10"><a href="">6.2.2&#160;&#160;Oja rewiring of reservoir&#160;...........................................................................123</a></p>
+<p style="position:absolute;top:446px;left:115px;white-space:nowrap" class="ft10"><a href="">6.2.3&#160;&#160;Perturbation experiments&#160;..........................................................................123</a></p>
+<p style="position:absolute;top:464px;left:81px;white-space:nowrap" class="ft10"><a href="">6.3&#160;Results&#160;...................................................................................................................&#160;123</a></p>
+<p style="position:absolute;top:482px;left:115px;white-space:nowrap" class="ft10"><a href="">6.3.1&#160;&#160;A reservoir computing model of development............................................123</a></p>
+<p style="position:absolute;top:500px;left:116px;white-space:nowrap" class="ft10"><a href="">6.3.2&#160;&#160;Perturbation of reservoir network mimics experimental results&#160;.............125</a></p>
+<p style="position:absolute;top:518px;left:81px;white-space:nowrap" class="ft10"><a href="">6.4&#160;Discussion..............................................................................................................128</a></p>
+<p style="position:absolute;top:536px;left:81px;white-space:nowrap" class="ft10"><a href="">Acknowledgments&#160;.........................................................................................................130</a></p>
+<p style="position:absolute;top:554px;left:81px;white-space:nowrap" class="ft10"><a href="">References&#160;.....................................................................................................................130</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:13px;font-family:Times;color:#231f20;}
+	.ft21{font-size:13px;font-family:Times;color:#231f20;}
+	.ft22{font-size:13px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft20"><b>118</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft21"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft22">major pieces&#160;of missing&#160;body parts including&#160;their&#160;head and appropriate elements&#160;of&#160;</p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft22">their nervous systems. Upon amputation,&#160;the remaining cells in the planaria must rec-</p>
+<p style="position:absolute;top:135px;left:81px;white-space:nowrap" class="ft22">ognize&#160;which&#160;structures&#160;are&#160;lost&#160;and execute&#160;a&#160;series&#160;of&#160;steps&#160;including&#160;programmed&#160;</p>
+<p style="position:absolute;top:153px;left:81px;white-space:nowrap" class="ft22"><a href="">cell death (Pellettieri et al., 2010), cell proliferation (Reddien and Alvarado, 2004), and&#160;</a></p>
+<p style="position:absolute;top:171px;left:81px;white-space:nowrap" class="ft22">cell&#160;movement&#160;<a href="">(Saló&#160;and Baguñà,&#160;1985) to&#160;</a>recover&#160;the&#160;lost&#160;structures&#160;and&#160;remodel&#160;exist-</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft22">ing tissue to a size and shape appropriate&#160;to the new fragment&#160;and its ongoing regen-</p>
+<p style="position:absolute;top:207px;left:81px;white-space:nowrap" class="ft22">eration. They also have the unique ability to continually modify body size to account&#160;</p>
+<p style="position:absolute;top:225px;left:81px;white-space:nowrap" class="ft22">for variations in available&#160;energy resources&#160;<a href="">(Beane et al., 2013;&#160;González-Estévez and&#160;</a></p>
+<p style="position:absolute;top:243px;left:81px;white-space:nowrap" class="ft22"><a href="">Saló,&#160;2010; Oviedo, Newmark,&#160;and Sánchez&#160;Alvarado, 2003). Second,&#160;</a>planaria have&#160;</p>
+<p style="position:absolute;top:261px;left:81px;white-space:nowrap" class="ft22">been extensively studied, and their systems thoroughly mapped,&#160;which&#160;makes them&#160;</p>
+<p style="position:absolute;top:279px;left:81px;white-space:nowrap" class="ft22">excellent&#160;model organisms&#160;complete with&#160;genetic and molecular&#160;tools applicable to&#160;</p>
+<p style="position:absolute;top:297px;left:81px;white-space:nowrap" class="ft22">studying regeneration&#160;<a href="">(Lapan and Reddien, 2012; Newmark&#160;and Alvarado, 2002;&#160;</a></p>
+<p style="position:absolute;top:315px;left:81px;white-space:nowrap" class="ft22"><a href="">Wagner, Wang, and Reddien, 2011).&#160;</a>Elucidating key details of planarian regenera-</p>
+<p style="position:absolute;top:333px;left:81px;white-space:nowrap" class="ft22">tion and morphological plasticity&#160;can crucially assist our understanding of emergent&#160;</p>
+<p style="position:absolute;top:351px;left:81px;white-space:nowrap" class="ft22">properties in&#160;cell&#160;systems, and the intercellular&#160;communication&#160;that orchestrates&#160;indi-</p>
+<p style="position:absolute;top:369px;left:81px;white-space:nowrap" class="ft22">vidual&#160;cell&#160;activity&#160;in&#160;producing&#160;functional&#160;body plans;&#160;this&#160;same&#160;understanding&#160;holds&#160;</p>
+<p style="position:absolute;top:387px;left:81px;white-space:nowrap" class="ft22">significant&#160;&#160;implications&#160;&#160;for&#160;&#160;medical&#160;&#160;advances,&#160;&#160;the&#160;&#160;development&#160;&#160;of&#160;&#160;robust&#160;&#160;robotics,&#160;</p>
+<p style="position:absolute;top:405px;left:81px;white-space:nowrap" class="ft22">and unconventional&#160;computing&#160;architectures.&#160;Thus,&#160;novel&#160;paradigms for&#160;understand-</p>
+<p style="position:absolute;top:423px;left:81px;white-space:nowrap" class="ft22">ing anatomical decision-making in&#160;planaria will&#160;be readily integrated with&#160;a body of&#160;</p>
+<p style="position:absolute;top:441px;left:81px;white-space:nowrap" class="ft22">mechanistic data in an important model species.</p>
+<p style="position:absolute;top:459px;left:102px;white-space:nowrap" class="ft22">Bioelectric&#160;signaling is&#160;most familiar&#160;in&#160;the nervous&#160;system.&#160;As&#160;part of the primary&#160;</p>
+<p style="position:absolute;top:477px;left:81px;white-space:nowrap" class="ft22">mechanism for information processing and higher-order cognition&#160;in the brain,&#160;indi-</p>
+<p style="position:absolute;top:495px;left:81px;white-space:nowrap" class="ft22">vidual&#160;neurons&#160;act within&#160;a&#160;greater&#160;computational&#160;system via intercellular&#160;bioelectri-</p>
+<p style="position:absolute;top:513px;left:81px;white-space:nowrap" class="ft22">cal&#160;communication&#160;through&#160;electrical&#160;and chemical&#160;synapses&#160;(<a href="">Figure&#160;6.1A</a>)&#160;forming&#160;</p>
+<p style="position:absolute;top:531px;left:81px;white-space:nowrap" class="ft22">circuits for complex behaviors (Figure 6.1A’). Across most non-neural body tissues, an&#160;</p>
+<p style="position:absolute;top:549px;left:81px;white-space:nowrap" class="ft22">analogous, more ancient form (<a href="">Levin and Martyniuk, 2018</a>) of bioelectric communica-</p>
+<p style="position:absolute;top:567px;left:81px;white-space:nowrap" class="ft22">tion&#160;is&#160;established through&#160;gap junctions&#160;(electrical&#160;synapses)&#160;and voltage-gated ion&#160;</p>
+<p style="position:absolute;top:585px;left:81px;white-space:nowrap" class="ft22">channels (<a href="">Figure 6.1B</a>), creating spatio-temporal bioelectric patterns that guide subse-</p>
+<p style="position:absolute;top:603px;left:81px;white-space:nowrap" class="ft22">quent gene expression and anatomical morphogenes<a href="">is (Adams et al., 2016;&#160;Vandenberg,&#160;</a></p>
+<p style="position:absolute;top:621px;left:81px;white-space:nowrap" class="ft22"><a href="">Morrie, and Adams, 2011b)</a>.</p>
+<p style="position:absolute;top:639px;left:102px;white-space:nowrap" class="ft22">Although&#160;equally true in&#160;mammalian&#160;(<a href="">Sundelacruz,&#160;Levin,&#160;and Kaplan,&#160;2013;&#160;</a></p>
+<p style="position:absolute;top:657px;left:81px;white-space:nowrap" class="ft22"><a href="">Sundelacruz&#160;et al.,&#160;2013</a>;&#160;<a href="">Masotti&#160;et al.,&#160;2015</a>;&#160;<a href="">Kortum&#160;et al.,&#160;2015)</a>,&#160;amphibian&#160;(<a href="">Pai&#160;</a></p>
+<p style="position:absolute;top:675px;left:81px;white-space:nowrap" class="ft22"><a href="">et&#160;al.,&#160;2012,&#160;2018;&#160;Adams&#160;et&#160;al.,&#160;2006,&#160;2016;&#160;Levin&#160;et&#160;al.,&#160;2002)</a>,&#160;and other&#160;(<a href="">Dahal,&#160;</a></p>
+<p style="position:absolute;top:693px;left:81px;white-space:nowrap" class="ft22"><a href="">Pradhan,&#160;and Bates, 2017; Perathoner et al., 2014; Dahal et al.,&#160;2012; Kortum et al.,&#160;</a></p>
+<p style="position:absolute;top:711px;left:81px;white-space:nowrap" class="ft22"><a href="">2015) m</a>odel species, the instructive potential of endogenous bioelectric circuits as a&#160;</p>
+<p style="position:absolute;top:729px;left:81px;white-space:nowrap" class="ft22">control&#160;factor&#160;for&#160;guiding growth&#160;and form has&#160;been&#160;clearly shown&#160;in&#160;planaria (<a href="">Durant&#160;</a></p>
+<p style="position:absolute;top:747px;left:81px;white-space:nowrap" class="ft22"><a href="">et&#160;al.,&#160;2016;&#160;Levin,&#160;Pietak,&#160;and&#160;Bischof,&#160;2018;&#160;Marsh&#160;and&#160;Beams,&#160;1947,&#160;1949,&#160;1950,&#160;</a></p>
+<p style="position:absolute;top:765px;left:81px;white-space:nowrap" class="ft22"><a href="">1952)</a>.&#160;For&#160;example,&#160;when&#160;the head and tail of&#160;a&#160;<i>D.&#160;japonica</i>&#160;flatworm&#160;are&#160;amputated&#160;</p>
+<p style="position:absolute;top:783px;left:81px;white-space:nowrap" class="ft22">and&#160;&#160;the&#160;&#160;trunk&#160;&#160;is&#160;&#160;briefly&#160;&#160;exposed&#160;&#160;to&#160;&#160;a&#160;&#160;gap-junction&#160;&#160;blocker&#160;&#160;(preventing&#160;&#160;bioelectrical&#160;</p>
+<p style="position:absolute;top:801px;left:81px;white-space:nowrap" class="ft22">and small molecule exchange between cells), the amputated piece will regenerate as&#160;</p>
+<p style="position:absolute;top:819px;left:81px;white-space:nowrap" class="ft22">a&#160;double-headed worm&#160;<a href="">(Oviedo&#160;et&#160;al.,&#160;2010</a>).&#160;Remarkably,&#160;this&#160;change&#160;is&#160;permanent:&#160;</p>
+<p style="position:absolute;top:837px;left:81px;white-space:nowrap" class="ft22">upon&#160;further&#160;amputation&#160;of&#160;the&#160;heads&#160;in&#160;plain&#160;water,&#160;the&#160;planarian&#160;will&#160;again&#160;regener-</p>
+<p style="position:absolute;top:855px;left:81px;white-space:nowrap" class="ft22">ate as a double-headed worm,&#160;revealing a stable change to the underlying morphology&#160;</p>
+<p style="position:absolute;top:873px;left:81px;white-space:nowrap" class="ft22">encoding; this may suggest that an important aspect of the information structure that&#160;</p>
+<p style="position:absolute;top:891px;left:81px;white-space:nowrap" class="ft22">drives large-scale patterning decision&#160;is&#160;encoded in&#160;stable bioelectric&#160;circuits (<a href="">Pezzulo&#160;</a></p>
+<p style="position:absolute;top:909px;left:81px;white-space:nowrap" class="ft22"><a href="">and Levin, 2015; Durant et al., 2017)</a>. Other work has shown that modulation of physi-</p>
+<p style="position:absolute;top:927px;left:81px;white-space:nowrap" class="ft22">ological&#160;circuits&#160;can&#160;induce&#160;planaria&#160;to&#160;regenerate&#160;head structures&#160;appropriate&#160;to&#160;other&#160;</p>
+<p style="position:absolute;top:945px;left:81px;white-space:nowrap" class="ft22">species of planaria, without genomic editing (<a href="">Sullivan, Emmons-Bell, and Levin, 2016;&#160;</a></p>
+<p style="position:absolute;top:963px;left:81px;white-space:nowrap" class="ft22"><a href="">Emmons-Bell et al., 2015</a>).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:13px;font-family:Times;color:#231f20;}
+	.ft31{font-size:13px;font-family:Times;color:#231f20;}
+	.ft32{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:651px;white-space:nowrap" class="ft30">119</p>
+<p style="position:absolute;top:54px;left:147px;white-space:nowrap" class="ft31"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:606px;left:81px;white-space:nowrap" class="ft32"><b>FIGURE 6.1:&#160;</b>Shared relationship between&#160;distributed&#160;processing&#160;and complex pat-</p>
+<p style="position:absolute;top:624px;left:81px;white-space:nowrap" class="ft30">tern&#160;recognition&#160;in&#160;biology and computation.&#160;(A)&#160;Individual&#160;neurons&#160;in&#160;biological&#160;net-</p>
+<p style="position:absolute;top:642px;left:81px;white-space:nowrap" class="ft30">works communicate with other neurons via electrical and chemical synapses (Source:&#160;</p>
+<p style="position:absolute;top:660px;left:81px;white-space:nowrap" class="ft30">Wikipedia, Surachit,&#160;Nrets), where electrical synapses (gap junctions) quickly conduct&#160;</p>
+<p style="position:absolute;top:678px;left:81px;white-space:nowrap" class="ft30">electrical&#160;signals&#160;as&#160;well&#160;as&#160;some&#160;small&#160;molecules,&#160;including iP3 and Ca2+,&#160;and chemi-</p>
+<p style="position:absolute;top:696px;left:81px;white-space:nowrap" class="ft30">cal&#160;synapses&#160;communicate indirectly through&#160;neurotransmitters&#160;that open&#160;ion&#160;channels&#160;</p>
+<p style="position:absolute;top:714px;left:81px;white-space:nowrap" class="ft30">as well as other long-term changes. (A’) Neurons together build computational circuits&#160;</p>
+<p style="position:absolute;top:732px;left:81px;white-space:nowrap" class="ft30">that lead to complex high-level behavior such as swimming (<a href="">Friesen and Kristan,&#160;</a></p>
+<p style="position:absolute;top:750px;left:81px;white-space:nowrap" class="ft30"><a href="">2007)&#160;</a>in&#160;leech&#160;(photo&#160;courtesy&#160;of&#160;Karl&#160;Ragnar&#160;Gjertsen,&#160;distributed&#160;through&#160;Creative&#160;</p>
+<p style="position:absolute;top:768px;left:81px;white-space:nowrap" class="ft30">Commons&#160;license).&#160;(B) Non-neuronal&#160;cells&#160;also possess&#160;membrane potential,&#160;which&#160;can&#160;</p>
+<p style="position:absolute;top:786px;left:81px;white-space:nowrap" class="ft30">be modulated by gap junctions (image courtesy of Mariana Ruiz, Wikimedia Commons)&#160;</p>
+<p style="position:absolute;top:804px;left:81px;white-space:nowrap" class="ft30">and voltage-gated ion&#160;channels.&#160;(B’)&#160;In&#160;developing Xenopus&#160;embryo,&#160;differential&#160;mem-</p>
+<p style="position:absolute;top:822px;left:81px;white-space:nowrap" class="ft30">brane voltage in the cells self-organizes and is an eventual marker for pre-positioning of&#160;</p>
+<p style="position:absolute;top:840px;left:81px;white-space:nowrap" class="ft30">eyes&#160;and&#160;mouth,&#160;predictive&#160;of&#160;higher-order&#160;tissue&#160;specification&#160;(image&#160;fro<a href="">m&#160;Vandenberg,&#160;</a></p>
+<p style="position:absolute;top:858px;left:81px;white-space:nowrap" class="ft30"><a href="">Morrie,&#160;and&#160;Adams,&#160;2011a</a>).&#160;(C)&#160;An&#160;artificial&#160;neuron&#160;calculates&#160;a&#160;weighted&#160;sum&#160;of&#160;its&#160;</p>
+<p style="position:absolute;top:876px;left:81px;white-space:nowrap" class="ft30">inputs and transforms the sum through a nonlinear activation function. (C’) Neurons&#160;</p>
+<p style="position:absolute;top:894px;left:81px;white-space:nowrap" class="ft30">connectivity&#160;strength&#160;is&#160;defined&#160;by&#160;the&#160;weight&#160;value;&#160;as&#160;a&#160;network&#160;they&#160;can&#160;learn&#160;to&#160;</p>
+<p style="position:absolute;top:912px;left:81px;white-space:nowrap" class="ft30">classify complex patterns&#160;such&#160;as&#160;distinguishing&#160;between&#160;two&#160;spirals&#160;(image&#160;with&#160;per-</p>
+<p style="position:absolute;top:930px;left:81px;white-space:nowrap" class="ft30">mission fro<a href="">m Hammelman, Lobo, and Levin, 2016</a>).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:13px;font-family:Times;color:#231f20;}
+	.ft41{font-size:13px;font-family:Times;color:#231f20;}
+	.ft42{font-size:13px;font-family:Times;color:#231f20;}
+	.ft43{font-size:14px;font-family:Times;color:#27439f;}
+	.ft44{font-size:7px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft40"><b>120</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft41"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:99px;left:102px;white-space:nowrap" class="ft42">These examples of the plasticity of shape and tissue formation during development&#160;</p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft42">desperately require computational model<a href="">s (Cervera et al., 2018; Pietak and Levin,&#160;</a></p>
+<p style="position:absolute;top:135px;left:81px;white-space:nowrap" class="ft42"><a href="">2017</a>) to explain and drive further experimental hypotheses in order to understand how&#160;</p>
+<p style="position:absolute;top:153px;left:81px;white-space:nowrap" class="ft42">bioelectric networks could process information to (1) detect missing components, (2)&#160;</p>
+<p style="position:absolute;top:171px;left:81px;white-space:nowrap" class="ft42">instruct morphological&#160;recovery toward a pre-determined large-scale outcome,&#160;and (3)&#160;</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft42">recognize when&#160;to stop regeneration.&#160;Because of the many functional&#160;and evolutionary&#160;</p>
+<p style="position:absolute;top:207px;left:81px;white-space:nowrap" class="ft42">(mechanistic) isomorphisms between&#160;pattern&#160;memory in regeneration&#160;and behavioral&#160;</p>
+<p style="position:absolute;top:225px;left:81px;white-space:nowrap" class="ft42">memory,&#160;we turned to computational neural network&#160;models&#160;to explain&#160;these phenom-</p>
+<p style="position:absolute;top:243px;left:81px;white-space:nowrap" class="ft42">ena&#160;(<a href="">Pezzulo&#160;and&#160;Levin,&#160;2015)</a>.&#160;An&#160;artificial&#160;neural&#160;network&#160;(ANN)&#160;is&#160;a&#160;mathematical&#160;</p>
+<p style="position:absolute;top:261px;left:81px;white-space:nowrap" class="ft42">model&#160;of&#160;simplified&#160;neurons&#160;and&#160;synapses&#160;(<a href="">Figure&#160;6.1C)&#160;</a>that&#160;have&#160;been&#160;proven&#160;to&#160;be&#160;</p>
+<p style="position:absolute;top:279px;left:81px;white-space:nowrap" class="ft42">capable of complex pattern recognition (<a href="">Figure 6.1C’) a</a>nd decision-makin<a href="">g (Silver et al.,&#160;</a></p>
+<p style="position:absolute;top:297px;left:81px;white-space:nowrap" class="ft42"><a href="">2016</a>; Carleo and Troyer, 2017). Here, we consider a particular class of ANNs, known&#160;</p>
+<p style="position:absolute;top:315px;left:81px;white-space:nowrap" class="ft42">as reservoir computing networks, which combine aspects of recognition and decision-</p>
+<p style="position:absolute;top:333px;left:81px;white-space:nowrap" class="ft42">making required by regenerative processes observed in&#160;planaria.&#160;We analyze reservoir&#160;</p>
+<p style="position:absolute;top:351px;left:81px;white-space:nowrap" class="ft42">network training methods that improve generalization to noisy input and robustness to&#160;</p>
+<p style="position:absolute;top:369px;left:81px;white-space:nowrap" class="ft42">network perturbation and explore an ANN experiment similar to the phenotypic repro-</p>
+<p style="position:absolute;top:387px;left:81px;white-space:nowrap" class="ft42">gramming that occurs in regenerating planaria. While we illustrate the concepts by&#160;</p>
+<p style="position:absolute;top:405px;left:81px;white-space:nowrap" class="ft42">analogy&#160;to&#160;planarian&#160;regeneration,&#160;this&#160;work&#160;is&#160;meant&#160;to&#160;be&#160;a&#160;proof-of-principle&#160;exam-</p>
+<p style="position:absolute;top:423px;left:81px;white-space:nowrap" class="ft42">ple&#160;that&#160;can&#160;potentially apply to&#160;many biological&#160;contexts.&#160;More&#160;generally,&#160;this&#160;work&#160;is&#160;a&#160;</p>
+<p style="position:absolute;top:441px;left:81px;white-space:nowrap" class="ft42">first&#160;step&#160;toward&#160;understanding&#160;how&#160;(pattern)&#160;memory&#160;can&#160;remain&#160;robust&#160;to&#160;perturba-</p>
+<p style="position:absolute;top:459px;left:81px;white-space:nowrap" class="ft42">tion and damage in self-repairing systems.</p>
+<p style="position:absolute;top:501px;left:81px;white-space:nowrap" class="ft43"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.1.2 &#160; Reservoir network structures – artificial neural </b></a></p>
+<p style="position:absolute;top:520px;left:135px;white-space:nowrap" class="ft43"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>networks studied under perturbation</b></a></p>
+<p style="position:absolute;top:549px;left:102px;white-space:nowrap" class="ft42">For modelling aspects of regeneration,&#160;we chose a reservoir neural network&#160;archi-</p>
+<p style="position:absolute;top:567px;left:81px;white-space:nowrap" class="ft42">tecture,&#160;regarded&#160;as&#160;closely&#160;reflecting&#160;that&#160;of&#160;biological&#160;neural&#160;networks&#160;due&#160;to&#160;the&#160;rich&#160;</p>
+<p style="position:absolute;top:585px;left:81px;white-space:nowrap" class="ft42">recurrence&#160;that&#160;allows&#160;complex&#160;dynamics&#160;not&#160;specified&#160;by&#160;the&#160;user&#160;(<a href="">Lukoševičius and&#160;</a></p>
+<p style="position:absolute;top:603px;left:81px;white-space:nowrap" class="ft42"><a href="">Jaeger, 2009)</a>. Two virtually identical classes of reservoir computing networks exist,&#160;</p>
+<p style="position:absolute;top:621px;left:81px;white-space:nowrap" class="ft42">differing only by the&#160;choice&#160;of&#160;neuronal&#160;integration&#160;function&#160;(<a href="">Verstraeten&#160;et al.,&#160;2007)</a>:&#160;</p>
+<p style="position:absolute;top:639px;left:81px;white-space:nowrap" class="ft42">liquid state machines (LSM) (<a href="">Maass, Natschläger, and Markram, 2002</a>), and echo state&#160;</p>
+<p style="position:absolute;top:657px;left:81px;white-space:nowrap" class="ft42">networks (ESN<a href="">) (Jaeger, 2001)</a>. In these networks, the “reservoir,” a large recurrent&#160;</p>
+<p style="position:absolute;top:675px;left:81px;white-space:nowrap" class="ft42">network, featuring a distributed graph and recurrent connections, is set at random and&#160;</p>
+<p style="position:absolute;top:693px;left:81px;white-space:nowrap" class="ft42">almost never touched (minimal or no training). A simple perceptron detector, commonly&#160;</p>
+<p style="position:absolute;top:711px;left:81px;white-space:nowrap" class="ft42">a single layer of neurons, recognizes patterns within the reservoir and transfers them&#160;</p>
+<p style="position:absolute;top:729px;left:81px;white-space:nowrap" class="ft42">as outpu<a href="">t (Schrauwen, Verstraeten, and Van Campenhout, 2007)</a>. The network may&#160;</p>
+<p style="position:absolute;top:747px;left:81px;white-space:nowrap" class="ft42">also integrate recurrence through output feedback into the reservoir, which can help&#160;</p>
+<p style="position:absolute;top:765px;left:81px;white-space:nowrap" class="ft42">the&#160;network&#160;learn&#160;difficult&#160;problems&#160;(<a href="">Maass,&#160;Joshi,&#160;and&#160;Sontag,&#160;2005</a>).&#160;Further,&#160;the&#160;</p>
+<p style="position:absolute;top:783px;left:81px;white-space:nowrap" class="ft42">reservoir computational architecture combines aspects of the recognition and decision-</p>
+<p style="position:absolute;top:801px;left:81px;white-space:nowrap" class="ft42">making necessary to the regenerative processes observed in planaria. As part of our&#160;</p>
+<p style="position:absolute;top:819px;left:81px;white-space:nowrap" class="ft42">work,&#160;we&#160;analyze&#160;reservoir&#160;network&#160;training&#160;methods&#160;that&#160;improve&#160;generalization&#160;to&#160;</p>
+<p style="position:absolute;top:837px;left:81px;white-space:nowrap" class="ft42">noisy input and robustness to network perturbation.</p>
+<p style="position:absolute;top:855px;left:102px;white-space:nowrap" class="ft42">Amputation&#160;of&#160;a&#160;planarian&#160;is&#160;effectively&#160;the&#160;input&#160;to&#160;the&#160;remaining&#160;worm&#160;body&#160;to&#160;signal&#160;</p>
+<p style="position:absolute;top:873px;left:81px;white-space:nowrap" class="ft42">regeneration (<a href="">Figure 6.2A</a>) Anterior, center, and posterior wound signal<a href="">s (Figure 6.2A’)</a>&#160;</p>
+<p style="position:absolute;top:891px;left:81px;white-space:nowrap" class="ft42">referred to as “positional wound input,” will constitute the input into our reservoir comput-</p>
+<p style="position:absolute;top:909px;left:81px;white-space:nowrap" class="ft42">ing model. The planarian system can be thought of as possessing a bioelectric memory in&#160;</p>
+<p style="position:absolute;top:927px;left:81px;white-space:nowrap" class="ft42">terms of membrane potential (Vmem) gradients established by communication between gap&#160;</p>
+<p style="position:absolute;top:945px;left:81px;white-space:nowrap" class="ft42">junction<a href="">s (Figure 6.2B</a>). In our model, this is represented by the reservoir which is capable&#160;</p>
+<p style="position:absolute;top:963px;left:81px;white-space:nowrap" class="ft42">of&#160;remembering&#160;past&#160;activation&#160;events&#160;through&#160;its&#160;recurrent&#160;connections&#160;between&#160;internal&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:Times;color:#231f20;}
+	.ft51{font-size:13px;font-family:Times;color:#231f20;}
+	.ft52{font-size:13px;font-family:Times;color:#27439f;}
+	.ft53{font-size:7px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:650px;white-space:nowrap" class="ft50">121</p>
+<p style="position:absolute;top:54px;left:147px;white-space:nowrap" class="ft51"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:646px;left:81px;white-space:nowrap" class="ft52"><b>FIGURE 6.2:&#160;</b>Parallels between planaria regeneration and reservoir computing&#160;</p>
+<p style="position:absolute;top:664px;left:81px;white-space:nowrap" class="ft50">model. (A) When the head and tail of a planaria are amputated, the anterior and pos-</p>
+<p style="position:absolute;top:682px;left:81px;white-space:nowrap" class="ft50">terior&#160;wounds&#160;signal&#160;to&#160;the&#160;worm&#160;to&#160;begin&#160;regeneration.&#160;(A’)&#160;The&#160;input to&#160;a&#160;network&#160;is&#160;</p>
+<p style="position:absolute;top:700px;left:81px;white-space:nowrap" class="ft50">a&#160;wound&#160;signal&#160;at&#160;a&#160;specific&#160;point&#160;in&#160;time&#160;(red&#160;line)&#160;from&#160;the&#160;anterior,&#160;center,&#160;and&#160;pos-</p>
+<p style="position:absolute;top:718px;left:81px;white-space:nowrap" class="ft50">terior sections of the worm. (B) Membrane potential (Vmem) and gap-junction communi-</p>
+<p style="position:absolute;top:736px;left:81px;white-space:nowrap" class="ft50">cation&#160;cause&#160;a&#160;regional&#160;gradient,&#160;characterized by a depolarized head and a relatively&#160;</p>
+<p style="position:absolute;top:754px;left:81px;white-space:nowrap" class="ft50">hyperpolarized body.&#160;(B’) The reservoir&#160;network&#160;is&#160;self-organized through&#160;Oja rewiring&#160;</p>
+<p style="position:absolute;top:772px;left:81px;white-space:nowrap" class="ft50">dynamics and has cells which are hyperpolarized and depolarized for a given input. (C)&#160;</p>
+<p style="position:absolute;top:790px;left:81px;white-space:nowrap" class="ft50">The&#160;planarian&#160;bioelectrical&#160;pattern&#160;has&#160;known&#160;effects&#160;on&#160;physiological&#160;outcomes,&#160;tuned&#160;</p>
+<p style="position:absolute;top:808px;left:81px;white-space:nowrap" class="ft50">through&#160;evolution.&#160;The&#160;mechanism&#160;for&#160;response&#160;to&#160;bioelectrical&#160;signaling&#160;is&#160;presumed&#160;</p>
+<p style="position:absolute;top:826px;left:81px;white-space:nowrap" class="ft50">to be transcription of gene regulatory elements that control cell type differentiation to&#160;</p>
+<p style="position:absolute;top:844px;left:81px;white-space:nowrap" class="ft50">obtain the correct target morphology. (C’) Network output weights are trained through&#160;</p>
+<p style="position:absolute;top:862px;left:81px;white-space:nowrap" class="ft50">pseudoinverse learning algorithm via supervised learning with positional wound input&#160;</p>
+<p style="position:absolute;top:880px;left:81px;white-space:nowrap" class="ft50">and&#160;positional&#160;tissue&#160;output.&#160;(D)&#160;The&#160;final&#160;step&#160;in&#160;planarian&#160;regeneration&#160;is&#160;the&#160;cell&#160;</p>
+<p style="position:absolute;top:898px;left:81px;white-space:nowrap" class="ft50">proliferation,&#160;migration,&#160;and&#160;differentiation&#160;to&#160;reformulate&#160;the&#160;missing&#160;head and tail&#160;</p>
+<p style="position:absolute;top:916px;left:81px;white-space:nowrap" class="ft50">structures.&#160;(D’)&#160;The&#160;final&#160;output&#160;is&#160;the&#160;expected&#160;concentrations&#160;of&#160;head,&#160;trunk,&#160;and&#160;tail&#160;</p>
+<p style="position:absolute;top:934px;left:81px;white-space:nowrap" class="ft50">at the anterior, center, and posterior sections of the worm.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:13px;font-family:Times;color:#231f20;}
+	.ft61{font-size:13px;font-family:Times;color:#231f20;}
+	.ft62{font-size:13px;font-family:Times;color:#231f20;}
+	.ft63{font-size:16px;font-family:Times;color:#27439f;}
+	.ft64{font-size:14px;font-family:Times;color:#27439f;}
+	.ft65{font-size:7px;font-family:Times;color:#231f20;}
+	.ft66{font-size:16px;line-height:30px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft60"><b>122</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft61"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft62">units&#160;<a href="">(Figure 6.2B’</a>) and has&#160;some level&#160;of self-organization&#160;through Oja rewirin<a href="">g (Oja,&#160;</a></p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft62"><a href="">1982;&#160;Oja&#160;and&#160;Karhunen,&#160;1995</a>),&#160;which&#160;we&#160;justify&#160;through&#160;improved&#160;ability&#160;to&#160;generalize&#160;</p>
+<p style="position:absolute;top:135px;left:81px;white-space:nowrap" class="ft62">to novel input. The output of the model is a set of morphological instructions (e.g., whether&#160;</p>
+<p style="position:absolute;top:153px;left:81px;white-space:nowrap" class="ft62">a head or a tail is to be generated) that is thought to be a consequence of the bioelectrical&#160;</p>
+<p style="position:absolute;top:171px;left:81px;white-space:nowrap" class="ft62">memory in the real planarian. This bioelectricity-based morphogenesis system has become&#160;</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft62">effective over eons of evolution at regenerating complex organ<a href="">s (Figure 6.2C</a>). In the model,&#160;</p>
+<p style="position:absolute;top:207px;left:81px;white-space:nowrap" class="ft62">weights&#160;leading&#160;to&#160;the&#160;output&#160;units&#160;are&#160;the&#160;“detector”&#160;which&#160;interprets&#160;the&#160;firing&#160;pattern&#160;</p>
+<p style="position:absolute;top:225px;left:81px;white-space:nowrap" class="ft62">of&#160;the&#160;reservoir&#160;and&#160;is&#160;trained&#160;by&#160;supervised&#160;learning&#160;with&#160;respect&#160;to&#160;the&#160;target&#160;output&#160;</p>
+<p style="position:absolute;top:243px;left:81px;white-space:nowrap" class="ft62">(<a href="">Figure&#160;6.2C’</a>).&#160;In&#160;the&#160;real&#160;planarian,&#160;the&#160;sequence&#160;of&#160;wound&#160;detection&#160;and&#160;the&#160;memory&#160;of&#160;</p>
+<p style="position:absolute;top:261px;left:81px;white-space:nowrap" class="ft62">the&#160;target&#160;morphology&#160;leads&#160;to&#160;blastula&#160;formation,&#160;differentiation,&#160;and&#160;the&#160;regeneration&#160;of&#160;</p>
+<p style="position:absolute;top:279px;left:81px;white-space:nowrap" class="ft62">the&#160;head&#160;and&#160;tail&#160;of&#160;the&#160;trunk&#160;fragment&#160;(<a href="">Figure&#160;6.2D)</a>.&#160;In&#160;the&#160;model,&#160;the&#160;regenerative&#160;out-</p>
+<p style="position:absolute;top:297px;left:81px;white-space:nowrap" class="ft62">come&#160;is&#160;qualitatively&#160;represented&#160;by&#160;a&#160;set&#160;of&#160;nine&#160;outputs:&#160;anterior&#160;head,&#160;trunk,&#160;and&#160;tail;&#160;</p>
+<p style="position:absolute;top:315px;left:81px;white-space:nowrap" class="ft62">center head, trunk, and tail; and posterior head, trunk, and tail states (representing the&#160;</p>
+<p style="position:absolute;top:333px;left:81px;white-space:nowrap" class="ft62">corresponding cell type concentrations) which we will refer to as “positional tissue output”&#160;</p>
+<p style="position:absolute;top:351px;left:81px;white-space:nowrap" class="ft62">that follows a specific pattern based on the wound input signal (<a href="">Figure 6.2D</a>’).</p>
+<p style="position:absolute;top:369px;left:102px;white-space:nowrap" class="ft62">Previous&#160;work has&#160;investigated the&#160;effects&#160;of perturbation&#160;on&#160;reservoir&#160;networks,&#160;</p>
+<p style="position:absolute;top:387px;left:81px;white-space:nowrap" class="ft62">suggesting that a small-world network that followed the power law provided the best&#160;</p>
+<p style="position:absolute;top:405px;left:81px;white-space:nowrap" class="ft62">topology&#160;for&#160;robustness&#160;to&#160;“dead”&#160;reservoir&#160;neurons&#160;which&#160;never&#160;fire&#160;and&#160;neurons&#160;which&#160;</p>
+<p style="position:absolute;top:423px;left:81px;white-space:nowrap" class="ft62">always&#160;fire&#160;regardless&#160;of&#160;input&#160;in&#160;liquid&#160;state&#160;machines&#160;(<a href="">Hazan&#160;and&#160;Manevitz,&#160;2012</a>),&#160;</p>
+<p style="position:absolute;top:441px;left:81px;white-space:nowrap" class="ft62">and is consistent with known information about the topological connectivity of the brain&#160;</p>
+<p style="position:absolute;top:459px;left:81px;white-space:nowrap" class="ft62">(<a href="">Bassett and Bullmore,&#160;2006)</a>.&#160;Although&#160;the reservoir&#160;connectivity is typically static,&#160;</p>
+<p style="position:absolute;top:477px;left:81px;white-space:nowrap" class="ft62">rewiring dynamics applied to the connections&#160;between&#160;reservoir&#160;nodes has been&#160;shown&#160;</p>
+<p style="position:absolute;top:495px;left:81px;white-space:nowrap" class="ft62">to&#160;improve&#160;echo&#160;state&#160;network&#160;performance&#160;for&#160;classification&#160;and&#160;regression&#160;(<a href="">Yusoff,&#160;</a></p>
+<p style="position:absolute;top:513px;left:81px;white-space:nowrap" class="ft62"><a href="">Chrol-Cannon, and Jin, 2016) a</a>s well as time series prediction (<a href="">Yusoff and Jin, 2014)&#160;</a></p>
+<p style="position:absolute;top:531px;left:81px;white-space:nowrap" class="ft62">and self-organizing inhibitory-excitatory networks (<a href="">Lazar, Pipa, and Triesch, 2009)</a>.</p>
+<p style="position:absolute;top:549px;left:102px;white-space:nowrap" class="ft62">In&#160;&#160;this&#160;&#160;paper,&#160;&#160;we&#160;&#160;make&#160;&#160;modifications&#160;&#160;to&#160;&#160;include&#160;&#160;noisy&#160;&#160;input&#160;&#160;and&#160;&#160;allow&#160;&#160;reservoir&#160;</p>
+<p style="position:absolute;top:567px;left:81px;white-space:nowrap" class="ft62">rewiring&#160;during&#160;training&#160;and&#160;evaluate&#160;its&#160;performance&#160;under&#160;novel&#160;noisy&#160;input&#160;as&#160;well&#160;</p>
+<p style="position:absolute;top:585px;left:81px;white-space:nowrap" class="ft62">as perturbation. We demonstrate that a reservoir network&#160;model can learn a pattern of&#160;</p>
+<p style="position:absolute;top:603px;left:81px;white-space:nowrap" class="ft62">planarian regeneration and emphasize parallel results to planarian patterning under&#160;</p>
+<p style="position:absolute;top:621px;left:81px;white-space:nowrap" class="ft62">gap-junction&#160;perturbation.</p>
+<p style="position:absolute;top:704px;left:81px;white-space:nowrap" class="ft66"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.2&#160;&#160;&#160;Methods<br/>6.2.1&#160;&#160;&#160;Reservoir&#160;&#160;network</b></a></p>
+<p style="position:absolute;top:763px;left:102px;white-space:nowrap" class="ft62">We&#160;define&#160;our&#160;reservoir&#160;network&#160;to&#160;contain&#160;three&#160;inputs&#160;nodes&#160;representing&#160;planarian&#160;</p>
+<p style="position:absolute;top:781px;left:81px;white-space:nowrap" class="ft62">wound&#160;signal&#160;at&#160;the upper,&#160;middle,&#160;and&#160;lower&#160;body,&#160;ranging&#160;from&#160;0&#160;to 1, and&#160;is&#160;connected&#160;</p>
+<p style="position:absolute;top:799px;left:81px;white-space:nowrap" class="ft62">all 200 reservoir units. The reservoir units are connected asymmetrically following a&#160;</p>
+<p style="position:absolute;top:817px;left:81px;white-space:nowrap" class="ft62">sparse&#160;uniformly&#160;distributed&#160;random&#160;matrix&#160;with&#160;a&#160;density&#160;of&#160;0.05.&#160;The&#160;activation&#160;func-</p>
+<p style="position:absolute;top:835px;left:81px;white-space:nowrap" class="ft62">tion&#160;for&#160;the&#160;reservoir&#160;units&#160;is&#160;a&#160;hyperbolic&#160;tangent&#160;transfer&#160;function.&#160;All&#160;input&#160;and&#160;reservoir&#160;</p>
+<p style="position:absolute;top:853px;left:81px;white-space:nowrap" class="ft62">weight values were generated using MATLAB®’s rand function for uniformly distributed&#160;</p>
+<p style="position:absolute;top:871px;left:81px;white-space:nowrap" class="ft62">random&#160;numbers,&#160;between&#160;1&#160;and&#160;−1.&#160;The&#160;spectral&#160;radius&#160;was&#160;set&#160;to&#160;0.6,&#160;selected&#160;by&#160;man-</p>
+<p style="position:absolute;top:889px;left:81px;white-space:nowrap" class="ft62">ual trial and suggested in the literature to be optimal under 1 to maintain the “echo state&#160;</p>
+<p style="position:absolute;top:907px;left:81px;white-space:nowrap" class="ft62">property” that there is a limit to&#160;the time&#160;for&#160;which an input has an&#160;effect on the output&#160;</p>
+<p style="position:absolute;top:925px;left:81px;white-space:nowrap" class="ft62">(<a href="">Lukoševičius and Jaeger, 2009</a>). Other parameters were left at default values except for&#160;</p>
+<p style="position:absolute;top:943px;left:81px;white-space:nowrap" class="ft62">feedback scaling, which was set to 0. The output of the network constitutes the detector&#160;</p>
+<p style="position:absolute;top:961px;left:81px;white-space:nowrap" class="ft62">of the reservoir, a layer with nine output nodes with identity activation functions which&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:13px;font-family:Times;color:#231f20;}
+	.ft71{font-size:13px;font-family:Times;color:#231f20;}
+	.ft72{font-size:14px;font-family:Times;color:#27439f;}
+	.ft73{font-size:7px;font-family:Times;color:#231f20;}
+	.ft74{font-size:13px;font-family:Times;color:#000000;}
+	.ft75{font-size:7px;font-family:Times;color:#000000;}
+	.ft76{font-size:7px;font-family:Times;color:#000000;}
+	.ft77{font-size:13px;font-family:Times;color:#000000;}
+	.ft78{font-size:20px;font-family:Times;color:#000000;}
+	.ft79{font-size:23px;font-family:Times;color:#000000;}
+	.ft710{font-size:16px;font-family:Times;color:#27439f;}
+	.ft711{font-size:13px;font-family:Times;color:#27439f;}
+	.ft712{font-size:13px;font-family:Times;color:#231f20;}
+	.ft713{font-size:7px;font-family:Times;color:#231f20;}
+	.ft714{font-size:13px;font-family:Times;color:#231f20;}
+	.ft715{font-size:16px;line-height:30px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:650px;white-space:nowrap" class="ft70">123</p>
+<p style="position:absolute;top:54px;left:146px;white-space:nowrap" class="ft71"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft70">dictate the tissue concentration of head, trunk, and tail at upper, middle, and lower body&#160;</p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft70">regions.&#160;The&#160;detector&#160;was&#160;trained&#160;with&#160;the&#160;pseudoinverse&#160;algorithm&#160;as&#160;is&#160;common&#160;in&#160;</p>
+<p style="position:absolute;top:135px;left:81px;white-space:nowrap" class="ft70">reservoir&#160;computing&#160;<a href="">(Ortín&#160;et&#160;al.,&#160;2015;&#160;Schrauwen,&#160;Verstraeten,&#160;and&#160;Van&#160;Campenhout,&#160;</a></p>
+<p style="position:absolute;top:153px;left:81px;white-space:nowrap" class="ft70"><a href="">2007)</a>. We trained on the same time series input for 100 repetitions to allow for Oja rewir-</p>
+<p style="position:absolute;top:171px;left:81px;white-space:nowrap" class="ft70">ing of the reservoir, which was updated once for each input series.</p>
+<p style="position:absolute;top:210px;left:81px;white-space:nowrap" class="ft72"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.2.2&#160;&#160;&#160;Oja rewiring of reservoir</b></a></p>
+<p style="position:absolute;top:238px;left:102px;white-space:nowrap" class="ft70">We introduce neuroplasticity into the reservoir using Oja rewiring (<a href="">Oja, 1982; Oja&#160;</a></p>
+<p style="position:absolute;top:256px;left:81px;white-space:nowrap" class="ft70"><a href="">and Karhunen, 1995; Baldi and Sadowski, 2016</a>) dynamics (Equation 6.1) where&#160;<i>wij</i>&#160;is&#160;</p>
+<p style="position:absolute;top:274px;left:81px;white-space:nowrap" class="ft70">the weight from neuron&#160;<i>i</i>&#160;to neuron&#160;<i>j</i>,&#160;α&#160;is the learning rate,&#160;σ&#160;is the output function for&#160;</p>
+<p style="position:absolute;top:292px;left:81px;white-space:nowrap" class="ft70">a given neuron and some input&#160;<i>x</i>.</p>
+<p style="position:absolute;top:331px;left:81px;white-space:nowrap" class="ft70">&#160;</p>
+<p style="position:absolute;top:331px;left:236px;white-space:nowrap" class="ft74"><i>w</i></p>
+<p style="position:absolute;top:331px;left:271px;white-space:nowrap" class="ft74"><i>w</i></p>
+<p style="position:absolute;top:331px;left:345px;white-space:nowrap" class="ft74"><i>j&#160;x</i></p>
+<p style="position:absolute;top:331px;left:402px;white-space:nowrap" class="ft74"><i>i&#160;x</i></p>
+<p style="position:absolute;top:331px;left:459px;white-space:nowrap" class="ft74"><i>j&#160;x&#160;w</i></p>
+<p style="position:absolute;top:340px;left:247px;white-space:nowrap" class="ft75"><i>ij</i></p>
+<p style="position:absolute;top:340px;left:282px;white-space:nowrap" class="ft75"><i>ij</i></p>
+<p style="position:absolute;top:340px;left:506px;white-space:nowrap" class="ft75"><i>ij</i></p>
+<p style="position:absolute;top:331px;left:248px;white-space:nowrap" class="ft76">′&#160;=</p>
+<p style="position:absolute;top:332px;left:292px;white-space:nowrap" class="ft77">+</p>
+<p style="position:absolute;top:332px;left:430px;white-space:nowrap" class="ft77">−</p>
+<p style="position:absolute;top:326px;left:337px;white-space:nowrap" class="ft78">(&#160;)&#160;(&#160;)&#160;(&#160;)</p>
+<p style="position:absolute;top:323px;left:381px;white-space:nowrap" class="ft79">(</p>
+<p style="position:absolute;top:323px;left:514px;white-space:nowrap" class="ft79">)</p>
+<p style="position:absolute;top:332px;left:304px;white-space:nowrap" class="ft77">α&#160;σ</p>
+<p style="position:absolute;top:332px;left:387px;white-space:nowrap" class="ft77">σ</p>
+<p style="position:absolute;top:332px;left:441px;white-space:nowrap" class="ft77">σ</p>
+<p style="position:absolute;top:331px;left:317px;white-space:nowrap" class="ft77">*</p>
+<p style="position:absolute;top:331px;left:350px;white-space:nowrap" class="ft77">,&#160;*</p>
+<p style="position:absolute;top:331px;left:407px;white-space:nowrap" class="ft77">,</p>
+<p style="position:absolute;top:331px;left:464px;white-space:nowrap" class="ft77">,&#160;*</p>
+<p style="position:absolute;top:331px;left:522px;white-space:nowrap" class="ft70">&#160;(6.1)</p>
+<p style="position:absolute;top:367px;left:102px;white-space:nowrap" class="ft70">Oja&#160;rewiring&#160;encourages&#160;stronger&#160;connections&#160;between&#160;nodes&#160;that&#160;fire&#160;similarly&#160;dur-</p>
+<p style="position:absolute;top:385px;left:81px;white-space:nowrap" class="ft70">ing&#160;training,&#160;but&#160;it&#160;scales&#160;these&#160;updates&#160;based&#160;on&#160;the&#160;current&#160;weights.&#160;<a href="">Table&#160;6.1&#160;</a>illus-</p>
+<p style="position:absolute;top:403px;left:81px;white-space:nowrap" class="ft70">trates an example of Oja rewiring under different parameters:</p>
+<p style="position:absolute;top:421px;left:102px;white-space:nowrap" class="ft70">In our model, we set the Oja learning rate (α) to be 0.06.</p>
+<p style="position:absolute;top:460px;left:81px;white-space:nowrap" class="ft72"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.2.3&#160;&#160;&#160;Perturbation&#160;&#160;experiments</b></a></p>
+<p style="position:absolute;top:489px;left:102px;white-space:nowrap" class="ft70">We evaluate robustness by perturbing of 5% of the internal reservoir connections&#160;</p>
+<p style="position:absolute;top:507px;left:81px;white-space:nowrap" class="ft70">though&#160;patterns&#160;were&#160;consistent&#160;for&#160;various&#160;perturbation&#160;amounts.&#160;The&#160;neural&#160;network&#160;</p>
+<p style="position:absolute;top:525px;left:81px;white-space:nowrap" class="ft70">perturbations&#160;are done by blocking the connectivity of some internal reservoir&#160;nodes&#160;</p>
+<p style="position:absolute;top:543px;left:81px;white-space:nowrap" class="ft70">(setting the weight,&#160;<i>wab</i>, acting as the input to neuron&#160;<i>b</i>&#160;from neuron&#160;<i>a</i>&#160;to be 0). This&#160;</p>
+<p style="position:absolute;top:561px;left:81px;white-space:nowrap" class="ft70">perturbation is asymmetric, affecting only the connection from neuron&#160;<i>a</i>&#160;to neuron&#160;<i>b</i>&#160;</p>
+<p style="position:absolute;top:579px;left:81px;white-space:nowrap" class="ft70">and not the connection from neuron&#160;<i>b</i>&#160;to neuron&#160;<i>a</i>.</p>
+<p style="position:absolute;top:662px;left:81px;white-space:nowrap" class="ft715"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.3&#160;&#160;&#160;Results<br/>6.3.1&#160;&#160;&#160;A reservoir computing model of development</b></a></p>
+<p style="position:absolute;top:721px;left:102px;white-space:nowrap" class="ft70">Our reservoir&#160;network&#160;parallels&#160;steps&#160;in&#160;planarian&#160;regeneration&#160;(<a href="">Figure&#160;6.2A–D)&#160;</a></p>
+<p style="position:absolute;top:739px;left:81px;white-space:nowrap" class="ft70">through learning the relationship between positional wound input (<a href="">Figure 6.2A’) a</a>nd&#160;</p>
+<p style="position:absolute;top:781px;left:172px;white-space:nowrap" class="ft711"><b>TABLE 6.1:&#160;&#160;</b>Oja rewiring rule under different neuron&#160;</p>
+<p style="position:absolute;top:798px;left:172px;white-space:nowrap" class="ft70">weights&#160;and&#160;activations</p>
+<p style="position:absolute;top:830px;left:173px;white-space:nowrap" class="ft712"><i><b>wij</b></i></p>
+<p style="position:absolute;top:830px;left:281px;white-space:nowrap" class="ft714"><b>σ(<i>j,x</i></b><b>)</b></p>
+<p style="position:absolute;top:830px;left:395px;white-space:nowrap" class="ft714"><b>σ(<i>i,x</i></b><b>)</b></p>
+<p style="position:absolute;top:830px;left:518px;white-space:nowrap" class="ft712"><i><b>wij</b></i><b>′</b></p>
+<p style="position:absolute;top:856px;left:172px;white-space:nowrap" class="ft70">0.1</p>
+<p style="position:absolute;top:856px;left:297px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:856px;left:410px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:856px;left:498px;white-space:nowrap" class="ft70">0.1&#160;+&#160;0.9α</p>
+<p style="position:absolute;top:877px;left:172px;white-space:nowrap" class="ft70">0.1</p>
+<p style="position:absolute;top:877px;left:297px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:877px;left:410px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:877px;left:498px;white-space:nowrap" class="ft70">1.1&#160;−&#160;0.1α</p>
+<p style="position:absolute;top:897px;left:172px;white-space:nowrap" class="ft70">0.1</p>
+<p style="position:absolute;top:897px;left:297px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:897px;left:410px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:897px;left:519px;white-space:nowrap" class="ft70">0.1</p>
+<p style="position:absolute;top:917px;left:172px;white-space:nowrap" class="ft70">0.9</p>
+<p style="position:absolute;top:917px;left:297px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:917px;left:410px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:917px;left:498px;white-space:nowrap" class="ft70">0.1&#160;+&#160;0.1α</p>
+<p style="position:absolute;top:937px;left:172px;white-space:nowrap" class="ft70">0.9</p>
+<p style="position:absolute;top:937px;left:297px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:937px;left:410px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:937px;left:498px;white-space:nowrap" class="ft70">0.1&#160;−&#160;0.9α</p>
+<p style="position:absolute;top:957px;left:172px;white-space:nowrap" class="ft70">0.9</p>
+<p style="position:absolute;top:957px;left:297px;white-space:nowrap" class="ft70">0</p>
+<p style="position:absolute;top:957px;left:410px;white-space:nowrap" class="ft70">1</p>
+<p style="position:absolute;top:957px;left:519px;white-space:nowrap" class="ft70">0.9</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:13px;font-family:Times;color:#231f20;}
+	.ft81{font-size:13px;font-family:Times;color:#231f20;}
+	.ft82{font-size:13px;font-family:Times;color:#231f20;}
+	.ft83{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft80"><b>124</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft81"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft82">positional&#160;tissue&#160;regrowth&#160;as&#160;output (<a href="">Figure&#160;6.2D’)&#160;</a>via&#160;a&#160;reservoir&#160;with&#160;Oja dynam-</p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft82">ics&#160;(<a href="">Figure 6.2B’</a>) which&#160;is&#160;connected to a single layer&#160;detector&#160;which&#160;in&#160;turn&#160;learns&#160;a&#160;</p>
+<p style="position:absolute;top:135px;left:81px;white-space:nowrap" class="ft82">supervised mapping&#160;from reservoir&#160;activation&#160;to&#160;output using the&#160;pseudoinverse&#160;algo-</p>
+<p style="position:absolute;top:153px;left:81px;white-space:nowrap" class="ft82">rithm (<a href="">Figure 6.2C’)</a>.</p>
+<p style="position:absolute;top:171px;left:102px;white-space:nowrap" class="ft82">This&#160;network&#160;was&#160;able&#160;to&#160;successfully&#160;learn&#160;the&#160;positional&#160;tissue&#160;output pattern&#160;</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft82">(<a href="">Figure 6.2D’) i</a>n response to positional wound input, with anterior head and posterior&#160;</p>
+<p style="position:absolute;top:207px;left:81px;white-space:nowrap" class="ft82">tail concentrations&#160;rising over&#160;time,&#160;and center trunk&#160;concentration&#160;remaining static.&#160;</p>
+<p style="position:absolute;top:225px;left:81px;white-space:nowrap" class="ft82">The anatomy of the reservoir&#160;computing model allows&#160;us to study how&#160;the planarian&#160;</p>
+<p style="position:absolute;top:243px;left:81px;white-space:nowrap" class="ft82">regeneration problem is solved by the network by perturbing the reservoir connections&#160;</p>
+<p style="position:absolute;top:261px;left:81px;white-space:nowrap" class="ft82">and examining&#160;changes&#160;to&#160;the&#160;strength&#160;of&#160;the&#160;weights&#160;between&#160;the&#160;reservoir&#160;nodes&#160;and&#160;</p>
+<p style="position:absolute;top:279px;left:81px;white-space:nowrap" class="ft82">the output nodes that pattern the positional tissue output.</p>
+<p style="position:absolute;top:297px;left:102px;white-space:nowrap" class="ft82">We&#160;also&#160;included&#160;stochasticity&#160;in&#160;the&#160;input&#160;to&#160;our&#160;model&#160;to&#160;make&#160;it&#160;more&#160;flexible&#160;</p>
+<p style="position:absolute;top:315px;left:81px;white-space:nowrap" class="ft82">and&#160;realistic&#160;(<a href="">Durant&#160;et&#160;al.,&#160;2017</a>).&#160;Current&#160;training&#160;methods&#160;of&#160;artificial&#160;neural&#160;net-</p>
+<p style="position:absolute;top:333px;left:81px;white-space:nowrap" class="ft82">work&#160;&#160;often&#160;&#160;include&#160;&#160;stochasticity&#160;&#160;in&#160;&#160;terms&#160;&#160;of&#160;&#160;dropout&#160;&#160;or&#160;&#160;noise&#160;&#160;to&#160;&#160;prevent&#160;&#160;over-fitting&#160;</p>
+<p style="position:absolute;top:351px;left:81px;white-space:nowrap" class="ft82">(<a href="">Srivastava et al.,&#160;2014)</a>.&#160;We found that the added stochasticity in&#160;inputs&#160;improves&#160;net-</p>
+<p style="position:absolute;top:369px;left:81px;white-space:nowrap" class="ft82">works’ robustness to input perturbations: using 100 instances of the regeneration time&#160;</p>
+<p style="position:absolute;top:387px;left:81px;white-space:nowrap" class="ft82">series with white noise in the input to train the reservoir increased the performance of&#160;</p>
+<p style="position:absolute;top:405px;left:81px;white-space:nowrap" class="ft82">the reservoir under novel noise (<a href="">Figure 6.3A)</a>. Without noise in training, the network&#160;</p>
+<p style="position:absolute;top:423px;left:81px;white-space:nowrap" class="ft82">tested on novel noisy input did very poorly in generating the expected output pattern,&#160;</p>
+<p style="position:absolute;top:441px;left:81px;white-space:nowrap" class="ft82">suggesting it had not truly learned the input-output associations. In contrast, when&#160;</p>
+<p style="position:absolute;top:459px;left:81px;white-space:nowrap" class="ft82">the network was trained with input noise, the ability to generate the output pattern&#160;</p>
+<p style="position:absolute;top:477px;left:81px;white-space:nowrap" class="ft82">under&#160;novel&#160;noise&#160;was&#160;significantly&#160;improved&#160;(<a href="">Figure&#160;6.3B)</a>.&#160;Training&#160;with&#160;input&#160;noise&#160;</p>
+<p style="position:absolute;top:495px;left:81px;white-space:nowrap" class="ft82">also&#160;leads&#160;to&#160;robustness&#160;in&#160;model&#160;output&#160;under&#160;5%&#160;weight&#160;perturbations&#160;by&#160;connection&#160;</p>
+<p style="position:absolute;top:833px;left:81px;white-space:nowrap" class="ft83"><b>FIGURE 6.3:&#160;</b>Training with&#160;noise&#160;improves&#160;networks’&#160;ability to&#160;generalize&#160;to&#160;noisy&#160;</p>
+<p style="position:absolute;top:851px;left:81px;white-space:nowrap" class="ft82">test input.&#160;(A) The network&#160;is&#160;tested under&#160;the addition of random noise to the input&#160;</p>
+<p style="position:absolute;top:869px;left:81px;white-space:nowrap" class="ft82">and compared to the expected output pattern for wildtype positional tissue information&#160;</p>
+<p style="position:absolute;top:887px;left:81px;white-space:nowrap" class="ft82">using normalized root-mean-square error;&#160;this&#160;was&#160;tested for&#160;100 novel noisy inputs.&#160;</p>
+<p style="position:absolute;top:905px;left:81px;white-space:nowrap" class="ft82">(B) When trained with noisy inputs,&#160;the network&#160;is able to regenerate the pattern with&#160;</p>
+<p style="position:absolute;top:923px;left:81px;white-space:nowrap" class="ft82">higher accuracy than the same network trained without noisy inputs, which suggests&#160;</p>
+<p style="position:absolute;top:941px;left:81px;white-space:nowrap" class="ft82">that it has learned an underlying relationship between input and output.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:13px;font-family:Times;color:#231f20;}
+	.ft91{font-size:13px;font-family:Times;color:#231f20;}
+	.ft92{font-size:14px;font-family:Times;color:#27439f;}
+	.ft93{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:650px;white-space:nowrap" class="ft90">125</p>
+<p style="position:absolute;top:54px;left:146px;white-space:nowrap" class="ft91"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:526px;left:81px;white-space:nowrap" class="ft90">blocking&#160;of&#160;the&#160;reservoir&#160;connections&#160;(<a href="">Figure&#160;6.4A</a>)&#160;also&#160;results&#160;in&#160;lower&#160;error&#160;when&#160;test-</p>
+<p style="position:absolute;top:544px;left:81px;white-space:nowrap" class="ft90">ing novel noisy input compared to a model trained without input noise (<a href="">Figure 6.4B</a>).</p>
+<p style="position:absolute;top:562px;left:102px;white-space:nowrap" class="ft90">We&#160;&#160;trained&#160;&#160;without&#160;&#160;the&#160;&#160;modified&#160;&#160;Oja&#160;&#160;dynamics&#160;&#160;and&#160;&#160;100&#160;&#160;stochastic&#160;&#160;noise&#160;&#160;inputs&#160;</p>
+<p style="position:absolute;top:580px;left:81px;white-space:nowrap" class="ft90">and tested using the stochastic noise and perturbation analysis. We found that a net-</p>
+<p style="position:absolute;top:598px;left:81px;white-space:nowrap" class="ft90">work trained with Oja rewiring generalized better to novel noise (<a href="">Figure 6.5A</a>) and&#160;</p>
+<p style="position:absolute;top:616px;left:81px;white-space:nowrap" class="ft90">performed&#160;as&#160;well&#160;as&#160;the&#160;network&#160;without&#160;rewiring&#160;under&#160;perturbation&#160;(<a href="">Figure&#160;6.5B)</a>.</p>
+<p style="position:absolute;top:660px;left:81px;white-space:nowrap" class="ft92"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.3.2&#160;&#160;&#160;Perturbation of reservoir network mimics experimental results</b></a></p>
+<p style="position:absolute;top:689px;left:102px;white-space:nowrap" class="ft90">After our echo state network system was trained to faithfully generate positional&#160;</p>
+<p style="position:absolute;top:707px;left:81px;white-space:nowrap" class="ft90">tissue concentration as output from input of positional wound information, we per-</p>
+<p style="position:absolute;top:725px;left:81px;white-space:nowrap" class="ft90">turbed 5% of the reservoir connections (<a href="">Figure 6.6A) a</a>nd retrained the perturbed&#160;</p>
+<p style="position:absolute;top:743px;left:81px;white-space:nowrap" class="ft90">network&#160;on&#160;the&#160;first&#160;350&#160;time&#160;points&#160;of&#160;two&#160;different&#160;outcomes:&#160;once&#160;to&#160;the&#160;wildtype&#160;</p>
+<p style="position:absolute;top:761px;left:81px;white-space:nowrap" class="ft90">phenotype and once to the double-headed phenotype, to determine if the perturbation&#160;</p>
+<p style="position:absolute;top:779px;left:81px;white-space:nowrap" class="ft90">would&#160;cause&#160;any&#160;differences&#160;in&#160;the&#160;ability&#160;of&#160;the&#160;system&#160;to&#160;learn&#160;wildtype&#160;or&#160;dou-</p>
+<p style="position:absolute;top:797px;left:81px;white-space:nowrap" class="ft90">ble-headed phenotypes. Unexpectedly, we found that the retrained wildtype weights&#160;</p>
+<p style="position:absolute;top:815px;left:81px;white-space:nowrap" class="ft90">between the reservoir and&#160;output were&#160;strongly&#160;connected at the&#160;posterior head out-</p>
+<p style="position:absolute;top:833px;left:81px;white-space:nowrap" class="ft90">put node (Figure 6.6D), suggesting the network had some similar attributes to dou-</p>
+<p style="position:absolute;top:851px;left:81px;white-space:nowrap" class="ft90">ble-headed&#160;trained&#160;network&#160;even&#160;though&#160;it&#160;learned&#160;a&#160;wildtype&#160;phenotype,&#160;and&#160;these&#160;</p>
+<p style="position:absolute;top:869px;left:81px;white-space:nowrap" class="ft90">posterior&#160;head&#160;weights&#160;were&#160;visually&#160;more&#160;similar&#160;to&#160;what&#160;was&#160;seen&#160;for&#160;the&#160;network&#160;</p>
+<p style="position:absolute;top:887px;left:81px;white-space:nowrap" class="ft90">trained to the double-headed phenotype (<a href="">Figure 6.6C–D) i</a>n contrast to the weights&#160;</p>
+<p style="position:absolute;top:905px;left:81px;white-space:nowrap" class="ft90">of the wildtype-trained network (Figure 6.6B). We also found that the absolute value&#160;</p>
+<p style="position:absolute;top:923px;left:81px;white-space:nowrap" class="ft90">of the weights in the posterior head were higher for the double-headed and retrained&#160;</p>
+<p style="position:absolute;top:941px;left:81px;white-space:nowrap" class="ft90">wildtype networks, compared to the original wildtype network (Figure 6.6E). This is&#160;</p>
+<p style="position:absolute;top:403px;left:81px;white-space:nowrap" class="ft93"><b>FIGURE 6.4:&#160;&#160;</b>Training with random noise improves networks’ robustness to reservoir&#160;</p>
+<p style="position:absolute;top:421px;left:81px;white-space:nowrap" class="ft90">connection blocking. (A) We train&#160;a network and then&#160;perturb random connections in the&#160;</p>
+<p style="position:absolute;top:439px;left:81px;white-space:nowrap" class="ft90">internal&#160;reservoir&#160;and&#160;compare&#160;the&#160;output&#160;to&#160;the&#160;expected&#160;wildtype&#160;positional&#160;tissue&#160;infor-</p>
+<p style="position:absolute;top:457px;left:81px;white-space:nowrap" class="ft90">mation by log-transformed normalized root-mean-square error. (B) A network trained with&#160;</p>
+<p style="position:absolute;top:475px;left:81px;white-space:nowrap" class="ft90">noise performs better under perturbation than the same network trained without noise.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:13px;font-family:Times;color:#231f20;}
+	.ft101{font-size:13px;font-family:Times;color:#231f20;}
+	.ft102{font-size:13px;font-family:Times;color:#231f20;}
+	.ft103{font-size:13px;font-family:Times;color:#000000;}
+	.ft104{font-size:20px;font-family:Times;color:#000000;}
+	.ft105{font-size:13px;font-family:Times;color:#000000;}
+	.ft106{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft100"><b>126</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft101"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:561px;left:81px;white-space:nowrap" class="ft102">consistent with biological results where planaria that appear wildtype after regen-</p>
+<p style="position:absolute;top:579px;left:81px;white-space:nowrap" class="ft102">eration and gap-junction perturbation can regenerate as double-headed worms under&#160;</p>
+<p style="position:absolute;top:597px;left:81px;white-space:nowrap" class="ft102">subsequent perturbation (<a href="">Durant et al., 2017</a>).</p>
+<p style="position:absolute;top:615px;left:102px;white-space:nowrap" class="ft102">If&#160;the&#160;original&#160;parent wildtype&#160;neural&#160;network&#160;output weights&#160;are&#160;set to&#160;the&#160;same&#160;val-</p>
+<p style="position:absolute;top:633px;left:81px;white-space:nowrap" class="ft102">ues&#160;as&#160;the&#160;weights&#160;of&#160;the&#160;retrained double-head for&#160;the&#160;posterior&#160;head and posterior&#160;tail&#160;</p>
+<p style="position:absolute;top:651px;left:81px;white-space:nowrap" class="ft102">nodes,&#160;the output is a phenotype with&#160;no posterior&#160;tissue concentration&#160;(<a href="">Figure&#160;6.7A</a>).&#160;</p>
+<p style="position:absolute;top:669px;left:81px;white-space:nowrap" class="ft102">On the other hand, if the output weights of the retrained wildtype neural network&#160;</p>
+<p style="position:absolute;top:687px;left:81px;white-space:nowrap" class="ft102">are similarly imprinted with the weights of posterior head and tail of the double-head&#160;</p>
+<p style="position:absolute;top:705px;left:81px;white-space:nowrap" class="ft102">neural network (<a href="">Figure 6.7B</a>), the output result is a double-headed worm. We were&#160;</p>
+<p style="position:absolute;top:723px;left:81px;white-space:nowrap" class="ft102">interested in what happened if we made more subtle changes to the retrained wildtype,&#160;</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft102">so we mixed the change in output weights between wildtype and double-head, using a&#160;</p>
+<p style="position:absolute;top:759px;left:81px;white-space:nowrap" class="ft102">mixing&#160;parameter,&#160;<i>f</i>,&#160;with&#160;values&#160;between&#160;0 and 1 to represent entirely wildtype out-</p>
+<p style="position:absolute;top:777px;left:81px;white-space:nowrap" class="ft102">put weights (0) and entirely double-head output weights (1) (Equation 6.2). The result&#160;</p>
+<p style="position:absolute;top:795px;left:81px;white-space:nowrap" class="ft102">becomes&#160;closer to the double-headed phenotype in&#160;a step-like manner&#160;as&#160;<i>f</i>&#160;gets&#160;closer&#160;to&#160;</p>
+<p style="position:absolute;top:813px;left:81px;white-space:nowrap" class="ft102">1 (<a href="">Figure 6.7C)</a>.</p>
+<p style="position:absolute;top:850px;left:81px;white-space:nowrap" class="ft102">&#160;</p>
+<p style="position:absolute;top:851px;left:320px;white-space:nowrap" class="ft103">′&#160;=</p>
+<p style="position:absolute;top:851px;left:374px;white-space:nowrap" class="ft103">+&#160;−</p>
+<p style="position:absolute;top:845px;left:385px;white-space:nowrap" class="ft104">(</p>
+<p style="position:absolute;top:845px;left:420px;white-space:nowrap" class="ft104">)</p>
+<p style="position:absolute;top:850px;left:308px;white-space:nowrap" class="ft105"><i>w</i></p>
+<p style="position:absolute;top:850px;left:342px;white-space:nowrap" class="ft105"><i>f&#160;d</i></p>
+<p style="position:absolute;top:850px;left:413px;white-space:nowrap" class="ft105"><i>f&#160;w</i></p>
+<p style="position:absolute;top:850px;left:352px;white-space:nowrap" class="ft103">*</p>
+<p style="position:absolute;top:850px;left:428px;white-space:nowrap" class="ft103">*</p>
+<p style="position:absolute;top:850px;left:389px;white-space:nowrap" class="ft103">1</p>
+<p style="position:absolute;top:850px;left:450px;white-space:nowrap" class="ft102">&#160;(6.2)</p>
+<p style="position:absolute;top:886px;left:102px;white-space:nowrap" class="ft102">where&#160;<i>w</i>′&#160;is&#160;the&#160;output&#160;weights&#160;for&#160;the&#160;new&#160;mixed&#160;network&#160;between&#160;double-head&#160;(<i>f</i>)&#160;</p>
+<p style="position:absolute;top:904px;left:81px;white-space:nowrap" class="ft102">and&#160;wildtype&#160;(1&#160;−&#160;<i>f</i>),&#160;<i>w</i>&#160;is the output weights for the retrained wildtype network,&#160;<i>d</i>&#160;rep-</p>
+<p style="position:absolute;top:922px;left:81px;white-space:nowrap" class="ft102">resents&#160;the&#160;output weights&#160;of&#160;the&#160;retrained double-headed network,&#160;and&#160;<i>f</i>&#160;is&#160;the&#160;mixing&#160;</p>
+<p style="position:absolute;top:940px;left:81px;white-space:nowrap" class="ft102">parameter weighting influence of double-head vs wildtype.</p>
+<p style="position:absolute;top:415px;left:81px;white-space:nowrap" class="ft106"><b>FIGURE 6.5:&#160;</b>Training with Oja rewiring improves network generalization to noisy&#160;</p>
+<p style="position:absolute;top:433px;left:81px;white-space:nowrap" class="ft102">input and maintains robustness to perturbation. (A) The normalized root-mean-squared&#160;</p>
+<p style="position:absolute;top:451px;left:81px;white-space:nowrap" class="ft102">error values for a network trained without rewiring, tested on 100 novel noisy inputs,&#160;</p>
+<p style="position:absolute;top:469px;left:81px;white-space:nowrap" class="ft102">are higher than the error of the network trained with Oja rewiring. (B) The normalized&#160;</p>
+<p style="position:absolute;top:487px;left:81px;white-space:nowrap" class="ft102">root-mean-square error&#160;values&#160;for&#160;the network&#160;testing on 100 different perturbations&#160;of&#160;</p>
+<p style="position:absolute;top:505px;left:81px;white-space:nowrap" class="ft102">internal connections are the same as for the network trained with Oja rewiring.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:13px;font-family:Times;color:#231f20;}
+	.ft111{font-size:13px;font-family:Times;color:#231f20;}
+	.ft112{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:650px;white-space:nowrap" class="ft110">127</p>
+<p style="position:absolute;top:54px;left:147px;white-space:nowrap" class="ft111"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:673px;left:81px;white-space:nowrap" class="ft112"><b>FIGURE 6.6:&#160;&#160;</b>Perturbation and retraining of reservoir yields unique detector patterns&#160;</p>
+<p style="position:absolute;top:691px;left:81px;white-space:nowrap" class="ft110">with highly active weights to posterior head output in addition to active weights in&#160;</p>
+<p style="position:absolute;top:709px;left:81px;white-space:nowrap" class="ft110">anterior head and posterior tail outputs. (A) We take a network&#160;trained on the wildtype&#160;</p>
+<p style="position:absolute;top:727px;left:81px;white-space:nowrap" class="ft110">input and output patterns&#160;with&#160;input noise&#160;and perturb the&#160;reservoir&#160;layer&#160;by connec-</p>
+<p style="position:absolute;top:745px;left:81px;white-space:nowrap" class="ft110">tion&#160;blocking of&#160;0.5%&#160;of&#160;internal&#160;connections,&#160;and then&#160;retrain&#160;on&#160;the&#160;output connections&#160;</p>
+<p style="position:absolute;top:763px;left:81px;white-space:nowrap" class="ft110">to either&#160;double-head positional&#160;tissue output or&#160;wildtype positional output and exam-</p>
+<p style="position:absolute;top:781px;left:81px;white-space:nowrap" class="ft110">ine the newly trained output connections to the reservoir. (B) For the original wildtype,&#160;</p>
+<p style="position:absolute;top:799px;left:81px;white-space:nowrap" class="ft110">the strongest and most diverse connections&#160;are between&#160;the reservoir&#160;nodes&#160;and the&#160;</p>
+<p style="position:absolute;top:817px;left:81px;white-space:nowrap" class="ft110">head, trunk, and tail detector outputs as shown by the heat map. The positional tissue&#160;</p>
+<p style="position:absolute;top:835px;left:81px;white-space:nowrap" class="ft110">concentration output is phenotypically wildtype with high head in anterior, trunk in&#160;</p>
+<p style="position:absolute;top:853px;left:81px;white-space:nowrap" class="ft110">center, and tail in exterior. (C) The retrained double-head network demonstrates strong&#160;</p>
+<p style="position:absolute;top:871px;left:81px;white-space:nowrap" class="ft110">head values for both anterior and posterior positions. We also retrain on (D) wildtype&#160;</p>
+<p style="position:absolute;top:889px;left:81px;white-space:nowrap" class="ft110">which&#160;has&#160;strong reservoir&#160;connections&#160;between&#160;the output for&#160;posterior&#160;tail&#160;and poste-</p>
+<p style="position:absolute;top:907px;left:81px;white-space:nowrap" class="ft110">rior&#160;head but has similar&#160;positional tissue output (phenotype) as&#160;the original wildtype&#160;</p>
+<p style="position:absolute;top:925px;left:81px;white-space:nowrap" class="ft110">which&#160;we&#160;can&#160;call&#160;a “pseudo” wildtype&#160;phenotype.&#160;(E)&#160;The&#160;absolute value of&#160;the weights&#160;</p>
+<p style="position:absolute;top:943px;left:81px;white-space:nowrap" class="ft110">is&#160;higher&#160;for&#160;double-head and retrained “pseudo”&#160;wildtype,&#160;suggesting&#160;that perturba-</p>
+<p style="position:absolute;top:961px;left:81px;white-space:nowrap" class="ft110">tion can result in change of weights toward different phenotypes.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:13px;font-family:Times;color:#231f20;}
+	.ft121{font-size:13px;font-family:Times;color:#231f20;}
+	.ft122{font-size:16px;font-family:Times;color:#27439f;}
+	.ft123{font-size:13px;font-family:Times;color:#231f20;}
+	.ft124{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft120"><b>128</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft121"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:807px;left:81px;white-space:nowrap" class="ft122"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>6.4&#160;&#160;&#160;Discussion</b></a></p>
+<p style="position:absolute;top:838px;left:102px;white-space:nowrap" class="ft123">These&#160;&#160;results&#160;&#160;suggest&#160;&#160;that&#160;&#160;an&#160;&#160;artificial&#160;&#160;neural&#160;&#160;network&#160;&#160;is&#160;&#160;capable&#160;&#160;of&#160;&#160;learning&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:856px;left:81px;white-space:nowrap" class="ft123">planarian-like pattern, creating an association between wound input and phenotypic&#160;</p>
+<p style="position:absolute;top:874px;left:81px;white-space:nowrap" class="ft123">outcomes&#160;under&#160;perturbation&#160;that matches&#160;experimental&#160;outcomes&#160;of&#160;regeneration&#160;in&#160;</p>
+<p style="position:absolute;top:892px;left:81px;white-space:nowrap" class="ft123">planaria. We suggest reservoir computing is a particularly good model for bioelectrical&#160;</p>
+<p style="position:absolute;top:910px;left:81px;white-space:nowrap" class="ft123">communication during regeneration&#160;because it separates&#160;the system into a memory&#160;</p>
+<p style="position:absolute;top:928px;left:81px;white-space:nowrap" class="ft123">storage&#160;system&#160;(reservoir)&#160;that contains&#160;recurrent connections&#160;and a detector&#160;program&#160;</p>
+<p style="position:absolute;top:946px;left:81px;white-space:nowrap" class="ft123">that acts based on reservoir activity. This memory separation is important when con-</p>
+<p style="position:absolute;top:964px;left:81px;white-space:nowrap" class="ft123">sidering systems like the planarian where the fundamental computing framework (the&#160;</p>
+<p style="position:absolute;top:590px;left:81px;white-space:nowrap" class="ft124"><b>FIGURE 6.7:&#160;&#160;</b>Modifying&#160;the&#160;reservoir-to-output&#160;weights&#160;changes&#160;phenotype&#160;of&#160;retrained&#160;</p>
+<p style="position:absolute;top:608px;left:81px;white-space:nowrap" class="ft123">wildtype&#160;to&#160;appear&#160;double-headed.&#160;(A)&#160;We&#160;take&#160;the&#160;original&#160;trained network&#160;and set&#160;</p>
+<p style="position:absolute;top:626px;left:81px;white-space:nowrap" class="ft123">the weights between the reservoir and the output to be those from the posterior head&#160;</p>
+<p style="position:absolute;top:644px;left:81px;white-space:nowrap" class="ft123">and posterior tail of the retrained double-head, which causes a novel activity pattern,&#160;</p>
+<p style="position:absolute;top:662px;left:81px;white-space:nowrap" class="ft123">showing head, trunk, and no clear outcome in posterior tissue. (B) For the retrained&#160;</p>
+<p style="position:absolute;top:680px;left:81px;white-space:nowrap" class="ft123">wildtype (which has large output weights for head and tail in the posterior), we set the&#160;</p>
+<p style="position:absolute;top:698px;left:81px;white-space:nowrap" class="ft123">weights&#160;between&#160;the reservoir&#160;and the output to&#160;be&#160;those&#160;from the&#160;posterior&#160;head and&#160;</p>
+<p style="position:absolute;top:716px;left:81px;white-space:nowrap" class="ft123">posterior&#160;tail&#160;of&#160;the&#160;retrained double-head,&#160;which&#160;causes&#160;the&#160;output&#160;to&#160;look&#160;like&#160;the&#160;</p>
+<p style="position:absolute;top:734px;left:81px;white-space:nowrap" class="ft123">double-headed&#160;worm.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:13px;font-family:Times;color:#231f20;}
+	.ft131{font-size:13px;font-family:Times;color:#231f20;}
+	.ft132{font-size:13px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:650px;white-space:nowrap" class="ft130">129</p>
+<p style="position:absolute;top:54px;left:147px;white-space:nowrap" class="ft131"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:567px;left:81px;white-space:nowrap" class="ft130">worm body) can&#160;be disrupted and fully and faithfully regenerated.&#160;We believe the reser-</p>
+<p style="position:absolute;top:585px;left:81px;white-space:nowrap" class="ft130">voir-detector&#160;framework&#160;can&#160;be&#160;analogous&#160;to&#160;the&#160;relationship between&#160;the&#160;bioelectrical&#160;</p>
+<p style="position:absolute;top:603px;left:81px;white-space:nowrap" class="ft130">state of cells and the gene regulation which acts downstream of bioelectric signaling.</p>
+<p style="position:absolute;top:621px;left:102px;white-space:nowrap" class="ft130">We show&#160;improvements&#160;to reservoir&#160;network&#160;training through&#160;noisy input which&#160;</p>
+<p style="position:absolute;top:639px;left:81px;white-space:nowrap" class="ft130">improved performance on generalization to noisy input and robustness under perturba-</p>
+<p style="position:absolute;top:657px;left:81px;white-space:nowrap" class="ft130">tion.&#160;We&#160;also&#160;show&#160;that&#160;Oja&#160;rewiring&#160;dynamics&#160;improved&#160;performance&#160;on&#160;generalization&#160;</p>
+<p style="position:absolute;top:675px;left:81px;white-space:nowrap" class="ft130">to&#160;novel&#160;noise.&#160;These&#160;results&#160;with&#160;Oja&#160;dynamics&#160;for&#160;improved&#160;learning&#160;are&#160;confirmed&#160;</p>
+<p style="position:absolute;top:693px;left:81px;white-space:nowrap" class="ft130">by earlier work fro<a href="">m Yusoff et al. (2016) t</a>hat showed rewiring dynamics help training.</p>
+<p style="position:absolute;top:711px;left:102px;white-space:nowrap" class="ft130">After training a neural network&#160;on planarian regeneration, we randomly perturbed&#160;</p>
+<p style="position:absolute;top:729px;left:81px;white-space:nowrap" class="ft130">the&#160;reservoir&#160;connections,&#160;representing the&#160;gap-junction&#160;blocking in&#160;the&#160;experiments&#160;</p>
+<p style="position:absolute;top:747px;left:81px;white-space:nowrap" class="ft130">that result in&#160;the&#160;double-headed&#160;<i>D.&#160;japonica</i>&#160;&#160;flatworms.&#160;&#160;We&#160;&#160;then&#160;&#160;retrained&#160;&#160;the&#160;&#160;per-</p>
+<p style="position:absolute;top:765px;left:81px;white-space:nowrap" class="ft130">turbed&#160;network&#160;on&#160;the&#160;first&#160;350&#160;time&#160;steps&#160;with&#160;two&#160;different&#160;output&#160;patterns:&#160;a&#160;double-</p>
+<p style="position:absolute;top:783px;left:81px;white-space:nowrap" class="ft130">head phenotype and wildtype phenotype. We can think of this in terms of biology as&#160;</p>
+<p style="position:absolute;top:801px;left:81px;white-space:nowrap" class="ft130">re-learning a phenotype post-amputation and after perturbation with gap junctions.&#160;</p>
+<p style="position:absolute;top:819px;left:81px;white-space:nowrap" class="ft130">We found the weights in the wildtype retrained network were high in the posterior&#160;</p>
+<p style="position:absolute;top:837px;left:81px;white-space:nowrap" class="ft130">head region, representing the network getting input at the posterior head even though&#160;</p>
+<p style="position:absolute;top:855px;left:81px;white-space:nowrap" class="ft130">the output phenotype was wildtype. We found this pattern of posterior head weights in&#160;</p>
+<p style="position:absolute;top:873px;left:81px;white-space:nowrap" class="ft130">perturbed wildtype networks interesting because, when regenerating planaria treated&#160;</p>
+<p style="position:absolute;top:891px;left:81px;white-space:nowrap" class="ft130">with&#160;the&#160;gap-junction&#160;blocker,&#160;some&#160;will&#160;regrow&#160;to&#160;a wildtype&#160;phenotype,&#160;but upon&#160;a&#160;</p>
+<p style="position:absolute;top:909px;left:81px;white-space:nowrap" class="ft130">subsequent amputation&#160;it will&#160;regenerate&#160;into&#160;a double-headed morphology (<a href="">Durant&#160;</a></p>
+<p style="position:absolute;top:927px;left:81px;white-space:nowrap" class="ft130"><a href="">et&#160;al.,&#160;2017)</a>.&#160;This&#160;parallels&#160;our&#160;final&#160;experiment&#160;where&#160;we&#160;found&#160;we&#160;could&#160;modify&#160;the&#160;</p>
+<p style="position:absolute;top:945px;left:81px;white-space:nowrap" class="ft130">output weights of the regenerated wildtype network and achieve a double-headed out-</p>
+<p style="position:absolute;top:963px;left:81px;white-space:nowrap" class="ft130">come, but we could not do the same with the original network.</p>
+<p style="position:absolute;top:464px;left:81px;white-space:nowrap" class="ft132"><b>FIGURE 6.7:&#160;</b>(Continued) (C) When the weights for the retrained wildtype are set&#160;</p>
+<p style="position:absolute;top:482px;left:81px;white-space:nowrap" class="ft130">to be intermediate between double-head and retrained wildtype (mixing parameter&#160;</p>
+<p style="position:absolute;top:500px;left:81px;white-space:nowrap" class="ft130">0.0&#160;=&#160;entirely&#160;wildtype,&#160;mixing&#160;parameter&#160;1.0&#160;=&#160;entirely&#160;double-headed),&#160;the&#160;phenotype&#160;</p>
+<p style="position:absolute;top:518px;left:81px;white-space:nowrap" class="ft130">is an intermediate form between double-headed and wildtype.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:13px;font-family:Times;color:#231f20;}
+	.ft141{font-size:13px;font-family:Times;color:#231f20;}
+	.ft142{font-size:13px;font-family:Times;color:#231f20;}
+	.ft143{font-size:16px;font-family:Times;color:#27439f;}
+	.ft144{font-size:11px;font-family:Times;color:#231f20;}
+	.ft145{font-size:11px;font-family:Times;color:#231f20;}
+	.ft146{font-size:16px;line-height:29px;font-family:Times;color:#27439f;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft140"><b>130</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft141"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:99px;left:102px;white-space:nowrap" class="ft142">The model and knowledge of planaria may coevolve as&#160;more information&#160;about bio-</p>
+<p style="position:absolute;top:117px;left:81px;white-space:nowrap" class="ft142">electrical&#160;communication&#160;becomes&#160;available.&#160;A&#160;first&#160;step&#160;toward&#160;informed&#160;values&#160;for&#160;</p>
+<p style="position:absolute;top:135px;left:81px;white-space:nowrap" class="ft142">weights and resting potential of cellular models could be to utilize conductance models&#160;</p>
+<p style="position:absolute;top:153px;left:81px;white-space:nowrap" class="ft142">(<a href="">Law and Levin, 2015</a>). As it stands, our reservoir model of regeneration has many&#160;</p>
+<p style="position:absolute;top:171px;left:81px;white-space:nowrap" class="ft142">potential&#160;use cases&#160;that have yet to be tested,&#160;such&#160;as further&#160;perturbation&#160;of the res-</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft142">ervoir&#160;and expansion&#160;of&#160;our&#160;studies&#160;into&#160;the&#160;effects&#160;of&#160;Oja&#160;rewiring&#160;on&#160;network&#160;memory.&#160;</p>
+<p style="position:absolute;top:207px;left:81px;white-space:nowrap" class="ft142">A primary limitation of this work is that we chose to train our network on only one out-</p>
+<p style="position:absolute;top:225px;left:81px;white-space:nowrap" class="ft142">come, though we believe it would be more meaningful to train our network on multiple&#160;</p>
+<p style="position:absolute;top:243px;left:81px;white-space:nowrap" class="ft142">phenotypic outcomes to ensure it has learned fully what is acceptable as a phenotype&#160;</p>
+<p style="position:absolute;top:261px;left:81px;white-space:nowrap" class="ft142">rather than unstably learning a single pattern. Future work will explore models where&#160;</p>
+<p style="position:absolute;top:279px;left:81px;white-space:nowrap" class="ft142">we&#160;integrate&#160;specific&#160;perturbations&#160;and&#160;learned&#160;patterns&#160;into&#160;echo&#160;state&#160;network&#160;train-</p>
+<p style="position:absolute;top:297px;left:81px;white-space:nowrap" class="ft142">ing rather than training on a single phenotype at a time.</p>
+<p style="position:absolute;top:378px;left:81px;white-space:nowrap" class="ft143"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>Acknowledgments</b></a></p>
+<p style="position:absolute;top:408px;left:102px;white-space:nowrap" class="ft142">This work was supported by an Allen Discovery Center award from The Paul G.&#160;</p>
+<p style="position:absolute;top:426px;left:81px;white-space:nowrap" class="ft142">Allen&#160;Frontiers&#160;Group (12171).&#160;The&#160;authors&#160;gratefully&#160;acknowledge&#160;support&#160;from&#160;the&#160;</p>
+<p style="position:absolute;top:444px;left:81px;white-space:nowrap" class="ft142">G. Harold and Leila Y. Mathers Charitable Foundation (TFU141), National Science&#160;</p>
+<p style="position:absolute;top:462px;left:81px;white-space:nowrap" class="ft142">Foundation&#160;award #CBET-0939511,&#160;the&#160;W.&#160;M.&#160;KECK&#160;Foundation&#160;(5903),&#160;and the&#160;</p>
+<p style="position:absolute;top:480px;left:81px;white-space:nowrap" class="ft142">Templeton&#160;World Charity Foundation&#160;(TWCF0089/AB55).&#160;The authors thank&#160;Eric&#160;</p>
+<p style="position:absolute;top:498px;left:81px;white-space:nowrap" class="ft142">Goldstein for helpful manuscript comments and edits.</p>
+<p style="position:absolute;top:581px;left:81px;white-space:nowrap" class="ft146"><a href="ed53ab4836d8fa0dd2baae8b43ab16eds.html#1"><b>References<br/></b></a>Adams, D. S., K. R. Robinson, T. Fukumoto, S. Yuan, R. C. Albertson, P. Yelick, L. Kuo, M.&#160;</p>
+<p style="position:absolute;top:627px;left:114px;white-space:nowrap" class="ft144">McSweeney,&#160;&#160;and&#160;&#160;M.&#160;&#160;Levin.&#160;&#160;2006.&#160;&#160;“Early,&#160;&#160;H+-V-ATPase-dependent&#160;&#160;proton&#160;&#160;flux&#160;&#160;is&#160;&#160;neces-</p>
+<p style="position:absolute;top:643px;left:114px;white-space:nowrap" class="ft144">sary for&#160;consistent left-right patterning of non-mammalian&#160;vertebrates.”&#160;<i>Development</i>&#160;</p>
+<p style="position:absolute;top:659px;left:114px;white-space:nowrap" class="ft144">133:1657–1671.</p>
+<p style="position:absolute;top:675px;left:81px;white-space:nowrap" class="ft144">Adams, D. S., S. G. Uzel, J. Akagi, D. Wlodkowic, V. Andreeva, P. C. Yelick, A. Devitt-Lee, J.&#160;</p>
+<p style="position:absolute;top:691px;left:114px;white-space:nowrap" class="ft144">F. Pare, and M. Levin. 2016. “Bioelectric signalling via potassium channels: a mechanism&#160;</p>
+<p style="position:absolute;top:707px;left:114px;white-space:nowrap" class="ft144">for craniofacial dysmorphogenesis in&#160;KCNJ2-associated Andersen-Tawil Syndrome.”&#160;<i>The&#160;</i></p>
+<p style="position:absolute;top:723px;left:114px;white-space:nowrap" class="ft145"><i>Journal&#160;of&#160;Physiology</i>&#160;594&#160;(12):3245–3270.&#160;doi:&#160;10.1113/JP271930.</p>
+<p style="position:absolute;top:739px;left:81px;white-space:nowrap" class="ft144">Baldi, Pierre, and Peter Sadowski. 2016. “A theory of local learning, the learning channel, and&#160;</p>
+<p style="position:absolute;top:755px;left:114px;white-space:nowrap" class="ft144">the optimality of backpropagation.”&#160;<i>Neural&#160;Networks</i>&#160;&#160;83:51–74.&#160;&#160;doi:&#160;&#160;<a href="https://doi.org/">https&#160;://do&#160;i.org&#160;/10.1&#160;016/j&#160;</a></p>
+<p style="position:absolute;top:771px;left:114px;white-space:nowrap" class="ft144"><a href="https://doi.org/">.neun&#160;et.20&#160;16.07&#160;.006.&#160;</a></p>
+<p style="position:absolute;top:787px;left:81px;white-space:nowrap" class="ft144">Bassett, D. S., and E. Bullmore.&#160;2006. “Small-world brain networks.”&#160;<i>Neuroscientist</i>&#160;12&#160;(6):512–23.&#160;</p>
+<p style="position:absolute;top:803px;left:114px;white-space:nowrap" class="ft144">&#160;doi:&#160;10.1177/1073858406293182.</p>
+<p style="position:absolute;top:819px;left:81px;white-space:nowrap" class="ft144">Beane, Wendy Scott, Junji Morokuma, Joan M. Lemire, and Michael Levin. 2013. “Bioelectric&#160;</p>
+<p style="position:absolute;top:835px;left:114px;white-space:nowrap" class="ft144">signaling regulates head and organ size during planarian regeneration.”&#160;<i>Development</i>&#160;140&#160;</p>
+<p style="position:absolute;top:851px;left:114px;white-space:nowrap" class="ft144">(2):313–322.</p>
+<p style="position:absolute;top:867px;left:81px;white-space:nowrap" class="ft144">Carleo,&#160;Giuseppe,&#160;and Matthias&#160;Troyer.&#160;2017.&#160;“Solving&#160;the&#160;quantum many-body&#160;problem with&#160;</p>
+<p style="position:absolute;top:883px;left:114px;white-space:nowrap" class="ft144">artificial neural networks.”&#160;<i>Science</i>&#160;355&#160;(6325):602.</p>
+<p style="position:absolute;top:899px;left:81px;white-space:nowrap" class="ft144">Cebrià, Francesc. 2008. “Organization of the nervous system in the model planarian Schmidtea&#160;</p>
+<p style="position:absolute;top:915px;left:114px;white-space:nowrap" class="ft144">mediterranea: an immunocytochemical study.”&#160;<i>Neuroscience&#160;Research</i>&#160;61&#160;(4):375–384.</p>
+<p style="position:absolute;top:931px;left:81px;white-space:nowrap" class="ft144">Cervera,&#160;J.,&#160;A.&#160;Pietak,&#160;M.&#160;Levin,&#160;and S.&#160;Mafe.&#160;2018.&#160;“Bioelectrical&#160;coupling in&#160;multicellular&#160;</p>
+<p style="position:absolute;top:948px;left:114px;white-space:nowrap" class="ft144">domains&#160;regulated&#160;by&#160;gap&#160;junctions:&#160;a&#160;conceptual&#160;approach.”&#160;<i>Bioelectrochemistry</i>&#160;123:45–61.&#160;</p>
+<p style="position:absolute;top:964px;left:114px;white-space:nowrap" class="ft144">doi:&#160;10.1016/j.bioelechem.2018.04.013.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:13px;font-family:Times;color:#231f20;}
+	.ft151{font-size:13px;font-family:Times;color:#231f20;}
+	.ft152{font-size:11px;font-family:Times;color:#231f20;}
+	.ft153{font-size:11px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:651px;white-space:nowrap" class="ft150">131</p>
+<p style="position:absolute;top:54px;left:146px;white-space:nowrap" class="ft151"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft152">Dahal,&#160;G.&#160;R.,&#160;S.&#160;J.&#160;Pradhan,&#160;and E.&#160;A.&#160;Bates.&#160;2017.&#160;“Inwardly rectifying potassium channels&#160;</p>
+<p style="position:absolute;top:115px;left:114px;white-space:nowrap" class="ft152">influence&#160;&#160;Drosophila&#160;&#160;wing&#160;&#160;morphogenesis&#160;&#160;by&#160;&#160;regulating&#160;&#160;Dpp&#160;&#160;release.”&#160;&#160;<i>Development</i>&#160;144&#160;</p>
+<p style="position:absolute;top:131px;left:114px;white-space:nowrap" class="ft152">(15):2771–2783.&#160;doi:&#160;10.1242/dev.146647.</p>
+<p style="position:absolute;top:147px;left:81px;white-space:nowrap" class="ft152">Dahal,&#160;G.&#160;R.,&#160;J.&#160;Rawson,&#160;B.&#160;Gassaway,&#160;B.&#160;Kwok,&#160;Y.&#160;Tong,&#160;L.&#160;J.&#160;Ptacek,&#160;and E.&#160;Bates.&#160;2012.&#160;“An&#160;</p>
+<p style="position:absolute;top:163px;left:114px;white-space:nowrap" class="ft152">inwardly&#160;rectifying&#160;K+&#160;channel&#160;is&#160;required for&#160;patterning.”&#160;<i>Development</i>&#160;139&#160;(19):3653–3664.&#160;</p>
+<p style="position:absolute;top:180px;left:114px;white-space:nowrap" class="ft152">doi:&#160;10.1242/dev.078592.</p>
+<p style="position:absolute;top:196px;left:81px;white-space:nowrap" class="ft152">Durant, F., D. Lobo, J. Hammelman, and M. Levin. 2016. “Physiological controls of large-scale&#160;</p>
+<p style="position:absolute;top:212px;left:114px;white-space:nowrap" class="ft152">patterning in planarian regeneration: a molecular and computational perspective on&#160;</p>
+<p style="position:absolute;top:228px;left:114px;white-space:nowrap" class="ft152">growth and form.”&#160;<i>Regeneration&#160;(Oxf)</i>&#160;3&#160;(2):78–102.&#160;doi:&#160;10.1002/reg2.54.</p>
+<p style="position:absolute;top:244px;left:81px;white-space:nowrap" class="ft152">Durant,&#160;Fallon,&#160;Junji&#160;Morokuma,&#160;Christopher&#160;Fields,&#160;Katherine&#160;Williams,&#160;Dany Spencer&#160;</p>
+<p style="position:absolute;top:260px;left:114px;white-space:nowrap" class="ft152">Adams, and Michael Levin. 2017. “Long-term, stochastic editing of regenerative anatomy&#160;</p>
+<p style="position:absolute;top:276px;left:114px;white-space:nowrap" class="ft152">via&#160;targeting&#160;endogenous&#160;bioelectric&#160;gradients.”&#160;<i>Biophysical&#160;Journal</i>&#160;112 (10):2231–2243.&#160;</p>
+<p style="position:absolute;top:292px;left:114px;white-space:nowrap" class="ft152">doi:&#160;&#160;<a href="https://doi.org/">https&#160;:/&#160;do&#160;i.org&#160;/10.1&#160;016/j&#160;.bpj.&#160;2017.&#160;04.01&#160;1.</a></p>
+<p style="position:absolute;top:308px;left:81px;white-space:nowrap" class="ft152">Emmons-Bell, M., F. Durant, J. Hammelman, N. Bessonov, V. Volpert, J. Morokuma, K. Pinet, D.&#160;</p>
+<p style="position:absolute;top:324px;left:114px;white-space:nowrap" class="ft152">S. Adams, A. Pietak, D. Lobo, and M. Levin. 2015. “Gap junctional blockade stochastically&#160;</p>
+<p style="position:absolute;top:340px;left:114px;white-space:nowrap" class="ft152">induces&#160;different&#160;species-specific&#160;head&#160;anatomies&#160;in&#160;genetically&#160;wild-type&#160;Girardia&#160;doro-</p>
+<p style="position:absolute;top:356px;left:114px;white-space:nowrap" class="ft152">tocephala&#160;flatworms.”&#160;<i>International&#160;Journal&#160;of&#160;Molecular&#160;Sciences</i>&#160;16&#160;(11):27865–27896.&#160;</p>
+<p style="position:absolute;top:372px;left:114px;white-space:nowrap" class="ft152">doi:&#160;10.3390/ijms161126065.</p>
+<p style="position:absolute;top:388px;left:81px;white-space:nowrap" class="ft152">Friesen, W.&#160;O.,&#160;and W.&#160;B.&#160;Kristan.&#160;2007.&#160;“Leech&#160;locomotion:&#160;swimming,&#160;crawling,&#160;and decisions.”&#160;</p>
+<p style="position:absolute;top:404px;left:114px;white-space:nowrap" class="ft153"><i>Current Opinion in Neurology</i>&#160;17&#160;(6):704–711.&#160;doi:&#160;10.1016/j.conb.2008.01.006.</p>
+<p style="position:absolute;top:420px;left:81px;white-space:nowrap" class="ft152">González-Estévez,&#160;Cristina,&#160;and Emili&#160;Saló.&#160;2010.&#160;“Autophagy and apoptosis&#160;in&#160;planarians.”&#160;</p>
+<p style="position:absolute;top:436px;left:114px;white-space:nowrap" class="ft153"><i>Apoptosis</i>&#160;15&#160;(3):279–292.</p>
+<p style="position:absolute;top:452px;left:81px;white-space:nowrap" class="ft152">Hammelman,&#160;J.,&#160;D.&#160;Lobo,&#160;and&#160;M.&#160;Levin.&#160;2016.&#160;“Artificial&#160;neural&#160;networks&#160;as&#160;models&#160;of&#160;robust-</p>
+<p style="position:absolute;top:468px;left:114px;white-space:nowrap" class="ft152">ness in&#160;development and regeneration:&#160;stability of memory during morphological remodel-</p>
+<p style="position:absolute;top:484px;left:114px;white-space:nowrap" class="ft152">ing.”&#160;<i>Artificial Neural Network Modelling</i>&#160;628:45–65.&#160;doi:&#160;10.1007/978-3-319-28495-8_3.</p>
+<p style="position:absolute;top:500px;left:81px;white-space:nowrap" class="ft152">Hazan, Hananel, and Larry M. Manevitz. 2012. “Topological constraints and robustness in liq-</p>
+<p style="position:absolute;top:516px;left:114px;white-space:nowrap" class="ft152">uid state machines.”&#160;<i>Expert Systems with Applications</i>&#160;39&#160;(2):1597–1606.</p>
+<p style="position:absolute;top:532px;left:81px;white-space:nowrap" class="ft152">Jaeger, Herbert. 2001. “The ‘echo state’ approach to analysing and training recurrent neural&#160;</p>
+<p style="position:absolute;top:548px;left:114px;white-space:nowrap" class="ft152">networks-with an erratum note.”&#160;<i>Bonn, Germany: German National Research Center for&#160;</i></p>
+<p style="position:absolute;top:564px;left:114px;white-space:nowrap" class="ft153"><i>Information Technology GMD Technical Report</i>&#160;148&#160;(34):13.</p>
+<p style="position:absolute;top:580px;left:81px;white-space:nowrap" class="ft152">Kortum,&#160;F.,&#160;V.&#160;Caputo,&#160;C.&#160;K.&#160;Bauer,&#160;L.&#160;Stella,&#160;A.&#160;Ciolfi,&#160;M.&#160;Alawi,&#160;G.&#160;Bocchinfuso,&#160;E.&#160;Flex,&#160;S.&#160;</p>
+<p style="position:absolute;top:596px;left:114px;white-space:nowrap" class="ft152">Paolacci,&#160;M.&#160;L.&#160;Dentici,&#160;P.&#160;Grammatico,&#160;G.&#160;C.&#160;Korenke,&#160;V.&#160;Leuzzi,&#160;D.&#160;Mowat,&#160;L.&#160;D.&#160;Nair,&#160;T.&#160;T.&#160;</p>
+<p style="position:absolute;top:613px;left:114px;white-space:nowrap" class="ft152">Nguyen,&#160;P.&#160;Thierry,&#160;S.&#160;M.&#160;White,&#160;B.&#160;Dallapiccola,&#160;A.&#160;Pizzuti,&#160;P.&#160;M.&#160;Campeau,&#160;M.&#160;Tartaglia,&#160;</p>
+<p style="position:absolute;top:629px;left:114px;white-space:nowrap" class="ft152">and K. Kutsche. 2015.&#160;“Mutations in KCNH1 and ATP6V1B2 cause Zimmermann-Laband&#160;</p>
+<p style="position:absolute;top:645px;left:114px;white-space:nowrap" class="ft152">syndrome.”&#160;<i>Nature&#160;Genetics</i>. 47:661–667.&#160;</p>
+<p style="position:absolute;top:661px;left:81px;white-space:nowrap" class="ft152">Lapan,&#160;Sylvain&#160;W.,&#160;and Peter&#160;W.&#160;Reddien.&#160;2012.&#160;“Transcriptome analysis&#160;of the planarian&#160;eye&#160;</p>
+<p style="position:absolute;top:677px;left:114px;white-space:nowrap" class="ft152">identifies ovo as a specific regulator of eye regeneration.”&#160;<i>Cell&#160;Reports</i>&#160;2&#160;(2):294–307.</p>
+<p style="position:absolute;top:693px;left:81px;white-space:nowrap" class="ft152">Law,&#160;Robert,&#160;and Michael Levin.&#160;2015.&#160;“Bioelectric&#160;memory:&#160;modeling resting potential bista-</p>
+<p style="position:absolute;top:709px;left:114px;white-space:nowrap" class="ft152">bility in&#160;amphibian&#160;embryos&#160;and mammalian&#160;cells.”&#160;<i>Theoretical Biology and&#160;Medical&#160;</i></p>
+<p style="position:absolute;top:725px;left:114px;white-space:nowrap" class="ft153"><i>Modelling</i>&#160;12&#160;(1):22.</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft152">Lazar, Andreea, Gordon Pipa, and Jochen Triesch. 2009. “SORN: a self-organizing recurrent&#160;</p>
+<p style="position:absolute;top:757px;left:114px;white-space:nowrap" class="ft152">neural&#160;network.”&#160;<i>Frontiers in Computational Neuroscience</i>&#160;3:23.</p>
+<p style="position:absolute;top:773px;left:81px;white-space:nowrap" class="ft152">Levin, M., and C. J. Martyniuk. 2018. “The bioelectric code: an ancient computational medium&#160;</p>
+<p style="position:absolute;top:789px;left:114px;white-space:nowrap" class="ft152">for dynamic control of growth and form.”&#160;<i>Biosystems</i>&#160;164:76–93.</p>
+<p style="position:absolute;top:805px;left:81px;white-space:nowrap" class="ft152">Levin, M., G. Pezzulo, and J. M. Finkelstein 2017. “Endogenous bioelectric signaling networks:&#160;</p>
+<p style="position:absolute;top:821px;left:114px;white-space:nowrap" class="ft152">exploiting&#160;voltage&#160;gradients&#160;for&#160;control&#160;of&#160;growth&#160;and form.”&#160;<i>Annual&#160;Review&#160;of&#160;Biomedical&#160;</i></p>
+<p style="position:absolute;top:837px;left:114px;white-space:nowrap" class="ft153"><i>Engineering</i>&#160;19:353–387.&#160;doi:&#160;10.1146/annurev-bioeng-071114-040647.</p>
+<p style="position:absolute;top:853px;left:81px;white-space:nowrap" class="ft152">Levin,&#160;M.,&#160;A.&#160;M.&#160;Pietak,&#160;and&#160;J.&#160;Bischof.&#160;2018.&#160;“Planarian&#160;regeneration&#160;as&#160;a&#160;model&#160;of&#160;anatomical&#160;</p>
+<p style="position:absolute;top:869px;left:114px;white-space:nowrap" class="ft152">homeostasis: recent progress in biophysical and computational approaches.”&#160;<i>Seminars&#160;in&#160;</i></p>
+<p style="position:absolute;top:885px;left:114px;white-space:nowrap" class="ft153"><i>Cell&#160;and&#160;Developmental&#160;Biology</i>.&#160;doi:&#160;10.1016/j.semcdb.2018.04.003.</p>
+<p style="position:absolute;top:901px;left:81px;white-space:nowrap" class="ft152">Levin,&#160;M.,&#160;T.&#160;Thorlin,&#160;K.&#160;R.&#160;Robinson,&#160;T.&#160;Nogi,&#160;and M.&#160;Mercola.&#160;2002.&#160;“Asymmetries&#160;in&#160;H+/</p>
+<p style="position:absolute;top:917px;left:114px;white-space:nowrap" class="ft152">K+-ATPase&#160;and cell&#160;membrane&#160;potentials&#160;comprise&#160;a&#160;very&#160;early&#160;step in&#160;left-right&#160;pattern-</p>
+<p style="position:absolute;top:933px;left:114px;white-space:nowrap" class="ft152">ing.”&#160;<i>Cell</i>&#160;111&#160;(1):77-89.</p>
+<p style="position:absolute;top:949px;left:81px;white-space:nowrap" class="ft152">Lukoševičius,&#160;Mantas,&#160;and&#160;Herbert&#160;Jaeger.&#160;2009.&#160;“Reservoir&#160;computing&#160;approaches&#160;to&#160;recurrent&#160;</p>
+<p style="position:absolute;top:965px;left:114px;white-space:nowrap" class="ft152">neural&#160;network&#160;training.”&#160;<i>Computer&#160;Science&#160;Review</i>&#160;3&#160;(3):127–149.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:13px;font-family:Times;color:#231f20;}
+	.ft161{font-size:13px;font-family:Times;color:#231f20;}
+	.ft162{font-size:11px;font-family:Times;color:#231f20;}
+	.ft163{font-size:11px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:81px;white-space:nowrap" class="ft160"><b>132</b></p>
+<p style="position:absolute;top:54px;left:246px;white-space:nowrap" class="ft161"><i>From Parallel to Emergent Computing&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft162">Maass,&#160;Wolfgang,&#160;Prashant Joshi,&#160;and Eduardo D.&#160;Sontag.&#160;2005.&#160;“Principles&#160;of real-time comput-</p>
+<p style="position:absolute;top:115px;left:114px;white-space:nowrap" class="ft162">ing with feedback&#160;applied to cortical microcircuit models.”&#160;<i>Advances&#160;in&#160;Neural Information&#160;</i></p>
+<p style="position:absolute;top:131px;left:114px;white-space:nowrap" class="ft163"><i>Processing&#160;Systems</i>&#160;January&#160;2005:835–842.</p>
+<p style="position:absolute;top:147px;left:81px;white-space:nowrap" class="ft162">Maass,&#160;Wolfgang,&#160;Thomas&#160;Natschläger,&#160;and Henry&#160;Markram.&#160;2002.&#160;“Real-time&#160;computing&#160;with-</p>
+<p style="position:absolute;top:163px;left:114px;white-space:nowrap" class="ft162">out&#160;stable&#160;states:&#160;a&#160;new&#160;framework&#160;for&#160;neural&#160;computation&#160;based&#160;on&#160;perturbations.”&#160;<i>Neural&#160;</i></p>
+<p style="position:absolute;top:180px;left:114px;white-space:nowrap" class="ft163"><i>Computation</i>&#160;14&#160;(11):2531–2560.</p>
+<p style="position:absolute;top:196px;left:81px;white-space:nowrap" class="ft162">Marsh, G., and H. W. Beams. 1947. “Electrical control of growth polarity in regenerating&#160;</p>
+<p style="position:absolute;top:212px;left:114px;white-space:nowrap" class="ft162">Dugesia-tigrina.”&#160;<i>Federation&#160;Proceedings</i>&#160;6&#160;(1):163–164.</p>
+<p style="position:absolute;top:228px;left:81px;white-space:nowrap" class="ft162">Marsh,&#160;G.,&#160;and H.&#160;W.&#160;Beams.&#160;1949.&#160;“Electrical control of axial polarity in&#160;a regenerating anne-</p>
+<p style="position:absolute;top:244px;left:114px;white-space:nowrap" class="ft162">lid.”&#160;<i>Anatomical&#160;Record</i>&#160;105&#160;(3):513–514.</p>
+<p style="position:absolute;top:260px;left:81px;white-space:nowrap" class="ft162">Marsh,&#160;G.,&#160;and H.&#160;W.&#160;Beams.&#160;1950.&#160;“Electrical&#160;control&#160;of growth&#160;axis&#160;in&#160;a regenerating annelid.”&#160;</p>
+<p style="position:absolute;top:276px;left:114px;white-space:nowrap" class="ft163"><i>Anatomical&#160;Record</i>&#160;108&#160;(3):512–512.</p>
+<p style="position:absolute;top:292px;left:81px;white-space:nowrap" class="ft162">Marsh, Gordon, and H. W. Beams. 1952. “Electrical control of morphogenesis in regenerating&#160;</p>
+<p style="position:absolute;top:308px;left:114px;white-space:nowrap" class="ft162">Dugesia&#160;tigrina.&#160;I.&#160;Relation&#160;of&#160;axial&#160;polarity&#160;to&#160;field&#160;strength.”&#160;<i>Journal of Cellular and&#160;</i></p>
+<p style="position:absolute;top:324px;left:114px;white-space:nowrap" class="ft163"><i>Comparative&#160;Physiology</i>&#160;39&#160;(2):191–213.</p>
+<p style="position:absolute;top:340px;left:81px;white-space:nowrap" class="ft162">Masotti, A., P. Uva, L. Davis-Keppen, L. Basel-Vanagaite, L. Cohen, E. Pisaneschi, A. Celluzzi,&#160;</p>
+<p style="position:absolute;top:356px;left:114px;white-space:nowrap" class="ft162">P.&#160;Bencivenga,&#160;M.&#160;Fang, M.&#160;Tian,&#160;X.&#160;Xu,&#160;M.&#160;Cappa,&#160;and B.&#160;Dallapiccola.&#160;2015.&#160;“Keppen-</p>
+<p style="position:absolute;top:372px;left:114px;white-space:nowrap" class="ft162">lubinsky syndrome is caused by mutations&#160;in&#160;the inwardly rectifying K(+) channel encoded&#160;</p>
+<p style="position:absolute;top:388px;left:114px;white-space:nowrap" class="ft162">by KCNJ6.”&#160;<i>American Journal of Human Genetics</i>&#160;96&#160;(2):295–300.</p>
+<p style="position:absolute;top:404px;left:81px;white-space:nowrap" class="ft162">Morgan, T. H. 1898. “Experimental studies of the regeneration of Planaria maculata.”&#160;</p>
+<p style="position:absolute;top:404px;left:675px;white-space:nowrap" class="ft162">&#160;</p>
+<p style="position:absolute;top:420px;left:114px;white-space:nowrap" class="ft163"><i>Developmental&#160;Genes&#160;Evolution</i>&#160;7&#160;2(3):364–397.</p>
+<p style="position:absolute;top:436px;left:81px;white-space:nowrap" class="ft162">Newmark, Phillip A., and Alejandro Sánchez Alvarado. 2002. “Not your father’s planarian: a&#160;</p>
+<p style="position:absolute;top:452px;left:114px;white-space:nowrap" class="ft162">classic model enters the era of functional genomics.”&#160;<i>Nature&#160;Reviews&#160;Genetics</i>&#160;3&#160;(3):210.</p>
+<p style="position:absolute;top:468px;left:81px;white-space:nowrap" class="ft162">Oja,&#160;&#160;Erkki.&#160;&#160;1982.&#160;&#160;“Simplified&#160;&#160;neuron&#160;&#160;model&#160;&#160;as&#160;&#160;a&#160;&#160;principal&#160;&#160;component&#160;&#160;analyzer.”&#160;&#160;<i>Journal&#160;of&#160;</i></p>
+<p style="position:absolute;top:484px;left:114px;white-space:nowrap" class="ft163"><i>Mathematical&#160;Biology</i>&#160;15&#160;(3):267–273.</p>
+<p style="position:absolute;top:500px;left:81px;white-space:nowrap" class="ft162">Oja,&#160;Erkki,&#160;and&#160;Juha Karhunen.&#160;1995.&#160;“Signal&#160;separation&#160;by&#160;nonlinear&#160;Hebbian&#160;learning.”&#160;</p>
+<p style="position:absolute;top:516px;left:114px;white-space:nowrap" class="ft163"><i>Computational Intelligence: A Dynamic System Perspective</i>&#160;83–97.</p>
+<p style="position:absolute;top:532px;left:81px;white-space:nowrap" class="ft162">Ortín,&#160;S.,&#160;M.&#160;C.&#160;Soriano,&#160;L.&#160;Pesquera,&#160;D.&#160;Brunner,&#160;D.&#160;San-Martín,&#160;I.&#160;Fischer,&#160;C.&#160;R.&#160;Mirasso,&#160;and&#160;</p>
+<p style="position:absolute;top:548px;left:114px;white-space:nowrap" class="ft162">J.&#160;M.&#160;Gutiérrez.&#160;2015.&#160;“A&#160;unified&#160;framework&#160;for&#160;reservoir&#160;computing&#160;and&#160;extreme&#160;learning&#160;</p>
+<p style="position:absolute;top:564px;left:114px;white-space:nowrap" class="ft162">machines based on a single time-delayed neuron.”&#160;<i>Scientific Reports</i>&#160;5:14945.&#160;</p>
+<p style="position:absolute;top:580px;left:81px;white-space:nowrap" class="ft162">Oviedo, N. J., J. Morokuma, P. Walentek, I. P. Kema, M. B. Gu, J. M. Ahn, J. S. Hwang, T.&#160;</p>
+<p style="position:absolute;top:596px;left:114px;white-space:nowrap" class="ft162">Gojobori,&#160;and&#160;M.&#160;Levin.&#160;2010.&#160;“Long-range&#160;neural&#160;and gap&#160;junction&#160;protein-mediated&#160;cues&#160;</p>
+<p style="position:absolute;top:613px;left:114px;white-space:nowrap" class="ft162">control polarity during planarian regeneration.”&#160;<i>Developmental&#160;Biology</i>&#160;339 (1):188–199.&#160;</p>
+<p style="position:absolute;top:629px;left:81px;white-space:nowrap" class="ft162">Oviedo,&#160;Néstor&#160;J.,&#160;Phillip A.&#160;Newmark,&#160;and Alejandro&#160;Sánchez&#160;Alvarado.&#160;2003.&#160;“Allometric&#160;</p>
+<p style="position:absolute;top:645px;left:114px;white-space:nowrap" class="ft162">scaling and proportion&#160;regulation&#160;in&#160;the&#160;freshwater&#160;planarian&#160;Schmidtea mediterranea.”&#160;</p>
+<p style="position:absolute;top:661px;left:114px;white-space:nowrap" class="ft163"><i>Developmental&#160;Dynamics</i>&#160;226&#160;(2):326–333.&#160;</p>
+<p style="position:absolute;top:677px;left:81px;white-space:nowrap" class="ft162">Pagán, Oné R. 2014.&#160;<i>The First Brain: The Neuroscience of Planarians</i>. Oxford University Pres.</p>
+<p style="position:absolute;top:693px;left:81px;white-space:nowrap" class="ft162">Pai,&#160;Vaibhav P.,&#160;Sherry&#160;Aw,&#160;Tal&#160;Shomrat,&#160;Joan&#160;M.&#160;Lemire,&#160;and Michael&#160;Levin.&#160;2012.&#160;</p>
+<p style="position:absolute;top:709px;left:114px;white-space:nowrap" class="ft162">“Transmembrane voltage potential controls embryonic&#160;eye patterning in&#160;Xenopus&#160;laevis.”&#160;</p>
+<p style="position:absolute;top:725px;left:114px;white-space:nowrap" class="ft163"><i>Development</i>&#160;139&#160;(2):313–323.</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft162">Pai,&#160;V.&#160;P.,&#160;A.&#160;Pietak,&#160;V.&#160;Willocq,&#160;B.&#160;Ye,&#160;N.&#160;Q.&#160;Shi,&#160;and&#160;M.&#160;Levin.&#160;2018.&#160;“HCN2&#160;Rescues&#160;brain&#160;defects&#160;</p>
+<p style="position:absolute;top:757px;left:114px;white-space:nowrap" class="ft162">by enforcing endogenous voltage pre-patterns.”&#160;<i>Nature&#160;Communications</i>&#160;9: ARTN 998.&#160;</p>
+<p style="position:absolute;top:773px;left:81px;white-space:nowrap" class="ft162">Pellettieri, Jason, Patrick Fitzgerald, Shigeki Watanabe, Joel Mancuso, Douglas R. Green, and&#160;</p>
+<p style="position:absolute;top:789px;left:114px;white-space:nowrap" class="ft162">Alejandro&#160;Sánchez&#160;Alvarado.&#160;2010.&#160;“Cell&#160;death&#160;and tissue&#160;remodeling in&#160;planarian&#160;regen-</p>
+<p style="position:absolute;top:805px;left:114px;white-space:nowrap" class="ft162">eration.”&#160;<i>Developmental&#160;Biology</i>&#160;338&#160;(1):76–85.</p>
+<p style="position:absolute;top:821px;left:81px;white-space:nowrap" class="ft162">Perathoner, S., J. M. Daane, U. Henrion, G. Seebohm, C. W. Higdon, S. L. Johnson, C. Nusslein-</p>
+<p style="position:absolute;top:837px;left:114px;white-space:nowrap" class="ft162">Volhard,&#160;and&#160;M.&#160;P.&#160;Harris.&#160;2014.&#160;“Bioelectric&#160;signaling&#160;regulates&#160;size&#160;in&#160;zebrafish&#160;fins.”&#160;</p>
+<p style="position:absolute;top:853px;left:114px;white-space:nowrap" class="ft163"><i>PLoS&#160;Genetics</i>&#160;10&#160;(1):e1004080.&#160;doi:&#160;10.1371<a href="http://journal.pgen.1004080">/journal.pgen.1004080.</a></p>
+<p style="position:absolute;top:869px;left:81px;white-space:nowrap" class="ft162">Pezzulo, G., and M. Levin. 2015. “Remembering the body: applications of computational neurosci-</p>
+<p style="position:absolute;top:885px;left:114px;white-space:nowrap" class="ft162">ence&#160;to&#160;the&#160;top-down&#160;control&#160;of&#160;regeneration&#160;of&#160;limbs&#160;and&#160;other&#160;complex&#160;organs.”&#160;<i>Integrative&#160;</i></p>
+<p style="position:absolute;top:901px;left:114px;white-space:nowrap" class="ft163"><i>Biology</i>&#160;7&#160;(12):1487–1517.</p>
+<p style="position:absolute;top:917px;left:81px;white-space:nowrap" class="ft162">Pezzulo,&#160;G.,&#160;and&#160;M.&#160;Levin.&#160;2016.&#160;“Top-down&#160;models&#160;in&#160;biology:&#160;explanation&#160;and control&#160;of&#160;com-</p>
+<p style="position:absolute;top:933px;left:114px;white-space:nowrap" class="ft162">plex living systems above the molecular level.”&#160;<i>Journal of the Royal Society Interface</i>&#160;13&#160;</p>
+<p style="position:absolute;top:949px;left:114px;white-space:nowrap" class="ft162">(124).&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ed53ab4836d8fa0dd2baae8b43ab16ed-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:13px;font-family:Times;color:#231f20;}
+	.ft171{font-size:13px;font-family:Times;color:#231f20;}
+	.ft172{font-size:11px;font-family:Times;color:#231f20;}
+	.ft173{font-size:11px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:756px;height:1080px;">
+<p style="position:absolute;top:54px;left:650px;white-space:nowrap" class="ft170">133</p>
+<p style="position:absolute;top:54px;left:146px;white-space:nowrap" class="ft171"><i>Toward Modeling Regeneration via Adaptable Echo State Networks&#160;</i></p>
+<p style="position:absolute;top:99px;left:81px;white-space:nowrap" class="ft172">Pezzulo, Giovanni, and Michael Levin. 2017. “Embodying Markov blankets: comment on&#160;</p>
+<p style="position:absolute;top:115px;left:114px;white-space:nowrap" class="ft172">“Answering&#160;Schrödinger’s question: a free-energy formulation” by Maxwell James&#160;</p>
+<p style="position:absolute;top:131px;left:114px;white-space:nowrap" class="ft172">Désormeau Ramstead et al.”&#160;<i>Physics of Life Reviews</i>&#160;24:32–36.&#160;</p>
+<p style="position:absolute;top:147px;left:81px;white-space:nowrap" class="ft172">Pietak,&#160;A.,&#160;and M.&#160;Levin.&#160;2017.&#160;“Bioelectric&#160;gene&#160;and reaction&#160;networks:&#160;computational&#160;model-</p>
+<p style="position:absolute;top:163px;left:114px;white-space:nowrap" class="ft172">ling&#160;of&#160;genetic,&#160;biochemical&#160;and&#160;bioelectrical&#160;dynamics&#160;in&#160;pattern&#160;regulation.”&#160;<i>Journal&#160;of&#160;</i></p>
+<p style="position:absolute;top:180px;left:114px;white-space:nowrap" class="ft173"><i>the Royal Society Interface</i>&#160;14&#160;(134):&#160;20170425.</p>
+<p style="position:absolute;top:196px;left:81px;white-space:nowrap" class="ft172">Reddien, Peter W., and Alejandro Sánchez Alvarado. 2004. “Fundamentals of planarian regen-</p>
+<p style="position:absolute;top:212px;left:114px;white-space:nowrap" class="ft172">eration.”&#160;<i>Annual Review of Cell and Developmental Biology</i>&#160;20:725–757.</p>
+<p style="position:absolute;top:228px;left:81px;white-space:nowrap" class="ft172">Saló,&#160;Emili,&#160;and&#160;Jaume&#160;Baguñà.&#160;1985.&#160;“Cell&#160;movement&#160;in&#160;intact&#160;and&#160;regenerating&#160;planarians.&#160;</p>
+<p style="position:absolute;top:244px;left:114px;white-space:nowrap" class="ft172">Quantitation&#160;&#160;using&#160;&#160;chromosomal,&#160;&#160;nuclear&#160;&#160;and&#160;&#160;cytoplasmic&#160;&#160;markers.”&#160;&#160;<i>Development</i>&#160;89&#160;</p>
+<p style="position:absolute;top:260px;left:114px;white-space:nowrap" class="ft172">(1):57–70.</p>
+<p style="position:absolute;top:276px;left:81px;white-space:nowrap" class="ft172">Sarnat, Harvey B., and Martin G. Netsky. 1985. “The brain of the planarian as the ancestor of&#160;</p>
+<p style="position:absolute;top:292px;left:114px;white-space:nowrap" class="ft172">the human brain.”&#160;<i>Canadian Journal of Neurological Sciences</i>&#160;12&#160;(4):296–302.</p>
+<p style="position:absolute;top:308px;left:81px;white-space:nowrap" class="ft172">Schrauwen, Benjamin, David Verstraeten, and Jan Van Campenhout. 2007. “An overview of&#160;</p>
+<p style="position:absolute;top:324px;left:114px;white-space:nowrap" class="ft172">reservoir computing: theory, applications and implementations.” Proceedings of the 15th&#160;</p>
+<p style="position:absolute;top:340px;left:114px;white-space:nowrap" class="ft172">European Symposium on Artificial Neural Networks, pp. 471–482.</p>
+<p style="position:absolute;top:356px;left:81px;white-space:nowrap" class="ft172">Silver, David, Aja Huang, Chris J. Maddison, Arthur Guez, Laurent Sifre, George van den&#160;</p>
+<p style="position:absolute;top:372px;left:114px;white-space:nowrap" class="ft172">Driessche, Julian Schrittwieser, Ioannis Antonoglou, Veda Panneershelvam, Marc Lanctot,&#160;</p>
+<p style="position:absolute;top:388px;left:114px;white-space:nowrap" class="ft172">Sander Dieleman, Dominik Grewe, John Nham, Nal Kalchbrenner, Ilya Sutskever, Timothy&#160;</p>
+<p style="position:absolute;top:404px;left:114px;white-space:nowrap" class="ft172">Lillicrap, Madeleine Leach, Koray Kavukcuoglu, Thore Graepel, and Demis Hassabis.&#160;</p>
+<p style="position:absolute;top:420px;left:114px;white-space:nowrap" class="ft172">2016. “Mastering the game of Go with deep neural networks and tree search.”&#160;<i>Nature</i>&#160;</p>
+<p style="position:absolute;top:436px;left:114px;white-space:nowrap" class="ft172">529:484.&#160;&#160;doi:&#160;&#160;10.1038/nature16961.&#160;&#160;<a href="https://www.nature.com/">https&#160;://ww&#160;w.nat&#160;ure.c&#160;om/ar&#160;ticle&#160;s/nat&#160;ure16&#160;961#s&#160;upple&#160;</a></p>
+<p style="position:absolute;top:452px;left:114px;white-space:nowrap" class="ft172"><a href="https://www.nature.com/">menta&#160;ry-in&#160;forma&#160;tion.</a>&#160;</p>
+<p style="position:absolute;top:468px;left:81px;white-space:nowrap" class="ft172">Srivastava,&#160;Nitish,&#160;Geoffrey Hinton,&#160;Alex Krizhevsky,&#160;Ilya Sutskever,&#160;and Ruslan Salakhutdinov.&#160;</p>
+<p style="position:absolute;top:484px;left:114px;white-space:nowrap" class="ft172">2014.&#160;“Dropout:&#160;a&#160;simple&#160;way&#160;to&#160;prevent&#160;neural&#160;networks&#160;from&#160;overfitting.”&#160;<i>The&#160;Journal of&#160;</i></p>
+<p style="position:absolute;top:500px;left:114px;white-space:nowrap" class="ft173"><i>Machine&#160;Learning&#160;Research</i>&#160;15&#160;(1):1929–1958.</p>
+<p style="position:absolute;top:516px;left:81px;white-space:nowrap" class="ft172">Sullivan,&#160;K.&#160;G.,&#160;M.&#160;Emmons-Bell,&#160;and&#160;M.&#160;Levin.&#160;2016.&#160;“Physiological&#160;inputs&#160;regulate&#160;species-</p>
+<p style="position:absolute;top:532px;left:114px;white-space:nowrap" class="ft172">specific&#160;anatomy&#160;during&#160;embryogenesis&#160;and&#160;regeneration.”&#160;<i>Communicative&#160;&amp;&#160;Integrative&#160;</i></p>
+<p style="position:absolute;top:548px;left:114px;white-space:nowrap" class="ft173"><i>Biology</i>&#160;9&#160;(4):e1192733.&#160;doi:&#160;10.1080/19420889.2016.1192733.</p>
+<p style="position:absolute;top:564px;left:81px;white-space:nowrap" class="ft172">Sundelacruz,&#160;S.,&#160;M.&#160;Levin,&#160;and D.&#160;L.&#160;Kaplan.&#160;2013.&#160;“Depolarization&#160;alters&#160;phenotype,&#160;main-</p>
+<p style="position:absolute;top:580px;left:114px;white-space:nowrap" class="ft172">tains plasticity of predifferentiated mesenchymal stem cells.”&#160;<i>Tissue Engineering, Part A</i>&#160;</p>
+<p style="position:absolute;top:596px;left:114px;white-space:nowrap" class="ft172">19&#160;(17–18):1889–908.&#160;doi:&#160;10.1089/ten.tea.2012.0425.rev.</p>
+<p style="position:absolute;top:613px;left:81px;white-space:nowrap" class="ft172">Sundelacruz,&#160;S.,&#160;C.&#160;Li,&#160;Y.&#160;J.&#160;Choi,&#160;M.&#160;Levin,&#160;and D.&#160;L.&#160;Kaplan.&#160;2013.&#160;“Bioelectric&#160;modulation&#160;</p>
+<p style="position:absolute;top:629px;left:114px;white-space:nowrap" class="ft172">of wound healing in a 3D in vitro model of tissue-engineered bone.”&#160;<i>Biomaterials</i>&#160;34&#160;</p>
+<p style="position:absolute;top:645px;left:114px;white-space:nowrap" class="ft172">(28):6695–6705.&#160;doi:&#160;S0142-9612(13)00616-9&#160;[pii]&#160;10.1016/j.biomaterials.2013.05.040.</p>
+<p style="position:absolute;top:661px;left:81px;white-space:nowrap" class="ft172">Vandenberg,&#160;L.&#160;N.,&#160;R.&#160;D.&#160;Morrie,&#160;and D.&#160;S.&#160;Adams.&#160;2011a.&#160;“V-ATPase-dependent ectodermal volt-</p>
+<p style="position:absolute;top:677px;left:114px;white-space:nowrap" class="ft172">age and pH regionalization&#160;are required for&#160;craniofacial morphogenesis.”&#160;<i>Developmental&#160;</i></p>
+<p style="position:absolute;top:693px;left:114px;white-space:nowrap" class="ft173"><i>Dynamics</i>&#160;240 (8):1889–1904. doi: 10.1002/dvdy.22685.</p>
+<p style="position:absolute;top:709px;left:81px;white-space:nowrap" class="ft172">Vandenberg,&#160;Laura N.,&#160;Ryan&#160;D. Morrie,&#160;and Dany Spencer&#160;Adams.&#160;2011b.&#160;“V‐ATPase‐dependent&#160;</p>
+<p style="position:absolute;top:725px;left:114px;white-space:nowrap" class="ft172">ectodermal voltage and pH regionalization are required for craniofacial morphogenesis.”&#160;</p>
+<p style="position:absolute;top:741px;left:114px;white-space:nowrap" class="ft173"><i>Developmental&#160;Dynamics</i>&#160;240&#160;(8):1889–1904.</p>
+<p style="position:absolute;top:757px;left:81px;white-space:nowrap" class="ft172">Verstraeten, David, Benjamin Schrauwen, Michiel d’Haene, and Dirk Stroobandt. 2007. “An&#160;</p>
+<p style="position:absolute;top:773px;left:114px;white-space:nowrap" class="ft172">experimental&#160;unification&#160;of&#160;reservoir&#160;computing&#160;methods.”&#160;<i>Neural&#160;Networks</i>&#160;20&#160;(3):391–403.</p>
+<p style="position:absolute;top:789px;left:81px;white-space:nowrap" class="ft172">Wagner,&#160;Daniel&#160;E.,&#160;Irving E.&#160;Wang,&#160;and Peter&#160;W.&#160;Reddien.&#160;2011.&#160;“Clonogenic&#160;neoblasts&#160;are&#160;plu-</p>
+<p style="position:absolute;top:805px;left:114px;white-space:nowrap" class="ft172">ripotent adult stem cells that underlie planarian regeneration.”&#160;<i>Science</i>&#160;332&#160;(6031):811–816.</p>
+<p style="position:absolute;top:821px;left:81px;white-space:nowrap" class="ft172">Yusoff, Mohd-Hanif, Joseph Chrol-Cannon, and Yaochu Jin. 2016. “Modeling neural plasticity in&#160;</p>
+<p style="position:absolute;top:837px;left:114px;white-space:nowrap" class="ft172">echo state networks for classification and regression.”&#160;<i>Information&#160;Sciences</i>&#160;364:184–196.</p>
+<p style="position:absolute;top:853px;left:81px;white-space:nowrap" class="ft172">Yusoff, Mohd-Hanif, and Yaochu Jin. 2014. “Modeling neural plasticity in echo state networks&#160;</p>
+<p style="position:absolute;top:869px;left:114px;white-space:nowrap" class="ft172">for time series prediction.” 14th UK Workshop on Computational Intelligence (UKCI).</p>
+</div>
+</body>
+</html>

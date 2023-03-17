@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:9px;font-family:Times;color:#231f20;}
+	.ft11{font-size:19px;font-family:Times;color:#10137d;}
+	.ft12{font-size:13px;font-family:Times;color:#231f20;}
+	.ft13{font-size:8px;font-family:Times;color:#000080;}
+	.ft14{font-size:13px;font-family:Times;color:#000080;}
+	.ft15{font-size:6px;font-family:Times;color:#231f20;}
+	.ft16{font-size:11px;font-family:Times;color:#231f20;}
+	.ft17{font-size:9px;font-family:Times;color:#10137d;}
+	.ft18{font-size:10px;font-family:Times;color:#231f20;}
+	.ft19{font-size:8px;font-family:Times;color:#231f20;}
+	.ft110{font-size:10px;font-family:Times;color:#10137d;}
+	.ft111{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft112{font-size:9px;line-height:13px;font-family:Times;color:#231f20;}
+	.ft113{font-size:9px;line-height:14px;font-family:Times;color:#10137d;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:76px;left:72px;white-space:nowrap" class="ft112">InternatIonal&#160;Journal&#160;of&#160;Parallel,&#160;emergent&#160;and&#160;dIstrIbuted&#160;systems,&#160;2016<br/>http://dx.doi.org/10.1080/17445760.2016.1185521</p>
+<p style="position:absolute;top:149px;left:72px;white-space:nowrap" class="ft11"><b>A computational model of planarian regeneration</b></p>
+<p style="position:absolute;top:194px;left:72px;white-space:nowrap" class="ft12">Abhishek D<a href="ba8577a786315aa95ba33f4ccf78e257s.html#1">ea,&#160;</a>V. Srinivasa Chakravarth<a href="ba8577a786315aa95ba33f4ccf78e257s.html#1">yb</a>&#160;and Michael L<a href="ba8577a786315aa95ba33f4ccf78e257s.html#1">evinc </a></p>
+<p style="position:absolute;top:225px;left:72px;white-space:nowrap" class="ft15">aProgram in&#160;neuroscience,&#160;university of&#160;Washington,&#160;seattle,&#160;Wa,&#160;usa;&#160;bComputational&#160;neuroscience&#160;laboratory,&#160;</p>
+<p style="position:absolute;top:240px;left:72px;white-space:nowrap" class="ft16">department of&#160;biotechnology,&#160;bhupat and Jyoti&#160;mehta&#160;school of&#160;biosciences, Indian Institute of&#160;technology&#160;madras,&#160;</p>
+<p style="position:absolute;top:255px;left:72px;white-space:nowrap" class="ft16">Chennai, India;&#160;cbiology&#160;department,&#160;allen&#160;discovery Center at&#160;tufts&#160;university,&#160;medford,&#160;ma,&#160;usa</p>
+<p style="position:absolute;top:313px;left:90px;white-space:nowrap" class="ft17"><b>ABSTRACT</b></p>
+<p style="position:absolute;top:327px;left:90px;white-space:nowrap" class="ft16">Regeneration of complex anatomical structures is an emergent phenomenon&#160;</p>
+<p style="position:absolute;top:342px;left:90px;white-space:nowrap" class="ft16">arising from complex interplay between various underlying cellular&#160;</p>
+<p style="position:absolute;top:357px;left:90px;white-space:nowrap" class="ft16">components&#160;and&#160;processes.&#160;It&#160;is&#160;still&#160;largely&#160;unclear&#160;how&#160;coordination&#160;</p>
+<p style="position:absolute;top:372px;left:90px;white-space:nowrap" class="ft16">among cells leads to accurate regeneration of the organism, preserving the&#160;</p>
+<p style="position:absolute;top:387px;left:90px;white-space:nowrap" class="ft16">location, shape, and composition of the parts with respect to the whole.&#160;</p>
+<p style="position:absolute;top:402px;left:90px;white-space:nowrap" class="ft16">Here, we examine at the global interaction of cells in a computational model&#160;</p>
+<p style="position:absolute;top:417px;left:90px;white-space:nowrap" class="ft16">of planarian regeneration. A key feature of our model is the integration&#160;</p>
+<p style="position:absolute;top:432px;left:90px;white-space:nowrap" class="ft16">of multiple organizational levels of an organism – from cells, to network,&#160;</p>
+<p style="position:absolute;top:447px;left:90px;white-space:nowrap" class="ft16">to global shape.&#160;The computational model is able to replicate most of&#160;</p>
+<p style="position:absolute;top:462px;left:90px;white-space:nowrap" class="ft16">the experimental observations thereby facilitating study of the putative&#160;</p>
+<p style="position:absolute;top:477px;left:90px;white-space:nowrap" class="ft16">mechanisms.&#160;We observe that a hierarchical interplay between local and&#160;</p>
+<p style="position:absolute;top:492px;left:90px;white-space:nowrap" class="ft16">long range signaling acts as a positional map that guides the cellular fate at&#160;</p>
+<p style="position:absolute;top:507px;left:90px;white-space:nowrap" class="ft16">any position. Furthermore, we have quantified the quality of regeneration&#160;</p>
+<p style="position:absolute;top:522px;left:90px;white-space:nowrap" class="ft16">using&#160;a&#160;metric&#160;that&#160;provides&#160;a&#160;sense&#160;of&#160;how&#160;well&#160;the&#160;regenerated&#160;organism&#160;</p>
+<p style="position:absolute;top:537px;left:90px;white-space:nowrap" class="ft16">resembles its original shape.</p>
+<p style="position:absolute;top:804px;left:90px;white-space:nowrap" class="ft16">Planaria are complex bilaterian animals with a remarkable capability.&#160;They&#160;</p>
+<p style="position:absolute;top:819px;left:90px;white-space:nowrap" class="ft16">regenerate after almost any sort of surgical damage, re-growing precisely&#160;</p>
+<p style="position:absolute;top:834px;left:90px;white-space:nowrap" class="ft16">the needed structures at the correct locations and stopping growth and&#160;</p>
+<p style="position:absolute;top:849px;left:90px;white-space:nowrap" class="ft16">remodeling after their target morphology is complete. Understanding the&#160;</p>
+<p style="position:absolute;top:864px;left:90px;white-space:nowrap" class="ft16">dynamic regulation of biological patterning is key to transformative advances&#160;</p>
+<p style="position:absolute;top:879px;left:90px;white-space:nowrap" class="ft16">in&#160;regenerative&#160;medicine&#160;and&#160;synthetic&#160;bioengineering.&#160;Here,&#160;we&#160;propose&#160;</p>
+<p style="position:absolute;top:894px;left:90px;white-space:nowrap" class="ft16">a connectionist model of pattern memory during planarian regeneration.</p>
+<p style="position:absolute;top:313px;left:533px;white-space:nowrap" class="ft113"><b>ARTICLE&#160;HISTORY<br/></b>received 29&#160;april 2016&#160;</p>
+<p style="position:absolute;top:341px;left:533px;white-space:nowrap" class="ft18">accepted 29&#160;april 2016</p>
+<p style="position:absolute;top:365px;left:533px;white-space:nowrap" class="ft113"><b>KEYWORDS<br/></b>Planaria; regeneration;&#160;</p>
+<p style="position:absolute;top:392px;left:533px;white-space:nowrap" class="ft18">modeling; in silico</p>
+<p style="position:absolute;top:991px;left:72px;white-space:nowrap" class="ft19">© 2016 Informa&#160;uK&#160;limited, trading as&#160;taylor &amp;&#160;francis&#160;group</p>
+<p style="position:absolute;top:968px;left:72px;white-space:nowrap" class="ft110"><b>CONTACT&#160;&#160;</b>michael&#160;levin&#160;</p>
+<p style="position:absolute;top:970px;left:213px;white-space:nowrap" class="ft18"><a href="mailto:michael.levin@tufts.edu">&#160;michael.levin@tufts.edu</a></p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft111">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:9px;font-family:Times;color:#231f20;}
+	.ft21{font-size:13px;font-family:Times;color:#10137d;}
+	.ft22{font-size:12px;font-family:Times;color:#231f20;}
+	.ft23{font-size:12px;font-family:Times;color:#000080;}
+	.ft24{font-size:12px;font-family:Times;color:#231f20;}
+	.ft25{font-size:7px;font-family:Times;color:#231f20;}
+	.ft26{font-size:7px;font-family:Times;color:#231f20;}
+	.ft27{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft28{font-size:13px;line-height:29px;font-family:Times;color:#10137d;}
+	.ft29{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+	.ft210{font-size:12px;line-height:18px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft20">2&#160;</p>
+<p style="position:absolute;top:39px;left:106px;white-space:nowrap" class="ft20">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:86px;left:72px;white-space:nowrap" class="ft29"><b>1.&#160;Introduction<br/></b>In recent years, planarian flatworms have established themselves as a popular model organism for&#160;<br/>studying regeneration [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">12,20,23,26,31</a>].&#160;existing planarian regenera<a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">tion models [29</a>] combine posi-<br/>tional information and cell migration to explain how planarians can restore Anterior–Posterior (AP)&#160;<br/>polarity, whereas others use the Reaction-Diffusion framework [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">32,34</a>] to explain the regeneration of&#160;<br/>correct axial polarity. Some&#160;of the models&#160;assume&#160;an innate coordinate system that&#160;facilitates pat-<br/>terning and are based on bioelectrical signals [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">37], dorsal-</a>ventral interactions [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">16,17</a>], or intercalation&#160;<br/>of&#160;missing&#160;regions&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">[1].&#160;</a>However,&#160;none&#160;of the&#160;above&#160;models&#160;explain all&#160;the main results of&#160;planarian&#160;<br/>experiments. More broadly, there is a&#160;dire need&#160;of a single framework&#160;that can explain the ability of&#160;<br/>planaria to restore correct anatomical polarity, shape, and size despite a wide range of damage and&#160;<br/>other perturbations.</p>
+<p style="position:absolute;top:295px;left:90px;white-space:nowrap" class="ft22">In our current work, we have borrowed tools from Cellular Automata [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">35] and A</a>rtificial Neural&#160;</p>
+<p style="position:absolute;top:313px;left:72px;white-space:nowrap" class="ft29">Networks [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">15</a>] for building a computational model at an organism level so as to understand how local&#160;<br/>interactions among cells guided by chemical and electrical coupling can orchestrate planarian regen-<br/>eration. Our regeneration model starts with an a priori mature planarian, which is then amputated at&#160;<br/>different locations and levels to observe if the planarian is able to regenerate back to its original shape&#160;<br/>and stabilize.&#160;The dynamics of regeneration from this simplistic model provides a window of cognition&#160;<br/>onto the underlying mechanism through which we can study the local and global cellular dynamics of&#160;<br/>regenerative coordination.&#160;We find that our model is able to capture most of the experimental obser-<br/>vations&#160;on&#160;Planarian&#160;regeneration&#160;[<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">20</a>]&#160;and&#160;provide&#160;some&#160;key&#160;insights&#160;into&#160;the&#160;biological&#160;algorithm&#160;<br/>underlying regeneration.</p>
+<p style="position:absolute;top:500px;left:72px;white-space:nowrap" class="ft29"><b>2.&#160;Results<br/></b>We start our simulation with a fully developed planarian as shown&#160;in Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">1</a>A.&#160;The&#160;model is simulated&#160;<br/>in a total space of 80 × 80 pixels.&#160;This space represents the external medium where the tissue/planarian&#160;<br/>is cultured.&#160;The mature planarian has a horizontal length of 15 pixels along the east–west axis and a&#160;<br/>vertical&#160;length of 30 pixels along the north–south axis.&#160;The planarian tissue has two main components,&#160;<br/>namely the&#160;‘neurons’&#160;that belong to the nervous system and the&#160;‘non-neuronal cells’&#160;which are not the&#160;<br/>part of nervous system. An important point to note is that, this distinction is an assumption of the&#160;<br/>model and&#160;is specifically motivated to&#160;distinguish neural&#160;signaling from non-neuronal&#160;signaling. Also,&#160;<br/>these&#160;non-neuronal&#160;cells should&#160;not&#160;be confused&#160;with the glial&#160;cells which have&#160;often been labeled as&#160;<br/>non-neuronal c<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">ells [13].&#160;</a>The&#160;‘non-neuronal cells’&#160;will be referred to as&#160;‘cells’&#160;henceforth.</p>
+<p style="position:absolute;top:691px;left:90px;white-space:nowrap" class="ft22">each cell has five different state variables which it has to compute and remember at each iteration.&#160;</p>
+<p style="position:absolute;top:709px;left:72px;white-space:nowrap" class="ft22">These state variables are&#160;<i>x</i></p>
+<p style="position:absolute;top:719px;left:227px;white-space:nowrap" class="ft25"><i>g</i>&#160;(growth variable),&#160;<i>xp</i>&#160;(patterning variable),&#160;<i>xc</i>1&#160;(east–west morphogen var-</p>
+<p style="position:absolute;top:727px;left:72px;white-space:nowrap" class="ft22">iable),&#160;<i>x</i></p>
+<p style="position:absolute;top:737px;left:117px;white-space:nowrap" class="ft25"><i>c</i>2&#160;(north–south&#160;morphogen&#160;variable)&#160;and&#160;<i>xa</i>&#160;(apoptosis&#160;variable)&#160;and&#160;resemble&#160;the&#160;activity&#160;of&#160;</p>
+<p style="position:absolute;top:745px;left:72px;white-space:nowrap" class="ft22">different&#160;genes&#160;encoded&#160;within&#160;a&#160;cell.&#160;For&#160;example:&#160;<i>x</i></p>
+<p style="position:absolute;top:755px;left:385px;white-space:nowrap" class="ft25"><i>g</i>&#160;represents&#160;the&#160;activity&#160;of&#160;a&#160;single&#160;gene&#160;coding&#160;</p>
+<p style="position:absolute;top:763px;left:72px;white-space:nowrap" class="ft22">the machinery of aging in a cell,&#160;<i>x</i></p>
+<p style="position:absolute;top:773px;left:269px;white-space:nowrap" class="ft25"><i>c</i>1&#160;represents the activity of a gene coding for how much of an east–</p>
+<p style="position:absolute;top:781px;left:72px;white-space:nowrap" class="ft210">west morphogen a cell should secrete etc.&#160;The east–west and north–south morphogen variables act as&#160;<br/>positional&#160;cues&#160;indirectly&#160;providing information&#160;about&#160;the spatial&#160;location&#160;of each&#160;cell.&#160;The&#160;morphogen&#160;<br/>value of each cell is influenced by three factors – local cell-cell interaction (forces the cell to secrete a&#160;<br/>particular morphogen concentration), gap-junctional coupling (modulates the flow of morphogens&#160;<br/>between a cell and its neighbors based on concentration gradient) and cell-neuron interaction (refer&#160;<br/>Appendix Sec<a href="ba8577a786315aa95ba33f4ccf78e257s.html#15">tion&#160;1.4&#160;f</a>or mathematical details).&#160;The mature planarian in our model has a smooth linear&#160;<br/>morphogen gradient along both east–west and north–south direction.&#160;The conventions: east–west and&#160;<br/>north–south&#160;indicate&#160;two&#160;orthogonal&#160;directions&#160;in&#160;which&#160;the&#160;morphogen&#160;gradients&#160;are&#160;considered.&#160;<br/>T<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">able&#160;1&#160;br</a>iefly summarizes the properties of a neuron and a cell. Figur<a href="ba8577a786315aa95ba33f4ccf78e257s.html#4">e&#160;2&#160;pr</a>ovides a pictorial representa-<br/>tion of&#160;<i>x</i></p>
+<p style="position:absolute;top:953px;left:120px;white-space:nowrap" class="ft25"><i>g</i>,&#160;<i>xp</i>,&#160;<i>xc</i>1&#160;and&#160;<i>xc</i>2&#160;of all the cells in a mature planarian.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft27">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:9px;font-family:Times;color:#231f20;}
+	.ft31{font-size:12px;font-family:Times;color:#231f20;}
+	.ft32{font-size:12px;font-family:Times;color:#231f20;}
+	.ft33{font-size:7px;font-family:Times;color:#231f20;}
+	.ft34{font-size:7px;font-family:Times;color:#231f20;}
+	.ft35{font-size:10px;font-family:Times;color:#10137d;}
+	.ft36{font-size:10px;font-family:Times;color:#231f20;}
+	.ft37{font-size:10px;font-family:Times;color:#231f20;}
+	.ft38{font-size:10px;font-family:Times;color:#000000;}
+	.ft39{font-size:5px;font-family:Times;color:#231f20;}
+	.ft310{font-size:5px;font-family:Times;color:#231f20;}
+	.ft311{font-size:10px;font-family:Times;color:#231f20;}
+	.ft312{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft313{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:232px;white-space:nowrap" class="ft30">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:651px;white-space:nowrap" class="ft30">&#160;3</p>
+<p style="position:absolute;top:389px;left:90px;white-space:nowrap" class="ft31">In the above table, for every cell, all the parameters and variables which do not have superscripts&#160;</p>
+<p style="position:absolute;top:407px;left:72px;white-space:nowrap" class="ft313">are single numbers and is remembered by it; the only difference between parameters and variables&#160;<br/>is that the values of the parameters do not change whereas the values of the variables (<i>x</i></p>
+<p style="position:absolute;top:435px;left:600px;white-space:nowrap" class="ft33"><i>g</i>,&#160;<i>xp</i>,&#160;<i>xc</i>1,&#160;<i>xc</i>2,&#160;</p>
+<p style="position:absolute;top:443px;left:72px;white-space:nowrap" class="ft32"><i>x</i></p>
+<p style="position:absolute;top:453px;left:78px;white-space:nowrap" class="ft33"><i>a</i>) do change with iterations as the organism develops (refer Appendix for equations).&#160;Those having&#160;</p>
+<p style="position:absolute;top:77px;left:72px;white-space:nowrap" class="ft35"><b>Table 1. </b>Properties of different tissue components and variables.</p>
+<p style="position:absolute;top:100px;left:72px;white-space:nowrap" class="ft36">Tissue component</p>
+<p style="position:absolute;top:101px;left:183px;white-space:nowrap" class="ft36">What needs to be encoded by each cell (refer&#160;</p>
+<p style="position:absolute;top:115px;left:183px;white-space:nowrap" class="ft36">equations in Appendix)</p>
+<p style="position:absolute;top:101px;left:434px;white-space:nowrap" class="ft36">What needs to&#160;</p>
+<p style="position:absolute;top:115px;left:434px;white-space:nowrap" class="ft36">be computed</p>
+<p style="position:absolute;top:101px;left:519px;white-space:nowrap" class="ft36">Connectivity to other tissue&#160;</p>
+<p style="position:absolute;top:115px;left:519px;white-space:nowrap" class="ft36">components</p>
+<p style="position:absolute;top:132px;left:183px;white-space:nowrap" class="ft37"><i>N</i>,&#160;<i>𝜀</i>&#160;– for computing&#160;<i>x</i></p>
+<p style="position:absolute;top:140px;left:284px;white-space:nowrap" class="ft39"><i>g</i>&#160;(2)</p>
+<p style="position:absolute;top:132px;left:466px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:140px;left:471px;white-space:nowrap" class="ft39"><i>g</i></p>
+<p style="position:absolute;top:146px;left:183px;white-space:nowrap" class="ft37"><i>Wp</i>,&#160;<i>bp</i>,&#160;<i>η</i>&#160;– for computing&#160;<i>x</i></p>
+<p style="position:absolute;top:154px;left:305px;white-space:nowrap" class="ft39"><i>p</i>&#160;(6)</p>
+<p style="position:absolute;top:146px;left:466px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:154px;left:471px;white-space:nowrap" class="ft39"><i>p</i></p>
+<p style="position:absolute;top:147px;left:519px;white-space:nowrap" class="ft36">lateral connections to&#160;<i>m</i> × <i>m</i>&#160;</p>
+<p style="position:absolute;top:160px;left:528px;white-space:nowrap" class="ft36">cells and to two neighboring&#160;</p>
+<p style="position:absolute;top:174px;left:528px;white-space:nowrap" class="ft36">neurons in the 1-d&#160;neural&#160;</p>
+<p style="position:absolute;top:187px;left:528px;white-space:nowrap" class="ft36">system</p>
+<p style="position:absolute;top:159px;left:183px;white-space:nowrap" class="ft37"><i>Wxc</i>1,&#160;<i>WGJ</i>1,&#160;</p>
+<p style="position:absolute;top:158px;left:232px;white-space:nowrap" class="ft36">′Υ, K,&#160;<i>F</i>,&#160;<i>β</i>&#160;– for computing&#160;<i>x</i></p>
+<p style="position:absolute;top:167px;left:355px;white-space:nowrap" class="ft39"><i>c</i>1&#160;(10, 11, 13)</p>
+<p style="position:absolute;top:159px;left:465px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:167px;left:469px;white-space:nowrap" class="ft39"><i>c</i>1</p>
+<p style="position:absolute;top:174px;left:72px;white-space:nowrap" class="ft36">Cell&#160;</p>
+<p style="position:absolute;top:173px;left:183px;white-space:nowrap" class="ft37"><i>Wxc</i>2,&#160;<i>WGJ</i>2,&#160;</p>
+<p style="position:absolute;top:172px;left:232px;white-space:nowrap" class="ft36">′Υ, K,&#160;<i>F</i>,&#160;<i>β</i>&#160;– for computing&#160;<i>x</i></p>
+<p style="position:absolute;top:181px;left:355px;white-space:nowrap" class="ft39"><i>c</i>2&#160;(10, 12, 14)</p>
+<p style="position:absolute;top:173px;left:465px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:181px;left:469px;white-space:nowrap" class="ft39"><i>c</i>2</p>
+<p style="position:absolute;top:200px;left:183px;white-space:nowrap" class="ft311"><b>Δ</b>,&#160;<i>θ</i></p>
+<p style="position:absolute;top:208px;left:201px;white-space:nowrap" class="ft39"><i>a</i>&#160;– for computing&#160;<i>xa</i>&#160;(15, 16)</p>
+<p style="position:absolute;top:200px;left:466px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:208px;left:471px;white-space:nowrap" class="ft39"><i>a</i></p>
+<p style="position:absolute;top:213px;left:183px;white-space:nowrap" class="ft37"><i>Rule for forming planarian</i></p>
+<p style="position:absolute;top:228px;left:183px;white-space:nowrap" class="ft36">3&#160;<i>x</i></p>
+<p style="position:absolute;top:235px;left:196px;white-space:nowrap" class="ft39"><i>c</i>1 + 2&#160;<i>xc</i>2 &gt; 1.7 (17)</p>
+<p style="position:absolute;top:240px;left:183px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:248px;left:188px;white-space:nowrap" class="ft39"><i>c</i>2 &lt; 0.64 (18)</p>
+<p style="position:absolute;top:255px;left:183px;white-space:nowrap" class="ft36">3&#160;<i>x</i></p>
+<p style="position:absolute;top:262px;left:196px;white-space:nowrap" class="ft39"><i>c</i>2 − 2&#160;<i>xc</i>1 &lt; 0.23 (19)</p>
+<p style="position:absolute;top:267px;left:183px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:275px;left:188px;white-space:nowrap" class="ft39"><i>c</i>2 &gt; 0.31 (20)</p>
+<p style="position:absolute;top:281px;left:183px;white-space:nowrap" class="ft37"><i>x</i></p>
+<p style="position:absolute;top:289px;left:188px;white-space:nowrap" class="ft39"><i>c</i>1 &lt; 0.46 (21)</p>
+<p style="position:absolute;top:295px;left:72px;white-space:nowrap" class="ft36">neuron</p>
+<p style="position:absolute;top:294px;left:183px;white-space:nowrap" class="ft37"><i>East West 1-D neural skeleton</i></p>
+<p style="position:absolute;top:294px;left:464px;white-space:nowrap" class="ft37"><i>Vc</i>1</p>
+<p style="position:absolute;top:295px;left:519px;white-space:nowrap" class="ft36">lateral connections to the cells&#160;</p>
+<p style="position:absolute;top:309px;left:528px;white-space:nowrap" class="ft36">and gap junction coupling to&#160;</p>
+<p style="position:absolute;top:322px;left:528px;white-space:nowrap" class="ft36">the neighboring cells</p>
+<p style="position:absolute;top:308px;left:183px;white-space:nowrap" class="ft37"><i>f,&#160;τ</i>,&#160;<i>wVc</i>1,&#160;<i>λ</i></p>
+<p style="position:absolute;top:316px;left:228px;white-space:nowrap" class="ft39"><i>c</i>1,&#160;<i>g</i>&#160;– for calculating&#160;<i>V</i></p>
+<p style="position:absolute;top:308px;left:329px;white-space:nowrap" class="ft39"><i>c</i>1&#160;(7, 9)</p>
+<p style="position:absolute;top:321px;left:183px;white-space:nowrap" class="ft37"><i>North–South 1-D neural skeleton</i></p>
+<p style="position:absolute;top:321px;left:464px;white-space:nowrap" class="ft37"><i>Vc</i>2</p>
+<p style="position:absolute;top:335px;left:183px;white-space:nowrap" class="ft37"><i>f,&#160;τ</i>,&#160;<i>wVc</i>2,&#160;<i>λ</i></p>
+<p style="position:absolute;top:343px;left:228px;white-space:nowrap" class="ft39"><i>c</i>2,&#160;<i>g</i>&#160;– for calculating&#160;<i>V</i></p>
+<p style="position:absolute;top:335px;left:329px;white-space:nowrap" class="ft39"><i>c</i>2&#160;(8, 9)</p>
+<p style="position:absolute;top:941px;left:72px;white-space:nowrap" class="ft35"><b>Figure 1. </b>(a)&#160;fully formed planarian (top) with neurons aligned in east–west (in yellow) and north–south axis (green). (b)&#160;figure&#160;</p>
+<p style="position:absolute;top:955px;left:72px;white-space:nowrap" class="ft36">illustrating the connectivity between the neural system (along east–west axis) and the corresponding cells.&#160;the neurons in the&#160;</p>
+<p style="position:absolute;top:969px;left:72px;white-space:nowrap" class="ft36">nervous system are connected to only its neighboring neurons and a group of cells.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft312">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:9px;font-family:Times;color:#231f20;}
+	.ft41{font-size:12px;font-family:Times;color:#231f20;}
+	.ft42{font-size:12px;font-family:Times;color:#231f20;}
+	.ft43{font-size:7px;font-family:Times;color:#231f20;}
+	.ft44{font-size:7px;font-family:Times;color:#231f20;}
+	.ft45{font-size:12px;font-family:Times;color:#000080;}
+	.ft46{font-size:10px;font-family:Times;color:#10137d;}
+	.ft47{font-size:10px;font-family:Times;color:#231f20;}
+	.ft48{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft49{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+	.ft410{font-size:12px;line-height:18px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft40">4&#160;</p>
+<p style="position:absolute;top:39px;left:106px;white-space:nowrap" class="ft40">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:464px;left:72px;white-space:nowrap" class="ft49">superscripts are&#160;‘weight’&#160;matrices that describe the interaction of a cell with&#160;<i>m</i> × <i>m</i>&#160;neighborhood of&#160;<br/>cells (<i>m</i>&#160;is a scalar integer).&#160;The parameters represent the genetic code of the cell, which can either be&#160;<br/>a scalar or a matrix of numbers governing the properties of cell at each instant.</p>
+<p style="position:absolute;top:518px;left:90px;white-space:nowrap" class="ft41">The variables and the parameters a neuron also have similar properties as those of a cell.&#160;<i>Vc</i>1&#160;and&#160;<i>Vc</i>2&#160;</p>
+<p style="position:absolute;top:536px;left:72px;white-space:nowrap" class="ft49">are variables and represent voltages of cell.&#160;These are single numbers which a neuron has to compute&#160;<br/>at each iteration.</p>
+<p style="position:absolute;top:572px;left:90px;white-space:nowrap" class="ft41">We define two 1-D neural skeletons comprising of neurons (Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">1</a>) each modulating east–west&#160;</p>
+<p style="position:absolute;top:590px;left:72px;white-space:nowrap" class="ft49">and north–south morphogen activity by interacting with the cells.&#160;each cell receives projection from&#160;<br/>only two neurons, one from each neural skeleton.&#160;The neuron belonging to the east–west skeleton pro-<br/>vides&#160;inputs&#160;that&#160;modulates&#160;the&#160;east–west morphogen&#160;concentration&#160;of the&#160;cell. Similarly, the&#160;neuron&#160;<br/>belonging to the north–south skeleton provides input, necessary for shaping the north–south mor-<br/>phogen concentration of that cell.&#160;The connectivity between neurons and cells along the east–west&#160;<br/>axis is highlighted in Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">1b</a>.</p>
+<p style="position:absolute;top:698px;left:90px;white-space:nowrap" class="ft41">These two neural systems work independently of each other. A prime motivation behind this imple-</p>
+<p style="position:absolute;top:716px;left:72px;white-space:nowrap" class="ft49">mentation comes fr<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">om [23] wher</a>e it has been established that long-range neural signaling provides&#160;<br/>polarity cues during planarian regenera<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">tion [18]. I</a>n our model, each&#160;‘neuron’&#160;(and not a cell) has two&#160;<br/>important variables: a genetic element (denoted by&#160;<i>λ</i>) encoding the east–west and north–south morph-<br/>ogen gradient (slope) and its own membrane potential. At each iteration, the neuron has to compute its&#160;<br/>own membrane potential.&#160;This&#160;membrane potential and&#160;<i>λ</i>&#160;are sensitive&#160;to external stimuli; for example&#160;<br/>an external electric field. As the neurons are connected to the cells, any change in the external stimuli&#160;<br/>affects the membrane potential of the neurons and&#160;<i>λ</i>.&#160;This change in turn causes a change in input to&#160;<br/>cells from a neuron by feedback.&#160;The input to a cell from a neuron controls the secretion of morphogens.&#160;<br/>Therefore, any change in the external environment indirectly affects the morphogen concentration&#160;<br/>via&#160;the activity of&#160;the neurons&#160;and ultimately modifies&#160;the morphogen gradient which&#160;is tied&#160;to the&#160;<br/>shape of planarian (refer Appendix Sec<a href="ba8577a786315aa95ba33f4ccf78e257s.html#17">tion&#160;1.6).&#160;</a>Thus, this model has a hierarchical architecture (Figure&#160;<br/><a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">1</a>b) in which the nervous system (global) controls the existing cellular (local) network computing the&#160;<br/>morphogen concentration. Further details about the model are present in Appendix.</p>
+<p style="position:absolute;top:378px;left:72px;white-space:nowrap" class="ft46"><b>Figure&#160;2. </b>ful&#160;y&#160;formed&#160;planarian.&#160;figure&#160;shows&#160;growth&#160;(top&#160;left)&#160;with&#160;neurons&#160;along&#160;east–west&#160;(yel&#160;ow)&#160;and&#160;north–south&#160;axis&#160;(green),&#160;</p>
+<p style="position:absolute;top:392px;left:72px;white-space:nowrap" class="ft47">patterning (top right), east–west (bottom left) morphogen concentration of cells along with the neurons (black) in the neural skeleton&#160;</p>
+<p style="position:absolute;top:406px;left:72px;white-space:nowrap" class="ft47">in&#160;the&#160;same&#160;direction&#160;and&#160;north–south&#160;(bottom&#160;right)&#160;morphogen&#160;concentration&#160;of&#160;cells&#160;along&#160;with&#160;the&#160;neurons&#160;(black)&#160;in&#160;the&#160;neural&#160;</p>
+<p style="position:absolute;top:419px;left:72px;white-space:nowrap" class="ft47">skeleton in the same direction.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft48">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:9px;font-family:Times;color:#231f20;}
+	.ft51{font-size:13px;font-family:Times;color:#10137d;}
+	.ft52{font-size:12px;font-family:Times;color:#231f20;}
+	.ft53{font-size:12px;font-family:Times;color:#231f20;}
+	.ft54{font-size:7px;font-family:Times;color:#231f20;}
+	.ft55{font-size:12px;font-family:Times;color:#000080;}
+	.ft56{font-size:12px;font-family:Times;color:#000000;}
+	.ft57{font-size:7px;font-family:Times;color:#000000;}
+	.ft58{font-size:10px;font-family:Times;color:#10137d;}
+	.ft59{font-size:10px;font-family:Times;color:#231f20;}
+	.ft510{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft511{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+	.ft512{font-size:12px;line-height:18px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:232px;white-space:nowrap" class="ft50">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:651px;white-space:nowrap" class="ft50">&#160;5</p>
+<p style="position:absolute;top:76px;left:72px;white-space:nowrap" class="ft51"><i><b>2.1.&#160;Regeneration</b></i></p>
+<p style="position:absolute;top:104px;left:72px;white-space:nowrap" class="ft511">Regeneration of an amputated portion of a planarian is modeled as follows. In order to regenerate the&#160;<br/>lost part of its body, the growth variable (<i>x</i></p>
+<p style="position:absolute;top:131px;left:323px;white-space:nowrap" class="ft54"><i>g</i>) of two rows of cells just near the&#160;‘wounded’&#160;border is set&#160;</p>
+<p style="position:absolute;top:140px;left:72px;white-space:nowrap" class="ft511">to a lower value (0.5).&#160;This represents the physiological migration of stem cells called&#160;‘neoblasts’&#160;near&#160;<br/>the&#160;wound&#160;where&#160;they&#160;aggregate&#160;to&#160;form&#160;a&#160;blastema&#160;which&#160;initiates&#160;the&#160;tissue&#160;to&#160;regenerate&#160;[<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">20</a>].&#160;Such&#160;<br/>migration facilitates growth at the site of the wound.&#160;This growth is undirected and forms an omnidirec-<br/>tional blob around the wounded border. Not only does the tissue grow but the neurons in the neural&#160;<br/>skeleton increase in number accordingly (refer Appendix Section&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#17">1.7</a>). As the morphogen gradients&#160;<br/>re-establish,&#160;the&#160;values&#160;of&#160;x</p>
+<p style="position:absolute;top:241px;left:238px;white-space:nowrap" class="ft57">c</p>
+<p style="position:absolute;top:241px;left:242px;white-space:nowrap" class="ft57">1,</p>
+<p style="position:absolute;top:234px;left:253px;white-space:nowrap" class="ft56">x</p>
+<p style="position:absolute;top:241px;left:259px;white-space:nowrap" class="ft57">c</p>
+<p style="position:absolute;top:241px;left:264px;white-space:nowrap" class="ft57">2&#160;and&#160;<i>x</i></p>
+<p style="position:absolute;top:239px;left:305px;white-space:nowrap" class="ft54"><i>a</i>&#160;together&#160;prune&#160;back&#160;the&#160;planarian&#160;to&#160;its&#160;actual&#160;genetically&#160;</p>
+<p style="position:absolute;top:248px;left:72px;white-space:nowrap" class="ft512">encoded shape.&#160;The quality of regeneration was quantified using a metric named&#160;‘power of regeneration’&#160;<br/>(PoR). It was defined as the ratio of the overlapped area between original and regenerated planarian&#160;<br/>to&#160;the&#160;area&#160;(space)&#160;covered&#160;by&#160;original&#160;and&#160;regenerated&#160;planarian&#160;combined&#160;together&#160;(mathematically&#160;<br/>termed as union of the original and the regenerated planarian). Ideally, 0 represents a bad regeneration&#160;<br/>and 1 represents perfect regeneration. Shown below is the mathematical equation describing PoR.</p>
+<p style="position:absolute;top:392px;left:72px;white-space:nowrap" class="ft511">Six different cuts were made to observe the ability of the network to grow itself back to its original shape.&#160;<br/>The cut was made at iteration 1 and the simulation was run till iteration 170 to obtain the regenerated&#160;<br/>planarian. In all of the experiments, we observed that the neuronal network guided the tissue to grow&#160;<br/>back its original shape.&#160;The regenerated planarian did exhibit left–right&#160;asymmetry, anterior posterior&#160;<br/>polarity and reversal of the morphogen gradient on the application of a reverse electric field.&#160;each result&#160;<br/>is subdivided into four subfigures.&#160;The leftmost figure displays the portions of planarian that were cut&#160;<br/>(displayed&#160;in&#160;green)&#160;in&#160;order&#160;to&#160;observe&#160;regeneration.&#160;The&#160;subsequent&#160;figures&#160;display&#160;the&#160;regeneration&#160;<br/>of planarian in a chronological order.</p>
+<p style="position:absolute;top:562px;left:72px;white-space:nowrap" class="ft51"><i><b>2.2.&#160;&#160;Lateral regeneration</b></i></p>
+<p style="position:absolute;top:590px;left:72px;white-space:nowrap" class="ft511">In Figur<a href="ba8577a786315aa95ba33f4ccf78e257s.html#5">e&#160;3, the lef</a>t portion&#160;of planarian about the vertical or north–south axis is cut which is shown&#160;in&#160;<br/>the leftmost subfigure in green color.&#160;The premature cells to the left of the pruned region are allowed&#160;<br/>to grow. Apoptosis takes place if their morphogen values exceed the bound which actually defines the&#160;<br/>boundary of the shape of planarian.&#160;The final shape of the planarian is given by the rightmost figure.&#160;<br/>PoR was&#160;found to be 0.55.&#160;Though&#160;the overall shape (rocket shaped) of the&#160;regrown planarian is similar&#160;<br/>to the initial shape, the regenerated planarian is smaller in length and larger width, which is the cause&#160;<br/>of a low value of PoR.</p>
+<p style="position:absolute;top:716px;left:90px;white-space:nowrap" class="ft52">In the next experiment shown in Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#6">4, a fr</a>action of right portion of planarian along the east–west&#160;</p>
+<p style="position:absolute;top:734px;left:72px;white-space:nowrap" class="ft511">axis is cut.&#160;The leftmost figure shows where and how the incision is made.&#160;The rightmost figure is the&#160;<br/>final form of the planarian achieved in the simulation. PoR is 0.74.&#160;The regenerated planarian has an&#160;<br/>extension on its lower right edge and the size is slightly larger by 3–4 pixels in width as compared to&#160;<br/>the initial planarian.</p>
+<p style="position:absolute;top:358px;left:652px;white-space:nowrap" class="ft52">(1)</p>
+<p style="position:absolute;top:359px;left:249px;white-space:nowrap" class="ft56">PoR&#160;=</p>
+<p style="position:absolute;top:350px;left:291px;white-space:nowrap" class="ft56">Original&#160;Area&#160;∩&#160;Regenerated&#160;Area</p>
+<p style="position:absolute;top:369px;left:291px;white-space:nowrap" class="ft56">Original&#160;Area&#160;∪&#160;Regenerated&#160;Area</p>
+<p style="position:absolute;top:965px;left:72px;white-space:nowrap" class="ft58"><b>Figure 3. </b>left portion&#160;regeneration.&#160;the figure shows the growth variable of the cells and how it evolves as the time progresses.&#160;the&#160;</p>
+<p style="position:absolute;top:980px;left:72px;white-space:nowrap" class="ft59">figures correspond to iterations 2, 10, 30 and 170 respectively from left to right.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft510">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:9px;font-family:Times;color:#231f20;}
+	.ft61{font-size:13px;font-family:Times;color:#10137d;}
+	.ft62{font-size:12px;font-family:Times;color:#231f20;}
+	.ft63{font-size:12px;font-family:Times;color:#231f20;}
+	.ft64{font-size:7px;font-family:Times;color:#231f20;}
+	.ft65{font-size:7px;font-family:Times;color:#231f20;}
+	.ft66{font-size:12px;font-family:Times;color:#000080;}
+	.ft67{font-size:10px;font-family:Times;color:#10137d;}
+	.ft68{font-size:10px;font-family:Times;color:#231f20;}
+	.ft69{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft610{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft60">6&#160;</p>
+<p style="position:absolute;top:39px;left:106px;white-space:nowrap" class="ft60">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:257px;left:72px;white-space:nowrap" class="ft61"><i><b>2.3.&#160;&#160;Tail regeneration</b></i></p>
+<p style="position:absolute;top:285px;left:72px;white-space:nowrap" class="ft610">The lower region of the planarian extending beyond the 50th row from the top is removed. As the&#160;<br/>morphogen has a linear gradient along north–south axis, the cut was decided on a morphogen value&#160;<br/>that lies somewhere between the lowest (<i>x</i></p>
+<p style="position:absolute;top:330px;left:330px;white-space:nowrap" class="ft64"><i>c</i>2 = 0.30) and the highest morphogen values (<i>xc</i>2 = 0.70)&#160;</p>
+<p style="position:absolute;top:339px;left:72px;white-space:nowrap" class="ft610">along north–south axis.&#160;The reddish shade of the growth variable present on the left figure highlights&#160;<br/>that their age is less compared to the cells that are brown in color.&#160;The cells just above the wound have&#160;<br/>their cell division property restored.&#160;This is done by decreasing the growth variables of the cells (from&#160;<br/>1.0 to 0.60) so that the planarian grows back to its original shape and size. It is evident from the final&#160;<br/>subfigure that regenerated shape resembles the original one except that the tail is slightly asymmetri-<br/>cally&#160;extended&#160;to&#160;the&#160;left.&#160;PoR&#160;is&#160;0.55.&#160;This&#160;lowering&#160;of&#160;PoR&#160;is&#160;because&#160;of&#160;the&#160;mismatch&#160;of&#160;the&#160;head&#160;and&#160;<br/>extended tail between the original and regenerated planarian.</p>
+<p style="position:absolute;top:689px;left:72px;white-space:nowrap" class="ft61"><i><b>2.4.&#160;&#160;Head regeneration</b></i></p>
+<p style="position:absolute;top:717px;left:72px;white-space:nowrap" class="ft610">The upper portion of the planarian lying within the 35th row from the top is cut off which is shown&#160;<br/>in the leftmost subfigure of Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#6">6.&#160;</a>The subsequent figures show the growth followed by apoptosis&#160;<br/>of&#160;cells&#160;to get&#160;the&#160;actual&#160;shape&#160;of&#160;the planarian.&#160;Although,&#160;the&#160;regenerated&#160;planarian&#160;slightly&#160;differs&#160;<br/>from the initial planarian in shape, the angular feature at the anterior end of planarian is restored after&#160;<br/>regeneration.&#160;The length of the overall planarian is lesser by around five cells and width is less near&#160;<br/>the gut. PoR was 0.56.</p>
+<p style="position:absolute;top:198px;left:72px;white-space:nowrap" class="ft67"><b>Figure 4. </b>right portion regeneration.&#160;the figure shows the growth variable of the cells and how it evolves as the time progresses.&#160;</p>
+<p style="position:absolute;top:212px;left:72px;white-space:nowrap" class="ft68">the figures correspond to iterations 2, 10, 30 and 170 respectively from left to right.</p>
+<p style="position:absolute;top:965px;left:72px;white-space:nowrap" class="ft67"><b>Figure 6. </b>upper&#160;portion&#160;regeneration.&#160;the&#160;figure&#160;shows&#160;the&#160;growth&#160;variable&#160;of&#160;the&#160;cells&#160;and&#160;how&#160;it&#160;evolves&#160;as&#160;the&#160;time&#160;progresses.&#160;</p>
+<p style="position:absolute;top:980px;left:72px;white-space:nowrap" class="ft68">the figures correspond to iterations 2, 10, 30 and 170 respectively from left to right.</p>
+<p style="position:absolute;top:619px;left:72px;white-space:nowrap" class="ft67"><b>Figure 5. </b>lower portion regeneration.&#160;the figure shows the growth variable of the cells and how it evolves as the time progresses.&#160;</p>
+<p style="position:absolute;top:633px;left:72px;white-space:nowrap" class="ft68">the figures correspond to iterations 2, 10, 30 and 170 respectively from left to right.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft69">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:9px;font-family:Times;color:#231f20;}
+	.ft71{font-size:13px;font-family:Times;color:#10137d;}
+	.ft72{font-size:12px;font-family:Times;color:#231f20;}
+	.ft73{font-size:12px;font-family:Times;color:#000080;}
+	.ft74{font-size:13px;font-family:Times;color:#10137d;}
+	.ft75{font-size:10px;font-family:Times;color:#10137d;}
+	.ft76{font-size:10px;font-family:Times;color:#231f20;}
+	.ft77{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft78{font-size:12px;line-height:18px;font-family:Times;color:#231f20;}
+	.ft79{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+	.ft710{font-size:13px;line-height:29px;font-family:Times;color:#10137d;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:232px;white-space:nowrap" class="ft70">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:651px;white-space:nowrap" class="ft70">&#160;7</p>
+<p style="position:absolute;top:76px;left:72px;white-space:nowrap" class="ft71"><i><b>2.5.&#160;&#160;Head and tail regeneration</b></i></p>
+<p style="position:absolute;top:104px;left:72px;white-space:nowrap" class="ft79">In the following experiment, we were interested in exploring if both the head and the tail of planarian&#160;<br/>were simultaneously able to regenerate after they have been cut (Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#7">7</a>).&#160;The planarian cells lying&#160;<br/>above the 35th row and below the 50th row were eliminated. One would expect that the model&#160;<br/>would yield back the head and the tail.&#160;but that does not specifically highlight the robustness of the&#160;<br/>network computing the morphogen values. In order to understand the robustness of the morphogen&#160;<br/>computation, the east–west and north–south morphogen values of the remaining cells (after the&#160;<br/>head and the tail were cut) are reinitialized to the mean value of the morphogen concentration of&#160;<br/>all the cells alive. In other words, the morphogen values of the cells were&#160;distorted&#160;and&#160;the planarian&#160;<br/>was allowed to grow.&#160;The right-most subfigure is the final regrown planarian. Here, the model is able&#160;<br/>to regrow the planarian’s head and tail.&#160;This result is consistent across multiple trials. PoR for this&#160;<br/>experiment was 0.81.</p>
+<p style="position:absolute;top:508px;left:72px;white-space:nowrap" class="ft71"><i><b>2.6.&#160;&#160;Regeneration under reverse external electric field</b></i></p>
+<p style="position:absolute;top:536px;left:72px;white-space:nowrap" class="ft79">In&#160;this&#160;experiment,&#160;not&#160;only&#160;were&#160;the&#160;head&#160;and&#160;the&#160;tail&#160;of&#160;planarian&#160;cut,&#160;but&#160;also&#160;an&#160;external&#160;electric&#160;<br/>field was applied such that the direction of the applied electric field is opposite to the direction of the&#160;<br/>existing&#160;north–south&#160;morphogen&#160;gradient.&#160;It&#160;should&#160;be&#160;kept&#160;in&#160;mind&#160;that&#160;in&#160;this&#160;model,&#160;the&#160;neurons&#160;<br/>in&#160;addition&#160;to&#160;interacting&#160;among&#160;themselves&#160;are&#160;also&#160;interacting&#160;with&#160;the&#160;cells&#160;continuously.&#160;So&#160;if&#160;any&#160;<br/>external change which influences the neural activity&#160;will&#160;eventually modify the&#160;cell function (morphogen&#160;<br/>secretion). For example, let’s consider a situation where there are five neurons in the skeleton, with the&#160;<br/>first neuron having the lowest electrical activity and the last neuron having the largest electrical activity.&#160;<br/>Now&#160;when&#160;an&#160;electric&#160;field&#160;is&#160;applied&#160;in&#160;the&#160;direction&#160;opposite&#160;to&#160;the&#160;existing&#160;gradient&#160;of&#160;neural&#160;activity,&#160;<br/>the slope/gradient of the neural activity will change such that the first neuron will have the highest&#160;<br/>electrical activity and the last neuron will have the lowest electrical activit<a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">y [21</a>,<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">22,33</a>].&#160;based on this&#160;<br/>theory, we hypothesize that this reverse electric field will reverse the north–south morphogen gradient&#160;<br/>and result in the generation of tail in the place of head and vice versa. It will essentially perform a reversal&#160;<br/>of&#160;the&#160;body plan&#160;under&#160;the&#160;reversal&#160;of&#160;an&#160;external&#160;electric&#160;field.&#160;Although,&#160;this&#160;hypothesis&#160;emerges&#160;from&#160;<br/>the experimental r<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">esults [20], w</a>e were particularly interested in understanding what factors need to be&#160;<br/>altered in order to bring about such a change. Simulation results show that our hypothesis might be&#160;<br/>true. Not only is the model able to reverse the body plan (Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#8">8</a>) but also provide an intuition about&#160;<br/>how long range and short range signaling mechanisms coordinate to give rise to a body plan based&#160;<br/>on the neurons’&#160;electrical activity and the cells’&#160;chemical communication.</p>
+<p style="position:absolute;top:885px;left:72px;white-space:nowrap" class="ft78"><b>3.&#160;Discussion<br/></b>We presented a computational model with the aim of explaining the role of network computation in&#160;<br/>regeneration.&#160;The model starts with a fully-grown planarian where the genetic code within the cells is&#160;<br/>stored in the form of various parameters (refer&#160;T<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">able&#160;1</a>&#160;and Appendix).&#160;The expression of this code is seen&#160;<br/>in the form of variables that define each cell’s state.&#160;The coordination of cellular processes provides a&#160;</p>
+<p style="position:absolute;top:453px;left:72px;white-space:nowrap" class="ft75"><b>Figure 7. </b>Head and tail portion regeneration.&#160;the figure shows the growth variable of the cells and how it evolves as the time&#160;</p>
+<p style="position:absolute;top:467px;left:72px;white-space:nowrap" class="ft76">progresses.&#160;the figures correspond to iterations 2, 10, 30 and 170 respectively from left to right.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft77">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:9px;font-family:Times;color:#231f20;}
+	.ft81{font-size:12px;font-family:Times;color:#231f20;}
+	.ft82{font-size:12px;font-family:Times;color:#000080;}
+	.ft83{font-size:12px;font-family:Times;color:#231f20;}
+	.ft84{font-size:7px;font-family:Times;color:#231f20;}
+	.ft85{font-size:7px;font-family:Times;color:#231f20;}
+	.ft86{font-size:10px;font-family:Times;color:#10137d;}
+	.ft87{font-size:10px;font-family:Times;color:#231f20;}
+	.ft88{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft89{font-size:12px;line-height:18px;font-family:Times;color:#231f20;}
+	.ft810{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft80">8&#160;</p>
+<p style="position:absolute;top:39px;left:106px;white-space:nowrap" class="ft80">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:269px;left:72px;white-space:nowrap" class="ft810">robust basis for the planarian regeneration.&#160;The regeneration was further supported by a grammar or a&#160;<br/>set of rules applied to the morphogen concentration that was crucial for the cellular fate [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">19,25]. I</a>n our&#160;<br/>model, this grammar or the set of rules regarding how different combinations of&#160;<i>x</i></p>
+<p style="position:absolute;top:315px;left:551px;white-space:nowrap" class="ft84"><i>c</i>1&#160;and&#160;<i>xc</i>2&#160;determine&#160;</p>
+<p style="position:absolute;top:323px;left:72px;white-space:nowrap" class="ft810">cellular fate is assumed to be stored in the form of a genetic code in all the cells. At the same time, it&#160;<br/>also allowed us to incorporate both the top-down and bottom-up mechanisms, thereby enabling us&#160;<br/>to understand how emergence arises in a quantitative manner.</p>
+<p style="position:absolute;top:377px;left:90px;white-space:nowrap" class="ft81">The model provides a new perspective on the role of neighborhood (local) interaction and long-</p>
+<p style="position:absolute;top:395px;left:72px;white-space:nowrap" class="ft810">range (neural) interactions during regeneration.&#160;These computations implement a powerful paradigm&#160;<br/>for studying and understanding regeneration.&#160;The model in the current form uses rather abstract rep-<br/>resentations for cell state and interactions, which need to be further expanded to detailed biophysical&#160;<br/>and biochemical mechanisms in future versions of the model.</p>
+<p style="position:absolute;top:467px;left:90px;white-space:nowrap" class="ft81">A&#160;recent&#160;modeling&#160;attempt&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">[4</a><a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">,30]&#160;</a>shares&#160;a&#160;similar&#160;spirit&#160;in&#160;providing&#160;a&#160;conceptual&#160;framework&#160;for&#160;</p>
+<p style="position:absolute;top:485px;left:72px;white-space:nowrap" class="ft810">regeneration based on local and global signals for establishing a pattern based on cellular memory.&#160;<br/>Our model differs from their framework in numerous aspects.&#160;The global signal in our model mimics&#160;<br/>the neural signaling rather than stem cell chemical secretion [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">4</a>].&#160;The pattern formation in our model&#160;<br/>involves&#160;the participation of&#160;all neurons and non-neuronal cells&#160;as opposed to an&#160;involvement from&#160;<br/>only specialized stem cells [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">4].&#160;</a>The pattern in our model is dependent on a network of cells secreting&#160;<br/>morphogens along two directions and gap-junctional coupling rather than a comparison between&#160;<br/>a stored radially decaying signal distribution and the total signal received from its neighboring cells.&#160;<br/><a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">[4</a><a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">,30]. I</a>t is also uncertain if their model can mimic the effects of reversal of applied electric field which&#160;<br/>is successfully demonstrated by our model.</p>
+<p style="position:absolute;top:647px;left:90px;white-space:nowrap" class="ft81">Overall, our model provides a mechanistic and algorithmic understanding of planarian regeneration.&#160;</p>
+<p style="position:absolute;top:665px;left:72px;white-space:nowrap" class="ft810">The&#160;simulation&#160;results&#160;also&#160;do&#160;bring&#160;out&#160;some&#160;important&#160;observations&#160;which&#160;are&#160;in&#160;general&#160;difficult&#160;to&#160;<br/>quantify using wet-lab experiments:</p>
+<p style="position:absolute;top:712px;left:99px;white-space:nowrap" class="ft81">(1)&#160;&#160;&#160;&#160;&#160;The&#160;model shows&#160;that&#160;the&#160;strength of&#160;the local&#160;interactions&#160;among&#160;the cells&#160;could be&#160;a&#160;strong&#160;</p>
+<p style="position:absolute;top:730px;left:128px;white-space:nowrap" class="ft81">factor in determining the overall global shape of an organism.</p>
+<p style="position:absolute;top:748px;left:99px;white-space:nowrap" class="ft81">(2)&#160;&#160;&#160;&#160;&#160;The model confirmed the ability of the morphogen signaling to act as a positional cue and&#160;</p>
+<p style="position:absolute;top:766px;left:128px;white-space:nowrap" class="ft81">determine the cellular fate.</p>
+<p style="position:absolute;top:784px;left:99px;white-space:nowrap" class="ft81">(3)&#160;&#160;&#160;&#160;&#160;The model demonstrated the regenerative mechanisms of planarian. It was able to shed light&#160;</p>
+<p style="position:absolute;top:802px;left:128px;white-space:nowrap" class="ft81">on how stem cell activity near the wound can trigger the regeneration mechanism.</p>
+<p style="position:absolute;top:820px;left:99px;white-space:nowrap" class="ft81">(4)&#160;&#160;&#160;&#160;&#160;gap&#160;junction&#160;communications&#160;could&#160;be&#160;one&#160;of&#160;the&#160;possible&#160;mechanisms&#160;responsible&#160;for&#160;</p>
+<p style="position:absolute;top:838px;left:129px;white-space:nowrap" class="ft81">smoothening the gradient of the morphogens (see&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#12">Appendix&#160;S</a>ec<a href="ba8577a786315aa95ba33f4ccf78e257s.html#15">tion&#160;1.4).</a></p>
+<p style="position:absolute;top:866px;left:90px;white-space:nowrap" class="ft81">Although&#160;our&#160;model&#160;brings&#160;forward&#160;some&#160;of&#160;the&#160;important&#160;facets&#160;of&#160;planarian&#160;regeneration,&#160;it&#160;still&#160;</p>
+<p style="position:absolute;top:884px;left:72px;white-space:nowrap" class="ft810">has few gaps that need to be filled. From the simulation (Figures&#160;<a href="">3–8</a>), it might appear that pruning&#160;<br/>happens after the tissue has grown to a considerable size which might seem biologically unrealistic.&#160;but&#160;<br/>the equations that govern our model perform both pruning and growth computation simultaneously.&#160;<br/>It is just that the influence of pruning is weaker and slower than growth, that during the early regen-<br/>erative stages in the model that it is hardly visible. At later regenerative stages, the effect of pruning&#160;<br/>increases and becomes manifest.</p>
+<p style="position:absolute;top:196px;left:72px;white-space:nowrap" class="ft86"><b>Figure 8. </b>regeneration&#160;under the&#160;application of&#160;electric&#160;field.&#160;the figure shows the growth variable of the&#160;cells and&#160;how it evolves as&#160;</p>
+<p style="position:absolute;top:211px;left:72px;white-space:nowrap" class="ft87">the time progresses.&#160;note that anterior–posterior developmental pattern has reversed due to application of reversed electric field.&#160;</p>
+<p style="position:absolute;top:224px;left:72px;white-space:nowrap" class="ft87">the figures correspond to iterations 2, 10, 30 and 170 respectively from left to right.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft88">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:9px;font-family:Times;color:#231f20;}
+	.ft91{font-size:12px;font-family:Times;color:#231f20;}
+	.ft92{font-size:12px;font-family:Times;color:#000080;}
+	.ft93{font-size:13px;font-family:Times;color:#10137d;}
+	.ft94{font-size:10px;font-family:Times;color:#231f20;}
+	.ft95{font-size:10px;font-family:Times;color:#10137d;}
+	.ft96{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft97{font-size:12px;line-height:18px;font-family:Times;color:#231f20;}
+	.ft98{font-size:12px;line-height:17px;font-family:Times;color:#231f20;}
+	.ft99{font-size:13px;line-height:28px;font-family:Times;color:#10137d;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:232px;white-space:nowrap" class="ft90">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:651px;white-space:nowrap" class="ft90">&#160;9</p>
+<p style="position:absolute;top:355px;left:90px;white-space:nowrap" class="ft91">The original form was poorly restored when the extent of injury was significant.&#160;This is evident in&#160;</p>
+<p style="position:absolute;top:373px;left:72px;white-space:nowrap" class="ft98">Figur<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">e&#160;9&#160;which sho</a>ws that, as the extent of injury is increased, the PoR is decreased. One possible reason&#160;<br/>for this outcome could be attributed to the distortions introduced in the positioning system (morpho-<br/>gen gradients) due to extensive injury. Since the cellular fate is based on this positional information, a&#160;<br/>serious damage to the positional system distorts the global shape. During such circumstances, one can&#160;<br/>artificially use constraints on the amount of morphogen a cell can secrete at each position but doing&#160;<br/>so would make the regeneration not rely on cell–cell, cell–neuron and gap junction interactions which&#160;<br/>is&#160;a crucial component of&#160;the&#160;model.&#160;Moreover&#160;the&#160;relevance&#160;of&#160;dynamical&#160;morphogen&#160;computation&#160;<br/>will be diminished.</p>
+<p style="position:absolute;top:517px;left:90px;white-space:nowrap" class="ft91">The phenomenon of cell polarity and cell movement was neglected in order to simplify the model.&#160;</p>
+<p style="position:absolute;top:535px;left:72px;white-space:nowrap" class="ft98">Planar polarity is now known to be a key property for morphogenesis [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">10</a><a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">,36] and r</a>egeneration specif-<br/><a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">ically [3,</a><a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">27</a>]. In our model, the cells were represented as single units with no specific polarity. In other&#160;<br/>words, the directionality of the organism as a whole was defined but the polarity of a single cell was&#160;<br/>neglected.&#160;Cell&#160;movement&#160;[<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">6</a>] brings forward&#160;the mechanical&#160;influences&#160;of the&#160;environment&#160;on the&#160;cell&#160;<br/>like&#160;friction,&#160;fluid&#160;dynamics,&#160;traffic&#160;etc.&#160;In&#160;our&#160;model,&#160;a&#160;cell&#160;was&#160;placed&#160;adjacent&#160;to&#160;itself&#160;post&#160;differentia-<br/>tion and was bound to stay adjacent&#160;to it.&#160;This&#160;is not always true&#160;in biological microenvironments&#160;where&#160;<br/>the cells are motile in nature and exhibit movements that are directed along temperature, magnetic,&#160;<br/>rigidity gradients, and many more [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">2].</a></p>
+<p style="position:absolute;top:679px;left:90px;white-space:nowrap" class="ft91">In our future modeling studies, we plan to extend our model by incorporating cellular movement&#160;</p>
+<p style="position:absolute;top:697px;left:72px;white-space:nowrap" class="ft98">and cellular polarity. More generally, the use of connectionist models in modeling pattern regulation&#160;<br/>is an important area for future research. As pointed out more than 20 years ago [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">11</a>], there are many&#160;<br/>interesting aspects of such models that could help understand the complex cellular computations that&#160;<br/>underlie pattern regulations.&#160;The possibility that such models could unify the information process-<br/>ing-level&#160;and&#160;molecular&#160;mechanism&#160;level&#160;views&#160;of&#160;morphogenesis&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">[7,24</a>]&#160;is&#160;exciting,&#160;and&#160;would&#160;have&#160;<br/>many applications in regenerative medicine, developmental biology, and synthetic bioengineering.</p>
+<p style="position:absolute;top:830px;left:72px;white-space:nowrap" class="ft99"><b>Acknowledgement<br/></b>We thank Jennifer Hammelman for her helpful comments on the manuscript.</p>
+<p style="position:absolute;top:899px;left:72px;white-space:nowrap" class="ft99"><b>Disclosure statement<br/></b>No potential conflict of interest was reported by the authors.</p>
+<p style="position:absolute;top:295px;left:72px;white-space:nowrap" class="ft95"><b>Figure 9. </b>a&#160;plot highlighting the relation between Por&#160;and original extent of the damage of the planarian right before regeneration&#160;</p>
+<p style="position:absolute;top:310px;left:72px;white-space:nowrap" class="ft94">begins. Por&#160;decreases as the damage increases.&#160;the vertical traces represent the standard deviation for 10 trials.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft96">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:9px;font-family:Times;color:#231f20;}
+	.ft101{font-size:13px;font-family:Times;color:#10137d;}
+	.ft102{font-size:10px;font-family:Times;color:#231f20;}
+	.ft103{font-size:10px;font-family:Times;color:#231f20;}
+	.ft104{font-size:10px;font-family:Times;color:#000080;}
+	.ft105{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft106{font-size:13px;line-height:28px;font-family:Times;color:#10137d;}
+	.ft107{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+	.ft108{font-size:10px;line-height:15px;font-family:Times;color:#000080;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft100">10&#160;</p>
+<p style="position:absolute;top:39px;left:111px;white-space:nowrap" class="ft100">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:76px;left:72px;white-space:nowrap" class="ft107"><b>Funding<br/></b>M.L. gratefully acknowledges&#160;support of the&#160;Templeton&#160;World Charity Foundation [grant numbers&#160;TWCF0089/Ab55&#160;and&#160;<br/>TWCF0140], the Paul&#160;g. Allen Family Foundation, and the&#160;g. Harold and Leila&#160;y. Mathers Charitable Foundation.</p>
+<p style="position:absolute;top:160px;left:72px;white-space:nowrap" class="ft106"><b>ORCID<br/></b><i>Michael L<a href="http://orcid.org">evin</i> </a></p>
+<p style="position:absolute;top:188px;left:155px;white-space:nowrap" class="ft102"><a href="http://orcid.org"> h</a><a href="http://orcid.org/0000-0001-7292-8084">ttp://orcid.org/0000-0001-7292-8084</a></p>
+<p style="position:absolute;top:229px;left:72px;white-space:nowrap" class="ft106"><b>References<br/></b>&#160;&#160;[1]&#160;&#160;&#160;K. Agata,&#160;T.&#160;Tanaka, C. Kobayashi, K. Kato, and&#160;y. Saitoh,&#160;<i>Intercalary regeneration in planarians</i>, Dev. D<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">yn. 226 (2003),&#160;</a></p>
+<p style="position:absolute;top:272px;left:103px;white-space:nowrap" class="ft102">pp. 308–316.</p>
+<p style="position:absolute;top:287px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[2]&#160;&#160;&#160;b.&#160;Alberts,&#160;D.&#160;bray,&#160;K.&#160;Hopkin,&#160;A.&#160;Johnson,&#160;J.&#160;Lewis,&#160;M.&#160;Raff,&#160;K.&#160;Roberts,&#160;and&#160;P.&#160;Walter,&#160;<i>Essential Cell Biology</i>,&#160;garland&#160;</p>
+<p style="position:absolute;top:302px;left:103px;white-space:nowrap" class="ft102">Science, New&#160;york, Ny,&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2013.</a></p>
+<p style="position:absolute;top:317px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[3]&#160;&#160;&#160;W.S.&#160;beane, A.S.&#160;Tseng, J. Morokuma, J.M. Lemire, and M. Levin, Inhibition of planar cell polarity extends neural growth&#160;</p>
+<p style="position:absolute;top:332px;left:103px;white-space:nowrap" class="ft102">during regeneration, homeostasis, and development, Stem Cells Dev. 21 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2012), pp</a>. 2085–2094.</p>
+<p style="position:absolute;top:347px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[4]&#160;&#160;&#160;N.&#160;bessonov,&#160;M.&#160;Levin,&#160;N.&#160;Morozova,&#160;N.&#160;Reinberg,&#160;A.&#160;Tosenberger,&#160;and&#160;V.&#160;Volpert,&#160;On&#160;a&#160;model&#160;of&#160;pattern&#160;regeneration&#160;</p>
+<p style="position:absolute;top:362px;left:103px;white-space:nowrap" class="ft102">based on cell memory, PL<a href="ba8577a786315aa95ba33f4ccf78e257s.html#8">OS One 10(2) (2015), p</a>. e0118091.</p>
+<p style="position:absolute;top:377px;left:72px;white-space:nowrap" class="ft107">&#160;&#160;[5]&#160;&#160;&#160;C.K.Chui&#160;&#160;(ed.),&#160;&#160;<i>An Introduction to Wavelets</i>,&#160;Vol. 1, Academic Press,&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#16">2014</a>.<br/>&#160;&#160;[6]&#160;&#160;&#160;K. Fleischer and A.H.&#160;barr,&#160;<i>A simulation testbed for the study of multicellular development: The multiple mechanisms&#160;</i></p>
+<p style="position:absolute;top:407px;left:103px;white-space:nowrap" class="ft107"><i>of morphogenesis</i>, in&#160;<i>Santa fe Institute Studies in the Sciences of Complexity-Proceedings</i>,&#160;Vol. 17, Addison-Wesley&#160;<br/>Publishing, Citeseer<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">,&#160;1994</a>, p. 389.</p>
+<p style="position:absolute;top:437px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[7]&#160;&#160;&#160;K. Friston, M. Levin,&#160;b. Sengupta, and&#160;g. Pezzulo,&#160;<i>Knowing one’s place: A free-energy approach to pattern regulation</i>, J.&#160;</p>
+<p style="position:absolute;top:452px;left:103px;white-space:nowrap" class="ft102">R. Soc. Interf. 12(105) (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2015</a>), p. 20141383.</p>
+<p style="position:absolute;top:467px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[8]&#160;&#160;&#160;A.&#160;&#160;gierer,&#160;&#160;<i>Generation of biological patterns and form: Some physical, mathematical, and logical aspects</i>, Prog.&#160;biophys.&#160;</p>
+<p style="position:absolute;top:482px;left:103px;white-space:nowrap" class="ft102">Mol.&#160;biol. 37 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#16">1982), pp</a>. 1–47.</p>
+<p style="position:absolute;top:497px;left:72px;white-space:nowrap" class="ft107">&#160;&#160;[9]&#160;&#160;&#160;A.gierer and H. Meinhardt.&#160;<i>A theory of biological pattern formation</i>,&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#16">1972</a>.<br/>&#160;&#160;[10]&#160;&#160;&#160;L.V.&#160;goodrich, and D. Strutt,&#160;<i>Principles of planar polarity in animal development</i>, Development 138 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2011</a>), pp. 1877–</p>
+<p style="position:absolute;top:527px;left:103px;white-space:nowrap" class="ft102">1892.</p>
+<p style="position:absolute;top:542px;left:72px;white-space:nowrap" class="ft108">&#160;[11]&#160;&#160;S.&#160;grossberg,&#160;<i>Communication, memory, and development</i>, in&#160;<i>Progress in Theoretical Biology</i>, R. Rosen, F. Snell, eds.,&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">1978<br/></a>&#160;&#160;[12]&#160;&#160;&#160;K.A.&#160;gurley, J.C. Rink, and A.S. Alvarado,&#160;<i>β-Catenin defines head versus tail identity during planarian regeneration and&#160;</i></p>
+<p style="position:absolute;top:572px;left:103px;white-space:nowrap" class="ft103"><i>homeostasis</i>, Science 319 (<a href="">2008</a>), pp. 323–327.</p>
+<p style="position:absolute;top:587px;left:72px;white-space:nowrap" class="ft102">&#160;[13]&#160;&#160;L.Hertz&#160;(ed.),&#160;<i>Non-neuronal Cells of the Nervous System: Function and Dysfunction</i>,&#160;Vol. 31,&#160;gulf Professional Publishing,&#160;</p>
+<p style="position:absolute;top:602px;left:103px;white-space:nowrap" class="ft104"><a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">2004.</a></p>
+<p style="position:absolute;top:617px;left:72px;white-space:nowrap" class="ft102">&#160;[14]&#160;&#160;J.J.&#160;Hopfield,&#160;<i>Neurons with graded response have collective computational properties like those of two-state neurons</i>,&#160;</p>
+<p style="position:absolute;top:632px;left:103px;white-space:nowrap" class="ft102">Proc. Natl. Acad. Sci. 81 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#17">1984</a>), pp. 3088–3092.</p>
+<p style="position:absolute;top:647px;left:72px;white-space:nowrap" class="ft107">&#160;[15]&#160;&#160;J.J.&#160;Hopfield,&#160;<i>Artificial neural networks</i>, Circuits Dev. Mag. Ieee<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">&#160;4(5) (1988), pp</a>. 3–10.<br/>&#160;&#160;[16]&#160;&#160;&#160;K. Kato, H. Orii, K.&#160;Watanabe, and K. Agata,&#160;<i>The role of dorsoventral interaction in the onset of planarian regeneration</i>,&#160;</p>
+<p style="position:absolute;top:677px;left:103px;white-space:nowrap" class="ft102">Development 126 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">1999</a>), pp. 1031–1040.</p>
+<p style="position:absolute;top:692px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[17]&#160;&#160;&#160;K. Kato, H. Orii, K.&#160;Watanabe, and K. Agata, Dorsal and ventral positional cues required for the onset of planarian&#160;</p>
+<p style="position:absolute;top:707px;left:103px;white-space:nowrap" class="ft102">regeneration may reside in differentiated cells, Dev.&#160;biol. 233 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">2001</a>), pp. 109–121.</p>
+<p style="position:absolute;top:722px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[18]&#160;&#160;&#160;A. Kumar, and J.P.&#160;brockes,&#160;<i>Nerve dependence in tissue, organ, and appendage regeneration</i>,&#160;Trends Neurosci. 35 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#4">2012),</a>&#160;</p>
+<p style="position:absolute;top:737px;left:103px;white-space:nowrap" class="ft102">pp. 691–699.</p>
+<p style="position:absolute;top:752px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[19]&#160;&#160;&#160;A. Lindenmayer, Mathematical models for cellular interactions in development II. Simple and branching filaments&#160;</p>
+<p style="position:absolute;top:767px;left:103px;white-space:nowrap" class="ft102">with two-sided inputs, J.&#160;Theor.&#160;biol. 18(3) (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#8">1968</a>), pp. 300–315.</p>
+<p style="position:absolute;top:782px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[20]&#160;&#160;&#160;D. Lobo,&#160;W.S.&#160;beane, and M. Levin, Modeling planarian regeneration: A primer for reverse-engineering the worm,&#160;</p>
+<p style="position:absolute;top:797px;left:103px;white-space:nowrap" class="ft102">PLoS Comput.&#160;biol. 8 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">2012</a>), p. e1002481.</p>
+<p style="position:absolute;top:812px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[21]&#160;&#160;&#160;M.A. Nitsche, and&#160;W. Paulus,&#160;<i>Excitability changes induced in the human motor cortex by weak transcranial direct current&#160;</i></p>
+<p style="position:absolute;top:827px;left:103px;white-space:nowrap" class="ft103"><i>stimulation</i>, J. Physiol<a href="ba8577a786315aa95ba33f4ccf78e257s.html#7">. 527 (2000), pp</a>. 633–639.</p>
+<p style="position:absolute;top:842px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[22]&#160;&#160;&#160;M.A. Nitsche, L.g. Cohen,&#160;e.M.&#160;Wassermann, A. Priori, N. Lang, A. Antal,&#160;W. Paulus, F. Hummel, P.S.&#160;boggio, F. Fregni, and&#160;</p>
+<p style="position:absolute;top:857px;left:103px;white-space:nowrap" class="ft102">A.&#160;Pascual-Leone,&#160;Transcranial&#160;direct&#160;current&#160;stimulation: State of the art&#160;2008,&#160;brain&#160;Stimul.&#160;1(3)<a href="ba8577a786315aa95ba33f4ccf78e257s.html#7">&#160;(2008</a>), pp.&#160;206–223.</p>
+<p style="position:absolute;top:872px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[23]&#160;&#160;&#160;N.J. Oviedo, J. Morokuma, P.&#160;Walentek, I.P. Kema, M.b.&#160;gu, J.-M. Ahn, J.S. Hwang,&#160;T.&#160;gojobori, and M. Levin,&#160;<i>Long-range&#160;</i></p>
+<p style="position:absolute;top:887px;left:103px;white-space:nowrap" class="ft107"><i>neural and gap junction protein-mediated cues control polarity during planarian regeneration</i>, Dev.&#160;biol<a href="ba8577a786315aa95ba33f4ccf78e257s.html#4">. 339 (2010),&#160;<br/></a>pp. 188–199.</p>
+<p style="position:absolute;top:917px;left:72px;white-space:nowrap" class="ft102">&#160;&#160;[24]&#160;&#160;&#160;g.&#160;Pezzulo,&#160;and&#160;M.&#160;Levin,&#160;<i>Re-membering the body: Applications of computational neuroscience to the top-down control&#160;</i></p>
+<p style="position:absolute;top:932px;left:103px;white-space:nowrap" class="ft103"><i>of regeneration of limbs and other complex organs</i>, Integr.&#160;biol. (Camb.) 7(12) (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2015</a>), pp. 1487–1517.</p>
+<p style="position:absolute;top:947px;left:72px;white-space:nowrap" class="ft107">&#160;&#160;[25]&#160;&#160;&#160;P. Prusinkiewicz, A. Lindenmayer, and J. Hanan,&#160;<i>The Algorithmic Beauty of Plants</i>, The&#160;Virtual&#160;Laboratory,&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#8">1990.<br/></a>&#160;&#160;[26]&#160;&#160;&#160;P.W. Reddien, and A.S. Alvarado,&#160;<i>Fundamentals of planarian regeneration</i>, Annu. Rev. Cell Dev.&#160;biol<a href="">. 20 (2004), pp</a>.&#160;</p>
+<p style="position:absolute;top:977px;left:103px;white-space:nowrap" class="ft102">725–757.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft105">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:9px;font-family:Times;color:#231f20;}
+	.ft111{font-size:10px;font-family:Times;color:#231f20;}
+	.ft112{font-size:10px;font-family:Times;color:#231f20;}
+	.ft113{font-size:10px;font-family:Times;color:#000080;}
+	.ft114{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft115{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:226px;white-space:nowrap" class="ft110">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:645px;white-space:nowrap" class="ft110">&#160;11</p>
+<p style="position:absolute;top:77px;left:72px;white-space:nowrap" class="ft111">&#160;&#160;[27]&#160;&#160;&#160;A. Rodrigo Albors, A.&#160;Tazaki, F. Rost, S. Nowoshilow, O. Chara, and&#160;e.M.&#160;Tanaka,&#160;<i>Planar cell polarity-mediated induction&#160;</i></p>
+<p style="position:absolute;top:92px;left:103px;white-space:nowrap" class="ft112"><i>of neural stem cell expansion during axolotl spinal cord regeneration</i>,&#160;elife 4 (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2015</a>), p. e10230.</p>
+<p style="position:absolute;top:107px;left:72px;white-space:nowrap" class="ft111">&#160;&#160;[28]&#160;&#160;&#160;F. Rosenblatt,&#160;The perceptron: A probabilistic model for information storage and organization in the brain, Psychol.&#160;</p>
+<p style="position:absolute;top:122px;left:103px;white-space:nowrap" class="ft111">Rev<a href="ba8577a786315aa95ba33f4ccf78e257s.html#14">. 65(6) (1958), p</a>. 386.</p>
+<p style="position:absolute;top:137px;left:72px;white-space:nowrap" class="ft111">&#160;&#160;[29]&#160;&#160;&#160;J.M.W.&#160;Slack,&#160;and&#160;D.&#160;Forman,&#160;<i>An&#160;interaction&#160;between&#160;dorsal&#160;and&#160;ventral&#160;regions&#160;of&#160;the&#160;marginal&#160;zone&#160;in&#160;early&#160;amphibian&#160;</i></p>
+<p style="position:absolute;top:152px;left:103px;white-space:nowrap" class="ft112"><i>embryos</i>, J.&#160;embryol.&#160;exp. Morphol<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">. 56 (1980), pp</a>. 283–299.</p>
+<p style="position:absolute;top:167px;left:72px;white-space:nowrap" class="ft111">&#160;&#160;[30]&#160;&#160;&#160;A.&#160;Tosenberger, N.&#160;bessonov, M. Levin, N. Reinberg,&#160;V.&#160;Volpert, and N. Morozova, A conceptual model of morphogenesis&#160;</p>
+<p style="position:absolute;top:182px;left:103px;white-space:nowrap" class="ft111">and regeneration, Acta&#160;biotheor<a href="ba8577a786315aa95ba33f4ccf78e257s.html#8">. 63 (2015</a>), pp. 283–294.</p>
+<p style="position:absolute;top:197px;left:72px;white-space:nowrap" class="ft111">&#160;&#160;[31]&#160;&#160;&#160;A.-S.&#160;Tseng, and M. Levin,&#160;Transducing bioelectric signals into epigenetic pathways during tadpole tail regeneration,&#160;</p>
+<p style="position:absolute;top:212px;left:103px;white-space:nowrap" class="ft111">Anat. Rec<a href="">. 295(10) (2012), pp</a>. 1541–1551.</p>
+<p style="position:absolute;top:227px;left:72px;white-space:nowrap" class="ft115">&#160;[32]&#160;&#160;A.M.&#160;Turing,&#160;<i>The chemical basis of morphogenesis</i>, Philos.&#160;Trans. R. Soc. Lond.&#160;b&#160;biol. S<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">ci. 237 (1952</a>), pp. 37–72.<br/>&#160;&#160;[33]&#160;&#160;&#160;K.S. Utz,&#160;V.&#160;Dimova, K.&#160;Oppenländer, and&#160;g. Kerkhoff,&#160;electrified&#160;minds:&#160;Transcranial&#160;direct&#160;current stimulation&#160;(tDCS)&#160;</p>
+<p style="position:absolute;top:257px;left:103px;white-space:nowrap" class="ft115">and&#160;galvanic&#160;Vestibular Stimulation (gVS) as methods of non-invasive brain stimulation in neuropsychology—A&#160;<br/>review of current data and future implications, Neuropsycholog<a href="ba8577a786315aa95ba33f4ccf78e257s.html#7">ia 48(10) (2010), pp</a>. 2789–2810.</p>
+<p style="position:absolute;top:287px;left:72px;white-space:nowrap" class="ft111">&#160;&#160;[34]&#160;&#160;&#160;S.&#160;Werner,&#160;T. Stückemann, M.b. Amigo, J.C. Rink, F. Jülicher, and&#160;b.M. Friedrich, Scaling and regeneration of self-</p>
+<p style="position:absolute;top:302px;left:103px;white-space:nowrap" class="ft111">organized patterns, Phys. Rev. Lett<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">. 114 (2015), p</a>. 138101.</p>
+<p style="position:absolute;top:317px;left:72px;white-space:nowrap" class="ft115">&#160;[35]&#160;&#160;S.&#160;Wolfram,&#160;<i>Theory and Applications of Cellular Automata</i>,&#160;Vol. 1,&#160;World Scientific, Singapore,&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">1986</a>, pp. x+-560.<br/>&#160;&#160;[36]&#160;&#160;&#160;J.A. Zallen, Planar polarity and tissue morphogenesis, Cell 129(6) (<a href="ba8577a786315aa95ba33f4ccf78e257s.html#9">2007), pp</a>. 1051–1063.<br/>&#160;&#160;[37]&#160;&#160;&#160;C.S. Lange, and&#160;V.e. Steele,&#160;<i>The mechanism of Anterior-Posterior polarity control in Planarians</i>, Differentiation 11(1–3)&#160;</p>
+<p style="position:absolute;top:362px;left:103px;white-space:nowrap" class="ft111">(<a href="ba8577a786315aa95ba33f4ccf78e257s.html#2">1978</a>), pp. 1–12.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft114">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:9px;font-family:Times;color:#231f20;}
+	.ft121{font-size:13px;font-family:Times;color:#10137d;}
+	.ft122{font-size:13px;font-family:Times;color:#10137d;}
+	.ft123{font-size:10px;font-family:Times;color:#231f20;}
+	.ft124{font-size:10px;font-family:Times;color:#231f20;}
+	.ft125{font-size:5px;font-family:Times;color:#231f20;}
+	.ft126{font-size:5px;font-family:Times;color:#231f20;}
+	.ft127{font-size:10px;font-family:Times;color:#000080;}
+	.ft128{font-size:10px;font-family:Times;color:#10137d;}
+	.ft129{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft1210{font-size:13px;line-height:27px;font-family:Times;color:#10137d;}
+	.ft1211{font-size:13px;line-height:27px;font-family:Times;color:#10137d;}
+	.ft1212{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft120">12&#160;</p>
+<p style="position:absolute;top:39px;left:111px;white-space:nowrap" class="ft120">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:76px;left:72px;white-space:nowrap" class="ft1212"><b>Appendix<br/><i>1.1&#160;&#160;Model variables<br/></i></b>The model consists of a 2-D array of cells where the state of each cell is governed by five dynamic variables.&#160;These variables&#160;<br/>are:</p>
+<p style="position:absolute;top:171px;left:99px;white-space:nowrap" class="ft123">(1)&#160;&#160;&#160;&#160;&#160;&#160;growth&#160;&#160;variable:&#160;&#160;<i>x</i></p>
+<p style="position:absolute;top:179px;left:214px;white-space:nowrap" class="ft125"><i>g</i></p>
+<p style="position:absolute;top:186px;left:99px;white-space:nowrap" class="ft123">(2)&#160;&#160;&#160;&#160;&#160;&#160;Patterning&#160;&#160;variable:&#160;&#160;<i>x</i></p>
+<p style="position:absolute;top:194px;left:229px;white-space:nowrap" class="ft125"><i>p</i></p>
+<p style="position:absolute;top:201px;left:99px;white-space:nowrap" class="ft123">(3)&#160;&#160;&#160;&#160;&#160;east–west morphogen concentration variable:&#160;<i>c</i></p>
+<p style="position:absolute;top:209px;left:361px;white-space:nowrap" class="ft126">1</p>
+<p style="position:absolute;top:216px;left:99px;white-space:nowrap" class="ft123">(4)&#160;&#160;&#160;&#160;&#160;North–south morphogen concentration variable:&#160;<i>c</i></p>
+<p style="position:absolute;top:224px;left:375px;white-space:nowrap" class="ft126">2</p>
+<p style="position:absolute;top:231px;left:99px;white-space:nowrap" class="ft123">(5)&#160;&#160;&#160;&#160;&#160;&#160;Apoptosis&#160;&#160;variable:&#160;&#160;<i>x</i></p>
+<p style="position:absolute;top:239px;left:227px;white-space:nowrap" class="ft125"><i>a</i></p>
+<p style="position:absolute;top:257px;left:72px;white-space:nowrap" class="ft1212">For simplicity of display in Figur<a href="">e&#160;10, in</a>teractions are not shown for all the neighbors.&#160;The variable in a given cell interacts&#160;<br/>with the same variable of the neighboring cells and updates its value.&#160;The interaction between a pair of cells is quantified&#160;<br/>by a&#160;‘weight’, which represents the strength of the interaction.<br/>Figur<a href="">e&#160;11&#160;sho</a>ws the 2-D interactions of a variable in a cell at a position (<i>i</i>,&#160;<i>j</i>) with the corresponding variable of another&#160;<br/>cell in its neighborhood.&#160;The interaction between a pair of cells is mediated by a connection&#160;‘weight’&#160;as highlighted in&#160;<br/>Figure&#160;<a href="">10.&#160;</a>Although, the&#160;above figure&#160;depicts a&#160;3 × 3&#160;neighborhood,&#160;in general,&#160;neighborhood&#160;size may vary&#160;from one&#160;<br/>variable to another. Figure&#160;<a href="">12</a>&#160;combines the essence of Figur<a href="">es&#160;10&#160;and&#160;11&#160;and displa</a>ys the five&#160;‘planes’&#160;that constitute the&#160;<br/>model.&#160;each plane (growth plane etc.) corresponds to a single variable and represents model-wide interactions among&#160;<br/>the same variable in various cells.</p>
+<p style="position:absolute;top:678px;left:72px;white-space:nowrap" class="ft128"><b>Figure 10. </b>a&#160;view of&#160;the&#160;model&#160;tissue depicting&#160;interaction&#160;among&#160;corresponding&#160;variables&#160;in&#160;different cells.&#160;only&#160;a row&#160;of cells (…,&#160;</p>
+<p style="position:absolute;top:692px;left:72px;white-space:nowrap" class="ft124"><i>i</i> − 1,&#160;<i>i</i>,&#160;<i>i</i> + 1, …) are depicted in the figure for simplicity. In the proposed two-dimensional model each cell interacts with neighbors&#160;</p>
+<p style="position:absolute;top:706px;left:72px;white-space:nowrap" class="ft123">over a two-dimensional window.</p>
+<p style="position:absolute;top:979px;left:72px;white-space:nowrap" class="ft128"><b>Figure 11. </b>a&#160;view of the model tissue depicting spatial interactions among neighboring cells.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft129">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:9px;font-family:Times;color:#231f20;}
+	.ft131{font-size:13px;font-family:Times;color:#10137d;}
+	.ft132{font-size:10px;font-family:Times;color:#231f20;}
+	.ft133{font-size:10px;font-family:Times;color:#231f20;}
+	.ft134{font-size:5px;font-family:Times;color:#231f20;}
+	.ft135{font-size:10px;font-family:Times;color:#000000;}
+	.ft136{font-size:10px;font-family:Times;color:#000000;}
+	.ft137{font-size:5px;font-family:Times;color:#000000;}
+	.ft138{font-size:12px;font-family:Times;color:#231f20;}
+	.ft139{font-size:12px;font-family:Times;color:#231f20;}
+	.ft1310{font-size:10px;font-family:Times;color:#000080;}
+	.ft1311{font-size:4px;font-family:Times;color:#000000;}
+	.ft1312{font-size:10px;font-family:Times;color:#10137d;}
+	.ft1313{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft1314{font-size:13px;line-height:27px;font-family:Times;color:#10137d;}
+	.ft1315{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:226px;white-space:nowrap" class="ft130">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:645px;white-space:nowrap" class="ft130">&#160;13</p>
+<p style="position:absolute;top:343px;left:72px;white-space:nowrap" class="ft1314"><i><b>1.2.&#160;&#160;Growth variable<br/></b></i>The growth variable,&#160;<i>x</i></p>
+<p style="position:absolute;top:379px;left:179px;white-space:nowrap" class="ft134"><i>g</i>&#160;corresponds to the age of a cell: a high value represents an old cell. As long as&#160;<i>xg</i>&#160;is below a particular&#160;</p>
+<p style="position:absolute;top:386px;left:72px;white-space:nowrap" class="ft132">threshold, the cell has the ability to differentiate.&#160;each cell performs the following operations with its&#160;<i>x</i></p>
+<p style="position:absolute;top:394px;left:579px;white-space:nowrap" class="ft134"><i>g</i>:</p>
+<p style="position:absolute;top:411px;left:90px;white-space:nowrap" class="ft132">•&#160;&#160;&#160;Calculates the average of&#160;<i>x</i></p>
+<p style="position:absolute;top:419px;left:232px;white-space:nowrap" class="ft134"><i>g</i>&#160;of all the cells in its 3 × 3 neighborhood.</p>
+<p style="position:absolute;top:426px;left:90px;white-space:nowrap" class="ft132">•&#160;&#160;&#160;Increment&#160;its&#160;current&#160;<i>x</i></p>
+<p style="position:absolute;top:434px;left:211px;white-space:nowrap" class="ft134"><i>g</i>&#160;by&#160;adding&#160;a&#160;small&#160;positive&#160;value&#160;(which is&#160;denoted&#160;by&#160;</p>
+<p style="position:absolute;top:432px;left:482px;white-space:nowrap" class="ft135"><i>𝜀</i></p>
+<p style="position:absolute;top:426px;left:488px;white-space:nowrap" class="ft132">)&#160;to&#160;the&#160;average&#160;of&#160;the&#160;cells&#160;obtained&#160;</p>
+<p style="position:absolute;top:441px;left:99px;white-space:nowrap" class="ft132">from immediate neighborhood (equation (2)).</p>
+<p style="position:absolute;top:456px;left:90px;white-space:nowrap" class="ft132">•&#160;&#160;&#160;If there is an empty space in its neighborhood (no cell present), the cell divides and places its copy in one of the empty&#160;</p>
+<p style="position:absolute;top:471px;left:99px;white-space:nowrap" class="ft1315">spaces (should one exist) which is chosen randomly.&#160;The neighborhood size is fixed at 3 × 3. Since the local average&#160;<br/>is computed over eight neighbors, the weight value between the central cell and each of its eight neighbors for the&#160;<br/>growth variable is 1/8.&#160;The upper bound of&#160;<i>x</i></p>
+<p style="position:absolute;top:509px;left:319px;white-space:nowrap" class="ft134"><i>g</i>&#160;that allowed the cell to divide was fixed to a value of 1. As long as the&#160;</p>
+<p style="position:absolute;top:516px;left:99px;white-space:nowrap" class="ft132">cell is young (i.e.&#160;<i>x</i></p>
+<p style="position:absolute;top:524px;left:190px;white-space:nowrap" class="ft134"><i>g</i> &lt; 1), it can divide and the tissue expands.&#160;The rate at which the tissue expands and the size at&#160;</p>
+<p style="position:absolute;top:531px;left:99px;white-space:nowrap" class="ft1315">which it stabilizes depends on the value of&#160;<i>𝜀</i>. If&#160;<i>𝜀</i>&#160;is small, the tissue takes a longer time to stabilize and hence grows&#160;<br/>to a larger size. Large value of&#160;<i>𝜀</i>&#160;results in smaller organisms. In the model, the value of&#160;<i>𝜀</i>&#160;is fixed to a constant and&#160;<br/>does not change during development of the tissue.</p>
+<p style="position:absolute;top:672px;left:72px;white-space:nowrap" class="ft136">x</p>
+<p style="position:absolute;top:670px;left:78px;white-space:nowrap" class="ft137">IJ</p>
+<p style="position:absolute;top:679px;left:78px;white-space:nowrap" class="ft137">g&#160;&#160;is the growth variable of the cell located at&#160;<i>i</i>th row and&#160;<i>j</i>th column.</p>
+<p style="position:absolute;top:684px;left:72px;white-space:nowrap" class="ft1315">The&#160;Figure&#160;<a href="">13</a>&#160;shows&#160;the&#160;growth&#160;of the tissue&#160;with&#160;time.&#160;The&#160;lighter&#160;shade&#160;of&#160;tissue&#160;signifies&#160;its&#160;infancy&#160;while&#160;the&#160;darker&#160;<br/>shade represents its old age.</p>
+<p style="position:absolute;top:903px;left:72px;white-space:nowrap" class="ft1315"><i><b>1.3.&#160;&#160;Patterning variable<br/></b></i>gene expression during the early phase of embryogenesis of several organisms has been reported to exhibit complex&#160;<br/>patterning, e.g., the vertical stripes in Drosophila embryo.&#160;The patterning variable,&#160;<i>x</i></p>
+<p style="position:absolute;top:953px;left:485px;white-space:nowrap" class="ft134"><i>p</i>, is an abstract variable whose distri-</p>
+<p style="position:absolute;top:960px;left:72px;white-space:nowrap" class="ft1315">bution over the tissue evolves in time to generate a simple stripe pattern.&#160;The actual pattern obtained is determined by&#160;<br/>the interactions between the&#160;<i>x</i></p>
+<p style="position:absolute;top:983px;left:225px;white-space:nowrap" class="ft134"><i>p</i>&#160;variables of cells, or more precisely by the corresponding connection weights. Figure&#160;<a href="">14&#160;</a></p>
+<p style="position:absolute;top:614px;left:652px;white-space:nowrap" class="ft138">(2)</p>
+<p style="position:absolute;top:616px;left:257px;white-space:nowrap" class="ft136">x</p>
+<p style="position:absolute;top:614px;left:263px;white-space:nowrap" class="ft137">IJ</p>
+<p style="position:absolute;top:623px;left:262px;white-space:nowrap" class="ft137">g</p>
+<p style="position:absolute;top:618px;left:268px;white-space:nowrap" class="ft136">(</p>
+<p style="position:absolute;top:616px;left:272px;white-space:nowrap" class="ft136">t&#160;+&#160;1)&#160;=</p>
+<p style="position:absolute;top:609px;left:334px;white-space:nowrap" class="ft136">1</p>
+<p style="position:absolute;top:628px;left:317px;white-space:nowrap" class="ft136">(</p>
+<p style="position:absolute;top:626px;left:321px;white-space:nowrap" class="ft136">N</p>
+<p style="position:absolute;top:624px;left:329px;white-space:nowrap" class="ft137">2</p>
+<p style="position:absolute;top:628px;left:337px;white-space:nowrap" class="ft136">−</p>
+<p style="position:absolute;top:626px;left:348px;white-space:nowrap" class="ft136">1)</p>
+<p style="position:absolute;top:599px;left:359px;white-space:nowrap" class="ft136">⎛</p>
+<p style="position:absolute;top:610px;left:359px;white-space:nowrap" class="ft136">⎜</p>
+<p style="position:absolute;top:621px;left:359px;white-space:nowrap" class="ft136">⎜</p>
+<p style="position:absolute;top:630px;left:359px;white-space:nowrap" class="ft136">⎝</p>
+<p style="position:absolute;top:604px;left:368px;white-space:nowrap" class="ft137">N∕2</p>
+<p style="position:absolute;top:602px;left:367px;white-space:nowrap" class="ft136">�</p>
+<p style="position:absolute;top:634px;left:365px;white-space:nowrap" class="ft137">i=−</p>
+<p style="position:absolute;top:632px;left:379px;white-space:nowrap" class="ft1311">N</p>
+<p style="position:absolute;top:639px;left:380px;white-space:nowrap" class="ft1311">2</p>
+<p style="position:absolute;top:599px;left:395px;white-space:nowrap" class="ft1311">N</p>
+<p style="position:absolute;top:607px;left:396px;white-space:nowrap" class="ft1311">2</p>
+<p style="position:absolute;top:602px;left:390px;white-space:nowrap" class="ft136">�</p>
+<p style="position:absolute;top:634px;left:387px;white-space:nowrap" class="ft137">j=−</p>
+<p style="position:absolute;top:632px;left:402px;white-space:nowrap" class="ft1311">N</p>
+<p style="position:absolute;top:639px;left:402px;white-space:nowrap" class="ft1311">2</p>
+<p style="position:absolute;top:616px;left:410px;white-space:nowrap" class="ft136">x</p>
+<p style="position:absolute;top:615px;left:416px;white-space:nowrap" class="ft137">(</p>
+<p style="position:absolute;top:614px;left:418px;white-space:nowrap" class="ft137">I−i)(J−j)</p>
+<p style="position:absolute;top:623px;left:415px;white-space:nowrap" class="ft137">g</p>
+<p style="position:absolute;top:618px;left:447px;white-space:nowrap" class="ft136">(</p>
+<p style="position:absolute;top:616px;left:451px;white-space:nowrap" class="ft136">t)</p>
+<p style="position:absolute;top:599px;left:459px;white-space:nowrap" class="ft136">⎞</p>
+<p style="position:absolute;top:610px;left:459px;white-space:nowrap" class="ft136">⎟</p>
+<p style="position:absolute;top:621px;left:459px;white-space:nowrap" class="ft136">⎟</p>
+<p style="position:absolute;top:630px;left:459px;white-space:nowrap" class="ft136">⎠</p>
+<p style="position:absolute;top:618px;left:467px;white-space:nowrap" class="ft136">+&#160;<i>𝜀</i></p>
+<p style="position:absolute;top:285px;left:72px;white-space:nowrap" class="ft1312"><b>Figure 12. </b>the&#160;five&#160;‘planes’&#160;of&#160;the model&#160;–&#160;growth&#160;plane,&#160;patterning&#160;plane,&#160;east–west morphogen&#160;plane, north–south&#160;morphogen&#160;</p>
+<p style="position:absolute;top:299px;left:72px;white-space:nowrap" class="ft132">plane and apoptosis plane.</p>
+<p style="position:absolute;top:863px;left:72px;white-space:nowrap" class="ft1312"><b>Figure 13. </b>growth of the tissue from left to right in order with&#160;<i>𝜀</i> = 0.11.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft1313">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:9px;font-family:Times;color:#231f20;}
+	.ft141{font-size:10px;font-family:Times;color:#231f20;}
+	.ft142{font-size:10px;font-family:Times;color:#000080;}
+	.ft143{font-size:10px;font-family:Times;color:#000000;}
+	.ft144{font-size:5px;font-family:Times;color:#000000;}
+	.ft145{font-size:10px;font-family:Times;color:#231f20;}
+	.ft146{font-size:5px;font-family:Times;color:#231f20;}
+	.ft147{font-size:12px;font-family:Times;color:#231f20;}
+	.ft148{font-size:10px;font-family:Times;color:#000000;}
+	.ft149{font-size:10px;font-family:Times;color:#10137d;}
+	.ft1410{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft1411{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+	.ft1412{font-size:5px;line-height:9px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft140">14&#160;</p>
+<p style="position:absolute;top:39px;left:111px;white-space:nowrap" class="ft140">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:77px;left:72px;white-space:nowrap" class="ft1411">shows the&#160;final stripe&#160;pattern&#160;‘White’&#160;corresponds&#160;to&#160;the absence&#160;of the cell,&#160;‘blue’&#160;has&#160;a stripe value&#160;of 1 whereas the&#160;<br/>‘maroon’&#160;has a stripe value of −1.<br/>The training of the weights proceeds as follows.&#160;The stripe image shown in Figur<a href="">e&#160;14</a>&#160;is divided into numerous 7 × 7&#160;<br/>neighborhoods (Figur<a href="">e&#160;15).&#160;</a>each of these neighborhoods is converted into a 49, 1-D vector and presented as an input to&#160;<br/>a&#160;perceptron.&#160;The&#160;central&#160;pixel&#160;value&#160;of&#160;the&#160;7 × 7&#160;neighborhood&#160;is&#160;the&#160;desired&#160;output&#160;of&#160;the&#160;perceptron.&#160;This&#160;computation&#160;<br/>is done by&#160;a perceptron model [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#11">28] wh</a>ich is&#160;trained as follows.&#160;Note&#160;that the perceptron model, which&#160;is an artificial&#160;‘neural&#160;<br/>network’&#160;is used merely as a computational tool to model the interactions among the patterning variables of the cells in&#160;<br/>our model; it has nothing to do with the separate&#160;‘neural network’&#160;in our model which actually represents the nervous&#160;<br/>system of the planarian.</p>
+<p style="position:absolute;top:212px;left:90px;white-space:nowrap" class="ft141">equations (3)–(5) mathematically define how the training of the weights are done.</p>
+<p style="position:absolute;top:375px;left:72px;white-space:nowrap" class="ft143">x</p>
+<p style="position:absolute;top:373px;left:78px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:382px;left:78px;white-space:nowrap" class="ft144">p&#160;&#160;is the pattern variable of the cell located at the&#160;<i>I</i>th row and&#160;<i>J</i>th column, ∏ (0.01) is the learning rate at which the weights&#160;</p>
+<p style="position:absolute;top:386px;left:72px;white-space:nowrap" class="ft141">and the bias are updated. tanh (hyperbolic tangent) with a low slope is used as an activation function.</p>
+<p style="position:absolute;top:399px;left:90px;white-space:nowrap" class="ft141">During the simulation, each cell looks at the&#160;<i>x</i></p>
+<p style="position:absolute;top:407px;left:319px;white-space:nowrap" class="ft146"><i>p</i>&#160;of all its neighborhood cells at time instant&#160;<i>t</i>&#160;and updates its pattern&#160;</p>
+<p style="position:absolute;top:413px;left:72px;white-space:nowrap" class="ft141">variable&#160;<i>x</i></p>
+<p style="position:absolute;top:421px;left:120px;white-space:nowrap" class="ft146"><i>p</i>&#160;for time instant&#160;<i>t</i> + 1 as follows:</p>
+<p style="position:absolute;top:254px;left:652px;white-space:nowrap" class="ft147">(3)</p>
+<p style="position:absolute;top:256px;left:243px;white-space:nowrap" class="ft143">Y</p>
+<p style="position:absolute;top:254px;left:250px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:263px;left:249px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:258px;left:259px;white-space:nowrap" class="ft143">=</p>
+<p style="position:absolute;top:256px;left:271px;white-space:nowrap" class="ft143">tanh</p>
+<p style="position:absolute;top:233px;left:296px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:260px;left:305px;white-space:nowrap" class="ft148"><i>𝜂</i></p>
+<p style="position:absolute;top:233px;left:311px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:244px;left:328px;white-space:nowrap" class="ft144">N∕2</p>
+<p style="position:absolute;top:242px;left:326px;white-space:nowrap" class="ft143">∑</p>
+<p style="position:absolute;top:272px;left:321px;white-space:nowrap" class="ft144">i=−N∕2</p>
+<p style="position:absolute;top:244px;left:356px;white-space:nowrap" class="ft144">N∕2</p>
+<p style="position:absolute;top:242px;left:355px;white-space:nowrap" class="ft143">∑</p>
+<p style="position:absolute;top:272px;left:349px;white-space:nowrap" class="ft144">j=−N∕2</p>
+<p style="position:absolute;top:256px;left:377px;white-space:nowrap" class="ft143">w</p>
+<p style="position:absolute;top:253px;left:387px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:263px;left:386px;white-space:nowrap" class="ft144">ij</p>
+<p style="position:absolute;top:258px;left:391px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:256px;left:395px;white-space:nowrap" class="ft143">t)x</p>
+<p style="position:absolute;top:256px;left:410px;white-space:nowrap" class="ft144">(</p>
+<p style="position:absolute;top:254px;left:412px;white-space:nowrap" class="ft144">I−i)(J−j)</p>
+<p style="position:absolute;top:263px;left:409px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:258px;left:444px;white-space:nowrap" class="ft143">+</p>
+<p style="position:absolute;top:256px;left:455px;white-space:nowrap" class="ft143">b</p>
+<p style="position:absolute;top:253px;left:461px;white-space:nowrap" class="ft1412">p<br/>ij</p>
+<p style="position:absolute;top:258px;left:466px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:256px;left:470px;white-space:nowrap" class="ft143">t)</p>
+<p style="position:absolute;top:233px;left:478px;white-space:nowrap" class="ft143">))</p>
+<p style="position:absolute;top:311px;left:652px;white-space:nowrap" class="ft147">(4)</p>
+<p style="position:absolute;top:313px;left:284px;white-space:nowrap" class="ft143">w</p>
+<p style="position:absolute;top:310px;left:294px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:320px;left:293px;white-space:nowrap" class="ft144">ij</p>
+<p style="position:absolute;top:315px;left:298px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:313px;left:302px;white-space:nowrap" class="ft143">t&#160;+&#160;1)&#160;=&#160;w</p>
+<p style="position:absolute;top:310px;left:355px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:320px;left:354px;white-space:nowrap" class="ft144">ij</p>
+<p style="position:absolute;top:315px;left:359px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:313px;left:363px;white-space:nowrap" class="ft143">t)&#160;+&#160;Π&#160;(x</p>
+<p style="position:absolute;top:310px;left:407px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:319px;left:407px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:315px;left:416px;white-space:nowrap" class="ft143">−</p>
+<p style="position:absolute;top:313px;left:427px;white-space:nowrap" class="ft143">Y</p>
+<p style="position:absolute;top:310px;left:434px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:319px;left:433px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:315px;left:440px;white-space:nowrap" class="ft143">)</p>
+<p style="position:absolute;top:313px;left:444px;white-space:nowrap" class="ft143">x</p>
+<p style="position:absolute;top:310px;left:450px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:319px;left:449px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:341px;left:652px;white-space:nowrap" class="ft147">(5)</p>
+<p style="position:absolute;top:343px;left:292px;white-space:nowrap" class="ft143">b</p>
+<p style="position:absolute;top:340px;left:298px;white-space:nowrap" class="ft1412">p<br/>ij</p>
+<p style="position:absolute;top:345px;left:303px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:343px;left:307px;white-space:nowrap" class="ft143">t&#160;+&#160;1)&#160;=&#160;w</p>
+<p style="position:absolute;top:340px;left:359px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:350px;left:358px;white-space:nowrap" class="ft144">ij</p>
+<p style="position:absolute;top:345px;left:364px;white-space:nowrap" class="ft143">(</p>
+<p style="position:absolute;top:343px;left:368px;white-space:nowrap" class="ft143">t)&#160;−&#160;Π&#160;(x</p>
+<p style="position:absolute;top:340px;left:412px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:349px;left:411px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:345px;left:420px;white-space:nowrap" class="ft143">−</p>
+<p style="position:absolute;top:343px;left:431px;white-space:nowrap" class="ft143">Y</p>
+<p style="position:absolute;top:340px;left:438px;white-space:nowrap" class="ft144">IJ</p>
+<p style="position:absolute;top:349px;left:437px;white-space:nowrap" class="ft144">p</p>
+<p style="position:absolute;top:345px;left:444px;white-space:nowrap" class="ft143">)</p>
+<p style="position:absolute;top:640px;left:72px;white-space:nowrap" class="ft149"><b>Figure 14. </b>stripe training pattern.&#160;the blue color pixels have a value of −1 and the maroon pixels have a value of 1.</p>
+<p style="position:absolute;top:976px;left:72px;white-space:nowrap" class="ft149"><b>Figure 15. </b>training protocol of perceptron (artificial neural network) training for stripe pattern.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft1410">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:9px;font-family:Times;color:#231f20;}
+	.ft151{font-size:10px;font-family:Times;color:#231f20;}
+	.ft152{font-size:10px;font-family:Times;color:#231f20;}
+	.ft153{font-size:5px;font-family:Times;color:#231f20;}
+	.ft154{font-size:10px;font-family:Times;color:#000080;}
+	.ft155{font-size:13px;font-family:Times;color:#10137d;}
+	.ft156{font-size:12px;font-family:Times;color:#231f20;}
+	.ft157{font-size:10px;font-family:Times;color:#000000;}
+	.ft158{font-size:5px;font-family:Times;color:#000000;}
+	.ft159{font-size:10px;font-family:Times;color:#000000;}
+	.ft1510{font-size:10px;font-family:Times;color:#10137d;}
+	.ft1511{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft1512{font-size:13px;line-height:27px;font-family:Times;color:#10137d;}
+	.ft1513{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:226px;white-space:nowrap" class="ft150">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:645px;white-space:nowrap" class="ft150">&#160;15</p>
+<p style="position:absolute;top:321px;left:90px;white-space:nowrap" class="ft151">The value of&#160;<i>x</i></p>
+<p style="position:absolute;top:329px;left:158px;white-space:nowrap" class="ft153"><i>p</i>&#160;lies between [−1, 1].&#160;<i>wij</i>&#160;is the weight associated with the patterning variable of a cell placed at&#160;<i>i</i>th row&#160;</p>
+<p style="position:absolute;top:334px;left:72px;white-space:nowrap" class="ft151">and&#160;<i>j</i>th column. During the development, the&#160;‘growth’&#160;and&#160;‘patterning’&#160;occur simultaneously.&#160;Whenever a cell divides, a&#160;</p>
+<p style="position:absolute;top:348px;left:72px;white-space:nowrap" class="ft151">random value of the&#160;<i>x</i></p>
+<p style="position:absolute;top:356px;left:182px;white-space:nowrap" class="ft153"><i>p</i>&#160;is assigned initially to the child cell.&#160;The&#160;<i>xp</i>&#160;of the child cell is then updated using the update rule&#160;</p>
+<p style="position:absolute;top:361px;left:72px;white-space:nowrap" class="ft151">of&#160;equation (6). Figur<a href="">e&#160;16</a>&#160;shows the evolution of pattern over time.</p>
+<p style="position:absolute;top:403px;left:72px;white-space:nowrap" class="ft1513"><i><b>1.4.&#160;&#160;Dynamics of the morphogen variables<br/></b></i>The morphogen computation comprises two important parts: neural network dynamics which&#160;provides long-range com-<br/>munication&#160;and&#160;the&#160;cell&#160;dynamics&#160;which&#160;is&#160;responsible&#160;for&#160;the&#160;short&#160;range,&#160;cell-to-cell&#160;communication.&#160;The&#160;nervous&#160;system&#160;<br/>comprising of the neurons is responsible for creating the gradient in the morphogen values along two directions (east–west&#160;<br/>and north–south).&#160;The cell dynamics refers to the nearby cell-to-cell interactions that make sure that all the cells in the&#160;<br/>neighborhood have uniform/similar morphogen values.&#160;The interplay between these two types of dynamics gives rise to&#160;<br/>a smooth morphogen gradient along both the directions.</p>
+<p style="position:absolute;top:520px;left:90px;white-space:nowrap" class="ft152"><i>Neural network dynamics:</i>&#160;each neuron in 1-D neural network is connected only to its two immediate neighbors&#160;&#160;</p>
+<p style="position:absolute;top:535px;left:72px;white-space:nowrap" class="ft1513">(Figure&#160;&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">1b</a>).&#160;The electrical activity or the transmembrane voltages of each neuron is calculated by the following&#160;&#160;<br/>mathematical equations:</p>
+<p style="position:absolute;top:280px;left:652px;white-space:nowrap" class="ft156">(6)</p>
+<p style="position:absolute;top:282px;left:234px;white-space:nowrap" class="ft157">x</p>
+<p style="position:absolute;top:280px;left:240px;white-space:nowrap" class="ft158">IJ</p>
+<p style="position:absolute;top:289px;left:240px;white-space:nowrap" class="ft158">p</p>
+<p style="position:absolute;top:285px;left:246px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:282px;left:250px;white-space:nowrap" class="ft157">t&#160;+&#160;1)&#160;=&#160;tanh</p>
+<p style="position:absolute;top:259px;left:318px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:286px;left:328px;white-space:nowrap" class="ft159"><i>𝜂</i></p>
+<p style="position:absolute;top:259px;left:334px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:270px;left:350px;white-space:nowrap" class="ft158">N∕2</p>
+<p style="position:absolute;top:269px;left:349px;white-space:nowrap" class="ft157">∑</p>
+<p style="position:absolute;top:298px;left:344px;white-space:nowrap" class="ft158">i=−N∕2</p>
+<p style="position:absolute;top:270px;left:378px;white-space:nowrap" class="ft158">N∕2</p>
+<p style="position:absolute;top:269px;left:377px;white-space:nowrap" class="ft157">∑</p>
+<p style="position:absolute;top:298px;left:372px;white-space:nowrap" class="ft158">j=−N∕2</p>
+<p style="position:absolute;top:282px;left:400px;white-space:nowrap" class="ft157">w</p>
+<p style="position:absolute;top:279px;left:409px;white-space:nowrap" class="ft158">p</p>
+<p style="position:absolute;top:289px;left:408px;white-space:nowrap" class="ft158">ij&#160;x</p>
+<p style="position:absolute;top:282px;left:420px;white-space:nowrap" class="ft158">(</p>
+<p style="position:absolute;top:280px;left:422px;white-space:nowrap" class="ft158">I−i)(J−j)</p>
+<p style="position:absolute;top:289px;left:419px;white-space:nowrap" class="ft158">p</p>
+<p style="position:absolute;top:285px;left:451px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:282px;left:455px;white-space:nowrap" class="ft157">t)&#160;+&#160;b</p>
+<p style="position:absolute;top:289px;left:483px;white-space:nowrap" class="ft158">ij</p>
+<p style="position:absolute;top:259px;left:488px;white-space:nowrap" class="ft157">))</p>
+<p style="position:absolute;top:592px;left:652px;white-space:nowrap" class="ft156">(7)</p>
+<p style="position:absolute;top:594px;left:247px;white-space:nowrap" class="ft157">V</p>
+<p style="position:absolute;top:592px;left:255px;white-space:nowrap" class="ft158">I</p>
+<p style="position:absolute;top:601px;left:254px;white-space:nowrap" class="ft158">c1</p>
+<p style="position:absolute;top:597px;left:262px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:594px;left:266px;white-space:nowrap" class="ft157">t&#160;+&#160;1)&#160;=&#160;(1&#160;−&#160;<i>𝜏</i>)V</p>
+<p style="position:absolute;top:592px;left:351px;white-space:nowrap" class="ft158">I</p>
+<p style="position:absolute;top:601px;left:349px;white-space:nowrap" class="ft158">c1</p>
+<p style="position:absolute;top:597px;left:358px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:594px;left:362px;white-space:nowrap" class="ft157">t)&#160;+&#160;<i>𝜏</i></p>
+<p style="position:absolute;top:571px;left:390px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:582px;left:406px;white-space:nowrap" class="ft158">1</p>
+<p style="position:absolute;top:581px;left:400px;white-space:nowrap" class="ft157">∑</p>
+<p style="position:absolute;top:610px;left:399px;white-space:nowrap" class="ft158">i=−1</p>
+<p style="position:absolute;top:594px;left:418px;white-space:nowrap" class="ft157">w</p>
+<p style="position:absolute;top:592px;left:427px;white-space:nowrap" class="ft158">Vc1</p>
+<p style="position:absolute;top:601px;left:427px;white-space:nowrap" class="ft158">I−i&#160;f</p>
+<p style="position:absolute;top:597px;left:445px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:594px;left:449px;white-space:nowrap" class="ft157">V</p>
+<p style="position:absolute;top:592px;left:457px;white-space:nowrap" class="ft158">I−i</p>
+<p style="position:absolute;top:601px;left:456px;white-space:nowrap" class="ft158">c1</p>
+<p style="position:absolute;top:597px;left:467px;white-space:nowrap" class="ft157">(</p>
+<p style="position:absolute;top:594px;left:471px;white-space:nowrap" class="ft157">t))</p>
+<p style="position:absolute;top:571px;left:483px;white-space:nowrap" class="ft157">)</p>
+<p style="position:absolute;top:207px;left:72px;white-space:nowrap" class="ft1510"><b>Figure 16. </b>evolution of patterning over time.&#160;arrow denotes the passage of time.</p>
+<p style="position:absolute;top:979px;left:72px;white-space:nowrap" class="ft1510"><b>Figure 17. </b>mexican hat function (<i>F</i>): connection weights for intercellular interactions.</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft1511">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:9px;font-family:Times;color:#231f20;}
+	.ft161{font-size:10px;font-family:Times;color:#231f20;}
+	.ft162{font-size:10px;font-family:Times;color:#231f20;}
+	.ft163{font-size:5px;font-family:Times;color:#231f20;}
+	.ft164{font-size:5px;font-family:Times;color:#231f20;}
+	.ft165{font-size:10px;font-family:Times;color:#000000;}
+	.ft166{font-size:5px;font-family:Times;color:#000000;}
+	.ft167{font-size:10px;font-family:Times;color:#000080;}
+	.ft168{font-size:10px;font-family:Times;color:#000000;}
+	.ft169{font-size:5px;font-family:Times;color:#000000;}
+	.ft1610{font-size:10px;font-family:Times;color:#231f20;}
+	.ft1611{font-size:12px;font-family:Times;color:#231f20;}
+	.ft1612{font-size:10px;font-family:Times;color:#000000;}
+	.ft1613{font-size:4px;font-family:Times;color:#000000;}
+	.ft1614{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft1615{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+	.ft1616{font-size:5px;line-height:8px;font-family:Times;color:#000000;}
+	.ft1617{font-size:5px;line-height:9px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:72px;white-space:nowrap" class="ft160">16&#160;</p>
+<p style="position:absolute;top:39px;left:111px;white-space:nowrap" class="ft160">&#160;&#160;A.&#160;De eT&#160;AL.</p>
+<p style="position:absolute;top:173px;left:90px;white-space:nowrap" class="ft161">Here&#160;<i>V</i></p>
+<p style="position:absolute;top:181px;left:123px;white-space:nowrap" class="ft163"><i>c</i>1&#160;and&#160;<i>Vc</i>2&#160;refer to the electrical activity of the neurons in nervous system along east–west and north–south&#160;</p>
+<p style="position:absolute;top:187px;left:72px;white-space:nowrap" class="ft161">direction respectively. All the neurons encode a parameter called&#160;<i>λ</i>&#160;which is the genetic element that encodes the gradi-</p>
+<p style="position:absolute;top:200px;left:72px;white-space:nowrap" class="ft161">ent of the morphogen concentration across one direction.&#160;Therefore, all the neurons in the 1-D east–west neural network&#160;</p>
+<p style="position:absolute;top:214px;left:72px;white-space:nowrap" class="ft161">encode&#160;<i>𝜆</i></p>
+<p style="position:absolute;top:223px;left:118px;white-space:nowrap" class="ft166">c1&#160;which is the slope of the east–west morphogen gradient generated by the neural network. Same is the func-</p>
+<p style="position:absolute;top:227px;left:72px;white-space:nowrap" class="ft161">tion of&#160;<i>𝜆</i></p>
+<p style="position:absolute;top:236px;left:114px;white-space:nowrap" class="ft166">c2&#160;for the north–south gradient.&#160;The simulation was run by fixing the slope along both the directions to be 0.05&#160;</p>
+<p style="position:absolute;top:241px;left:72px;white-space:nowrap" class="ft161">morphogen units/pixel.</p>
+<p style="position:absolute;top:256px;left:90px;white-space:nowrap" class="ft161">The state of the neuron which is the electrical activity of the neuron is the information that is transmitted to the cells.&#160;</p>
+<p style="position:absolute;top:271px;left:72px;white-space:nowrap" class="ft1615">Over the time (or number of iterations), the input to the cells from the neurons become weaker.&#160;This was assumed so as&#160;<br/>to prevent the morphogen values from blowing up and hence maintain a constant gradient level locally as the planarian&#160;<br/>matures.</p>
+<p style="position:absolute;top:316px;left:90px;white-space:nowrap" class="ft162"><i>Cell dynamics:</i>&#160;each neuron is connected to only those cells which are spatially closer to it than the neighboring neurons&#160;</p>
+<p style="position:absolute;top:331px;left:72px;white-space:nowrap" class="ft1615">(Figure&#160;<a href="ba8577a786315aa95ba33f4ccf78e257s.html#3">1</a>b).&#160;The&#160;interaction&#160;between&#160;the&#160;cells&#160;is&#160;governed&#160;by&#160;a&#160;short&#160;range&#160;function&#160;that&#160;strives&#160;to&#160;maintain&#160;a&#160;uniform&#160;<br/>morphogen level in the absence of the inputs from the neurons.&#160;This neighborhood interaction function was chosen to&#160;<br/>be a Mexican hat function, which can be represented by a difference of two&#160;g<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">aussians [5</a>].&#160;This particular kind of neighbor-<br/>hood function is observed in patterning in activator–inhibitor reaction-diffusion syst<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">ems [8</a>,<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">9]. I</a>n addition, the electrical&#160;<br/>coupling among adjacent cells was realized using the gap junctions (equations (13) and (14)).</p>
+<p style="position:absolute;top:406px;left:90px;white-space:nowrap" class="ft161">Using this neighborhood interaction function, each cell increments its own morphogen values and decrements the&#160;</p>
+<p style="position:absolute;top:421px;left:72px;white-space:nowrap" class="ft1615">morphogen values of all the cells in the neighborhood. In effect, when all the cells perform this computation, the mor-<br/>phogen values of all the cells tend to be more or less equal. Shown below is an example of the Mexican hat function and&#160;<br/>the actual mathematical equation used in our model.</p>
+<p style="position:absolute;top:533px;left:90px;white-space:nowrap" class="ft162"><i>X</i>&#160;is the position of the cell in the neighborhood of cell&#160;<i>X</i></p>
+<p style="position:absolute;top:541px;left:368px;white-space:nowrap" class="ft163"><i>c</i>.</p>
+<p style="position:absolute;top:548px;left:72px;white-space:nowrap" class="ft1615">The&#160;morphogen&#160;values&#160;of&#160;the&#160;cell&#160;are&#160;updated&#160;according&#160;to&#160;the&#160;following&#160;equation.&#160;The&#160;weights&#160;are&#160;obtained&#160;from&#160;the&#160;<br/>Mexican hat function.<br/>&#160;</p>
+<p style="position:absolute;top:638px;left:90px;white-space:nowrap" class="ft161">The above equation corresponds to the east–west morphogen value being computed.&#160;<b>VI</b></p>
+<p style="position:absolute;top:648px;left:539px;white-space:nowrap" class="ft169"><b>c</b>1&#160;is the input transmitted&#160;</p>
+<p style="position:absolute;top:653px;left:72px;white-space:nowrap" class="ft161">from the neurons whose input decays as the time progresses (K).&#160;</p>
+<p style="position:absolute;top:652px;left:393px;white-space:nowrap" class="ft161">′Υ is a constant (0.15) that determines how fast changes&#160;</p>
+<p style="position:absolute;top:668px;left:72px;white-space:nowrap" class="ft1615">are&#160;made&#160;as&#160;time&#160;progresses.&#160;<i><b>I</b></i>&#160;and&#160;<i><b>J</b></i>&#160;denote&#160;the&#160;row&#160;and&#160;column&#160;number&#160;of&#160;the&#160;cell.&#160;Similar&#160;is&#160;the&#160;equation&#160;of&#160;north–west&#160;<br/>morphogen computation which is defined below.</p>
+<p style="position:absolute;top:699px;left:90px;white-space:nowrap" class="ft1611">&#160;</p>
+<p style="position:absolute;top:769px;left:90px;white-space:nowrap" class="ft161">In addition to this, there also exists an electrical coupling (gap junctions) between the neighboring cells that changes&#160;</p>
+<p style="position:absolute;top:782px;left:72px;white-space:nowrap" class="ft161">the&#160;morphogen values.&#160;These&#160;gap junctions&#160;allow&#160;the flow&#160;of morphogens&#160;between&#160;the&#160;neighboring&#160;cells and&#160;hence&#160;</p>
+<p style="position:absolute;top:796px;left:72px;white-space:nowrap" class="ft161">help attain a smooth global morphogen gradient along both the axes (east–west and north–south).&#160;The equations below&#160;</p>
+<p style="position:absolute;top:809px;left:72px;white-space:nowrap" class="ft161">define the gap junction-based interactions among the cells.</p>
+<p style="position:absolute;top:105px;left:652px;white-space:nowrap" class="ft1611">(8)</p>
+<p style="position:absolute;top:99px;left:247px;white-space:nowrap" class="ft1612">V</p>
+<p style="position:absolute;top:97px;left:255px;white-space:nowrap" class="ft166">I</p>
+<p style="position:absolute;top:106px;left:254px;white-space:nowrap" class="ft166">c2</p>
+<p style="position:absolute;top:102px;left:262px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:99px;left:266px;white-space:nowrap" class="ft1612">t&#160;+&#160;1)&#160;=&#160;(1&#160;−&#160;<i>𝜏</i>)V</p>
+<p style="position:absolute;top:97px;left:351px;white-space:nowrap" class="ft166">I</p>
+<p style="position:absolute;top:106px;left:349px;white-space:nowrap" class="ft166">c2</p>
+<p style="position:absolute;top:102px;left:358px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:99px;left:362px;white-space:nowrap" class="ft1612">t)&#160;+&#160;<i>𝜏</i></p>
+<p style="position:absolute;top:76px;left:390px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:87px;left:406px;white-space:nowrap" class="ft166">1</p>
+<p style="position:absolute;top:86px;left:400px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:115px;left:399px;white-space:nowrap" class="ft166">i=−1</p>
+<p style="position:absolute;top:99px;left:418px;white-space:nowrap" class="ft1612">w</p>
+<p style="position:absolute;top:97px;left:427px;white-space:nowrap" class="ft166">Vc2</p>
+<p style="position:absolute;top:106px;left:427px;white-space:nowrap" class="ft166">I−i&#160;f</p>
+<p style="position:absolute;top:102px;left:445px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:99px;left:449px;white-space:nowrap" class="ft1612">V</p>
+<p style="position:absolute;top:97px;left:457px;white-space:nowrap" class="ft166">I−i</p>
+<p style="position:absolute;top:106px;left:456px;white-space:nowrap" class="ft166">c2</p>
+<p style="position:absolute;top:102px;left:467px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:99px;left:471px;white-space:nowrap" class="ft1612">t))</p>
+<p style="position:absolute;top:76px;left:483px;white-space:nowrap" class="ft1612">)</p>
+<p style="position:absolute;top:141px;left:652px;white-space:nowrap" class="ft1611">(9)</p>
+<p style="position:absolute;top:144px;left:344px;white-space:nowrap" class="ft1612">f&#160;(y)&#160;=</p>
+<p style="position:absolute;top:144px;left:382px;white-space:nowrap" class="ft1613">3</p>
+<p style="position:absolute;top:131px;left:379px;white-space:nowrap" class="ft1612">√</p>
+<p style="position:absolute;top:144px;left:390px;white-space:nowrap" class="ft1612">y</p>
+<p style="position:absolute;top:492px;left:645px;white-space:nowrap" class="ft1611">(10)</p>
+<p style="position:absolute;top:498px;left:283px;white-space:nowrap" class="ft1612">F(X&#160;)&#160;=</p>
+<p style="position:absolute;top:491px;left:322px;white-space:nowrap" class="ft1612">0.985e</p>
+<p style="position:absolute;top:490px;left:354px;white-space:nowrap" class="ft166">(</p>
+<p style="position:absolute;top:489px;left:357px;white-space:nowrap" class="ft166">X&#160;−X</p>
+<p style="position:absolute;top:493px;left:371px;white-space:nowrap" class="ft1613">c</p>
+<p style="position:absolute;top:490px;left:375px;white-space:nowrap" class="ft166">)</p>
+<p style="position:absolute;top:486px;left:377px;white-space:nowrap" class="ft1613">2</p>
+<p style="position:absolute;top:496px;left:344px;white-space:nowrap" class="ft1612">√</p>
+<p style="position:absolute;top:513px;left:355px;white-space:nowrap" class="ft165"><i>𝜋</i></p>
+<p style="position:absolute;top:500px;left:386px;white-space:nowrap" class="ft1612">−</p>
+<p style="position:absolute;top:491px;left:399px;white-space:nowrap" class="ft1612">0.41e</p>
+<p style="position:absolute;top:483px;left:427px;white-space:nowrap" class="ft1612">(X−Xc&#160;)</p>
+<p style="position:absolute;top:479px;left:450px;white-space:nowrap" class="ft1613">2</p>
+<p style="position:absolute;top:494px;left:438px;white-space:nowrap" class="ft1613">20</p>
+<p style="position:absolute;top:496px;left:413px;white-space:nowrap" class="ft1612">√</p>
+<p style="position:absolute;top:510px;left:424px;white-space:nowrap" class="ft1612">20<i>𝜋</i></p>
+<p style="position:absolute;top:605px;left:645px;white-space:nowrap" class="ft1611">(11)</p>
+<p style="position:absolute;top:608px;left:206px;white-space:nowrap" class="ft168"><b>x</b></p>
+<p style="position:absolute;top:605px;left:213px;white-space:nowrap" class="ft1616"><b>IJ<br/>c</b>1</p>
+<p style="position:absolute;top:610px;left:221px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:608px;left:225px;white-space:nowrap" class="ft168"><b>t&#160;</b>+&#160;1)&#160;=</p>
+<p style="position:absolute;top:595px;left:269px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:607px;left:274px;white-space:nowrap" class="ft1612">1&#160;−</p>
+<p style="position:absolute;top:607px;left:294px;white-space:nowrap" class="ft166">�</p>
+<p style="position:absolute;top:610px;left:297px;white-space:nowrap" class="ft1612">Υ</p>
+<p style="position:absolute;top:595px;left:306px;white-space:nowrap" class="ft1612">)</p>
+<p style="position:absolute;top:608px;left:312px;white-space:nowrap" class="ft168"><b>x</b></p>
+<p style="position:absolute;top:605px;left:319px;white-space:nowrap" class="ft1616"><b>IJ<br/>c</b>1</p>
+<p style="position:absolute;top:610px;left:327px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:608px;left:331px;white-space:nowrap" class="ft168"><b>t</b>)&#160;+</p>
+<p style="position:absolute;top:607px;left:353px;white-space:nowrap" class="ft166">�</p>
+<p style="position:absolute;top:610px;left:357px;white-space:nowrap" class="ft1612">Υ</p>
+<p style="position:absolute;top:584px;left:365px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:595px;left:382px;white-space:nowrap" class="ft169"><b>N</b>∕2</p>
+<p style="position:absolute;top:594px;left:381px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:624px;left:375px;white-space:nowrap" class="ft169"><b>i</b>=−<b>N</b>∕2</p>
+<p style="position:absolute;top:595px;left:410px;white-space:nowrap" class="ft169"><b>N</b>∕2</p>
+<p style="position:absolute;top:594px;left:409px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:624px;left:404px;white-space:nowrap" class="ft169"><b>j</b>=−<b>N</b>∕2</p>
+<p style="position:absolute;top:608px;left:433px;white-space:nowrap" class="ft168"><b>w</b></p>
+<p style="position:absolute;top:605px;left:442px;white-space:nowrap" class="ft1617"><b>xc</b>1<br/>(</p>
+<p style="position:absolute;top:614px;left:445px;white-space:nowrap" class="ft169"><b>I</b>−<b>i</b>)(<b>J</b>−<b>j</b>)</p>
+<p style="position:absolute;top:610px;left:478px;white-space:nowrap" class="ft1612">+&#160;(</p>
+<p style="position:absolute;top:608px;left:493px;white-space:nowrap" class="ft168"><b>V</b></p>
+<p style="position:absolute;top:605px;left:501px;white-space:nowrap" class="ft1616"><b>I<br/>c</b>1</p>
+<p style="position:absolute;top:610px;left:509px;white-space:nowrap" class="ft1612">∕</p>
+<p style="position:absolute;top:607px;left:516px;white-space:nowrap" class="ft1612">K)</p>
+<p style="position:absolute;top:584px;left:526px;white-space:nowrap" class="ft1612">)</p>
+<p style="position:absolute;top:728px;left:645px;white-space:nowrap" class="ft1611">(12)</p>
+<p style="position:absolute;top:731px;left:206px;white-space:nowrap" class="ft168"><b>x</b></p>
+<p style="position:absolute;top:728px;left:213px;white-space:nowrap" class="ft1616"><b>IJ<br/>c</b>2</p>
+<p style="position:absolute;top:733px;left:221px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:731px;left:225px;white-space:nowrap" class="ft168"><b>t&#160;</b>+&#160;1)&#160;=</p>
+<p style="position:absolute;top:718px;left:269px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:730px;left:274px;white-space:nowrap" class="ft1612">1&#160;−</p>
+<p style="position:absolute;top:730px;left:294px;white-space:nowrap" class="ft166">�</p>
+<p style="position:absolute;top:733px;left:297px;white-space:nowrap" class="ft1612">Υ</p>
+<p style="position:absolute;top:718px;left:306px;white-space:nowrap" class="ft1612">)</p>
+<p style="position:absolute;top:731px;left:312px;white-space:nowrap" class="ft168"><b>x</b></p>
+<p style="position:absolute;top:728px;left:319px;white-space:nowrap" class="ft1616"><b>IJ<br/>c</b>2</p>
+<p style="position:absolute;top:733px;left:327px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:731px;left:331px;white-space:nowrap" class="ft168"><b>t</b>)&#160;+</p>
+<p style="position:absolute;top:730px;left:353px;white-space:nowrap" class="ft166">�</p>
+<p style="position:absolute;top:733px;left:357px;white-space:nowrap" class="ft1612">Υ</p>
+<p style="position:absolute;top:707px;left:365px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:718px;left:382px;white-space:nowrap" class="ft169"><b>N</b>∕2</p>
+<p style="position:absolute;top:717px;left:381px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:747px;left:375px;white-space:nowrap" class="ft169"><b>i</b>=−<b>N</b>∕2</p>
+<p style="position:absolute;top:718px;left:410px;white-space:nowrap" class="ft169"><b>N</b>∕2</p>
+<p style="position:absolute;top:717px;left:409px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:747px;left:404px;white-space:nowrap" class="ft169"><b>j</b>=−<b>N</b>∕2</p>
+<p style="position:absolute;top:731px;left:433px;white-space:nowrap" class="ft168"><b>w</b></p>
+<p style="position:absolute;top:728px;left:442px;white-space:nowrap" class="ft1617"><b>xc</b>2<br/>(</p>
+<p style="position:absolute;top:737px;left:445px;white-space:nowrap" class="ft169"><b>I</b>−<b>i</b>)(<b>J</b>−<b>j</b>)</p>
+<p style="position:absolute;top:733px;left:478px;white-space:nowrap" class="ft1612">+&#160;(</p>
+<p style="position:absolute;top:731px;left:493px;white-space:nowrap" class="ft168"><b>V</b></p>
+<p style="position:absolute;top:728px;left:501px;white-space:nowrap" class="ft1616"><b>J<br/>c</b>2</p>
+<p style="position:absolute;top:733px;left:509px;white-space:nowrap" class="ft1612">∕</p>
+<p style="position:absolute;top:730px;left:516px;white-space:nowrap" class="ft1612">K)</p>
+<p style="position:absolute;top:707px;left:526px;white-space:nowrap" class="ft1612">)</p>
+<p style="position:absolute;top:854px;left:645px;white-space:nowrap" class="ft1611">(13)</p>
+<p style="position:absolute;top:856px;left:226px;white-space:nowrap" class="ft1612">x</p>
+<p style="position:absolute;top:854px;left:232px;white-space:nowrap" class="ft166">IJ</p>
+<p style="position:absolute;top:863px;left:231px;white-space:nowrap" class="ft166">c1</p>
+<p style="position:absolute;top:859px;left:240px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:856px;left:244px;white-space:nowrap" class="ft1612">t&#160;+&#160;1)&#160;=&#160;(1&#160;−&#160;<i>𝛽</i>)x</p>
+<p style="position:absolute;top:854px;left:327px;white-space:nowrap" class="ft166">IJ</p>
+<p style="position:absolute;top:863px;left:327px;white-space:nowrap" class="ft166">c1</p>
+<p style="position:absolute;top:859px;left:335px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:856px;left:339px;white-space:nowrap" class="ft1612">t)&#160;+&#160;<i>𝛽</i></p>
+<p style="position:absolute;top:833px;left:367px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:844px;left:384px;white-space:nowrap" class="ft166">N∕2</p>
+<p style="position:absolute;top:843px;left:382px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:872px;left:377px;white-space:nowrap" class="ft166">i=−N∕2</p>
+<p style="position:absolute;top:844px;left:412px;white-space:nowrap" class="ft166">N∕2</p>
+<p style="position:absolute;top:843px;left:411px;white-space:nowrap" class="ft1612">∑</p>
+<p style="position:absolute;top:872px;left:405px;white-space:nowrap" class="ft166">j=−N∕2</p>
+<p style="position:absolute;top:856px;left:433px;white-space:nowrap" class="ft1612">w</p>
+<p style="position:absolute;top:854px;left:443px;white-space:nowrap" class="ft166">GJ1</p>
+<p style="position:absolute;top:863px;left:442px;white-space:nowrap" class="ft166">ij</p>
+<p style="position:absolute;top:856px;left:455px;white-space:nowrap" class="ft1612">x</p>
+<p style="position:absolute;top:855px;left:461px;white-space:nowrap" class="ft166">(</p>
+<p style="position:absolute;top:853px;left:464px;white-space:nowrap" class="ft166">I−i)(J−j)</p>
+<p style="position:absolute;top:863px;left:461px;white-space:nowrap" class="ft166">c1</p>
+<p style="position:absolute;top:859px;left:493px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:856px;left:497px;white-space:nowrap" class="ft1612">t)</p>
+<p style="position:absolute;top:833px;left:506px;white-space:nowrap" class="ft1612">)</p>
+<p style="position:absolute;top:926px;left:645px;white-space:nowrap" class="ft1611">(14)</p>
+<p style="position:absolute;top:928px;left:236px;white-space:nowrap" class="ft1612">x</p>
+<p style="position:absolute;top:926px;left:242px;white-space:nowrap" class="ft166">IJ</p>
+<p style="position:absolute;top:935px;left:241px;white-space:nowrap" class="ft166">c2</p>
+<p style="position:absolute;top:931px;left:249px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:928px;left:253px;white-space:nowrap" class="ft1612">t&#160;+&#160;1)&#160;=&#160;(1&#160;−&#160;<i>𝛽</i>)x</p>
+<p style="position:absolute;top:926px;left:337px;white-space:nowrap" class="ft166">IJ</p>
+<p style="position:absolute;top:935px;left:336px;white-space:nowrap" class="ft166">c2</p>
+<p style="position:absolute;top:931px;left:344px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:928px;left:348px;white-space:nowrap" class="ft1612">t)&#160;+&#160;<i>𝛽</i></p>
+<p style="position:absolute;top:911px;left:377px;white-space:nowrap" class="ft1612">⎛</p>
+<p style="position:absolute;top:923px;left:377px;white-space:nowrap" class="ft1612">⎜</p>
+<p style="position:absolute;top:933px;left:377px;white-space:nowrap" class="ft1612">⎜</p>
+<p style="position:absolute;top:942px;left:377px;white-space:nowrap" class="ft1612">⎝</p>
+<p style="position:absolute;top:912px;left:391px;white-space:nowrap" class="ft1613">N</p>
+<p style="position:absolute;top:919px;left:391px;white-space:nowrap" class="ft1613">2</p>
+<p style="position:absolute;top:915px;left:385px;white-space:nowrap" class="ft1612">�</p>
+<p style="position:absolute;top:947px;left:382px;white-space:nowrap" class="ft166">i=−</p>
+<p style="position:absolute;top:944px;left:397px;white-space:nowrap" class="ft1613">N</p>
+<p style="position:absolute;top:952px;left:397px;white-space:nowrap" class="ft1613">2</p>
+<p style="position:absolute;top:912px;left:413px;white-space:nowrap" class="ft1613">N</p>
+<p style="position:absolute;top:919px;left:414px;white-space:nowrap" class="ft1613">2</p>
+<p style="position:absolute;top:915px;left:407px;white-space:nowrap" class="ft1612">�</p>
+<p style="position:absolute;top:947px;left:405px;white-space:nowrap" class="ft166">j=−</p>
+<p style="position:absolute;top:944px;left:419px;white-space:nowrap" class="ft1613">N</p>
+<p style="position:absolute;top:952px;left:420px;white-space:nowrap" class="ft1613">2</p>
+<p style="position:absolute;top:928px;left:427px;white-space:nowrap" class="ft1612">w</p>
+<p style="position:absolute;top:926px;left:436px;white-space:nowrap" class="ft166">GJ2</p>
+<p style="position:absolute;top:935px;left:436px;white-space:nowrap" class="ft166">ij</p>
+<p style="position:absolute;top:928px;left:449px;white-space:nowrap" class="ft1612">x</p>
+<p style="position:absolute;top:927px;left:455px;white-space:nowrap" class="ft166">(</p>
+<p style="position:absolute;top:925px;left:458px;white-space:nowrap" class="ft166">I−i)(J−j)</p>
+<p style="position:absolute;top:935px;left:455px;white-space:nowrap" class="ft166">c2</p>
+<p style="position:absolute;top:931px;left:487px;white-space:nowrap" class="ft1612">(</p>
+<p style="position:absolute;top:928px;left:491px;white-space:nowrap" class="ft1612">t)</p>
+<p style="position:absolute;top:911px;left:500px;white-space:nowrap" class="ft1612">⎞</p>
+<p style="position:absolute;top:923px;left:500px;white-space:nowrap" class="ft1612">⎟</p>
+<p style="position:absolute;top:933px;left:500px;white-space:nowrap" class="ft1612">⎟</p>
+<p style="position:absolute;top:942px;left:500px;white-space:nowrap" class="ft1612">⎠</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft1614">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>ba8577a786315aa95ba33f4ccf78e257-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:9px;font-family:Times;color:#231f20;}
+	.ft171{font-size:10px;font-family:Times;color:#231f20;}
+	.ft172{font-size:10px;font-family:Times;color:#000000;}
+	.ft173{font-size:13px;font-family:Times;color:#10137d;}
+	.ft174{font-size:10px;font-family:Times;color:#231f20;}
+	.ft175{font-size:5px;font-family:Times;color:#231f20;}
+	.ft176{font-size:10px;font-family:Times;color:#231f20;}
+	.ft177{font-size:10px;font-family:Times;color:#000080;}
+	.ft178{font-size:5px;font-family:Times;color:#231f20;}
+	.ft179{font-size:10px;font-family:Times;color:#000000;}
+	.ft1710{font-size:5px;font-family:Times;color:#000000;}
+	.ft1711{font-size:12px;font-family:Times;color:#231f20;}
+	.ft1712{font-size:10px;font-family:Times;color:#000000;}
+	.ft1713{font-size:13px;font-family:Times;color:#000000;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft1714{font-size:13px;line-height:27px;font-family:Times;color:#10137d;}
+	.ft1715{font-size:10px;line-height:15px;font-family:Times;color:#231f20;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:739px;height:1054px;">
+<p style="position:absolute;top:39px;left:226px;white-space:nowrap" class="ft170">INTeRNATIONAL&#160;JOURNAL&#160;OF&#160;PARALLeL,&#160;eMeRgeNT&#160;AND&#160;DISTRIbUTeD&#160;SySTeMS&#160;</p>
+<p style="position:absolute;top:39px;left:645px;white-space:nowrap" class="ft170">&#160;17</p>
+<p style="position:absolute;top:77px;left:90px;white-space:nowrap" class="ft171">Here&#160;<i>𝛽</i>&#160;is the strength by which morphogen in a given cell influences the same morphogen in its neighboring cells. In&#160;</p>
+<p style="position:absolute;top:92px;left:72px;white-space:nowrap" class="ft171">our model we tried different values of&#160;<i>𝛽</i>&#160;which spanned from 0.1 to 1.0.</p>
+<p style="position:absolute;top:134px;left:72px;white-space:nowrap" class="ft1714"><i><b>1.5.&#160;&#160;Dynamics of the apoptosis variable<br/></b></i>The apoptosis variable,&#160;<i>x</i></p>
+<p style="position:absolute;top:169px;left:193px;white-space:nowrap" class="ft175"><i>a</i>, is a measure of how likely a cell is marked for programmed cell death.&#160;Whenever a copy of a cell&#160;</p>
+<p style="position:absolute;top:176px;left:72px;white-space:nowrap" class="ft171">is formed, that copy inherits the&#160;<i>x</i></p>
+<p style="position:absolute;top:184px;left:238px;white-space:nowrap" class="ft175"><i>a</i>&#160;from the original cell.&#160;<i>xa</i>&#160;is incremented after each iteration.&#160;The rule for cell death has&#160;</p>
+<p style="position:absolute;top:191px;left:72px;white-space:nowrap" class="ft1715">been&#160;designed&#160;such&#160;that&#160;only&#160;the&#160;cells&#160;located&#160;in&#160;the&#160;periphery&#160;can&#160;die.&#160;This&#160;represents&#160;shrinking/pruning&#160;of&#160;the&#160;tissue&#160;<br/>due to cell death. Once&#160;<i>x</i></p>
+<p style="position:absolute;top:214px;left:195px;white-space:nowrap" class="ft175"><i>a</i>&#160;crosses a threshold value (<i>θa</i>), and if the cell is at the periphery, the cell is eliminated.</p>
+<p style="position:absolute;top:281px;left:90px;white-space:nowrap" class="ft171">Here&#160;<b>Δ</b>&#160;is the small constant that is added to&#160;<i>x</i></p>
+<p style="position:absolute;top:289px;left:317px;white-space:nowrap" class="ft175"><i>a</i>&#160;in each iteration.</p>
+<p style="position:absolute;top:323px;left:72px;white-space:nowrap" class="ft173"><i><b>1.6.&#160;&#160;Rule for generating planarian</b></i></p>
+<p style="position:absolute;top:518px;left:90px;white-space:nowrap" class="ft171">If the above conditions (equations (17)–(21)) are satisfied by any cell located at position&#160;<i>I</i>,&#160;<i>J</i>&#160;then the cell’s age grows&#160;</p>
+<p style="position:absolute;top:533px;left:72px;white-space:nowrap" class="ft1715">according to&#160;equation (1). On the other hand, if any of the above conditions are violated, the cell slowly dies according&#160;<br/>to&#160;equation (16).</p>
+<p style="position:absolute;top:590px;left:72px;white-space:nowrap" class="ft1715"><i><b>1.7.&#160;&#160;Neural network<br/></b></i>The neural skeleton forms a recurrent neural network mimicking Hopfield neural network [<a href="ba8577a786315aa95ba33f4ccf78e257s.html#10">14].&#160;</a>The weights are such that&#160;<br/>the neural skeleton maintains a constant slope of the morphogen as it grows. A different perspective towards this concept&#160;<br/>would be that the states of the neurons shall be ordered in either descending or ascending order having a constant slope. In&#160;<br/>the&#160;simulation,&#160;this&#160;slope&#160;(<i>λ</i></p>
+<p style="position:absolute;top:670px;left:205px;white-space:nowrap" class="ft175"><i>c</i>1&#160;and&#160;<i>λc</i>2)&#160;was&#160;used&#160;a&#160;parameter.&#160;This&#160;parameter&#160;can&#160;be&#160;thought&#160;of&#160;a&#160;genetic&#160;code&#160;encoding&#160;the&#160;</p>
+<p style="position:absolute;top:677px;left:72px;white-space:nowrap" class="ft1715">value of the slope of the electrical voltage gradient in a neural skeleton. A key assumption we have made in our simulation&#160;<br/>is that this slope value is conserved over the generations and does not change with the evolution.</p>
+<p style="position:absolute;top:707px;left:90px;white-space:nowrap" class="ft171">The idea behind this design is that it will create a staircase like structure of the morphogen gradient. In order to obtain&#160;</p>
+<p style="position:absolute;top:722px;left:72px;white-space:nowrap" class="ft1715">a smooth gradient, the cells at the edges of the band were allowed to receive connections from both the adjacent neurons.&#160;<br/>The algorithm for the neural skeleton development has been summarized below.</p>
+<p style="position:absolute;top:757px;left:90px;white-space:nowrap" class="ft1715">(I)&#160;&#160;&#160;grow the tissue and measure its length along the east–west and north–south direction.<br/>(I&#160;)&#160;&#160;&#160;If the measured length exceeds the previous length by a threshold value say&#160;<i>λ</i>,&#160;then&#160;expand the neural skeleton&#160;</p>
+<p style="position:absolute;top:787px;left:109px;white-space:nowrap" class="ft1715">by adding one neuron. Using this slope value, calculate the weight matrix of the new neural skeleton such that each&#160;<br/>neuron connects only to the adjacent neuron. Now connect only those cells to neurons which are spatially close to&#160;<br/>that neuron. Start again from step 1.&#160;The same steps are followed when the tissue length decreases.</p>
+<p style="position:absolute;top:832px;left:90px;white-space:nowrap" class="ft171">(III)&#160;&#160;&#160;If the measured length does not exceed the previous length by&#160;<i>λ</i>, then go to step I.</p>
+<p style="position:absolute;top:910px;left:90px;white-space:nowrap" class="ft179">X</p>
+<p style="position:absolute;top:917px;left:97px;white-space:nowrap" class="ft1710">i&#160;is the state of the&#160;<i>i</i>th neuron,&#160;<i>g</i>&#160;is a non-linear function.</p>
+<p style="position:absolute;top:230px;left:645px;white-space:nowrap" class="ft1711">(15)</p>
+<p style="position:absolute;top:232px;left:283px;white-space:nowrap" class="ft179">x</p>
+<p style="position:absolute;top:230px;left:289px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:238px;left:288px;white-space:nowrap" class="ft1710">a</p>
+<p style="position:absolute;top:234px;left:295px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:232px;left:299px;white-space:nowrap" class="ft179">t&#160;+&#160;1)&#160;=&#160;x</p>
+<p style="position:absolute;top:230px;left:348px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:238px;left:347px;white-space:nowrap" class="ft1710">a</p>
+<p style="position:absolute;top:234px;left:354px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:232px;left:358px;white-space:nowrap" class="ft179">t)&#160;+&#160;<b>𝚫</b>,</p>
+<p style="position:absolute;top:232px;left:405px;white-space:nowrap" class="ft179">if&#160;x</p>
+<p style="position:absolute;top:230px;left:420px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:238px;left:419px;white-space:nowrap" class="ft1710">g</p>
+<p style="position:absolute;top:234px;left:426px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:232px;left:430px;white-space:nowrap" class="ft179">t)&#160;<i>&gt;&#160;</i>1</p>
+<p style="position:absolute;top:260px;left:645px;white-space:nowrap" class="ft1711">(16)</p>
+<p style="position:absolute;top:263px;left:314px;white-space:nowrap" class="ft179">x</p>
+<p style="position:absolute;top:260px;left:320px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:269px;left:319px;white-space:nowrap" class="ft1710">a</p>
+<p style="position:absolute;top:265px;left:326px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:263px;left:330px;white-space:nowrap" class="ft179">t)&#160;<i>&gt;&#160;𝜃</i></p>
+<p style="position:absolute;top:269px;left:359px;white-space:nowrap" class="ft1710">a</p>
+<p style="position:absolute;top:264px;left:367px;white-space:nowrap" class="ft179">≥</p>
+<p style="position:absolute;top:263px;left:379px;white-space:nowrap" class="ft179">cell&#160;death</p>
+<p style="position:absolute;top:359px;left:645px;white-space:nowrap" class="ft1711">(17)</p>
+<p style="position:absolute;top:362px;left:316px;white-space:nowrap" class="ft179">3x</p>
+<p style="position:absolute;top:359px;left:328px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:368px;left:328px;white-space:nowrap" class="ft1710">c1</p>
+<p style="position:absolute;top:364px;left:336px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:362px;left:340px;white-space:nowrap" class="ft179">t)&#160;+&#160;2x</p>
+<p style="position:absolute;top:359px;left:374px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:368px;left:373px;white-space:nowrap" class="ft1710">c2</p>
+<p style="position:absolute;top:364px;left:382px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:362px;left:386px;white-space:nowrap" class="ft179">t)&#160;≥&#160;1.7</p>
+<p style="position:absolute;top:389px;left:645px;white-space:nowrap" class="ft1711">(18)</p>
+<p style="position:absolute;top:392px;left:339px;white-space:nowrap" class="ft179">x</p>
+<p style="position:absolute;top:389px;left:345px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:398px;left:345px;white-space:nowrap" class="ft1710">c2</p>
+<p style="position:absolute;top:394px;left:353px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:392px;left:357px;white-space:nowrap" class="ft179">t)&#160;≤&#160;0.64</p>
+<p style="position:absolute;top:425px;left:645px;white-space:nowrap" class="ft1711">(19)</p>
+<p style="position:absolute;top:428px;left:313px;white-space:nowrap" class="ft179">3x</p>
+<p style="position:absolute;top:425px;left:325px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:434px;left:325px;white-space:nowrap" class="ft1710">c2</p>
+<p style="position:absolute;top:430px;left:333px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:428px;left:337px;white-space:nowrap" class="ft179">t)&#160;−&#160;2x</p>
+<p style="position:absolute;top:425px;left:371px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:434px;left:370px;white-space:nowrap" class="ft1710">c1</p>
+<p style="position:absolute;top:430px;left:379px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:428px;left:383px;white-space:nowrap" class="ft179">t)&#160;≤&#160;0.23</p>
+<p style="position:absolute;top:461px;left:645px;white-space:nowrap" class="ft1711">(20)</p>
+<p style="position:absolute;top:464px;left:340px;white-space:nowrap" class="ft179">x</p>
+<p style="position:absolute;top:461px;left:346px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:470px;left:346px;white-space:nowrap" class="ft1710">c1</p>
+<p style="position:absolute;top:466px;left:354px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:464px;left:358px;white-space:nowrap" class="ft179">t)&#160;≥&#160;0.31</p>
+<p style="position:absolute;top:497px;left:645px;white-space:nowrap" class="ft1711">(21)</p>
+<p style="position:absolute;top:500px;left:339px;white-space:nowrap" class="ft179">x</p>
+<p style="position:absolute;top:497px;left:345px;white-space:nowrap" class="ft1710">IJ</p>
+<p style="position:absolute;top:506px;left:345px;white-space:nowrap" class="ft1710">c1</p>
+<p style="position:absolute;top:502px;left:353px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:500px;left:357px;white-space:nowrap" class="ft179">t)&#160;≤&#160;0.46</p>
+<p style="position:absolute;top:866px;left:645px;white-space:nowrap" class="ft1711">(22)</p>
+<p style="position:absolute;top:865px;left:311px;white-space:nowrap" class="ft172"><i>𝜕</i></p>
+<p style="position:absolute;top:861px;left:317px;white-space:nowrap" class="ft179">X</p>
+<p style="position:absolute;top:868px;left:323px;white-space:nowrap" class="ft1710">i</p>
+<p style="position:absolute;top:883px;left:313px;white-space:nowrap" class="ft172"><i>𝜕</i></p>
+<p style="position:absolute;top:879px;left:319px;white-space:nowrap" class="ft179">t</p>
+<p style="position:absolute;top:873px;left:331px;white-space:nowrap" class="ft179">=&#160;−</p>
+<p style="position:absolute;top:871px;left:351px;white-space:nowrap" class="ft179">X</p>
+<p style="position:absolute;top:877px;left:357px;white-space:nowrap" class="ft1710">i</p>
+<p style="position:absolute;top:873px;left:363px;white-space:nowrap" class="ft179">+</p>
+<p style="position:absolute;top:858px;left:379px;white-space:nowrap" class="ft1710">N</p>
+<p style="position:absolute;top:857px;left:374px;white-space:nowrap" class="ft179">∑</p>
+<p style="position:absolute;top:887px;left:376px;white-space:nowrap" class="ft1710">j=1</p>
+<p style="position:absolute;top:871px;left:391px;white-space:nowrap" class="ft179">w</p>
+<p style="position:absolute;top:877px;left:399px;white-space:nowrap" class="ft1710">ij&#160;g</p>
+<p style="position:absolute;top:858px;left:410px;white-space:nowrap" class="ft179">(</p>
+<p style="position:absolute;top:871px;left:416px;white-space:nowrap" class="ft179">X</p>
+<p style="position:absolute;top:877px;left:422px;white-space:nowrap" class="ft1710">j</p>
+<p style="position:absolute;top:858px;left:425px;white-space:nowrap" class="ft179">)</p>
+<p style="position:absolute;top:691px;left:15px;white-space:nowrap" class="ft1713">Downloaded by [Tufts University] at 07:47 24 May 2016&#160;</p>
+</div>
+</body>
+</html>

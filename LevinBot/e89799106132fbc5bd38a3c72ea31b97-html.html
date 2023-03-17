@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:43px;font-family:Times;color:#000000;}
+	.ft11{font-size:16px;font-family:Times;color:#000000;}
+	.ft12{font-size:7px;font-family:Times;color:#000000;}
+	.ft13{font-size:10px;font-family:Times;color:#000000;}
+	.ft14{font-size:11px;font-family:Times;color:#000000;}
+	.ft15{font-size:17px;font-family:Times;color:#000000;}
+	.ft16{font-size:43px;line-height:62px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:151px;left:72px;white-space:nowrap" class="ft10">Adversarial&#160;Reprogramming&#160;of</p>
+<p style="position:absolute;top:201px;left:72px;white-space:nowrap" class="ft16">Neural&#160;Cellular&#160;Automata<br/>A&#160;robustness&#160;investigation.</p>
+<p style="position:absolute;top:362px;left:72px;white-space:nowrap" class="ft12">AUTHORS</p>
+<p style="position:absolute;top:362px;left:464px;white-space:nowrap" class="ft12">AFFILIATIONS</p>
+<p style="position:absolute;top:383px;left:72px;white-space:nowrap" class="ft13">Ettore&#160;Randazzo</p>
+<p style="position:absolute;top:383px;left:464px;white-space:nowrap" class="ft13">Google</p>
+<p style="position:absolute;top:405px;left:72px;white-space:nowrap" class="ft13">Alexander&#160;Mordvintsev</p>
+<p style="position:absolute;top:405px;left:464px;white-space:nowrap" class="ft13">Google</p>
+<p style="position:absolute;top:428px;left:72px;white-space:nowrap" class="ft13">Eyvind&#160;Niklasson</p>
+<p style="position:absolute;top:428px;left:464px;white-space:nowrap" class="ft13">Google</p>
+<p style="position:absolute;top:451px;left:72px;white-space:nowrap" class="ft13">Michael&#160;Levin</p>
+<p style="position:absolute;top:451px;left:464px;white-space:nowrap" class="ft13">Allen&#160;Discovery&#160;Center&#160;at&#160;Tufts&#160;University</p>
+<p style="position:absolute;top:488px;left:72px;white-space:nowrap" class="ft12">PUBLISHED</p>
+<p style="position:absolute;top:509px;left:72px;white-space:nowrap" class="ft13">May&#160;6,&#160;2021</p>
+<p style="position:absolute;top:488px;left:464px;white-space:nowrap" class="ft12">DOI</p>
+<p style="position:absolute;top:509px;left:464px;white-space:nowrap" class="ft13">10.23915/distill.00027.004</p>
+<p style="position:absolute;top:80px;left:652px;white-space:nowrap" class="ft14">ABOUT</p>
+<p style="position:absolute;top:80px;left:729px;white-space:nowrap" class="ft14">PRIZE</p>
+<p style="position:absolute;top:80px;left:796px;white-space:nowrap" class="ft14">SUBMIT</p>
+<p style="position:absolute;top:76px;left:101px;white-space:nowrap" class="ft15">&#160;Distil</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:18px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:11px;font-family:Times;color:#000000;}
+	.ft23{font-size:8px;font-family:Times;color:#2e6db7;}
+	.ft24{font-size:10px;font-family:Times;color:#2e6db7;}
+	.ft25{font-size:9px;font-family:Times;color:#000000;}
+	.ft26{font-size:13px;font-family:Times;color:#000000;}
+	.ft27{font-size:13px;font-family:Times;color:#000000;}
+	.ft28{font-size:9px;font-family:Times;color:#053961;}
+	.ft29{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:76px;white-space:nowrap" class="ft20">Contents</p>
+<p style="position:absolute;top:136px;left:76px;white-space:nowrap" class="ft21">Adversarial&#160;MNIST&#160;CAs&#160;|&#160;</p>
+<p style="position:absolute;top:163px;left:76px;white-space:nowrap" class="ft21">Adversarial&#160;Injections&#160;for&#160;Growing&#160;CAs&#160;|&#160;</p>
+<p style="position:absolute;top:190px;left:76px;white-space:nowrap" class="ft21">Perturbing&#160;the&#160;states&#160;of&#160;Growing&#160;CAs&#160;|&#160;</p>
+<p style="position:absolute;top:217px;left:76px;white-space:nowrap" class="ft21">Related&#160;Work</p>
+<p style="position:absolute;top:244px;left:76px;white-space:nowrap" class="ft21">Discussion</p>
+<p style="position:absolute;top:367px;left:163px;white-space:nowrap" class="ft22">This&#160;article&#160;is&#160;part&#160;of&#160;the&#160;Differentiable&#160;Self-organizing&#160;Systems&#160;Thread,&#160;an&#160;experimental&#160;format</p>
+<p style="position:absolute;top:392px;left:163px;white-space:nowrap" class="ft22">collecting&#160;invited&#160;short&#160;articles&#160;delving&#160;into&#160;differentiable&#160;self-organizing&#160;systems,&#160;interspersed&#160;with</p>
+<p style="position:absolute;top:417px;left:163px;white-space:nowrap" class="ft22">critical&#160;commentary&#160;from&#160;several&#160;experts&#160;in&#160;adjacent&#160;fields.</p>
+<p style="position:absolute;top:460px;left:163px;white-space:nowrap" class="ft23">←&#160;PREVIOUS&#160;ARTICLE</p>
+<p style="position:absolute;top:482px;left:163px;white-space:nowrap" class="ft24">Self-Organising&#160;Textures</p>
+<p style="position:absolute;top:565px;left:72px;white-space:nowrap" class="ft25">This&#160;article&#160;makes&#160;strong&#160;use&#160;of&#160;colors&#160;in&#160;figures&#160;and&#160;demos.&#160;Click&#160;here&#160;to&#160;adjust&#160;the&#160;color&#160;palette.</p>
+<p style="position:absolute;top:599px;left:72px;white-space:nowrap" class="ft29">In&#160;a&#160;complex&#160;system,&#160;whether&#160;biological,&#160;technological,&#160;or&#160;social,&#160;how&#160;can&#160;we&#160;discover&#160;signaling&#160;events<br/>that&#160;will&#160;alter&#160;system-level&#160;behavior&#160;in&#160;desired&#160;ways?&#160;Even&#160;when&#160;the&#160;rules&#160;governing&#160;the&#160;individual<br/>components&#160;of&#160;these&#160;complex&#160;systems&#160;are&#160;known,&#160;the&#160;inverse&#160;problem&#160;-&#160;going&#160;from&#160;desired&#160;behaviour&#160;to<br/>system&#160;design&#160;-&#160;is&#160;at&#160;the&#160;heart&#160;of&#160;many&#160;barriers&#160;for&#160;the&#160;advance&#160;of&#160;biomedicine,&#160;robotics,&#160;and&#160;other&#160;fields<br/>of&#160;importance&#160;to&#160;society.</p>
+<p style="position:absolute;top:741px;left:72px;white-space:nowrap" class="ft29">Biology,&#160;specifically,&#160;is&#160;transitioning&#160;from&#160;a&#160;focus&#160;on&#160;mechanism&#160;(what&#160;is&#160;required&#160;for&#160;the&#160;system&#160;to&#160;work)<br/>to&#160;a&#160;focus&#160;on&#160;information&#160;(what&#160;algorithm&#160;is&#160;sufficient&#160;to&#160;implement&#160;adaptive&#160;behavior).&#160;Advances&#160;in<br/>machine&#160;learning&#160;represent&#160;an&#160;exciting&#160;and&#160;largely&#160;untapped&#160;source&#160;of&#160;inspiration&#160;and&#160;tooling&#160;to&#160;assist&#160;the<br/>biological&#160;sciences.&#160;Growing&#160;Neural&#160;Cellular&#160;Automata&#160;</p>
+<p style="position:absolute;top:817px;left:488px;white-space:nowrap" class="ft26">&#160;and&#160;Self-classifying&#160;MNIST&#160;Digits&#160;</p>
+<p style="position:absolute;top:817px;left:760px;white-space:nowrap" class="ft26">&#160;introduced</p>
+<p style="position:absolute;top:842px;left:72px;white-space:nowrap" class="ft29">the&#160;Neural&#160;Cellular&#160;Automata&#160;(Neural&#160;CA)&#160;model&#160;and&#160;demonstrated&#160;how&#160;tasks&#160;requiring&#160;self-organisation,<br/>such&#160;as&#160;pattern&#160;growth&#160;and&#160;self-classification&#160;of&#160;digits,&#160;can&#160;be&#160;trained&#160;in&#160;an&#160;end-to-end,&#160;differentiable<br/>fashion.&#160;The&#160;resulting&#160;models&#160;were&#160;robust&#160;to&#160;various&#160;kinds&#160;of&#160;perturbations:&#160;the&#160;growing&#160;CA&#160;expressed<br/>regenerative&#160;capabilities&#160;when&#160;damaged;&#160;the&#160;MNIST&#160;CA&#160;were&#160;responsive&#160;to&#160;changes&#160;in&#160;the&#160;underlying<br/>digits,&#160;triggering&#160;reclassification&#160;whenever&#160;necessary.&#160;These&#160;computational&#160;frameworks&#160;represent<br/>quantitative&#160;models&#160;with&#160;which&#160;to&#160;understand&#160;important&#160;biological&#160;phenomena,&#160;such&#160;as&#160;scaling&#160;of&#160;single<br/>cell&#160;behavior&#160;rules&#160;into&#160;reliable&#160;organ-level&#160;anatomies.&#160;The&#160;latter&#160;is&#160;a&#160;kind&#160;of&#160;anatomical&#160;homeostasis,<br/>achieved&#160;by&#160;feedback&#160;loops&#160;that&#160;must&#160;recognize&#160;deviations&#160;from&#160;a&#160;correct&#160;target&#160;morphology&#160;and<br/>progressively&#160;reduce&#160;anatomical&#160;error.</p>
+<p style="position:absolute;top:1084px;left:72px;white-space:nowrap" class="ft29">In&#160;this&#160;work,&#160;we&#160;<i>train&#160;adversaries&#160;</i>whose&#160;goal&#160;is&#160;to&#160;reprogram&#160;CA&#160;into&#160;doing&#160;something&#160;other&#160;than&#160;what<br/>they&#160;were&#160;trained&#160;to&#160;do.&#160;In&#160;order&#160;to&#160;understand&#160;what&#160;kinds&#160;of&#160;lower-level&#160;signals&#160;alter&#160;system-level<br/>behavior&#160;of&#160;our&#160;CA,&#160;it&#160;is&#160;important&#160;to&#160;understand&#160;how&#160;these&#160;CA&#160;are&#160;constructed&#160;and&#160;where&#160;local&#160;versus</p>
+<p style="position:absolute;top:818px;left:471px;white-space:nowrap" class="ft28">[1]</p>
+<p style="position:absolute;top:818px;left:742px;white-space:nowrap" class="ft28">[2]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:13px;font-family:Times;color:#000000;}
+	.ft31{font-size:13px;font-family:Times;color:#000000;}
+	.ft32{font-size:9px;font-family:Times;color:#053961;}
+	.ft33{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+	.ft34{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:52px;left:99px;white-space:nowrap" class="ft30">behaviours&#160;and&#160;for&#160;communication&#160;with&#160;neighbouring&#160;cells.</p>
+<p style="position:absolute;top:93px;left:99px;white-space:nowrap" class="ft33">The&#160;model&#160;parameters.&#160;These&#160;describe&#160;the&#160;input/output&#160;behavior&#160;of&#160;a&#160;cell&#160;and&#160;are&#160;shared&#160;by&#160;every<br/>cell&#160;of&#160;the&#160;same&#160;family.&#160;The&#160;model&#160;parameters&#160;can&#160;be&#160;seen&#160;as&#160;<i>the&#160;way&#160;the&#160;system&#160;works</i>.</p>
+<p style="position:absolute;top:159px;left:99px;white-space:nowrap" class="ft33">The&#160;perceptive&#160;field.&#160;This&#160;is&#160;how&#160;cells&#160;perceive&#160;their&#160;environment.&#160;In&#160;Neural&#160;CA,&#160;we&#160;always&#160;restrict<br/>the&#160;perceptive&#160;field&#160;to&#160;be&#160;the&#160;eight&#160;nearest&#160;neighbors&#160;and&#160;the&#160;cell&#160;itself.&#160;The&#160;way&#160;cells&#160;are&#160;perceived<br/>by&#160;each&#160;other&#160;is&#160;different&#160;between&#160;the&#160;Growing&#160;CA&#160;and&#160;MNIST&#160;CA.&#160;The&#160;Growing&#160;CA&#160;perceptive&#160;field&#160;is<br/>a&#160;set&#160;of&#160;weights&#160;fixed&#160;both&#160;during&#160;training&#160;and&#160;inference,&#160;while&#160;the&#160;MNIST&#160;CA&#160;perceptive&#160;field&#160;is<br/>learned&#160;as&#160;part&#160;of&#160;the&#160;model&#160;parameters.</p>
+<p style="position:absolute;top:301px;left:72px;white-space:nowrap" class="ft30">Perturbing&#160;any&#160;of&#160;these&#160;components&#160;will&#160;result&#160;in&#160;system-level&#160;behavioural&#160;changes.</p>
+<p style="position:absolute;top:342px;left:72px;white-space:nowrap" class="ft33">We&#160;will&#160;explore&#160;two&#160;kinds&#160;of&#160;adversarial&#160;attacks:&#160;1)&#160;injecting&#160;a&#160;few&#160;adversarial&#160;cells&#160;into&#160;an&#160;existing&#160;grid<br/>running&#160;a&#160;pretrained&#160;model;&#160;and&#160;2)&#160;perturbing&#160;the&#160;global&#160;state&#160;of&#160;all&#160;cells&#160;on&#160;a&#160;grid.</p>
+<p style="position:absolute;top:408px;left:72px;white-space:nowrap" class="ft33">For&#160;the&#160;first&#160;type&#160;of&#160;adversarial&#160;attacks&#160;we&#160;train&#160;a&#160;new&#160;CA&#160;model&#160;that,&#160;when&#160;placed&#160;in&#160;an&#160;environment<br/>running&#160;one&#160;of&#160;the&#160;original&#160;models&#160;described&#160;in&#160;the&#160;previous&#160;articles,&#160;is&#160;able&#160;to&#160;hijack&#160;the&#160;behavior&#160;of&#160;the<br/>collective&#160;mix&#160;of&#160;adversarial&#160;and&#160;non-adversarial&#160;CA.&#160;This&#160;is&#160;an&#160;example&#160;of&#160;injecting&#160;CA&#160;with&#160;differing<br/><i>model&#160;parameters</i>&#160;into&#160;the&#160;system.&#160;In&#160;biology,&#160;numerous&#160;forms&#160;of&#160;hijacking&#160;are&#160;known,&#160;including&#160;viruses<br/>that&#160;take&#160;over&#160;genetic&#160;and&#160;biochemical&#160;information&#160;flow&#160;</p>
+<p style="position:absolute;top:509px;left:501px;white-space:nowrap" class="ft30">,&#160;bacteria&#160;that&#160;take&#160;over&#160;physiological&#160;control</p>
+<p style="position:absolute;top:534px;left:72px;white-space:nowrap" class="ft30">mechanisms&#160;</p>
+<p style="position:absolute;top:534px;left:189px;white-space:nowrap" class="ft30">&#160;and&#160;even&#160;regenerative&#160;morphology&#160;of&#160;whole&#160;bodies&#160;</p>
+<p style="position:absolute;top:534px;left:592px;white-space:nowrap" class="ft30">,&#160;and&#160;fungi&#160;and&#160;toxoplasma&#160;that</p>
+<p style="position:absolute;top:559px;left:72px;white-space:nowrap" class="ft30">modulate&#160;host&#160;behavior&#160;</p>
+<p style="position:absolute;top:559px;left:269px;white-space:nowrap" class="ft30">.&#160;Especially&#160;fascinating&#160;are&#160;the&#160;many&#160;cases&#160;of&#160;non-cell-autonomous&#160;signaling</p>
+<p style="position:absolute;top:584px;left:72px;white-space:nowrap" class="ft33">developmental&#160;biology&#160;and&#160;cancer,&#160;showing&#160;that&#160;some&#160;cell&#160;behaviors&#160;can&#160;significantly&#160;alter&#160;host<br/>properties&#160;both&#160;locally&#160;and&#160;at&#160;long&#160;range.&#160;For&#160;example,&#160;bioelectrically-abnormal&#160;cells&#160;can&#160;trigger<br/>metastatic&#160;conversion&#160;in&#160;an&#160;otherwise&#160;normal&#160;body&#160;(with&#160;no&#160;genetic&#160;defects)&#160;</p>
+<p style="position:absolute;top:635px;left:654px;white-space:nowrap" class="ft30">,&#160;while&#160;management&#160;of</p>
+<p style="position:absolute;top:660px;left:72px;white-space:nowrap" class="ft30">bioelectrical&#160;state&#160;in&#160;one&#160;area&#160;of&#160;the&#160;body&#160;can&#160;suppress&#160;tumorigenesis&#160;on&#160;the&#160;other&#160;side&#160;of&#160;the&#160;organism</p>
+<p style="position:absolute;top:685px;left:93px;white-space:nowrap" class="ft30">.&#160;Similarly,&#160;amputation&#160;damage&#160;in&#160;one&#160;leg&#160;initiates&#160;changes&#160;to&#160;ionic&#160;properties&#160;of&#160;cells&#160;in&#160;the</p>
+<p style="position:absolute;top:710px;left:72px;white-space:nowrap" class="ft30">contralateral&#160;leg&#160;</p>
+<p style="position:absolute;top:710px;left:216px;white-space:nowrap" class="ft30">,&#160;while&#160;the&#160;size&#160;of&#160;the&#160;developing&#160;brain&#160;is&#160;in&#160;part&#160;dictated&#160;by&#160;the&#160;activity&#160;of&#160;ventral&#160;gut</p>
+<p style="position:absolute;top:736px;left:72px;white-space:nowrap" class="ft30">cells&#160;</p>
+<p style="position:absolute;top:736px;left:136px;white-space:nowrap" class="ft30">.&#160;All&#160;of&#160;these&#160;phenomena&#160;underlie&#160;the&#160;importance&#160;of&#160;understanding&#160;how&#160;cell&#160;groups&#160;make</p>
+<p style="position:absolute;top:761px;left:72px;white-space:nowrap" class="ft33">collective&#160;decisions,&#160;and&#160;how&#160;those&#160;tissue-level&#160;decisions&#160;can&#160;be&#160;subverted&#160;by&#160;the&#160;activity&#160;of&#160;a&#160;small<br/>number&#160;of&#160;cells.&#160;It&#160;is&#160;essential&#160;to&#160;develop&#160;quantitative&#160;models&#160;of&#160;such&#160;dynamics,&#160;in&#160;order&#160;to&#160;drive<br/>meaningful&#160;progress&#160;in&#160;regenerative&#160;medicine&#160;that&#160;controls&#160;system-level&#160;outcomes&#160;top-down,&#160;where&#160;cell-<br/>or&#160;molecular-level&#160;micromanagement&#160;is&#160;infeasible&#160;</p>
+<p style="position:absolute;top:836px;left:462px;white-space:nowrap" class="ft30">.</p>
+<p style="position:absolute;top:877px;left:72px;white-space:nowrap" class="ft33">The&#160;second&#160;type&#160;of&#160;adversarial&#160;attacks&#160;interact&#160;with&#160;previously&#160;trained&#160;growing&#160;CA&#160;models&#160;by&#160;<i>perturbing<br/>the&#160;states&#160;within&#160;cells</i>.&#160;We&#160;apply&#160;a&#160;global&#160;state&#160;perturbation&#160;to&#160;all&#160;living&#160;cells.&#160;This&#160;can&#160;be&#160;seen&#160;as<br/>inhibiting&#160;or&#160;enhancing&#160;combinations&#160;of&#160;state&#160;values,&#160;in&#160;turn&#160;hijacking&#160;proper&#160;communications&#160;among&#160;cells<br/>and&#160;within&#160;the&#160;cellʼs&#160;own&#160;states.&#160;Models&#160;like&#160;this&#160;represent&#160;not&#160;only&#160;ways&#160;of&#160;thinking&#160;about&#160;adversarial<br/>relationships&#160;in&#160;nature&#160;(such&#160;as&#160;parasitism&#160;and&#160;evolutionary&#160;arms&#160;races&#160;of&#160;genetic&#160;and&#160;physiological</p>
+<p style="position:absolute;top:510px;left:482px;white-space:nowrap" class="ft32">[3]</p>
+<p style="position:absolute;top:535px;left:170px;white-space:nowrap" class="ft32">[4]</p>
+<p style="position:absolute;top:535px;left:573px;white-space:nowrap" class="ft32">[5]</p>
+<p style="position:absolute;top:561px;left:250px;white-space:nowrap" class="ft32">[6]</p>
+<p style="position:absolute;top:636px;left:636px;white-space:nowrap" class="ft32">[7]</p>
+<p style="position:absolute;top:687px;left:74px;white-space:nowrap" class="ft32">[8]</p>
+<p style="position:absolute;top:712px;left:197px;white-space:nowrap" class="ft32">[9]</p>
+<p style="position:absolute;top:737px;left:112px;white-space:nowrap" class="ft32">[10]</p>
+<p style="position:absolute;top:838px;left:439px;white-space:nowrap" class="ft32">[11]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:13px;font-family:Times;color:#000000;}
+	.ft41{font-size:11px;font-family:Times;color:#000000;}
+	.ft42{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:48px;left:72px;white-space:nowrap" class="ft42">Recall&#160;how&#160;the&#160;Self-classifying&#160;MNIST&#160;digits&#160;task&#160;consisted&#160;of&#160;placing&#160;CA&#160;cells&#160;on&#160;a&#160;plane&#160;forming&#160;the<br/>shape&#160;of&#160;an&#160;MNIST&#160;digit.&#160;The&#160;cells&#160;then&#160;had&#160;to&#160;communicate&#160;among&#160;themselves&#160;in&#160;order&#160;to&#160;come&#160;to&#160;a<br/>complete&#160;consensus&#160;as&#160;to&#160;which&#160;digit&#160;they&#160;formed.</p>
+<p style="position:absolute;top:562px;left:72px;white-space:nowrap" class="ft40">Below&#160;we&#160;show&#160;examples&#160;of&#160;classifications&#160;made&#160;by&#160;the&#160;model&#160;trained&#160;in&#160;Self-classifying&#160;MNIST&#160;Digits.</p>
+<p style="position:absolute;top:452px;left:180px;white-space:nowrap" class="ft41">Figure&#160;1:&#160;Diagram&#160;showing&#160;the&#160;local&#160;vs.&#160;global&#160;information&#160;available&#160;in&#160;the&#160;cell&#160;collective.</p>
+<p style="position:absolute;top:472px;left:95px;white-space:nowrap" class="ft41">(a) Local&#160;information neighbourhood - each&#160;cell&#160;can only observe itself&#160;and its&#160;neighborsʼ states, or the absence of</p>
+<p style="position:absolute;top:492px;left:421px;white-space:nowrap" class="ft41">neighbours.</p>
+<p style="position:absolute;top:512px;left:216px;white-space:nowrap" class="ft41">(b) Globally,&#160;the cell&#160;collective aggregates&#160;information from&#160;all&#160;parts&#160;of&#160;itself.</p>
+<p style="position:absolute;top:533px;left:173px;white-space:nowrap" class="ft41">(c)&#160;It&#160;is&#160;able&#160;to&#160;distinguish&#160;certain&#160;shapes&#160;that&#160;compose&#160;a&#160;specific&#160;digit&#160;(3&#160;in&#160;the&#160;example).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:13px;font-family:Times;color:#000000;}
+	.ft51{font-size:13px;font-family:Times;color:#000000;}
+	.ft52{font-size:11px;font-family:Times;color:#000000;}
+	.ft53{font-size:12px;font-family:Times;color:#000000;}
+	.ft54{font-size:9px;font-family:Times;color:#053961;}
+	.ft55{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:150px;left:72px;white-space:nowrap" class="ft55">In&#160;this&#160;experiment,&#160;the&#160;goal&#160;is&#160;to&#160;create&#160;adversarial&#160;CA&#160;that&#160;can&#160;hijack&#160;the&#160;cell&#160;collectiveʼs<br/>classification&#160;consensus&#160;to&#160;always&#160;classify&#160;an&#160;eight.&#160;We&#160;use&#160;the&#160;CA&#160;model&#160;from&#160;</p>
+<p style="position:absolute;top:176px;left:699px;white-space:nowrap" class="ft50">&#160;and&#160;freeze&#160;its</p>
+<p style="position:absolute;top:201px;left:72px;white-space:nowrap" class="ft55">parameters.&#160;We&#160;then&#160;train&#160;a&#160;new&#160;CA&#160;whose&#160;model&#160;architecture&#160;is&#160;identical&#160;to&#160;the&#160;frozen&#160;model&#160;but&#160;is<br/>randomly&#160;initialized.&#160;The&#160;training&#160;regime&#160;also&#160;closely&#160;approximates&#160;that&#160;of&#160;self-classifying&#160;MNIST&#160;digits<br/>CA.&#160;There&#160;are&#160;three&#160;important&#160;differences:</p>
+<p style="position:absolute;top:292px;left:99px;white-space:nowrap" class="ft50">Regardless&#160;of&#160;what&#160;the&#160;actual&#160;digit&#160;is,&#160;we&#160;consider&#160;<i>the&#160;correct&#160;classification&#160;to&#160;always&#160;be&#160;an&#160;eight</i>.</p>
+<p style="position:absolute;top:333px;left:99px;white-space:nowrap" class="ft55">For&#160;each&#160;batch&#160;and&#160;each&#160;pixel,&#160;the&#160;CA&#160;is&#160;randomly&#160;chosen&#160;to&#160;be&#160;either&#160;the&#160;pretrained&#160;model&#160;or&#160;the<br/>new&#160;adversarial&#160;one.&#160;The&#160;adversarial&#160;CA&#160;is&#160;used&#160;10%&#160;of&#160;the&#160;time,&#160;and&#160;the&#160;pre-trained,&#160;frozen,&#160;model<br/>the&#160;rest&#160;of&#160;the&#160;time.</p>
+<p style="position:absolute;top:424px;left:99px;white-space:nowrap" class="ft55">Only&#160;the&#160;adversarial&#160;CA&#160;parameters&#160;are&#160;trained,&#160;the&#160;parameters&#160;of&#160;the&#160;pretrained&#160;model&#160;are&#160;kept<br/>frozen.</p>
+<p style="position:absolute;top:491px;left:72px;white-space:nowrap" class="ft55">The&#160;adversarial&#160;attack&#160;as&#160;defined&#160;here&#160;only&#160;modifies&#160;a&#160;small&#160;percentage&#160;of&#160;the&#160;overall&#160;system,&#160;but&#160;the&#160;goal<br/>is&#160;to&#160;propagate&#160;signals&#160;that&#160;affect&#160;all&#160;the&#160;living&#160;cells.&#160;Therefore,&#160;these&#160;adversaries&#160;have&#160;to&#160;somehow&#160;learn<br/>to&#160;communicate&#160;deceiving&#160;information&#160;that&#160;causes&#160;wrong&#160;classifications&#160;in&#160;their&#160;neighbours&#160;and&#160;further<br/>cascades&#160;in&#160;the&#160;propagation&#160;of&#160;deceiving&#160;information&#160;by&#160;‘unawareʼ&#160;cells.&#160;The&#160;unaware&#160;cellsʼ&#160;parameters<br/>cannot&#160;be&#160;changed&#160;so&#160;the&#160;only&#160;means&#160;of&#160;attack&#160;by&#160;the&#160;adversaries&#160;is&#160;to&#160;cause&#160;a&#160;change&#160;in&#160;the&#160;cellsʼ<br/>states.&#160;Cellsʼ&#160;states&#160;are&#160;responsible&#160;for&#160;communication&#160;and&#160;diversification.</p>
+<p style="position:absolute;top:658px;left:72px;white-space:nowrap" class="ft55">The&#160;task&#160;is&#160;remarkably&#160;simple&#160;to&#160;optimize,&#160;reaching&#160;convergence&#160;in&#160;as&#160;little&#160;as&#160;2000&#160;training&#160;steps&#160;(as<br/>opposed&#160;to&#160;the&#160;two&#160;orders&#160;of&#160;magnitude&#160;more&#160;steps&#160;needed&#160;to&#160;construct&#160;the&#160;original&#160;MNIST&#160;CA).&#160;By<br/>visualising&#160;what&#160;happens&#160;when&#160;we&#160;remove&#160;the&#160;adversaries,&#160;we&#160;observe&#160;that&#160;the&#160;adversaries&#160;must&#160;be</p>
+<p style="position:absolute;top:121px;left:137px;white-space:nowrap" class="ft52">Figure&#160;2:&#160;The&#160;original&#160;model&#160;behavior&#160;on&#160;unseen&#160;data.&#160;Classification&#160;mistakes&#160;have&#160;a&#160;red&#160;background.</p>
+<p style="position:absolute;top:81px;left:661px;white-space:nowrap" class="ft53">0:00&#160;/ 0:07</p>
+<p style="position:absolute;top:177px;left:681px;white-space:nowrap" class="ft54">[2]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:13px;font-family:Times;color:#000000;}
+	.ft61{font-size:11px;font-family:Times;color:#000000;}
+	.ft62{font-size:12px;font-family:Times;color:#000000;}
+	.ft63{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:467px;left:72px;white-space:nowrap" class="ft63">While&#160;we&#160;trained&#160;the&#160;adversaries&#160;with&#160;a&#160;10-to-90%&#160;split&#160;of&#160;adversarial&#160;vs.&#160;non-adversarial&#160;cells,&#160;we<br/>observe&#160;that&#160;often&#160;significantly&#160;fewer&#160;adversaries&#160;are&#160;needed&#160;to&#160;succeed&#160;in&#160;the&#160;deception.&#160;Below&#160;we<br/>evaluate&#160;the&#160;experiment&#160;with&#160;just&#160;one&#160;percent&#160;of&#160;cells&#160;being&#160;adversaries.</p>
+<p style="position:absolute;top:417px;left:83px;white-space:nowrap" class="ft61">Figure&#160;3:&#160;We&#160;introduce&#160;the&#160;adversaries&#160;(red&#160;pixels)&#160;after&#160;200&#160;steps&#160;and&#160;remove&#160;them&#160;after&#160;200&#160;more&#160;steps.&#160;Most&#160;digits</p>
+<p style="position:absolute;top:437px;left:200px;white-space:nowrap" class="ft61">recover,&#160;but&#160;not&#160;all.&#160;We&#160;highlight&#160;mistakes&#160;in&#160;classification&#160;with&#160;a&#160;red&#160;background.</p>
+<p style="position:absolute;top:377px;left:661px;white-space:nowrap" class="ft62">0:00&#160;/ 0:23</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:13px;font-family:Times;color:#000000;}
+	.ft71{font-size:11px;font-family:Times;color:#000000;}
+	.ft72{font-size:12px;font-family:Times;color:#000000;}
+	.ft73{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:126px;left:72px;white-space:nowrap" class="ft73">We&#160;created&#160;a&#160;demo&#160;playground&#160;where&#160;the&#160;reader&#160;can&#160;draw&#160;digits&#160;and&#160;place&#160;adversaries&#160;with&#160;surgical<br/>precision.&#160;We&#160;encourage&#160;the&#160;reader&#160;to&#160;play&#160;with&#160;the&#160;demo&#160;to&#160;get&#160;a&#160;sense&#160;of&#160;how&#160;easily&#160;non-adversarial<br/>cells&#160;are&#160;swayed&#160;towards&#160;the&#160;wrong&#160;classification.</p>
+<p style="position:absolute;top:76px;left:82px;white-space:nowrap" class="ft71">Figure&#160;4:&#160;Adversaries&#160;constituting&#160;up&#160;1%&#160;of&#160;the&#160;cell&#160;collective&#160;(red&#160;pixels).&#160;We&#160;highlight&#160;mistakes&#160;in&#160;classification&#160;with&#160;a</p>
+<p style="position:absolute;top:97px;left:407px;white-space:nowrap" class="ft71">red&#160;background.</p>
+<p style="position:absolute;top:36px;left:661px;white-space:nowrap" class="ft72">0:00&#160;/ 0:08</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:54px;left:72px;white-space:nowrap" class="ft80">time&#160;and&#160;robust&#160;to&#160;perturbations.&#160;In&#160;this&#160;article,&#160;we&#160;focus&#160;on&#160;the&#160;lizard&#160;pattern&#160;model&#160;from&#160;Growing&#160;CA.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:13px;font-family:Times;color:#000000;}
+	.ft91{font-size:13px;line-height:25px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:65px;left:72px;white-space:nowrap" class="ft91">Just&#160;like&#160;in&#160;the&#160;previous&#160;experiment,&#160;our&#160;adversaries&#160;can&#160;only&#160;indirectly&#160;affect&#160;the&#160;states&#160;of&#160;the&#160;original<br/>cells.</p>
+<p style="position:absolute;top:131px;left:72px;white-space:nowrap" class="ft91">We&#160;first&#160;train&#160;adversaries&#160;for&#160;the&#160;tailless&#160;target&#160;with&#160;a&#160;10%&#160;chance&#160;for&#160;any&#160;given&#160;cell&#160;to&#160;be&#160;an&#160;adversary.<br/>We&#160;prohibit&#160;cells&#160;to&#160;be&#160;adversaries&#160;if&#160;they&#160;are&#160;outside&#160;the&#160;target&#160;pattern;&#160;i.e.&#160;the&#160;tail&#160;contains&#160;no<br/>adversaries.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:918px;height:1188px;">
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:14px;font-family:Times;color:#000000;}
+	.ft191{font-size:10px;font-family:Times;color:#000000;}
+	.ft192{font-size:14px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:952px;left:72px;white-space:nowrap" class="ft190">Acknowledgments</p>
+<p style="position:absolute;top:989px;left:72px;white-space:nowrap" class="ft191">We&#160;thank&#160;Hananel&#160;Hazan&#160;and&#160;Nick&#160;Moran&#160;for&#160;their&#160;valuable&#160;conversations&#160;and&#160;feedback.</p>
+<p style="position:absolute;top:1037px;left:72px;white-space:nowrap" class="ft192">Author<br/>Contributions</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:10px;font-family:Times;color:#000000;}
+	.ft201{font-size:14px;font-family:Times;color:#000000;}
+	.ft202{font-size:12px;font-family:Times;color:#000000;}
+	.ft203{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:70px;left:72px;white-space:nowrap" class="ft203">Research:&#160;Ettore&#160;designed&#160;and&#160;performed&#160;the&#160;experiments&#160;in&#160;this&#160;article.&#160;Alexander&#160;and&#160;Michael&#160;gave&#160;advisorship&#160;throughout<br/>the&#160;process.</p>
+<p style="position:absolute;top:125px;left:72px;white-space:nowrap" class="ft200">Demos:&#160;Ettore,&#160;Alexander&#160;and&#160;Eyvind&#160;contributed&#160;to&#160;the&#160;demo.</p>
+<p style="position:absolute;top:159px;left:72px;white-space:nowrap" class="ft203">Writing&#160;and&#160;Diagrams:&#160;Ettore&#160;outlined&#160;the&#160;structure&#160;of&#160;the&#160;article&#160;and&#160;contributed&#160;to&#160;the&#160;content&#160;throughout.&#160;Eyvind&#160;contributed<br/>to&#160;the&#160;content&#160;throughout.&#160;Michael&#160;made&#160;extensive&#160;contributions&#160;to&#160;the&#160;article&#160;text,&#160;providing&#160;the&#160;biological&#160;context&#160;for&#160;this&#160;work.</p>
+<p style="position:absolute;top:229px;left:72px;white-space:nowrap" class="ft201">Footnotes</p>
+<p style="position:absolute;top:266px;left:73px;white-space:nowrap" class="ft200">!.&#160;The&#160;still-image&#160;of&#160;the&#160;video&#160;is&#160;on&#160;step&#160;500,&#160;and&#160;the&#160;video&#160;stops&#160;for&#160;a&#160;bit&#160;more&#160;than&#160;a&#160;second&#160;on&#160;step&#160;500.&#160;[↩]</p>
+<p style="position:absolute;top:300px;left:73px;white-space:nowrap" class="ft200">$.&#160;In&#160;practice,&#160;we&#160;also&#160;clip&#160;the&#160;state&#160;of&#160;cells&#160;such&#160;that&#160;they&#160;are&#160;bounded&#160;in&#160;</p>
+<p style="position:absolute;top:300px;left:571px;white-space:nowrap" class="ft200">.&#160;This&#160;is&#160;a&#160;minor&#160;detail&#160;and&#160;it&#160;helps&#160;stabilise</p>
+<p style="position:absolute;top:321px;left:89px;white-space:nowrap" class="ft200">the&#160;model.&#160;[↩]</p>
+<p style="position:absolute;top:299px;left:519px;white-space:nowrap" class="ft202">[−3,&#160;+3]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:14px;font-family:Times;color:#000000;}
+	.ft211{font-size:10px;font-family:Times;color:#000000;}
+	.ft212{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:72px;left:72px;white-space:nowrap" class="ft210">References</p>
+<p style="position:absolute;top:108px;left:73px;white-space:nowrap" class="ft211">!.&#160;Growing&#160;Neural&#160;Cellular&#160;Automata</p>
+<p style="position:absolute;top:130px;left:89px;white-space:nowrap" class="ft211">Mordvintsev,&#160;A.,&#160;Randazzo,&#160;E.,&#160;Niklasson,&#160;E.&#160;and&#160;Levin,&#160;M.,&#160;2020.&#160;Distill.&#160;DOI:&#160;10.23915/distill.00023</p>
+<p style="position:absolute;top:164px;left:73px;white-space:nowrap" class="ft211">$.&#160;Self-classifying&#160;MNIST&#160;Digits</p>
+<p style="position:absolute;top:185px;left:89px;white-space:nowrap" class="ft211">Randazzo,&#160;E.,&#160;Mordvintsev,&#160;A.,&#160;Niklasson,&#160;E.,&#160;Levin,&#160;M.&#160;and&#160;Greydanus,&#160;S.,&#160;2020.&#160;Distill.&#160;DOI:&#160;10.23915/distill.00027.002</p>
+<p style="position:absolute;top:219px;left:73px;white-space:nowrap" class="ft211">%.&#160;Herpes&#160;Simplex&#160;Virus:&#160;The&#160;Hostile&#160;Guest&#160;That&#160;Takes&#160;Over&#160;Your&#160;Home</p>
+<p style="position:absolute;top:241px;left:89px;white-space:nowrap" class="ft211">Banerjee,&#160;A.,&#160;Kulkarni,&#160;S.&#160;and&#160;Mukherjee,&#160;A.,&#160;2020.&#160;Front&#160;Microbiol,&#160;Vol&#160;11,&#160;pp.&#160;733.&#160;DOI:&#160;10.3389/fmicb.2020.00733</p>
+<p style="position:absolute;top:275px;left:73px;white-space:nowrap" class="ft211">&amp;.&#160;The&#160;role&#160;of&#160;gut&#160;microbiota&#160;(commensal&#160;bacteria)&#160;and&#160;the&#160;mucosal&#160;barrier&#160;in&#160;the&#160;pathogenesis&#160;of&#160;inflammatory&#160;and</p>
+<p style="position:absolute;top:296px;left:89px;white-space:nowrap" class="ft212">autoimmune&#160;diseases&#160;and&#160;cancer:&#160;contribution&#160;of&#160;germ-free&#160;and&#160;gnotobiotic&#160;animal&#160;models&#160;of&#160;human&#160;diseases<br/>Tlaskalová-Hogenová,&#160;H.,&#160;Stěpánková,&#160;R.,&#160;H.,&#160;K.,&#160;Hudcovic,&#160;T.,&#160;Vannucci,&#160;L.,&#160;Tučková,&#160;L.,&#160;Rossmann,&#160;P.,&#160;Hrnčíř,&#160;T.,&#160;Kverka,&#160;M.,<br/>Zákostelská,&#160;Z.,&#160;Klimešová,&#160;K.,&#160;Přibylová,&#160;J.,&#160;Bártová,&#160;J.,&#160;Sanchez,&#160;D.,&#160;Fundová,&#160;P.,&#160;Borovská,&#160;D.,&#160;Srůtková,&#160;D.,&#160;Zídek,&#160;Z.,<br/>Schwarzer,&#160;M.,&#160;Drastich,&#160;P.&#160;and&#160;Funda,&#160;D.P.,&#160;2011.&#160;Cell&#160;Mol&#160;Immunol,&#160;Vol&#160;8(2),&#160;pp.&#160;110--120.&#160;DOI:&#160;10.1038/cmi.2010.67</p>
+<p style="position:absolute;top:394px;left:73px;white-space:nowrap" class="ft211">'.&#160;Regulation&#160;of&#160;axial&#160;and&#160;head&#160;patterning&#160;during&#160;planarian&#160;regeneration&#160;by&#160;a&#160;commensal&#160;bacterium</p>
+<p style="position:absolute;top:416px;left:89px;white-space:nowrap" class="ft212">Williams,&#160;K.B.,&#160;Bischof,&#160;J.,&#160;Lee,&#160;F.J.,&#160;Miller,&#160;K.A.,&#160;LaPalme,&#160;J.V.,&#160;Wolfe,&#160;B.E.&#160;and&#160;Levin,&#160;M.,&#160;2020.&#160;Mech&#160;Dev,&#160;Vol&#160;163,&#160;pp.&#160;103614.<br/>DOI:&#160;10.1016/j.mod.2020.103614</p>
+<p style="position:absolute;top:471px;left:73px;white-space:nowrap" class="ft211">(.&#160;Toxoplasma&#160;gondii&#160;infection&#160;and&#160;behavioral&#160;outcomes&#160;in&#160;humans:&#160;a&#160;systematic&#160;review</p>
+<p style="position:absolute;top:492px;left:89px;white-space:nowrap" class="ft212">Martinez,&#160;V.O.,&#160;Mendonça&#160;Lima,&#160;F.W.,&#160;Carvalho,&#160;C.F.&#160;and&#160;Menezes-Filho,&#160;J.A.,&#160;2018.&#160;Parasitology&#160;research,&#160;Vol&#160;117,&#160;pp.<br/>3059-3065.&#160;DOI:&#160;10.1007/s00436-018-6040-2</p>
+<p style="position:absolute;top:548px;left:73px;white-space:nowrap" class="ft211">).&#160;Resting&#160;potential,&#160;oncogene-induced&#160;tumorigenesis,&#160;and&#160;metastasis:&#160;the&#160;bioelectric&#160;basis&#160;of&#160;cancer&#160;in&#160;vivo</p>
+<p style="position:absolute;top:569px;left:89px;white-space:nowrap" class="ft211">Lobikin,&#160;M.,&#160;Chernet,&#160;B.,&#160;Lobo,&#160;D.&#160;and&#160;Levin,&#160;M.,&#160;2012.&#160;Physical&#160;biology,&#160;Vol&#160;9.&#160;DOI:&#160;10.1088/1478-3975/9/6/065002</p>
+<p style="position:absolute;top:603px;left:73px;white-space:nowrap" class="ft211">*.&#160;Transmembrane&#160;voltage&#160;potential&#160;of&#160;somatic&#160;cells&#160;controls&#160;oncogene-mediated&#160;tumorigenesis&#160;at&#160;long-range</p>
+<p style="position:absolute;top:625px;left:89px;white-space:nowrap" class="ft211">Chernet,&#160;B.T.&#160;and&#160;Levin,&#160;M.,&#160;2014.&#160;Oncotarget.&#160;DOI:&#160;10.18632/oncotarget.1935</p>
+<p style="position:absolute;top:659px;left:73px;white-space:nowrap" class="ft211">+.&#160;Cross-limb&#160;communication&#160;during&#160;Xenopus&#160;hindlimb&#160;regenerative&#160;response:&#160;non-local&#160;bioelectric&#160;injury&#160;signals</p>
+<p style="position:absolute;top:680px;left:89px;white-space:nowrap" class="ft211">Busse,&#160;S.M.,&#160;McMillen,&#160;P.T.&#160;and&#160;Levin,&#160;M.,&#160;2018.&#160;Development.&#160;DOI:&#160;10.1242/dev.164210</p>
+<p style="position:absolute;top:714px;left:65px;white-space:nowrap" class="ft211">!,.&#160;Local&#160;and&#160;long-range&#160;endogenous&#160;resting&#160;potential&#160;gradients&#160;antagonistically&#160;regulate&#160;apoptosis&#160;and&#160;proliferation&#160;in&#160;the</p>
+<p style="position:absolute;top:736px;left:89px;white-space:nowrap" class="ft212">embryonic&#160;CNS<br/>Pai,&#160;V.P.,&#160;Lemire,&#160;J.M.,&#160;Chen,&#160;Y.,&#160;Lin,&#160;G.&#160;and&#160;Levin,&#160;M.,&#160;2015.&#160;The&#160;International&#160;journal&#160;of&#160;developmental&#160;biology.&#160;DOI:<br/>10.1387/ijdb.150197ml</p>
+<p style="position:absolute;top:812px;left:65px;white-space:nowrap" class="ft211">!!.&#160;Top-down&#160;models&#160;in&#160;biology:&#160;explanation&#160;and&#160;control&#160;of&#160;complex&#160;living&#160;systems&#160;above&#160;the&#160;molecular&#160;level</p>
+<p style="position:absolute;top:834px;left:89px;white-space:nowrap" class="ft211">Pezzulo,&#160;G.&#160;and&#160;Levin,&#160;M.,&#160;2016.&#160;Journal&#160;of&#160;the&#160;Royal&#160;Society,&#160;Interface.&#160;DOI:&#160;10.1098/rsif.2016.0555</p>
+<p style="position:absolute;top:868px;left:65px;white-space:nowrap" class="ft211">!$.&#160;Generative&#160;Adversarial&#160;Networks</p>
+<p style="position:absolute;top:889px;left:89px;white-space:nowrap" class="ft211">Goodfellow,&#160;I.J.,&#160;Pouget-Abadie,&#160;J.,&#160;Mirza,&#160;M.,&#160;Xu,&#160;B.,&#160;Warde-Farley,&#160;D.,&#160;Ozair,&#160;S.,&#160;Courville,&#160;A.&#160;and&#160;Bengio,&#160;Y.,&#160;2014.</p>
+<p style="position:absolute;top:923px;left:65px;white-space:nowrap" class="ft211">!%.&#160;Adversarial&#160;Reprogramming&#160;of&#160;Neural&#160;Networks</p>
+<p style="position:absolute;top:945px;left:89px;white-space:nowrap" class="ft211">Elsayed,&#160;G.F.,&#160;Goodfellow,&#160;I.&#160;and&#160;Sohl-Dickstein,&#160;J.,&#160;2018.</p>
+<p style="position:absolute;top:979px;left:65px;white-space:nowrap" class="ft211">!&amp;.&#160;Efficient&#160;Estimation&#160;of&#160;Word&#160;Representations&#160;in&#160;Vector&#160;Space</p>
+<p style="position:absolute;top:1000px;left:89px;white-space:nowrap" class="ft211">Mikolov,&#160;T.,&#160;Chen,&#160;K.,&#160;Corrado,&#160;G.&#160;and&#160;Dean,&#160;J.,&#160;2013.</p>
+<p style="position:absolute;top:1034px;left:65px;white-space:nowrap" class="ft211">!'.&#160;Fader&#160;Networks:&#160;Manipulating&#160;Images&#160;by&#160;Sliding&#160;Attributes</p>
+<p style="position:absolute;top:1056px;left:89px;white-space:nowrap" class="ft211">Lample,&#160;G.,&#160;Zeghidour,&#160;N.,&#160;Usunier,&#160;N.,&#160;Bordes,&#160;A.,&#160;Denoyer,&#160;L.&#160;and&#160;Ranzato,&#160;M.,&#160;2018.</p>
+<p style="position:absolute;top:1090px;left:65px;white-space:nowrap" class="ft211">!(.&#160;Maximizing&#160;the&#160;spread&#160;of&#160;influence&#160;through&#160;a&#160;social&#160;network&#160; [PDF]</p>
+<p style="position:absolute;top:1111px;left:89px;white-space:nowrap" class="ft212">Kempe,&#160;D.,&#160;Kleinberg,&#160;J.&#160;and&#160;Tardos,&#160;É.,&#160;2003.&#160;Proceedings&#160;of&#160;the&#160;ninth&#160;ACM&#160;SIGKDD&#160;international&#160;conference&#160;on&#160;Knowledge<br/>discovery&#160;and&#160;data&#160;mining&#160;-&#160;KDD&#160;ʼ03.&#160;ACM&#160;Press.&#160;DOI:&#160;10.1145/956755.956769</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft220{font-size:10px;font-family:Times;color:#000000;}
+	.ft221{font-size:14px;font-family:Times;color:#000000;}
+	.ft222{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page22-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:50px;left:89px;white-space:nowrap" class="ft220">Banerjee,&#160;S.,&#160;Jenamani,&#160;M.&#160;and&#160;Pratihar,&#160;D.K.,&#160;2018.&#160;arXiv&#160;[cs.SI].</p>
+<p style="position:absolute;top:84px;left:65px;white-space:nowrap" class="ft220">!+.&#160;Simplicial&#160;models&#160;of&#160;social&#160;contagion&#160; [link]</p>
+<p style="position:absolute;top:105px;left:89px;white-space:nowrap" class="ft222">Iacopini,&#160;I.,&#160;Petri,&#160;G.,&#160;Barrat,&#160;A.&#160;and&#160;Latora,&#160;V.,&#160;2019.&#160;Nature&#160;communications,&#160;Vol&#160;10(1),&#160;pp.&#160;2485.&#160;DOI:<br/>10.1038/s41467-019-10431-6</p>
+<p style="position:absolute;top:160px;left:65px;white-space:nowrap" class="ft220">$,.&#160;Cascading&#160;Behavior&#160;in&#160;Networks:&#160;Algorithmic&#160;and&#160;Economic&#160;Issues&#160; [link]</p>
+<p style="position:absolute;top:182px;left:89px;white-space:nowrap" class="ft222">Kleinberg,&#160;J.,&#160;2007.&#160;Algorithmic&#160;Game&#160;Theory,&#160;pp.&#160;613–632.&#160;Cambridge&#160;University&#160;Press.&#160;DOI:<br/>10.1017/CBO9780511800481.026</p>
+<p style="position:absolute;top:237px;left:65px;white-space:nowrap" class="ft220">$!.&#160;On&#160;the&#160;Approximability&#160;of&#160;Influence&#160;in&#160;Social&#160;Networks&#160; [link]</p>
+<p style="position:absolute;top:259px;left:89px;white-space:nowrap" class="ft222">Chen,&#160;N.,&#160;2009.&#160;SIAM&#160;Journal&#160;on&#160;Discrete&#160;Mathematics,&#160;Vol&#160;23(3),&#160;pp.&#160;1400–1415.&#160;Society&#160;for&#160;Industrial&#160;and&#160;Applied<br/>Mathematics.&#160;DOI:&#160;10.1137/08073617X</p>
+<p style="position:absolute;top:314px;left:65px;white-space:nowrap" class="ft220">$$.&#160;The&#160;Computational&#160;Boundary&#160;of&#160;a&#160;“Self”:&#160;Developmental&#160;Bioelectricity&#160;Drives&#160;Multicellularity&#160;and&#160;Scale-Free&#160;Cognition&#160; </p>
+<p style="position:absolute;top:336px;left:89px;white-space:nowrap" class="ft222">[link]<br/>Levin,&#160;M.,&#160;2019.&#160;Frontiers&#160;in&#160;Psychology,&#160;Vol&#160;10,&#160;pp.&#160;2688.&#160;DOI:&#160;10.3389/fpsyg.2019.02688</p>
+<p style="position:absolute;top:553px;left:72px;white-space:nowrap" class="ft221">Accessibility</p>
+<p style="position:absolute;top:767px;left:72px;white-space:nowrap" class="ft222">This&#160;article&#160;relies&#160;on&#160;using&#160;color&#160;to&#160;demonstrate&#160;classification&#160;label.&#160;If&#160;you&#160;have&#160;trouble&#160;distinguishing&#160;the&#160;colours&#160;of&#160;lizards&#160;or&#160;of<br/>the&#160;digits&#160;in&#160;the&#160;above&#160;legend,&#160;please&#160;try&#160;and&#160;adjust&#160;the&#160;slider&#160;above&#160;to&#160;see&#160;if&#160;there&#160;is&#160;an&#160;alternative&#160;colour&#160;palette&#160;for&#160;you.&#160;The<br/>chosen&#160;palette&#160;will&#160;propagate&#160;throughout&#160;the&#160;article.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>e89799106132fbc5bd38a3c72ea31b97-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft230{font-size:14px;font-family:Times;color:#000000;}
+	.ft231{font-size:10px;font-family:Times;color:#000000;}
+	.ft232{font-size:17px;font-family:Times;color:#000000;}
+	.ft233{font-size:13px;font-family:Times;color:#000000;}
+	.ft234{font-size:12px;font-family:Times;color:#000000;}
+	.ft235{font-size:14px;line-height:21px;font-family:Times;color:#000000;}
+	.ft236{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+	.ft237{font-size:10px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page23-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:72px;left:72px;white-space:nowrap" class="ft235">Updates<br/>and<br/>Corrections</p>
+<p style="position:absolute;top:151px;left:72px;white-space:nowrap" class="ft231">If&#160;you&#160;see&#160;mistakes&#160;or&#160;want&#160;to&#160;suggest&#160;changes,&#160;please&#160;create&#160;an&#160;issue&#160;on&#160;GitHub.</p>
+<p style="position:absolute;top:199px;left:72px;white-space:nowrap" class="ft230">Reuse</p>
+<p style="position:absolute;top:236px;left:72px;white-space:nowrap" class="ft236">Diagrams&#160;and&#160;text&#160;are&#160;licensed&#160;under&#160;Creative&#160;Commons&#160;Attribution&#160;CC-BY&#160;4.0&#160;with&#160;the&#160;source&#160;available&#160;on&#160;GitHub,&#160;unless&#160;noted<br/>otherwise.&#160;The&#160;figures&#160;that&#160;have&#160;been&#160;reused&#160;from&#160;other&#160;sources&#160;donʼt&#160;fall&#160;under&#160;this&#160;license&#160;and&#160;can&#160;be&#160;recognized&#160;by&#160;a&#160;note&#160;in<br/>their&#160;caption:&#160;“Figure&#160;from&#160;…”.</p>
+<p style="position:absolute;top:327px;left:72px;white-space:nowrap" class="ft230">Citation</p>
+<p style="position:absolute;top:364px;left:72px;white-space:nowrap" class="ft231">For&#160;attribution&#160;in&#160;academic&#160;contexts,&#160;please&#160;cite&#160;this&#160;work&#160;as</p>
+<p style="position:absolute;top:394px;left:93px;white-space:nowrap" class="ft231">Randazzo, et al., &#34;Adversarial Reprogramming of Neural Cellular Automata&#34;, Distill, 2021.</p>
+<p style="position:absolute;top:437px;left:72px;white-space:nowrap" class="ft231">BibTeX&#160;citation</p>
+<p style="position:absolute;top:468px;left:93px;white-space:nowrap" class="ft237">@article{randazzo2021adversarial,<br/>&#160; author = {Randazzo, Ettore and Mordvintsev, Alexander and Niklasson, Eyvind and Levin, Michael},<br/>&#160; title = {Adversarial Reprogramming of Neural Cellular Automata},<br/>&#160; journal = {Distill},<br/>&#160; year = {2021},<br/>&#160; note = {https://distill.pub/selforg/2021/adversarial},<br/>&#160; doi = {10.23915/distill.00027.004}<br/>}</p>
+<p style="position:absolute;top:721px;left:101px;white-space:nowrap" class="ft232">&#160;Distil&#160;&#160;&#160;is&#160;dedicated&#160;to&#160;clear&#160;explanations&#160;of&#160;machine&#160;learning</p>
+<p style="position:absolute;top:772px;left:72px;white-space:nowrap" class="ft234">About&#160;Submit&#160;Prize&#160;Archive&#160;RSS&#160;GitHub&#160;Twitter&#160;&#160;    &#160;ISSN&#160;2476-0757</p>
+</div>
+</body>
+</html>

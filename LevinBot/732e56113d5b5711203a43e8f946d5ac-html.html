@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:19px;font-family:Times;color:#000000;}
+	.ft11{font-size:12px;font-family:Times;color:#000000;}
+	.ft12{font-size:8px;font-family:Times;color:#000000;}
+	.ft13{font-size:13px;font-family:Times;color:#000000;}
+	.ft14{font-size:6px;font-family:Times;color:#000000;}
+	.ft15{font-size:11px;font-family:Times;color:#000000;}
+	.ft16{font-size:11px;font-family:Times;color:#000000;}
+	.ft17{font-size:15px;font-family:Times;color:#000000;}
+	.ft18{font-size:15px;font-family:Times;color:#000000;}
+	.ft19{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft110{font-size:8px;font-family:Times;color:#000000;}
+	.ft111{font-size:8px;font-family:Times;color:#0000ff;}
+	.ft112{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft113{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft114{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft115{font-size:8px;line-height:15px;font-family:Times;color:#000000;}
+	.ft116{font-size:8px;line-height:12px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:80px;left:185px;white-space:nowrap" class="ft10"><b>A&#160;Computational&#160;Framework</b></p>
+<p style="position:absolute;top:107px;left:148px;white-space:nowrap" class="ft10"><b>for&#160;Autonomous&#160;Self-repair&#160;Systems</b></p>
+<p style="position:absolute;top:172px;left:94px;white-space:nowrap" class="ft11">Tran&#160;Nguyen&#160;Minh-Thai1,4(B),&#160;Jagannath&#160;Aryal2,&#160;Sandhya&#160;Samarasinghe1,</p>
+<p style="position:absolute;top:190px;left:276px;white-space:nowrap" class="ft11">and&#160;Michael&#160;Levin3</p>
+<p style="position:absolute;top:218px;left:80px;white-space:nowrap" class="ft14">1&#160;Complex&#160;Systems,&#160;Big&#160;Data&#160;and&#160;Informatics&#160;Initiative&#160;(CSBII),&#160;Lincoln&#160;University,</p>
+<p style="position:absolute;top:239px;left:262px;white-space:nowrap" class="ft15">Canterbury,&#160;New&#160;Zealand</p>
+<p style="position:absolute;top:257px;left:135px;white-space:nowrap" class="ft15">tnmthai@cit.ctu.edu.vn,&#160;Sandhya.Samarasinghe@lincoln.ac.nz</p>
+<p style="position:absolute;top:267px;left:121px;white-space:nowrap" class="ft14">2&#160;Discipline&#160;of&#160;Geography&#160;and&#160;Spatial&#160;Sciences,&#160;University&#160;of&#160;Tasmania,</p>
+<p style="position:absolute;top:288px;left:286px;white-space:nowrap" class="ft15">Hobart,&#160;Australia</p>
+<p style="position:absolute;top:306px;left:244px;white-space:nowrap" class="ft15">jagannath.aryal@utas.edu.au</p>
+<p style="position:absolute;top:317px;left:166px;white-space:nowrap" class="ft14">3&#160;Allen&#160;Discovery&#160;Center,&#160;Tufts&#160;University,&#160;Boston,&#160;USA</p>
+<p style="position:absolute;top:339px;left:259px;white-space:nowrap" class="ft15">Michael.Levin@tufts.edu</p>
+<p style="position:absolute;top:349px;left:113px;white-space:nowrap" class="ft14">4&#160;College&#160;of&#160;ICT,&#160;Can&#160;Tho&#160;University,&#160;3/2&#160;Street,&#160;Can&#160;Tho&#160;City,&#160;Vietnam</p>
+<p style="position:absolute;top:415px;left:123px;white-space:nowrap" class="ft113"><b>Abstract.&#160;</b>This&#160;paper&#160;describes&#160;a&#160;novel&#160;computational&#160;framework&#160;for<br/>damage&#160;detection&#160;and&#160;regeneration&#160;in&#160;an&#160;artiﬁcial&#160;tissue&#160;of&#160;cells&#160;resem-<br/>bling&#160;living&#160;systems.&#160;We&#160;represent&#160;the&#160;tissue&#160;as&#160;an&#160;Auto-Associative&#160;Neu-<br/>ral&#160;Network&#160;(AANN)&#160;consisting&#160;of&#160;a&#160;single&#160;layer&#160;of&#160;perceptron&#160;neurons<br/>(cells)&#160;with&#160;local&#160;feedback&#160;loops.&#160;This&#160;allows&#160;the&#160;system&#160;to&#160;recognise&#160;its<br/>state&#160;and&#160;geometry&#160;in&#160;a&#160;form&#160;of&#160;collective&#160;intelligence.&#160;Signalling&#160;entropy<br/>is&#160;used&#160;as&#160;a&#160;global&#160;(emergent)&#160;property&#160;characterising&#160;the&#160;state&#160;of&#160;the<br/>system.&#160;The&#160;repair&#160;system&#160;has&#160;two&#160;submodels&#160;-&#160;global&#160;sensing&#160;and&#160;local<br/>sensing.&#160;Global&#160;sensing&#160;is&#160;used&#160;to&#160;sense&#160;the&#160;change&#160;in&#160;whole&#160;system&#160;state<br/>and&#160;detect&#160;general&#160;damage&#160;region&#160;based&#160;on&#160;system&#160;entropy&#160;change.&#160;Then,<br/>local&#160;sensing&#160;is&#160;applied&#160;with&#160;AANN&#160;to&#160;ﬁnd&#160;the&#160;exact&#160;damage&#160;locations<br/>and&#160;repair&#160;the&#160;damage.&#160;The&#160;results&#160;show&#160;that&#160;the&#160;method&#160;allows&#160;robust<br/>and&#160;eﬃcient&#160;damage&#160;detection&#160;and&#160;accurate&#160;regeneration.</p>
+<p style="position:absolute;top:659px;left:123px;white-space:nowrap" class="ft16"><b>Keywords:&#160;</b>Self-repair</p>
+<p style="position:absolute;top:651px;left:270px;white-space:nowrap" class="ft17"><i>·&#160;</i>Multi-cellular&#160;structures&#160;<i>·&#160;</i>Regeneration</p>
+<p style="position:absolute;top:675px;left:123px;white-space:nowrap" class="ft15">Auto-Associative&#160;Neural&#160;Network</p>
+<p style="position:absolute;top:668px;left:330px;white-space:nowrap" class="ft17"><i>·&#160;</i>Perceptron&#160;<i>·&#160;</i>Signalling&#160;entropy</p>
+<p style="position:absolute;top:692px;left:123px;white-space:nowrap" class="ft15">Modeling</p>
+<p style="position:absolute;top:739px;left:80px;white-space:nowrap" class="ft18"><b>1</b></p>
+<p style="position:absolute;top:739px;left:111px;white-space:nowrap" class="ft18"><b>Introduction</b></p>
+<p style="position:absolute;top:777px;left:80px;white-space:nowrap" class="ft114">Regeneration&#160;is&#160;an&#160;important&#160;phenomenon&#160;in&#160;nature;&#160;while&#160;it&#160;plays&#160;a&#160;key&#160;role<br/>in&#160;living&#160;organisms&#160;that&#160;are&#160;capable&#160;of&#160;recovering&#160;a&#160;fully&#160;functional&#160;state&#160;from<br/>diverse&#160;forms&#160;of&#160;injury,&#160;it&#160;is&#160;not&#160;completely&#160;understood&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[4].&#160;</a>Although&#160;molecular<br/>mechanisms&#160;required&#160;for&#160;regeneration&#160;are&#160;being&#160;discovered,&#160;the&#160;algorithms&#160;suf-<br/>ﬁcient&#160;for&#160;regeneration&#160;of&#160;complex&#160;anatomical&#160;structures&#160;represent&#160;a&#160;signiﬁcant<br/>knowledge&#160;gap&#160;that&#160;holds&#160;back&#160;progress&#160;in&#160;evolutionary&#160;developmental&#160;biology<br/>and&#160;regenerative&#160;medicine.&#160;Currently,&#160;there&#160;is&#160;insuﬃcient&#160;knowledge&#160;to&#160;mimic</p>
+<p style="position:absolute;top:913px;left:84px;white-space:nowrap" class="ft12">c</p>
+<p style="position:absolute;top:910px;left:80px;white-space:nowrap" class="ft116"><i>&#160;</i>Springer&#160;Nature&#160;Switzerland&#160;AG&#160;2018<br/>T.&#160;Mitrovic&#160;et&#160;al.&#160;(Eds.):&#160;AI&#160;2018,&#160;LNAI&#160;11320,&#160;pp.&#160;153–159,&#160;2018.<br/><a href="https://doi.org/10.1007/978-3-030-03991-2_16">https://doi.org/10.1007/978-3-030-03991-2</a></p>
+<p style="position:absolute;top:938px;left:303px;white-space:nowrap" class="ft112"><a href="https://doi.org/10.1007/978-3-030-03991-2_16">_16</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:11px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:12px;font-family:Times;color:#000000;}
+	.ft23{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft24{font-size:15px;font-family:Times;color:#000000;}
+	.ft25{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:47px;left:59px;white-space:nowrap" class="ft20">154</p>
+<p style="position:absolute;top:47px;left:109px;white-space:nowrap" class="ft20">T.&#160;N.&#160;Minh-Thai&#160;et&#160;al.</p>
+<p style="position:absolute;top:85px;left:59px;white-space:nowrap" class="ft25">regeneration&#160;in&#160;living&#160;organisms,&#160;making&#160;it&#160;essential&#160;to&#160;analyze&#160;computational<br/>models&#160;of&#160;cell&#160;activity&#160;and&#160;communication&#160;dynamics&#160;that&#160;can&#160;implement&#160;complex<br/>structural&#160;repair.&#160;It&#160;is&#160;especially&#160;important&#160;to&#160;explore&#160;connectionist&#160;(neural-like)<br/>models&#160;in&#160;the&#160;control&#160;of&#160;regeneration&#160;to&#160;begin&#160;to&#160;formulate&#160;rigorous&#160;formalisms<br/>for&#160;pattern&#160;memory&#160;and&#160;decision-making&#160;during&#160;anatomical&#160;remodeling.</p>
+<p style="position:absolute;top:175px;left:82px;white-space:nowrap" class="ft21">In&#160;software&#160;engineering,</p>
+<p style="position:absolute;top:171px;left:247px;white-space:nowrap" class="ft22"><i>self-repair&#160;systems&#160;</i>are&#160;not&#160;popular&#160;yet&#160;and&#160;often</p>
+<p style="position:absolute;top:193px;left:59px;white-space:nowrap" class="ft25">apply&#160;when&#160;working&#160;with&#160;agent-based&#160;systems&#160;or&#160;service-oriented&#160;architectures<br/>that&#160;are&#160;still&#160;the&#160;subject&#160;of&#160;intense&#160;research&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[7</a>].&#160;The&#160;term</p>
+<p style="position:absolute;top:207px;left:451px;white-space:nowrap" class="ft22"><i>self-repair&#160;</i>refers&#160;to</p>
+<p style="position:absolute;top:228px;left:59px;white-space:nowrap" class="ft25">automatic&#160;software&#160;repair&#160;which&#160;involves&#160;ﬁnding&#160;a&#160;solution&#160;to&#160;software&#160;faults<br/>without&#160;human&#160;interference.&#160;This&#160;is&#160;analogous&#160;to&#160;wound&#160;healing&#160;and&#160;regenerative<br/>repair&#160;in&#160;living&#160;organisms.&#160;In&#160;robotics,&#160;multi-robot&#160;systems&#160;have&#160;the&#160;ability&#160;to<br/>form&#160;patterns&#160;or&#160;conﬁgurations&#160;to&#160;achieve&#160;desired&#160;goals,&#160;such&#160;as&#160;detecting&#160;and<br/>recovering&#160;from&#160;faults&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[1</a>,&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">5</a>].&#160;However,&#160;great&#160;gains&#160;can&#160;be&#160;achieved&#160;in&#160;robotics<br/>and&#160;synthetic&#160;biology&#160;by&#160;advancing&#160;research&#160;in&#160;bio-inspired&#160;self-repair&#160;systems.</p>
+<p style="position:absolute;top:336px;left:82px;white-space:nowrap" class="ft21">In&#160;this&#160;paper,&#160;we&#160;propose&#160;a&#160;concept&#160;for&#160;an&#160;autonomous&#160;self-repair&#160;system</p>
+<p style="position:absolute;top:354px;left:59px;white-space:nowrap" class="ft25">that&#160;has&#160;the&#160;capacity&#160;to&#160;sense,&#160;detect&#160;and&#160;regenerate&#160;missing&#160;cells&#160;in&#160;a&#160;simple<br/>tissue&#160;system&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#3">1a)&#160;</a>under&#160;any&#160;damage&#160;condition&#160;induced&#160;by&#160;injury&#160;in&#160;a&#160;simple<br/>way&#160;that&#160;resembles&#160;some&#160;related&#160;processes&#160;in&#160;biological&#160;systems.</p>
+<p style="position:absolute;top:436px;left:59px;white-space:nowrap" class="ft24"><b>2</b></p>
+<p style="position:absolute;top:436px;left:89px;white-space:nowrap" class="ft24"><b>Related&#160;Work</b></p>
+<p style="position:absolute;top:473px;left:59px;white-space:nowrap" class="ft25">One&#160;of&#160;the&#160;key&#160;questions&#160;facing&#160;biology&#160;today&#160;is&#160;how&#160;cells&#160;in&#160;an&#160;organism&#160;col-<br/>lectively&#160;collaborate&#160;to&#160;maintain&#160;the&#160;normal&#160;state&#160;of&#160;the&#160;system.&#160;Several&#160;com-<br/>putational&#160;models&#160;have&#160;been&#160;proposed&#160;with&#160;regeneration&#160;capabilities.&#160;In&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[2,&#160;</a><a href="732e56113d5b5711203a43e8f946d5acs.html#7">15],<br/></a>authors&#160;developed&#160;dynamic&#160;models&#160;for&#160;describing&#160;morphogenesis&#160;and&#160;regenera-<br/>tion&#160;of&#160;complex&#160;patterns&#160;assuming&#160;that&#160;cells&#160;communicate&#160;with&#160;each&#160;other&#160;by<br/>passing&#160;signals.&#160;The&#160;change&#160;in&#160;signal&#160;distribution&#160;is&#160;used&#160;for&#160;detecting&#160;damage<br/>and&#160;regenerating&#160;a&#160;tissue&#160;structure.&#160;However,&#160;the&#160;large&#160;amount&#160;of&#160;communication<br/>between&#160;cells&#160;reduces&#160;the&#160;computationally&#160;eﬃciency&#160;of&#160;the&#160;models.&#160;Research&#160;has<br/>continued&#160;to&#160;explore&#160;methods&#160;to&#160;bring&#160;the&#160;morphology&#160;back&#160;to&#160;correct&#160;form,&#160;in<br/>particular,&#160;by&#160;avoiding&#160;overgrowth,&#160;with&#160;limited&#160;success&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[9–</a><a href="732e56113d5b5711203a43e8f946d5acs.html#7">12</a>]&#160;with&#160;other&#160;meth-<br/>ods&#160;such&#160;as&#160;nervous&#160;system&#160;communicating&#160;with&#160;non-neural&#160;cells&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[3],&#160;</a>genetic&#160;algo-<br/>rithms&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[8</a>]&#160;and&#160;agent-based&#160;models&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[6].&#160;</a>Some&#160;main&#160;challenges&#160;to&#160;current&#160;models<br/>are&#160;computational&#160;burden&#160;due&#160;to&#160;excessive&#160;cell&#160;communications&#160;and&#160;overgrowth;<br/>these&#160;can&#160;be&#160;improved&#160;for&#160;greater&#160;eﬃciency&#160;or&#160;biological&#160;realism.</p>
+<p style="position:absolute;top:725px;left:82px;white-space:nowrap" class="ft21">In&#160;robotics,&#160;a&#160;swarm&#160;of&#160;robots&#160;has&#160;been&#160;programmed&#160;to&#160;construct&#160;and</p>
+<p style="position:absolute;top:742px;left:59px;white-space:nowrap" class="ft25">self-repair&#160;two-dimensional&#160;structures&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[1,&#160;</a><a href="732e56113d5b5711203a43e8f946d5acs.html#7">13</a>].&#160;When&#160;robots&#160;suﬀer&#160;damage,&#160;the<br/>remaining&#160;robots&#160;may&#160;reconﬁgure&#160;and&#160;reorganize&#160;the&#160;same&#160;pattern&#160;but&#160;on&#160;a<br/>smaller&#160;scale&#160;and&#160;continue&#160;to&#160;function.&#160;This&#160;process&#160;to&#160;some&#160;extent&#160;is&#160;analogous<br/>to&#160;regeneration&#160;in&#160;biology.&#160;From&#160;a&#160;robotic&#160;perspective,&#160;how&#160;robots&#160;can&#160;learn&#160;to<br/>reorganise&#160;into&#160;new&#160;structural&#160;patterns&#160;need&#160;further&#160;research.</p>
+<p style="position:absolute;top:832px;left:82px;white-space:nowrap" class="ft21">Thus&#160;there&#160;is&#160;great&#160;scope&#160;for&#160;models&#160;that&#160;are&#160;not&#160;only&#160;bio-realistic&#160;but&#160;also</p>
+<p style="position:absolute;top:850px;left:59px;white-space:nowrap" class="ft25">computationally&#160;eﬃcient.&#160;This&#160;research&#160;attempts&#160;to&#160;make&#160;improvements&#160;towards<br/>eﬃcient&#160;self-repair&#160;systems&#160;that&#160;completely&#160;and&#160;correctly&#160;regenerate&#160;their&#160;form<br/>that&#160;in&#160;a&#160;broad&#160;sense&#160;resemble&#160;biological&#160;systems.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:11px;font-family:Times;color:#000000;}
+	.ft31{font-size:15px;font-family:Times;color:#000000;}
+	.ft32{font-size:12px;font-family:Times;color:#000000;}
+	.ft33{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft34{font-size:12px;font-family:Times;color:#000000;}
+	.ft35{font-size:11px;font-family:Times;color:#000000;}
+	.ft36{font-size:11px;font-family:Times;color:#000000;}
+	.ft37{font-size:8px;font-family:Times;color:#000000;}
+	.ft38{font-size:8px;font-family:Times;color:#000000;}
+	.ft39{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft310{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:47px;left:145px;white-space:nowrap" class="ft30">A&#160;Computational&#160;Framework&#160;for&#160;Autonomous&#160;Self-Repair&#160;Systems</p>
+<p style="position:absolute;top:47px;left:578px;white-space:nowrap" class="ft30">155</p>
+<p style="position:absolute;top:83px;left:80px;white-space:nowrap" class="ft31"><b>3</b></p>
+<p style="position:absolute;top:83px;left:111px;white-space:nowrap" class="ft31"><b>Methodology</b></p>
+<p style="position:absolute;top:121px;left:80px;white-space:nowrap" class="ft39">In&#160;this&#160;paper,&#160;we&#160;assume&#160;that&#160;an&#160;artiﬁcial&#160;tissue&#160;pattern&#160;(organism)&#160;consists&#160;of<br/>a&#160;stem&#160;cell&#160;surrounded&#160;by&#160;more&#160;than&#160;2000&#160;diﬀerentiated&#160;cells&#160;in&#160;a&#160;2-dimensional<br/>plane&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#3">1a).&#160;</a>A&#160;cell&#160;is&#160;identiﬁed&#160;by&#160;polar&#160;coordinates&#160;(<i>radius,&#160;θ</i>)&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#3">1a).&#160;</a>The<br/>stem&#160;cell&#160;can&#160;divide&#160;in&#160;a&#160;way&#160;that&#160;makes&#160;a&#160;copy&#160;of&#160;itself&#160;and&#160;produces&#160;a&#160;diﬀer-<br/>entiated&#160;cell.&#160;The&#160;tissue&#160;structure&#160;is&#160;described&#160;by&#160;a&#160;network&#160;of&#160;cells&#160;embedded<br/>in&#160;a&#160;medium&#160;similar&#160;to&#160;Extra&#160;Cellular&#160;Matrix&#160;(ECM)&#160;in&#160;a&#160;living&#160;tissue.</p>
+<p style="position:absolute;top:383px;left:80px;white-space:nowrap" class="ft310"><b>Fig.&#160;1.&#160;</b>(a)&#160;A&#160;stem&#160;cell&#160;at&#160;the&#160;centre&#160;surrounded&#160;by&#160;diﬀerentiated&#160;cells,&#160;(b)&#160;Tissue&#160;pat-<br/>tern&#160;divided&#160;into</p>
+<p style="position:absolute;top:396px;left:185px;white-space:nowrap" class="ft36"><i>n&#160;</i>segments&#160;(e.g,&#160;n&#160;=&#160;24)&#160;and&#160;(c)&#160;Functional&#160;aspects&#160;of&#160;the&#160;framework</p>
+<p style="position:absolute;top:450px;left:103px;white-space:nowrap" class="ft32">There&#160;are&#160;two&#160;types&#160;of&#160;communication&#160;in&#160;the&#160;tissue&#160;-&#160;local&#160;direct&#160;communi-</p>
+<p style="position:absolute;top:468px;left:80px;white-space:nowrap" class="ft39">cations&#160;between&#160;neighbour&#160;cells&#160;and&#160;global&#160;diﬀusion&#160;of&#160;information&#160;through&#160;the<br/>tissue&#160;matrix&#160;-&#160;the&#160;form&#160;of&#160;communication&#160;between&#160;a&#160;stem&#160;cell&#160;and&#160;diﬀerentiated<br/>cells.&#160;Direct&#160;neighbourhood&#160;communication&#160;is&#160;facilitated&#160;by&#160;representing&#160;the&#160;tis-<br/>sue&#160;as&#160;an&#160;AANN&#160;consisting&#160;of&#160;a&#160;single&#160;layer&#160;of&#160;perceptrons&#160;(threshold&#160;neurons)<br/>that&#160;represent&#160;cells&#160;that&#160;are&#160;connected&#160;with&#160;local&#160;feedback&#160;loops&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#4">2a).&#160;</a>AANN<br/>are&#160;networks&#160;where&#160;neurons&#160;inﬂuence&#160;themselves&#160;through&#160;feedback&#160;loops&#160;that<br/>typically&#160;give&#160;rise&#160;to&#160;emergent&#160;systemic&#160;properties.&#160;Thus&#160;the&#160;tissue&#160;is&#160;represented<br/>as&#160;a&#160;locally&#160;recurrent&#160;dynamical&#160;system&#160;that&#160;collectively&#160;maintains&#160;tissue&#160;states.<br/>The&#160;global&#160;diﬀusion&#160;means&#160;that&#160;longer&#160;the&#160;distance&#160;the&#160;information&#160;travels&#160;the<br/>greater&#160;the&#160;uncertainty&#160;of&#160;its&#160;content&#160;so&#160;we&#160;use&#160;the&#160;concept&#160;of&#160;entropy&#160;to&#160;encode<br/>this&#160;information.&#160;Entropy&#160;has&#160;been&#160;used&#160;to&#160;identify&#160;signalling&#160;pathways,&#160;under-<br/>stand&#160;drug&#160;sensitivity&#160;proﬁles,&#160;and&#160;determine&#160;cancer&#160;stem-cell&#160;phenotypes&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#7">[14].<br/></a>In&#160;the&#160;context&#160;of&#160;a&#160;network&#160;of&#160;cells,&#160;it&#160;can&#160;measure&#160;overall&#160;uncertainty&#160;in&#160;a<br/>desired&#160;state,&#160;such&#160;as&#160;signaling&#160;entropy&#160;in&#160;the&#160;tissue.&#160;This&#160;model&#160;also&#160;considers<br/>stochasticity&#160;in&#160;cell&#160;position&#160;due&#160;to&#160;cell&#160;movement&#160;using&#160;Brownian&#160;motion&#160;and&#160;is<br/>approximated&#160;by&#160;white&#160;noise&#160;<i></i>(<i>μ,&#160;σ</i>)&#160;that&#160;adjusts&#160;cell&#160;position&#160;as&#160;(<i>r,&#160;θ</i>)</p>
+<p style="position:absolute;top:733px;left:538px;white-space:nowrap" class="ft34"><i>±&#160;</i>(<i>μ,&#160;σ</i>).</p>
+<p style="position:absolute;top:754px;left:80px;white-space:nowrap" class="ft39">The&#160;<i></i>(<i>μ,&#160;σ</i>)&#160;is&#160;assumed&#160;to&#160;be&#160;a&#160;Gaussian&#160;noise&#160;distribution&#160;with&#160;mean&#160;(<i>μ</i>)&#160;and<br/>standard&#160;deviation&#160;(<i>σ</i>)&#160;with&#160;a&#160;value&#160;determined&#160;heuristically.</p>
+<p style="position:absolute;top:790px;left:103px;white-space:nowrap" class="ft32">Assume&#160;that&#160;a&#160;stem&#160;cell&#160;<i>SCi&#160;</i>has&#160;<i>k&#160;</i>number&#160;of&#160;diﬀerentiated&#160;cells.&#160;Let&#160;<i>dij&#160;</i>be</p>
+<p style="position:absolute;top:808px;left:80px;white-space:nowrap" class="ft39">the&#160;distance&#160;between&#160;the&#160;stem&#160;cell&#160;<i>SCi&#160;</i>and&#160;diﬀerentiated&#160;cell&#160;<i>DCj</i>.&#160;We&#160;deﬁne&#160;a<br/>stochastic&#160;matrix&#160;<i>P&#160;</i>with&#160;components&#160;<i>pij&#160;</i>and&#160;signalling&#160;entropy&#160;<i>Ei</i>:</p>
+<p style="position:absolute;top:874px;left:169px;white-space:nowrap" class="ft34"><i>pij&#160;</i>=</p>
+<p style="position:absolute;top:864px;left:229px;white-space:nowrap" class="ft34"><i>dij</i></p>
+<p style="position:absolute;top:873px;left:209px;white-space:nowrap" class="ft32"><i>k</i></p>
+<p style="position:absolute;top:893px;left:225px;white-space:nowrap" class="ft37"><i>j</i>=1&#160;<i>dij</i></p>
+<p style="position:absolute;top:874px;left:269px;white-space:nowrap" class="ft32">;</p>
+<p style="position:absolute;top:874px;left:290px;white-space:nowrap" class="ft34"><i>Ei&#160;</i>=&#160;<i>−γ</i></p>
+<p style="position:absolute;top:856px;left:356px;white-space:nowrap" class="ft37"><i>k</i></p>
+<p style="position:absolute;top:856px;left:349px;white-space:nowrap" class="ft32"></p>
+<p style="position:absolute;top:893px;left:349px;white-space:nowrap" class="ft37"><i>j</i>=1</p>
+<p style="position:absolute;top:874px;left:373px;white-space:nowrap" class="ft34"><i>pijlogpij</i>;</p>
+<p style="position:absolute;top:874px;left:450px;white-space:nowrap" class="ft34"><i>γ&#160;</i>=</p>
+<p style="position:absolute;top:864px;left:491px;white-space:nowrap" class="ft32">1</p>
+<p style="position:absolute;top:885px;left:481px;white-space:nowrap" class="ft34"><i>logk</i></p>
+<p style="position:absolute;top:874px;left:580px;white-space:nowrap" class="ft32">(1)</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:11px;font-family:Times;color:#000000;}
+	.ft41{font-size:12px;font-family:Times;color:#000000;}
+	.ft42{font-size:8px;font-family:Times;color:#000000;}
+	.ft43{font-size:8px;font-family:Times;color:#000000;}
+	.ft44{font-size:12px;font-family:Times;color:#000000;}
+	.ft45{font-size:12px;font-family:Times;color:#000000;}
+	.ft46{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft47{font-size:11px;font-family:Times;color:#000000;}
+	.ft48{font-size:12px;line-height:21px;font-family:Times;color:#000000;}
+	.ft49{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft410{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:47px;left:59px;white-space:nowrap" class="ft40">156</p>
+<p style="position:absolute;top:47px;left:109px;white-space:nowrap" class="ft40">T.&#160;N.&#160;Minh-Thai&#160;et&#160;al.</p>
+<p style="position:absolute;top:85px;left:59px;white-space:nowrap" class="ft41">where</p>
+<p style="position:absolute;top:70px;left:101px;white-space:nowrap" class="ft41"><i>k</i></p>
+<p style="position:absolute;top:90px;left:117px;white-space:nowrap" class="ft42"><i>j</i>=1&#160;<i>dij&#160;</i>denotes&#160;the&#160;total&#160;distance&#160;and&#160;<i>γ&#160;</i>is&#160;a&#160;positive&#160;constant.&#160;The&#160;stem</p>
+<p style="position:absolute;top:103px;left:59px;white-space:nowrap" class="ft41">cell&#160;estimates&#160;and&#160;stores&#160;the&#160;entropy&#160;of&#160;the&#160;cells&#160;in&#160;the&#160;24&#160;segments.</p>
+<p style="position:absolute;top:126px;left:59px;white-space:nowrap" class="ft49"><b>Normal&#160;System:&#160;</b>System&#160;in&#160;its&#160;normal&#160;state&#160;establishes&#160;its&#160;global&#160;(original)<br/>entropy&#160;and&#160;tissue&#160;border.&#160;We&#160;assume&#160;that&#160;each&#160;interior&#160;cell&#160;has&#160;four&#160;neighbours<br/>while&#160;a&#160;boundary&#160;cell&#160;has&#160;only&#160;three&#160;neighbours&#160;with&#160;two-way&#160;communication<br/>(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#4">2a)&#160;</a>and&#160;the&#160;cell&#160;thus&#160;receives&#160;inputs&#160;from&#160;its&#160;neighbours.&#160;The&#160;perceptron<br/>computes&#160;the&#160;output&#160;from&#160;the&#160;received&#160;inputs&#160;and&#160;connection&#160;weights&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#4">2b)<br/></a>(weights&#160;are&#160;ﬁxed&#160;to&#160;1.0&#160;indicating&#160;cells&#160;communicate&#160;their&#160;presence&#160;to&#160;the&#160;neigh-<br/>bours&#160;precisely).&#160;Figure&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#4">2c&#160;</a>presents&#160;a&#160;sample&#160;dataset&#160;showing&#160;that&#160;a&#160;perception<br/>responds&#160;with&#160;1&#160;only&#160;if&#160;all&#160;neighbours&#160;are&#160;present&#160;and&#160;0&#160;otherwise.&#160;This&#160;way,<br/>tissue&#160;border&#160;is&#160;identiﬁed.&#160;The&#160;self-repair&#160;system&#160;consists&#160;of&#160;two&#160;submodels&#160;-<br/>global&#160;sensing&#160;and&#160;local&#160;sensing&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#3">1c)</a></p>
+<p style="position:absolute;top:474px;left:59px;white-space:nowrap" class="ft410"><b>Fig.&#160;2.&#160;</b>(a)&#160;Two-way&#160;communication&#160;of&#160;a&#160;perceptron&#160;with&#160;its&#160;neighbours,&#160;(b)&#160;Compu-<br/>tation&#160;in&#160;a&#160;Perceptron&#160;(c)&#160;Sample&#160;data&#160;showing&#160;perceptron&#160;response&#160;to&#160;inputs&#160;from<br/>neighbours&#160;and&#160;(d)&#160;Output&#160;of&#160;a&#160;damaged&#160;segment&#160;of&#160;AANN</p>
+<p style="position:absolute;top:563px;left:59px;white-space:nowrap" class="ft49"><b>Global&#160;Sensing:&#160;</b>The&#160;stem&#160;cell&#160;can&#160;sense&#160;a&#160;change&#160;in&#160;the&#160;system&#160;due&#160;to&#160;damage<br/>anywhere&#160;within&#160;it.&#160;The&#160;stem&#160;cell&#160;scans&#160;the&#160;system&#160;by&#160;segments&#160;and&#160;the&#160;diﬀer-<br/>ence&#160;between&#160;the&#160;current&#160;and&#160;original&#160;entropy&#160;informs&#160;the&#160;segment(s)&#160;that&#160;have<br/>received&#160;damage.</p>
+<p style="position:absolute;top:643px;left:59px;white-space:nowrap" class="ft49"><b>Local&#160;Sensing:&#160;</b>The&#160;stem&#160;cell&#160;initiates&#160;a&#160;local&#160;search&#160;for&#160;the&#160;exact&#160;location<br/>of&#160;damage&#160;in&#160;the&#160;already&#160;identiﬁed&#160;damage&#160;segments&#160;to&#160;be&#160;able&#160;to&#160;regenerate<br/>missing&#160;cells.&#160;Speciﬁcally,&#160;knowledge&#160;of&#160;the&#160;damaged&#160;segment(s)&#160;allows&#160;it&#160;to<br/>inform&#160;the&#160;cells&#160;in&#160;these&#160;segment(s)&#160;(corresponding&#160;part&#160;of&#160;the&#160;AANN)&#160;to&#160;process<br/>information&#160;through&#160;local&#160;feedback&#160;connections&#160;to&#160;assess&#160;any&#160;missing&#160;neighbours.<br/>The&#160;single&#160;layer&#160;perceptron&#160;outputs&#160;help&#160;the&#160;system&#160;identify&#160;the&#160;boundary&#160;of&#160;the<br/>damage&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#4">2d).&#160;</a>In&#160;order&#160;to&#160;regenerate,&#160;the&#160;stem&#160;cell&#160;moves&#160;along&#160;the&#160;shortest<br/>path&#160;to&#160;the&#160;damage&#160;location&#160;and&#160;then&#160;regenerates&#160;missing&#160;neighbours&#160;of&#160;each&#160;cell<br/>in&#160;the&#160;damage&#160;area.&#160;In&#160;the&#160;case&#160;of&#160;a&#160;damage&#160;extending&#160;to&#160;the&#160;original&#160;border,<br/>when&#160;a&#160;new&#160;cell&#160;is&#160;added&#160;next&#160;to&#160;a&#160;border&#160;neuron,&#160;the&#160;new&#160;cell&#160;becomes&#160;the<br/>marker&#160;for&#160;the&#160;next&#160;border&#160;cell&#160;and&#160;so&#160;on&#160;until&#160;the&#160;whole&#160;set&#160;of&#160;border&#160;cells<br/>is&#160;added&#160;and&#160;regeneration&#160;comes&#160;to&#160;completion&#160;with&#160;the&#160;renewal&#160;of&#160;the&#160;correct<br/>original&#160;form.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:11px;font-family:Times;color:#000000;}
+	.ft51{font-size:15px;font-family:Times;color:#000000;}
+	.ft52{font-size:12px;font-family:Times;color:#000000;}
+	.ft53{font-size:12px;font-family:Times;color:#000000;}
+	.ft54{font-size:11px;font-family:Times;color:#000000;}
+	.ft55{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft56{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft57{font-size:12px;line-height:14px;font-family:Times;color:#000000;}
+	.ft58{font-size:12px;line-height:21px;font-family:Times;color:#000000;}
+	.ft59{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:47px;left:145px;white-space:nowrap" class="ft50">A&#160;Computational&#160;Framework&#160;for&#160;Autonomous&#160;Self-Repair&#160;Systems</p>
+<p style="position:absolute;top:47px;left:578px;white-space:nowrap" class="ft50">157</p>
+<p style="position:absolute;top:83px;left:80px;white-space:nowrap" class="ft51"><b>4</b></p>
+<p style="position:absolute;top:83px;left:111px;white-space:nowrap" class="ft51"><b>Results&#160;and&#160;Discussion</b></p>
+<p style="position:absolute;top:117px;left:80px;white-space:nowrap" class="ft56">To&#160;determine&#160;the&#160;level&#160;of&#160;noise&#160;in&#160;the&#160;cell&#160;position&#160;the&#160;system&#160;can&#160;handle,&#160;we<br/>ﬁrst&#160;perturbed&#160;the&#160;system&#160;by</p>
+<p style="position:absolute;top:132px;left:277px;white-space:nowrap" class="ft53"><i>±&#160;</i>(2%,&#160;5%&#160;and&#160;10%)&#160;and&#160;calculated&#160;entropy.&#160;We</p>
+<p style="position:absolute;top:153px;left:80px;white-space:nowrap" class="ft56">observed&#160;only&#160;a&#160;relatively&#160;small&#160;increase&#160;in&#160;the&#160;absolute&#160;change&#160;in&#160;entropy&#160;for<br/><i>±</i>2%&#160;and&#160;<i>±</i>5%&#160;perturbations&#160;but&#160;<i>±</i>10%&#160;introduces&#160;a&#160;signiﬁcant&#160;change&#160;and&#160;dis-<br/>order&#160;into&#160;the&#160;system&#160;producing&#160;random&#160;cell&#160;clusters.&#160;Further&#160;experimentation<br/>with&#160;entropy&#160;calculation&#160;with&#160;various&#160;cell&#160;deletions&#160;revealed&#160;that</p>
+<p style="position:absolute;top:203px;left:501px;white-space:nowrap" class="ft53"><i>±</i>5%&#160;perturba-</p>
+<p style="position:absolute;top:225px;left:80px;white-space:nowrap" class="ft56">tion&#160;introduces&#160;enough&#160;noise&#160;into&#160;the&#160;system&#160;but&#160;still&#160;keeps&#160;it&#160;sensitive&#160;to&#160;single<br/>cell&#160;deletions;&#160;therefore,</p>
+<p style="position:absolute;top:239px;left:237px;white-space:nowrap" class="ft53"><i>±</i>5%&#160;perturbation&#160;with&#160;corresponding&#160;noise&#160;distribution</p>
+<p style="position:absolute;top:261px;left:80px;white-space:nowrap" class="ft53"><i></i>(0<i>,&#160;</i>0<i>.</i>03)&#160;was&#160;selected&#160;to&#160;represent&#160;stochasticity&#160;in&#160;the&#160;tissue.</p>
+<p style="position:absolute;top:473px;left:80px;white-space:nowrap" class="ft59"><b>Fig.&#160;3.&#160;</b>(A)&#160;System&#160;entropy&#160;over&#160;the&#160;24&#160;segments&#160;of&#160;tissue&#160;for:&#160;original&#160;-&#160;no&#160;damage,<br/>and&#160;random&#160;deletions&#160;of&#160;1,&#160;5&#160;and&#160;10&#160;cells&#160;in&#160;each&#160;segment&#160;(as&#160;in&#160;(a)),&#160;and&#160;100&#160;cells<br/>far&#160;from&#160;the&#160;stem&#160;cell&#160;(as&#160;in&#160;(b));&#160;and&#160;(B)&#160;Progression&#160;of&#160;damage&#160;repair&#160;until&#160;correct<br/>completion&#160;(from&#160;left&#160;to&#160;right)&#160;for&#160;damage&#160;in&#160;A(b)</p>
+<p style="position:absolute;top:568px;left:103px;white-space:nowrap" class="ft52">We&#160;start&#160;with</p>
+<p style="position:absolute;top:564px;left:195px;white-space:nowrap" class="ft53"><i>±</i>5%&#160;perturbed&#160;cell&#160;system&#160;and&#160;calculate&#160;its&#160;entropy&#160;over&#160;all&#160;24</p>
+<p style="position:absolute;top:586px;left:80px;white-space:nowrap" class="ft56">segments.&#160;Then&#160;we&#160;make&#160;six&#160;cases&#160;of&#160;damage&#160;with&#160;increasing&#160;damage&#160;intensity&#160;by<br/>randomly&#160;deleting&#160;1,&#160;5&#160;and&#160;10&#160;cell(s)&#160;in&#160;each&#160;segment&#160;or&#160;a&#160;large&#160;area&#160;near&#160;the&#160;stem<br/>cell&#160;or&#160;far&#160;from&#160;it&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#5">3A&#160;</a>(a&#160;and&#160;b)&#160;show&#160;two&#160;cases).&#160;The&#160;system&#160;senses&#160;damage<br/>from&#160;the&#160;entropy&#160;recalculated&#160;for&#160;the&#160;whole&#160;system&#160;and&#160;the&#160;graphs&#160;in&#160;Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#5">3A<br/></a>show&#160;the&#160;degree&#160;of&#160;entropy&#160;change&#160;in&#160;relation&#160;to&#160;the&#160;intensity&#160;of&#160;the&#160;damage.&#160;As<br/>can&#160;be&#160;seen,&#160;entropy&#160;undergoes&#160;change&#160;due&#160;to&#160;even&#160;single&#160;cell&#160;deletions&#160;and&#160;the<br/>larger&#160;the&#160;number&#160;of&#160;cell&#160;deletions,&#160;the&#160;larger&#160;the&#160;change&#160;in&#160;entropy.&#160;The&#160;stem<br/>cell&#160;determined&#160;damaged&#160;segments&#160;from&#160;these&#160;changes&#160;in&#160;entropy.&#160;Then,&#160;local<br/>sensing&#160;activated&#160;the&#160;perceptrons&#160;in&#160;the&#160;portion&#160;of&#160;the&#160;AANN&#160;corresponding&#160;to<br/>the&#160;aﬀected&#160;segments&#160;and&#160;found&#160;the&#160;exact&#160;location,&#160;size&#160;and&#160;the&#160;boundary&#160;of<br/>the&#160;damage.&#160;All&#160;damages&#160;and&#160;boundaries&#160;were&#160;identiﬁed&#160;correctly.&#160;To&#160;repair&#160;a<br/>damage,&#160;the&#160;stem&#160;cell&#160;moved&#160;to&#160;the&#160;nearest&#160;location&#160;of&#160;the&#160;damage&#160;and&#160;initiated<br/>regeneration&#160;of&#160;missing&#160;cells&#160;as&#160;shown&#160;in&#160;Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#5">3B&#160;</a>for&#160;the&#160;case&#160;of&#160;100-cell&#160;damage<br/>far&#160;from&#160;the&#160;stem&#160;cell&#160;(Fig.&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#5">3A(b)).</a></p>
+<p style="position:absolute;top:837px;left:103px;white-space:nowrap" class="ft52">For&#160;performance&#160;discussion,&#160;we&#160;compare&#160;our&#160;method&#160;with&#160;several&#160;previous</p>
+<p style="position:absolute;top:855px;left:80px;white-space:nowrap" class="ft56">approaches.&#160;Global&#160;and&#160;local&#160;sensing&#160;in&#160;our&#160;model&#160;involving&#160;limited&#160;cell&#160;commu-<br/>nications&#160;make&#160;our&#160;system&#160;more&#160;robust&#160;and&#160;computationally&#160;eﬃcient&#160;in&#160;compar-<br/>ison&#160;to&#160;models&#160;in&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[2</a><a href="732e56113d5b5711203a43e8f946d5acs.html#7">,&#160;15].&#160;</a>Compared&#160;to&#160;models&#160;in&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[6],&#160;</a>this&#160;model&#160;not&#160;only&#160;depends</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:11px;font-family:Times;color:#000000;}
+	.ft61{font-size:12px;font-family:Times;color:#000000;}
+	.ft62{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft63{font-size:15px;font-family:Times;color:#000000;}
+	.ft64{font-size:11px;font-family:Times;color:#000000;}
+	.ft65{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft66{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:47px;left:59px;white-space:nowrap" class="ft60">158</p>
+<p style="position:absolute;top:47px;left:109px;white-space:nowrap" class="ft60">T.&#160;N.&#160;Minh-Thai&#160;et&#160;al.</p>
+<p style="position:absolute;top:85px;left:59px;white-space:nowrap" class="ft65">on&#160;much&#160;less&#160;communication&#160;between&#160;cells&#160;but&#160;also&#160;keeps&#160;minimal&#160;information<br/>-&#160;just&#160;the&#160;global&#160;entropy&#160;and&#160;state&#160;of&#160;neurons&#160;in&#160;the&#160;original&#160;system.&#160;De&#160;et&#160;al.<br/>model&#160;<a href="732e56113d5b5711203a43e8f946d5acs.html#6">[3]&#160;</a>does&#160;not&#160;recognise&#160;damage&#160;and&#160;generates&#160;and&#160;kills&#160;many&#160;cells&#160;before<br/>reaching&#160;a&#160;partially&#160;recovered&#160;form.&#160;In&#160;contrast,&#160;the&#160;current&#160;model&#160;detects&#160;dam-<br/>age&#160;and&#160;recovers&#160;the&#160;complete&#160;form&#160;using&#160;simpler&#160;and&#160;eﬃcient&#160;computations.</p>
+<p style="position:absolute;top:202px;left:59px;white-space:nowrap" class="ft63"><b>5</b></p>
+<p style="position:absolute;top:202px;left:89px;white-space:nowrap" class="ft63"><b>Conclusions</b></p>
+<p style="position:absolute;top:240px;left:59px;white-space:nowrap" class="ft65">In&#160;this&#160;paper,&#160;we&#160;propose&#160;a&#160;new&#160;model&#160;for&#160;damage&#160;detection&#160;and&#160;regeneration<br/>in&#160;multicellular&#160;tissues&#160;based&#160;on&#160;assumptions&#160;inspired&#160;by&#160;the&#160;biology&#160;of&#160;living<br/>tissues.&#160;This&#160;is&#160;achieved&#160;by&#160;enabling&#160;a&#160;cellular&#160;system&#160;to&#160;maintain&#160;its&#160;state&#160;and<br/>geometry&#160;resembling&#160;a&#160;form&#160;of&#160;collective&#160;intelligence.&#160;This&#160;work&#160;advances&#160;the<br/>eﬀort&#160;of&#160;building&#160;ANN-like&#160;models&#160;of&#160;regenerative&#160;control.&#160;At&#160;the&#160;next&#160;stage,<br/>the&#160;system&#160;will&#160;be&#160;extended&#160;to&#160;more&#160;complex&#160;forms&#160;of&#160;organisms&#160;and&#160;damages<br/>implementing&#160;collective&#160;adaptation&#160;and&#160;learning.</p>
+<p style="position:absolute;top:383px;left:59px;white-space:nowrap" class="ft66"><b>Acknowledgments.&#160;</b>Authors&#160;gratefully&#160;acknowledge&#160;support&#160;of&#160;the&#160;the&#160;following:<br/>TNM&#160;-&#160;Doctoral&#160;Scholarship&#160;from&#160;VIED,&#160;Vietnam;&#160;J.A.-&#160;Sabbatical&#160;at&#160;Lincoln&#160;Univer-<br/>sity,&#160;New&#160;Zealand;&#160;S.S.-&#160;Lincoln&#160;University&#160;Research&#160;Fund;&#160;M.L.-&#160;DARPA&#160;(#HR0011-<br/>18-2-0022),&#160;the&#160;Allen&#160;Discovery&#160;Center&#160;award&#160;from&#160;the&#160;Paul&#160;G&#160;Allen&#160;Frontiers&#160;Group,<br/>and&#160;the&#160;Templeton&#160;World&#160;Charity&#160;Foundation&#160;(TWCF0089/AB55&#160;and&#160;TWCF0140).</p>
+<p style="position:absolute;top:493px;left:59px;white-space:nowrap" class="ft63"><b>References</b></p>
+<p style="position:absolute;top:530px;left:66px;white-space:nowrap" class="ft60">1.&#160;Arbuckle,&#160;D.J.,&#160;Requicha,&#160;A.A.G.:&#160;Self-assembly&#160;and&#160;self-repair&#160;of&#160;arbitrary&#160;shapes</p>
+<p style="position:absolute;top:547px;left:84px;white-space:nowrap" class="ft66">by&#160;a&#160;swarm&#160;of&#160;reactive&#160;robots:&#160;algorithms&#160;and&#160;simulations.&#160;Auton.&#160;Robots&#160;<b>28</b>(2),<br/>197–211&#160;(2010)</p>
+<p style="position:absolute;top:580px;left:66px;white-space:nowrap" class="ft60">2.&#160;Bessonov,&#160;N.,&#160;Levin,&#160;M.,&#160;Morozova,&#160;N.,&#160;Reinberg,&#160;N.,&#160;Tosenberger,&#160;A.,&#160;Volpert,</p>
+<p style="position:absolute;top:596px;left:84px;white-space:nowrap" class="ft66">V.:&#160;On&#160;a&#160;model&#160;of&#160;pattern&#160;regeneration&#160;based&#160;on&#160;cell&#160;memory.&#160;PLOS&#160;ONE&#160;<b>10</b>(2),<br/>e0118091&#160;(2015)</p>
+<p style="position:absolute;top:629px;left:66px;white-space:nowrap" class="ft60">3.&#160;De,&#160;A.,&#160;Chakravarthy,&#160;V.S.,&#160;Levin,&#160;M.:&#160;A&#160;computational&#160;model&#160;of&#160;planarian&#160;regen-</p>
+<p style="position:absolute;top:645px;left:84px;white-space:nowrap" class="ft60">eration.&#160;Int.&#160;J.&#160;Parallel&#160;Emerg.&#160;Distrib.&#160;Syst.&#160;<b>32</b>(4),&#160;331–347&#160;(2017)</p>
+<p style="position:absolute;top:662px;left:66px;white-space:nowrap" class="ft60">4.&#160;Dinsmore,&#160;C.E.:&#160;A&#160;history&#160;of&#160;regeneration&#160;research:&#160;milestones&#160;in&#160;the&#160;evolution&#160;of</p>
+<p style="position:absolute;top:678px;left:84px;white-space:nowrap" class="ft60">a&#160;science.&#160;J.&#160;Hist.&#160;Biol.&#160;<b>26</b>(1),&#160;156–158&#160;(1993)</p>
+<p style="position:absolute;top:695px;left:66px;white-space:nowrap" class="ft60">5.&#160;Edwards,&#160;C.:&#160;Self-repair&#160;techniques&#160;point&#160;to&#160;robots&#160;that&#160;design&#160;themselves.&#160;Com-</p>
+<p style="position:absolute;top:711px;left:84px;white-space:nowrap" class="ft60">mun.&#160;ACM&#160;<b>59</b>(2),&#160;15–17&#160;(2016)</p>
+<p style="position:absolute;top:727px;left:66px;white-space:nowrap" class="ft60">6.&#160;Ferreira,&#160;G.B.S.,&#160;Smiley,&#160;M.,&#160;Scheutz,&#160;M.,&#160;Levin,&#160;M.:&#160;Dynamic&#160;structure&#160;discovery</p>
+<p style="position:absolute;top:744px;left:84px;white-space:nowrap" class="ft66">and&#160;repair&#160;for&#160;3D&#160;cell&#160;assemblages.&#160;In:&#160;Proceedings&#160;of&#160;the&#160;Fifteenth&#160;International<br/>Conference&#160;on&#160;the&#160;Synthesis&#160;and&#160;Simulation&#160;of&#160;Living&#160;Systems&#160;(ALIFEXV)&#160;(2016)</p>
+<p style="position:absolute;top:777px;left:66px;white-space:nowrap" class="ft60">7.&#160;Frei,&#160;R.,&#160;McWilliam,&#160;R.,&#160;Derrick,&#160;B.,&#160;Purvis,&#160;A.,&#160;Tiwari,&#160;A.,&#160;Di&#160;Marzo&#160;Serugendo,</p>
+<p style="position:absolute;top:793px;left:84px;white-space:nowrap" class="ft66">G.:&#160;Self-healing&#160;and&#160;self-repairing&#160;technologies.&#160;Int.&#160;J.&#160;Adv.&#160;Manuf.&#160;Technol.&#160;<b>69</b>(5),<br/>1033–1061&#160;(2013)</p>
+<p style="position:absolute;top:826px;left:66px;white-space:nowrap" class="ft60">8.&#160;Gerlee,&#160;P.,&#160;Basanta,&#160;D.,&#160;Anderson,&#160;A.R.A.:&#160;Evolving&#160;homeostatic&#160;tissue&#160;using</p>
+<p style="position:absolute;top:842px;left:84px;white-space:nowrap" class="ft60">genetic&#160;algorithms.&#160;Prog.&#160;Biophys.&#160;Mole.&#160;Biol.&#160;<b>106</b>(2),&#160;414–425&#160;(2011)</p>
+<p style="position:absolute;top:859px;left:66px;white-space:nowrap" class="ft60">9.&#160;Levin,&#160;M.:&#160;The&#160;wisdom&#160;of&#160;the&#160;body:&#160;future&#160;techniques&#160;and&#160;approaches&#160;to&#160;morpho-</p>
+<p style="position:absolute;top:875px;left:84px;white-space:nowrap" class="ft66">genetic&#160;ﬁelds&#160;in&#160;regenerative&#160;medicine,&#160;developmental&#160;biology&#160;and&#160;cancer.&#160;Regen.<br/>Med.&#160;<b>6</b>(6),&#160;667–673&#160;(2011).&#160;pMID:&#160;22050517</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>732e56113d5b5711203a43e8f946d5ac-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:11px;font-family:Times;color:#000000;}
+	.ft71{font-size:11px;font-family:Times;color:#000000;}
+	.ft72{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:659px;height:999px;">
+<p style="position:absolute;top:47px;left:145px;white-space:nowrap" class="ft70">A&#160;Computational&#160;Framework&#160;for&#160;Autonomous&#160;Self-Repair&#160;Systems</p>
+<p style="position:absolute;top:47px;left:578px;white-space:nowrap" class="ft70">159</p>
+<p style="position:absolute;top:86px;left:80px;white-space:nowrap" class="ft70">10.&#160;Levin,&#160;M.:&#160;Morphogenetic&#160;ﬁelds&#160;in&#160;embryogenesis,&#160;regeneration,&#160;and&#160;cancer:&#160;non-</p>
+<p style="position:absolute;top:102px;left:106px;white-space:nowrap" class="ft72">local&#160;control&#160;of&#160;complex&#160;patterning.&#160;Biosystems&#160;<b>109</b>(3),&#160;243–261&#160;(2012).&#160;Biological<br/>Morphogenesis:&#160;Theory&#160;and&#160;Computation</p>
+<p style="position:absolute;top:135px;left:80px;white-space:nowrap" class="ft70">11.&#160;Lobo,&#160;D.,&#160;Solano,&#160;M.,&#160;Bubenik,&#160;G.A.,&#160;Levin,&#160;M.:&#160;A&#160;linear-encoding&#160;model&#160;explains</p>
+<p style="position:absolute;top:152px;left:106px;white-space:nowrap" class="ft72">the&#160;variability&#160;of&#160;the&#160;target&#160;morphology&#160;in&#160;regeneration.&#160;J.&#160;Roy.&#160;Soc.&#160;Interface<br/><b>11</b>(92),&#160;20130918&#160;(2014)</p>
+<p style="position:absolute;top:185px;left:80px;white-space:nowrap" class="ft70">12.&#160;Mustard,&#160;J.,&#160;Levin,&#160;M.:&#160;Bioelectrical&#160;mechanisms&#160;for&#160;programming&#160;growth&#160;and</p>
+<p style="position:absolute;top:201px;left:106px;white-space:nowrap" class="ft72">form:&#160;taming&#160;physiological&#160;networks&#160;for&#160;soft&#160;body&#160;robotics.&#160;Soft&#160;Robot.&#160;<b>1</b>(3),&#160;169–<br/>191&#160;(2014).&#160;Biological&#160;Morphogenesis:&#160;Theory&#160;and&#160;Computation</p>
+<p style="position:absolute;top:234px;left:80px;white-space:nowrap" class="ft70">13.&#160;Rubenstein,&#160;M.,&#160;Sai,&#160;Y.,&#160;Chuong,&#160;C.,&#160;Shen,&#160;W.:&#160;Regenerative&#160;patterning&#160;in&#160;swarm</p>
+<p style="position:absolute;top:250px;left:106px;white-space:nowrap" class="ft72">robots:&#160;mutual&#160;beneﬁts&#160;of&#160;research&#160;in&#160;robotics&#160;and&#160;stem&#160;cell&#160;biology.&#160;Int.&#160;J.&#160;Dev.<br/>Biol.&#160;<b>53</b>(5–6),&#160;869–881&#160;(2009)</p>
+<p style="position:absolute;top:283px;left:80px;white-space:nowrap" class="ft70">14.&#160;Teschendorﬀ,&#160;A.E.,&#160;Enver,&#160;T.:&#160;Single-cell&#160;entropy&#160;for&#160;accurate&#160;estimation&#160;of&#160;diﬀer-</p>
+<p style="position:absolute;top:300px;left:106px;white-space:nowrap" class="ft70">entiation&#160;potency&#160;from&#160;a&#160;cell’s&#160;transcriptome.&#160;Nat.&#160;Commun.&#160;<b>8</b>,&#160;15599&#160;(2017)</p>
+<p style="position:absolute;top:316px;left:80px;white-space:nowrap" class="ft70">15.&#160;Tosenberger,&#160;A.,&#160;Bessonov,&#160;N.,&#160;Levin,&#160;M.,&#160;Reinberg,&#160;N.,&#160;Volpert,&#160;V.,&#160;Morozova,</p>
+<p style="position:absolute;top:333px;left:106px;white-space:nowrap" class="ft72">N.:&#160;A&#160;conceptual&#160;model&#160;of&#160;morphogenesis&#160;and&#160;regeneration.&#160;Acta&#160;Biotheor.&#160;<b>63</b>(3),<br/>283–294&#160;(2015)</p>
+</div>
+</body>
+</html>

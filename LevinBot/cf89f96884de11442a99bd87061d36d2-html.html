@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:33px;font-family:Times;color:#000000;}
+	.ft11{font-size:14px;font-family:Times;color:#000000;}
+	.ft12{font-size:9px;font-family:Times;color:#000000;}
+	.ft13{font-size:8px;font-family:Times;color:#000000;}
+	.ft14{font-size:12px;font-family:Times;color:#000000;}
+	.ft15{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft16{font-size:11px;font-family:Times;color:#000000;}
+	.ft17{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft18{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft19{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:93px;left:95px;white-space:nowrap" class="ft10">Automated&#160;shapeshifting&#160;for&#160;function&#160;recovery&#160;in</p>
+<p style="position:absolute;top:135px;left:343px;white-space:nowrap" class="ft10">damaged&#160;robots</p>
+<p style="position:absolute;top:195px;left:83px;white-space:nowrap" class="ft11">Sam&#160;Kriegman1,&#160;Stephanie&#160;Walker2,&#160;Dylan&#160;Shah2,&#160;Michael&#160;Levin3,&#160;Rebecca&#160;Kramer-Bottiglio2,&#160;Josh&#160;Bongard1</p>
+<p style="position:absolute;top:212px;left:275px;white-space:nowrap" class="ft13">1University&#160;of&#160;Vermont,&#160;2Yale&#160;University,&#160;3Tufts&#160;University</p>
+<p style="position:absolute;top:485px;left:73px;white-space:nowrap" class="ft12">Fig.&#160;1.</p>
+<p style="position:absolute;top:485px;left:123px;white-space:nowrap" class="ft12">After&#160;learning&#160;to&#160;walk,&#160;a&#160;simulated&#160;quadruped&#160;is&#160;subjected&#160;to&#160;unanticipated&#160;insult:&#160;its&#160;legs&#160;are&#160;cut&#160;off.&#160;An&#160;evolutionary&#160;algorithm&#160;searches&#160;for</p>
+<p style="position:absolute;top:498px;left:73px;white-space:nowrap" class="ft17">deformations&#160;to&#160;the&#160;postdamage&#160;structure&#160;that,&#160;when&#160;coupled&#160;with&#160;the&#160;predamage&#160;controller,&#160;result&#160;in&#160;function&#160;recovery.&#160;One&#160;of&#160;the&#160;evolved&#160;solutions&#160;(shown<br/>here)&#160;yields&#160;the&#160;spontaneous&#160;“regeneration”&#160;of&#160;the&#160;lost&#160;legs,&#160;which&#160;was&#160;manually&#160;transferred&#160;to&#160;reality&#160;<a href="https://youtu.be/afOXX2r54mQ">(<b>youtu.be/afOXX2r54mQ</b>).</a></p>
+<p style="position:absolute;top:548px;left:88px;white-space:nowrap" class="ft16">Abstract—A&#160;robot’s&#160;mechanical&#160;parts&#160;routinely&#160;wear&#160;out&#160;from</p>
+<p style="position:absolute;top:563px;left:73px;white-space:nowrap" class="ft18">normal&#160;functioning&#160;and&#160;can&#160;be&#160;lost&#160;to&#160;injury.&#160;For&#160;autonomous<br/>robots&#160;operating&#160;in&#160;isolated&#160;or&#160;hostile&#160;environments,&#160;repair&#160;from<br/>a&#160;human&#160;operator&#160;is&#160;often&#160;not&#160;possible.&#160;Thus,&#160;much&#160;work&#160;has<br/>sought&#160;to&#160;automate&#160;damage&#160;recovery&#160;in&#160;robots.&#160;However,&#160;every<br/>case&#160;reported&#160;in&#160;the&#160;literature&#160;to&#160;date&#160;has&#160;accepted&#160;the&#160;damaged<br/>mechanical&#160;structure&#160;as&#160;fixed,&#160;and&#160;focused&#160;on&#160;learning&#160;new&#160;ways<br/>to&#160;control&#160;it.&#160;Here&#160;we&#160;show&#160;for&#160;the&#160;first&#160;time&#160;a&#160;robot&#160;that<br/>automatically&#160;recovers&#160;from&#160;unexpected&#160;damage&#160;by&#160;deforming&#160;its<br/>resting&#160;mechanical&#160;structure&#160;without&#160;changing&#160;its&#160;control&#160;policy.<br/>We&#160;found&#160;that,&#160;especially&#160;in&#160;the&#160;case&#160;of&#160;“deep&#160;insult”,&#160;such&#160;as<br/>removal&#160;of&#160;all&#160;four&#160;of&#160;the&#160;robot’s&#160;legs,&#160;the&#160;damaged&#160;machine<br/>evolves&#160;shape&#160;changes&#160;that&#160;not&#160;only&#160;recover&#160;the&#160;original&#160;level<br/>of&#160;function&#160;(locomotion)&#160;as&#160;before,&#160;but&#160;can&#160;in&#160;fact&#160;surpass&#160;the<br/>original&#160;level&#160;of&#160;performance&#160;(speed).&#160;This&#160;suggests&#160;that&#160;shape<br/>change,&#160;instead&#160;of&#160;control&#160;readaptation,&#160;may&#160;be&#160;a&#160;better&#160;method<br/>to&#160;recover&#160;function&#160;after&#160;damage&#160;in&#160;some&#160;cases.</p>
+<p style="position:absolute;top:817px;left:203px;white-space:nowrap" class="ft14">I.&#160;INTRODUCTION</p>
+<p style="position:absolute;top:841px;left:88px;white-space:nowrap" class="ft14">Certain&#160;remote,&#160;hazardous&#160;or&#160;otherwise&#160;inaccessible&#160;en-</p>
+<p style="position:absolute;top:859px;left:73px;white-space:nowrap" class="ft19">vironments&#160;preclude&#160;human&#160;intervention&#160;when&#160;a&#160;robot&#160;fails<br/>or&#160;is&#160;damaged.&#160;It&#160;would&#160;thus&#160;be&#160;advantageous&#160;for&#160;systems<br/>operating&#160;in&#160;such&#160;environments&#160;to&#160;have&#160;some&#160;capacity&#160;for&#160;self<br/>-maintenance&#160;and&#160;-repair.</p>
+<p style="position:absolute;top:931px;left:88px;white-space:nowrap" class="ft14">Indeed,&#160;much&#160;work&#160;has&#160;investigated&#160;how,&#160;in&#160;the&#160;absence&#160;of</p>
+<p style="position:absolute;top:949px;left:73px;white-space:nowrap" class="ft19">external&#160;supervision,&#160;a&#160;robot&#160;can&#160;automatically&#160;learn&#160;new&#160;ways<br/>to&#160;control&#160;its&#160;body&#160;when&#160;damaged&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[6,&#160;10,&#160;13,&#160;20,&#160;24,&#160;</a><a href="cf89f96884de11442a99bd87061d36d2s.html#10">26,&#160;34].<br/></a>While&#160;a&#160;diverse&#160;set&#160;of&#160;recovery&#160;mechanisms&#160;have&#160;been&#160;pro-<br/>posed,&#160;they&#160;all&#160;shared&#160;a&#160;common&#160;assumption:&#160;The&#160;damaged<br/>mechanical&#160;structure&#160;could&#160;be&#160;reconfigured,&#160;but&#160;not&#160;fundamen-<br/>tally&#160;deformed.</p>
+<p style="position:absolute;top:1057px;left:88px;white-space:nowrap" class="ft14">This&#160;assumption&#160;is&#160;reasonable&#160;in&#160;classical&#160;robots,&#160;which</p>
+<p style="position:absolute;top:1075px;left:73px;white-space:nowrap" class="ft14">are,&#160;generally,&#160;jointed&#160;collections&#160;of&#160;rigid&#160;links.&#160;But&#160;recent</p>
+<p style="position:absolute;top:547px;left:468px;white-space:nowrap" class="ft19">advances&#160;in&#160;materials&#160;science&#160;and&#160;3D&#160;printing&#160;are&#160;enabling<br/>the&#160;construction&#160;of&#160;soft&#160;machines&#160;with&#160;theoretically&#160;infinite<br/>degrees&#160;of&#160;freedom&#160;and&#160;thus&#160;capable&#160;of&#160;deforming&#160;their&#160;struc-<br/>tures&#160;so&#160;as&#160;to&#160;regenerate&#160;a&#160;lost&#160;part&#160;or&#160;embrace&#160;an&#160;entirely&#160;new<br/>geometry&#160;in&#160;the&#160;face&#160;of&#160;unanticipated&#160;insult.&#160;The&#160;possibility<br/>of&#160;such&#160;change&#160;affords&#160;a&#160;completely&#160;novel&#160;mode&#160;of&#160;damage<br/>recovery:&#160;No&#160;robot&#160;built&#160;to&#160;date&#160;has&#160;altered&#160;its&#160;resting&#160;structure<br/>in&#160;order&#160;to&#160;recover&#160;function&#160;lost&#160;due&#160;to&#160;damage.</p>
+<p style="position:absolute;top:693px;left:483px;white-space:nowrap" class="ft14">Previous&#160;computational&#160;studies&#160;have&#160;demonstrated&#160;structural</p>
+<p style="position:absolute;top:711px;left:468px;white-space:nowrap" class="ft19">but&#160;non-functional&#160;change&#160;in&#160;discrete&#160;models.&#160;For&#160;exam-<br/>ple,&#160;cellular&#160;automata&#160;have&#160;been&#160;trained&#160;to&#160;grow&#160;a&#160;target<br/>structure&#160;from&#160;a&#160;single&#160;cell&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[14,&#160;</a><a href="cf89f96884de11442a99bd87061d36d2s.html#10">29].&#160;</a>Similar&#160;growth&#160;rules<br/>could&#160;in&#160;principle&#160;be&#160;instantiated&#160;in&#160;self-assembling&#160;modular<br/>robots&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[44,&#160;46].&#160;</a>However,&#160;structural&#160;change&#160;would&#160;require<br/>access&#160;to&#160;additional&#160;modules&#160;in&#160;the&#160;environment,&#160;redundant<br/>modules&#160;on&#160;the&#160;body,&#160;or&#160;the&#160;ability&#160;to&#160;internally&#160;generate<br/>them.&#160;Moreover,&#160;it&#160;is&#160;unclear&#160;how&#160;or&#160;if&#160;such&#160;rules&#160;could&#160;dictate<br/>continuous&#160;geometric&#160;deformation&#160;in&#160;soft&#160;robots.</p>
+<p style="position:absolute;top:875px;left:483px;white-space:nowrap" class="ft14">The&#160;present&#160;work&#160;builds&#160;on&#160;two&#160;closely-related&#160;research</p>
+<p style="position:absolute;top:893px;left:468px;white-space:nowrap" class="ft19">projects&#160;in&#160;which&#160;injured&#160;robots&#160;automatically&#160;generate&#160;and<br/>test&#160;candidate&#160;control&#160;policies&#160;in&#160;order&#160;to&#160;find&#160;compensatory<br/>behaviors&#160;that&#160;work&#160;in&#160;spite&#160;of&#160;damage&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[6,&#160;13].</a></p>
+<p style="position:absolute;top:950px;left:483px;white-space:nowrap" class="ft14">In&#160;the&#160;first,&#160;Bongard&#160;et&#160;al.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[6]&#160;</a>demonstrated&#160;how,&#160;under&#160;the</p>
+<p style="position:absolute;top:968px;left:468px;white-space:nowrap" class="ft19">right&#160;conditions,&#160;an&#160;autonomous&#160;robot&#160;could&#160;internally&#160;model<br/>its&#160;own&#160;geometry&#160;with&#160;minimal&#160;sensorimotor&#160;experiment.&#160;The<br/>benefit&#160;of&#160;this&#160;approach&#160;is&#160;that,&#160;once&#160;a&#160;sufficiently&#160;accurate<br/>self-model&#160;has&#160;been&#160;established,&#160;actions&#160;can&#160;be&#160;internally&#160;re-<br/>hearsed,&#160;discarding&#160;those&#160;which&#160;are&#160;unsuccessful&#160;or&#160;dangerous,<br/>before&#160;attempting&#160;them&#160;in&#160;reality.&#160;If&#160;model&#160;accuracy&#160;drops,&#160;as<br/>from&#160;structural&#160;changes&#160;due&#160;to&#160;damage,&#160;modeling&#160;resumes&#160;and</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:9px;font-family:Times;color:#000000;}
+	.ft22{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft23{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft24{font-size:12px;font-family:Times;color:#bf003f;}
+	.ft25{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft25">continues&#160;until&#160;the&#160;robot’s&#160;current&#160;morphology&#160;is&#160;adequately<br/>reflected&#160;in&#160;the&#160;robot’s&#160;model&#160;of&#160;self.</p>
+<p style="position:absolute;top:125px;left:88px;white-space:nowrap" class="ft20">The&#160;main&#160;drawback&#160;of&#160;this&#160;approach&#160;is&#160;that&#160;internal&#160;mod-</p>
+<p style="position:absolute;top:143px;left:73px;white-space:nowrap" class="ft25">eling&#160;requires&#160;additional&#160;computation,&#160;and&#160;there&#160;are&#160;circum-<br/>stances&#160;in&#160;which&#160;the&#160;robot&#160;cannot&#160;afford—in&#160;terms&#160;of&#160;time,<br/>money,&#160;energy,&#160;stability,&#160;and&#160;the&#160;overall&#160;well-being&#160;of&#160;itself<br/>and&#160;others—to&#160;remain&#160;stationary&#160;for&#160;extended&#160;periods&#160;of&#160;time.</p>
+<p style="position:absolute;top:215px;left:88px;white-space:nowrap" class="ft20">To&#160;speed&#160;recovery,&#160;Cully&#160;et&#160;al.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[13]&#160;</a>proposed&#160;that&#160;robots</p>
+<p style="position:absolute;top:233px;left:73px;white-space:nowrap" class="ft25">should&#160;instead&#160;exploit&#160;the&#160;fact&#160;that&#160;resources&#160;prior&#160;to&#160;de-<br/>ployment&#160;are&#160;relatively&#160;cheap&#160;in&#160;terms&#160;of&#160;the&#160;factors&#160;listed<br/>above.&#160;A&#160;large,&#160;behavioral&#160;repertoire&#160;composed&#160;of&#160;mappings<br/>from&#160;behaviors&#160;(for&#160;the&#160;undamaged&#160;robot)&#160;to&#160;their&#160;predicted<br/>performances&#160;can&#160;therefore&#160;be&#160;modeled&#160;in&#160;simulation&#160;before-<br/>hand,&#160;and&#160;come&#160;preinstalled&#160;on&#160;the&#160;robot.&#160;Assuming&#160;damage&#160;is<br/>detected&#160;by&#160;an&#160;external&#160;mechanism,&#160;the&#160;authors&#160;showed&#160;how,<br/>under&#160;certain&#160;conditions,&#160;such&#160;a&#160;map&#160;can&#160;be&#160;rapidly&#160;updated<br/>and&#160;traversed&#160;to&#160;find&#160;successful&#160;behavior,&#160;which&#160;is&#160;implicitly<br/>robust&#160;to&#160;differences&#160;between&#160;the&#160;current&#160;and&#160;pre-deployment<br/>morphologies.</p>
+<p style="position:absolute;top:430px;left:88px;white-space:nowrap" class="ft20">The&#160;robots&#160;used&#160;in&#160;this&#160;past&#160;work&#160;consisted&#160;of&#160;rigid&#160;compo-</p>
+<p style="position:absolute;top:448px;left:73px;white-space:nowrap" class="ft25">nents&#160;attached&#160;together&#160;with&#160;a&#160;handful&#160;of&#160;mechanical&#160;degrees<br/>of&#160;freedom:&#160;The&#160;quadruped&#160;in&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[6]&#160;</a>had&#160;8&#160;motors&#160;and&#160;4&#160;DOF;<br/>the&#160;hexapod&#160;in&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[13]&#160;</a>had&#160;18&#160;motors&#160;and&#160;12&#160;DOF.&#160;The&#160;control<br/>problem&#160;was&#160;greatly&#160;impacted&#160;by&#160;these&#160;mechanical&#160;details&#160;and<br/>their&#160;intrinsic&#160;dynamics,&#160;but&#160;they&#160;were&#160;taken&#160;as&#160;given,&#160;even<br/>when&#160;damaged,&#160;because&#160;these&#160;robots&#160;simply&#160;could&#160;not&#160;deform<br/>their&#160;resting&#160;structure.</p>
+<p style="position:absolute;top:574px;left:88px;white-space:nowrap" class="ft20">Instead&#160;of&#160;treating&#160;the&#160;body&#160;as&#160;just&#160;the&#160;problem&#160;domain,</p>
+<p style="position:absolute;top:592px;left:73px;white-space:nowrap" class="ft25">we&#160;here&#160;modify&#160;it&#160;as&#160;part&#160;of&#160;the&#160;computational&#160;loop.&#160;This&#160;is<br/>possible&#160;because&#160;our&#160;robot&#160;has&#160;many&#160;more&#160;(140)&#160;mechanical<br/>degrees&#160;of&#160;freedom,&#160;and&#160;the&#160;ability&#160;to&#160;change&#160;the&#160;volume,<br/>rather&#160;than&#160;just&#160;the&#160;relative&#160;displacement,&#160;of&#160;each&#160;component.<br/>This&#160;flexibility&#160;enables&#160;a&#160;heretofore&#160;unexplored&#160;mode&#160;of<br/>damage&#160;recovery:&#160;keep&#160;the&#160;existing&#160;controller&#160;but&#160;deform&#160;the<br/>resting&#160;structure.&#160;Existing&#160;approaches&#160;to&#160;controller&#160;adaptation<br/>could&#160;in&#160;principle&#160;(although&#160;this&#160;is&#160;not&#160;investigated&#160;here)&#160;be<br/>paired&#160;with&#160;such&#160;changes&#160;to&#160;morphology.&#160;However,&#160;in&#160;many<br/>cases,&#160;it&#160;would&#160;be&#160;desirable&#160;to&#160;retain&#160;a&#160;previously&#160;optimized<br/>and&#160;fine-tuned&#160;controller,&#160;especially&#160;if&#160;missing&#160;structure&#160;can<br/>simply&#160;be&#160;regenerated.</p>
+<p style="position:absolute;top:807px;left:88px;white-space:nowrap" class="ft20">We&#160;here&#160;show&#160;that,&#160;under&#160;a&#160;wide&#160;range&#160;of&#160;damage&#160;scenarios,</p>
+<p style="position:absolute;top:825px;left:73px;white-space:nowrap" class="ft25">automated&#160;shapeshifting&#160;can&#160;be&#160;advantageous,&#160;and&#160;that,&#160;in<br/>most&#160;of&#160;the&#160;cases&#160;tested,&#160;shapeshifting&#160;alone&#160;(holding&#160;the<br/>existing&#160;controller&#160;fixed)&#160;outperforms&#160;controller&#160;adaptation<br/>alone&#160;(holding&#160;the&#160;damaged&#160;shape&#160;fixed),&#160;in&#160;terms&#160;of&#160;recovered<br/>mobility.</p>
+<p style="position:absolute;top:926px;left:218px;white-space:nowrap" class="ft20">II.&#160;METHODS</p>
+<p style="position:absolute;top:950px;left:88px;white-space:nowrap" class="ft20">This&#160;section&#160;describes&#160;the&#160;hardware,&#160;simulation&#160;and&#160;control</p>
+<p style="position:absolute;top:968px;left:73px;white-space:nowrap" class="ft25">of&#160;our&#160;robot,&#160;the&#160;damage&#160;scenarios&#160;it&#160;faces&#160;and&#160;its&#160;options<br/>for&#160;recovery:&#160;shapeshifting&#160;and&#160;controller&#160;adaptation.&#160;We&#160;also<br/>define&#160;a&#160;tripartite&#160;classification—of&#160;‘structure’,&#160;‘shape’&#160;and<br/>‘configuration’—that&#160;forms&#160;the&#160;basis&#160;of&#160;our&#160;argument,&#160;which<br/>is,&#160;briefly,&#160;that&#160;the&#160;way&#160;in&#160;which&#160;our&#160;robot&#160;recovers&#160;from<br/>damage—shape&#160;change—was&#160;outside&#160;the&#160;scope&#160;of&#160;any&#160;robot<br/>previously&#160;reported&#160;in&#160;the&#160;literature.</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft20">A.&#160;The&#160;source&#160;code.</p>
+<p style="position:absolute;top:112px;left:483px;white-space:nowrap" class="ft22"><a href="https://github.com/skriegman/2019-RSS"><b>github.com/skriegman/2019-RSS</b></a></p>
+<p style="position:absolute;top:139px;left:468px;white-space:nowrap" class="ft20">B.&#160;The&#160;robot.</p>
+<p style="position:absolute;top:161px;left:483px;white-space:nowrap" class="ft20">The&#160;robot&#160;is&#160;an&#160;isobilaterally&#160;symmetrical&#160;quadruped&#160;con-</p>
+<p style="position:absolute;top:179px;left:468px;white-space:nowrap" class="ft25">structed&#160;from&#160;140&#160;inflatable&#160;silicone&#160;“voxels”&#160;(Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1f&#160;</a>and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#2">2).<br/></a>We&#160;here&#160;present&#160;a&#160;method&#160;for&#160;creating&#160;air-filled&#160;voxel&#160;mem-<br/>branes&#160;with&#160;relatively&#160;uniform&#160;thickness.</p>
+<p style="position:absolute;top:375px;left:656px;white-space:nowrap" class="ft21">Fig.&#160;2.</p>
+<p style="position:absolute;top:375px;left:706px;white-space:nowrap" class="ft21">The&#160;blue&#160;robot,&#160;made&#160;from</p>
+<p style="position:absolute;top:389px;left:656px;white-space:nowrap" class="ft21">thin-walled&#160;inflatable&#160;elastomer&#160;voxels.</p>
+<p style="position:absolute;top:233px;left:483px;white-space:nowrap" class="ft20">Creating&#160;thin,&#160;hollow&#160;3D</p>
+<p style="position:absolute;top:251px;left:468px;white-space:nowrap" class="ft25">silicone&#160;structures&#160;is&#160;chal-<br/>lenging&#160;due&#160;to&#160;several&#160;fac-<br/>tors,&#160;including&#160;mold&#160;preci-<br/>sion&#160;and&#160;potential&#160;for&#160;dam-<br/>age&#160;during&#160;release&#160;from<br/>molds.&#160;One&#160;effective&#160;but<br/>labor-intensive&#160;method&#160;is&#160;to<br/>make&#160;the&#160;3D&#160;shapes&#160;by&#160;ad-<br/>hering&#160;2D&#160;films&#160;at&#160;their<br/>joints&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[31].&#160;</a>Here,&#160;inspired&#160;by&#160;a&#160;scalable&#160;2-axis&#160;rotational<br/>molding&#160;technique&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[45],&#160;</a>we&#160;employ&#160;a&#160;1-axis&#160;rotational&#160;drip-<br/>molding&#160;machine.</p>
+<p style="position:absolute;top:466px;left:483px;white-space:nowrap" class="ft20">First,&#160;silicone&#160;(Dragon&#160;Skin&#160;10&#160;Fast;&#160;Smooth-On,&#160;Inc.)&#160;was</p>
+<p style="position:absolute;top:484px;left:468px;white-space:nowrap" class="ft25">poured&#160;into&#160;an&#160;open-face&#160;acrylic&#160;mold&#160;and&#160;a&#160;tongue&#160;depressor<br/>was&#160;used&#160;to&#160;roughly&#160;spread&#160;the&#160;silicone&#160;along&#160;the&#160;walls.&#160;The<br/>mold&#160;was&#160;then&#160;attached&#160;to&#160;the&#160;rotational&#160;molding&#160;machine<br/>with&#160;the&#160;rotation&#160;axis&#160;oriented&#160;downward&#160;at&#160;45&#160;degrees&#160;relative<br/>to&#160;horizontal,&#160;and&#160;run&#160;through&#160;cycles&#160;comprising&#160;a&#160;90°&#160;turn,<br/>stopping&#160;for&#160;45&#160;seconds&#160;after&#160;each&#160;turn&#160;to&#160;allow&#160;the&#160;silicone&#160;to<br/>flow&#160;and&#160;evenly&#160;coat&#160;each&#160;side.&#160;Excess&#160;silicone&#160;dripped&#160;out&#160;of<br/>the&#160;mold,&#160;leaving&#160;a&#160;thickness&#160;which&#160;was&#160;dependent&#160;on&#160;several<br/>interrelated&#160;factors&#160;including&#160;the&#160;cure&#160;time,&#160;viscosity,&#160;and&#160;the<br/>interaction&#160;between&#160;the&#160;silicone&#160;and&#160;acrylic.</p>
+<p style="position:absolute;top:663px;left:483px;white-space:nowrap" class="ft20">After&#160;the&#160;silicone&#160;cured,&#160;excess&#160;material&#160;was&#160;cut&#160;away.&#160;A</p>
+<p style="position:absolute;top:681px;left:468px;white-space:nowrap" class="ft25">silicone&#160;base-layer&#160;was&#160;then&#160;rod-coated&#160;onto&#160;a&#160;flat&#160;acrylic<br/>sheet.&#160;Next,&#160;the&#160;bottomless&#160;cubes&#160;were&#160;placed&#160;on&#160;the&#160;base-<br/>layer&#160;and&#160;allowed&#160;to&#160;cure,&#160;sealing&#160;air&#160;inside&#160;each&#160;voxel.&#160;The<br/>voxels&#160;were&#160;then&#160;cut&#160;from&#160;the&#160;sheet&#160;and&#160;a&#160;small&#160;hole&#160;was<br/>punched&#160;in&#160;each&#160;voxel&#160;for&#160;tubing.&#160;Finally,&#160;silicone&#160;tubes&#160;were<br/>inserted&#160;and&#160;bonded&#160;with&#160;Sil-Poxy&#160;(Smooth-On,&#160;Inc.).</p>
+<p style="position:absolute;top:788px;left:483px;white-space:nowrap" class="ft20">The&#160;overall&#160;robot&#160;consists&#160;of&#160;a&#160;6×6×3&#160;voxel&#160;torso&#160;and&#160;four</p>
+<p style="position:absolute;top:806px;left:468px;white-space:nowrap" class="ft25">removable&#160;2&#160;×&#160;2&#160;×&#160;2&#160;voxel&#160;legs&#160;(Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1f-j&#160;</a>and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#2">2).&#160;</a>Sil-Poxy<br/>and&#160;Ecoflex&#160;00-50&#160;were&#160;used&#160;to&#160;improve&#160;adhesion&#160;between<br/>voxels.&#160;To&#160;explore&#160;the&#160;effect&#160;of&#160;layer&#160;thickness&#160;on&#160;the&#160;range<br/>of&#160;attainable&#160;morphologies,&#160;two&#160;versions&#160;of&#160;the&#160;robot&#160;were<br/>fabricated:&#160;The&#160;blue&#160;robot&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#2">2)&#160;</a>consists&#160;of&#160;voxels&#160;made<br/>with&#160;one&#160;layer&#160;of&#160;silicone,&#160;while&#160;the&#160;purple&#160;robot&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1f-j)<br/></a>consists&#160;of&#160;thicker-walled&#160;voxels&#160;made&#160;with&#160;two&#160;layers&#160;of<br/>silicone.</p>
+<p style="position:absolute;top:950px;left:483px;white-space:nowrap" class="ft20">Individual&#160;cubic&#160;voxels&#160;were&#160;manually&#160;inflated&#160;at&#160;pressures</p>
+<p style="position:absolute;top:968px;left:468px;white-space:nowrap" class="ft25">less&#160;than&#160;20&#160;kPa,&#160;and&#160;approached&#160;a&#160;spherical&#160;shape&#160;as&#160;pressure<br/>increased.&#160;When&#160;patterned&#160;together&#160;into&#160;a&#160;robot,&#160;selective<br/>inflation&#160;of&#160;a&#160;subset&#160;of&#160;voxels&#160;induces&#160;overall&#160;robot&#160;shape<br/>change.&#160;To&#160;reduce&#160;friction&#160;and&#160;weight&#160;effects&#160;in&#160;the&#160;robots,<br/>they&#160;were&#160;placed&#160;on&#160;top&#160;of&#160;a&#160;glass&#160;crystallizing&#160;dish,&#160;which<br/>lifted&#160;their&#160;legs&#160;off&#160;the&#160;table&#160;surface.&#160;While&#160;this&#160;arrangement<br/>made&#160;motion&#160;difficult,&#160;it&#160;allowed&#160;us&#160;to&#160;conduct&#160;a&#160;preliminary</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:8px;font-family:Times;color:#000000;}
+	.ft32{font-size:15px;font-family:Times;color:#1155cc;}
+	.ft33{font-size:9px;font-family:Times;color:#1155cc;}
+	.ft34{font-size:12px;font-family:Times;color:#666666;}
+	.ft35{font-size:7px;font-family:Times;color:#666666;}
+	.ft36{font-size:13px;font-family:Times;color:#666666;}
+	.ft37{font-size:12px;font-family:Times;color:#cc0000;}
+	.ft38{font-size:7px;font-family:Times;color:#cc0000;}
+	.ft39{font-size:9px;font-family:Times;color:#000000;}
+	.ft310{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft311{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft310">investigation&#160;of&#160;the&#160;feasibility&#160;of&#160;transferring&#160;simulated&#160;shape<br/>change&#160;to&#160;a&#160;physical&#160;system.&#160;In&#160;future&#160;implementations,&#160;the<br/>manual&#160;inflation&#160;could&#160;be&#160;replaced&#160;by&#160;pressure&#160;regulators&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[7],<br/></a>allowing&#160;the&#160;robot&#160;to&#160;approach&#160;the&#160;continuous&#160;control&#160;achiev-<br/>able&#160;in&#160;simulation.</p>
+<p style="position:absolute;top:179px;left:88px;white-space:nowrap" class="ft30">To&#160;understand&#160;some&#160;of&#160;the&#160;trade-offs&#160;between&#160;design&#160;pa-</p>
+<p style="position:absolute;top:197px;left:73px;white-space:nowrap" class="ft310">rameters,&#160;consider&#160;a&#160;spherical&#160;pressure&#160;vessel&#160;in&#160;uniform&#160;free<br/>expansion:</p>
+<p style="position:absolute;top:253px;left:149px;white-space:nowrap" class="ft30">p&#160;=</p>
+<p style="position:absolute;top:243px;left:178px;white-space:nowrap" class="ft30">2E&#160;·&#160;&#160;·&#160;t</p>
+<p style="position:absolute;top:263px;left:201px;white-space:nowrap" class="ft30">r</p>
+<p style="position:absolute;top:253px;left:237px;white-space:nowrap" class="ft30">=</p>
+<p style="position:absolute;top:243px;left:254px;white-space:nowrap" class="ft30">2E&#160;·&#160;&#160;·&#160;t0&#160;·&#160;(1&#160;−&#160;δ)</p>
+<p style="position:absolute;top:263px;left:292px;white-space:nowrap" class="ft30">r0&#160;−&#160;</p>
+<p style="position:absolute;top:253px;left:370px;white-space:nowrap" class="ft30">,</p>
+<p style="position:absolute;top:253px;left:433px;white-space:nowrap" class="ft30">(1)</p>
+<p style="position:absolute;top:290px;left:73px;white-space:nowrap" class="ft310">where&#160;t0&#160;[m]&#160;is&#160;the&#160;thickness&#160;of&#160;the&#160;pressure&#160;vessel,&#160;r0&#160;[m]<br/>is&#160;the&#160;radius,&#160;&#160;is&#160;the&#160;linear&#160;strain&#160;due&#160;to&#160;expansion,&#160;E&#160;[MPa]<br/>is&#160;Young’s&#160;modulus,&#160;and&#160;δ&#160;is&#160;the&#160;radial&#160;strain&#160;(which&#160;is<br/>determined&#160;from&#160;&#160;and&#160;the&#160;material’s&#160;Poisson’s&#160;ratio).&#160;Note<br/>that&#160;each&#160;voxel&#160;can&#160;push&#160;outward&#160;with&#160;a&#160;force&#160;proportional&#160;to<br/>the&#160;pressure.&#160;Examining&#160;Eq.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#3">1,&#160;</a>we&#160;see&#160;that&#160;at&#160;a&#160;given&#160;strain<br/>rate&#160;and&#160;initial&#160;dimensions,&#160;the&#160;internal&#160;pressure&#160;scales&#160;lin-<br/>early&#160;with&#160;both&#160;thickness&#160;and&#160;modulus.&#160;Thus,&#160;when&#160;choosing<br/>thickness&#160;of&#160;voxels,&#160;there&#160;was&#160;a&#160;tradeoff&#160;between&#160;weight&#160;and<br/>internal&#160;pressure:&#160;doubling&#160;the&#160;wall&#160;thickness&#160;doubled&#160;weight,<br/>in&#160;exchange&#160;for&#160;doubled&#160;operational&#160;pressure.</p>
+<p style="position:absolute;top:504px;left:73px;white-space:nowrap" class="ft30">C.&#160;The&#160;simulation.</p>
+<p style="position:absolute;top:529px;left:88px;white-space:nowrap" class="ft30">To&#160;simulate&#160;the&#160;robot,&#160;we&#160;use&#160;the&#160;voxel-based&#160;physics</p>
+<p style="position:absolute;top:547px;left:73px;white-space:nowrap" class="ft310">engine&#160;Voxelyze&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[16],&#160;</a>which&#160;simulates&#160;elastic&#160;voxels&#160;using<br/>two&#160;elements:&#160;particles&#160;and&#160;beams.&#160;Particles&#160;have&#160;mass&#160;and<br/>rotational&#160;inertia,&#160;and&#160;are&#160;connected&#160;on&#160;a&#160;cartesian&#160;grid&#160;by<br/>spring-like&#160;beams&#160;(with&#160;translational&#160;and&#160;rotational&#160;stiffness).<br/>For&#160;visualization&#160;and&#160;reference,&#160;part&#160;of&#160;a&#160;voxel&#160;mesh&#160;is&#160;drawn<br/>around&#160;this&#160;structure&#160;such&#160;that&#160;each&#160;voxel&#160;has&#160;a&#160;single&#160;particle<br/>at&#160;its&#160;center&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#3">3).</a></p>
+<p style="position:absolute;top:700px;left:332px;white-space:nowrap" class="ft32"><b>beam</b></p>
+<p style="position:absolute;top:684px;left:269px;white-space:nowrap" class="ft34">voxel</p>
+<p style="position:absolute;top:693px;left:304px;white-space:nowrap" class="ft35"><b>1</b></p>
+<p style="position:absolute;top:684px;left:401px;white-space:nowrap" class="ft34">voxel</p>
+<p style="position:absolute;top:693px;left:436px;white-space:nowrap" class="ft35"><b>2</b></p>
+<p style="position:absolute;top:734px;left:273px;white-space:nowrap" class="ft37">centerpoint</p>
+<p style="position:absolute;top:751px;left:281px;white-space:nowrap" class="ft37">(particle)</p>
+<p style="position:absolute;top:782px;left:262px;white-space:nowrap" class="ft311">Fig.&#160;3.&#160;Voxels&#160;are&#160;simulated&#160;by&#160;beams<br/>(springs)&#160;and&#160;particles&#160;(masses).</p>
+<p style="position:absolute;top:673px;left:88px;white-space:nowrap" class="ft30">Two&#160;adjacent&#160;voxels&#160;are</p>
+<p style="position:absolute;top:691px;left:73px;white-space:nowrap" class="ft30">connected,</p>
+<p style="position:absolute;top:691px;left:151px;white-space:nowrap" class="ft30">centerpoint</p>
+<p style="position:absolute;top:691px;left:232px;white-space:nowrap" class="ft30">to</p>
+<p style="position:absolute;top:709px;left:73px;white-space:nowrap" class="ft310">centerpoint&#160;(i.e.,&#160;particle&#160;to<br/>particle),&#160;by&#160;a&#160;single,&#160;shared<br/>beam.&#160;Material&#160;properties<br/>(e.g.,&#160;volume&#160;and&#160;elasticity)<br/>are&#160;specified&#160;at&#160;the&#160;parti-<br/>cles&#160;but&#160;implemented&#160;as&#160;at-<br/>tributes&#160;of&#160;beams&#160;(e.g.,&#160;their&#160;rest&#160;length,&#160;and&#160;how&#160;easily&#160;they<br/>twist&#160;and&#160;stretch).&#160;Where&#160;two&#160;adjacent&#160;particles&#160;disagree&#160;in<br/>their&#160;“desired”&#160;attributes&#160;of&#160;a&#160;shared&#160;beam,&#160;an&#160;average&#160;is&#160;taken.</p>
+<p style="position:absolute;top:871px;left:88px;white-space:nowrap" class="ft30">A&#160;beam&#160;exits&#160;a&#160;voxel&#160;normal&#160;to,&#160;and&#160;in&#160;the&#160;center&#160;of,&#160;one</p>
+<p style="position:absolute;top:889px;left:73px;white-space:nowrap" class="ft310">of&#160;the&#160;voxel’s&#160;faces.&#160;Although&#160;the&#160;mesh&#160;is&#160;drawn&#160;such&#160;that<br/>voxel&#160;edges&#160;bend&#160;around&#160;the&#160;underlying&#160;beam-mass&#160;network<br/>(see,&#160;e.g.,&#160;Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1),&#160;</a>a&#160;spherical&#160;envelope&#160;is&#160;used&#160;for&#160;collision<br/>detection,&#160;thus&#160;approximating&#160;the&#160;spherical&#160;expansion&#160;of&#160;the<br/>physical&#160;voxels&#160;(with&#160;maximal&#160;expansion&#160;occurring&#160;at&#160;the<br/>center&#160;of&#160;each&#160;face).&#160;For&#160;more&#160;details&#160;see&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[16].</a></p>
+<p style="position:absolute;top:1014px;left:73px;white-space:nowrap" class="ft30">D.&#160;The&#160;structure&#160;and&#160;shape&#160;of&#160;a&#160;robot.</p>
+<p style="position:absolute;top:1039px;left:88px;white-space:nowrap" class="ft30">The&#160;structure,&#160;S,&#160;of&#160;a&#160;robot&#160;is&#160;determined&#160;by&#160;the&#160;number</p>
+<p style="position:absolute;top:1057px;left:73px;white-space:nowrap" class="ft310">and&#160;placement&#160;of&#160;voxels,&#160;and&#160;simulated&#160;by&#160;the&#160;presence&#160;and<br/>absence&#160;of&#160;particles&#160;on&#160;a&#160;regular&#160;grid&#160;in&#160;the&#160;workspace.&#160;Let&#160;the</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft310">bit&#160;value&#160;vi&#160;denote&#160;the&#160;presence&#160;(vi&#160;=&#160;1)&#160;or&#160;absence&#160;(vi&#160;=&#160;0)<br/>of&#160;a&#160;voxel&#160;at&#160;index&#160;i.&#160;The&#160;structure,</p>
+<p style="position:absolute;top:136px;left:604px;white-space:nowrap" class="ft30">S&#160;=&#160;{i&#160;:&#160;vi&#160;=&#160;1},</p>
+<p style="position:absolute;top:133px;left:827px;white-space:nowrap" class="ft30">(2)</p>
+<p style="position:absolute;top:160px;left:468px;white-space:nowrap" class="ft30">is&#160;thus&#160;a&#160;set&#160;of&#160;voxel&#160;coordinates.</p>
+<p style="position:absolute;top:177px;left:483px;white-space:nowrap" class="ft30">The&#160;shape,&#160;S,&#160;of&#160;a&#160;robot&#160;is&#160;determined&#160;by&#160;the&#160;resting&#160;volume</p>
+<p style="position:absolute;top:195px;left:468px;white-space:nowrap" class="ft310">of&#160;each&#160;voxel,&#160;which&#160;is&#160;expressed&#160;in&#160;simulation&#160;as&#160;the&#160;resting<br/>(or,&#160;equilibrium)&#160;lengths&#160;of&#160;the&#160;beams&#160;connecting&#160;adjacent<br/>particles,&#160;and&#160;in&#160;reality&#160;as&#160;a&#160;resting&#160;pressure&#160;within&#160;each&#160;voxel<br/>(though&#160;the&#160;exact&#160;pressure,&#160;pi,&#160;is&#160;not&#160;measured&#160;here).&#160;Let&#160;the<br/>floating&#160;point&#160;value&#160;bi&#160;denote&#160;the&#160;beam&#160;rest&#160;length&#160;stored&#160;at<br/>the&#160;i-th&#160;simulated&#160;voxel.&#160;The&#160;shape,</p>
+<p style="position:absolute;top:310px;left:524px;white-space:nowrap" class="ft30">Ssim&#160;=&#160;{bi&#160;:&#160;i&#160;∈&#160;S}&#160;∼&#160;Sreal&#160;=&#160;{pi&#160;:&#160;i&#160;∈&#160;S},</p>
+<p style="position:absolute;top:311px;left:827px;white-space:nowrap" class="ft30">(3)</p>
+<p style="position:absolute;top:338px;left:468px;white-space:nowrap" class="ft30">is&#160;thus&#160;a&#160;set&#160;of&#160;voxel&#160;resting&#160;volumes.</p>
+<p style="position:absolute;top:356px;left:483px;white-space:nowrap" class="ft30">The&#160;robot&#160;has&#160;a&#160;quadrupedal&#160;predamage&#160;structure&#160;(Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1a,f</a></p>
+<p style="position:absolute;top:373px;left:468px;white-space:nowrap" class="ft310">and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#2">2)&#160;</a>with&#160;atmospheric&#160;voxel&#160;resting&#160;pressure,&#160;which&#160;is<br/>approximated&#160;by&#160;nominal&#160;beam&#160;rest&#160;lengths&#160;of&#160;1&#160;cm.&#160;Damage<br/>removes&#160;structure&#160;(voxels)&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1b).&#160;</a>Postdamage&#160;structural<br/>deformation—shape&#160;change—is&#160;executed&#160;by&#160;pressure&#160;changes<br/>in&#160;the&#160;remnant&#160;structure&#160;(i.e.,&#160;mutations&#160;in&#160;Sreal)&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1h-j)<br/></a>and&#160;approximated&#160;by&#160;local&#160;adjustments&#160;in&#160;the&#160;remaining<br/>beam-mass&#160;network&#160;(i.e.,&#160;mutations&#160;in&#160;Ssim)&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1c-e).&#160;</a>The<br/>mechanical&#160;structure&#160;and&#160;its&#160;resting&#160;shape&#160;are&#160;fixed&#160;prior&#160;to<br/>behavior&#160;during&#160;the&#160;evaluation&#160;period&#160;(20&#160;actuation&#160;cycles).</p>
+<p style="position:absolute;top:543px;left:468px;white-space:nowrap" class="ft30">E.&#160;The&#160;controller&#160;and&#160;configuration&#160;of&#160;a&#160;robot.</p>
+<p style="position:absolute;top:565px;left:483px;white-space:nowrap" class="ft30">The&#160;controllers&#160;continuously&#160;reconfigure&#160;the&#160;volume&#160;of&#160;a</p>
+<p style="position:absolute;top:583px;left:468px;white-space:nowrap" class="ft310">given&#160;mechanical&#160;structure&#160;during&#160;the&#160;evaluation&#160;period.&#160;We<br/>here&#160;consider&#160;open&#160;loop&#160;control&#160;of&#160;±0.5&#160;cm3&#160;volumetric<br/>change&#160;(±50%&#160;from&#160;nominal),&#160;at&#160;each&#160;voxel,&#160;with&#160;a&#160;phase<br/>offset&#160;relative&#160;to&#160;a&#160;central&#160;pattern&#160;generator,&#160;for&#160;4&#160;sec.</p>
+<p style="position:absolute;top:655px;left:483px;white-space:nowrap" class="ft30">Controllers&#160;are&#160;here&#160;encoded&#160;as&#160;neural&#160;networks&#160;that&#160;map</p>
+<p style="position:absolute;top:672px;left:468px;white-space:nowrap" class="ft310">the&#160;indices&#160;of&#160;voxels&#160;in&#160;3D&#160;space&#160;(Eq.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#3">2)&#160;</a>to&#160;a&#160;phase&#160;offset<br/>value,&#160;φi,&#160;between&#160;−2π&#160;and&#160;2π.&#160;We&#160;chose&#160;this&#160;particular<br/>encoding,&#160;which&#160;is&#160;commonly&#160;referred&#160;to&#160;as&#160;a&#160;Compositional<br/>Pattern-Producing&#160;Network,&#160;or&#160;CPPN&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[38],&#160;</a>because&#160;spatial<br/>regularities&#160;(in&#160;structure&#160;and&#160;actuation)&#160;are&#160;known&#160;to&#160;facilitate<br/>locomotion.&#160;(For&#160;more&#160;details&#160;about&#160;this&#160;encoding,&#160;see&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[11].)</a></p>
+<p style="position:absolute;top:780px;left:483px;white-space:nowrap" class="ft30">The&#160;instantaneous&#160;configuration,&#160;C,&#160;of&#160;a&#160;robot&#160;is&#160;deter-</p>
+<p style="position:absolute;top:798px;left:468px;white-space:nowrap" class="ft310">mined&#160;by&#160;an&#160;oscillating&#160;adjustment&#160;to&#160;the&#160;volume&#160;(and&#160;thus<br/>pressure)&#160;of&#160;each&#160;voxel,&#160;centered&#160;around&#160;its&#160;shape&#160;S.&#160;In&#160;simu-<br/>lation,&#160;rest&#160;lengths&#160;are&#160;periodically&#160;varying&#160;(f&#160;=&#160;5&#160;Hz)&#160;around<br/>their&#160;baseline,&#160;bi&#160;,&#160;with&#160;constant&#160;amplitude&#160;(A&#160;≈&#160;0.145&#160;cm),<br/>but&#160;damped&#160;by&#160;ξ.&#160;Damping&#160;prevents&#160;contracting&#160;voxels&#160;from<br/>overlapping&#160;by&#160;decreasing&#160;their&#160;oscillation&#160;amplitude&#160;as&#160;their<br/>rest&#160;length&#160;approaches&#160;a&#160;lower&#160;bound&#160;of&#160;bi&#160;=&#160;0.25&#160;cm.</p>
+<p style="position:absolute;top:923px;left:483px;white-space:nowrap" class="ft30">The&#160;instantaneous&#160;adjustment&#160;to&#160;the&#160;rest&#160;length&#160;of&#160;the&#160;i-th</p>
+<p style="position:absolute;top:941px;left:468px;white-space:nowrap" class="ft30">simulated&#160;voxel,&#160;at&#160;time&#160;t,&#160;is&#160;thus:</p>
+<p style="position:absolute;top:967px;left:550px;white-space:nowrap" class="ft30">ψi(t)&#160;=&#160;A&#160;·&#160;sin(2πf&#160;t&#160;+&#160;φi)&#160;·&#160;ξ(bi),</p>
+<p style="position:absolute;top:967px;left:827px;white-space:nowrap" class="ft30">(4)</p>
+<p style="position:absolute;top:994px;left:468px;white-space:nowrap" class="ft30">where:</p>
+<p style="position:absolute;top:1015px;left:578px;white-space:nowrap" class="ft30">ξ(b)&#160;=&#160;min</p>
+<p style="position:absolute;top:1004px;left:651px;white-space:nowrap" class="ft30"></p>
+<p style="position:absolute;top:1015px;left:658px;white-space:nowrap" class="ft30">1,</p>
+<p style="position:absolute;top:1005px;left:679px;white-space:nowrap" class="ft30">4b&#160;−&#160;1</p>
+<p style="position:absolute;top:1026px;left:695px;white-space:nowrap" class="ft30">3</p>
+<p style="position:absolute;top:1004px;left:720px;white-space:nowrap" class="ft30"></p>
+<p style="position:absolute;top:1015px;left:730px;white-space:nowrap" class="ft30">.</p>
+<p style="position:absolute;top:1016px;left:827px;white-space:nowrap" class="ft30">(5)</p>
+<p style="position:absolute;top:1049px;left:468px;white-space:nowrap" class="ft30">The&#160;configuration,</p>
+<p style="position:absolute;top:1074px;left:564px;white-space:nowrap" class="ft30">Csim(t)&#160;=&#160;{bi&#160;+&#160;ψi(t)&#160;:&#160;i&#160;∈&#160;S},</p>
+<p style="position:absolute;top:1075px;left:827px;white-space:nowrap" class="ft30">(6)</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:8px;font-family:Times;color:#000000;}
+	.ft42{font-size:9px;font-family:Times;color:#000000;}
+	.ft43{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft44{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft43">is&#160;thus&#160;a&#160;cyclical&#160;adjustment&#160;in&#160;the&#160;rest&#160;length&#160;between&#160;adjacent<br/>simulated&#160;voxels&#160;(implemented&#160;when&#160;computing&#160;the&#160;elastic<br/>force&#160;between&#160;them)&#160;throughout&#160;a&#160;structure&#160;S&#160;with&#160;shape&#160;Ssim.</p>
+<p style="position:absolute;top:143px;left:88px;white-space:nowrap" class="ft40">Although&#160;simple,&#160;open&#160;loop&#160;control&#160;has&#160;the&#160;ability&#160;to</p>
+<p style="position:absolute;top:161px;left:73px;white-space:nowrap" class="ft43">produce&#160;complex&#160;behaviors,&#160;such&#160;as&#160;symmetrical&#160;and&#160;asym-<br/>metrical&#160;gaits&#160;(from&#160;patches&#160;of&#160;voxels&#160;that&#160;oscillate&#160;in&#160;counter-<br/>phase),&#160;or&#160;propagating&#160;waves&#160;of&#160;excitation&#160;(from&#160;a&#160;sequence&#160;of<br/>voxels&#160;with&#160;increasing&#160;or&#160;decreasing&#160;phase&#160;offsets).&#160;Indeed,&#160;it<br/>is&#160;well&#160;known&#160;that&#160;central&#160;pattern&#160;generators&#160;in&#160;the&#160;mammalian<br/>spinal&#160;cord&#160;(and&#160;elsewhere&#160;in&#160;invertebrate&#160;systems)&#160;produce<br/>the&#160;basic,&#160;rhythmic&#160;motor&#160;patterns&#160;of&#160;locomotion,&#160;such&#160;as<br/>stepping,&#160;independently&#160;of&#160;sensory&#160;input&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[15].</a></p>
+<p style="position:absolute;top:317px;left:73px;white-space:nowrap" class="ft40">F.&#160;The&#160;damage&#160;scenarios.</p>
+<p style="position:absolute;top:340px;left:88px;white-space:nowrap" class="ft40">We&#160;here&#160;consider&#160;nine&#160;damage&#160;scenarios—we&#160;amputate:&#160;(i)</p>
+<p style="position:absolute;top:358px;left:73px;white-space:nowrap" class="ft43">half&#160;of&#160;a&#160;leg;&#160;(ii)&#160;one&#160;entire&#160;leg,&#160;(iii)&#160;two&#160;adjacent&#160;legs,&#160;(iv)<br/>two&#160;diagonal&#160;legs,&#160;(v)&#160;three&#160;legs,&#160;(vi)&#160;all&#160;four&#160;legs;&#160;(vii)&#160;one<br/>quarter&#160;of&#160;the&#160;robot’s&#160;body,&#160;(viii)&#160;one&#160;half&#160;of&#160;the&#160;body,&#160;and<br/>(ix)&#160;three&#160;quarters&#160;of&#160;the&#160;body.</p>
+<p style="position:absolute;top:618px;left:73px;white-space:nowrap" class="ft42">Fig.&#160;4.</p>
+<p style="position:absolute;top:618px;left:116px;white-space:nowrap" class="ft42">The&#160;various&#160;amputations&#160;applied&#160;in&#160;our&#160;experiments.&#160;The&#160;predamage</p>
+<p style="position:absolute;top:631px;left:73px;white-space:nowrap" class="ft42">robot&#160;(amputation&#160;=&#160;‘none’)&#160;is&#160;shown&#160;for&#160;reference.</p>
+<p style="position:absolute;top:667px;left:73px;white-space:nowrap" class="ft40">G.&#160;The&#160;recovery&#160;options.</p>
+<p style="position:absolute;top:690px;left:88px;white-space:nowrap" class="ft40">Each&#160;damage&#160;scenario&#160;removes&#160;structure&#160;and&#160;breaks&#160;the</p>
+<p style="position:absolute;top:708px;left:73px;white-space:nowrap" class="ft43">robot’s&#160;functionality:&#160;the&#160;robot&#160;loses&#160;voxels&#160;and&#160;its&#160;ability&#160;to<br/>walk.&#160;We&#160;here&#160;consider&#160;two&#160;options&#160;for&#160;function&#160;recovery:</p>
+<p style="position:absolute;top:748px;left:88px;white-space:nowrap" class="ft40">1)&#160;Controller&#160;readaptation.&#160;A&#160;new&#160;controller&#160;is&#160;optimized</p>
+<p style="position:absolute;top:766px;left:110px;white-space:nowrap" class="ft43">for&#160;locomotion&#160;with&#160;the&#160;damaged&#160;structure,&#160;as&#160;in&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[6,&#160;13].<br/></a>The&#160;only&#160;parameter&#160;subject&#160;to&#160;(re)optimization&#160;is&#160;the<br/>phase&#160;offset,&#160;φi,&#160;of&#160;each&#160;voxel.</p>
+<p style="position:absolute;top:824px;left:88px;white-space:nowrap" class="ft40">2)&#160;Shapeshifting.&#160;The&#160;shape&#160;of&#160;the&#160;damaged&#160;structure&#160;is</p>
+<p style="position:absolute;top:842px;left:110px;white-space:nowrap" class="ft43">optimized&#160;for&#160;locomotion&#160;with&#160;the&#160;existing&#160;controller.<br/>The&#160;only&#160;parameter&#160;subject&#160;to&#160;optimization&#160;is&#160;the&#160;base-<br/>line&#160;rest&#160;length,&#160;bi,&#160;of&#160;each&#160;voxel.</p>
+<p style="position:absolute;top:908px;left:73px;white-space:nowrap" class="ft40">H.&#160;The&#160;shape&#160;change.</p>
+<p style="position:absolute;top:931px;left:88px;white-space:nowrap" class="ft40">The&#160;body&#160;is&#160;reshaped&#160;prior&#160;to&#160;behavior&#160;(i.e.,&#160;before&#160;the</p>
+<p style="position:absolute;top:949px;left:73px;white-space:nowrap" class="ft43">controller&#160;is&#160;turned&#160;on),&#160;analogous&#160;to&#160;a&#160;prenatal&#160;developmental<br/>stage.&#160;This&#160;is&#160;done&#160;by&#160;adjusting&#160;the&#160;robot’s&#160;shape,&#160;S,&#160;as&#160;defined<br/>in&#160;Eq.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#3">3.&#160;</a>Then,&#160;behavior&#160;results&#160;from&#160;oscillations&#160;that&#160;are<br/>symmetrically&#160;distributed&#160;about&#160;this&#160;shape&#160;(Eq.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#3">6).</a></p>
+<p style="position:absolute;top:1021px;left:88px;white-space:nowrap" class="ft40">The&#160;same&#160;kind&#160;of&#160;neural&#160;network&#160;that&#160;encodes&#160;controllers</p>
+<p style="position:absolute;top:1039px;left:73px;white-space:nowrap" class="ft43">(i.e,&#160;a&#160;CPPN)&#160;was&#160;also&#160;used&#160;to&#160;encode&#160;the&#160;robot’s&#160;shape.<br/>However,&#160;the&#160;shape-encoding&#160;networks&#160;output&#160;a&#160;rest&#160;beam<br/>length,&#160;bi,&#160;between&#160;0.25&#160;and&#160;2&#160;cm&#160;(instead&#160;of&#160;a&#160;phase&#160;offset,</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft43">φi,&#160;between&#160;−2π&#160;and&#160;2π).&#160;Subject&#160;to&#160;the&#160;constraints&#160;outlined<br/>above,&#160;optimization&#160;searches&#160;for&#160;shape-encoding&#160;networks&#160;that<br/>result&#160;in&#160;resting&#160;shapes&#160;that,&#160;when&#160;coupled&#160;with&#160;the&#160;original<br/>open-loop&#160;controller&#160;(previously&#160;optimized&#160;for&#160;the&#160;undamaged<br/>robot),&#160;synergize&#160;to&#160;recover&#160;forward&#160;movement.</p>
+<p style="position:absolute;top:190px;left:468px;white-space:nowrap" class="ft40">I.&#160;The&#160;optimization&#160;algorithm.</p>
+<p style="position:absolute;top:214px;left:483px;white-space:nowrap" class="ft40">Shapes&#160;and&#160;control&#160;policies&#160;are&#160;here&#160;optimized&#160;to&#160;displace</p>
+<p style="position:absolute;top:232px;left:468px;white-space:nowrap" class="ft43">the&#160;(simulated)&#160;robot&#160;in&#160;any&#160;direction&#160;using&#160;Age-Fitness-Pareto<br/>Optimization&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[35],&#160;</a>an&#160;evolutionary&#160;algorithm&#160;that&#160;uses&#160;the<br/>concept&#160;of&#160;Pareto&#160;dominance&#160;and&#160;an&#160;objective&#160;of&#160;‘age’&#160;(in<br/>addition&#160;to&#160;displacement)&#160;intended&#160;to&#160;promote&#160;diversity&#160;among<br/>candidate&#160;designs&#160;and&#160;prevent&#160;premature&#160;convergence.</p>
+<p style="position:absolute;top:322px;left:483px;white-space:nowrap" class="ft40">A&#160;trial&#160;is&#160;initialized&#160;with&#160;a&#160;population&#160;of&#160;50&#160;randomly-</p>
+<p style="position:absolute;top:339px;left:468px;white-space:nowrap" class="ft43">generated&#160;designs&#160;with&#160;age&#160;zero.&#160;Every&#160;generation,&#160;the&#160;pop-<br/>ulation&#160;is&#160;first&#160;doubled&#160;by&#160;creating&#160;modified&#160;copies&#160;of&#160;each<br/>individual&#160;in&#160;the&#160;population&#160;(i.e.,&#160;offspring,&#160;in&#160;which&#160;‘age’<br/>is&#160;set&#160;equal&#160;to&#160;that&#160;of&#160;the&#160;parent),&#160;where&#160;modification&#160;occurs<br/>only&#160;to&#160;the&#160;encoding-network&#160;that&#160;is&#160;currently&#160;being&#160;optimized<br/>(either&#160;that&#160;of&#160;φ&#160;or&#160;b).&#160;The&#160;age&#160;of&#160;each&#160;individual&#160;is&#160;then&#160;incre-<br/>mented&#160;by&#160;one.&#160;Next,&#160;an&#160;additional&#160;random&#160;individual&#160;(with<br/>age&#160;zero)&#160;is&#160;injected&#160;into&#160;the&#160;population&#160;(which&#160;now&#160;consists<br/>of&#160;101&#160;designs).&#160;Finally,&#160;selection&#160;reduces&#160;the&#160;population&#160;to&#160;its<br/>original&#160;size&#160;(50&#160;designs)&#160;according&#160;to&#160;the&#160;two&#160;objectives&#160;of<br/>net&#160;displacement&#160;(maximized)&#160;and&#160;age&#160;(minimized):&#160;Starting<br/>with&#160;nondominated&#160;designs&#160;(N&#160;=&#160;0),&#160;successive&#160;Pareto&#160;fronts<br/>(containing&#160;designs&#160;dominated&#160;by&#160;exactly&#160;N&#160;alternatives,&#160;for<br/>N&#160;=&#160;1,&#160;2,&#160;.&#160;.&#160;.)&#160;are&#160;kept&#160;in&#160;their&#160;entirety&#160;until&#160;doing&#160;so&#160;would<br/>overfill&#160;the&#160;population&#160;past&#160;its&#160;original&#160;size;&#160;then,&#160;designs&#160;are<br/>selected&#160;one-by-one&#160;with&#160;probability&#160;proportional&#160;to&#160;their&#160;net<br/>displacement.&#160;(The&#160;51&#160;unselected&#160;designs&#160;are&#160;deleted.)</p>
+<p style="position:absolute;top:645px;left:483px;white-space:nowrap" class="ft40">This&#160;process&#160;of&#160;random&#160;variation&#160;and&#160;directed&#160;selection&#160;is</p>
+<p style="position:absolute;top:662px;left:468px;white-space:nowrap" class="ft43">repeated&#160;for&#160;G&#160;generations,&#160;in&#160;which&#160;both&#160;the&#160;architectures&#160;and<br/>weights&#160;of&#160;the&#160;encoding&#160;networks&#160;are&#160;optimized:&#160;Mutations<br/>add,&#160;modify&#160;or&#160;remove&#160;a&#160;particular&#160;vertex&#160;or&#160;edge.&#160;Where<br/>modification&#160;of&#160;an&#160;edge&#160;reweights&#160;it&#160;(within&#160;-1&#160;to&#160;1&#160;bounds)<br/>by&#160;adding&#160;a&#160;value&#160;randomly&#160;drawn&#160;from&#160;a&#160;normal&#160;distribution<br/>with&#160;mean&#160;zero&#160;and&#160;standard&#160;deviation&#160;0.5.&#160;Vertex&#160;modification<br/>swaps&#160;the&#160;node’s&#160;activation&#160;function&#160;with&#160;a&#160;randomly&#160;chosen<br/>function&#160;in&#160;the&#160;set&#160;(adopted&#160;from&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[23]):&#160;</a>sin(),&#160;abs(),&#160;square(),<br/>sqrt(abs());&#160;and&#160;the&#160;negations&#160;of&#160;those&#160;four.</p>
+<p style="position:absolute;top:836px;left:613px;white-space:nowrap" class="ft40">III.&#160;RESULTS</p>
+<p style="position:absolute;top:860px;left:483px;white-space:nowrap" class="ft40">Prior&#160;to&#160;damage,&#160;twenty&#160;controllers&#160;were&#160;optimized&#160;(for</p>
+<p style="position:absolute;top:877px;left:468px;white-space:nowrap" class="ft43">G&#160;=&#160;1500&#160;generations)&#160;to&#160;generate&#160;forward&#160;movement&#160;in&#160;the<br/>simulated&#160;quadruped&#160;during&#160;an&#160;evaluation&#160;period&#160;of&#160;4&#160;sec&#160;(with<br/>numerical&#160;integration&#160;time&#160;steps&#160;of&#160;0.000151&#160;sec).&#160;Predamage<br/>displacement&#160;ranged&#160;from&#160;37&#160;to&#160;46&#160;cm&#160;(6.2&#160;-&#160;7.7&#160;body&#160;lengths).</p>
+<p style="position:absolute;top:950px;left:483px;white-space:nowrap" class="ft40">In&#160;order&#160;to&#160;isolate&#160;the&#160;effect&#160;of&#160;shape&#160;change&#160;relative&#160;to</p>
+<p style="position:absolute;top:968px;left:468px;white-space:nowrap" class="ft43">that&#160;of&#160;controller&#160;adaptation,&#160;across&#160;a&#160;diversity&#160;of&#160;insult,&#160;the<br/>simulated&#160;robot&#160;is&#160;copied&#160;9&#160;∗&#160;2&#160;∗&#160;20&#160;=&#160;360&#160;times;&#160;once&#160;for&#160;each<br/>unique&#160;damage&#160;scenario&#160;(9&#160;total),&#160;recovery&#160;option&#160;(2&#160;total)<br/>and&#160;controller&#160;(20&#160;total)&#160;triplet.&#160;Each&#160;copy&#160;is&#160;thus&#160;given&#160;an<br/>optimized&#160;controller&#160;and&#160;recovery&#160;option,&#160;cut&#160;according&#160;to&#160;its<br/>particular&#160;damage&#160;case,&#160;and&#160;then&#160;reoptimized&#160;for&#160;displacement<br/>(for&#160;G&#160;=&#160;500&#160;postdamage&#160;generations).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:6px;font-family:Times;color:#262626;}
+	.ft52{font-size:7px;font-family:Times;color:#262626;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft53{font-size:7px;font-family:Times;color:#262626;}
+	.ft54{font-size:7px;font-family:Times;color:#262626;}
+	.ft55{font-size:9px;font-family:Times;color:#000000;}
+	.ft56{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft57{font-size:6px;line-height:12px;font-family:Times;color:#262626;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft50">A.&#160;The&#160;performance&#160;recovered&#160;after&#160;damage.</p>
+<p style="position:absolute;top:117px;left:88px;white-space:nowrap" class="ft50">Figure&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#5">5&#160;</a>plots&#160;mean&#160;relative&#160;performance&#160;(i.e.,&#160;postdamage</p>
+<p style="position:absolute;top:135px;left:73px;white-space:nowrap" class="ft56">displacement&#160;as&#160;a&#160;fraction&#160;of&#160;predamage&#160;displacement),&#160;with<br/>99%&#160;bootstrapped&#160;confidence&#160;intervals,&#160;for&#160;the&#160;two&#160;recovery<br/>options&#160;in&#160;each&#160;damage&#160;scenario.</p>
+<p style="position:absolute;top:190px;left:88px;white-space:nowrap" class="ft50">There&#160;are&#160;two,&#160;independent&#160;recovery&#160;options:&#160;controller</p>
+<p style="position:absolute;top:208px;left:73px;white-space:nowrap" class="ft56">readaptation&#160;(control)&#160;and&#160;shapeshifting&#160;(treatment).&#160;For&#160;each<br/>damage&#160;scenario,&#160;the&#160;data&#160;consist&#160;of&#160;two&#160;random&#160;samples,<br/>a&#160;sample&#160;from&#160;the&#160;control&#160;population&#160;(20&#160;independent&#160;trials,<br/>holding&#160;the&#160;shape&#160;of&#160;the&#160;damaged&#160;structure&#160;fixed)&#160;and&#160;an&#160;inde-<br/>pendent&#160;sample&#160;from&#160;the&#160;treatment&#160;population&#160;(20&#160;independent<br/>shape&#160;optimization&#160;trials,&#160;holding&#160;the&#160;controller&#160;fixed).&#160;On&#160;the<br/>basis&#160;of&#160;these&#160;samples&#160;we&#160;wish&#160;to&#160;investigate&#160;the&#160;presence&#160;of<br/>a&#160;treatment&#160;effect&#160;that&#160;results&#160;in&#160;a&#160;shift&#160;of&#160;location&#160;(median).<br/>The&#160;null&#160;hypothesis&#160;is&#160;that&#160;of&#160;no&#160;treatment&#160;effect;&#160;the&#160;samples<br/>can&#160;be&#160;thought&#160;of&#160;as&#160;a&#160;single&#160;sample&#160;from&#160;one&#160;population.</p>
+<p style="position:absolute;top:389px;left:88px;white-space:nowrap" class="ft50">We&#160;used&#160;a&#160;distribution-free&#160;rank&#160;sum&#160;test&#160;(Wilcoxon,&#160;Mann</p>
+<p style="position:absolute;top:407px;left:73px;white-space:nowrap" class="ft56">and&#160;Whitney)&#160;for&#160;the&#160;hypothesis&#160;of&#160;no&#160;treatment&#160;effect,&#160;with<br/>Bonferroni&#160;correction&#160;for&#160;nine&#160;comparisons.&#160;The&#160;corrected<br/>rank&#160;sum&#160;test&#160;and&#160;the&#160;99%&#160;bootstrapped&#160;CIs&#160;(of&#160;the&#160;mean)<br/>are&#160;in&#160;agreement.&#160;That&#160;is,&#160;statistical&#160;significance&#160;between<br/>shapeshifting&#160;and&#160;controller&#160;adaptation,&#160;at&#160;the&#160;0.01&#160;level,&#160;can<br/>be&#160;correctly&#160;inferred,&#160;for&#160;each&#160;damage&#160;scenario,&#160;by&#160;visual<br/>inspection&#160;of&#160;Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#5">5&#160;</a>(i.e.,&#160;no&#160;overlap&#160;in&#160;the&#160;shaded&#160;confidence<br/>intervals&#160;here&#160;implies&#160;rejection&#160;of&#160;the&#160;null&#160;hypothesis).</p>
+<p style="position:absolute;top:552px;left:88px;white-space:nowrap" class="ft50">Overall,&#160;shape&#160;change&#160;was&#160;more&#160;successful&#160;(often&#160;better</p>
+<p style="position:absolute;top:570px;left:73px;white-space:nowrap" class="ft56">and&#160;never&#160;worse)&#160;than&#160;controller&#160;adaptation.&#160;Interestingly,&#160;the<br/>proportion&#160;of&#160;fitness&#160;recovered&#160;was&#160;in&#160;some&#160;cases&#160;higher&#160;than<br/>one.&#160;This&#160;could&#160;be&#160;due&#160;to&#160;a&#160;lack&#160;of&#160;volume&#160;conservation<br/>and&#160;the&#160;possibility&#160;that&#160;larger&#160;robots&#160;simply&#160;run&#160;faster&#160;than<br/>small&#160;ones.&#160;However,&#160;many&#160;robots&#160;recovered&#160;by&#160;reducing&#160;their<br/>overall&#160;volume&#160;(e.g.,&#160;Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#7">7&#160;</a>and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#7">8).&#160;</a>Moreover,&#160;controller<br/>adaptation&#160;also&#160;achieved&#160;higher-than-predamage&#160;performance<br/>in&#160;one&#160;case&#160;(amp.&#160;=&#160;2&#160;adj.&#160;legs),&#160;and&#160;this&#160;phenomenon&#160;was<br/>also&#160;documented&#160;in&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[13]&#160;</a>but&#160;not&#160;via&#160;shape&#160;change.</p>
+<p style="position:absolute;top:733px;left:88px;white-space:nowrap" class="ft50">To&#160;explicitly&#160;control&#160;for&#160;the&#160;effect&#160;of&#160;body&#160;size,&#160;we&#160;opti-</p>
+<p style="position:absolute;top:751px;left:73px;white-space:nowrap" class="ft56">mized&#160;the&#160;controller&#160;of&#160;an&#160;otherwise&#160;identical&#160;quadruped&#160;that&#160;is<br/>twice&#160;the&#160;size&#160;of&#160;the&#160;original&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#6">6).&#160;</a>Isometrically&#160;increasing<br/>volume&#160;did&#160;not&#160;affect&#160;speed:&#160;There&#160;was&#160;no&#160;significant&#160;differ-<br/>ence&#160;in&#160;speed&#160;(at&#160;the&#160;0.01&#160;level)&#160;between&#160;the&#160;enlarged&#160;and<br/>original&#160;quadruped.&#160;This&#160;is&#160;because&#160;the&#160;controller&#160;oscillations<br/>are&#160;added&#160;on&#160;top&#160;of&#160;(not&#160;relative&#160;to)&#160;the&#160;root&#160;shape&#160;(Eq.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#3">6).<br/></a>The&#160;enlarged&#160;robot&#160;has&#160;eight&#160;times&#160;the&#160;volume&#160;of&#160;the&#160;original,<br/>beam&#160;length&#160;oscillations&#160;still&#160;have&#160;the&#160;same&#160;amplitude.</p>
+<p style="position:absolute;top:896px;left:88px;white-space:nowrap" class="ft50">Despite&#160;the&#160;fact&#160;that&#160;control&#160;was&#160;optimized&#160;for&#160;the&#160;original</p>
+<p style="position:absolute;top:914px;left:73px;white-space:nowrap" class="ft56">quadruped,&#160;and&#160;that&#160;amputation&#160;of&#160;all&#160;four&#160;legs&#160;removes&#160;23%<br/>of&#160;the&#160;original&#160;volume&#160;and&#160;actuation&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#4">4),&#160;</a>robots&#160;that<br/>recovered&#160;from&#160;this&#160;particular&#160;insult&#160;through&#160;shape&#160;change<br/>(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1)&#160;</a>move&#160;significantly&#160;faster&#160;than&#160;both&#160;the&#160;original&#160;and<br/>isometrically&#160;enlarged&#160;quadrupeds&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#6">6).&#160;</a>It&#160;follows&#160;that<br/>the&#160;efficacy&#160;of&#160;shapeshifting&#160;is&#160;not&#160;due&#160;simply&#160;to&#160;increased<br/>volume;&#160;rather,&#160;it&#160;is&#160;due&#160;to&#160;where&#160;and&#160;how&#160;the&#160;remnant<br/>structure’s&#160;shape&#160;is&#160;deformed,&#160;which&#160;affects&#160;(e.g.)&#160;the&#160;robot’s<br/>posture&#160;and&#160;mass&#160;distribution,&#160;its&#160;points&#160;of&#160;contact&#160;with&#160;the<br/>ground,&#160;and&#160;the&#160;storage&#160;and&#160;release&#160;of&#160;elastic&#160;strain&#160;energy,</p>
+<p style="position:absolute;top:251px;left:487px;white-space:nowrap" class="ft51">0.00</p>
+<p style="position:absolute;top:225px;left:487px;white-space:nowrap" class="ft51">0.25</p>
+<p style="position:absolute;top:199px;left:487px;white-space:nowrap" class="ft51">0.50</p>
+<p style="position:absolute;top:173px;left:487px;white-space:nowrap" class="ft51">0.75</p>
+<p style="position:absolute;top:147px;left:487px;white-space:nowrap" class="ft51">1.00</p>
+<p style="position:absolute;top:121px;left:487px;white-space:nowrap" class="ft51">1.25</p>
+<p style="position:absolute;top:95px;left:487px;white-space:nowrap" class="ft51">1.50</p>
+<p style="position:absolute;top:217px;left:482px;white-space:nowrap" class="ft52">Relative displacement</p>
+<p style="position:absolute;top:86px;left:544px;white-space:nowrap" class="ft53">amputation = 1/2 leg</p>
+<p style="position:absolute;top:86px;left:717px;white-space:nowrap" class="ft53">amputation = 1 leg</p>
+<p style="position:absolute;top:437px;left:487px;white-space:nowrap" class="ft51">0.00</p>
+<p style="position:absolute;top:411px;left:487px;white-space:nowrap" class="ft51">0.25</p>
+<p style="position:absolute;top:385px;left:487px;white-space:nowrap" class="ft51">0.50</p>
+<p style="position:absolute;top:359px;left:487px;white-space:nowrap" class="ft51">0.75</p>
+<p style="position:absolute;top:333px;left:487px;white-space:nowrap" class="ft51">1.00</p>
+<p style="position:absolute;top:307px;left:487px;white-space:nowrap" class="ft51">1.25</p>
+<p style="position:absolute;top:281px;left:487px;white-space:nowrap" class="ft51">1.50</p>
+<p style="position:absolute;top:403px;left:482px;white-space:nowrap" class="ft52">Relative displacement</p>
+<p style="position:absolute;top:271px;left:537px;white-space:nowrap" class="ft53">amputation = 2 adj. legs</p>
+<p style="position:absolute;top:271px;left:702px;white-space:nowrap" class="ft53">amputation = 2 diag. legs</p>
+<p style="position:absolute;top:622px;left:487px;white-space:nowrap" class="ft51">0.00</p>
+<p style="position:absolute;top:596px;left:487px;white-space:nowrap" class="ft51">0.25</p>
+<p style="position:absolute;top:570px;left:487px;white-space:nowrap" class="ft51">0.50</p>
+<p style="position:absolute;top:544px;left:487px;white-space:nowrap" class="ft51">0.75</p>
+<p style="position:absolute;top:518px;left:487px;white-space:nowrap" class="ft51">1.00</p>
+<p style="position:absolute;top:492px;left:487px;white-space:nowrap" class="ft51">1.25</p>
+<p style="position:absolute;top:466px;left:487px;white-space:nowrap" class="ft51">1.50</p>
+<p style="position:absolute;top:588px;left:482px;white-space:nowrap" class="ft52">Relative displacement</p>
+<p style="position:absolute;top:457px;left:546px;white-space:nowrap" class="ft53">amputation = 3 legs</p>
+<p style="position:absolute;top:457px;left:714px;white-space:nowrap" class="ft53">amputation = 4 legs</p>
+<p style="position:absolute;top:808px;left:487px;white-space:nowrap" class="ft51">0.00</p>
+<p style="position:absolute;top:782px;left:487px;white-space:nowrap" class="ft51">0.25</p>
+<p style="position:absolute;top:756px;left:487px;white-space:nowrap" class="ft51">0.50</p>
+<p style="position:absolute;top:730px;left:487px;white-space:nowrap" class="ft51">0.75</p>
+<p style="position:absolute;top:704px;left:487px;white-space:nowrap" class="ft51">1.00</p>
+<p style="position:absolute;top:678px;left:487px;white-space:nowrap" class="ft51">1.25</p>
+<p style="position:absolute;top:652px;left:487px;white-space:nowrap" class="ft51">1.50</p>
+<p style="position:absolute;top:774px;left:482px;white-space:nowrap" class="ft52">Relative displacement</p>
+<p style="position:absolute;top:642px;left:540px;white-space:nowrap" class="ft53">amputation = 1/4 body</p>
+<p style="position:absolute;top:642px;left:709px;white-space:nowrap" class="ft53">amputation = 1/2 body</p>
+<p style="position:absolute;top:1008px;left:517px;white-space:nowrap" class="ft51">0</p>
+<p style="position:absolute;top:1008px;left:540px;white-space:nowrap" class="ft51">100</p>
+<p style="position:absolute;top:1008px;left:569px;white-space:nowrap" class="ft51">200</p>
+<p style="position:absolute;top:1008px;left:598px;white-space:nowrap" class="ft51">300</p>
+<p style="position:absolute;top:1008px;left:626px;white-space:nowrap" class="ft51">400</p>
+<p style="position:absolute;top:1008px;left:655px;white-space:nowrap" class="ft51">500</p>
+<p style="position:absolute;top:1020px;left:530px;white-space:nowrap" class="ft53">Generations since damage</p>
+<p style="position:absolute;top:993px;left:487px;white-space:nowrap" class="ft51">0.00</p>
+<p style="position:absolute;top:967px;left:487px;white-space:nowrap" class="ft51">0.25</p>
+<p style="position:absolute;top:941px;left:487px;white-space:nowrap" class="ft51">0.50</p>
+<p style="position:absolute;top:915px;left:487px;white-space:nowrap" class="ft51">0.75</p>
+<p style="position:absolute;top:889px;left:487px;white-space:nowrap" class="ft51">1.00</p>
+<p style="position:absolute;top:863px;left:487px;white-space:nowrap" class="ft51">1.25</p>
+<p style="position:absolute;top:837px;left:487px;white-space:nowrap" class="ft51">1.50</p>
+<p style="position:absolute;top:959px;left:482px;white-space:nowrap" class="ft52">Relative displacement</p>
+<p style="position:absolute;top:828px;left:540px;white-space:nowrap" class="ft53">amputation = 3/4 body</p>
+<p style="position:absolute;top:1008px;left:685px;white-space:nowrap" class="ft51">0</p>
+<p style="position:absolute;top:1008px;left:709px;white-space:nowrap" class="ft51">100</p>
+<p style="position:absolute;top:1008px;left:737px;white-space:nowrap" class="ft51">200</p>
+<p style="position:absolute;top:1008px;left:766px;white-space:nowrap" class="ft51">300</p>
+<p style="position:absolute;top:1008px;left:795px;white-space:nowrap" class="ft51">400</p>
+<p style="position:absolute;top:1008px;left:823px;white-space:nowrap" class="ft51">500</p>
+<p style="position:absolute;top:1020px;left:699px;white-space:nowrap" class="ft53">Generations since damage</p>
+<p style="position:absolute;top:827px;left:737px;white-space:nowrap" class="ft54"><b>Overall</b></p>
+<p style="position:absolute;top:849px;left:722px;white-space:nowrap" class="ft57">shape change<br/>controller adaptation<br/>original (predamage)</p>
+<p style="position:absolute;top:1052px;left:468px;white-space:nowrap" class="ft55">Fig.&#160;5.</p>
+<p style="position:absolute;top:1052px;left:515px;white-space:nowrap" class="ft55">Mean&#160;relative&#160;displacement&#160;(i.e.,&#160;recovered&#160;performance)&#160;with&#160;99%</p>
+<p style="position:absolute;top:1065px;left:468px;white-space:nowrap" class="ft55">CIs,&#160;at&#160;each&#160;generation&#160;(g)&#160;of&#160;reoptimization&#160;since&#160;damage&#160;occurred&#160;(g&#160;=&#160;0).</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:7px;font-family:Times;color:#262626;}
+	.ft61{font-size:7px;font-family:Times;color:#262626;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft62{font-size:9px;font-family:Times;color:#000000;}
+	.ft63{font-size:12px;font-family:Times;color:#000000;}
+	.ft64{font-size:8px;font-family:Times;color:#000000;}
+	.ft65{font-size:7px;line-height:14px;font-family:Times;color:#262626;}
+	.ft66{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft67{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:238px;left:114px;white-space:nowrap" class="ft60">0</p>
+<p style="position:absolute;top:238px;left:162px;white-space:nowrap" class="ft60">250</p>
+<p style="position:absolute;top:238px;left:215px;white-space:nowrap" class="ft60">500</p>
+<p style="position:absolute;top:238px;left:267px;white-space:nowrap" class="ft60">750</p>
+<p style="position:absolute;top:238px;left:318px;white-space:nowrap" class="ft60">1000</p>
+<p style="position:absolute;top:238px;left:371px;white-space:nowrap" class="ft60">1250</p>
+<p style="position:absolute;top:238px;left:423px;white-space:nowrap" class="ft60">1500</p>
+<p style="position:absolute;top:250px;left:247px;white-space:nowrap" class="ft60">Generation</p>
+<p style="position:absolute;top:223px;left:93px;white-space:nowrap" class="ft60">0</p>
+<p style="position:absolute;top:200px;left:88px;white-space:nowrap" class="ft60">10</p>
+<p style="position:absolute;top:178px;left:88px;white-space:nowrap" class="ft60">20</p>
+<p style="position:absolute;top:155px;left:88px;white-space:nowrap" class="ft60">30</p>
+<p style="position:absolute;top:133px;left:88px;white-space:nowrap" class="ft60">40</p>
+<p style="position:absolute;top:110px;left:88px;white-space:nowrap" class="ft60">50</p>
+<p style="position:absolute;top:88px;left:88px;white-space:nowrap" class="ft60">60</p>
+<p style="position:absolute;top:194px;left:83px;white-space:nowrap" class="ft61">Displacement &#160;(cm)</p>
+<p style="position:absolute;top:179px;left:364px;white-space:nowrap" class="ft65">original<br/>2x orig. size<br/>amp. = 4 legs</p>
+<p style="position:absolute;top:277px;left:73px;white-space:nowrap" class="ft62">Fig.&#160;6.</p>
+<p style="position:absolute;top:277px;left:119px;white-space:nowrap" class="ft62">Mean&#160;displacement&#160;with&#160;99%&#160;CIs&#160;of&#160;controller&#160;optimization&#160;in&#160;the</p>
+<p style="position:absolute;top:291px;left:73px;white-space:nowrap" class="ft66">predamage&#160;quadruped&#160;isometrically&#160;enlarged&#160;to&#160;maximal&#160;volume,&#160;compared<br/>to&#160;shape&#160;optimization&#160;after&#160;amputation&#160;of&#160;all&#160;four&#160;legs.</p>
+<p style="position:absolute;top:334px;left:73px;white-space:nowrap" class="ft63">during&#160;locomotion.</p>
+<p style="position:absolute;top:366px;left:73px;white-space:nowrap" class="ft63">B.&#160;The&#160;found&#160;techniques&#160;of&#160;recovery.</p>
+<p style="position:absolute;top:391px;left:88px;white-space:nowrap" class="ft63">We&#160;found&#160;that&#160;the&#160;optimizer&#160;discovered&#160;diverse&#160;recovery</p>
+<p style="position:absolute;top:409px;left:73px;white-space:nowrap" class="ft67">strategies&#160;through&#160;shape&#160;change&#160;(Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#7">7-9),&#160;</a>whereas&#160;controller<br/>readaptation&#160;often&#160;converged&#160;on&#160;the&#160;same&#160;strategy.&#160;For&#160;exam-<br/>ple,&#160;with&#160;all&#160;four&#160;legs&#160;removed&#160;due&#160;to&#160;damage,&#160;the&#160;robot&#160;is<br/>reduced&#160;to&#160;a&#160;cuboid,&#160;and&#160;the&#160;only&#160;viable&#160;locomotion&#160;technique<br/>found&#160;by&#160;controller&#160;readaptation&#160;was&#160;crawling.&#160;During&#160;post-<br/>damage&#160;optimization,&#160;many&#160;of&#160;these&#160;robots&#160;evolved&#160;crawling<br/>by&#160;peristalsis&#160;or&#160;in&#160;a&#160;manner&#160;that&#160;resembles&#160;the&#160;serpentine<br/>crawling&#160;of&#160;snakes&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[1].</a></p>
+<p style="position:absolute;top:553px;left:88px;white-space:nowrap" class="ft63">Deforming&#160;the&#160;structure,&#160;even&#160;in&#160;a&#160;random&#160;manner,&#160;tends&#160;to</p>
+<p style="position:absolute;top:571px;left:73px;white-space:nowrap" class="ft67">produce&#160;greater&#160;frictional&#160;anisotropy&#160;which&#160;enhances&#160;peristal-<br/>sis&#160;and&#160;serpentine&#160;crawling,&#160;and&#160;enables&#160;yet&#160;simpler&#160;forms&#160;of<br/>movement&#160;such&#160;as&#160;two-anchor&#160;crawling&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[1].</a></p>
+<p style="position:absolute;top:625px;left:88px;white-space:nowrap" class="ft63">Nevertheless,&#160;crawling&#160;is&#160;inefficient&#160;because&#160;of&#160;drag.&#160;Here,</p>
+<p style="position:absolute;top:643px;left:73px;white-space:nowrap" class="ft67">in&#160;many&#160;damage&#160;cases,&#160;behavioral&#160;competence&#160;was&#160;recovered<br/>through&#160;shape&#160;changes&#160;that&#160;partially&#160;or&#160;completely&#160;(but,&#160;due<br/>to&#160;material&#160;constraints,&#160;never&#160;perfectly)&#160;regenerated&#160;missing<br/>legs.&#160;Notably,&#160;when&#160;all&#160;four&#160;legs&#160;were&#160;amputated,&#160;recovery<br/>strongly&#160;converged&#160;on&#160;the&#160;solution&#160;of&#160;regeneration,&#160;and&#160;the<br/>resulting&#160;designs&#160;were&#160;some&#160;of&#160;the&#160;fastest&#160;overall&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1).<br/></a>Note&#160;that&#160;the&#160;objective&#160;function&#160;does&#160;not&#160;assume&#160;or&#160;directly<br/>select&#160;for&#160;legged&#160;locomotion.</p>
+<p style="position:absolute;top:787px;left:88px;white-space:nowrap" class="ft63">Other&#160;amputations,&#160;however,&#160;can&#160;be&#160;beneficial,&#160;if&#160;they&#160;result</p>
+<p style="position:absolute;top:805px;left:73px;white-space:nowrap" class="ft67">in&#160;a&#160;shape&#160;that&#160;is&#160;easier&#160;to&#160;efficiently&#160;control&#160;than&#160;the&#160;original:<br/>Prior&#160;to&#160;damage,&#160;the&#160;robot’s&#160;sagittal&#160;silhouette&#160;resembles&#160;a&#160;Π.<br/>When&#160;two&#160;adjacent&#160;legs&#160;are&#160;amputated,&#160;the&#160;resulting&#160;Γ&#160;shape,<br/>which&#160;initially&#160;falls&#160;forward&#160;like&#160;this&#160;Γ</p>
+<p style="position:absolute;top:859px;left:324px;white-space:nowrap" class="ft63">due&#160;to&#160;gravity,&#160;tends</p>
+<p style="position:absolute;top:877px;left:73px;white-space:nowrap" class="ft67">to&#160;rapidly&#160;surpass&#160;predamage&#160;performance&#160;through&#160;controller<br/>readaptation&#160;alone,&#160;despite&#160;its&#160;diminished&#160;size.</p>
+<p style="position:absolute;top:913px;left:88px;white-space:nowrap" class="ft63">When&#160;only&#160;half&#160;of&#160;a&#160;leg&#160;was&#160;lost&#160;to&#160;injury,&#160;some&#160;robots</p>
+<p style="position:absolute;top:931px;left:73px;white-space:nowrap" class="ft67">contracted&#160;all&#160;of&#160;the&#160;undamaged&#160;legs&#160;to&#160;recover&#160;a&#160;stable&#160;but<br/>shorter&#160;quadrupedal&#160;form.&#160;Others&#160;seemed&#160;to&#160;simply&#160;regenerate<br/>the&#160;missing&#160;part&#160;through&#160;local&#160;volumetric&#160;expansion&#160;at&#160;the&#160;site<br/>of&#160;damage:&#160;The&#160;stump&#160;was&#160;isometrically&#160;expanded&#160;into&#160;a&#160;leg<br/>that&#160;was&#160;the&#160;same&#160;length&#160;as&#160;the&#160;original&#160;but&#160;much&#160;wider.</p>
+<p style="position:absolute;top:1021px;left:88px;white-space:nowrap" class="ft63">On&#160;closer&#160;inspection,&#160;however,&#160;many&#160;of&#160;those&#160;who&#160;regen-</p>
+<p style="position:absolute;top:1039px;left:73px;white-space:nowrap" class="ft67">erated&#160;a&#160;limb&#160;also&#160;made&#160;various&#160;other&#160;compensatory&#160;shape<br/>changes&#160;away&#160;from&#160;the&#160;site&#160;of&#160;damage,&#160;such&#160;as&#160;expanding&#160;and<br/>curving&#160;their&#160;spine.&#160;Thus&#160;even&#160;when&#160;damage&#160;is&#160;isolated&#160;to&#160;a</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft67">small&#160;part&#160;of&#160;the&#160;robot’s&#160;structure,&#160;global&#160;changes,&#160;in&#160;addition<br/>to&#160;local&#160;repairs,&#160;can&#160;sometimes&#160;streamline&#160;recovery.</p>
+<p style="position:absolute;top:125px;left:483px;white-space:nowrap" class="ft63">When&#160;damage&#160;was&#160;distributed&#160;across&#160;a&#160;wider&#160;portion&#160;of&#160;the</p>
+<p style="position:absolute;top:143px;left:468px;white-space:nowrap" class="ft67">body,&#160;a&#160;diversity&#160;of&#160;solutions&#160;were&#160;discovered.&#160;For&#160;example,<br/>after&#160;the&#160;amputation&#160;of&#160;a&#160;quarter&#160;of&#160;the&#160;robot’s&#160;body,&#160;the&#160;robot<br/>occasionally&#160;splayed&#160;out&#160;its&#160;pelvis&#160;to&#160;form&#160;a&#160;straighter&#160;and<br/>faster&#160;shape&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#7">7).&#160;</a>And,&#160;after&#160;the&#160;amputation&#160;of&#160;three&#160;legs,<br/>some&#160;robots&#160;once&#160;again&#160;grew&#160;replacements,&#160;but,&#160;because&#160;of<br/>other&#160;changes&#160;(e.g.,&#160;a&#160;greatly&#160;expanded&#160;back),&#160;the&#160;remaining<br/>“genuine”&#160;leg&#160;needed&#160;to&#160;be&#160;partially&#160;contracted&#160;and&#160;tucked<br/>inward&#160;for&#160;balance&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10).</a></p>
+<p style="position:absolute;top:286px;left:483px;white-space:nowrap" class="ft63">In&#160;the&#160;case&#160;where&#160;half&#160;of&#160;the&#160;robot’s&#160;body&#160;is&#160;removed,&#160;the</p>
+<p style="position:absolute;top:304px;left:468px;white-space:nowrap" class="ft67">undeformed&#160;structure&#160;falls&#160;under&#160;gravity&#160;onto&#160;its&#160;side;&#160;one<br/>local&#160;optima&#160;was&#160;thus&#160;to&#160;crawl&#160;“facedown”.&#160;A&#160;better&#160;strategy<br/>was&#160;found&#160;in&#160;which&#160;the&#160;robot&#160;could&#160;remain&#160;upright&#160;by&#160;using<br/>the&#160;two&#160;remaining&#160;limbs&#160;as&#160;forelegs&#160;and&#160;expanding&#160;the&#160;stump<br/>to&#160;form&#160;a&#160;wide&#160;hind&#160;leg.&#160;An&#160;equally&#160;proficient&#160;strategy&#160;was<br/>observed&#160;in&#160;which&#160;the&#160;robot&#160;diminished&#160;one&#160;or&#160;both&#160;of&#160;its&#160;legs,<br/>expanded&#160;its&#160;spine,&#160;and&#160;moved&#160;longitudinally&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#7">8).</a></p>
+<p style="position:absolute;top:430px;left:483px;white-space:nowrap" class="ft63">There&#160;were&#160;many&#160;successful&#160;variations&#160;on&#160;this&#160;theme,&#160;but</p>
+<p style="position:absolute;top:448px;left:468px;white-space:nowrap" class="ft67">one&#160;of&#160;the&#160;best&#160;designs&#160;in&#160;this&#160;case&#160;did&#160;the&#160;exact&#160;opposite:<br/>The&#160;robot&#160;expanded&#160;its&#160;remaining&#160;limbs&#160;to&#160;their&#160;maximum<br/>volume,&#160;contracted&#160;its&#160;spine,&#160;and&#160;flipped&#160;over&#160;(once)&#160;to&#160;walk<br/>longitudinally&#160;with&#160;the&#160;added&#160;momentum&#160;generated&#160;from<br/>large,&#160;swaying&#160;front&#160;and&#160;back&#160;limbs&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#7">9).</a></p>
+<p style="position:absolute;top:538px;left:483px;white-space:nowrap" class="ft63">However,&#160;after&#160;the&#160;most&#160;extreme&#160;insult,&#160;when&#160;all&#160;but&#160;a</p>
+<p style="position:absolute;top:556px;left:468px;white-space:nowrap" class="ft67">quarter&#160;of&#160;the&#160;robot&#160;is&#160;lost,&#160;there&#160;is&#160;insufficient&#160;material&#160;to<br/>regenerate&#160;legs&#160;or&#160;execute&#160;other&#160;more&#160;extreme&#160;shape&#160;changes.<br/>Neither&#160;recovery&#160;option&#160;cultivated&#160;(visually)&#160;appreciable&#160;gains<br/>in&#160;fitness.&#160;Yet,&#160;while&#160;this&#160;case&#160;removes&#160;71%&#160;of&#160;the&#160;original<br/>volume&#160;it&#160;is&#160;significantly&#160;less&#160;deleterious&#160;to&#160;controller&#160;opti-<br/>mization&#160;than&#160;amputating&#160;the&#160;four&#160;legs,&#160;which&#160;removes&#160;just<br/>23%&#160;of&#160;the&#160;original&#160;volume.&#160;Insult&#160;is&#160;thus&#160;a&#160;matter&#160;of&#160;kind,<br/>not&#160;degree.</p>
+<p style="position:absolute;top:711px;left:468px;white-space:nowrap" class="ft63">C.&#160;The&#160;transferal&#160;of&#160;recovery&#160;strategies&#160;to&#160;reality.</p>
+<p style="position:absolute;top:734px;left:483px;white-space:nowrap" class="ft63">To&#160;investigate&#160;the&#160;potential&#160;for&#160;directly&#160;transferring&#160;recovery</p>
+<p style="position:absolute;top:752px;left:468px;white-space:nowrap" class="ft67">strategies&#160;from&#160;simulation&#160;to&#160;reality,&#160;we&#160;aimed&#160;to&#160;transfer&#160;the<br/>overall&#160;shapes&#160;that&#160;are&#160;pictured&#160;in&#160;Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1&#160;</a>and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10.&#160;</a>In&#160;these<br/>particular&#160;cases,&#160;the&#160;optimizer&#160;found&#160;shapes&#160;with&#160;contiguous<br/>sections&#160;of&#160;voxels&#160;actuated&#160;to&#160;similar&#160;levels.&#160;Thus,&#160;we&#160;here<br/>examine&#160;the&#160;one-actuator&#160;case,&#160;in&#160;which&#160;the&#160;voxels&#160;with&#160;the<br/>largest&#160;rest&#160;volumes—the&#160;top&#160;layer&#160;of&#160;(6&#160;×&#160;6&#160;=&#160;36)&#160;voxels&#160;and<br/>the&#160;two&#160;corner&#160;voxels&#160;just&#160;below&#160;the&#160;top&#160;layer,&#160;on&#160;each&#160;corner<br/>of&#160;the&#160;torso&#160;(8&#160;in&#160;total)—were&#160;connected&#160;to&#160;the&#160;same&#160;air&#160;inlet.<br/>Voxels&#160;not&#160;hooked&#160;into&#160;the&#160;air&#160;line&#160;were&#160;punctured&#160;to&#160;allow<br/>for&#160;passive&#160;deflation&#160;and&#160;contraction&#160;of&#160;the&#160;robot,&#160;mimicking<br/>the&#160;simulated&#160;robot’s&#160;ability&#160;to&#160;contract&#160;voxels&#160;by&#160;decreasing<br/>the&#160;rest&#160;lengths&#160;bi.</p>
+<p style="position:absolute;top:968px;left:483px;white-space:nowrap" class="ft63">The&#160;purple&#160;robot&#160;adequately&#160;expands&#160;the&#160;top&#160;layer&#160;of&#160;voxels</p>
+<p style="position:absolute;top:985px;left:468px;white-space:nowrap" class="ft67">in&#160;both&#160;cases&#160;(Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1j&#160;</a>and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10j),&#160;</a>but&#160;fails&#160;to&#160;reach&#160;the&#160;overall<br/>target&#160;shapes&#160;drawn&#160;in&#160;Figs.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#1">1e&#160;</a>and&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10e.&#160;</a>Although&#160;further<br/>increasing&#160;pressure&#160;did&#160;indeed&#160;lead&#160;to&#160;larger&#160;deformations,<br/>the&#160;outer&#160;voxels&#160;inflate&#160;farther&#160;than&#160;interior&#160;ones,&#160;limiting<br/>the&#160;maximum&#160;viable&#160;actuation&#160;pressure.&#160;The&#160;thinner&#160;voxel<br/>walls&#160;of&#160;the&#160;blue&#160;robot&#160;exacerbated&#160;this&#160;issue&#160;(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10k-o),&#160;</a>but</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:9px;font-family:Times;color:#000000;}
+	.ft71{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft72{font-size:12px;font-family:Times;color:#000000;}
+	.ft73{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft74{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:195px;left:73px;white-space:nowrap" class="ft70">Fig.&#160;7.</p>
+<p style="position:absolute;top:195px;left:129px;white-space:nowrap" class="ft70">This&#160;damaged&#160;robot&#160;(amp.&#160;=&#160;1/4&#160;body)&#160;contracted&#160;its&#160;hips&#160;and</p>
+<p style="position:absolute;top:209px;left:73px;white-space:nowrap" class="ft70">expanded&#160;its&#160;pelvis&#160;to&#160;recover&#160;function&#160;<a href="https://youtu.be/UBvsR6tZf5c">(<b>youtu.be/UBvsR6tZf5c</b>).</a></p>
+<p style="position:absolute;top:324px;left:73px;white-space:nowrap" class="ft70">Fig.&#160;8.</p>
+<p style="position:absolute;top:324px;left:117px;white-space:nowrap" class="ft70">Shape&#160;change&#160;in&#160;this&#160;damage&#160;case&#160;(amp.&#160;=&#160;1/2&#160;body)&#160;enabled&#160;upright,</p>
+<p style="position:absolute;top:338px;left:73px;white-space:nowrap" class="ft70">lengthwise&#160;movement,&#160;instead&#160;of&#160;falling&#160;over&#160;<a href="https://youtu.be/nfCaVZVBmKI">(<b>youtu.be/nfCaVZVBmKI</b>).</a></p>
+<p style="position:absolute;top:458px;left:73px;white-space:nowrap" class="ft70">Fig.&#160;9.</p>
+<p style="position:absolute;top:458px;left:117px;white-space:nowrap" class="ft70">This&#160;damaged&#160;robot&#160;(amp.&#160;=&#160;1/2&#160;body)&#160;contracted&#160;its&#160;spine,&#160;expanded</p>
+<p style="position:absolute;top:471px;left:73px;white-space:nowrap" class="ft73">its&#160;limbs,&#160;and&#160;flipped&#160;over&#160;onto&#160;its&#160;back&#160;to&#160;walk&#160;lengthwise&#160;and&#160;exploit&#160;the<br/>elastic&#160;properties&#160;of&#160;its&#160;new&#160;arms&#160;<a href="https://youtu.be/WwYdSnuJBBA">(<b>youtu.be/WwYdSnuJBBA</b>).</a></p>
+<p style="position:absolute;top:514px;left:73px;white-space:nowrap" class="ft74">their&#160;increased&#160;flexibility&#160;enabled&#160;a&#160;more&#160;faithful&#160;transferal&#160;of<br/>overall&#160;surface&#160;curvature.&#160;Another&#160;limitation&#160;we&#160;discovered<br/>was&#160;friction.&#160;Fully&#160;realizing&#160;the&#160;target&#160;shape&#160;in&#160;Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10e<br/></a>requires&#160;the&#160;robot&#160;to&#160;drag&#160;its&#160;leg&#160;inward&#160;across&#160;the&#160;floor,<br/>tucking&#160;it&#160;under&#160;its&#160;body;&#160;but&#160;the&#160;silicone&#160;leg&#160;often&#160;stuck&#160;to<br/>the&#160;surface,&#160;preventing&#160;the&#160;prescribed&#160;maneuver&#160;in&#160;reality.</p>
+<p style="position:absolute;top:622px;left:88px;white-space:nowrap" class="ft72">The&#160;silicone&#160;design&#160;and&#160;1-axis&#160;rotational&#160;molding&#160;technique</p>
+<p style="position:absolute;top:640px;left:73px;white-space:nowrap" class="ft74">are&#160;still&#160;quite&#160;promising.&#160;Even&#160;when&#160;inflated&#160;at&#160;high&#160;enough<br/>pressures&#160;to&#160;make&#160;the&#160;outer&#160;voxels&#160;approximately&#160;spherical<br/>(Fig.&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#8">10o),&#160;</a>the&#160;voxels&#160;did&#160;not&#160;rupture.&#160;To&#160;achieve&#160;more<br/>consistent&#160;expansion&#160;of&#160;interior&#160;and&#160;exterior&#160;voxels,&#160;the&#160;later<br/>should&#160;be&#160;inflated&#160;at&#160;a&#160;lower&#160;pressure&#160;than&#160;the&#160;former.&#160;By<br/>incorporating&#160;strain&#160;sensors&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[43]&#160;</a>and&#160;closed-loop&#160;control&#160;in<br/>future,&#160;the&#160;robot&#160;could&#160;correct&#160;for&#160;this&#160;variation&#160;on&#160;the&#160;fly.&#160;By<br/>actuating&#160;different&#160;voxels&#160;at&#160;different&#160;pressures,&#160;and&#160;enabling<br/>active&#160;contraction&#160;in&#160;addition&#160;to&#160;expansion,&#160;a&#160;much&#160;wider<br/>range&#160;of&#160;simulated&#160;shapes&#160;could&#160;be&#160;attained&#160;in&#160;reality.</p>
+<p style="position:absolute;top:834px;left:208px;white-space:nowrap" class="ft72">IV.&#160;DISCUSSION</p>
+<p style="position:absolute;top:859px;left:88px;white-space:nowrap" class="ft72">In&#160;this&#160;paper,&#160;a&#160;new&#160;approach&#160;to&#160;robot&#160;damage&#160;recovery</p>
+<p style="position:absolute;top:877px;left:73px;white-space:nowrap" class="ft74">has&#160;been&#160;proposed.&#160;Instead&#160;of&#160;presenting&#160;the&#160;remnant&#160;shape<br/>of&#160;the&#160;damaged&#160;robot&#160;to&#160;optimization&#160;as&#160;fixed,&#160;we&#160;enable<br/>optimization&#160;to&#160;change&#160;this&#160;shape&#160;as&#160;the&#160;essential&#160;part&#160;of<br/>the&#160;recovery&#160;process.&#160;In&#160;doing&#160;so&#160;we&#160;realized&#160;a&#160;machine&#160;that<br/>recovered&#160;more&#160;function&#160;than&#160;an&#160;otherwise&#160;equivalent&#160;system<br/>that&#160;could&#160;adapt&#160;its&#160;controller&#160;but&#160;not&#160;deform&#160;its&#160;shape.</p>
+<p style="position:absolute;top:985px;left:88px;white-space:nowrap" class="ft72">In&#160;future&#160;work&#160;we&#160;will&#160;improve&#160;the&#160;transferal&#160;of&#160;simulated</p>
+<p style="position:absolute;top:1003px;left:73px;white-space:nowrap" class="ft74">morphing&#160;machines&#160;to&#160;physical&#160;ones&#160;using&#160;existing&#160;sim2real<br/>methods&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[2,&#160;6,&#160;13,&#160;17,&#160;24,&#160;</a><a href="cf89f96884de11442a99bd87061d36d2s.html#10">40]&#160;</a>adapted&#160;appropriately&#160;to&#160;meet<br/>the&#160;additional&#160;transferal&#160;demands&#160;dictated&#160;by&#160;soft&#160;materi-<br/>als&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[27].&#160;</a>We&#160;will&#160;also&#160;generalize&#160;our&#160;optimization&#160;method<br/>such&#160;that&#160;control&#160;and&#160;shape&#160;readaptation&#160;can&#160;be&#160;combined&#160;as</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft74">dictated&#160;by&#160;the&#160;form&#160;of&#160;damage,&#160;predamage&#160;structure&#160;of&#160;the<br/>robot,&#160;and&#160;its&#160;task&#160;environment.</p>
+<p style="position:absolute;top:137px;left:468px;white-space:nowrap" class="ft72">A.&#160;Biological&#160;regeneration.</p>
+<p style="position:absolute;top:160px;left:483px;white-space:nowrap" class="ft72">In&#160;past&#160;work,&#160;rigid-bodied&#160;robots&#160;have&#160;been&#160;venerated&#160;for</p>
+<p style="position:absolute;top:178px;left:468px;white-space:nowrap" class="ft74">their&#160;ability&#160;to&#160;“adapt&#160;like&#160;animals”&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[6,&#160;13].&#160;</a>These&#160;machines,<br/>which&#160;were&#160;constructed&#160;from&#160;undeformable&#160;metals&#160;and&#160;hard<br/>plastics,&#160;automatically&#160;learned&#160;to&#160;control&#160;their&#160;bodies&#160;in&#160;spite<br/>of&#160;missing&#160;or&#160;broken&#160;legs.&#160;But&#160;when&#160;an&#160;animal&#160;loses&#160;one&#160;or<br/>more&#160;of&#160;its&#160;legs&#160;to&#160;injury,&#160;it&#160;does&#160;not&#160;adapt&#160;by&#160;merely&#160;searching<br/>for&#160;a&#160;new&#160;mental&#160;representation&#160;of&#160;behavior&#160;that&#160;successfully<br/>maps&#160;onto&#160;the&#160;damaged&#160;body.&#160;Rather,&#160;they&#160;often&#160;fundamen-<br/>tally&#160;deform&#160;their&#160;damaged&#160;“hardware”&#160;into&#160;something&#160;more<br/>controllable.</p>
+<p style="position:absolute;top:340px;left:483px;white-space:nowrap" class="ft72">Evidence&#160;for&#160;this&#160;abounds.&#160;A&#160;famous&#160;example&#160;is&#160;the&#160;congen-</p>
+<p style="position:absolute;top:358px;left:468px;white-space:nowrap" class="ft74">itally&#160;two-legged&#160;goat&#160;described&#160;by&#160;Slijper&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[37]:&#160;</a>an&#160;otherwise<br/>normal&#160;goat&#160;which&#160;was&#160;born&#160;without&#160;forelegs&#160;adopted&#160;an<br/>upright&#160;posture&#160;and&#160;learned&#160;to&#160;walk&#160;on&#160;its&#160;hind&#160;legs&#160;alone.&#160;In<br/>addition&#160;to&#160;enlarged&#160;hind&#160;legs,&#160;striking&#160;changes&#160;in&#160;morphology<br/>were&#160;documented,&#160;including&#160;a&#160;greatly&#160;elongated&#160;gluteal&#160;tongue<br/>and&#160;an&#160;innovative&#160;arrangement&#160;of&#160;small&#160;tendons,&#160;a&#160;narrowed<br/>pelvis,&#160;an&#160;oval&#160;(rather&#160;than&#160;V-shaped)&#160;thoracic&#160;cross-sectional<br/>shape,&#160;a&#160;curved&#160;spine,&#160;and&#160;an&#160;unusually&#160;large&#160;neck&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[42].&#160;</a>The<br/>animal’s&#160;body&#160;resembled&#160;that&#160;of&#160;a&#160;kangaroo&#160;more&#160;closely&#160;than<br/>that&#160;of&#160;a&#160;normal&#160;goat.</p>
+<p style="position:absolute;top:537px;left:483px;white-space:nowrap" class="ft72">Other&#160;animals&#160;can&#160;regenerate.&#160;The&#160;planarian&#160;flatworm&#160;can</p>
+<p style="position:absolute;top:555px;left:468px;white-space:nowrap" class="ft74">be&#160;cut&#160;into&#160;many&#160;pieces&#160;(the&#160;record&#160;is&#160;279)&#160;all&#160;of&#160;which&#160;grow<br/>back&#160;to&#160;a&#160;full&#160;organism,&#160;regenerating&#160;not&#160;just&#160;tail&#160;and&#160;head,<br/>but&#160;eyes&#160;and&#160;the&#160;complete&#160;nervous&#160;system&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[30].&#160;</a>Vertebrates,<br/>such&#160;as&#160;frogs,&#160;also&#160;display&#160;the&#160;capability&#160;of&#160;regenerating&#160;limbs,<br/>jaws,&#160;eyes&#160;and&#160;a&#160;variety&#160;of&#160;internal&#160;structures&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[8].&#160;</a>Humans<br/>too&#160;(especially&#160;children)&#160;are&#160;sometimes&#160;capable&#160;of&#160;fingertip<br/>regeneration&#160;after&#160;distal&#160;phalange&#160;amputation&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[18].</a></p>
+<p style="position:absolute;top:693px;left:468px;white-space:nowrap" class="ft72">B.&#160;Mechanisms&#160;of&#160;biological&#160;regeneration.</p>
+<p style="position:absolute;top:716px;left:483px;white-space:nowrap" class="ft72">Several&#160;of&#160;the&#160;mechanisms&#160;by&#160;which&#160;organisms&#160;achieve</p>
+<p style="position:absolute;top:734px;left:468px;white-space:nowrap" class="ft74">these&#160;forms&#160;of&#160;self-editing&#160;of&#160;their&#160;own&#160;anatomy&#160;pose&#160;design<br/>challenges&#160;and&#160;future&#160;research&#160;directions&#160;for&#160;robotics.</p>
+<p style="position:absolute;top:770px;left:483px;white-space:nowrap" class="ft72">First&#160;is&#160;the&#160;ability&#160;to&#160;harness&#160;the&#160;behavior&#160;of&#160;low-level</p>
+<p style="position:absolute;top:788px;left:468px;white-space:nowrap" class="ft74">components&#160;(cells)&#160;towards&#160;a&#160;specific&#160;large-scale&#160;goal-state:<br/>salamanders&#160;can&#160;regenerate&#160;whole&#160;limbs,&#160;eyes,&#160;tails,&#160;ovaries,<br/>and&#160;other&#160;organs&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[28],&#160;</a>but&#160;growth&#160;and&#160;remodeling&#160;ceases<br/>when&#160;a&#160;correctly&#160;shaped&#160;and&#160;sized&#160;organ&#160;is&#160;complete&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[33].<br/></a>Second&#160;is&#160;the&#160;flexibility&#160;and&#160;robustness&#160;of&#160;systems&#160;under&#160;novel<br/>conditions.&#160;For&#160;example,&#160;tadpoles&#160;whose&#160;facial&#160;organs&#160;are<br/>experimentally&#160;placed&#160;in&#160;abnormal&#160;configurations&#160;will&#160;undergo<br/>novel&#160;rearrangements&#160;to&#160;still&#160;give&#160;rise&#160;to&#160;normal&#160;frog&#160;faces<br/>during&#160;metamorphosis&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[41],&#160;</a>showing&#160;that&#160;the&#160;genome&#160;encodes<br/>not&#160;a&#160;hardwired&#160;set&#160;of&#160;movements&#160;for&#160;each&#160;organ&#160;but&#160;rather<br/>specifies&#160;a&#160;machine&#160;that&#160;can&#160;remodel&#160;toward&#160;the&#160;same&#160;target<br/>morphology&#160;from&#160;a&#160;variety&#160;of&#160;unexpected&#160;starting&#160;states.&#160;Thus,<br/>it&#160;is&#160;critical&#160;to&#160;understand&#160;and&#160;exploit&#160;the&#160;ability&#160;of&#160;evolution<br/>to&#160;give&#160;rise&#160;to&#160;hardware&#160;that&#160;is&#160;well-adapted&#160;to&#160;the&#160;normal<br/>environment&#160;but&#160;also&#160;retains&#160;significant&#160;plasticity&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[39].</a></p>
+<p style="position:absolute;top:1057px;left:483px;white-space:nowrap" class="ft72">Third&#160;is&#160;the&#160;fact&#160;that&#160;during&#160;regeneration,&#160;the&#160;tissues&#160;making</p>
+<p style="position:absolute;top:1075px;left:468px;white-space:nowrap" class="ft72">growth&#160;and&#160;morphogenesis&#160;decisions&#160;are&#160;themselves&#160;being</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:9px;font-family:Times;color:#000000;}
+	.ft81{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft82{font-size:12px;font-family:Times;color:#000000;}
+	.ft83{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft84{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft85{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:443px;left:73px;white-space:nowrap" class="ft80">Fig.&#160;10.</p>
+<p style="position:absolute;top:443px;left:127px;white-space:nowrap" class="ft80">After&#160;losing&#160;three&#160;legs&#160;to&#160;injury&#160;(amp.&#160;=&#160;3&#160;legs),&#160;the&#160;former&#160;quadruped&#160;is&#160;reduced&#160;to&#160;a&#160;monopedal&#160;structure&#160;(a),&#160;the&#160;shape&#160;of&#160;which&#160;was&#160;then</p>
+<p style="position:absolute;top:456px;left:73px;white-space:nowrap" class="ft83">optimized&#160;for&#160;locomotion&#160;speed,&#160;resulting&#160;in&#160;an&#160;expanded&#160;spine,&#160;the&#160;folding-inward&#160;of&#160;the&#160;remnant&#160;predamage&#160;leg,&#160;and&#160;the&#160;“regeneration”&#160;of&#160;the&#160;three&#160;missing<br/>legs&#160;(c-e).&#160;This&#160;simulated&#160;strategy&#160;was&#160;then&#160;realized&#160;in&#160;two&#160;implementations&#160;using&#160;pneumatically-actuated,&#160;cubic&#160;elastomer&#160;bladders.&#160;The&#160;purple&#160;robot&#160;(f-j)<br/>consists&#160;of&#160;two&#160;layers&#160;of&#160;drip-molded&#160;silicone;&#160;the&#160;blue&#160;robot&#160;(k-o)&#160;consists&#160;of&#160;a&#160;single&#160;layer,&#160;and&#160;is&#160;thus&#160;less&#160;stable&#160;but&#160;more&#160;deformable.&#160;A&#160;single&#160;air&#160;inlet<br/>here&#160;yields&#160;the&#160;rudiments&#160;of&#160;appropriate&#160;shape&#160;change,&#160;but&#160;pressure&#160;oscillations&#160;in&#160;this&#160;setup&#160;did&#160;not&#160;yield&#160;locomotion&#160;<a href="https://youtu.be/A2KTGhCFxK8">(<b>youtu.be/A2KTGhCFxK8</b>).</a></p>
+<p style="position:absolute;top:525px;left:73px;white-space:nowrap" class="ft84">drastically&#160;rearranged:&#160;thus,&#160;the&#160;computational&#160;control&#160;circuitry<br/>is&#160;itself</p>
+<p style="position:absolute;top:542px;left:132px;white-space:nowrap" class="ft82">the&#160;object&#160;of&#160;the&#160;deformation&#160;actuators,&#160;forming</p>
+<p style="position:absolute;top:560px;left:73px;white-space:nowrap" class="ft85">a&#160;closed&#160;loop&#160;in&#160;which&#160;information&#160;is&#160;reliably&#160;processed<br/>in&#160;a&#160;medium&#160;that&#160;is&#160;constantly&#160;changing&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#10">[32].&#160;</a>Finally,&#160;the<br/>remarkable&#160;robustness&#160;of&#160;morphological&#160;computation&#160;extends<br/>to&#160;information&#160;learned&#160;within&#160;the&#160;lifetime&#160;of&#160;the&#160;organism&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[4].<br/></a>Butterflies,&#160;which&#160;result&#160;from&#160;a&#160;caterpillar&#160;brain&#160;that&#160;is&#160;almost<br/>completely&#160;dissolved&#160;during&#160;metamorphosis,&#160;still&#160;remember<br/>information&#160;learned&#160;during&#160;the&#160;caterpillar&#160;stage&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[3].&#160;</a>Flatworms,<br/>which&#160;regrow&#160;their&#160;entire&#160;heads,&#160;still&#160;remember&#160;information<br/>they&#160;learned&#160;prior&#160;to&#160;decapitation&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[12,&#160;</a><a href="cf89f96884de11442a99bd87061d36d2s.html#10">36].</a></p>
+<p style="position:absolute;top:722px;left:88px;white-space:nowrap" class="ft82">Attempts&#160;to&#160;implement&#160;these&#160;capabilities&#160;in&#160;artificial&#160;sys-</p>
+<p style="position:absolute;top:739px;left:73px;white-space:nowrap" class="ft85">tems&#160;(whether&#160;robotic&#160;or&#160;via&#160;synthetic&#160;biology)&#160;are&#160;likely&#160;to<br/>enrich&#160;not&#160;only&#160;engineering&#160;technology,&#160;but&#160;also&#160;to&#160;feed&#160;back<br/>to&#160;the&#160;biological&#160;sciences&#160;and&#160;biomedicine.&#160;The&#160;current&#160;un-<br/>derstanding&#160;of&#160;computation&#160;in&#160;biological&#160;tissues&#160;has&#160;numerous<br/>gaps,&#160;which&#160;are&#160;only&#160;likely&#160;to&#160;be&#160;filled&#160;by&#160;attempts&#160;to&#160;build<br/>these&#160;capabilities&#160;from&#160;the&#160;ground&#160;up&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[19].</a></p>
+<p style="position:absolute;top:856px;left:73px;white-space:nowrap" class="ft82">C.&#160;Metamorphosing&#160;machines.</p>
+<p style="position:absolute;top:878px;left:88px;white-space:nowrap" class="ft82">It&#160;has&#160;been&#160;shown&#160;here&#160;that&#160;robots,&#160;too,&#160;are&#160;not&#160;only&#160;capable</p>
+<p style="position:absolute;top:896px;left:73px;white-space:nowrap" class="ft85">of&#160;regenerating&#160;limbs,&#160;but&#160;that&#160;such&#160;deformation&#160;can&#160;manifest<br/>by&#160;selecting&#160;for&#160;function&#160;recovery&#160;alone,&#160;instead&#160;of&#160;a&#160;target<br/>legged&#160;shape.</p>
+<p style="position:absolute;top:950px;left:88px;white-space:nowrap" class="ft82">However,&#160;this&#160;ability&#160;largely&#160;depends&#160;on&#160;the&#160;material&#160;with</p>
+<p style="position:absolute;top:968px;left:73px;white-space:nowrap" class="ft85">which&#160;robots&#160;are&#160;made,&#160;for&#160;even&#160;if&#160;morphology&#160;is&#160;free&#160;to<br/>change&#160;in&#160;rigid&#160;bodies,&#160;the&#160;ways&#160;in&#160;which&#160;such&#160;change&#160;can<br/>occur&#160;are&#160;limited&#160;at&#160;best.&#160;In&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[5],&#160;</a>robots&#160;used&#160;a&#160;combination&#160;of<br/>rotary&#160;and&#160;linear&#160;actuators&#160;to&#160;slowly&#160;angle&#160;appendages&#160;down-<br/>ward&#160;and&#160;extrude&#160;them&#160;outward,&#160;thus&#160;simulating&#160;limb&#160;growth.<br/>In&#160;softer&#160;machines,&#160;there&#160;are&#160;more&#160;ways&#160;for&#160;morphology&#160;to<br/>change:&#160;The&#160;soft&#160;robot&#160;used&#160;here&#160;was&#160;able&#160;to&#160;locally&#160;deform</p>
+<p style="position:absolute;top:525px;left:468px;white-space:nowrap" class="ft85">its&#160;geometry&#160;to&#160;bend,&#160;twist,&#160;compress&#160;or&#160;expand&#160;throughout&#160;its<br/>body.&#160;Its&#160;also&#160;possible,&#160;although&#160;not&#160;investigated&#160;here,&#160;for&#160;soft<br/>robots&#160;to&#160;change&#160;their&#160;material&#160;properties,&#160;such&#160;as&#160;stiffness,<br/>through&#160;(e.g.)&#160;granular&#160;jamming&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[9,&#160;23].</a></p>
+<p style="position:absolute;top:597px;left:483px;white-space:nowrap" class="ft82">The&#160;possibility&#160;of&#160;this&#160;latter&#160;change&#160;highlights&#160;the&#160;inade-</p>
+<p style="position:absolute;top:615px;left:468px;white-space:nowrap" class="ft85">quacy&#160;of&#160;the&#160;name&#160;“soft&#160;robot”.&#160;When&#160;a&#160;granular&#160;jamming<br/>robot&#160;jams&#160;(removes&#160;excess&#160;internal&#160;air&#160;to&#160;become&#160;stiff)&#160;does<br/>it&#160;cease&#160;to&#160;be&#160;a&#160;soft&#160;robot?&#160;What&#160;if&#160;it&#160;never&#160;unjams?&#160;For&#160;the<br/>purposes&#160;of&#160;damage&#160;repair,&#160;the&#160;most&#160;important&#160;property&#160;of<br/>soft&#160;robots&#160;is&#160;not&#160;that&#160;they&#160;are&#160;soft&#160;per&#160;se,&#160;but&#160;that&#160;they&#160;may<br/>easily&#160;change&#160;their&#160;structural&#160;and&#160;material&#160;properties&#160;(possibly<br/>including&#160;stiffness).&#160;One&#160;can&#160;envisage&#160;future&#160;“rigid”&#160;nanobots<br/>capable&#160;of&#160;self-assembling&#160;into&#160;a&#160;protean&#160;metamachine&#160;that<br/>can&#160;rearrange&#160;so&#160;as&#160;to&#160;regrow&#160;a&#160;lost&#160;part;&#160;but&#160;that&#160;day&#160;seems&#160;far<br/>off,&#160;whereas&#160;soft&#160;robots,&#160;capable&#160;of&#160;continuous&#160;morphological<br/>change,&#160;are&#160;already&#160;becoming&#160;a&#160;reality.</p>
+<p style="position:absolute;top:813px;left:483px;white-space:nowrap" class="ft82">The&#160;future&#160;of&#160;this&#160;line&#160;of&#160;work&#160;promises&#160;not&#160;just&#160;new</p>
+<p style="position:absolute;top:831px;left:468px;white-space:nowrap" class="ft85">robotic&#160;systems&#160;but&#160;also&#160;new&#160;science.&#160;Shapeshifting&#160;robots,<br/>recast&#160;as&#160;scientific&#160;tools,&#160;can&#160;shed&#160;new&#160;light&#160;on&#160;old&#160;biological<br/>questions&#160;about&#160;developmental&#160;plasticity,&#160;regeneration&#160;and<br/>homeostasis&#160;<a href="cf89f96884de11442a99bd87061d36d2s.html#9">[21,&#160;22,&#160;</a><a href="cf89f96884de11442a99bd87061d36d2s.html#10">25].&#160;</a>And,&#160;symmetrically,&#160;new&#160;theories<br/>about&#160;the&#160;mechanisms&#160;that&#160;lie&#160;at&#160;the&#160;heart&#160;of&#160;such&#160;questions<br/>can&#160;be&#160;physically&#160;instantiated&#160;and&#160;optimized&#160;in&#160;a&#160;new&#160;breed<br/>of&#160;useful,&#160;autonomous&#160;and&#160;adaptive&#160;machines.</p>
+<p style="position:absolute;top:975px;left:583px;white-space:nowrap" class="ft82">ACKNOWLEDGEMENTS</p>
+<p style="position:absolute;top:1003px;left:483px;white-space:nowrap" class="ft82">This&#160;work&#160;was&#160;supported&#160;by&#160;NSF&#160;award&#160;EFRI-1830870</p>
+<p style="position:absolute;top:1021px;left:468px;white-space:nowrap" class="ft85">and&#160;DARPA&#160;contract&#160;HR0011-18-2-0022.&#160;Dylan&#160;Shah&#160;was<br/>supported&#160;by&#160;NASA&#160;STRF-80NSSC17K0164.&#160;Computation<br/>was&#160;provided&#160;by&#160;the&#160;Vermont&#160;Advanced&#160;Computing&#160;Core.&#160;We<br/>thank&#160;Gabrielle&#160;Branin&#160;for&#160;the&#160;sim2real&#160;demonstration&#160;videos.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:12px;font-family:Times;color:#000000;}
+	.ft91{font-size:9px;font-family:Times;color:#000000;}
+	.ft92{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft93{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:220px;white-space:nowrap" class="ft90">REFERENCES</p>
+<p style="position:absolute;top:125px;left:81px;white-space:nowrap" class="ft90">[1]&#160;R&#160;McNeill&#160;Alexander.&#160;Principles&#160;of&#160;animal&#160;locomotion.</p>
+<p style="position:absolute;top:143px;left:106px;white-space:nowrap" class="ft90">Princeton&#160;University&#160;Press,&#160;2003.&#160;ISBN&#160;9780691126340.</p>
+<p style="position:absolute;top:161px;left:81px;white-space:nowrap" class="ft90">[2]&#160;Homanga&#160;Bharadhwaj,&#160;Zihan&#160;Wang,&#160;Yoshua&#160;Bengio,&#160;and</p>
+<p style="position:absolute;top:178px;left:106px;white-space:nowrap" class="ft93">Liam&#160;Paull.&#160;A&#160;data-efficient&#160;framework&#160;for&#160;training&#160;and<br/>sim-to-real&#160;transfer&#160;of&#160;navigation&#160;policies.&#160;arXiv&#160;preprint<br/>arXiv:1810.04871</p>
+<p style="position:absolute;top:214px;left:215px;white-space:nowrap" class="ft90">,&#160;2018.&#160;URL&#160;<a href="https://arxiv.org/abs/1810.04871">https://arxiv.org/abs/1810.</a></p>
+<p style="position:absolute;top:232px;left:106px;white-space:nowrap" class="ft90"><a href="https://arxiv.org/abs/1810.04871">04871.</a></p>
+<p style="position:absolute;top:250px;left:81px;white-space:nowrap" class="ft90">[3]&#160;Douglas&#160;J&#160;Blackiston,&#160;Elena&#160;Silva&#160;Casey,&#160;and&#160;Martha&#160;R</p>
+<p style="position:absolute;top:268px;left:106px;white-space:nowrap" class="ft90">Weiss.</p>
+<p style="position:absolute;top:268px;left:158px;white-space:nowrap" class="ft90">Retention&#160;of&#160;memory&#160;through&#160;metamorphosis:</p>
+<p style="position:absolute;top:286px;left:106px;white-space:nowrap" class="ft93">can&#160;a&#160;moth&#160;remember&#160;what&#160;it&#160;learned&#160;as&#160;a&#160;caterpillar?<br/>PLoS&#160;One</p>
+<p style="position:absolute;top:304px;left:171px;white-space:nowrap" class="ft90">,&#160;3(3):e1736,&#160;2008.</p>
+<p style="position:absolute;top:304px;left:306px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1371/journal.pone.0001736">https://doi.org/10.</a></p>
+<p style="position:absolute;top:322px;left:106px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1371/journal.pone.0001736">1371/journal.pone.0001736.</a></p>
+<p style="position:absolute;top:340px;left:81px;white-space:nowrap" class="ft90">[4]&#160;Douglas&#160;J&#160;Blackiston,&#160;Tal&#160;Shomrat,&#160;and&#160;Michael&#160;Levin.</p>
+<p style="position:absolute;top:358px;left:106px;white-space:nowrap" class="ft92">The&#160;stability&#160;of&#160;memories&#160;during&#160;brain&#160;remodeling:&#160;a<br/>perspective.&#160;Communicative&#160;&amp;&#160;integrative&#160;biology,&#160;8(5):<br/>e1073424,&#160;2015.&#160;URL&#160;<a href="https://doi.org/10.1080/19420889.2015.1073424">https://doi.org/10.1080/19420889.<br/>2015.1073424.</a></p>
+<p style="position:absolute;top:430px;left:81px;white-space:nowrap" class="ft90">[5]&#160;Josh&#160;Bongard.&#160;Morphological&#160;change&#160;in&#160;machines&#160;ac-</p>
+<p style="position:absolute;top:447px;left:106px;white-space:nowrap" class="ft93">celerates&#160;the&#160;evolution&#160;of&#160;robust&#160;behavior.&#160;Proceedings<br/>of&#160;the&#160;National&#160;Academy&#160;of&#160;Sciences</p>
+<p style="position:absolute;top:465px;left:327px;white-space:nowrap" class="ft90">,&#160;108(4):1234–1239,</p>
+<p style="position:absolute;top:483px;left:106px;white-space:nowrap" class="ft90">2011.&#160;URL&#160;<a href="https://doi.org/10.1073/pnas.1015390108">https://doi.org/10.1073/pnas.1015390108.</a></p>
+<p style="position:absolute;top:501px;left:81px;white-space:nowrap" class="ft90">[6]&#160;Josh&#160;Bongard,&#160;Victor&#160;Zykov,&#160;and&#160;Hod&#160;Lipson.&#160;Resilient</p>
+<p style="position:absolute;top:519px;left:106px;white-space:nowrap" class="ft90">machines&#160;through&#160;continuous&#160;self-modeling.</p>
+<p style="position:absolute;top:519px;left:401px;white-space:nowrap" class="ft90">Science</p>
+<p style="position:absolute;top:519px;left:446px;white-space:nowrap" class="ft90">,</p>
+<p style="position:absolute;top:537px;left:106px;white-space:nowrap" class="ft90">314(5802):1118–1121,&#160;2006.</p>
+<p style="position:absolute;top:537px;left:304px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1126/science.1133687">https://doi.org/10.</a></p>
+<p style="position:absolute;top:555px;left:106px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1126/science.1133687">1126/science.1133687.</a></p>
+<p style="position:absolute;top:573px;left:81px;white-space:nowrap" class="ft90">[7]&#160;Joran&#160;W&#160;Booth,&#160;Jennifer&#160;C&#160;Case,&#160;Edward&#160;L&#160;White,</p>
+<p style="position:absolute;top:591px;left:106px;white-space:nowrap" class="ft90">Dylan&#160;S&#160;Shah,&#160;and&#160;Rebecca&#160;Kramer-Bottiglio.</p>
+<p style="position:absolute;top:591px;left:432px;white-space:nowrap" class="ft90">An</p>
+<p style="position:absolute;top:609px;left:106px;white-space:nowrap" class="ft93">addressable&#160;pneumatic&#160;regulator&#160;for&#160;distributed&#160;control<br/>of&#160;soft&#160;robots.&#160;In&#160;2018&#160;IEEE&#160;International&#160;Conference<br/>on&#160;Soft&#160;Robotics&#160;(RoboSoft)</p>
+<p style="position:absolute;top:645px;left:278px;white-space:nowrap" class="ft90">,&#160;pages&#160;25–30.&#160;IEEE,&#160;2018.</p>
+<p style="position:absolute;top:663px;left:106px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1109/ROBOSOFT.2018.8404892">https://doi.org/10.1109/ROBOSOFT.2018.8404892.</a></p>
+<p style="position:absolute;top:681px;left:81px;white-space:nowrap" class="ft90">[8]&#160;Jeremy&#160;P&#160;Brockes.</p>
+<p style="position:absolute;top:681px;left:238px;white-space:nowrap" class="ft90">Amphibian&#160;limb&#160;regeneration:&#160;re-</p>
+<p style="position:absolute;top:699px;left:106px;white-space:nowrap" class="ft92">building&#160;a&#160;complex&#160;structure.&#160;Science,&#160;276(5309):81–87,<br/>1997.&#160;URL&#160;<a href="https://doi.org/10.1126/science.276.5309.81">https://doi.org/10.1126/science.276.5309.81.</a></p>
+<p style="position:absolute;top:734px;left:81px;white-space:nowrap" class="ft90">[9]&#160;Eric&#160;Brown,&#160;Nicholas&#160;Rodenberg,&#160;John&#160;Amend,&#160;Annan</p>
+<p style="position:absolute;top:752px;left:106px;white-space:nowrap" class="ft93">Mozeika,&#160;Erik&#160;Steltz,&#160;Mitchell&#160;R&#160;Zakin,&#160;Hod&#160;Lipson,&#160;and<br/>Heinrich&#160;M&#160;Jaeger.&#160;Universal&#160;robotic&#160;gripper&#160;based&#160;on<br/>the&#160;jamming&#160;of&#160;granular&#160;material.&#160;Proceedings&#160;of&#160;the<br/>National&#160;Academy&#160;of&#160;Sciences</p>
+<p style="position:absolute;top:806px;left:301px;white-space:nowrap" class="ft90">,&#160;107(44):18809–18814,</p>
+<p style="position:absolute;top:824px;left:106px;white-space:nowrap" class="ft90">2010.&#160;URL&#160;<a href="https://doi.org/10.1073/pnas.1003250107">https://doi.org/10.1073/pnas.1003250107.</a></p>
+<p style="position:absolute;top:842px;left:73px;white-space:nowrap" class="ft90">[10]&#160;Konstantinos&#160;Chatzilygeroudis,&#160;Vassilis&#160;Vassiliades,&#160;and</p>
+<p style="position:absolute;top:860px;left:106px;white-space:nowrap" class="ft93">Jean-Baptiste&#160;Mouret.&#160;Reset-free&#160;trial-and-error&#160;learning<br/>for&#160;robot&#160;damage&#160;recovery.&#160;Robotics&#160;and&#160;Autonomous<br/>Systems</p>
+<p style="position:absolute;top:896px;left:153px;white-space:nowrap" class="ft90">,&#160;100:236–250,&#160;2018.</p>
+<p style="position:absolute;top:896px;left:305px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1016/j.robot.2017.11.010">https://doi.org/10.</a></p>
+<p style="position:absolute;top:914px;left:106px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1016/j.robot.2017.11.010">1016/j.robot.2017.11.010.</a></p>
+<p style="position:absolute;top:932px;left:73px;white-space:nowrap" class="ft90">[11]&#160;Nick&#160;Cheney,&#160;Robert&#160;MacCurdy,&#160;Jeff&#160;Clune,&#160;and&#160;Hod</p>
+<p style="position:absolute;top:950px;left:106px;white-space:nowrap" class="ft93">Lipson.&#160;Unshackling&#160;evolution:&#160;evolving&#160;soft&#160;robots&#160;with<br/>multiple&#160;materials&#160;and&#160;a&#160;powerful&#160;generative&#160;encoding.<br/>In&#160;Proceedings&#160;of&#160;the&#160;Genetic&#160;and&#160;Evolutionary&#160;Com-<br/>putation&#160;Conference</p>
+<p style="position:absolute;top:1003px;left:229px;white-space:nowrap" class="ft90">,&#160;pages&#160;167–174.&#160;ACM,&#160;2013.&#160;URL</p>
+<p style="position:absolute;top:1021px;left:106px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1145/2463372.2463404">https://doi.org/10.1145/2463372.2463404.</a></p>
+<p style="position:absolute;top:1039px;left:73px;white-space:nowrap" class="ft90">[12]&#160;William&#160;C&#160;Corning.</p>
+<p style="position:absolute;top:1039px;left:255px;white-space:nowrap" class="ft90">Regeneration&#160;and&#160;retention&#160;of</p>
+<p style="position:absolute;top:1057px;left:106px;white-space:nowrap" class="ft92">acquired&#160;information.&#160;In&#160;Chemistry&#160;of&#160;Learning,&#160;pages<br/>281–294.&#160;Springer,&#160;1967.&#160;URL&#160;<a href="https://doi.org/10.1007/978-1-4899-6565-3_18">https://doi.org/10.1007/</a></p>
+<p style="position:absolute;top:89px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1007/978-1-4899-6565-3_18">978-1-4899-6565-3&#160;18.</a></p>
+<p style="position:absolute;top:107px;left:468px;white-space:nowrap" class="ft90">[13]&#160;Antoine&#160;Cully,&#160;Jeff&#160;Clune,&#160;Danesh&#160;Tarapore,&#160;and&#160;Jean-</p>
+<p style="position:absolute;top:125px;left:500px;white-space:nowrap" class="ft90">Baptiste&#160;Mouret.</p>
+<p style="position:absolute;top:125px;left:618px;white-space:nowrap" class="ft90">Robots&#160;that&#160;can&#160;adapt&#160;like&#160;animals.</p>
+<p style="position:absolute;top:143px;left:500px;white-space:nowrap" class="ft90">Nature</p>
+<p style="position:absolute;top:143px;left:541px;white-space:nowrap" class="ft90">,&#160;521:503–507,&#160;2015.</p>
+<p style="position:absolute;top:143px;left:699px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1038/nature14422">https://doi.org/10.</a></p>
+<p style="position:absolute;top:161px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1038/nature14422">1038/nature14422.</a></p>
+<p style="position:absolute;top:178px;left:468px;white-space:nowrap" class="ft90">[14]&#160;Peter&#160;Eggenberger.&#160;Evolving&#160;morphologies&#160;of&#160;simulated</p>
+<p style="position:absolute;top:196px;left:500px;white-space:nowrap" class="ft92">3D&#160;organisms&#160;based&#160;on&#160;differential&#160;gene&#160;expression.&#160;In<br/>Proceedings&#160;of&#160;the&#160;European&#160;Conference&#160;on&#160;Artificial<br/>Life</p>
+<p style="position:absolute;top:232px;left:524px;white-space:nowrap" class="ft90">,&#160;pages&#160;205–213,&#160;1997.&#160;URL&#160;<a href="https://books.google.com/books?id=ccp8fzlyorAC">https://books.google.</a></p>
+<p style="position:absolute;top:250px;left:500px;white-space:nowrap" class="ft90"><a href="https://books.google.com/books?id=ccp8fzlyorAC">com/books?id=ccp8fzlyorAC.</a></p>
+<p style="position:absolute;top:268px;left:468px;white-space:nowrap" class="ft90">[15]&#160;Martyn&#160;Goulding.&#160;Circuits&#160;controlling&#160;vertebrate&#160;loco-</p>
+<p style="position:absolute;top:286px;left:500px;white-space:nowrap" class="ft90">motion:&#160;moving&#160;in&#160;a&#160;new&#160;direction.</p>
+<p style="position:absolute;top:286px;left:747px;white-space:nowrap" class="ft90">Nature&#160;Reviews</p>
+<p style="position:absolute;top:304px;left:500px;white-space:nowrap" class="ft90">Neuroscience</p>
+<p style="position:absolute;top:304px;left:581px;white-space:nowrap" class="ft90">,&#160;10(7):507,&#160;2009.&#160;URL&#160;<a href="https://doi.org/10.1038/nrn2608">https://doi.org/10.</a></p>
+<p style="position:absolute;top:322px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1038/nrn2608">1038/nrn2608.</a></p>
+<p style="position:absolute;top:340px;left:468px;white-space:nowrap" class="ft90">[16]&#160;Jonathan&#160;Hiller&#160;and&#160;Hod&#160;Lipson.&#160;Dynamic&#160;simulation&#160;of</p>
+<p style="position:absolute;top:358px;left:500px;white-space:nowrap" class="ft92">soft&#160;multimaterial&#160;3D-printed&#160;objects.&#160;Soft&#160;Robotics,&#160;1(1):<br/>88–101,&#160;2014.</p>
+<p style="position:absolute;top:376px;left:603px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1089/soro.2013.0010">https://doi.org/10.1089/soro.2013.</a></p>
+<p style="position:absolute;top:394px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1089/soro.2013.0010">0010.</a></p>
+<p style="position:absolute;top:412px;left:468px;white-space:nowrap" class="ft90">[17]&#160;Jemin&#160;Hwangbo,&#160;Joonho&#160;Lee,&#160;Alexey&#160;Dosovitskiy,&#160;Dario</p>
+<p style="position:absolute;top:430px;left:500px;white-space:nowrap" class="ft92">Bellicoso,&#160;Vassilios&#160;Tsounis,&#160;Vladlen&#160;Koltun,&#160;and&#160;Marco<br/>Hutter.</p>
+<p style="position:absolute;top:447px;left:557px;white-space:nowrap" class="ft90">Learning&#160;agile&#160;and&#160;dynamic&#160;motor&#160;skills&#160;for</p>
+<p style="position:absolute;top:465px;left:500px;white-space:nowrap" class="ft90">legged&#160;robots.</p>
+<p style="position:absolute;top:466px;left:604px;white-space:nowrap" class="ft90">Science&#160;Robotics</p>
+<p style="position:absolute;top:465px;left:710px;white-space:nowrap" class="ft90">,&#160;4(26),&#160;2019.</p>
+<p style="position:absolute;top:465px;left:815px;white-space:nowrap" class="ft90">URL</p>
+<p style="position:absolute;top:483px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1126/scirobotics.aau5872">https://doi.org/10.1126/scirobotics.aau5872.</a></p>
+<p style="position:absolute;top:501px;left:468px;white-space:nowrap" class="ft90">[18]&#160;Cynthia&#160;M&#160;Illingworth.</p>
+<p style="position:absolute;top:501px;left:668px;white-space:nowrap" class="ft90">Trapped&#160;fingers&#160;and&#160;ampu-</p>
+<p style="position:absolute;top:519px;left:500px;white-space:nowrap" class="ft90">tated&#160;finger&#160;tips&#160;in&#160;children.</p>
+<p style="position:absolute;top:519px;left:713px;white-space:nowrap" class="ft90">Journal&#160;of&#160;pediatric</p>
+<p style="position:absolute;top:537px;left:500px;white-space:nowrap" class="ft90">surgery</p>
+<p style="position:absolute;top:537px;left:545px;white-space:nowrap" class="ft90">,&#160;9(6):853–858,&#160;1974.</p>
+<p style="position:absolute;top:537px;left:700px;white-space:nowrap" class="ft90">URL&#160;<a href="https://doi.org/10.1016/S0022-3468(74)80220-4">https://doi.org/10.</a></p>
+<p style="position:absolute;top:555px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1016/S0022-3468(74)80220-4">1016/S0022-3468(74)80220-4.</a></p>
+<p style="position:absolute;top:573px;left:468px;white-space:nowrap" class="ft90">[19]&#160;Roger&#160;D.&#160;Kamm&#160;et&#160;al.&#160;Perspective:&#160;The&#160;promise&#160;of&#160;multi-</p>
+<p style="position:absolute;top:591px;left:500px;white-space:nowrap" class="ft90">cellular&#160;engineered&#160;living&#160;systems.</p>
+<p style="position:absolute;top:591px;left:733px;white-space:nowrap" class="ft90">APL&#160;Bioengineer-</p>
+<p style="position:absolute;top:609px;left:500px;white-space:nowrap" class="ft90">ing</p>
+<p style="position:absolute;top:609px;left:519px;white-space:nowrap" class="ft90">,&#160;2(4):040901,&#160;2018.&#160;URL&#160;<a href="https://doi.org/10.1063/1.5038337">https://doi.org/10.1063/1.</a></p>
+<p style="position:absolute;top:627px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1063/1.5038337">5038337.</a></p>
+<p style="position:absolute;top:645px;left:468px;white-space:nowrap" class="ft90">[20]&#160;Takeshi&#160;Kano,&#160;Eiki&#160;Sato,&#160;Tatsuya&#160;Ono,&#160;Hitoshi&#160;Aonuma,</p>
+<p style="position:absolute;top:663px;left:500px;white-space:nowrap" class="ft92">Yoshiya&#160;Matsuzaka,&#160;and&#160;Akio&#160;Ishiguro.&#160;A&#160;brittle&#160;star-<br/>like&#160;robot&#160;capable&#160;of&#160;immediately&#160;adapting&#160;to&#160;unexpected<br/>physical&#160;damage.</p>
+<p style="position:absolute;top:699px;left:623px;white-space:nowrap" class="ft90">Royal&#160;Society&#160;open&#160;science</p>
+<p style="position:absolute;top:699px;left:797px;white-space:nowrap" class="ft90">,&#160;4(12):</p>
+<p style="position:absolute;top:716px;left:500px;white-space:nowrap" class="ft90">171200,&#160;2017.&#160;URL&#160;<a href="https://doi.org/10.1098/rsos.171200">https://doi.org/10.1098/rsos.171200.</a></p>
+<p style="position:absolute;top:734px;left:468px;white-space:nowrap" class="ft90">[21]&#160;Sam&#160;Kriegman,&#160;Nick&#160;Cheney,&#160;Francesco&#160;Corucci,&#160;and</p>
+<p style="position:absolute;top:752px;left:500px;white-space:nowrap" class="ft93">Josh&#160;C.&#160;Bongard.&#160;A&#160;minimal&#160;developmental&#160;model&#160;can<br/>increase&#160;evolvability&#160;in&#160;soft&#160;robots.&#160;In&#160;Proceedings&#160;of<br/>the&#160;Genetic&#160;and&#160;Evolutionary&#160;Computation&#160;Conference</p>
+<p style="position:absolute;top:788px;left:841px;white-space:nowrap" class="ft90">,</p>
+<p style="position:absolute;top:806px;left:500px;white-space:nowrap" class="ft90">pages&#160;131–138.&#160;ACM,&#160;2017.</p>
+<p style="position:absolute;top:806px;left:704px;white-space:nowrap" class="ft90">doi:&#160;10.1145/3071178.</p>
+<p style="position:absolute;top:824px;left:500px;white-space:nowrap" class="ft90">3071296.&#160;URL&#160;<a href="https://arxiv.org/abs/1706.07296">https://arxiv.org/abs/1706.07296.</a></p>
+<p style="position:absolute;top:842px;left:468px;white-space:nowrap" class="ft90">[22]&#160;Sam&#160;Kriegman,&#160;Nick&#160;Cheney,&#160;and&#160;Josh&#160;Bongard.&#160;How</p>
+<p style="position:absolute;top:860px;left:500px;white-space:nowrap" class="ft93">morphological&#160;development&#160;can&#160;guide&#160;evolution.&#160;Scien-<br/>tific&#160;reports</p>
+<p style="position:absolute;top:878px;left:572px;white-space:nowrap" class="ft90">,&#160;8(1):13934,&#160;2018.&#160;URL&#160;<a href="https://doi.org/10.1038/s41598-018-31868-7">https://doi.org/10.</a></p>
+<p style="position:absolute;top:896px;left:500px;white-space:nowrap" class="ft90"><a href="https://doi.org/10.1038/s41598-018-31868-7">1038/s41598-018-31868-7.</a></p>
+<p style="position:absolute;top:914px;left:468px;white-space:nowrap" class="ft90">[23]&#160;Sam&#160;Kriegman,&#160;Nick&#160;Cheney,&#160;Francesco&#160;Corucci,&#160;and</p>
+<p style="position:absolute;top:932px;left:500px;white-space:nowrap" class="ft90">Josh&#160;C.&#160;Bongard.</p>
+<p style="position:absolute;top:932px;left:637px;white-space:nowrap" class="ft90">Interoceptive&#160;robustness&#160;through</p>
+<p style="position:absolute;top:950px;left:500px;white-space:nowrap" class="ft90">environment-mediated&#160;morphological&#160;development.</p>
+<p style="position:absolute;top:950px;left:832px;white-space:nowrap" class="ft90">In</p>
+<p style="position:absolute;top:968px;left:500px;white-space:nowrap" class="ft92">Proceedings&#160;of&#160;the&#160;Genetic&#160;and&#160;Evolutionary&#160;Compu-<br/>tation&#160;Conference</p>
+<p style="position:absolute;top:985px;left:611px;white-space:nowrap" class="ft90">,&#160;pages&#160;109–116.&#160;ACM,&#160;2018.</p>
+<p style="position:absolute;top:985px;left:821px;white-space:nowrap" class="ft90">doi:</p>
+<p style="position:absolute;top:1003px;left:500px;white-space:nowrap" class="ft90">10.1145/3205455.3205529.</p>
+<p style="position:absolute;top:1003px;left:683px;white-space:nowrap" class="ft90">URL&#160;<a href="https://arxiv.org/abs/1804.02257">https://arxiv.org/abs/</a></p>
+<p style="position:absolute;top:1021px;left:500px;white-space:nowrap" class="ft90"><a href="https://arxiv.org/abs/1804.02257">1804.02257.</a></p>
+<p style="position:absolute;top:1039px;left:468px;white-space:nowrap" class="ft90">[24]&#160;Robert&#160;Kwiatkowski&#160;and&#160;Hod&#160;Lipson.&#160;Task-agnostic&#160;self-</p>
+<p style="position:absolute;top:1057px;left:500px;white-space:nowrap" class="ft92">modeling&#160;machines.&#160;Science&#160;Robotics,&#160;4(26),&#160;2019.&#160;URL<br/><a href="http://doi.org/10.1126/scirobotics.aau9354">http://doi.org/10.1126/scirobotics.aau9354.</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>cf89f96884de11442a99bd87061d36d2-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:12px;font-family:Times;color:#000000;}
+	.ft101{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft102{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft100">[25]&#160;Daniel&#160;Lobo,&#160;Wendy&#160;S&#160;Beane,&#160;and&#160;Michael&#160;Levin.</p>
+<p style="position:absolute;top:107px;left:106px;white-space:nowrap" class="ft101">Modeling&#160;planarian&#160;regeneration:&#160;a&#160;primer&#160;for&#160;reverse-<br/>engineering&#160;the&#160;worm.</p>
+<p style="position:absolute;top:125px;left:266px;white-space:nowrap" class="ft100">PLoS&#160;computational&#160;biology</p>
+<p style="position:absolute;top:125px;left:446px;white-space:nowrap" class="ft100">,</p>
+<p style="position:absolute;top:143px;left:106px;white-space:nowrap" class="ft100">8(4):e1002481,&#160;2012.</p>
+<p style="position:absolute;top:143px;left:268px;white-space:nowrap" class="ft100">URL&#160;<a href="https://doi.org/10.1371/journal.pcbi.1002481">https://doi.org/10.1371/</a></p>
+<p style="position:absolute;top:161px;left:106px;white-space:nowrap" class="ft100"><a href="https://doi.org/10.1371/journal.pcbi.1002481">journal.pcbi.1002481.</a></p>
+<p style="position:absolute;top:178px;left:73px;white-space:nowrap" class="ft100">[26]&#160;Siavash&#160;Haroun&#160;Mahdavi&#160;and&#160;Peter&#160;J&#160;Bentley.&#160;An&#160;evo-</p>
+<p style="position:absolute;top:196px;left:106px;white-space:nowrap" class="ft101">lutionary&#160;approach&#160;to&#160;damage&#160;recovery&#160;of&#160;robot&#160;motion<br/>with&#160;muscles.&#160;In&#160;European&#160;Conference&#160;on&#160;Artificial&#160;Life,<br/>pages&#160;248–255.&#160;Springer,&#160;2003.&#160;URL&#160;<a href="https://doi.org/10.1007/978-3-540-39432-7_27">https://doi.org/10.<br/>1007/978-3-540-39432-7&#160;27.</a></p>
+<p style="position:absolute;top:268px;left:73px;white-space:nowrap" class="ft100">[27]&#160;Jan&#160;Matas,&#160;Stephen&#160;James,&#160;and&#160;Andrew&#160;J&#160;Davison.&#160;Sim-</p>
+<p style="position:absolute;top:286px;left:106px;white-space:nowrap" class="ft102">to-real&#160;reinforcement&#160;learning&#160;for&#160;deformable&#160;object&#160;ma-<br/>nipulation.&#160;In&#160;Proceedings&#160;of&#160;The&#160;2nd&#160;Conference&#160;on<br/>Robot&#160;Learning</p>
+<p style="position:absolute;top:322px;left:202px;white-space:nowrap" class="ft100">,&#160;volume&#160;87&#160;of&#160;Proceedings&#160;of&#160;Machine</p>
+<p style="position:absolute;top:340px;left:106px;white-space:nowrap" class="ft100">Learning&#160;Research</p>
+<p style="position:absolute;top:340px;left:221px;white-space:nowrap" class="ft100">,&#160;pages&#160;734–743.&#160;PMLR,&#160;2018.&#160;URL</p>
+<p style="position:absolute;top:358px;left:106px;white-space:nowrap" class="ft100"><a href="http://proceedings.mlr.press/v87/matas18a.html">http://proceedings.mlr.press/v87/matas18a.html.</a></p>
+<p style="position:absolute;top:376px;left:73px;white-space:nowrap" class="ft100">[28]&#160;Catherine&#160;McCusker&#160;and&#160;David&#160;M&#160;Gardiner.&#160;The&#160;axolotl</p>
+<p style="position:absolute;top:394px;left:106px;white-space:nowrap" class="ft102">model&#160;for&#160;regeneration&#160;and&#160;aging&#160;research:&#160;a&#160;mini-review.<br/>Gerontology</p>
+<p style="position:absolute;top:412px;left:181px;white-space:nowrap" class="ft100">,&#160;57(6):565–571,&#160;2011.&#160;URL&#160;<a href="https://doi.org/10.1159/000323761">https://doi.org/</a></p>
+<p style="position:absolute;top:430px;left:106px;white-space:nowrap" class="ft100"><a href="https://doi.org/10.1159/000323761">10.1159/000323761.</a></p>
+<p style="position:absolute;top:447px;left:73px;white-space:nowrap" class="ft100">[29]&#160;Julian&#160;Francis&#160;Miller.</p>
+<p style="position:absolute;top:447px;left:255px;white-space:nowrap" class="ft100">Evolving&#160;a&#160;self-repairing,&#160;self-</p>
+<p style="position:absolute;top:465px;left:106px;white-space:nowrap" class="ft100">regulating,&#160;french&#160;flag&#160;organism.</p>
+<p style="position:absolute;top:465px;left:334px;white-space:nowrap" class="ft100">In&#160;Proceedings&#160;of</p>
+<p style="position:absolute;top:483px;left:106px;white-space:nowrap" class="ft100">the&#160;Genetic&#160;and&#160;Evolutionary&#160;Computation&#160;Conference</p>
+<p style="position:absolute;top:483px;left:446px;white-space:nowrap" class="ft100">,</p>
+<p style="position:absolute;top:501px;left:106px;white-space:nowrap" class="ft101">pages&#160;129–139.&#160;Springer,&#160;2004.&#160;URL&#160;<a href="https://doi.org/10.1007/978-3-540-24854-5_12">https://doi.org/10.<br/>1007/978-3-540-24854-5&#160;12.</a></p>
+<p style="position:absolute;top:537px;left:73px;white-space:nowrap" class="ft100">[30]&#160;JR&#160;Montgomery&#160;and&#160;SJ&#160;Coward.&#160;On&#160;the&#160;minimal&#160;size&#160;of</p>
+<p style="position:absolute;top:555px;left:106px;white-space:nowrap" class="ft102">a&#160;planarian&#160;capable&#160;of&#160;regeneration.&#160;Transactions&#160;of&#160;the<br/>American&#160;Microscopical&#160;Society</p>
+<p style="position:absolute;top:573px;left:303px;white-space:nowrap" class="ft100">,&#160;93(3):386,&#160;1974.&#160;URL</p>
+<p style="position:absolute;top:591px;left:106px;white-space:nowrap" class="ft100"><a href="https://doi.org/10.2307/3225439">https://doi.org/10.2307/3225439.</a></p>
+<p style="position:absolute;top:609px;left:73px;white-space:nowrap" class="ft100">[31]&#160;Stephen&#160;A.&#160;Morin,&#160;Sen&#160;Wai&#160;Kwok,&#160;Joshua&#160;Lessing,</p>
+<p style="position:absolute;top:627px;left:106px;white-space:nowrap" class="ft101">Jason&#160;Ting,&#160;Robert&#160;F.&#160;Shepherd,&#160;Adam&#160;A.&#160;Stokes,&#160;and<br/>George&#160;M.&#160;Whitesides.</p>
+<p style="position:absolute;top:645px;left:265px;white-space:nowrap" class="ft100">Elastomeric&#160;tiles&#160;for&#160;the&#160;fab-</p>
+<p style="position:absolute;top:663px;left:106px;white-space:nowrap" class="ft100">rication&#160;of&#160;inflatable&#160;structures.</p>
+<p style="position:absolute;top:663px;left:318px;white-space:nowrap" class="ft100">Advanced&#160;Functional</p>
+<p style="position:absolute;top:681px;left:106px;white-space:nowrap" class="ft100">Materials</p>
+<p style="position:absolute;top:681px;left:164px;white-space:nowrap" class="ft100">,&#160;24(35):5541–5549,&#160;2014.&#160;URL&#160;<a href="https://doi.org/10.1002/adfm.201401339">https://doi.org/</a></p>
+<p style="position:absolute;top:699px;left:106px;white-space:nowrap" class="ft100"><a href="https://doi.org/10.1002/adfm.201401339">10.1002/adfm.201401339.</a></p>
+<p style="position:absolute;top:716px;left:73px;white-space:nowrap" class="ft100">[32]&#160;Giovanni&#160;Pezzulo&#160;and&#160;Michael&#160;Levin.</p>
+<p style="position:absolute;top:716px;left:360px;white-space:nowrap" class="ft100">Re-membering</p>
+<p style="position:absolute;top:734px;left:106px;white-space:nowrap" class="ft101">the&#160;body:&#160;applications&#160;of&#160;computational&#160;neuroscience&#160;to<br/>the&#160;top-down&#160;control&#160;of&#160;regeneration&#160;of&#160;limbs&#160;and&#160;other<br/>complex&#160;organs.&#160;Integrative&#160;Biology,&#160;7(12):1487–1517,<br/>2015.&#160;URL&#160;<a href="https://doi.org/10.1039/c5ib00221d">https://doi.org/10.1039/c5ib00221d.</a></p>
+<p style="position:absolute;top:806px;left:73px;white-space:nowrap" class="ft100">[33]&#160;Giovanni&#160;Pezzulo&#160;and&#160;Michael&#160;Levin.&#160;Top-down&#160;models</p>
+<p style="position:absolute;top:824px;left:106px;white-space:nowrap" class="ft102">in&#160;biology:&#160;explanation&#160;and&#160;control&#160;of&#160;complex&#160;living<br/>systems&#160;above&#160;the&#160;molecular&#160;level.&#160;Journal&#160;of&#160;The&#160;Royal<br/>Society&#160;Interface</p>
+<p style="position:absolute;top:860px;left:209px;white-space:nowrap" class="ft100">,&#160;13(124):20160555,&#160;2016.&#160;URL&#160;<a href="http://doi.org/10.1098/rsif.2016.0555">http:</a></p>
+<p style="position:absolute;top:878px;left:106px;white-space:nowrap" class="ft100"><a href="http://doi.org/10.1098/rsif.2016.0555">//doi.org/10.1098/rsif.2016.0555.</a></p>
+<p style="position:absolute;top:896px;left:73px;white-space:nowrap" class="ft100">[34]&#160;Guanjiao&#160;Ren,&#160;Weihai&#160;Chen,&#160;Sakyasingha&#160;Dasgupta,</p>
+<p style="position:absolute;top:914px;left:106px;white-space:nowrap" class="ft101">Christoph&#160;Kolodziejski,&#160;Florentin&#160;W¨org¨otter,&#160;and&#160;Pora-<br/>mate&#160;Manoonpong.&#160;Multiple&#160;chaotic&#160;central&#160;pattern&#160;gen-<br/>erators&#160;with&#160;learning&#160;for&#160;legged&#160;locomotion&#160;and&#160;malfunc-<br/>tion&#160;compensation.&#160;Information&#160;Sciences,&#160;294:666–682,<br/>2015.&#160;URL&#160;<a href="https://doi.org/10.1016/j.ins.2014.05.001">https://doi.org/10.1016/j.ins.2014.05.001.</a></p>
+<p style="position:absolute;top:1003px;left:73px;white-space:nowrap" class="ft100">[35]&#160;Michael&#160;Schmidt&#160;and&#160;Hod&#160;Lipson.&#160;Age-fitness&#160;pareto</p>
+<p style="position:absolute;top:1021px;left:106px;white-space:nowrap" class="ft100">optimization.</p>
+<p style="position:absolute;top:1021px;left:206px;white-space:nowrap" class="ft100">In&#160;Genetic&#160;Programming&#160;Theory&#160;and</p>
+<p style="position:absolute;top:1039px;left:106px;white-space:nowrap" class="ft100">Practice&#160;VIII</p>
+<p style="position:absolute;top:1039px;left:189px;white-space:nowrap" class="ft100">,&#160;pages&#160;129–146.&#160;Springer,&#160;2011.</p>
+<p style="position:absolute;top:1039px;left:420px;white-space:nowrap" class="ft100">URL</p>
+<p style="position:absolute;top:1057px;left:106px;white-space:nowrap" class="ft100"><a href="https://doi.org/10.1007/978-1-4419-7747-2_8">https://doi.org/10.1007/978-1-4419-7747-2&#160;8.</a></p>
+<p style="position:absolute;top:1075px;left:73px;white-space:nowrap" class="ft100">[36]&#160;Tal&#160;Shomrat&#160;and&#160;Michael&#160;Levin.&#160;An&#160;automated&#160;training</p>
+<p style="position:absolute;top:89px;left:500px;white-space:nowrap" class="ft101">paradigm&#160;reveals&#160;long-term&#160;memory&#160;in&#160;planaria&#160;and<br/>its&#160;persistence&#160;through&#160;head&#160;regeneration.</p>
+<p style="position:absolute;top:107px;left:779px;white-space:nowrap" class="ft100">Journal&#160;of</p>
+<p style="position:absolute;top:125px;left:500px;white-space:nowrap" class="ft100">Experimental&#160;Biology</p>
+<p style="position:absolute;top:125px;left:634px;white-space:nowrap" class="ft100">,&#160;pages&#160;jeb–087809,&#160;2013.&#160;URL</p>
+<p style="position:absolute;top:143px;left:500px;white-space:nowrap" class="ft100"><a href="http://doi.org/10.1242/jeb.087809">http://doi.org/10.1242/jeb.087809.</a></p>
+<p style="position:absolute;top:161px;left:468px;white-space:nowrap" class="ft100">[37]&#160;EJ&#160;Slijper.</p>
+<p style="position:absolute;top:161px;left:581px;white-space:nowrap" class="ft100">Biologic&#160;anatomical&#160;investigations&#160;on&#160;the</p>
+<p style="position:absolute;top:178px;left:500px;white-space:nowrap" class="ft101">bipedal&#160;gait&#160;and&#160;upright&#160;posture&#160;in&#160;mammals,&#160;with&#160;special<br/>reference&#160;to&#160;a&#160;little&#160;goat,&#160;born&#160;without&#160;forelegs.</p>
+<p style="position:absolute;top:196px;left:832px;white-space:nowrap" class="ft100">In</p>
+<p style="position:absolute;top:214px;left:500px;white-space:nowrap" class="ft101">Proceedings&#160;of&#160;the&#160;Koninklijke&#160;Nederlandse&#160;Akademie<br/>Van&#160;Wetenschappen</p>
+<p style="position:absolute;top:232px;left:622px;white-space:nowrap" class="ft100">,&#160;volume&#160;45,&#160;pages&#160;288–295,&#160;407–</p>
+<p style="position:absolute;top:250px;left:500px;white-space:nowrap" class="ft100">415,&#160;1942.</p>
+<p style="position:absolute;top:268px;left:468px;white-space:nowrap" class="ft100">[38]&#160;Kenneth&#160;O&#160;Stanley.</p>
+<p style="position:absolute;top:268px;left:639px;white-space:nowrap" class="ft100">Compositional&#160;pattern&#160;producing</p>
+<p style="position:absolute;top:286px;left:500px;white-space:nowrap" class="ft102">networks:&#160;A&#160;novel&#160;abstraction&#160;of&#160;development.&#160;Genetic<br/>programming&#160;and&#160;evolvable&#160;machines</p>
+<p style="position:absolute;top:304px;left:746px;white-space:nowrap" class="ft100">,&#160;8(2):131–162,</p>
+<p style="position:absolute;top:322px;left:500px;white-space:nowrap" class="ft100">2007.&#160;URL&#160;<a href="https://doi.org/10.1007/s10710-007-9028-8">https://doi.org/10.1007/s10710-007-9028-8.</a></p>
+<p style="position:absolute;top:340px;left:468px;white-space:nowrap" class="ft100">[39]&#160;Kelly&#160;G&#160;Sullivan,&#160;Maya&#160;Emmons-Bell,&#160;and&#160;Michael</p>
+<p style="position:absolute;top:358px;left:500px;white-space:nowrap" class="ft100">Levin.</p>
+<p style="position:absolute;top:358px;left:558px;white-space:nowrap" class="ft100">Physiological&#160;inputs&#160;regulate&#160;species-specific</p>
+<p style="position:absolute;top:376px;left:500px;white-space:nowrap" class="ft102">anatomy&#160;during&#160;embryogenesis&#160;and&#160;regeneration.&#160;Com-<br/>municative&#160;&amp;&#160;integrative&#160;biology</p>
+<p style="position:absolute;top:394px;left:704px;white-space:nowrap" class="ft100">,&#160;9(4):e1192733,&#160;2016.</p>
+<p style="position:absolute;top:412px;left:500px;white-space:nowrap" class="ft100">URL&#160;<a href="http://doi.org/10.1080/19420889.2016.1192733">http://doi.org/10.1080/19420889.2016.1192733.</a></p>
+<p style="position:absolute;top:430px;left:468px;white-space:nowrap" class="ft100">[40]&#160;Jie&#160;Tan,&#160;Tingnan&#160;Zhang,&#160;Erwin&#160;Coumans,&#160;Atil&#160;Iscen,</p>
+<p style="position:absolute;top:447px;left:500px;white-space:nowrap" class="ft102">Yunfei&#160;Bai,&#160;Danijar&#160;Hafner,&#160;Steven&#160;Bohez,&#160;and&#160;Vincent<br/>Vanhoucke.&#160;Sim-to-real:&#160;Learning&#160;agile&#160;locomotion&#160;for<br/>quadruped&#160;robots.&#160;In&#160;Proceedings&#160;of&#160;Robotics:&#160;Science<br/>and&#160;Systems</p>
+<p style="position:absolute;top:501px;left:576px;white-space:nowrap" class="ft100">,&#160;2018.&#160;URL&#160;<a href="https://doi.org/10.15607/RSS.2018.XIV.010">https://doi.org/10.15607/RSS.</a></p>
+<p style="position:absolute;top:519px;left:500px;white-space:nowrap" class="ft100"><a href="https://doi.org/10.15607/RSS.2018.XIV.010">2018.XIV.010.</a></p>
+<p style="position:absolute;top:537px;left:468px;white-space:nowrap" class="ft100">[41]&#160;Laura&#160;N&#160;Vandenberg,&#160;Dany&#160;S&#160;Adams,&#160;and&#160;Michael&#160;Levin.</p>
+<p style="position:absolute;top:555px;left:500px;white-space:nowrap" class="ft102">Normalized&#160;shape&#160;and&#160;location&#160;of&#160;perturbed&#160;craniofacial<br/>structures&#160;in&#160;the&#160;xenopus&#160;tadpole&#160;reveal&#160;an&#160;innate&#160;ability<br/>to&#160;achieve&#160;correct&#160;morphology.&#160;Developmental&#160;Dynam-<br/>ics</p>
+<p style="position:absolute;top:609px;left:517px;white-space:nowrap" class="ft100">,&#160;241(5):863–878,&#160;2012.&#160;URL&#160;<a href="http://doi.org/10.1002/dvdy.23770">http://doi.org/10.1002/</a></p>
+<p style="position:absolute;top:627px;left:500px;white-space:nowrap" class="ft100"><a href="http://doi.org/10.1002/dvdy.23770">dvdy.23770.</a></p>
+<p style="position:absolute;top:645px;left:468px;white-space:nowrap" class="ft100">[42]&#160;Mary&#160;Jane&#160;West-Eberhard.&#160;Developmental&#160;plasticity&#160;and</p>
+<p style="position:absolute;top:663px;left:500px;white-space:nowrap" class="ft100">the&#160;origin&#160;of&#160;species&#160;differences.</p>
+<p style="position:absolute;top:663px;left:725px;white-space:nowrap" class="ft100">Proceedings&#160;of&#160;the</p>
+<p style="position:absolute;top:681px;left:500px;white-space:nowrap" class="ft100">National&#160;Academy&#160;of&#160;Sciences</p>
+<p style="position:absolute;top:681px;left:694px;white-space:nowrap" class="ft100">,&#160;102:6543–6549,&#160;2005.</p>
+<p style="position:absolute;top:699px;left:500px;white-space:nowrap" class="ft100">URL&#160;<a href="https://doi.org/10.1073/pnas.0501844102">https://doi.org/10.1073/pnas.0501844102.</a></p>
+<p style="position:absolute;top:716px;left:468px;white-space:nowrap" class="ft100">[43]&#160;Edward&#160;L.&#160;White,&#160;Michelle&#160;C.&#160;Yuen,&#160;Jennifer&#160;C.&#160;Case,</p>
+<p style="position:absolute;top:734px;left:500px;white-space:nowrap" class="ft102">and&#160;Rebecca&#160;K.&#160;Kramer.&#160;Low-cost,&#160;facile,&#160;and&#160;scalable<br/>manufacturing&#160;of&#160;capacitive&#160;sensors&#160;for&#160;soft&#160;systems.<br/>Advanced&#160;Materials&#160;Technologies</p>
+<p style="position:absolute;top:770px;left:709px;white-space:nowrap" class="ft100">,&#160;2(9):1700072,&#160;2017.</p>
+<p style="position:absolute;top:788px;left:500px;white-space:nowrap" class="ft100">URL&#160;<a href="https://doi.org/10.1002/admt.201700072">https://doi.org/10.1002/admt.201700072.</a></p>
+<p style="position:absolute;top:806px;left:468px;white-space:nowrap" class="ft100">[44]&#160;Paul&#160;White,&#160;Victor&#160;Zykov,&#160;Josh&#160;Bongard,&#160;and&#160;Hod&#160;Lip-</p>
+<p style="position:absolute;top:824px;left:500px;white-space:nowrap" class="ft100">son.</p>
+<p style="position:absolute;top:824px;left:541px;white-space:nowrap" class="ft100">Three&#160;dimensional&#160;stochastic&#160;reconfiguration&#160;of</p>
+<p style="position:absolute;top:842px;left:500px;white-space:nowrap" class="ft102">modular&#160;robots.&#160;In&#160;Proceedings&#160;of&#160;Robotics:&#160;Science&#160;and<br/>Systems</p>
+<p style="position:absolute;top:860px;left:548px;white-space:nowrap" class="ft100">,&#160;2005.&#160;URL&#160;<a href="http://doi.org/10.15607/RSS.2005.I.022">http://doi.org/10.15607/RSS.2005.I.</a></p>
+<p style="position:absolute;top:878px;left:500px;white-space:nowrap" class="ft100"><a href="http://doi.org/10.15607/RSS.2005.I.022">022.</a></p>
+<p style="position:absolute;top:896px;left:468px;white-space:nowrap" class="ft100">[45]&#160;Huichan&#160;Zhao,&#160;Yan&#160;Li,&#160;Ahmed&#160;Elsamadisi,&#160;and&#160;Robert</p>
+<p style="position:absolute;top:914px;left:500px;white-space:nowrap" class="ft101">Shepherd.&#160;Scalable&#160;manufacturing&#160;of&#160;high&#160;force&#160;wearable<br/>soft&#160;actuators.</p>
+<p style="position:absolute;top:932px;left:603px;white-space:nowrap" class="ft100">Extreme&#160;Mechanics&#160;Letters</p>
+<p style="position:absolute;top:932px;left:773px;white-space:nowrap" class="ft100">,&#160;3:89–104,</p>
+<p style="position:absolute;top:950px;left:500px;white-space:nowrap" class="ft100">2015.&#160;URL&#160;<a href="https://doi.org/10.1016/j.eml.2015.02.006">https://doi.org/10.1016/j.eml.2015.02.006.</a></p>
+<p style="position:absolute;top:968px;left:468px;white-space:nowrap" class="ft100">[46]&#160;Victor&#160;Zykov,&#160;Efstathios&#160;Mytilinaios,&#160;Bryant&#160;Adams,&#160;and</p>
+<p style="position:absolute;top:985px;left:500px;white-space:nowrap" class="ft101">Hod&#160;Lipson.&#160;Self-reproducing&#160;machines.&#160;Nature,&#160;435<br/>(7039):163,&#160;2005.&#160;URL&#160;<a href="https://doi.org/10.1038/435163a">https://doi.org/10.1038/435163a.</a></p>
+</div>
+</body>
+</html>

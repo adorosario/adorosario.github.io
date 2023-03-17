@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:19px;font-family:Times;color:#000000;}
+	.ft11{font-size:19px;font-family:Times;color:#000000;}
+	.ft12{font-size:16px;font-family:Times;color:#000000;}
+	.ft13{font-size:10px;font-family:Times;color:#000000;}
+	.ft14{font-size:7px;font-family:Times;color:#000000;}
+	.ft15{font-size:12px;font-family:Times;color:#000000;}
+	.ft16{font-size:12px;font-family:Times;color:#000000;}
+	.ft17{font-size:10px;font-family:Times;color:#000000;}
+	.ft18{font-size:16px;font-family:Times;color:#000000;}
+	.ft19{font-size:12px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:144px;left:146px;white-space:nowrap" class="ft10"><b>A&#160;Level&#160;Set Approach to Simulating&#160;<i>Xenopus&#160;laevis</i></b><b>&#160;Tail&#160;Regeneration&#160;</b></p>
+<p style="position:absolute;top:186px;left:284px;white-space:nowrap" class="ft12">Zachary&#160;Serlin1,&#160;Jason Rife1&#160;and Michael&#160;Levin2&#160;</p>
+<p style="position:absolute;top:226px;left:213px;white-space:nowrap" class="ft14">1</p>
+<p style="position:absolute;top:226px;left:218px;white-space:nowrap" class="ft15">Automated&#160;Systems&#160;and&#160;Robotics&#160;Laboratory,&#160;Tufts&#160;University,&#160;Medford,&#160;MA&#160;02155&#160;</p>
+<p style="position:absolute;top:244px;left:192px;white-space:nowrap" class="ft14">2</p>
+<p style="position:absolute;top:244px;left:197px;white-space:nowrap" class="ft15">Center&#160;for&#160;Regenerative and&#160;Developmental&#160;Biology,&#160;Tufts&#160;University,&#160;Medford,&#160;MA&#160;02155&#160;&#160;&#160;</p>
+<p style="position:absolute;top:262px;left:244px;white-space:nowrap" class="ft15">Zachary.Serlin@tufts.edu;&#160;Jason.Rife@tufts.edu;&#160;Michael.Levin@tufts.edu&#160;</p>
+<p style="position:absolute;top:280px;left:81px;white-space:nowrap" class="ft19">&#160;<br/>&#160;</p>
+<p style="position:absolute;top:316px;left:232px;white-space:nowrap" class="ft16"><b>Abstract&#160;</b></p>
+<p style="position:absolute;top:333px;left:96px;white-space:nowrap" class="ft13">A&#160;framework&#160;for&#160;predictively&#160;linking&#160;cell-level&#160;signaling&#160;with&#160;</p>
+<p style="position:absolute;top:347px;left:96px;white-space:nowrap" class="ft13">larger&#160;scale&#160;patterning&#160;in&#160;regeneration&#160;and&#160;growth&#160;has&#160;yet&#160;to&#160;be&#160;</p>
+<p style="position:absolute;top:362px;left:96px;white-space:nowrap" class="ft13">created&#160;within&#160;the&#160;field&#160;of&#160;regenerative&#160;biology.&#160;If&#160;this&#160;could&#160;be&#160;</p>
+<p style="position:absolute;top:376px;left:96px;white-space:nowrap" class="ft13">achieved,&#160;&#160;regeneration&#160;&#160;(controlled&#160;&#160;cell&#160;&#160;growth),&#160;&#160;cancer&#160;</p>
+<p style="position:absolute;top:390px;left:96px;white-space:nowrap" class="ft13">(uncontrolled&#160;cell&#160;growth),&#160;and&#160;birth&#160;defects&#160;&#160;(mispatterning&#160;of&#160;</p>
+<p style="position:absolute;top:404px;left:96px;white-space:nowrap" class="ft13">cell&#160;growth)&#160;could&#160;be&#160;more&#160;easily&#160;understood&#160;and&#160;manipulated.&#160;</p>
+<p style="position:absolute;top:419px;left:96px;white-space:nowrap" class="ft13">This&#160;&#160;paper&#160;&#160;looks&#160;&#160;to&#160;&#160;create&#160;&#160;a&#160;&#160;key&#160;&#160;part&#160;&#160;of&#160;&#160;this&#160;&#160;preliminary&#160;</p>
+<p style="position:absolute;top:433px;left:96px;white-space:nowrap" class="ft13">framework&#160;&#160;by&#160;&#160;using&#160;&#160;level&#160;&#160;set&#160;&#160;methods&#160;&#160;and&#160;&#160;a&#160;&#160;cellular&#160;&#160;control&#160;</p>
+<p style="position:absolute;top:447px;left:96px;white-space:nowrap" class="ft13">scheme&#160;to&#160;predict&#160;macroscopic&#160;regenerative&#160;morphology.&#160;This&#160;</p>
+<p style="position:absolute;top:461px;left:96px;white-space:nowrap" class="ft13">simulation&#160;specifically&#160;looks&#160;at&#160;<i>Xenopus&#160;laevis&#160;</i>tail&#160;regeneration,&#160;</p>
+<p style="position:absolute;top:476px;left:96px;white-space:nowrap" class="ft13">and&#160;uses&#160;three&#160;control&#160;regimes&#160;to&#160;collectively&#160;mimic&#160;biological&#160;</p>
+<p style="position:absolute;top:490px;left:96px;white-space:nowrap" class="ft13">regeneration.&#160;&#160;The&#160;&#160;algorithm&#160;&#160;shows&#160;&#160;promise&#160;&#160;in&#160;&#160;creating&#160;&#160;an&#160;</p>
+<p style="position:absolute;top:504px;left:96px;white-space:nowrap" class="ft13">abstracted&#160;&#160;model&#160;&#160;to&#160;&#160;predict&#160;&#160;cell&#160;&#160;patterning&#160;&#160;on&#160;&#160;a&#160;&#160;macroscopic&#160;</p>
+<p style="position:absolute;top:519px;left:96px;white-space:nowrap" class="ft13">level.&#160;</p>
+<p style="position:absolute;top:546px;left:211px;white-space:nowrap" class="ft18"><b>Introduction&#160;</b></p>
+<p style="position:absolute;top:562px;left:81px;white-space:nowrap" class="ft15">If&#160;the&#160;control&#160;of&#160;cell&#160;growth&#160;and&#160;tissue patterning&#160;can&#160;be&#160;better&#160;</p>
+<p style="position:absolute;top:578px;left:81px;white-space:nowrap" class="ft15">understood,&#160;&#160;cancer&#160;&#160;(uncontrolled&#160;&#160;cell&#160;&#160;growth),&#160;&#160;birth&#160;&#160;defects&#160;</p>
+<p style="position:absolute;top:594px;left:81px;white-space:nowrap" class="ft15">(mispatterning),&#160;and&#160;organ&#160;regeneration&#160;(cell&#160;growth&#160;harnessed&#160;</p>
+<p style="position:absolute;top:610px;left:81px;white-space:nowrap" class="ft15">toward&#160;&#160;the&#160;&#160;repair&#160;&#160;of&#160;&#160;complex&#160;&#160;organs)&#160;&#160;could&#160;&#160;be&#160;&#160;more&#160;&#160;easily&#160;</p>
+<p style="position:absolute;top:625px;left:81px;white-space:nowrap" class="ft15">manipulated.&#160;&#160;While&#160;&#160;the&#160;&#160;molecular&#160;&#160;mechanisms&#160;&#160;of&#160;&#160;cellular&#160;</p>
+<p style="position:absolute;top:641px;left:81px;white-space:nowrap" class="ft15">control&#160;are&#160;increasingly&#160;understood,&#160;the&#160;field&#160;lacks&#160;frameworks&#160;</p>
+<p style="position:absolute;top:657px;left:81px;white-space:nowrap" class="ft15">for&#160;predictively&#160;linking&#160;cell-level&#160;signals&#160;to&#160;large-scale&#160;pattern&#160;</p>
+<p style="position:absolute;top:673px;left:81px;white-space:nowrap" class="ft15">controls.&#160;This&#160;paper&#160;looks&#160;to&#160;leverage&#160;methods&#160;from&#160;continuum&#160;</p>
+<p style="position:absolute;top:688px;left:81px;white-space:nowrap" class="ft15">mechanics&#160;to&#160;provide&#160;new&#160;tools&#160;for&#160;modeling&#160;the&#160;control&#160;of&#160;cell&#160;</p>
+<p style="position:absolute;top:704px;left:81px;white-space:nowrap" class="ft15">growth&#160;and&#160;patterning.&#160;To&#160;do&#160;this,&#160;regeneration&#160;in&#160;tadpole&#160;tails&#160;</p>
+<p style="position:absolute;top:720px;left:81px;white-space:nowrap" class="ft15">is&#160;&#160;modeled&#160;&#160;as&#160;&#160;an&#160;&#160;iteration&#160;&#160;between&#160;&#160;two&#160;&#160;processes.&#160;&#160;The&#160;&#160;first&#160;</p>
+<p style="position:absolute;top:736px;left:81px;white-space:nowrap" class="ft15">process&#160;is&#160;a&#160;control&#160;scheme,&#160;which&#160;decides&#160;where&#160;and&#160;when&#160;</p>
+<p style="position:absolute;top:751px;left:81px;white-space:nowrap" class="ft15">tissue&#160;should&#160;grow&#160;or&#160;shrink.&#160;The&#160;second&#160;process&#160;is&#160;a&#160;growth&#160;</p>
+<p style="position:absolute;top:767px;left:81px;white-space:nowrap" class="ft15">model&#160;that&#160;describes&#160;changes&#160;in&#160;tissue&#160;morphology&#160;due&#160;to&#160;cell&#160;</p>
+<p style="position:absolute;top:783px;left:81px;white-space:nowrap" class="ft15">division,&#160;motion,&#160;and&#160;growth.&#160;</p>
+<p style="position:absolute;top:973px;left:81px;white-space:nowrap" class="ft15">Figure&#160;&#160;1:&#160;&#160;Two-process&#160;&#160;system&#160;&#160;model.&#160;&#160;The&#160;&#160;control&#160;&#160;scheme&#160;</p>
+<p style="position:absolute;top:989px;left:81px;white-space:nowrap" class="ft15">creates&#160;local&#160;growth&#160;commands,&#160;which&#160;the&#160;growth&#160;model&#160;uses&#160;</p>
+<p style="position:absolute;top:1004px;left:81px;white-space:nowrap" class="ft15">to&#160;outputs&#160;the spatial distribution&#160;of&#160;tissue.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:1020px;left:81px;white-space:nowrap" class="ft15">&#160;</p>
+<p style="position:absolute;top:310px;left:495px;white-space:nowrap" class="ft15">One&#160;challenge&#160;in&#160;modeling&#160;regeneration&#160;and&#160;tissue&#160;growth&#160;is&#160;</p>
+<p style="position:absolute;top:326px;left:480px;white-space:nowrap" class="ft15">relating&#160;the&#160;macro&#160;(organism)&#160;scale&#160;to&#160;the&#160;micro&#160;(cell)&#160;scale.&#160;</p>
+<p style="position:absolute;top:342px;left:480px;white-space:nowrap" class="ft15">Traditionally,&#160;as&#160;the&#160;scale&#160;of&#160;the&#160;organism&#160;increases,&#160;so&#160;does&#160;</p>
+<p style="position:absolute;top:357px;left:480px;white-space:nowrap" class="ft15">the&#160;&#160;computational&#160;&#160;expense&#160;&#160;of&#160;&#160;modeling&#160;&#160;its&#160;&#160;smallest&#160;&#160;features&#160;</p>
+<p style="position:absolute;top:373px;left:480px;white-space:nowrap" class="ft15">and&#160;&#160;interactions.&#160;&#160;The&#160;&#160;average&#160;&#160;human&#160;&#160;is&#160;&#160;composed&#160;&#160;of&#160;&#160;37.2&#160;</p>
+<p style="position:absolute;top:389px;left:480px;white-space:nowrap" class="ft15">trillion&#160;cells&#160;–&#160;an&#160;unrealistic&#160;number&#160;of&#160;cells&#160;and&#160;interactions&#160;to&#160;</p>
+<p style="position:absolute;top:405px;left:480px;white-space:nowrap" class="ft15">model&#160;&#160;(Bianconi&#160;&#160;et&#160;&#160;al.&#160;&#160;2013).&#160;&#160;Our&#160;&#160;proposed&#160;&#160;method&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:421px;left:480px;white-space:nowrap" class="ft15">advantageous&#160;because&#160;it&#160;treats&#160;tissue&#160;as&#160;a&#160;continuum,&#160;blurring&#160;</p>
+<p style="position:absolute;top:436px;left:480px;white-space:nowrap" class="ft15">the&#160;boundaries&#160;between&#160;individual&#160;cells.&#160;This&#160;approach&#160;avoids&#160;</p>
+<p style="position:absolute;top:452px;left:480px;white-space:nowrap" class="ft15">the problem&#160;of&#160;managing&#160;cells&#160;as&#160;individual agents,&#160;which&#160;like&#160;</p>
+<p style="position:absolute;top:468px;left:480px;white-space:nowrap" class="ft15">marbles&#160;&#160;on&#160;&#160;a&#160;&#160;Chinese&#160;&#160;checkers&#160;&#160;board,&#160;&#160;would&#160;&#160;need&#160;&#160;to&#160;&#160;be&#160;</p>
+<p style="position:absolute;top:484px;left:480px;white-space:nowrap" class="ft15">shuffled&#160;to&#160;open&#160;spaces&#160;to&#160;make&#160;room&#160;for&#160;new marbles.&#160;</p>
+<p style="position:absolute;top:499px;left:495px;white-space:nowrap" class="ft15">What&#160;&#160;we&#160;&#160;describe&#160;&#160;is&#160;&#160;the&#160;&#160;difference&#160;&#160;between&#160;&#160;tracking&#160;</p>
+<p style="position:absolute;top:515px;left:480px;white-space:nowrap" class="ft15">individual&#160;&#160;agents&#160;&#160;and&#160;&#160;tracking&#160;&#160;the&#160;&#160;motion&#160;&#160;of&#160;&#160;bulk&#160;&#160;material&#160;</p>
+<p style="position:absolute;top:531px;left:480px;white-space:nowrap" class="ft15">through&#160;a&#160;fixed&#160;volume&#160;of&#160;space.&#160;Two&#160;types&#160;of&#160;mathematical&#160;</p>
+<p style="position:absolute;top:547px;left:480px;white-space:nowrap" class="ft15">thinking&#160;&#160;exist&#160;&#160;to&#160;&#160;distinguish&#160;&#160;these&#160;&#160;types&#160;&#160;of&#160;&#160;phenomena.&#160;&#160;The&#160;</p>
+<p style="position:absolute;top:562px;left:480px;white-space:nowrap" class="ft15">first&#160;approach&#160;is&#160;Lagrangian,&#160;meaning&#160;cells&#160;are&#160;tracked&#160;on&#160;an&#160;</p>
+<p style="position:absolute;top:578px;left:480px;white-space:nowrap" class="ft15">individual&#160;basis.&#160;Such&#160;a&#160;method&#160;allows&#160;cells&#160;to&#160;operate&#160;on&#160;their&#160;</p>
+<p style="position:absolute;top:594px;left:480px;white-space:nowrap" class="ft15">own&#160;growth&#160;rules&#160;and&#160;is&#160;commonly&#160;used&#160;in&#160;biological&#160;growth&#160;</p>
+<p style="position:absolute;top:610px;left:480px;white-space:nowrap" class="ft15">modeling&#160;&#160;(Walker&#160;&#160;et&#160;al.&#160;2004;&#160;Rejniak&#160;and&#160;Anderson&#160;2011).&#160;</p>
+<p style="position:absolute;top:625px;left:480px;white-space:nowrap" class="ft15">Lagrange&#160;&#160;models&#160;&#160;often&#160;&#160;suffer&#160;&#160;morphologically&#160;&#160;from&#160;&#160;internal&#160;</p>
+<p style="position:absolute;top:641px;left:480px;white-space:nowrap" class="ft15">voids&#160;because&#160;the&#160;individual&#160;“cells”&#160;cannot&#160;directly&#160;organize&#160;in&#160;</p>
+<p style="position:absolute;top:657px;left:480px;white-space:nowrap" class="ft15">a&#160;&#160;manner&#160;&#160;that&#160;&#160;preserves&#160;&#160;contact&#160;&#160;without&#160;&#160;overlapping.&#160;&#160;The&#160;</p>
+<p style="position:absolute;top:673px;left:480px;white-space:nowrap" class="ft15">second&#160;approach&#160;is&#160;Eulerian,&#160;meaning&#160;it&#160;focuses&#160;on&#160;the&#160;space&#160;</p>
+<p style="position:absolute;top:688px;left:480px;white-space:nowrap" class="ft15">through&#160;&#160;which&#160;&#160;particles&#160;&#160;move.&#160;&#160;Eulerian&#160;&#160;approaches&#160;&#160;are&#160;</p>
+<p style="position:absolute;top:704px;left:480px;white-space:nowrap" class="ft15">classically&#160;employed&#160;in&#160;modeling&#160;fluid&#160;flow&#160;and&#160;heat&#160;transfer&#160;</p>
+<p style="position:absolute;top:720px;left:480px;white-space:nowrap" class="ft15">(J.&#160;A.&#160;Sethian&#160;1985;&#160;Osher&#160;and&#160;Sethian&#160;1988).&#160;Such&#160;methods&#160;</p>
+<p style="position:absolute;top:736px;left:480px;white-space:nowrap" class="ft15">have&#160;&#160;not&#160;&#160;been&#160;&#160;widely&#160;&#160;used&#160;&#160;to&#160;&#160;model&#160;&#160;tissue&#160;&#160;growth&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:751px;left:480px;white-space:nowrap" class="ft15">patterning;&#160;&#160;however,&#160;&#160;they&#160;&#160;offer&#160;&#160;great&#160;&#160;promise&#160;&#160;to&#160;&#160;capture&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:767px;left:480px;white-space:nowrap" class="ft15">effects&#160;&#160;of&#160;&#160;microscopic&#160;&#160;phenomena&#160;&#160;interacting&#160;&#160;across&#160;</p>
+<p style="position:absolute;top:783px;left:480px;white-space:nowrap" class="ft15">macroscopic domains.&#160;</p>
+<p style="position:absolute;top:799px;left:495px;white-space:nowrap" class="ft15">Our&#160;proposed&#160;model&#160;uses&#160;an&#160;Eulerian&#160;approach&#160;based&#160;on&#160;the&#160;</p>
+<p style="position:absolute;top:814px;left:480px;white-space:nowrap" class="ft15">level-set&#160;&#160;method.&#160;&#160;Level&#160;&#160;sets&#160;&#160;use&#160;&#160;a&#160;&#160;modified&#160;&#160;mass&#160;&#160;balance&#160;&#160;to&#160;</p>
+<p style="position:absolute;top:830px;left:480px;white-space:nowrap" class="ft15">describe&#160;a&#160;moving&#160;boundary,&#160;such&#160;as&#160;the&#160;interface&#160;between&#160;an&#160;</p>
+<p style="position:absolute;top:846px;left:480px;white-space:nowrap" class="ft15">organism&#160;and&#160;the&#160;surrounding&#160;medium.&#160;Level&#160;set&#160;methods&#160;are&#160;</p>
+<p style="position:absolute;top:862px;left:480px;white-space:nowrap" class="ft15">used&#160;to&#160;model&#160;crystal&#160;growth&#160;and&#160;combustion,&#160;as&#160;well&#160;as&#160;for&#160;</p>
+<p style="position:absolute;top:877px;left:480px;white-space:nowrap" class="ft15">computer&#160;vision&#160;and&#160;microchip&#160;fabrication&#160;(Osher&#160;and&#160;Sethian&#160;</p>
+<p style="position:absolute;top:893px;left:480px;white-space:nowrap" class="ft15">1988;&#160;J.&#160;A.&#160;Sethian&#160;1985;&#160;J.&#160;Sethian&#160;1984;&#160;J.&#160;A.&#160;Sethian,&#160;n.d.).&#160;</p>
+<p style="position:absolute;top:909px;left:480px;white-space:nowrap" class="ft15">Level&#160;&#160;set&#160;&#160;methods&#160;&#160;have&#160;&#160;also&#160;&#160;seen&#160;&#160;some&#160;&#160;use&#160;&#160;in&#160;&#160;biological&#160;</p>
+<p style="position:absolute;top:925px;left:480px;white-space:nowrap" class="ft15">modeling&#160;(C.S.&#160;Hogea,&#160;Murray,&#160;and&#160;Sethian,&#160;n.d.)&#160;although&#160;not&#160;</p>
+<p style="position:absolute;top:941px;left:480px;white-space:nowrap" class="ft15">to&#160;&#160;our&#160;&#160;knowledge&#160;&#160;in&#160;&#160;a&#160;&#160;closed-loop&#160;&#160;feedback&#160;&#160;scheme&#160;&#160;for&#160;</p>
+<p style="position:absolute;top:956px;left:480px;white-space:nowrap" class="ft15">patterned&#160;growth&#160;as&#160;illustrated&#160;in&#160;Figure 1.&#160;</p>
+<p style="position:absolute;top:972px;left:495px;white-space:nowrap" class="ft15">Level&#160;set&#160;methods&#160;use&#160;a&#160;scalar&#160;field&#160;to&#160;describe&#160;a&#160;moving&#160;</p>
+<p style="position:absolute;top:988px;left:480px;white-space:nowrap" class="ft15">boundary.&#160;The&#160;boundary&#160;is&#160;at&#160;the&#160;zero&#160;values&#160;of&#160;the&#160;scalar&#160;field&#160;</p>
+<p style="position:absolute;top:1004px;left:480px;white-space:nowrap" class="ft15">and&#160;motion&#160;of&#160;the&#160;boundary&#160;is&#160;determined&#160;by&#160;assigning&#160;a&#160;speed&#160;</p>
+<p style="position:absolute;top:1019px;left:480px;white-space:nowrap" class="ft15">at&#160;each&#160;point.&#160;The&#160;speed&#160;function&#160;is&#160;ultimately&#160;what&#160;controls&#160;</p>
+<p style="position:absolute;top:1035px;left:480px;white-space:nowrap" class="ft15">the&#160;development&#160;of&#160;the&#160;boundary.&#160;For&#160;this&#160;biology-motivated&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft15">528</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:16px;font-family:Times;color:#000000;}
+	.ft23{font-size:13px;font-family:Times;color:#000000;}
+	.ft24{font-size:25px;font-family:Times;color:#000000;}
+	.ft25{font-size:16px;font-family:Times;color:#000000;}
+	.ft26{font-size:19px;font-family:Times;color:#000000;}
+	.ft27{font-size:13px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:79px;left:81px;white-space:nowrap" class="ft20">application,&#160;&#160;we&#160;&#160;propose&#160;&#160;a&#160;&#160;speed&#160;&#160;function&#160;&#160;consisting&#160;&#160;of&#160;&#160;three&#160;</p>
+<p style="position:absolute;top:95px;left:81px;white-space:nowrap" class="ft20">main&#160;&#160;components:&#160;&#160;isometric&#160;&#160;control,&#160;&#160;patterning&#160;&#160;control,&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft20">smoothing&#160;control.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:126px;left:96px;white-space:nowrap" class="ft20">This&#160;paper&#160;uses&#160;level&#160;sets&#160;to&#160;simulate&#160;the&#160;regeneration&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft20">amputated&#160;tail&#160;of&#160;a&#160;<i>Xenopus&#160;laevis</i>&#160;tadpole.&#160;<i>Xenopus</i>&#160;is&#160;a&#160;simple&#160;</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft20">vertebrate&#160;that&#160;regenerates&#160;its&#160;tail&#160;until&#160;early&#160;in&#160;its&#160;life&#160;cycle,&#160;</p>
+<p style="position:absolute;top:174px;left:81px;white-space:nowrap" class="ft20">through&#160;&#160;stage&#160;&#160;52&#160;&#160;or&#160;&#160;53&#160;&#160;(Suzuki&#160;&#160;et&#160;&#160;al.&#160;&#160;2006).&#160;&#160;This&#160;&#160;makes&#160;</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft21"><i>Xenopus</i>&#160;&#160;ideal&#160;&#160;for&#160;&#160;modeling&#160;&#160;patterning&#160;&#160;growth,&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:205px;left:81px;white-space:nowrap" class="ft20">regeneration&#160;in&#160;particular,&#160;across&#160;a&#160;macroscopic&#160;scale.&#160;In&#160;this&#160;</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft20">work,&#160;&#160;we&#160;&#160;conceptualize&#160;&#160;regeneration&#160;&#160;as&#160;&#160;growth&#160;&#160;that&#160;&#160;restores&#160;</p>
+<p style="position:absolute;top:237px;left:81px;white-space:nowrap" class="ft20">animal&#160;morphology&#160;back&#160;to&#160;a&#160;“reference”&#160;shape.&#160;Our&#160;particular&#160;</p>
+<p style="position:absolute;top:252px;left:81px;white-space:nowrap" class="ft20">approach&#160;will&#160;assume&#160;that&#160;a&#160;global&#160;reference&#160;map&#160;is&#160;available&#160;</p>
+<p style="position:absolute;top:268px;left:81px;white-space:nowrap" class="ft20">and&#160;that&#160;control&#160;laws&#160;act&#160;by&#160;setting&#160;growth&#160;rate&#160;based&#160;on&#160;the&#160;</p>
+<p style="position:absolute;top:284px;left:81px;white-space:nowrap" class="ft20">distance&#160;of&#160;the&#160;organism&#160;boundary&#160;from&#160;the&#160;reference.&#160;In&#160;fact,&#160;</p>
+<p style="position:absolute;top:300px;left:81px;white-space:nowrap" class="ft20">it&#160;is&#160;not&#160;critical&#160;as&#160;to&#160;whether&#160;an&#160;actual&#160;reference&#160;“map”&#160;might&#160;</p>
+<p style="position:absolute;top:316px;left:81px;white-space:nowrap" class="ft20">exist&#160;in&#160;an&#160;animal&#160;system&#160;(Friston&#160;et&#160;al.&#160;2015)&#160;or&#160;whether&#160;the&#160;</p>
+<p style="position:absolute;top:331px;left:81px;white-space:nowrap" class="ft20">“map”&#160;&#160;is&#160;&#160;an&#160;&#160;emergent&#160;&#160;pattern&#160;&#160;that&#160;&#160;results&#160;&#160;from&#160;&#160;local&#160;&#160;control&#160;</p>
+<p style="position:absolute;top:347px;left:81px;white-space:nowrap" class="ft20">decisions&#160;(Zhang&#160;and&#160;Levin&#160;2009;&#160;Chernet,&#160;Fields,&#160;and&#160;Levin&#160;</p>
+<p style="position:absolute;top:363px;left:81px;white-space:nowrap" class="ft20">2015).&#160;&#160;On&#160;&#160;the&#160;&#160;simulation&#160;&#160;scale,&#160;&#160;both&#160;&#160;mechanisms&#160;&#160;are&#160;</p>
+<p style="position:absolute;top:379px;left:81px;white-space:nowrap" class="ft20">functionally&#160;equivalent.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:394px;left:96px;white-space:nowrap" class="ft20">In&#160;the&#160;following&#160;sections,&#160;this&#160;paper&#160;will&#160;detail&#160;methods&#160;used&#160;</p>
+<p style="position:absolute;top:410px;left:81px;white-space:nowrap" class="ft20">to&#160;implement&#160;the&#160;growth&#160;model&#160;and&#160;the&#160;control&#160;scheme.&#160;The&#160;</p>
+<p style="position:absolute;top:426px;left:81px;white-space:nowrap" class="ft20">paper&#160;will&#160;then&#160;go&#160;into&#160;detail&#160;on&#160;the&#160;simulation&#160;used&#160;to&#160;assess&#160;</p>
+<p style="position:absolute;top:442px;left:81px;white-space:nowrap" class="ft20">these&#160;models.&#160;Finally,&#160;we&#160;will&#160;present&#160;results,&#160;conclusions,&#160;and&#160;</p>
+<p style="position:absolute;top:457px;left:81px;white-space:nowrap" class="ft20">future work.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:487px;left:226px;white-space:nowrap" class="ft22"><b>Methods&#160;</b></p>
+<p style="position:absolute;top:514px;left:81px;white-space:nowrap" class="ft27"><b>Level&#160;Set&#160;Analogy&#160;<br/></b>Level&#160;set&#160;methods&#160;were&#160;originally&#160;created&#160;to&#160;model&#160;combustion&#160;</p>
+<p style="position:absolute;top:545px;left:81px;white-space:nowrap" class="ft20">and&#160;&#160;two-phase&#160;&#160;flow&#160;&#160;(J.&#160;&#160;Sethian&#160;&#160;1984).&#160;&#160;A&#160;&#160;level&#160;&#160;set&#160;&#160;can&#160;&#160;be&#160;</p>
+<p style="position:absolute;top:561px;left:81px;white-space:nowrap" class="ft20">conceived&#160;as&#160;a&#160;geographic&#160;contour&#160;map,&#160;where&#160;each&#160;level&#160;set&#160;is&#160;</p>
+<p style="position:absolute;top:577px;left:81px;white-space:nowrap" class="ft20">an&#160;&#160;elevation&#160;&#160;contour&#160;&#160;that&#160;&#160;consists&#160;&#160;of&#160;&#160;the&#160;&#160;set&#160;&#160;of&#160;&#160;points&#160;&#160;at&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:592px;left:81px;white-space:nowrap" class="ft20">particular&#160;elevation.&#160;These&#160;contours&#160;may&#160;change&#160;over&#160;time&#160;if&#160;</p>
+<p style="position:absolute;top:608px;left:81px;white-space:nowrap" class="ft20">geography&#160;changes.&#160;By&#160;following&#160;a&#160;particular&#160;contour&#160;in&#160;time,&#160;</p>
+<p style="position:absolute;top:624px;left:81px;white-space:nowrap" class="ft20">it&#160;is&#160;possible&#160;to&#160;model&#160;the&#160;motion&#160;of&#160;an&#160;interface&#160;(e.g.&#160;a&#160;flame&#160;</p>
+<p style="position:absolute;top:640px;left:81px;white-space:nowrap" class="ft20">front&#160;&#160;in&#160;&#160;combustion&#160;&#160;or&#160;&#160;a&#160;&#160;liquid-gas&#160;&#160;interface&#160;&#160;in&#160;&#160;two-phase&#160;</p>
+<p style="position:absolute;top:655px;left:81px;white-space:nowrap" class="ft20">flow).&#160;&#160;The&#160;&#160;level&#160;&#160;set&#160;&#160;equation&#160;&#160;is&#160;&#160;directly&#160;&#160;related&#160;&#160;to&#160;&#160;the&#160;&#160;scalar&#160;</p>
+<p style="position:absolute;top:671px;left:81px;white-space:nowrap" class="ft20">transport&#160;&#160;equation.&#160;&#160;Instead&#160;&#160;of&#160;&#160;transporting&#160;&#160;material&#160;&#160;however,&#160;</p>
+<p style="position:absolute;top:687px;left:81px;white-space:nowrap" class="ft20">the&#160;&#160;level&#160;&#160;set&#160;&#160;method&#160;&#160;transports&#160;&#160;a&#160;&#160;scalar&#160;&#160;distance&#160;&#160;from&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:703px;left:81px;white-space:nowrap" class="ft20">boundary&#160;of&#160;interest.&#160;</p>
+<p style="position:absolute;top:718px;left:96px;white-space:nowrap" class="ft20">To&#160;make&#160;the&#160;geographic&#160;analogy&#160;more&#160;concrete,&#160;consider&#160;a&#160;</p>
+<p style="position:absolute;top:734px;left:81px;white-space:nowrap" class="ft20">particular&#160;&#160;case&#160;&#160;–&#160;&#160;a&#160;&#160;volcanic&#160;&#160;island&#160;&#160;rising&#160;&#160;out&#160;&#160;of&#160;&#160;the&#160;&#160;ocean&#160;</p>
+<p style="position:absolute;top:750px;left:81px;white-space:nowrap" class="ft20">(Figure&#160;2).&#160;In&#160;this&#160;example,&#160;we&#160;will&#160;track&#160;<i>sea&#160;level</i>&#160;over&#160;time,&#160;</p>
+<p style="position:absolute;top:766px;left:81px;white-space:nowrap" class="ft20">as&#160;this&#160;elevation&#160;marks&#160;the&#160;interface&#160;between&#160;the&#160;island&#160;and&#160;the&#160;</p>
+<p style="position:absolute;top:781px;left:81px;white-space:nowrap" class="ft20">ocean.&#160;&#160;As&#160;&#160;a&#160;&#160;volcanic&#160;&#160;eruption&#160;takes&#160;&#160;place&#160;&#160;and&#160;&#160;adds&#160;&#160;material&#160;</p>
+<p style="position:absolute;top:797px;left:81px;white-space:nowrap" class="ft20">over&#160;the&#160;entire&#160;island,&#160;the&#160;island’s&#160;elevation&#160;map&#160;will&#160;evolve&#160;</p>
+<p style="position:absolute;top:813px;left:81px;white-space:nowrap" class="ft20">both&#160;&#160;on&#160;&#160;the&#160;&#160;land&#160;&#160;side&#160;&#160;(topography)&#160;&#160;and&#160;&#160;on&#160;&#160;the&#160;&#160;ocean&#160;&#160;side&#160;</p>
+<p style="position:absolute;top:829px;left:81px;white-space:nowrap" class="ft20">(bathymetry).&#160;&#160;The&#160;&#160;addition&#160;&#160;of&#160;&#160;new&#160;&#160;material&#160;&#160;will&#160;&#160;cause&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:845px;left:81px;white-space:nowrap" class="ft20">island&#160;to&#160;grow,&#160;such&#160;that&#160;the&#160;sea-level&#160;elevation&#160;contour&#160;pushes&#160;</p>
+<p style="position:absolute;top:860px;left:81px;white-space:nowrap" class="ft20">outward&#160;&#160;as&#160;&#160;shown&#160;&#160;in&#160;&#160;Figure&#160;&#160;2.&#160;&#160;Erosion&#160;&#160;would&#160;&#160;garner&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:876px;left:81px;white-space:nowrap" class="ft20">opposite&#160;effect&#160;–&#160;sharp&#160;features&#160;would&#160;be&#160;worn&#160;down,&#160;shrinking&#160;</p>
+<p style="position:absolute;top:892px;left:81px;white-space:nowrap" class="ft20">the&#160;boundary.&#160;In&#160;Figure&#160;2,&#160;the&#160;elevation&#160;is&#160;denoted&#160;by&#160;the&#160;scalar&#160;</p>
+<p style="position:absolute;top:908px;left:81px;white-space:nowrap" class="ft20">ϕ.&#160;The&#160;interface&#160;between&#160;land&#160;and&#160;water&#160;is&#160;denoted&#160;by&#160;the&#160;sea-</p>
+<p style="position:absolute;top:923px;left:81px;white-space:nowrap" class="ft20">level contour,&#160;with&#160;ϕ<i>&#160;</i>=&#160;0.&#160;</p>
+<p style="position:absolute;top:939px;left:96px;white-space:nowrap" class="ft20">This&#160;&#160;geographic&#160;&#160;concept&#160;&#160;can&#160;&#160;be&#160;&#160;extended&#160;&#160;to&#160;&#160;biological&#160;</p>
+<p style="position:absolute;top:955px;left:81px;white-space:nowrap" class="ft20">modeling.&#160;In&#160;this&#160;paper,&#160;we&#160;consider&#160;a&#160;two-dimensional&#160;model&#160;</p>
+<p style="position:absolute;top:971px;left:81px;white-space:nowrap" class="ft20">of&#160;the&#160;<i>Xenopus</i>&#160;tail.&#160;In&#160;our&#160;model,&#160;the&#160;<i>x</i>&#160;coordinate&#160;corresponds&#160;</p>
+<p style="position:absolute;top:986px;left:81px;white-space:nowrap" class="ft20">to&#160;&#160;the&#160;&#160;anterior-posterior&#160;&#160;direction,&#160;&#160;the&#160;&#160;<i>y</i>&#160;&#160;coordinate&#160;&#160;to&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:1002px;left:81px;white-space:nowrap" class="ft20">dorsal-ventral&#160;&#160;direction,&#160;&#160;and&#160;&#160;the&#160;&#160;lateral&#160;&#160;direction&#160;&#160;is&#160;&#160;not&#160;</p>
+<p style="position:absolute;top:1018px;left:81px;white-space:nowrap" class="ft20">modeled.&#160;&#160;The&#160;&#160;level&#160;&#160;set&#160;field&#160;&#160;ϕ(x,y)&#160;&#160;is&#160;&#160;now&#160;used&#160;&#160;to&#160;&#160;represent&#160;</p>
+<p style="position:absolute;top:1034px;left:81px;white-space:nowrap" class="ft20">distance&#160;away&#160;from&#160;the&#160;outer&#160;surface&#160;of&#160;the&#160;organism.&#160;&#160;&#160;&#160;The&#160;</p>
+<p style="position:absolute;top:79px;left:480px;white-space:nowrap" class="ft20">contour&#160;&#160;that&#160;&#160;represents&#160;&#160;the&#160;&#160;outer&#160;&#160;surface&#160;&#160;of&#160;&#160;the&#160;&#160;organism&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:95px;left:480px;white-space:nowrap" class="ft20">labeled&#160;&#160;Γ&#160;&#160;and&#160;&#160;represents&#160;&#160;the&#160;&#160;set&#160;&#160;of&#160;&#160;all&#160;&#160;points&#160;&#160;where&#160;&#160;ϕ&#160;=&#160;0.&#160;</p>
+<p style="position:absolute;top:111px;left:480px;white-space:nowrap" class="ft20">Moving&#160;&#160;inside&#160;&#160;the&#160;&#160;organism,&#160;&#160;the&#160;&#160;distance-from-contour&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:126px;left:480px;white-space:nowrap" class="ft20">measured&#160;&#160;as&#160;&#160;positive&#160;&#160;and&#160;&#160;so&#160;&#160;ϕ&#160;&#160;is&#160;&#160;set&#160;&#160;positive&#160;&#160;inside&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:142px;left:480px;white-space:nowrap" class="ft20">organism.&#160;&#160;&#160;&#160;By&#160;contrast,&#160;ϕ&#160;is&#160;set&#160;negative&#160;outside&#160;the&#160;organism.&#160;</p>
+<p style="position:absolute;top:158px;left:480px;white-space:nowrap" class="ft20">This&#160;&#160;mathematical&#160;&#160;approach&#160;&#160;lets&#160;&#160;us&#160;&#160;track&#160;&#160;the&#160;&#160;motion&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:174px;left:480px;white-space:nowrap" class="ft20">outer&#160;surface&#160;of&#160;the&#160;organism&#160;through&#160;space&#160;as&#160;the&#160;organism&#160;</p>
+<p style="position:absolute;top:189px;left:480px;white-space:nowrap" class="ft20">grows&#160;in&#160;time.&#160;An&#160;illustration&#160;of&#160;this&#160;concept&#160;is&#160;shown&#160;in&#160;Figure&#160;</p>
+<p style="position:absolute;top:205px;left:480px;white-space:nowrap" class="ft20">3,&#160;which&#160;depicts&#160;a&#160;section&#160;of&#160;the&#160;<i>Xenopus</i>&#160;tail.&#160;A&#160;photo&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:221px;left:480px;white-space:nowrap" class="ft21"><i>Xenpous</i>&#160;&#160;tadpole,&#160;&#160;in&#160;&#160;Figure&#160;&#160;3(a),&#160;&#160;shows&#160;&#160;the&#160;&#160;tail&#160;&#160;prior&#160;&#160;to&#160;</p>
+<p style="position:absolute;top:237px;left:480px;white-space:nowrap" class="ft20">amputation.&#160;The&#160;outer&#160;tail&#160;surface&#160;can&#160;be&#160;identified&#160;and&#160;used&#160;to&#160;</p>
+<p style="position:absolute;top:688px;left:631px;white-space:nowrap" class="ft24">(a)&#160;</p>
+<p style="position:absolute;top:865px;left:550px;white-space:nowrap" class="ft24">(b)&#160;</p>
+<p style="position:absolute;top:865px;left:753px;white-space:nowrap" class="ft24">(c)&#160;</p>
+<p style="position:absolute;top:477px;left:778px;white-space:nowrap" class="ft25">ϕ&#160;&lt;&#160;0&#160;</p>
+<p style="position:absolute;top:289px;left:817px;white-space:nowrap" class="ft26">(a)&#160;</p>
+<p style="position:absolute;top:459px;left:817px;white-space:nowrap" class="ft26">(b)&#160;</p>
+<p style="position:absolute;top:459px;left:555px;white-space:nowrap" class="ft20">&#160;</p>
+<p style="position:absolute;top:460px;left:676px;white-space:nowrap" class="ft20">&#160;</p>
+<p style="position:absolute;top:480px;left:759px;white-space:nowrap" class="ft20">&#160;</p>
+<p style="position:absolute;top:447px;left:759px;white-space:nowrap" class="ft20">&#160;</p>
+<p style="position:absolute;top:459px;left:490px;white-space:nowrap" class="ft25">ϕ&#160;=&#160;0&#160;</p>
+<p style="position:absolute;top:444px;left:778px;white-space:nowrap" class="ft25">ϕ&#160;&gt;&#160;0&#160;</p>
+<p style="position:absolute;top:903px;left:499px;white-space:nowrap" class="ft20">Figure&#160;&#160;3:&#160;&#160;Level&#160;&#160;Set&#160;&#160;Scalar&#160;&#160;Field&#160;&#160;Derivation&#160;&#160;(a)&#160;&#160;<i>Xenopus&#160;</i></p>
+<p style="position:absolute;top:919px;left:499px;white-space:nowrap" class="ft21"><i>laevis</i>&#160;at&#160;stage&#160;42.&#160;(b)&#160;A&#160;2D&#160;view&#160;of&#160;the&#160;tail&#160;representation.&#160;</p>
+<p style="position:absolute;top:935px;left:499px;white-space:nowrap" class="ft20">This&#160;represents&#160;the&#160;morphology&#160;of&#160;the&#160;tail&#160;and&#160;is&#160;the&#160;zero&#160;</p>
+<p style="position:absolute;top:950px;left:499px;white-space:nowrap" class="ft20">level&#160;set&#160;contour&#160;of&#160;the&#160;scalar&#160;field.&#160;(c)&#160;A&#160;3D&#160;representation&#160;</p>
+<p style="position:absolute;top:966px;left:499px;white-space:nowrap" class="ft20">of&#160;the&#160;level&#160;set&#160;field.&#160;The&#160;flat&#160;plane&#160;is&#160;the&#160;zero&#160;level&#160;set.&#160;</p>
+<p style="position:absolute;top:982px;left:499px;white-space:nowrap" class="ft20">Above&#160;&#160;that&#160;&#160;plane&#160;&#160;represents&#160;&#160;material&#160;&#160;inside&#160;&#160;the&#160;&#160;body;&#160;</p>
+<p style="position:absolute;top:998px;left:499px;white-space:nowrap" class="ft20">while,&#160;the&#160;section&#160;below&#160;that&#160;plane&#160;is&#160;outside&#160;the&#160;body.&#160;The&#160;</p>
+<p style="position:absolute;top:1013px;left:499px;white-space:nowrap" class="ft20">black&#160;line represents&#160;the current&#160;zero&#160;contour.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:1029px;left:499px;white-space:nowrap" class="ft20">&#160;</p>
+<p style="position:absolute;top:519px;left:491px;white-space:nowrap" class="ft20">Figure&#160;2:&#160;(a)&#160;&#160;Top&#160;view&#160;of&#160;the&#160;volcanic&#160;island&#160;erupting&#160;–&#160;</p>
+<p style="position:absolute;top:535px;left:491px;white-space:nowrap" class="ft20">arrows&#160;indicate boundary&#160;movement.&#160;(b)&#160;Front&#160;view of&#160;the&#160;</p>
+<p style="position:absolute;top:551px;left:491px;white-space:nowrap" class="ft20">volcanic&#160;island&#160;describing&#160;the&#160;same&#160;boundary&#160;movement.&#160;</p>
+<p style="position:absolute;top:566px;left:491px;white-space:nowrap" class="ft20">Elevation&#160;&#160;above&#160;&#160;sea&#160;&#160;level&#160;&#160;is&#160;&#160;indicated&#160;&#160;by&#160;&#160;the&#160;&#160;variable&#160;&#160;ϕ.&#160;</p>
+<p style="position:absolute;top:582px;left:491px;white-space:nowrap" class="ft20">Addition&#160;&#160;of&#160;&#160;volcanic&#160;&#160;material&#160;&#160;increases&#160;&#160;elevation&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:598px;left:491px;white-space:nowrap" class="ft20">translates&#160;directly&#160;to&#160;change in&#160;island&#160;circumference.&#160;</p>
+<p style="position:absolute;top:614px;left:491px;white-space:nowrap" class="ft20">&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft20">529</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:12px;font-family:Times;color:#000000;}
+	.ft32{font-size:13px;font-family:Times;color:#000000;}
+	.ft33{font-size:12px;font-family:Times;color:#000000;}
+	.ft34{font-size:7px;font-family:Times;color:#000000;}
+	.ft35{font-size:13px;line-height:15px;font-family:Times;color:#000000;}
+	.ft36{font-size:12px;line-height:20px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:79px;left:81px;white-space:nowrap" class="ft30">generate&#160;a&#160;binary&#160;image,&#160;as&#160;shown&#160;&#160;in&#160;Figure&#160;3(b),&#160;where&#160;the&#160;</p>
+<p style="position:absolute;top:95px;left:81px;white-space:nowrap" class="ft30">green&#160;region&#160;indicates&#160;the&#160;interior&#160;of&#160;the&#160;organism&#160;and&#160;the&#160;light&#160;</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft30">region&#160;indicates&#160;the&#160;exterior.&#160;This&#160;tail&#160;region&#160;can&#160;also&#160;be&#160;viewed&#160;</p>
+<p style="position:absolute;top:126px;left:81px;white-space:nowrap" class="ft30">as&#160;a&#160;level&#160;set&#160;field,&#160;shown&#160;in&#160;three-dimensions&#160;in&#160;Figure&#160;3(c).&#160;&#160;&#160;</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft30">The&#160;height&#160;of&#160;the&#160;field&#160;indicates&#160;the&#160;distance&#160;of&#160;each&#160;(<i>x</i>,<i>y</i>)&#160;point&#160;</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft30">from&#160;the outer&#160;surface of&#160;the organism.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:187px;left:81px;white-space:nowrap" class="ft35"><b>Growth&#160;Model&#160;<br/></b>This&#160;section&#160;describes&#160;the&#160;level&#160;set&#160;equations&#160;we&#160;used&#160;to&#160;model&#160;</p>
+<p style="position:absolute;top:219px;left:81px;white-space:nowrap" class="ft30">organism&#160;growth.&#160;Begin&#160;by&#160;identifying&#160;the outer&#160;surface of&#160;the&#160;</p>
+<p style="position:absolute;top:234px;left:81px;white-space:nowrap" class="ft30">organism&#160;in&#160;a&#160;Cartesian&#160;space&#160;described&#160;by&#160;coordinates&#160;<i>x</i>&#160;and&#160;</p>
+<p style="position:absolute;top:250px;left:81px;white-space:nowrap" class="ft31"><i>y</i>.&#160;&#160;In&#160;&#160;two-dimensions,&#160;&#160;the&#160;&#160;outer&#160;&#160;surface&#160;&#160;of&#160;&#160;the&#160;&#160;animal&#160;&#160;is&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:266px;left:81px;white-space:nowrap" class="ft30">contour,&#160;&#160;which&#160;&#160;we&#160;&#160;label&#160;&#160;Γ&#160;&#160;as&#160;&#160;shown&#160;&#160;in&#160;&#160;Figure&#160;&#160;3(b).&#160;&#160;Now&#160;</p>
+<p style="position:absolute;top:282px;left:81px;white-space:nowrap" class="ft30">construct&#160;a&#160;scalar&#160;field&#160;ϕ(<i>x,y</i>)&#160;that&#160;represents&#160;distance&#160;from&#160;the&#160;</p>
+<p style="position:absolute;top:298px;left:81px;white-space:nowrap" class="ft30">contour&#160;&#160;Γ,&#160;&#160;with&#160;&#160;values&#160;&#160;increasing&#160;&#160;interior&#160;&#160;to&#160;&#160;the&#160;&#160;organism&#160;</p>
+<p style="position:absolute;top:313px;left:81px;white-space:nowrap" class="ft30">(ϕ<i>&#160;&gt;&#160;</i>0)&#160;&#160;and&#160;&#160;decreasing&#160;&#160;exterior&#160;&#160;to&#160;&#160;the&#160;&#160;organism&#160;&#160;(ϕ<i>&#160;&lt;&#160;</i>0).&#160;&#160;In&#160;</p>
+<p style="position:absolute;top:329px;left:81px;white-space:nowrap" class="ft30">order&#160;to&#160;represent&#160;distance,&#160;note&#160;that&#160;the&#160;gradient&#160;of&#160;this&#160;scalar&#160;</p>
+<p style="position:absolute;top:345px;left:81px;white-space:nowrap" class="ft30">field&#160;must&#160;be&#160;one&#160;at&#160;all&#160;points&#160;where&#160;the&#160;slope&#160;of&#160;the&#160;field&#160;is&#160;</p>
+<p style="position:absolute;top:361px;left:81px;white-space:nowrap" class="ft30">continuous.&#160;&#160;&#160;&#160;Slope&#160;discontinuities&#160;appear&#160;only&#160;at&#160;the&#160;center&#160;of&#160;</p>
+<p style="position:absolute;top:376px;left:81px;white-space:nowrap" class="ft30">the&#160;field,&#160;where&#160;points&#160;are&#160;equidistant&#160;from&#160;multiple&#160;sections&#160;of&#160;</p>
+<p style="position:absolute;top:392px;left:81px;white-space:nowrap" class="ft30">the&#160;Γ&#160;contour,&#160;as&#160;illustrated&#160;by&#160;the&#160;ridge&#160;that&#160;appears&#160;along&#160;the&#160;</p>
+<p style="position:absolute;top:408px;left:81px;white-space:nowrap" class="ft30">midline of&#160;the tail,&#160;as&#160;illustrated&#160;in&#160;Figure 3(c).&#160;</p>
+<p style="position:absolute;top:424px;left:96px;white-space:nowrap" class="ft30">To&#160;model&#160;growth,&#160;we&#160;evolve&#160;the&#160;scalar&#160;field&#160;ϕ&#160;over&#160;time.&#160;As&#160;</p>
+<p style="position:absolute;top:439px;left:81px;white-space:nowrap" class="ft36">time&#160;advances,&#160;the&#160;level&#160;set&#160;is&#160;propagated&#160;using&#160;a&#160;velocity&#160;field&#160;<br/><b>v</b></p>
+<p style="position:absolute;top:455px;left:88px;white-space:nowrap" class="ft30">(x,y),&#160;where&#160;the&#160;velocity&#160;vector&#160;is&#160;specified&#160;at&#160;every&#160;point&#160;in&#160;</p>
+<p style="position:absolute;top:471px;left:81px;white-space:nowrap" class="ft30">the field.&#160;The magnitude&#160;<i>F</i>&#160;of&#160;the velocity&#160;vector&#160;will&#160;be set by&#160;</p>
+<p style="position:absolute;top:487px;left:81px;white-space:nowrap" class="ft30">the control&#160;scheme,&#160;as&#160;described&#160;below.&#160;As&#160;the&#160;control&#160;scheme&#160;</p>
+<p style="position:absolute;top:502px;left:81px;white-space:nowrap" class="ft30">transform&#160;the&#160;scalar&#160;field,&#160;the&#160;outer&#160;surface&#160;of&#160;the&#160;organism&#160;Γ&#160;</p>
+<p style="position:absolute;top:518px;left:81px;white-space:nowrap" class="ft30">moves&#160;in&#160;time,&#160;representing&#160;organism&#160;growth.&#160;</p>
+<p style="position:absolute;top:534px;left:96px;white-space:nowrap" class="ft30">The&#160;&#160;following&#160;&#160;equation&#160;&#160;governs&#160;&#160;the&#160;&#160;time&#160;dynamics&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:550px;left:81px;white-space:nowrap" class="ft30">scalar&#160;field&#160;ϕ(𝑥,&#160;𝑦,&#160;𝑡).&#160;</p>
+<p style="position:absolute;top:571px;left:205px;white-space:nowrap" class="ft34">𝐷</p>
+<p style="position:absolute;top:587px;left:203px;white-space:nowrap" class="ft34">𝐷𝑡</p>
+<p style="position:absolute;top:575px;left:216px;white-space:nowrap" class="ft30">𝜙&#160;=&#160;&#160;𝑆(𝑥,&#160;𝑦,&#160;𝑡)</p>
+<p style="position:absolute;top:574px;left:301px;white-space:nowrap" class="ft30">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(1)&#160;</p>
+<p style="position:absolute;top:599px;left:81px;white-space:nowrap" class="ft30">Here&#160;the&#160;full&#160;derivative&#160;of&#160;the&#160;scalar&#160;ϕ&#160;is&#160;related&#160;to&#160;a&#160;source&#160;term&#160;</p>
+<p style="position:absolute;top:615px;left:81px;white-space:nowrap" class="ft31"><i>S</i>.&#160;The&#160;source&#160;term&#160;allows&#160;for&#160;the&#160;production&#160;of&#160;new&#160;material&#160;</p>
+<p style="position:absolute;top:631px;left:81px;white-space:nowrap" class="ft30">(or&#160;the&#160;destruction&#160;of&#160;old&#160;material)&#160;at&#160;every&#160;point&#160;in&#160;the&#160;field.&#160;</p>
+<p style="position:absolute;top:646px;left:81px;white-space:nowrap" class="ft30">Where&#160;the&#160;source&#160;term&#160;is&#160;zero,&#160;there&#160;is&#160;no&#160;change&#160;in&#160;the&#160;total&#160;</p>
+<p style="position:absolute;top:662px;left:81px;white-space:nowrap" class="ft30">amount&#160;of&#160;material&#160;present;&#160;in&#160;other&#160;words,&#160;ϕ&#160;is&#160;conserved&#160;in&#160;</p>
+<p style="position:absolute;top:678px;left:81px;white-space:nowrap" class="ft30">the&#160;&#160;absence&#160;&#160;of&#160;&#160;a&#160;&#160;source&#160;&#160;term.&#160;&#160;Equation&#160;&#160;(1)&#160;&#160;is&#160;&#160;a&#160;&#160;classical&#160;</p>
+<p style="position:absolute;top:694px;left:81px;white-space:nowrap" class="ft30">conservation&#160;law&#160;from&#160;continuum&#160;mechanics,&#160;as&#160;might&#160;be&#160;used&#160;</p>
+<p style="position:absolute;top:709px;left:81px;white-space:nowrap" class="ft30">to&#160;&#160;model&#160;&#160;the&#160;&#160;conservation&#160;&#160;of&#160;&#160;mass,&#160;&#160;momentum,&#160;&#160;or&#160;&#160;energy&#160;</p>
+<p style="position:absolute;top:725px;left:81px;white-space:nowrap" class="ft30">(Kundu,&#160;Cohen,&#160;and&#160;David&#160;R.&#160;Dowling&#160;Ph.D.&#160;2011).&#160;</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft30">&#160;&#160;The&#160;&#160;full&#160;&#160;derivative&#160;&#160;is&#160;&#160;linked&#160;&#160;to&#160;&#160;velocity&#160;&#160;<b>v</b>&#160;&#160;through&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:757px;left:81px;white-space:nowrap" class="ft30">following&#160;equation.&#160;</p>
+<p style="position:absolute;top:778px;left:184px;white-space:nowrap" class="ft34">𝐷</p>
+<p style="position:absolute;top:794px;left:181px;white-space:nowrap" class="ft34">𝐷𝑡</p>
+<p style="position:absolute;top:782px;left:195px;white-space:nowrap" class="ft30">𝜙(𝑥,&#160;𝑦,&#160;𝑡)&#160;=&#160;&#160;&#160;𝜙𝑡&#160;+&#160;∇𝜙&#160;⋅&#160;&#160;𝐯<b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</b>(2)&#160;</p>
+<p style="position:absolute;top:806px;left:81px;white-space:nowrap" class="ft30">This&#160;equation,&#160;obtained&#160;from&#160;standard&#160;calculus&#160;using&#160;the chain&#160;</p>
+<p style="position:absolute;top:822px;left:81px;white-space:nowrap" class="ft30">rule,&#160;uses&#160;the&#160;notation&#160;&#160;𝜙𝑡&#160;&#160;to&#160;identify&#160;the&#160;partial&#160;derivative&#160;of&#160;<i>ϕ</i>&#160;</p>
+<p style="position:absolute;top:838px;left:81px;white-space:nowrap" class="ft30">with&#160;respect to&#160;time and&#160;the notation&#160;&#160;∇𝜙&#160;&#160;to&#160;identify&#160;its&#160;spatial&#160;</p>
+<p style="position:absolute;top:854px;left:81px;white-space:nowrap" class="ft30">gradient.&#160;In&#160;this&#160;work,&#160;<i>ϕ</i>&#160;contours&#160;are&#160;assumed&#160;always&#160;to&#160;move&#160;</p>
+<p style="position:absolute;top:869px;left:81px;white-space:nowrap" class="ft30">outward&#160;in&#160;the&#160;direction&#160;normal&#160;to&#160;each&#160;existing&#160;contour.&#160;The&#160;</p>
+<p style="position:absolute;top:885px;left:81px;white-space:nowrap" class="ft30">local unit&#160;normal to&#160;each&#160;contour&#160;is&#160;defined&#160;by&#160;the gradient:&#160;</p>
+<p style="position:absolute;top:911px;left:232px;white-space:nowrap" class="ft30">𝐧&#160;=&#160;&#160;</p>
+<p style="position:absolute;top:907px;left:268px;white-space:nowrap" class="ft34">∇𝜙</p>
+<p style="position:absolute;top:922px;left:263px;white-space:nowrap" class="ft34">‖∇𝜙‖&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(3)&#160;</p>
+<p style="position:absolute;top:935px;left:81px;white-space:nowrap" class="ft30">The velocity&#160;vector&#160;can&#160;be written&#160;in&#160;terms&#160;of&#160;a magnitude&#160;</p>
+<p style="position:absolute;top:950px;left:81px;white-space:nowrap" class="ft30">term&#160;<i>F</i>&#160;multiplied&#160;by&#160;this&#160;local normal.&#160;</p>
+<p style="position:absolute;top:976px;left:232px;white-space:nowrap" class="ft30">𝐯&#160;=&#160;−𝐹𝐧</p>
+<p style="position:absolute;top:975px;left:287px;white-space:nowrap" class="ft30">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(4)&#160;</p>
+<p style="position:absolute;top:1000px;left:81px;white-space:nowrap" class="ft30">The negative sign&#160;is&#160;introduced&#160;here,&#160;so&#160;that a&#160;positive speed&#160;</p>
+<p style="position:absolute;top:1015px;left:81px;white-space:nowrap" class="ft31"><i>F</i>&#160;corresponds&#160;to&#160;organism&#160;growth&#160;(toward&#160;lower&#160;values&#160;of&#160;<i>ϕ</i>).&#160;</p>
+<p style="position:absolute;top:276px;left:480px;white-space:nowrap" class="ft30">A field&#160;in&#160;which&#160;velocity&#160;is&#160;locally&#160;normal to&#160;the contour&#160;is&#160;</p>
+<p style="position:absolute;top:292px;left:480px;white-space:nowrap" class="ft30">shown&#160;in&#160;Figure 4.&#160;</p>
+<p style="position:absolute;top:308px;left:495px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:324px;left:495px;white-space:nowrap" class="ft30">Substituting&#160;equation&#160;(4)&#160;into&#160;equation&#160;(2)&#160;gives&#160;</p>
+<p style="position:absolute;top:345px;left:579px;white-space:nowrap" class="ft34">𝐷</p>
+<p style="position:absolute;top:361px;left:577px;white-space:nowrap" class="ft34">𝐷𝑡</p>
+<p style="position:absolute;top:349px;left:591px;white-space:nowrap" class="ft30">𝜙(𝑥,&#160;𝑦,&#160;𝑡)&#160;=&#160;&#160;&#160;𝜙𝑡&#160;−&#160;𝐹‖∇ϕ‖&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(5)&#160;</p>
+<p style="position:absolute;top:373px;left:480px;white-space:nowrap" class="ft30">Recalling&#160;that the gradient&#160;is&#160;equal to&#160;one at&#160;all&#160;points&#160;where it&#160;</p>
+<p style="position:absolute;top:389px;left:480px;white-space:nowrap" class="ft30">is&#160;defined,&#160;the&#160;full&#160;derivative becomes&#160;</p>
+<p style="position:absolute;top:410px;left:599px;white-space:nowrap" class="ft34">𝐷</p>
+<p style="position:absolute;top:426px;left:597px;white-space:nowrap" class="ft34">𝐷𝑡</p>
+<p style="position:absolute;top:415px;left:610px;white-space:nowrap" class="ft30">𝜙(𝑥,&#160;𝑦,&#160;𝑡)&#160;=&#160;&#160;&#160;𝜙𝑡&#160;−&#160;𝐹&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(6)&#160;</p>
+<p style="position:absolute;top:438px;left:480px;white-space:nowrap" class="ft30">where&#160;the&#160;gradient&#160;&#160;∇ϕ&#160;&#160;is&#160;continuous.&#160;&#160;&#160;&#160;To&#160;avoid&#160;issues&#160;with&#160;</p>
+<p style="position:absolute;top:454px;left:480px;white-space:nowrap" class="ft30">the&#160;gradient&#160;being&#160;undefined&#160;at&#160;some&#160;locations&#160;(at&#160;cusps&#160;and&#160;</p>
+<p style="position:absolute;top:470px;left:480px;white-space:nowrap" class="ft30">ridges&#160;in&#160;the&#160;<i>ϕ</i>&#160;field),&#160;the&#160;velocity&#160;magnitude&#160;<i>F</i>&#160;is&#160;restricted&#160;to&#160;</p>
+<p style="position:absolute;top:486px;left:480px;white-space:nowrap" class="ft30">be&#160;zero&#160;at&#160;these&#160;locations.&#160;&#160;&#160;&#160;Thus,&#160;by&#160;combining&#160;equations&#160;(1)&#160;</p>
+<p style="position:absolute;top:501px;left:480px;white-space:nowrap" class="ft30">and&#160;&#160;(6),&#160;&#160;we&#160;&#160;obtain&#160;&#160;the&#160;&#160;following&#160;&#160;equation&#160;&#160;to&#160;&#160;describe&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:517px;left:480px;white-space:nowrap" class="ft30">change&#160;in&#160;the&#160;level&#160;set&#160;field&#160;<i>ϕ</i>&#160;at&#160;each&#160;point&#160;and&#160;at&#160;each&#160;moment&#160;</p>
+<p style="position:absolute;top:533px;left:480px;white-space:nowrap" class="ft30">in&#160;time.&#160;</p>
+<p style="position:absolute;top:559px;left:565px;white-space:nowrap" class="ft30">𝜙𝑡&#160;=&#160;&#160;&#160;{</p>
+<p style="position:absolute;top:550px;left:607px;white-space:nowrap" class="ft30">𝐹&#160;+&#160;&#160;𝑆,&#160;∇𝜙&#160;𝑑𝑒𝑓𝑖𝑛𝑒𝑑</p>
+<p style="position:absolute;top:567px;left:621px;white-space:nowrap" class="ft30">&#160;𝑆,</p>
+<p style="position:absolute;top:567px;left:666px;white-space:nowrap" class="ft30">𝑒𝑙𝑠𝑒𝑤ℎ𝑒𝑟𝑒&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(7)&#160;</p>
+<p style="position:absolute;top:582px;left:480px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:598px;left:495px;white-space:nowrap" class="ft30">Because this&#160;equation&#160;for&#160;propagating&#160;the&#160;<i>ϕ</i>&#160;field&#160;behaves&#160;</p>
+<p style="position:absolute;top:614px;left:480px;white-space:nowrap" class="ft30">differently&#160;in&#160;regions&#160;where the gradient&#160;is&#160;either&#160;continuous&#160;</p>
+<p style="position:absolute;top:630px;left:480px;white-space:nowrap" class="ft30">or&#160;not,&#160;it&#160;is&#160;natural to&#160;decompose our&#160;solution&#160;approach&#160;into&#160;</p>
+<p style="position:absolute;top:646px;left:480px;white-space:nowrap" class="ft30">two&#160;parts.&#160;In&#160;the first&#160;part&#160;of&#160;the&#160;solution,&#160;we&#160;update the&#160;field&#160;</p>
+<p style="position:absolute;top:661px;left:480px;white-space:nowrap" class="ft30">at each&#160;time step&#160;assuming&#160;that&#160;the source term&#160;is&#160;negligible.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:677px;left:480px;white-space:nowrap" class="ft30">For&#160;this&#160;step&#160;we use a&#160;first-order&#160;discretization&#160;of&#160;equation&#160;(7).&#160;</p>
+<p style="position:absolute;top:693px;left:837px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:718px;left:532px;white-space:nowrap" class="ft30">𝜙(𝑡&#160;+&#160;∆𝑡)&#160;=&#160;&#160;&#160;{</p>
+<p style="position:absolute;top:709px;left:619px;white-space:nowrap" class="ft30">𝜙(𝑡)&#160;+&#160;𝐹∆𝑡,&#160;∇𝜙&#160;𝑑𝑒𝑓𝑖𝑛𝑒𝑑</p>
+<p style="position:absolute;top:727px;left:638px;white-space:nowrap" class="ft30">&#160;𝜙(𝑡),</p>
+<p style="position:absolute;top:727px;left:709px;white-space:nowrap" class="ft30">𝑒𝑙𝑠𝑒𝑤ℎ𝑒𝑟𝑒&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(8)&#160;</p>
+<p style="position:absolute;top:742px;left:837px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:758px;left:480px;white-space:nowrap" class="ft30">Assuming&#160;&#160;a&#160;&#160;negligible&#160;&#160;source&#160;&#160;term&#160;&#160;is&#160;&#160;reasonable&#160;&#160;over&#160;&#160;short&#160;</p>
+<p style="position:absolute;top:774px;left:480px;white-space:nowrap" class="ft30">time&#160;&#160;periods;&#160;&#160;however,&#160;&#160;over&#160;&#160;longer&#160;&#160;periods&#160;&#160;neglecting&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:790px;left:480px;white-space:nowrap" class="ft30">source&#160;term&#160;rapidly&#160;degrades&#160;the&#160;assumption&#160;that&#160;the&#160;gradient&#160;</p>
+<p style="position:absolute;top:805px;left:480px;white-space:nowrap" class="ft30">is&#160;unity&#160;magnitude&#160;(where&#160;defined),&#160;since&#160;a&#160;source&#160;should&#160;exist&#160;</p>
+<p style="position:absolute;top:821px;left:480px;white-space:nowrap" class="ft30">at&#160;peaks&#160;and&#160;ridges&#160;(as&#160;in&#160;the&#160;Volcano&#160;example&#160;of&#160;Figure&#160;2).&#160;As&#160;</p>
+<p style="position:absolute;top:837px;left:480px;white-space:nowrap" class="ft30">such,&#160;the source term&#160;must&#160;be taken&#160;into&#160;account&#160;somehow.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:853px;left:495px;white-space:nowrap" class="ft30">To&#160;&#160;account&#160;&#160;for&#160;&#160;the&#160;&#160;source&#160;&#160;term,&#160;&#160;we&#160;&#160;use&#160;&#160;a&#160;&#160;process&#160;&#160;called&#160;</p>
+<p style="position:absolute;top:868px;left:480px;white-space:nowrap" class="ft30">reinitialization&#160;(J.&#160;A.&#160;Sethian&#160;1985;&#160;Osher&#160;and&#160;Sethian&#160;1988;&#160;</p>
+<p style="position:absolute;top:884px;left:480px;white-space:nowrap" class="ft30">Brakke&#160;2015;&#160;Evans&#160;and&#160;Spruck&#160;1991).&#160;Reinitialization&#160;serves&#160;</p>
+<p style="position:absolute;top:900px;left:480px;white-space:nowrap" class="ft30">two&#160;&#160;purposes;&#160;&#160;it&#160;&#160;forces&#160;&#160;the&#160;&#160;non-boundary&#160;&#160;region&#160;&#160;to&#160;&#160;have&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:916px;left:480px;white-space:nowrap" class="ft30">gradient&#160;&#160;of&#160;&#160;one,&#160;&#160;and&#160;&#160;it&#160;&#160;implicitly&#160;&#160;adds&#160;&#160;material&#160;&#160;to&#160;&#160;the&#160;&#160;whole&#160;</p>
+<p style="position:absolute;top:932px;left:480px;white-space:nowrap" class="ft30">field&#160;&#160;to&#160;&#160;maintain&#160;&#160;the&#160;&#160;field’s&#160;&#160;shape.&#160;&#160;In&#160;&#160;particular,&#160;&#160;we&#160;&#160;use&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:947px;left:480px;white-space:nowrap" class="ft30">process&#160;&#160;called&#160;&#160;a&#160;&#160;narrowband&#160;&#160;reinitialization&#160;&#160;(J.&#160;&#160;A.&#160;&#160;Sethian,&#160;</p>
+<p style="position:absolute;top:963px;left:480px;white-space:nowrap" class="ft30">n.d.).&#160;The&#160;narrowband&#160;solution&#160;assumes&#160;that&#160;the&#160;location&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:979px;left:480px;white-space:nowrap" class="ft30">zero-contour&#160;Γ&#160;is&#160;predicted&#160;accurately.&#160;The&#160;solution&#160;domain&#160;is&#160;</p>
+<p style="position:absolute;top:995px;left:480px;white-space:nowrap" class="ft30">then&#160;divided&#160;into&#160;two&#160;regions:&#160;&#160;&#160;&#160;a region&#160;near&#160;the zero-contour&#160;</p>
+<p style="position:absolute;top:1010px;left:480px;white-space:nowrap" class="ft30">(the&#160;&#160;<i>interface</i>&#160;&#160;region)&#160;&#160;and&#160;&#160;the&#160;&#160;region&#160;&#160;farther&#160;&#160;from&#160;&#160;the&#160;&#160;zero-</p>
+<p style="position:absolute;top:1026px;left:480px;white-space:nowrap" class="ft30">contour&#160;(the&#160;<i>far&#160;field</i>).&#160;Values&#160;of&#160;ϕ&#160;in&#160;the&#160;interface&#160;region&#160;are&#160;</p>
+<p style="position:absolute;top:214px;left:494px;white-space:nowrap" class="ft30">Figure&#160;&#160;4:&#160;&#160;Velocity&#160;&#160;normal&#160;&#160;to&#160;&#160;level&#160;&#160;set&#160;&#160;contour.&#160;&#160;All&#160;</p>
+<p style="position:absolute;top:229px;left:494px;white-space:nowrap" class="ft30">movement&#160;is&#160;normal&#160;to&#160;each&#160;point&#160;on&#160;the&#160;contour.&#160;Only&#160;the&#160;</p>
+<p style="position:absolute;top:245px;left:494px;white-space:nowrap" class="ft30">magnitude of&#160;<i>F</i>&#160;determines&#160;contour&#160;movement.&#160;</p>
+<p style="position:absolute;top:261px;left:494px;white-space:nowrap" class="ft30">&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft30">530</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:13px;font-family:Times;color:#000000;}
+	.ft42{font-size:12px;font-family:Times;color:#000000;}
+	.ft43{font-size:12px;font-family:Times;color:#000000;}
+	.ft44{font-size:7px;font-family:Times;color:#000000;}
+	.ft45{font-size:7px;font-family:Times;color:#000000;}
+	.ft46{font-size:14px;font-family:Times;color:#000000;}
+	.ft47{font-size:10px;font-family:Times;color:#000000;}
+	.ft48{font-size:12px;font-family:Symbol;color:#000000;}
+	.ft49{font-size:6px;font-family:Times;color:#000000;}
+	.ft410{font-size:13px;line-height:15px;font-family:Times;color:#000000;}
+	.ft411{font-size:12px;line-height:20px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:79px;left:81px;white-space:nowrap" class="ft40">preserved;&#160;values&#160;in&#160;the&#160;far&#160;field&#160;are&#160;replaced&#160;by&#160;computing&#160;the&#160;</p>
+<p style="position:absolute;top:95px;left:81px;white-space:nowrap" class="ft40">distance&#160;of&#160;each&#160;location&#160;from&#160;the&#160;zero&#160;contour.&#160;&#160;&#160;&#160;Although&#160;this&#160;</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft40">process&#160;does&#160;not&#160;correct&#160;the&#160;gradient&#160;inside&#160;the&#160;interface&#160;region,&#160;</p>
+<p style="position:absolute;top:126px;left:81px;white-space:nowrap" class="ft40">the&#160;far&#160;field&#160;values&#160;effectively&#160;introduce&#160;a&#160;boundary&#160;condition&#160;</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft40">that&#160;&#160;drives&#160;&#160;the&#160;&#160;slope&#160;&#160;in&#160;&#160;the&#160;&#160;interface&#160;&#160;region&#160;&#160;back&#160;&#160;toward&#160;&#160;its&#160;</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft40">correct&#160;&#160;magnitude&#160;&#160;(of&#160;&#160;one).&#160;&#160;This&#160;&#160;narrowband&#160;&#160;approach&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:174px;left:81px;white-space:nowrap" class="ft40">numerically&#160;&#160;robust&#160;&#160;and&#160;&#160;has&#160;&#160;been&#160;&#160;used&#160;&#160;extensively&#160;&#160;in&#160;&#160;other&#160;</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft40">applications&#160;of&#160;the level set method&#160;(J.&#160;A.&#160;Sethian,&#160;n.d.).&#160;&#160;&#160;</p>
+<p style="position:absolute;top:205px;left:96px;white-space:nowrap" class="ft40">A&#160;practical&#160;issue&#160;is&#160;that&#160;the&#160;approximations&#160;introduced&#160;by&#160;</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft40">narrow&#160;banding&#160;can&#160;affect&#160;the&#160;accuracy&#160;of&#160;the&#160;prediction&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:237px;left:81px;white-space:nowrap" class="ft40">zero-contour&#160;&#160;Γ.&#160;&#160;A&#160;&#160;balance&#160;&#160;must&#160;&#160;be&#160;&#160;struck&#160;&#160;however&#160;&#160;between&#160;</p>
+<p style="position:absolute;top:252px;left:81px;white-space:nowrap" class="ft40">giving&#160;the&#160;zero-contour&#160;freedom&#160;of&#160;movement&#160;and&#160;constraining&#160;</p>
+<p style="position:absolute;top:268px;left:81px;white-space:nowrap" class="ft40">the field&#160;to&#160;a gradient&#160;of&#160;one.&#160;For&#160;this&#160;reason,&#160;reinitialization&#160;is&#160;</p>
+<p style="position:absolute;top:284px;left:81px;white-space:nowrap" class="ft40">not&#160;necessarily&#160;performed&#160;at&#160;every&#160;time&#160;update.&#160;In&#160;our&#160;method,&#160;</p>
+<p style="position:absolute;top:300px;left:81px;white-space:nowrap" class="ft40">we&#160;used&#160;a&#160;boundary&#160;width&#160;of&#160;2&#160;pixels&#160;on&#160;either&#160;side&#160;of&#160;the&#160;Γ&#160;</p>
+<p style="position:absolute;top:316px;left:81px;white-space:nowrap" class="ft40">contour&#160;and&#160;performed&#160;reinitialization&#160;at&#160;a&#160;rate&#160;of&#160;once&#160;per&#160;20&#160;</p>
+<p style="position:absolute;top:331px;left:81px;white-space:nowrap" class="ft40">time steps.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:347px;left:96px;white-space:nowrap" class="ft40">In&#160;&#160;summary,&#160;&#160;the&#160;&#160;key&#160;&#160;idea&#160;&#160;of&#160;&#160;the&#160;&#160;growth&#160;&#160;model&#160;&#160;is&#160;&#160;that&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:363px;left:81px;white-space:nowrap" class="ft40">velocity&#160;field&#160;can&#160;be&#160;assigned&#160;to&#160;every&#160;point&#160;in&#160;space,&#160;allowing&#160;</p>
+<p style="position:absolute;top:379px;left:81px;white-space:nowrap" class="ft40">the&#160;&#160;organism&#160;&#160;surface&#160;&#160;Γ&#160;&#160;to&#160;&#160;be&#160;&#160;grown&#160;&#160;without&#160;&#160;knowing&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:394px;left:81px;white-space:nowrap" class="ft40">precise&#160;location&#160;of&#160;that&#160;surface.&#160;This&#160;property&#160;is&#160;in&#160;turn&#160;useful&#160;</p>
+<p style="position:absolute;top:410px;left:81px;white-space:nowrap" class="ft40">because&#160;&#160;it&#160;&#160;permits&#160;&#160;the&#160;&#160;simulation&#160;&#160;of&#160;&#160;a&#160;&#160;smooth,&#160;&#160;continuous&#160;</p>
+<p style="position:absolute;top:426px;left:81px;white-space:nowrap" class="ft40">boundary&#160;using&#160;a relatively&#160;coarse grid.&#160;&#160;&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:455px;left:81px;white-space:nowrap" class="ft410"><b>Control&#160;Scheme&#160;<br/></b>In&#160;this&#160;section&#160;we&#160;describe&#160;a&#160;control&#160;law&#160;that&#160;can&#160;be&#160;used&#160;to&#160;in&#160;</p>
+<p style="position:absolute;top:487px;left:81px;white-space:nowrap" class="ft40">conjunction&#160;with&#160;the level set methodology&#160;to&#160;define organism&#160;</p>
+<p style="position:absolute;top:502px;left:81px;white-space:nowrap" class="ft40">shape&#160;during&#160;regeneration.&#160;The&#160;control&#160;law&#160;defines&#160;a&#160;velocity&#160;</p>
+<p style="position:absolute;top:518px;left:81px;white-space:nowrap" class="ft40">field&#160;at&#160;every&#160;point&#160;in&#160;the&#160;simulation&#160;domain.&#160;As&#160;described&#160;by&#160;</p>
+<p style="position:absolute;top:534px;left:81px;white-space:nowrap" class="ft40">equation&#160;&#160;(4),&#160;&#160;the&#160;&#160;velocity&#160;&#160;is&#160;&#160;locally&#160;&#160;normal&#160;&#160;to&#160;&#160;contours&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:550px;left:81px;white-space:nowrap" class="ft40">constant&#160;&#160;ϕ.&#160;&#160;The&#160;&#160;velocity&#160;&#160;magnitude&#160;&#160;<i>F</i>&#160;&#160;is&#160;&#160;set&#160;&#160;by&#160;&#160;the&#160;&#160;control&#160;</p>
+<p style="position:absolute;top:565px;left:81px;white-space:nowrap" class="ft40">described&#160;in&#160;this&#160;section.&#160;Specifically,&#160;<i>F</i>&#160;is&#160;a&#160;summation&#160;of&#160;three&#160;</p>
+<p style="position:absolute;top:581px;left:81px;white-space:nowrap" class="ft40">terms,&#160;&#160;which&#160;&#160;are&#160;&#160;assumed&#160;&#160;to&#160;&#160;act&#160;&#160;independent&#160;&#160;of&#160;&#160;each&#160;&#160;other.&#160;</p>
+<p style="position:absolute;top:597px;left:81px;white-space:nowrap" class="ft40">These&#160;terms&#160;include&#160;patterning&#160;control&#160;<i>P</i>,&#160;isometric&#160;control&#160;<i>I</i>,&#160;</p>
+<p style="position:absolute;top:613px;left:81px;white-space:nowrap" class="ft40">and&#160;smoothing&#160;control&#160;<i>K</i>.&#160;Each&#160;term&#160;models&#160;a&#160;distinct&#160;aspect&#160;of&#160;</p>
+<p style="position:absolute;top:628px;left:81px;white-space:nowrap" class="ft40">biological&#160;&#160;growth.&#160;&#160;It&#160;&#160;is&#160;&#160;important&#160;&#160;to&#160;&#160;note,&#160;&#160;however,&#160;&#160;that&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:644px;left:81px;white-space:nowrap" class="ft40">models&#160;&#160;are&#160;&#160;phenomenological&#160;&#160;in&#160;&#160;nature&#160;&#160;and&#160;&#160;are&#160;&#160;not&#160;&#160;derived&#160;</p>
+<p style="position:absolute;top:660px;left:81px;white-space:nowrap" class="ft40">directly&#160;from&#160;detailed&#160;data&#160;sets.&#160;Taken&#160;together,&#160;the&#160;three&#160;terms&#160;</p>
+<p style="position:absolute;top:676px;left:81px;white-space:nowrap" class="ft40">sum&#160;to&#160;give&#160;<i>F</i>.&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:701px;left:212px;white-space:nowrap" class="ft40">𝐹&#160;=&#160;𝑃&#160;+&#160;𝐼&#160;+&#160;&#160;Κ</p>
+<p style="position:absolute;top:700px;left:301px;white-space:nowrap" class="ft40">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(9)&#160;</p>
+<p style="position:absolute;top:725px;left:81px;white-space:nowrap" class="ft40">All&#160;terms&#160;in&#160;this&#160;equation&#160;are&#160;functions&#160;of&#160;2D&#160;space and&#160;time.&#160;</p>
+<p style="position:absolute;top:741px;left:81px;white-space:nowrap" class="ft411"><i>&#160;<br/></i><b>Patterning&#160;Control:</b></p>
+<p style="position:absolute;top:757px;left:202px;white-space:nowrap" class="ft40">&#160;Patterning&#160;control,&#160;<i>P</i>,&#160;is&#160;the&#160;key&#160;term&#160;for&#160;</p>
+<p style="position:absolute;top:772px;left:81px;white-space:nowrap" class="ft40">this&#160;paper&#160;as&#160;it&#160;shapes&#160;morphology&#160;by&#160;enabling&#160;local&#160;growth.&#160;</p>
+<p style="position:absolute;top:788px;left:81px;white-space:nowrap" class="ft40">The&#160;&#160;idea&#160;&#160;is&#160;&#160;that&#160;&#160;local&#160;&#160;cell-level&#160;&#160;actions&#160;&#160;may&#160;&#160;trigger&#160;&#160;tissue&#160;</p>
+<p style="position:absolute;top:804px;left:81px;white-space:nowrap" class="ft40">deterioration&#160;or&#160;growth&#160;in&#160;a&#160;small&#160;region&#160;(as&#160;at&#160;the&#160;regeneration&#160;</p>
+<p style="position:absolute;top:820px;left:81px;white-space:nowrap" class="ft40">site&#160;&#160;or&#160;&#160;<i>blastema</i>&#160;&#160;in&#160;&#160;an&#160;&#160;amputated&#160;&#160;<i>Xenopus</i>&#160;&#160;tail&#160;&#160;(King&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:835px;left:81px;white-space:nowrap" class="ft40">Newmark&#160;&#160;2012)).&#160;&#160;These&#160;&#160;local&#160;&#160;actions&#160;&#160;are&#160;&#160;responsible&#160;&#160;for&#160;</p>
+<p style="position:absolute;top:851px;left:81px;white-space:nowrap" class="ft40">regeneration&#160;&#160;and&#160;&#160;also&#160;&#160;for&#160;&#160;shape&#160;&#160;changes&#160;&#160;that&#160;&#160;occur&#160;&#160;during&#160;</p>
+<p style="position:absolute;top:867px;left:81px;white-space:nowrap" class="ft40">normal&#160;&#160;growth.&#160;&#160;Furthermore,&#160;&#160;this&#160;&#160;local&#160;&#160;activity&#160;&#160;counteracts&#160;</p>
+<p style="position:absolute;top:883px;left:81px;white-space:nowrap" class="ft40">disturbances,&#160;constantly&#160;adding&#160;or&#160;removing&#160;tissue to&#160;maintain&#160;</p>
+<p style="position:absolute;top:899px;left:81px;white-space:nowrap" class="ft40">an&#160;&#160;appropriate&#160;&#160;organism&#160;&#160;shape&#160;&#160;under&#160;&#160;varying&#160;&#160;environmental&#160;</p>
+<p style="position:absolute;top:914px;left:81px;white-space:nowrap" class="ft40">conditions.&#160;&#160;In&#160;&#160;principle,&#160;&#160;a&#160;&#160;failure&#160;&#160;of&#160;&#160;local&#160;&#160;patterning&#160;&#160;might&#160;</p>
+<p style="position:absolute;top:930px;left:81px;white-space:nowrap" class="ft40">result&#160;in&#160;uncontrolled&#160;growth&#160;(i.e.&#160;cancer).&#160;</p>
+<p style="position:absolute;top:946px;left:96px;white-space:nowrap" class="ft40">In&#160;our&#160;simulation,&#160;we&#160;assume&#160;that&#160;patterning&#160;growth&#160;is&#160;active&#160;</p>
+<p style="position:absolute;top:962px;left:81px;white-space:nowrap" class="ft40">for&#160;cells&#160;that are&#160;near&#160;the organism&#160;surface Γ&#160;but&#160;that are&#160;not&#160;at&#160;</p>
+<p style="position:absolute;top:977px;left:81px;white-space:nowrap" class="ft40">a&#160;&#160;desired&#160;&#160;location.&#160;&#160;For&#160;&#160;simplicity,&#160;&#160;we&#160;&#160;use&#160;&#160;a&#160;&#160;global&#160;&#160;reference&#160;</p>
+<p style="position:absolute;top:993px;left:81px;white-space:nowrap" class="ft40">map&#160;ϕref,&#160;which&#160;is&#160;scaled&#160;to&#160;the&#160;current&#160;width&#160;of&#160;the&#160;simulated&#160;</p>
+<p style="position:absolute;top:1009px;left:81px;white-space:nowrap" class="ft40">tail.&#160;From&#160;this&#160;map,&#160;we&#160;derive&#160;an&#160;error&#160;<i>e</i>&#160;at&#160;each&#160;point&#160;in&#160;the&#160;</p>
+<p style="position:absolute;top:1025px;left:81px;white-space:nowrap" class="ft40">simulation&#160;domain.&#160;</p>
+<p style="position:absolute;top:80px;left:543px;white-space:nowrap" class="ft40">𝑒(𝑥,&#160;𝑦,&#160;𝑡)&#160;=&#160;𝜙𝑟𝑒𝑓(𝑥,&#160;𝑦,&#160;𝑡)&#160;−&#160;𝜙(𝑥,&#160;𝑦,&#160;𝑡)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(10)&#160;</p>
+<p style="position:absolute;top:104px;left:480px;white-space:nowrap" class="ft40">The&#160;error&#160;for&#160;a&#160;given&#160;element&#160;of&#160;tissue&#160;represents&#160;the&#160;difference&#160;</p>
+<p style="position:absolute;top:120px;left:480px;white-space:nowrap" class="ft40">between&#160;&#160;its&#160;&#160;desired&#160;&#160;and&#160;&#160;actual&#160;&#160;distance&#160;&#160;from&#160;&#160;the&#160;&#160;organism&#160;</p>
+<p style="position:absolute;top:135px;left:480px;white-space:nowrap" class="ft40">surface.&#160;The&#160;error&#160;term&#160;is&#160;limited&#160;to&#160;a&#160;maximum&#160;value,&#160;<i>emax</i>,&#160;to&#160;</p>
+<p style="position:absolute;top:151px;left:480px;white-space:nowrap" class="ft40">reflect&#160;a&#160;threshold&#160;where&#160;the&#160;cells&#160;are&#160;so&#160;far&#160;from&#160;their&#160;target&#160;</p>
+<p style="position:absolute;top:167px;left:480px;white-space:nowrap" class="ft40">that&#160;&#160;they&#160;&#160;grow&#160;&#160;at&#160;&#160;a&#160;&#160;maximum&#160;&#160;rate.&#160;&#160;In&#160;&#160;the&#160;&#160;region&#160;&#160;near&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:183px;left:480px;white-space:nowrap" class="ft40">organism&#160;surface,&#160;the&#160;patterning&#160;speed&#160;is&#160;set&#160;to&#160;be proportional&#160;</p>
+<p style="position:absolute;top:198px;left:480px;white-space:nowrap" class="ft40">to&#160;the&#160;error,&#160;modulated&#160;by&#160;a&#160;patterning&#160;control&#160;gain&#160;labeled&#160;&#160;𝐶𝑃.&#160;</p>
+<p style="position:absolute;top:214px;left:495px;white-space:nowrap" class="ft40">This&#160;&#160;proportionality&#160;&#160;is&#160;&#160;capped,&#160;&#160;however,&#160;&#160;to&#160;&#160;reflect&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:230px;left:480px;white-space:nowrap" class="ft40">maximum&#160;&#160;cellular&#160;&#160;growth&#160;&#160;rate,&#160;&#160;which&#160;&#160;is&#160;&#160;slightly&#160;&#160;faster&#160;&#160;than&#160;</p>
+<p style="position:absolute;top:246px;left:480px;white-space:nowrap" class="ft40">nominal,&#160;isometric&#160;growth.&#160;The&#160;maximum&#160;speed&#160;<i>Fmax</i>&#160;is&#160;related&#160;</p>
+<p style="position:absolute;top:261px;left:480px;white-space:nowrap" class="ft40">to&#160;the maximum&#160;cellular&#160;growth&#160;rate&#160;<i>CGC,max</i>.&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:286px;left:562px;white-space:nowrap" class="ft40">&#160;&#160;&#160;&#160;𝐹𝑚𝑎𝑥&#160;=</p>
+<p style="position:absolute;top:278px;left:640px;white-space:nowrap" class="ft47">𝑉𝑝𝑎𝑡</p>
+<p style="position:absolute;top:297px;left:645px;white-space:nowrap" class="ft47">𝑆𝐴</p>
+<p style="position:absolute;top:285px;left:667px;white-space:nowrap" class="ft46">𝐶𝐺𝐶,𝑚𝑎𝑥&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(11)&#160;</p>
+<p style="position:absolute;top:311px;left:495px;white-space:nowrap" class="ft40">Here the variable&#160;<i>SA&#160;</i>represents&#160;the surface area (which&#160;in&#160;</p>
+<p style="position:absolute;top:327px;left:480px;white-space:nowrap" class="ft40">2D is&#160;the length&#160;of&#160;the contour&#160;where&#160;&#160;=&#160;0).&#160;The variable&#160;<i>Vpat</i>&#160;</p>
+<p style="position:absolute;top:343px;left:480px;white-space:nowrap" class="ft40">represents&#160;the volume&#160;of&#160;tissue that is&#160;active in&#160;patterning&#160;and&#160;</p>
+<p style="position:absolute;top:358px;left:480px;white-space:nowrap" class="ft40">is&#160;proportional to&#160;<i>Vtot</i>.&#160;The result&#160;is&#160;that&#160;patterning&#160;growth&#160;is&#160;</p>
+<p style="position:absolute;top:374px;left:480px;white-space:nowrap" class="ft40">nonzero&#160;only&#160;in&#160;the active region;&#160;in&#160;this&#160;region&#160;patterning&#160;</p>
+<p style="position:absolute;top:390px;left:480px;white-space:nowrap" class="ft40">growth&#160;is&#160;nominally&#160;proportional to&#160;error,&#160;subject to&#160;saturation&#160;</p>
+<p style="position:absolute;top:406px;left:480px;white-space:nowrap" class="ft40">if&#160;the growth&#160;rate becomes&#160;too&#160;large or&#160;too&#160;small.&#160;</p>
+<p style="position:absolute;top:421px;left:495px;white-space:nowrap" class="ft40">&#160;</p>
+<p style="position:absolute;top:463px;left:513px;white-space:nowrap" class="ft40">𝑃&#160;=&#160;{</p>
+<p style="position:absolute;top:444px;left:558px;white-space:nowrap" class="ft40">𝐹𝑚𝑎𝑥</p>
+<p style="position:absolute;top:440px;left:598px;white-space:nowrap" class="ft44">𝑒</p>
+<p style="position:absolute;top:456px;left:588px;white-space:nowrap" class="ft44">𝑒𝑚𝑎𝑥</p>
+<p style="position:absolute;top:443px;left:636px;white-space:nowrap" class="ft40">|𝑒|&#160;&lt;&#160;𝑒𝑚𝑎𝑥&#160;and&#160;0&#160;&lt;&#160;𝜙&#160;≤&#160;𝑑</p>
+<p style="position:absolute;top:468px;left:549px;white-space:nowrap" class="ft40">𝐹𝑚𝑎𝑥sign(𝑒)&#160;|𝑒|&#160;≥&#160;𝑒𝑚𝑎𝑥&#160;and&#160;0&#160;&lt;&#160;𝜙&#160;≤&#160;𝑑</p>
+<p style="position:absolute;top:486px;left:581px;white-space:nowrap" class="ft40">0</p>
+<p style="position:absolute;top:486px;left:682px;white-space:nowrap" class="ft40">𝑜𝑡ℎ𝑒𝑟𝑤𝑖𝑠𝑒</p>
+<p style="position:absolute;top:462px;left:792px;white-space:nowrap" class="ft40">&#160;&#160;&#160;&#160;&#160;&#160;(12)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:501px;left:480px;white-space:nowrap" class="ft411"><i>&#160;<br/></i><b>Isometric&#160;Control:</b></p>
+<p style="position:absolute;top:517px;left:594px;white-space:nowrap" class="ft40">&#160;Our&#160;simulation&#160;uses&#160;an&#160;isometric&#160;control&#160;</p>
+<p style="position:absolute;top:533px;left:480px;white-space:nowrap" class="ft40">term&#160;<i>I</i>&#160;to&#160;allow&#160;for&#160;growth&#160;that&#160;is&#160;organism&#160;wide&#160;(as&#160;compared&#160;</p>
+<p style="position:absolute;top:549px;left:480px;white-space:nowrap" class="ft40">to&#160;&#160;patterning&#160;&#160;growth&#160;&#160;which&#160;&#160;is&#160;&#160;local).&#160;&#160;We&#160;&#160;assume&#160;&#160;that&#160;&#160;this&#160;</p>
+<p style="position:absolute;top:565px;left:480px;white-space:nowrap" class="ft40">growth&#160;occurs&#160;at the same rate throughout&#160;the entire&#160;organism,&#160;</p>
+<p style="position:absolute;top:580px;left:480px;white-space:nowrap" class="ft40">such&#160;that&#160;the&#160;organism&#160;maintains&#160;its&#160;shape&#160;when&#160;only&#160;<i>I</i>&#160;is&#160;active.&#160;</p>
+<p style="position:absolute;top:596px;left:480px;white-space:nowrap" class="ft40">Isometric&#160;&#160;growth&#160;&#160;is,&#160;&#160;in&#160;&#160;fact,&#160;&#160;a&#160;&#160;nominal&#160;&#160;behavior&#160;&#160;for&#160;&#160;some&#160;</p>
+<p style="position:absolute;top:612px;left:480px;white-space:nowrap" class="ft40">organisms&#160;&#160;such&#160;&#160;as&#160;&#160;the&#160;&#160;flatworm.&#160;&#160;When&#160;&#160;food&#160;&#160;resources&#160;&#160;are&#160;</p>
+<p style="position:absolute;top:628px;left:480px;white-space:nowrap" class="ft40">plentiful,&#160;the&#160;flatworm&#160;grows&#160;uniformly&#160;in&#160;all&#160;directions;&#160;when&#160;</p>
+<p style="position:absolute;top:643px;left:480px;white-space:nowrap" class="ft40">the&#160;&#160;flatworm&#160;&#160;is&#160;starved&#160;&#160;it&#160;&#160;shrinks&#160;&#160;uniformly&#160;&#160;in&#160;&#160;all&#160;&#160;directions&#160;</p>
+<p style="position:absolute;top:659px;left:480px;white-space:nowrap" class="ft40">(Lobo,&#160;&#160;Beane,&#160;&#160;and&#160;&#160;Levin&#160;&#160;2012).&#160;&#160;In&#160;&#160;<i>Xenopus&#160;&#160;</i>tadpoles,&#160;&#160;by&#160;</p>
+<p style="position:absolute;top:675px;left:480px;white-space:nowrap" class="ft40">contrast,&#160;some&#160;changes&#160;in&#160;shape&#160;occur&#160;as&#160;the&#160;organism&#160;grows&#160;</p>
+<p style="position:absolute;top:691px;left:480px;white-space:nowrap" class="ft40">(Love&#160;et&#160;al.&#160;2013;&#160;Suzuki&#160;et&#160;al.&#160;2006;&#160;Chernet,&#160;Fields,&#160;and&#160;Levin&#160;</p>
+<p style="position:absolute;top:706px;left:480px;white-space:nowrap" class="ft40">2015),&#160;&#160;and&#160;&#160;so&#160;&#160;nominal&#160;&#160;growth&#160;&#160;combines&#160;&#160;some&#160;&#160;aspects&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:722px;left:480px;white-space:nowrap" class="ft40">isometric control&#160;<i>I</i>&#160;with&#160;patterning&#160;control&#160;<i>P</i>.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:738px;left:495px;white-space:nowrap" class="ft40">The&#160;&#160;isometric&#160;&#160;control&#160;&#160;term&#160;&#160;has&#160;&#160;a&#160;&#160;uniform&#160;&#160;value&#160;&#160;of&#160;&#160;𝐶𝑉&#160;</p>
+<p style="position:absolute;top:754px;left:480px;white-space:nowrap" class="ft40">everywhere in&#160;the simulation&#160;domain&#160;when&#160;the term&#160;is&#160;active.&#160;</p>
+<p style="position:absolute;top:777px;left:640px;white-space:nowrap" class="ft46">𝐼&#160;=&#160;𝐹𝑉&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(13)&#160;</p>
+<p style="position:absolute;top:803px;left:495px;white-space:nowrap" class="ft40">The&#160;&#160;isometric&#160;&#160;model&#160;&#160;represents&#160;&#160;constant&#160;&#160;cellular&#160;&#160;growth&#160;</p>
+<p style="position:absolute;top:819px;left:480px;white-space:nowrap" class="ft40">with&#160;time,&#160;meaning&#160;the&#160;boundary&#160;velocity&#160;must&#160;increase&#160;in&#160;time&#160;</p>
+<p style="position:absolute;top:835px;left:480px;white-space:nowrap" class="ft40">(as&#160;the&#160;volume&#160;to&#160;surface&#160;area&#160;ratio&#160;increases).&#160;To&#160;account&#160;for&#160;</p>
+<p style="position:absolute;top:850px;left:480px;white-space:nowrap" class="ft40">this,&#160;the&#160;growth&#160;speed&#160;<i>Fv</i>&#160;is&#160;computed&#160;as&#160;&#160;&#160;</p>
+<p style="position:absolute;top:875px;left:605px;white-space:nowrap" class="ft40">&#160;&#160;𝐹𝑉&#160;=</p>
+<p style="position:absolute;top:872px;left:653px;white-space:nowrap" class="ft44">𝑉𝑡𝑜𝑡</p>
+<p style="position:absolute;top:888px;left:658px;white-space:nowrap" class="ft44">𝑆𝐴</p>
+<p style="position:absolute;top:876px;left:676px;white-space:nowrap" class="ft40">𝐶𝐺𝐶,𝑛𝑜𝑚&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(14)&#160;</p>
+<p style="position:absolute;top:900px;left:480px;white-space:nowrap" class="ft40">Here&#160;<i>Vtot</i>&#160;represents&#160;the&#160;total&#160;volume&#160;of&#160;the&#160;organism&#160;(or&#160;in&#160;this&#160;</p>
+<p style="position:absolute;top:916px;left:480px;white-space:nowrap" class="ft40">2D&#160;simulation,&#160;the&#160;area&#160;of&#160;the&#160;tail).&#160;The&#160;rate&#160;CGC,nom&#160;represents&#160;</p>
+<p style="position:absolute;top:932px;left:480px;white-space:nowrap" class="ft40">the&#160;rate&#160;of&#160;cellular&#160;growth&#160;(mitosis),&#160;which&#160;is&#160;modeled&#160;to&#160;be&#160;</p>
+<p style="position:absolute;top:947px;left:480px;white-space:nowrap" class="ft40">uniform&#160;in&#160;space&#160;.&#160;For&#160;our&#160;simulations&#160;we&#160;assume&#160;that&#160;sufficient&#160;</p>
+<p style="position:absolute;top:963px;left:480px;white-space:nowrap" class="ft40">resources&#160;are&#160;available&#160;to&#160;the&#160;organism&#160;to&#160;maintain&#160;a&#160;nominal&#160;</p>
+<p style="position:absolute;top:979px;left:480px;white-space:nowrap" class="ft40">growth&#160;rate&#160;CGC,nom&#160;that is&#160;constant&#160;in&#160;time.&#160;</p>
+<p style="position:absolute;top:1008px;left:480px;white-space:nowrap" class="ft43"><b>Smoothing&#160;Control:</b></p>
+<p style="position:absolute;top:1004px;left:602px;white-space:nowrap" class="ft40">&#160;The&#160;final&#160;term&#160;of&#160;the&#160;speed&#160;function&#160;is&#160;a&#160;</p>
+<p style="position:absolute;top:1019px;left:480px;white-space:nowrap" class="ft40">smoothing&#160;control&#160;term&#160;K&#160;designed&#160;to&#160;eliminate&#160;sharp&#160;features&#160;</p>
+<p style="position:absolute;top:1035px;left:480px;white-space:nowrap" class="ft40">(e.g.,&#160;&#160;corners&#160;&#160;created&#160;&#160;by&#160;&#160;amputation)&#160;&#160;or&#160;&#160;to&#160;&#160;eliminate&#160;&#160;tissue&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft40">531</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:7px;font-family:Times;color:#000000;}
+	.ft52{font-size:12px;font-family:Times;color:#000000;}
+	.ft53{font-size:13px;font-family:Times;color:#000000;}
+	.ft54{font-size:12px;font-family:Times;color:#000000;}
+	.ft55{font-size:14px;font-family:Times;color:#000000;}
+	.ft56{font-size:16px;font-family:Times;color:#000000;}
+	.ft57{font-size:7px;font-family:Times;color:#000000;}
+	.ft58{font-size:13px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:79px;left:81px;white-space:nowrap" class="ft50">filaments&#160;that&#160;might&#160;(by&#160;random&#160;chance)&#160;begin&#160;to&#160;develop&#160;as&#160;</p>
+<p style="position:absolute;top:95px;left:81px;white-space:nowrap" class="ft50">extensions&#160;&#160;of&#160;&#160;the&#160;&#160;organism&#160;&#160;surface.&#160;&#160;This&#160;&#160;term&#160;&#160;essentially&#160;</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft50">regularizes&#160;the&#160;organism&#160;surface&#160;to&#160;maintain&#160;smoothness.&#160;The&#160;</p>
+<p style="position:absolute;top:126px;left:81px;white-space:nowrap" class="ft50">specific&#160;mechanism&#160;for&#160;performing&#160;smoothing&#160;is&#160;to&#160;introduce&#160;a&#160;</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft50">perturbation&#160;to&#160;the&#160;growth&#160;rate&#160;that&#160;is&#160;proportional&#160;to&#160;the&#160;local&#160;</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft50">curvature&#160;&#160;𝜅&#160;&#160;of&#160;the&#160;ϕ&#160;contours.&#160;The constant&#160;of&#160;proportionality&#160;</p>
+<p style="position:absolute;top:174px;left:81px;white-space:nowrap" class="ft50">is&#160;&#160;𝐶𝜅.&#160;</p>
+<p style="position:absolute;top:199px;left:185px;white-space:nowrap" class="ft50">𝛫(𝑥,&#160;𝑦,&#160;𝑡)&#160;=&#160;&#160;&#160;𝐶𝜅𝜅(𝑥,&#160;𝑦,&#160;𝑡)<b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</b>(15)&#160;</p>
+<p style="position:absolute;top:223px;left:81px;white-space:nowrap" class="ft50">This&#160;&#160;concept&#160;&#160;for&#160;&#160;smoothing&#160;&#160;has&#160;&#160;been&#160;&#160;employed&#160;&#160;in&#160;&#160;other&#160;</p>
+<p style="position:absolute;top:239px;left:81px;white-space:nowrap" class="ft50">applications&#160;&#160;of&#160;&#160;level&#160;&#160;set&#160;&#160;methods,&#160;&#160;as&#160;&#160;described&#160;&#160;by&#160;&#160;(J.&#160;&#160;A.&#160;</p>
+<p style="position:absolute;top:255px;left:81px;white-space:nowrap" class="ft50">Sethian,&#160;n.d.;&#160;Brakke&#160;2015;&#160;Evans&#160;and&#160;Spruck&#160;1991;&#160;Osher&#160;and&#160;</p>
+<p style="position:absolute;top:270px;left:81px;white-space:nowrap" class="ft50">Sethian&#160;1988).&#160;In&#160;our&#160;biological&#160;application,&#160;the&#160;curvature&#160;term&#160;</p>
+<p style="position:absolute;top:286px;left:81px;white-space:nowrap" class="ft50">not&#160;only&#160;eliminates&#160;spurious&#160;features;&#160;it&#160;is&#160;meant&#160;to&#160;prevent&#160;the&#160;</p>
+<p style="position:absolute;top:302px;left:81px;white-space:nowrap" class="ft50">formation&#160;of&#160;holes&#160;and&#160;discontinuities&#160;that&#160;are&#160;not&#160;represented&#160;</p>
+<p style="position:absolute;top:318px;left:81px;white-space:nowrap" class="ft50">in&#160;the reference map.&#160;&#160;&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:334px;left:96px;white-space:nowrap" class="ft50">By&#160;definition,&#160;curvature in&#160;a level set is&#160;the spatial&#160;</p>
+<p style="position:absolute;top:349px;left:81px;white-space:nowrap" class="ft50">derivative of&#160;normal vectors&#160;along&#160;a contour.&#160;The more&#160;</p>
+<p style="position:absolute;top:365px;left:81px;white-space:nowrap" class="ft50">rapidly&#160;the contour&#160;changes&#160;direction,&#160;the higher&#160;will&#160;be its&#160;</p>
+<p style="position:absolute;top:381px;left:81px;white-space:nowrap" class="ft50">curvature.&#160;Mathematically,&#160;curvature can&#160;be written&#160;&#160;&#160;</p>
+<p style="position:absolute;top:406px;left:225px;white-space:nowrap" class="ft50">𝜅&#160;=&#160;∇&#160;∙&#160;𝐧<b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</b></p>
+<p style="position:absolute;top:406px;left:415px;white-space:nowrap" class="ft50">(16)&#160;</p>
+<p style="position:absolute;top:430px;left:81px;white-space:nowrap" class="ft50">where the normal vector&#160;<b>n&#160;</b>is&#160;defined&#160;by&#160;equation&#160;(3)&#160;above.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:446px;left:96px;white-space:nowrap" class="ft50">Each&#160;control&#160;regimes&#160;can&#160;be&#160;linked&#160;directly&#160;to&#160;micro&#160;scale&#160;</p>
+<p style="position:absolute;top:462px;left:81px;white-space:nowrap" class="ft50">cell behavior&#160;that impacts&#160;macro&#160;scale morphology.&#160;Patterning&#160;</p>
+<p style="position:absolute;top:478px;left:81px;white-space:nowrap" class="ft50">control&#160;&#160;begins&#160;&#160;by&#160;&#160;considering&#160;&#160;a&#160;&#160;maximum&#160;&#160;growth&#160;&#160;rate&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:493px;left:81px;white-space:nowrap" class="ft50">individual&#160;regeneration,&#160;multiplies&#160;that&#160;growth&#160;by&#160;the&#160;number&#160;</p>
+<p style="position:absolute;top:509px;left:81px;white-space:nowrap" class="ft50">of&#160;patterning&#160;cells,&#160;and&#160;then&#160;distributes&#160;that&#160;growth&#160;along&#160;the&#160;</p>
+<p style="position:absolute;top:525px;left:81px;white-space:nowrap" class="ft50">growing&#160;&#160;boundary.&#160;&#160;Similarly,&#160;&#160;isometric&#160;&#160;control&#160;&#160;begins&#160;&#160;by&#160;</p>
+<p style="position:absolute;top:541px;left:81px;white-space:nowrap" class="ft50">considering&#160;the&#160;natural&#160;growth&#160;rate&#160;of&#160;cell&#160;division,&#160;multiples&#160;</p>
+<p style="position:absolute;top:556px;left:81px;white-space:nowrap" class="ft50">that&#160;growth&#160;by&#160;the&#160;cells&#160;in&#160;the&#160;tail,&#160;and&#160;distributes&#160;this&#160;growth&#160;</p>
+<p style="position:absolute;top:572px;left:81px;white-space:nowrap" class="ft50">over&#160;the&#160;body&#160;boundary&#160;by&#160;dividing&#160;by&#160;the&#160;surface&#160;area&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:588px;left:81px;white-space:nowrap" class="ft50">tail.&#160;Smoothing&#160;control&#160;is&#160;not&#160;as&#160;simply&#160;related&#160;to&#160;cell&#160;growth,&#160;</p>
+<p style="position:absolute;top:604px;left:81px;white-space:nowrap" class="ft50">but&#160;&#160;instead&#160;&#160;represents&#160;&#160;cohesiveness&#160;&#160;in&#160;&#160;the&#160;&#160;cellular&#160;&#160;matrix&#160;&#160;by&#160;</p>
+<p style="position:absolute;top:619px;left:81px;white-space:nowrap" class="ft50">minimizing&#160;areas&#160;of&#160;high&#160;curvature or&#160;irregularity.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:649px;left:81px;white-space:nowrap" class="ft58"><b>Implementation&#160;<br/></b>Each&#160;time&#160;step&#160;is&#160;represented&#160;by&#160;a&#160;single&#160;iteration&#160;of&#160;the&#160;main&#160;</p>
+<p style="position:absolute;top:680px;left:81px;white-space:nowrap" class="ft50">loop&#160;shown&#160;in&#160;Figure&#160;5.&#160;In&#160;general,&#160;the&#160;simulation&#160;is&#160;allowed&#160;to&#160;</p>
+<p style="position:absolute;top:696px;left:81px;white-space:nowrap" class="ft50">run&#160;for&#160;15,000&#160;time&#160;steps,&#160;but&#160;this&#160;number&#160;must&#160;be&#160;adapted&#160;to&#160;</p>
+<p style="position:absolute;top:712px;left:81px;white-space:nowrap" class="ft50">grid&#160;resolution&#160;and&#160;control&#160;coefficients.&#160;</p>
+<p style="position:absolute;top:727px;left:96px;white-space:nowrap" class="ft50">The&#160;&#160;level&#160;&#160;set&#160;&#160;ϕ<i>&#160;&#160;</i>is&#160;&#160;stored&#160;&#160;as&#160;&#160;a&#160;&#160;two-dimensional&#160;&#160;array&#160;&#160;on&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:743px;left:81px;white-space:nowrap" class="ft50">Cartesian&#160;x-y&#160;grid.&#160;In&#160;this&#160;simulation&#160;the&#160;size&#160;of&#160;the&#160;grid&#160;was&#160;</p>
+<p style="position:absolute;top:759px;left:81px;white-space:nowrap" class="ft50">301&#160;pixels&#160;(anterior-posterior)&#160;and&#160;135&#160;pixels&#160;(dorsal-ventral).&#160;</p>
+<p style="position:absolute;top:775px;left:81px;white-space:nowrap" class="ft50">Two&#160;extra cells&#160;pad&#160;the field&#160;on&#160;each&#160;edge&#160;to&#160;simplify&#160;gradient&#160;</p>
+<p style="position:absolute;top:790px;left:81px;white-space:nowrap" class="ft50">and&#160;curvature calculations.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:79px;left:495px;white-space:nowrap" class="ft50">Computing</p>
+<p style="position:absolute;top:77px;left:559px;white-space:nowrap" class="ft55">&#160;&#160;‖∇𝜙‖&#160;&#160;(labeled&#160;Magnitude&#160;of&#160;Gradient&#160;of&#160;Phi&#160;</p>
+<p style="position:absolute;top:95px;left:480px;white-space:nowrap" class="ft50">block&#160;in&#160;Figure&#160;5)&#160;introduces&#160;a&#160;potential&#160;source&#160;of&#160;numerical&#160;</p>
+<p style="position:absolute;top:111px;left:480px;white-space:nowrap" class="ft50">error,&#160;&#160;as&#160;&#160;derivative&#160;&#160;operations&#160;&#160;amplify&#160;&#160;numerical&#160;&#160;errors.&#160;</p>
+<p style="position:absolute;top:126px;left:480px;white-space:nowrap" class="ft50">Therefore,&#160;a&#160;weak&#160;Gaussian&#160;filter&#160;was&#160;introduced&#160;in&#160;this&#160;block&#160;</p>
+<p style="position:absolute;top:142px;left:480px;white-space:nowrap" class="ft50">to&#160;smooth&#160;gradient&#160;values.&#160;The&#160;filter&#160;uses&#160;a&#160;two-dimensional&#160;</p>
+<p style="position:absolute;top:158px;left:480px;white-space:nowrap" class="ft50">Gaussian&#160;kernel with&#160;a standard&#160;deviation&#160;of&#160;0.25.&#160;</p>
+<p style="position:absolute;top:174px;left:495px;white-space:nowrap" class="ft50">&#160;&#160;At&#160;each&#160;step,&#160;the&#160;surface&#160;of&#160;the&#160;organism&#160;(ϕ<i>&#160;=&#160;</i>0)&#160;may&#160;lie&#160;</p>
+<p style="position:absolute;top:189px;left:480px;white-space:nowrap" class="ft50">between&#160;&#160;cells.&#160;&#160;No&#160;&#160;attempt&#160;&#160;is&#160;&#160;made&#160;&#160;to&#160;&#160;interpolate&#160;&#160;the&#160;&#160;actual&#160;</p>
+<p style="position:absolute;top:205px;left:480px;white-space:nowrap" class="ft50">surface&#160;(e.g.&#160;red&#160;contour&#160;shown&#160;in&#160;Figure&#160;6).&#160;Rather,&#160;figures&#160;in&#160;</p>
+<p style="position:absolute;top:221px;left:480px;white-space:nowrap" class="ft50">this&#160;&#160;paper&#160;&#160;report&#160;&#160;all&#160;&#160;cells&#160;&#160;with&#160;&#160;ϕ&#160;<i>&gt;&#160;</i>0&#160;&#160;as&#160;&#160;being&#160;&#160;part&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:237px;left:480px;white-space:nowrap" class="ft50">organism&#160;&#160;and&#160;&#160;all&#160;&#160;cells&#160;&#160;with&#160;&#160;<i>ϕ&#160;&lt;&#160;</i>0&#160;&#160;as&#160;&#160;being&#160;&#160;exterior&#160;&#160;to&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:252px;left:480px;white-space:nowrap" class="ft50">organism.&#160;</p>
+<p style="position:absolute;top:464px;left:528px;white-space:nowrap" class="ft56"><b>Results of&#160;Simulation&#160;Verification&#160;&#160;&#160;</b></p>
+<p style="position:absolute;top:481px;left:480px;white-space:nowrap" class="ft50">A&#160;suite&#160;of&#160;four&#160;test&#160;cases&#160;were&#160;simulated&#160;in&#160;order&#160;to&#160;verify&#160;the&#160;</p>
+<p style="position:absolute;top:496px;left:480px;white-space:nowrap" class="ft50">basic&#160;&#160;functionality&#160;&#160;of&#160;&#160;the&#160;&#160;algorithm.&#160;&#160;The&#160;&#160;four&#160;&#160;test&#160;&#160;cases&#160;&#160;all&#160;</p>
+<p style="position:absolute;top:512px;left:480px;white-space:nowrap" class="ft50">considered&#160;&#160;a&#160;&#160;simulation&#160;&#160;domain&#160;&#160;modeling&#160;&#160;a&#160;&#160;stereotypical&#160;</p>
+<p style="position:absolute;top:528px;left:480px;white-space:nowrap" class="ft54"><i>Xenopus</i>&#160;tadpole&#160;tail.&#160;The&#160;final&#160;tail&#160;morphology&#160;is&#160;derived&#160;from&#160;</p>
+<p style="position:absolute;top:544px;left:480px;white-space:nowrap" class="ft50">Reid&#160;et.&#160;al.&#160;(Reid,&#160;Song,&#160;and&#160;Zhao&#160;2009)and&#160;The&#160;Normal&#160;Table&#160;</p>
+<p style="position:absolute;top:559px;left:480px;white-space:nowrap" class="ft50">of&#160;Xenopus&#160;laevis&#160;(Faber&#160;and&#160;Nieuwkoop&#160;1967).&#160;The&#160;four&#160;tests&#160;</p>
+<p style="position:absolute;top:575px;left:480px;white-space:nowrap" class="ft50">include&#160;&#160;(a)&#160;&#160;no&#160;&#160;growth,&#160;&#160;(b)&#160;&#160;patterning-based&#160;&#160;regeneration&#160;</p>
+<p style="position:absolute;top:591px;left:480px;white-space:nowrap" class="ft50">following&#160;amputation,&#160;(c)&#160;nominal&#160;&#160;isometric&#160;&#160;growth,&#160;and&#160;(d)&#160;</p>
+<p style="position:absolute;top:607px;left:480px;white-space:nowrap" class="ft50">nominal&#160;&#160;isometric&#160;&#160;growth&#160;&#160;and&#160;&#160;simultaneous&#160;&#160;regeneration&#160;</p>
+<p style="position:absolute;top:622px;left:480px;white-space:nowrap" class="ft50">following&#160;&#160;amputation.&#160;&#160;These&#160;&#160;test&#160;&#160;cases&#160;&#160;were&#160;&#160;selected&#160;</p>
+<p style="position:absolute;top:638px;left:480px;white-space:nowrap" class="ft50">respectively&#160;&#160;to&#160;&#160;examine&#160;&#160;algorithm&#160;&#160;stability,&#160;&#160;performance&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:654px;left:480px;white-space:nowrap" class="ft50">patterning&#160;&#160;control&#160;&#160;(in&#160;&#160;isolation),&#160;&#160;performance&#160;&#160;of&#160;&#160;isometric&#160;</p>
+<p style="position:absolute;top:670px;left:480px;white-space:nowrap" class="ft50">control&#160;&#160;(in&#160;&#160;isolation),&#160;&#160;and&#160;&#160;performance&#160;&#160;of&#160;&#160;combined&#160;&#160;control&#160;</p>
+<p style="position:absolute;top:685px;left:480px;white-space:nowrap" class="ft50">terms.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:701px;left:495px;white-space:nowrap" class="ft50">Patterning&#160;and&#160;isometric&#160;control&#160;parameters&#160;are&#160;derived&#160;from&#160;</p>
+<p style="position:absolute;top:717px;left:480px;white-space:nowrap" class="ft50">experimental&#160;regeneration&#160;data.&#160;All&#160;four&#160;test&#160;cases&#160;have&#160;(unless&#160;</p>
+<p style="position:absolute;top:733px;left:480px;white-space:nowrap" class="ft50">otherwise&#160;&#160;noted)&#160;&#160;CGc,nom&#160;&#160;=&#160;&#160;0.00075,&#160;&#160;Cκ&#160;&#160;=&#160;&#160;0.001,&#160;&#160;Cp&#160;&#160;&#160;=&#160;0.02,&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:748px;left:480px;white-space:nowrap" class="ft54"><i>d</i>&#160;=&#160;3,&#160;<i>emax</i>&#160;=&#160;10,&#160;CGc,max&#160;=&#160;0.1,&#160;1&#160;time&#160;step&#160;=&#160;12&#160;minutes,&#160;and&#160;are&#160;</p>
+<p style="position:absolute;top:764px;left:480px;white-space:nowrap" class="ft50">run&#160;for&#160;&#160;15,000&#160;&#160;time&#160;&#160;steps.&#160;&#160;The&#160;&#160;patterning&#160;&#160;control&#160;&#160;coefficient&#160;</p>
+<p style="position:absolute;top:780px;left:480px;white-space:nowrap" class="ft50">(Cp),&#160;&#160;was&#160;&#160;found&#160;&#160;using&#160;&#160;the&#160;&#160;Reid&#160;&#160;et.&#160;&#160;al.&#160;&#160;image&#160;&#160;sequence&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:796px;left:480px;white-space:nowrap" class="ft50">analyzing&#160;its&#160;length&#160;growth&#160;rate.&#160;Isometric&#160;control&#160;coefficient&#160;</p>
+<p style="position:absolute;top:414px;left:492px;white-space:nowrap" class="ft50">Figure&#160;6:&#160;The&#160;boundary&#160;(red&#160;curve)&#160;may&#160;lie&#160;between&#160;cell&#160;</p>
+<p style="position:absolute;top:429px;left:492px;white-space:nowrap" class="ft50">centers,&#160;as&#160;shown&#160;on&#160;this&#160;grid.&#160;</p>
+<p style="position:absolute;top:445px;left:492px;white-space:nowrap" class="ft50">&#160;</p>
+<p style="position:absolute;top:1029px;left:93px;white-space:nowrap" class="ft50">Figure 5:&#160;Implementation&#160;of&#160;primary&#160;simulation&#160;loop.&#160;</p>
+<p style="position:absolute;top:1045px;left:93px;white-space:nowrap" class="ft50">&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft50">532</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:12px;font-family:Times;color:#000000;}
+	.ft61{font-size:7px;font-family:Times;color:#000000;}
+	.ft62{font-size:12px;font-family:Times;color:#000000;}
+	.ft63{font-size:13px;font-family:Times;color:#000000;}
+	.ft64{font-size:13px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:590px;left:81px;white-space:nowrap" class="ft60">(CGc,nom)&#160;was&#160;found&#160;using&#160;the&#160;normal&#160;table&#160;of&#160;<i>Xenopus&#160;laevis</i>&#160;</p>
+<p style="position:absolute;top:606px;left:81px;white-space:nowrap" class="ft60">stage&#160;series&#160;(Faber&#160;and&#160;Nieuwkoop&#160;1967).&#160;The&#160;pixel&#160;area&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:622px;left:81px;white-space:nowrap" class="ft60">organism&#160;&#160;was&#160;&#160;evaluated&#160;&#160;from&#160;&#160;experimental&#160;&#160;images,&#160;&#160;between&#160;</p>
+<p style="position:absolute;top:637px;left:81px;white-space:nowrap" class="ft60">stages&#160;40&#160;and&#160;52.&#160;Data&#160;were&#160;plotted&#160;and&#160;the&#160;value&#160;of&#160;the&#160;growth&#160;</p>
+<p style="position:absolute;top:653px;left:81px;white-space:nowrap" class="ft60">rate&#160;was&#160;determined&#160;by&#160;a linear&#160;fit&#160;of&#160;the data.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:669px;left:96px;white-space:nowrap" class="ft60">In&#160;analyzing&#160;the&#160;four&#160;test&#160;cases,&#160;it&#160;is&#160;useful&#160;to&#160;consider&#160;image&#160;</p>
+<p style="position:absolute;top:685px;left:81px;white-space:nowrap" class="ft60">sequences&#160;&#160;that&#160;&#160;illustrate&#160;&#160;the&#160;&#160;growth&#160;&#160;process.&#160;&#160;Figure&#160;&#160;7&#160;&#160;shows&#160;</p>
+<p style="position:absolute;top:700px;left:81px;white-space:nowrap" class="ft60">four&#160;image&#160;sequences,&#160;one&#160;for&#160;each&#160;&#160;test&#160;cases.&#160;At&#160;the&#160;end&#160;of&#160;</p>
+<p style="position:absolute;top:716px;left:81px;white-space:nowrap" class="ft60">each&#160;&#160;row,&#160;&#160;an&#160;&#160;additional&#160;&#160;plot&#160;&#160;shows&#160;&#160;growth&#160;&#160;contributions&#160;&#160;per&#160;</p>
+<p style="position:absolute;top:732px;left:81px;white-space:nowrap" class="ft60">time&#160;&#160;step&#160;&#160;for&#160;&#160;each&#160;&#160;term&#160;&#160;(P,&#160;&#160;I,&#160;&#160;and&#160;&#160;K).&#160;&#160;Each&#160;&#160;image&#160;&#160;sequence&#160;</p>
+<p style="position:absolute;top:748px;left:81px;white-space:nowrap" class="ft60">starts&#160;from&#160;the&#160;left;&#160;the&#160;green&#160;body&#160;is&#160;the&#160;current&#160;body&#160;shape,&#160;</p>
+<p style="position:absolute;top:763px;left:81px;white-space:nowrap" class="ft60">and&#160;the&#160;black&#160;outline&#160;is&#160;the&#160;final&#160;target&#160;reference.&#160;In&#160;the&#160;growth&#160;</p>
+<p style="position:absolute;top:779px;left:81px;white-space:nowrap" class="ft60">contributions&#160;plot&#160;(far&#160;right)&#160;the&#160;horizontal&#160;axis&#160;indicates&#160;time&#160;</p>
+<p style="position:absolute;top:795px;left:81px;white-space:nowrap" class="ft60">and&#160;the&#160;vertical&#160;axis&#160;indicates&#160;the&#160;growth&#160;contribution&#160;(for&#160;P,&#160;I,&#160;</p>
+<p style="position:absolute;top:811px;left:81px;white-space:nowrap" class="ft60">and&#160;K)&#160;integrated&#160;over&#160;the&#160;entire&#160;organism&#160;for&#160;each&#160;time&#160;step&#160;in&#160;</p>
+<p style="position:absolute;top:826px;left:81px;white-space:nowrap" class="ft60">units.&#160;Growth&#160;is&#160;measured&#160;in&#160;terms&#160;of&#160;grid&#160;cells,&#160;or&#160;pixels,&#160;that&#160;</p>
+<p style="position:absolute;top:842px;left:81px;white-space:nowrap" class="ft60">the&#160;organism&#160;fills.&#160;Hence&#160;the&#160;units&#160;of&#160;the&#160;vertical&#160;axis&#160;can&#160;be&#160;</p>
+<p style="position:absolute;top:858px;left:81px;white-space:nowrap" class="ft60">considered&#160;to&#160;be&#160;pixels&#160;per&#160;unit&#160;time.&#160;The&#160;area&#160;under&#160;each&#160;of&#160;</p>
+<p style="position:absolute;top:874px;left:81px;white-space:nowrap" class="ft60">the&#160;&#160;growth&#160;contribution&#160;curves&#160;can&#160;loosely&#160;be&#160;viewed&#160;as&#160;the&#160;</p>
+<p style="position:absolute;top:890px;left:81px;white-space:nowrap" class="ft60">overall&#160;contribution&#160;of&#160;material&#160;due&#160;to&#160;each&#160;growth&#160;contribution&#160;</p>
+<p style="position:absolute;top:905px;left:81px;white-space:nowrap" class="ft60">(P,&#160;I,&#160;and&#160;K)&#160;from&#160;the start&#160;of&#160;the simulation.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:935px;left:81px;white-space:nowrap" class="ft64"><b>Case&#160;A:&#160;No Growth&#160;<br/></b>The&#160;&#160;first&#160;&#160;test&#160;&#160;case&#160;&#160;looks&#160;&#160;at&#160;&#160;the&#160;&#160;stability&#160;&#160;of&#160;&#160;the&#160;&#160;patterning&#160;</p>
+<p style="position:absolute;top:966px;left:81px;white-space:nowrap" class="ft60">algorithm&#160;by&#160;considers&#160;a&#160;fully-grown&#160;tail&#160;where&#160;the&#160;surface&#160;of&#160;</p>
+<p style="position:absolute;top:982px;left:81px;white-space:nowrap" class="ft60">the&#160;organism&#160;is&#160;already&#160;at&#160;its&#160;reference&#160;location&#160;and&#160;where&#160;the&#160;</p>
+<p style="position:absolute;top:998px;left:81px;white-space:nowrap" class="ft60">nominal&#160;&#160;growth&#160;&#160;term&#160;&#160;is&#160;&#160;shut&#160;&#160;off&#160;&#160;(CGC,nom&#160;=&#160;0).&#160;&#160;One&#160;&#160;would&#160;</p>
+<p style="position:absolute;top:1013px;left:81px;white-space:nowrap" class="ft60">expect&#160;there&#160;should&#160;be&#160;no&#160;change&#160;in&#160;body&#160;shape,&#160;and&#160;little&#160;to&#160;no&#160;</p>
+<p style="position:absolute;top:1029px;left:81px;white-space:nowrap" class="ft60">contribution&#160;from&#160;any&#160;of&#160;the&#160;active&#160;control&#160;regimes,&#160;since&#160;the&#160;</p>
+<p style="position:absolute;top:590px;left:480px;white-space:nowrap" class="ft60">initial&#160;organism&#160;shape&#160;matches&#160;the&#160;reference&#160;contour.&#160;Indeed,&#160;</p>
+<p style="position:absolute;top:606px;left:480px;white-space:nowrap" class="ft60">the&#160;image&#160;sequence&#160;in&#160;Figure&#160;7(a)&#160;shows&#160;qualitatively&#160;that&#160;the&#160;</p>
+<p style="position:absolute;top:622px;left:480px;white-space:nowrap" class="ft60">tail&#160;&#160;remains&#160;&#160;stationary.&#160;&#160;Growth&#160;&#160;contributions&#160;&#160;are&#160;&#160;tiny&#160;&#160;but&#160;</p>
+<p style="position:absolute;top:637px;left:480px;white-space:nowrap" class="ft60">nonzero&#160;&#160;(smaller&#160;&#160;than&#160;&#160;0.1&#160;&#160;pixel/time&#160;&#160;step,&#160;&#160;as&#160;&#160;shown&#160;&#160;in&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:653px;left:480px;white-space:nowrap" class="ft60">growth&#160;&#160;contributions&#160;&#160;plot&#160;&#160;at&#160;&#160;the&#160;&#160;end&#160;&#160;of&#160;&#160;the&#160;&#160;row).&#160;&#160;Though&#160;</p>
+<p style="position:absolute;top:669px;left:480px;white-space:nowrap" class="ft60">nonzero,&#160;&#160;the&#160;&#160;growth&#160;&#160;contributions&#160;&#160;from&#160;&#160;patterning&#160;&#160;(positive)&#160;</p>
+<p style="position:absolute;top:685px;left:480px;white-space:nowrap" class="ft60">and&#160;&#160;smoothing&#160;&#160;(negative)&#160;&#160;are&#160;&#160;essentially&#160;&#160;balanced.&#160;&#160;The&#160;</p>
+<p style="position:absolute;top:700px;left:480px;white-space:nowrap" class="ft60">implication&#160;is&#160;that&#160;the&#160;smoothing&#160;term&#160;is&#160;continually&#160;active&#160;at&#160;a&#160;</p>
+<p style="position:absolute;top:716px;left:480px;white-space:nowrap" class="ft60">low&#160;level&#160;and&#160;that&#160;the&#160;patterning&#160;term&#160;compensates,&#160;such&#160;that&#160;</p>
+<p style="position:absolute;top:732px;left:480px;white-space:nowrap" class="ft60">the&#160;two&#160;remain&#160;in&#160;static&#160;equilibrium.&#160;The&#160;fact&#160;that&#160;the&#160;system&#160;</p>
+<p style="position:absolute;top:748px;left:480px;white-space:nowrap" class="ft60">reaches&#160;equilibrium&#160;indicates&#160;that&#160;the&#160;algorithm&#160;is&#160;in&#160;fact&#160;stable.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:777px;left:480px;white-space:nowrap" class="ft64"><b>Case&#160;B:&#160;Regeneration&#160;Following&#160;Amputation&#160;<br/></b>The&#160;&#160;second&#160;&#160;test&#160;&#160;case&#160;&#160;considers&#160;&#160;a&#160;&#160;simplified&#160;&#160;model&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:808px;left:480px;white-space:nowrap" class="ft60">regeneration&#160;following&#160;amputation,&#160;with&#160;no&#160;nominal&#160;organism&#160;</p>
+<p style="position:absolute;top:824px;left:480px;white-space:nowrap" class="ft60">growth.&#160;&#160;The&#160;&#160;purpose&#160;&#160;of&#160;&#160;the&#160;&#160;test&#160;&#160;case&#160;&#160;is&#160;&#160;to&#160;&#160;examine&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:840px;left:480px;white-space:nowrap" class="ft60">performance&#160;of&#160;the&#160;patterning&#160;control&#160;term.&#160;The&#160;amputation&#160;is&#160;</p>
+<p style="position:absolute;top:856px;left:480px;white-space:nowrap" class="ft60">performed&#160;digitally,&#160;with&#160;the&#160;tail&#160;being&#160;“cut”&#160;at&#160;the&#160;initial&#160;time&#160;</p>
+<p style="position:absolute;top:872px;left:480px;white-space:nowrap" class="ft60">to&#160;leave&#160;tissue&#160;only&#160;in&#160;the&#160;10&#160;leftmost&#160;grid&#160;cells&#160;of&#160;the&#160;image.&#160;</p>
+<p style="position:absolute;top:887px;left:480px;white-space:nowrap" class="ft60">For&#160;&#160;this&#160;&#160;simulation,&#160;&#160;nominal&#160;&#160;growth&#160;&#160;is&#160;&#160;again&#160;&#160;disabled&#160;</p>
+<p style="position:absolute;top:903px;left:480px;white-space:nowrap" class="ft60">(CGc,nom&#160;=&#160;0).&#160;Under&#160;these&#160;conditions,&#160;we&#160;would&#160;expect&#160;the&#160;tail&#160;</p>
+<p style="position:absolute;top:919px;left:480px;white-space:nowrap" class="ft60">to&#160;return&#160;its&#160;nominal&#160;shape&#160;(pre-amputation),&#160;with&#160;tissue&#160;filling&#160;</p>
+<p style="position:absolute;top:935px;left:480px;white-space:nowrap" class="ft60">the reference map&#160;much&#160;as&#160;material&#160;might&#160;flow into&#160;a mold.&#160;</p>
+<p style="position:absolute;top:950px;left:495px;white-space:nowrap" class="ft60">Figure&#160;7(b)&#160;shows&#160;that&#160;by&#160;time&#160;step&#160;15,000,&#160;the&#160;tail&#160;has&#160;in&#160;</p>
+<p style="position:absolute;top:966px;left:480px;white-space:nowrap" class="ft60">fact&#160;regenerated&#160;to&#160;its&#160;nominal&#160;shape&#160;and&#160;size.&#160;Note&#160;that,&#160;for&#160;</p>
+<p style="position:absolute;top:982px;left:480px;white-space:nowrap" class="ft60">Case&#160;B&#160;only,&#160;the&#160;patterning&#160;growth&#160;rate&#160;was&#160;reduced&#160;relative&#160;to&#160;</p>
+<p style="position:absolute;top:998px;left:480px;white-space:nowrap" class="ft60">its&#160;nominal&#160;value&#160;(to&#160;Cp&#160;=&#160;0.005),&#160;in&#160;order&#160;to&#160;better&#160;visualize&#160;the&#160;</p>
+<p style="position:absolute;top:1013px;left:480px;white-space:nowrap" class="ft60">growth&#160;process.&#160;As&#160;shown&#160;in&#160;the&#160;initial&#160;sequence,&#160;the&#160;corners&#160;</p>
+<p style="position:absolute;top:1029px;left:480px;white-space:nowrap" class="ft60">created&#160;&#160;in&#160;&#160;the&#160;&#160;amputation&#160;&#160;persist&#160;&#160;through&#160;&#160;time&#160;&#160;step&#160;&#160;5,000.&#160;</p>
+<p style="position:absolute;top:536px;left:92px;white-space:nowrap" class="ft60">Figure&#160;7:&#160;Verification&#160;tests:&#160;(a)&#160;No&#160;Growth,&#160;(b)&#160;Regeneration&#160;Following&#160;Amputation&#160;(c)&#160;Nominal&#160;Growth&#160;(d)&#160;Nominal&#160;Growth&#160;</p>
+<p style="position:absolute;top:551px;left:92px;white-space:nowrap" class="ft60">and&#160;Simultaneous&#160;Regeneration&#160;Following&#160;Amputation.&#160;The&#160;right&#160;most&#160;graph&#160;shows&#160;contributions&#160;of&#160;individual&#160;control&#160;terms&#160;to&#160;</p>
+<p style="position:absolute;top:567px;left:92px;white-space:nowrap" class="ft62"><i>F</i>,&#160;integrated&#160;over&#160;the simulation&#160;domain.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:583px;left:92px;white-space:nowrap" class="ft60">&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft60">533</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:12px;font-family:Times;color:#000000;}
+	.ft71{font-size:13px;font-family:Times;color:#000000;}
+	.ft72{font-size:12px;font-family:Times;color:#000000;}
+	.ft73{font-size:7px;font-family:Times;color:#000000;}
+	.ft74{font-size:13px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:79px;left:81px;white-space:nowrap" class="ft70">Together&#160;the&#160;smoothing&#160;term&#160;and&#160;the&#160;reference&#160;image&#160;(which&#160;</p>
+<p style="position:absolute;top:95px;left:81px;white-space:nowrap" class="ft70">inhibits&#160;patterning&#160;growth&#160;when&#160;the&#160;organism&#160;boundary&#160;reaches&#160;</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft70">the&#160;&#160;reference&#160;&#160;boundary)&#160;&#160;introduce&#160;&#160;more&#160;&#160;curvature&#160;&#160;into&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:126px;left:81px;white-space:nowrap" class="ft70">regenerating&#160;tail,&#160;as&#160;seen&#160;by&#160;time&#160;step&#160;10,000.&#160;The&#160;smoothing&#160;</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft70">term&#160;&#160;becomes&#160;&#160;more&#160;&#160;active&#160;&#160;as&#160;&#160;the&#160;&#160;tail&#160;&#160;becomes&#160;&#160;sharper,&#160;&#160;but&#160;</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft70">eventually&#160;the&#160;patterning&#160;term&#160;overcomes&#160;the&#160;smoothing&#160;term&#160;</p>
+<p style="position:absolute;top:174px;left:81px;white-space:nowrap" class="ft70">to&#160;fill&#160;the pointed&#160;tip&#160;of&#160;the tail,&#160;as&#160;seen&#160;in&#160;time step&#160;15,000.&#160;</p>
+<p style="position:absolute;top:189px;left:96px;white-space:nowrap" class="ft70">The&#160;&#160;growth&#160;&#160;contribution&#160;&#160;plot&#160;&#160;shows&#160;&#160;that&#160;&#160;total&#160;&#160;patterning&#160;</p>
+<p style="position:absolute;top:205px;left:81px;white-space:nowrap" class="ft70">growth&#160;&#160;ramps&#160;&#160;up&#160;&#160;slowly&#160;&#160;to&#160;&#160;a&#160;&#160;peak&#160;&#160;around&#160;&#160;time&#160;&#160;step&#160;&#160;4,000&#160;</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft70">before&#160;tapering&#160;toward&#160;zero&#160;approaching&#160;time&#160;step&#160;10,000.&#160;The&#160;</p>
+<p style="position:absolute;top:237px;left:81px;white-space:nowrap" class="ft70">explanation&#160;&#160;is&#160;&#160;that&#160;&#160;initially&#160;&#160;the&#160;&#160;amputation&#160;&#160;boundary&#160;&#160;grows&#160;</p>
+<p style="position:absolute;top:252px;left:81px;white-space:nowrap" class="ft70">nearly&#160;straight&#160;(toward&#160;the&#160;right),&#160;such&#160;that&#160;the&#160;total&#160;patterning&#160;</p>
+<p style="position:absolute;top:268px;left:81px;white-space:nowrap" class="ft70">growth&#160;&#160;(which&#160;&#160;is&#160;&#160;proportional&#160;&#160;to&#160;&#160;the&#160;&#160;size&#160;&#160;of&#160;&#160;the&#160;&#160;amputation&#160;</p>
+<p style="position:absolute;top:284px;left:81px;white-space:nowrap" class="ft70">surface)&#160;&#160;is&#160;&#160;nearly&#160;&#160;constant&#160;&#160;with&#160;&#160;some&#160;&#160;slight&#160;&#160;rise&#160;&#160;due&#160;&#160;to&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:300px;left:81px;white-space:nowrap" class="ft70">curvature&#160;&#160;appearing&#160;&#160;at&#160;&#160;the&#160;&#160;top&#160;&#160;and&#160;&#160;bottom&#160;&#160;corners&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:316px;left:81px;white-space:nowrap" class="ft70">amputated&#160;&#160;face.&#160;&#160;As&#160;&#160;the&#160;&#160;tail&#160;&#160;narrows,&#160;&#160;the&#160;&#160;surface&#160;&#160;area&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:331px;left:81px;white-space:nowrap" class="ft70">amputation&#160;face&#160;grows&#160;narrower&#160;and&#160;the&#160;amount&#160;of&#160;patterning&#160;</p>
+<p style="position:absolute;top:347px;left:81px;white-space:nowrap" class="ft70">growth&#160;&#160;falls&#160;&#160;quickly&#160;&#160;toward&#160;&#160;zero.&#160;&#160;Note&#160;&#160;that&#160;&#160;the&#160;&#160;scale&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:363px;left:81px;white-space:nowrap" class="ft70">growth&#160;contribution&#160;plot&#160;for&#160;Case&#160;B&#160;is&#160;zoomed&#160;out&#160;by&#160;100&#160;times&#160;</p>
+<p style="position:absolute;top:379px;left:81px;white-space:nowrap" class="ft70">relative&#160;to&#160;that&#160;of&#160;Case&#160;A,&#160;indicating&#160;much,&#160;much&#160;higher&#160;growth&#160;</p>
+<p style="position:absolute;top:394px;left:81px;white-space:nowrap" class="ft70">rates&#160;in&#160;Case&#160;B&#160;(as&#160;would&#160;be expected).&#160;&#160;&#160;</p>
+<p style="position:absolute;top:424px;left:81px;white-space:nowrap" class="ft74"><b>Case&#160;C:&#160;Nominal&#160;Growth&#160;<br/></b>The third&#160;test&#160;case&#160;mimics&#160;nominal growth&#160;with&#160;no&#160;amputation&#160;</p>
+<p style="position:absolute;top:455px;left:81px;white-space:nowrap" class="ft70">or&#160;regeneration.&#160;In&#160;this&#160;example,&#160;the&#160;initial&#160;organism&#160;is&#160;set&#160;to&#160;</p>
+<p style="position:absolute;top:471px;left:81px;white-space:nowrap" class="ft70">the&#160;same&#160;shape&#160;as&#160;the&#160;initial&#160;organism&#160;in&#160;Case&#160;A,&#160;but&#160;scaled&#160;</p>
+<p style="position:absolute;top:487px;left:81px;white-space:nowrap" class="ft70">down&#160;&#160;in&#160;&#160;size&#160;&#160;by&#160;&#160;50%.&#160;&#160;In&#160;&#160;concept,&#160;&#160;one&#160;&#160;would&#160;&#160;expect&#160;&#160;only&#160;</p>
+<p style="position:absolute;top:502px;left:81px;white-space:nowrap" class="ft70">isometric&#160;control&#160;would&#160;be&#160;necessary&#160;to&#160;grow&#160;the&#160;tail,&#160;even&#160;with&#160;</p>
+<p style="position:absolute;top:518px;left:81px;white-space:nowrap" class="ft70">patterning&#160;control&#160;active.&#160;</p>
+<p style="position:absolute;top:534px;left:96px;white-space:nowrap" class="ft70">The&#160;&#160;simulation&#160;&#160;indicates&#160;&#160;that&#160;&#160;the&#160;&#160;organism&#160;&#160;shape&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:550px;left:81px;white-space:nowrap" class="ft70">preserved&#160;during&#160;growth,&#160;as&#160;shown&#160;in&#160;Figure&#160;7(c).&#160;The&#160;growth&#160;</p>
+<p style="position:absolute;top:565px;left:81px;white-space:nowrap" class="ft70">contributions&#160;plot&#160;for&#160;this&#160;row&#160;shows&#160;that&#160;the&#160;majority&#160;&#160;of&#160;all&#160;</p>
+<p style="position:absolute;top:581px;left:81px;white-space:nowrap" class="ft70">growth&#160;is&#160;generated&#160;by&#160;the&#160;isometric&#160;growth&#160;term.&#160;Though&#160;the&#160;</p>
+<p style="position:absolute;top:597px;left:81px;white-space:nowrap" class="ft70">patterning&#160;&#160;growth&#160;&#160;term&#160;&#160;is&#160;&#160;active,&#160;&#160;it&#160;&#160;remains&#160;&#160;essentially&#160;&#160;zero&#160;</p>
+<p style="position:absolute;top:613px;left:81px;white-space:nowrap" class="ft70">throughout&#160;&#160;the&#160;&#160;simulation,&#160;&#160;as&#160;&#160;expected.&#160;&#160;(The&#160;&#160;exception&#160;&#160;is&#160;&#160;a&#160;</p>
+<p style="position:absolute;top:628px;left:81px;white-space:nowrap" class="ft70">small&#160;spike&#160;near&#160;time&#160;step&#160;15,000,&#160;triggered&#160;by&#160;a&#160;combination&#160;</p>
+<p style="position:absolute;top:644px;left:81px;white-space:nowrap" class="ft70">of&#160;the&#160;reinitialization&#160;process&#160;and&#160;by&#160;erosion&#160;due&#160;to&#160;smoothing).&#160;</p>
+<p style="position:absolute;top:660px;left:81px;white-space:nowrap" class="ft70">The final image of&#160;the&#160;sequence&#160;shows&#160;the&#160;simulated&#160;organism&#160;</p>
+<p style="position:absolute;top:676px;left:81px;white-space:nowrap" class="ft70">overgrows&#160;the&#160;reference&#160;contour&#160;slightly,&#160;as&#160;can&#160;be&#160;observed&#160;</p>
+<p style="position:absolute;top:691px;left:81px;white-space:nowrap" class="ft70">near&#160;&#160;the&#160;&#160;tip&#160;&#160;of&#160;&#160;the&#160;&#160;tail.&#160;&#160;&#160;&#160;This&#160;&#160;occurs&#160;&#160;largely&#160;&#160;because&#160;&#160;of&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:707px;left:81px;white-space:nowrap" class="ft70">action&#160;of&#160;&#160;the&#160;&#160;smoothing&#160;&#160;term,&#160;which&#160;&#160;rounded&#160;&#160;the&#160;&#160;tail&#160;&#160;during&#160;</p>
+<p style="position:absolute;top:723px;left:81px;white-space:nowrap" class="ft70">otherwise isometric growth.&#160;</p>
+<p style="position:absolute;top:739px;left:96px;white-space:nowrap" class="ft70">As&#160;&#160;a&#160;&#160;final&#160;&#160;note,&#160;&#160;it&#160;&#160;is&#160;&#160;worth&#160;&#160;observing&#160;&#160;that&#160;&#160;the&#160;&#160;organism&#160;</p>
+<p style="position:absolute;top:754px;left:81px;white-space:nowrap" class="ft70">growth&#160;rate&#160;increases&#160;slightly&#160;over&#160;time,&#160;as&#160;is&#160;evident&#160;from&#160;the&#160;</p>
+<p style="position:absolute;top:770px;left:81px;white-space:nowrap" class="ft70">growth&#160;contributions&#160;plot&#160;at&#160;the&#160;end&#160;of&#160;row&#160;(c)&#160;in&#160;Figure&#160;7.&#160;The&#160;</p>
+<p style="position:absolute;top:786px;left:81px;white-space:nowrap" class="ft70">acceleration&#160;of&#160;growth&#160;over&#160;time&#160;matches&#160;the&#160;intent&#160;of&#160;equation&#160;</p>
+<p style="position:absolute;top:802px;left:81px;white-space:nowrap" class="ft70">(14),&#160;which&#160;was&#160;designed&#160;to&#160;keep&#160;the&#160;rate&#160;of&#160;cellular&#160;division&#160;</p>
+<p style="position:absolute;top:817px;left:81px;white-space:nowrap" class="ft70">constant,&#160;with&#160;the&#160;implication&#160;that&#160;the&#160;organisms&#160;total&#160;growth&#160;</p>
+<p style="position:absolute;top:833px;left:81px;white-space:nowrap" class="ft70">(pixels&#160;&#160;added&#160;&#160;per&#160;&#160;time&#160;&#160;step)&#160;&#160;should&#160;&#160;become&#160;&#160;faster&#160;&#160;as&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:849px;left:81px;white-space:nowrap" class="ft70">organism&#160;becomes&#160;larger.&#160;</p>
+<p style="position:absolute;top:878px;left:81px;white-space:nowrap" class="ft74"><b>Case&#160;D:&#160;Nominal&#160;Growth and&#160;Regeneration&#160;<br/></b>A&#160;final&#160;test&#160;case&#160;combines&#160;Cases&#160;B&#160;and&#160;C&#160;to&#160;provide&#160;a&#160;more&#160;</p>
+<p style="position:absolute;top:910px;left:81px;white-space:nowrap" class="ft70">realistic model&#160;for&#160;amputation,&#160;one in&#160;which&#160;patterning&#160;growth&#160;</p>
+<p style="position:absolute;top:926px;left:81px;white-space:nowrap" class="ft70">occurs&#160;in&#160;parallel&#160;with&#160;nominal&#160;growth.&#160;For&#160;this&#160;case,&#160;all&#160;three&#160;</p>
+<p style="position:absolute;top:941px;left:81px;white-space:nowrap" class="ft70">control&#160;&#160;terms&#160;&#160;are&#160;&#160;active&#160;&#160;simultaneously&#160;&#160;(with&#160;&#160;control&#160;</p>
+<p style="position:absolute;top:957px;left:81px;white-space:nowrap" class="ft70">parameters&#160;set to&#160;their&#160;nominal&#160;values).&#160;</p>
+<p style="position:absolute;top:973px;left:96px;white-space:nowrap" class="ft70">The&#160;&#160;Case&#160;&#160;D&#160;&#160;simulation&#160;&#160;confirms&#160;&#160;that&#160;&#160;the&#160;&#160;patterning&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:989px;left:81px;white-space:nowrap" class="ft70">isometric&#160;growth&#160;terms&#160;complement&#160;each&#160;other&#160;when&#160;they&#160;are&#160;</p>
+<p style="position:absolute;top:1004px;left:81px;white-space:nowrap" class="ft70">both&#160;active,&#160;allowing&#160;the&#160;organism&#160;to&#160;change&#160;size&#160;and&#160;shape&#160;</p>
+<p style="position:absolute;top:1020px;left:81px;white-space:nowrap" class="ft70">simultaneously.&#160;&#160;It&#160;&#160;is&#160;&#160;perhaps&#160;&#160;surprising&#160;&#160;to&#160;&#160;observe&#160;&#160;that&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:1036px;left:81px;white-space:nowrap" class="ft70">combined&#160;growth&#160;(Case&#160;D)&#160;image&#160;sequence&#160;much&#160;more&#160;closely&#160;</p>
+<p style="position:absolute;top:79px;left:480px;white-space:nowrap" class="ft70">resembles&#160;&#160;nominal&#160;&#160;growth&#160;&#160;(Case&#160;&#160;C)&#160;&#160;than&#160;&#160;regeneration&#160;&#160;(Case&#160;</p>
+<p style="position:absolute;top:95px;left:480px;white-space:nowrap" class="ft70">B).&#160;In&#160;fact,&#160;as&#160;early&#160;as&#160;time&#160;step&#160;5000&#160;of&#160;the&#160;image&#160;sequence,&#160;</p>
+<p style="position:absolute;top:111px;left:480px;white-space:nowrap" class="ft70">Case&#160;D and&#160;Case&#160;C&#160;appear&#160;qualitatively&#160;the same,&#160;even&#160;though&#160;</p>
+<p style="position:absolute;top:126px;left:480px;white-space:nowrap" class="ft70">the&#160;initial&#160;conditions&#160;(at&#160;time&#160;step&#160;1)&#160;are&#160;entirely&#160;different.&#160;The&#160;</p>
+<p style="position:absolute;top:142px;left:480px;white-space:nowrap" class="ft70">similarity&#160;&#160;of&#160;&#160;the&#160;&#160;image&#160;&#160;sequences&#160;&#160;can&#160;&#160;be&#160;&#160;explained&#160;&#160;by&#160;</p>
+<p style="position:absolute;top:158px;left:480px;white-space:nowrap" class="ft70">examining&#160;&#160;the&#160;&#160;growth&#160;&#160;contributions&#160;&#160;plot,&#160;&#160;which&#160;&#160;shows&#160;&#160;that&#160;</p>
+<p style="position:absolute;top:174px;left:480px;white-space:nowrap" class="ft70">patterning&#160;&#160;growth&#160;&#160;term&#160;&#160;is&#160;&#160;most&#160;&#160;active&#160;&#160;early,&#160;&#160;approximately&#160;</p>
+<p style="position:absolute;top:189px;left:480px;white-space:nowrap" class="ft70">through&#160;&#160;time&#160;&#160;step&#160;&#160;1000.&#160;&#160;In&#160;&#160;fact,&#160;&#160;the&#160;&#160;shape&#160;&#160;of&#160;&#160;the&#160;&#160;patterning&#160;</p>
+<p style="position:absolute;top:205px;left:480px;white-space:nowrap" class="ft70">growth&#160;&#160;curve&#160;&#160;for&#160;&#160;Case&#160;&#160;D&#160;&#160;is&#160;&#160;nearly&#160;&#160;identical&#160;&#160;to&#160;&#160;what&#160;&#160;was&#160;</p>
+<p style="position:absolute;top:221px;left:480px;white-space:nowrap" class="ft70">observed&#160;for&#160;Case&#160;B,&#160;but&#160;with&#160;a&#160;smaller&#160;peak&#160;amplitude&#160;and&#160;</p>
+<p style="position:absolute;top:237px;left:480px;white-space:nowrap" class="ft70">scaled&#160;&#160;to&#160;&#160;a&#160;&#160;shorter&#160;&#160;time&#160;&#160;scale&#160;&#160;(about&#160;&#160;five&#160;&#160;times&#160;&#160;faster&#160;</p>
+<p style="position:absolute;top:252px;left:480px;white-space:nowrap" class="ft70">completion&#160;&#160;of&#160;&#160;patterning&#160;&#160;as&#160;&#160;compared&#160;&#160;to&#160;&#160;Case&#160;&#160;B).&#160;&#160;The&#160;</p>
+<p style="position:absolute;top:268px;left:480px;white-space:nowrap" class="ft70">shortened&#160;duration&#160;of&#160;patterning&#160;growth&#160;is&#160;related&#160;to&#160;the&#160;choice&#160;</p>
+<p style="position:absolute;top:284px;left:480px;white-space:nowrap" class="ft70">of&#160;patterning&#160;growth&#160;coefficient&#160;<i>Cp</i>&#160;(which&#160;was&#160;reduced&#160;in&#160;Case&#160;</p>
+<p style="position:absolute;top:300px;left:480px;white-space:nowrap" class="ft70">B)&#160;and&#160;to&#160;the&#160;initial&#160;condition&#160;of&#160;Case&#160;D&#160;(which&#160;has&#160;half&#160;the&#160;</p>
+<p style="position:absolute;top:316px;left:480px;white-space:nowrap" class="ft70">width&#160;of&#160;the&#160;initial&#160;condition&#160;for&#160;Case&#160;B,&#160;such&#160;that&#160;the&#160;velocity-</p>
+<p style="position:absolute;top:331px;left:480px;white-space:nowrap" class="ft70">to-length&#160;ratio&#160;is&#160;increased&#160;in&#160;Case&#160;D).&#160;</p>
+<p style="position:absolute;top:347px;left:495px;white-space:nowrap" class="ft70">At&#160;first&#160;glance,&#160;it&#160;appears&#160;that&#160;the&#160;growth&#160;contribution&#160;plot&#160;</p>
+<p style="position:absolute;top:363px;left:480px;white-space:nowrap" class="ft70">for&#160;Case&#160;D&#160;suggests&#160;some&#160;interaction&#160;between&#160;the&#160;isometric&#160;and&#160;</p>
+<p style="position:absolute;top:379px;left:480px;white-space:nowrap" class="ft70">patterning&#160;&#160;growth&#160;&#160;terms,&#160;&#160;since&#160;&#160;the&#160;&#160;isometric&#160;&#160;growth&#160;&#160;rate&#160;&#160;in&#160;</p>
+<p style="position:absolute;top:394px;left:480px;white-space:nowrap" class="ft70">Case&#160;D&#160;appears&#160;to&#160;dip&#160;for&#160;the&#160;first&#160;1000&#160;time&#160;steps&#160;as&#160;compared&#160;</p>
+<p style="position:absolute;top:410px;left:480px;white-space:nowrap" class="ft70">to&#160;Case&#160;C.&#160;This&#160;difference&#160;in&#160;the&#160;initial&#160;isometric&#160;growth&#160;can&#160;</p>
+<p style="position:absolute;top:426px;left:480px;white-space:nowrap" class="ft70">more&#160;simply&#160;be&#160;explained&#160;as&#160;a&#160;size&#160;effect,&#160;however,&#160;rather&#160;than&#160;</p>
+<p style="position:absolute;top:442px;left:480px;white-space:nowrap" class="ft70">an&#160;&#160;interaction.&#160;&#160;Since&#160;&#160;the&#160;&#160;total&#160;&#160;amount&#160;&#160;of&#160;&#160;isometric&#160;&#160;growth&#160;</p>
+<p style="position:absolute;top:457px;left:480px;white-space:nowrap" class="ft70">scales&#160;with&#160;the&#160;amount&#160;of&#160;material&#160;in&#160;the&#160;organism,&#160;and&#160;since&#160;</p>
+<p style="position:absolute;top:473px;left:480px;white-space:nowrap" class="ft70">the&#160;amount&#160;of&#160;simulated&#160;material&#160;is&#160;very&#160;low&#160;post&#160;amputation&#160;</p>
+<p style="position:absolute;top:489px;left:480px;white-space:nowrap" class="ft70">(in&#160;&#160;Case&#160;&#160;D),&#160;&#160;it&#160;&#160;should&#160;&#160;not&#160;&#160;be&#160;&#160;surprising&#160;&#160;that&#160;&#160;the&#160;&#160;volumetric&#160;</p>
+<p style="position:absolute;top:505px;left:480px;white-space:nowrap" class="ft70">growth&#160;rate is&#160;initially&#160;much&#160;lower&#160;in&#160;Case&#160;D than&#160;Case&#160;C.&#160;&#160;&#160;</p>
+<p style="position:absolute;top:534px;left:480px;white-space:nowrap" class="ft74"><b>Discussion&#160;<br/></b>The&#160;&#160;verification&#160;&#160;tests&#160;&#160;described&#160;&#160;in&#160;&#160;the&#160;&#160;prior&#160;&#160;section,&#160;&#160;and&#160;&#160;in&#160;</p>
+<p style="position:absolute;top:565px;left:480px;white-space:nowrap" class="ft70">particular&#160;&#160;the&#160;&#160;Case&#160;&#160;D&#160;&#160;test,&#160;&#160;suggest&#160;&#160;that&#160;&#160;this&#160;&#160;simulation&#160;&#160;can&#160;</p>
+<p style="position:absolute;top:581px;left:480px;white-space:nowrap" class="ft70">provide&#160;&#160;a&#160;&#160;relevant&#160;&#160;model&#160;&#160;for&#160;&#160;simulation&#160;&#160;of&#160;&#160;<i>Xenopus</i>&#160;</p>
+<p style="position:absolute;top:597px;left:480px;white-space:nowrap" class="ft70">regeneration.&#160;&#160;In&#160;&#160;the&#160;&#160;Case&#160;&#160;D&#160;&#160;simulation,&#160;&#160;morphology&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:613px;left:480px;white-space:nowrap" class="ft70">regenerated&#160;&#160;while&#160;&#160;the&#160;&#160;tail&#160;&#160;grows&#160;&#160;in&#160;&#160;size,&#160;&#160;a&#160;&#160;behavior&#160;&#160;seen&#160;&#160;in&#160;</p>
+<p style="position:absolute;top:628px;left:480px;white-space:nowrap" class="ft72"><i>Xenopus</i>&#160;regeneration.&#160;Importantly,&#160;the verification&#160;tests&#160;of&#160;the&#160;</p>
+<p style="position:absolute;top:644px;left:480px;white-space:nowrap" class="ft70">prior&#160;section&#160;also&#160;demonstrate&#160;that&#160;the&#160;simulation&#160;is&#160;stable&#160;and&#160;</p>
+<p style="position:absolute;top:660px;left:480px;white-space:nowrap" class="ft70">qualitatively&#160;well behaved.&#160;The patterning&#160;control&#160;switches&#160;off&#160;</p>
+<p style="position:absolute;top:676px;left:480px;white-space:nowrap" class="ft70">when&#160;&#160;the&#160;&#160;organism&#160;&#160;shape&#160;&#160;approaches&#160;&#160;the&#160;&#160;reference&#160;&#160;map&#160;</p>
+<p style="position:absolute;top:691px;left:480px;white-space:nowrap" class="ft70">(Case&#160;A).&#160;The&#160;isometric&#160;growth&#160;and&#160;volumetric&#160;terms&#160;perform&#160;</p>
+<p style="position:absolute;top:707px;left:480px;white-space:nowrap" class="ft70">as&#160;expected&#160;when&#160;active individually&#160;(Case&#160;B&#160;and&#160;Case&#160;C)&#160;and&#160;</p>
+<p style="position:absolute;top:723px;left:480px;white-space:nowrap" class="ft70">when&#160;active&#160;simultaneously&#160;(Case&#160;D).&#160;The&#160;smoothing&#160;control&#160;</p>
+<p style="position:absolute;top:739px;left:480px;white-space:nowrap" class="ft70">term&#160;&#160;was&#160;&#160;active&#160;&#160;in&#160;&#160;all&#160;&#160;cases,&#160;&#160;providing&#160;&#160;small&#160;&#160;adjustments&#160;&#160;to&#160;</p>
+<p style="position:absolute;top:754px;left:480px;white-space:nowrap" class="ft70">regularize&#160;shape&#160;(as&#160;visible&#160;in&#160;Case&#160;B&#160;in&#160;particular),&#160;but&#160;always&#160;</p>
+<p style="position:absolute;top:770px;left:480px;white-space:nowrap" class="ft70">resulting&#160;in&#160;a&#160;very&#160;small&#160;contribution&#160;to&#160;the&#160;overall&#160;growth&#160;of&#160;</p>
+<p style="position:absolute;top:786px;left:480px;white-space:nowrap" class="ft70">the&#160;simulated&#160;organism,&#160;so&#160;small&#160;that&#160;the&#160;contribution&#160;was&#160;only&#160;</p>
+<p style="position:absolute;top:802px;left:480px;white-space:nowrap" class="ft70">visible&#160;when&#160;magnifying&#160;the&#160;scale&#160;of&#160;the&#160;growth&#160;contribution&#160;</p>
+<p style="position:absolute;top:817px;left:480px;white-space:nowrap" class="ft70">plot&#160;(as&#160;in&#160;Case&#160;A).&#160;</p>
+<p style="position:absolute;top:833px;left:495px;white-space:nowrap" class="ft70">The&#160;&#160;simulation&#160;&#160;does&#160;&#160;have&#160;&#160;limitations.&#160;&#160;First,&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:849px;left:480px;white-space:nowrap" class="ft70">reinitialization&#160;&#160;process&#160;&#160;introduces&#160;&#160;slight&#160;&#160;irregularities,&#160;&#160;since&#160;</p>
+<p style="position:absolute;top:865px;left:480px;white-space:nowrap" class="ft70">reinitialization&#160;&#160;occurs&#160;&#160;only&#160;&#160;periodically&#160;&#160;(once&#160;&#160;every&#160;&#160;20&#160;&#160;time&#160;</p>
+<p style="position:absolute;top:881px;left:480px;white-space:nowrap" class="ft70">steps).&#160;&#160;The&#160;&#160;result&#160;&#160;is&#160;&#160;that&#160;&#160;the&#160;&#160;growth&#160;&#160;contribution&#160;&#160;plots&#160;&#160;can&#160;</p>
+<p style="position:absolute;top:896px;left:480px;white-space:nowrap" class="ft70">appear&#160;slightly&#160;choppy&#160;(as&#160;is&#160;visible&#160;in&#160;the&#160;saw&#160;tooth&#160;pattern&#160;for&#160;</p>
+<p style="position:absolute;top:912px;left:480px;white-space:nowrap" class="ft70">patterning&#160;growth&#160;in&#160;Case&#160;C&#160;and&#160;Case&#160;D).&#160;Reinitialization&#160;is&#160;</p>
+<p style="position:absolute;top:928px;left:480px;white-space:nowrap" class="ft70">also&#160;&#160;somewhat&#160;&#160;computationally&#160;&#160;intensive.&#160;&#160;As&#160;&#160;such,&#160;&#160;an&#160;</p>
+<p style="position:absolute;top:944px;left:480px;white-space:nowrap" class="ft70">alternative&#160;&#160;to&#160;&#160;reinitialization&#160;&#160;may&#160;&#160;be&#160;&#160;pursued&#160;&#160;in&#160;&#160;the&#160;&#160;future.&#160;</p>
+<p style="position:absolute;top:959px;left:480px;white-space:nowrap" class="ft70">Second,&#160;smoothing&#160;control&#160;effects&#160;make&#160;it&#160;difficult&#160;to&#160;generate&#160;</p>
+<p style="position:absolute;top:975px;left:480px;white-space:nowrap" class="ft70">sharp&#160;corners.&#160;Some&#160;modification&#160;to&#160;the&#160;smoothing&#160;control&#160;may&#160;</p>
+<p style="position:absolute;top:991px;left:480px;white-space:nowrap" class="ft70">be&#160;necessary&#160;in&#160;the&#160;future&#160;to&#160;allow&#160;sharp&#160;features&#160;to&#160;develop&#160;</p>
+<p style="position:absolute;top:1007px;left:480px;white-space:nowrap" class="ft70">when&#160;desired&#160;(as&#160;in&#160;the&#160;tip&#160;of&#160;the&#160;simulated&#160;tail).&#160;Third,&#160;at&#160;small&#160;</p>
+<p style="position:absolute;top:1022px;left:480px;white-space:nowrap" class="ft70">tail&#160;sizes,&#160;the&#160;discrete&#160;nature&#160;of&#160;the&#160;patterning&#160;control&#160;reference&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft70">534</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>c6c8b0988aa28f9c844e2f44dacb580d-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:12px;font-family:Times;color:#000000;}
+	.ft81{font-size:12px;font-family:Times;color:#000000;}
+	.ft82{font-size:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:79px;left:81px;white-space:nowrap" class="ft80">map&#160;&#160;can&#160;&#160;introduce&#160;&#160;dithering&#160;&#160;when&#160;&#160;the&#160;&#160;reference&#160;&#160;map&#160;&#160;is&#160;</p>
+<p style="position:absolute;top:95px;left:81px;white-space:nowrap" class="ft80">rescaled.&#160;&#160;To&#160;&#160;mitigate&#160;&#160;this&#160;&#160;effect,&#160;&#160;we&#160;&#160;will&#160;&#160;consider&#160;&#160;alternate&#160;</p>
+<p style="position:absolute;top:111px;left:81px;white-space:nowrap" class="ft80">representations&#160;of&#160;the&#160;reference&#160;map&#160;in&#160;the&#160;future.&#160;Since,&#160;the&#160;</p>
+<p style="position:absolute;top:126px;left:81px;white-space:nowrap" class="ft80">current&#160;reference&#160;map&#160;is&#160;binary&#160;(with&#160;a&#160;one&#160;indicating&#160;a&#160;grid&#160;</p>
+<p style="position:absolute;top:142px;left:81px;white-space:nowrap" class="ft80">point&#160;&#160;inside&#160;&#160;the&#160;&#160;organism&#160;&#160;and&#160;&#160;a&#160;&#160;zero&#160;&#160;indicating&#160;&#160;a&#160;&#160;grid&#160;&#160;point&#160;</p>
+<p style="position:absolute;top:158px;left:81px;white-space:nowrap" class="ft80">outside),&#160;a&#160;floating&#160;point&#160;representation&#160;of&#160;the&#160;reference&#160;map&#160;</p>
+<p style="position:absolute;top:174px;left:81px;white-space:nowrap" class="ft80">would&#160;likely&#160;be&#160;helpful&#160;to&#160;reduce&#160;dithering&#160;that&#160;occurs&#160;when&#160;the&#160;</p>
+<p style="position:absolute;top:189px;left:81px;white-space:nowrap" class="ft80">reference map&#160;is&#160;scaled.&#160;</p>
+<p style="position:absolute;top:205px;left:96px;white-space:nowrap" class="ft80">The&#160;&#160;intended&#160;&#160;application&#160;&#160;of&#160;&#160;our&#160;&#160;simulation&#160;&#160;tools&#160;&#160;is&#160;&#160;to&#160;</p>
+<p style="position:absolute;top:221px;left:81px;white-space:nowrap" class="ft80">examine&#160;control&#160;policies&#160;and&#160;sensing&#160;modalities&#160;that&#160;might&#160;be&#160;</p>
+<p style="position:absolute;top:237px;left:81px;white-space:nowrap" class="ft80">used&#160;during&#160;regenerative&#160;growth.&#160;Future&#160;studies&#160;will&#160;validate&#160;</p>
+<p style="position:absolute;top:252px;left:81px;white-space:nowrap" class="ft80">our&#160;&#160;simulation&#160;&#160;tools&#160;&#160;through&#160;&#160;direct&#160;&#160;comparison&#160;&#160;to&#160;&#160;biological&#160;</p>
+<p style="position:absolute;top:268px;left:81px;white-space:nowrap" class="ft80">studies&#160;of&#160;<i>Xenopus</i>&#160;tail&#160;regeneration.&#160;Also,&#160;we&#160;will&#160;augment&#160;our&#160;</p>
+<p style="position:absolute;top:284px;left:81px;white-space:nowrap" class="ft80">current&#160;&#160;simulations&#160;&#160;with&#160;&#160;new&#160;&#160;models&#160;&#160;of&#160;&#160;control&#160;&#160;and&#160;&#160;sensing&#160;</p>
+<p style="position:absolute;top:300px;left:81px;white-space:nowrap" class="ft80">with&#160;the&#160;goal&#160;of&#160;explaining&#160;biological&#160;observations&#160;about&#160;the&#160;</p>
+<p style="position:absolute;top:316px;left:81px;white-space:nowrap" class="ft80">impact&#160;of&#160;external&#160;factors&#160;(electrical,&#160;chemical,&#160;damage,&#160;etc.)&#160;</p>
+<p style="position:absolute;top:331px;left:81px;white-space:nowrap" class="ft80">on&#160;regenerative&#160;growth.&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:360px;left:217px;white-space:nowrap" class="ft82"><b>Conclusion&#160;</b></p>
+<p style="position:absolute;top:377px;left:81px;white-space:nowrap" class="ft80">This&#160;&#160;algorithm&#160;&#160;creates&#160;&#160;a&#160;&#160;simplified&#160;&#160;abstraction&#160;&#160;of&#160;&#160;cell&#160;</p>
+<p style="position:absolute;top:393px;left:81px;white-space:nowrap" class="ft80">regeneration&#160;morphology,&#160;using&#160;level&#160;set&#160;methods&#160;and&#160;control&#160;</p>
+<p style="position:absolute;top:408px;left:81px;white-space:nowrap" class="ft80">regimes,&#160;&#160;that&#160;&#160;is&#160;&#160;a&#160;&#160;base&#160;&#160;module&#160;&#160;for&#160;&#160;a&#160;&#160;future&#160;&#160;framework&#160;&#160;to&#160;</p>
+<p style="position:absolute;top:424px;left:81px;white-space:nowrap" class="ft80">predictively&#160;link&#160;cell-level&#160;signaling&#160;to&#160;macroscopic&#160;patterning.&#160;</p>
+<p style="position:absolute;top:440px;left:81px;white-space:nowrap" class="ft80">This&#160;ultimate&#160;framework&#160;may&#160;provide&#160;insight&#160;into&#160;regeneration,&#160;</p>
+<p style="position:absolute;top:456px;left:81px;white-space:nowrap" class="ft80">cancer,&#160;and&#160;even&#160;birth&#160;defects.&#160;This&#160;algorithm&#160;reduces&#160;complex&#160;</p>
+<p style="position:absolute;top:472px;left:81px;white-space:nowrap" class="ft80">cellular&#160;interactions&#160;into&#160;body&#160;boundary&#160;movement&#160;using&#160;three&#160;</p>
+<p style="position:absolute;top:487px;left:81px;white-space:nowrap" class="ft80">control&#160;&#160;regimes&#160;&#160;–&#160;&#160;patterning&#160;&#160;control,&#160;&#160;isometric&#160;&#160;control,&#160;&#160;and&#160;</p>
+<p style="position:absolute;top:503px;left:81px;white-space:nowrap" class="ft80">smoothing&#160;control.&#160;Patterning&#160;control&#160;mimics&#160;regeneration&#160;at&#160;</p>
+<p style="position:absolute;top:519px;left:81px;white-space:nowrap" class="ft80">wound&#160;sites&#160;and&#160;acts&#160;on&#160;the&#160;body&#160;boundary.&#160;Isometric&#160;control&#160;</p>
+<p style="position:absolute;top:535px;left:81px;white-space:nowrap" class="ft80">mimics&#160;bulk&#160;growth&#160;of&#160;the organism&#160;with&#160;time,&#160;and&#160;smoothing&#160;</p>
+<p style="position:absolute;top:550px;left:81px;white-space:nowrap" class="ft80">control&#160;regularizes&#160;growth&#160;by&#160;reducing&#160;high&#160;curvature regions.&#160;</p>
+<p style="position:absolute;top:566px;left:81px;white-space:nowrap" class="ft80">Looking&#160;specifically&#160;&#160;at&#160;&#160;<i>Xenopus&#160;laevis</i>&#160;tail&#160;regeneration,&#160;this&#160;</p>
+<p style="position:absolute;top:582px;left:81px;white-space:nowrap" class="ft80">algorithm&#160;shows&#160;promise&#160;in&#160;predicting&#160;cell&#160;patterning&#160;on&#160;the&#160;</p>
+<p style="position:absolute;top:598px;left:81px;white-space:nowrap" class="ft80">macroscopic&#160;scale.&#160;Although&#160;this&#160;paper&#160;specifically&#160;discusses&#160;</p>
+<p style="position:absolute;top:613px;left:81px;white-space:nowrap" class="ft80">simulation&#160;&#160;of&#160;&#160;a&#160;&#160;<i>Xenopus</i>&#160;&#160;tail&#160;&#160;in&#160;&#160;two&#160;&#160;dimensions,&#160;&#160;the&#160;</p>
+<p style="position:absolute;top:629px;left:81px;white-space:nowrap" class="ft80">methodology&#160;&#160;is&#160;&#160;general&#160;&#160;enough&#160;&#160;to&#160;&#160;be&#160;&#160;applied&#160;&#160;to&#160;&#160;arbitrary&#160;</p>
+<p style="position:absolute;top:645px;left:81px;white-space:nowrap" class="ft80">morphologies&#160;in&#160;both&#160;two&#160;and&#160;three dimensions.&#160;&#160;&#160;&#160;&#160;</p>
+<p style="position:absolute;top:674px;left:218px;white-space:nowrap" class="ft82"><b>References&#160;</b></p>
+<p style="position:absolute;top:693px;left:81px;white-space:nowrap" class="ft80">Bianconi,&#160;Eva,&#160;Alison&#160;Piovesan,&#160;Federica&#160;Facchin,&#160;Alina&#160;Beraudi,&#160;Raf&#160;aela&#160;</p>
+<p style="position:absolute;top:711px;left:135px;white-space:nowrap" class="ft80">Casadei,&#160;&#160;Flavia&#160;&#160;Frabeti,&#160;&#160;Lorenza&#160;&#160;Vitale,&#160;&#160;et&#160;&#160;al.&#160;&#160;2013.&#160;&#160;“An&#160;</p>
+<p style="position:absolute;top:729px;left:135px;white-space:nowrap" class="ft80">Estimation&#160;of&#160;the&#160;Number&#160;of&#160;Cels&#160;in&#160;the&#160;Human&#160;Body.”&#160;<i>Annals&#160;</i></p>
+<p style="position:absolute;top:746px;left:135px;white-space:nowrap" class="ft81"><i>of&#160;</i></p>
+<p style="position:absolute;top:746px;left:175px;white-space:nowrap" class="ft81"><i>Human&#160;</i></p>
+<p style="position:absolute;top:746px;left:242px;white-space:nowrap" class="ft81"><i>Biology</i>&#160;</p>
+<p style="position:absolute;top:747px;left:310px;white-space:nowrap" class="ft80">40&#160;</p>
+<p style="position:absolute;top:747px;left:353px;white-space:nowrap" class="ft80">(6):&#160;</p>
+<p style="position:absolute;top:747px;left:400px;white-space:nowrap" class="ft80">463–71.&#160;</p>
+<p style="position:absolute;top:765px;left:135px;white-space:nowrap" class="ft80">doi:10.3109/03014460.2013.807878.&#160;</p>
+<p style="position:absolute;top:783px;left:81px;white-space:nowrap" class="ft80">Brakke,&#160;Kenneth&#160;A.&#160;2015.&#160;<i>The&#160;Motion&#160;of&#160;a&#160;Surface&#160;by&#160;Its&#160;Mean&#160;Curvature.&#160;</i></p>
+<p style="position:absolute;top:800px;left:135px;white-space:nowrap" class="ft81"><i>(MN-20)</i>.&#160;Princeton&#160;University&#160;Press.&#160;</p>
+<p style="position:absolute;top:819px;left:81px;white-space:nowrap" class="ft80">Chernet,&#160;Brook&#160;T.,&#160;Chris&#160;Fields,&#160;and&#160;Michael&#160;Levin.&#160;2015.&#160;“Long-Range&#160;Gap&#160;</p>
+<p style="position:absolute;top:837px;left:135px;white-space:nowrap" class="ft80">Junctional&#160;</p>
+<p style="position:absolute;top:837px;left:207px;white-space:nowrap" class="ft80">Signaling&#160;</p>
+<p style="position:absolute;top:837px;left:276px;white-space:nowrap" class="ft80">Controls&#160;</p>
+<p style="position:absolute;top:837px;left:341px;white-space:nowrap" class="ft80">Oncogene-Mediated&#160;</p>
+<p style="position:absolute;top:855px;left:135px;white-space:nowrap" class="ft80">Tumorigenesis&#160;in&#160;Xenopus&#160;Laevis&#160;Embryos.”&#160;<i>Biophysics</i>&#160;5:&#160;519.&#160;</p>
+<p style="position:absolute;top:873px;left:135px;white-space:nowrap" class="ft80">doi:10.3389/fphys.2014.00519.&#160;</p>
+<p style="position:absolute;top:891px;left:81px;white-space:nowrap" class="ft80">C.S.&#160;Hogea,&#160;B.T.&#160;Mur&#160;ay,&#160;and&#160;J.&#160;A.&#160;Sethian.&#160;n.d.&#160;“Simulating&#160;Complex&#160;Tumor&#160;</p>
+<p style="position:absolute;top:909px;left:135px;white-space:nowrap" class="ft80">Dynamics&#160;from&#160;Avascular&#160;to&#160;Vascular&#160;Growth&#160;Using&#160;a&#160;General&#160;</p>
+<p style="position:absolute;top:927px;left:135px;white-space:nowrap" class="ft80">Level&#160;Set&#160;Method.”&#160;<i>Journal&#160;of&#160;Mathmatical&#160;Biology</i>.&#160;</p>
+<p style="position:absolute;top:945px;left:81px;white-space:nowrap" class="ft80">Evans,&#160;Lawrence&#160;C.,&#160;and&#160;Joel&#160;Spruck.&#160;1991.&#160;“Motion&#160;of&#160;Level&#160;Sets&#160;by&#160;Mean&#160;</p>
+<p style="position:absolute;top:963px;left:135px;white-space:nowrap" class="ft80">Curvature.&#160;I.”&#160;<i>J.&#160;Diferential&#160;Geometry</i>&#160;33&#160;(3):&#160;635–81.&#160;</p>
+<p style="position:absolute;top:981px;left:81px;white-space:nowrap" class="ft80">Faber,&#160;Jacob,&#160;and&#160;Pieter&#160;D.&#160;Nieuwkoop.&#160;1967.&#160;<i>Normal&#160;Table&#160;of&#160;Xenopus&#160;</i></p>
+<p style="position:absolute;top:998px;left:135px;white-space:nowrap" class="ft81"><i>Laevis&#160;(Daudin) :&#160;A&#160;Systematical&#160;and&#160;Chronological&#160;Survey&#160;of&#160;the&#160;</i></p>
+<p style="position:absolute;top:1016px;left:135px;white-space:nowrap" class="ft81"><i>Development&#160;&#160;from&#160;&#160;the&#160;&#160;Fertilized&#160;&#160;Egg&#160;&#160;til&#160;&#160;the&#160;&#160;End&#160;&#160;of&#160;</i></p>
+<p style="position:absolute;top:1034px;left:135px;white-space:nowrap" class="ft81"><i>Metamorphosis</i>.&#160;2nd&#160;ed.&#160;Amsterdam :&#160;North-Holand&#160;Pub.&#160;Co.&#160;</p>
+<p style="position:absolute;top:81px;left:480px;white-space:nowrap" class="ft80">Friston,&#160;Karl,&#160;Michael&#160;Levin,&#160;Biswa&#160;Sengupta,&#160;and&#160;Giovanni&#160;Pezzulo.&#160;2015.&#160;</p>
+<p style="position:absolute;top:99px;left:534px;white-space:nowrap" class="ft80">“Knowing&#160;&#160;One’s&#160;&#160;Place:&#160;&#160;A&#160;&#160;Free-Energy&#160;&#160;Approach&#160;&#160;to&#160;&#160;Patern&#160;</p>
+<p style="position:absolute;top:117px;left:534px;white-space:nowrap" class="ft80">Regulation.”&#160;<i>Journal&#160;of&#160;The&#160;Royal&#160;Society&#160;Interface</i>&#160;12&#160;(105):&#160;</p>
+<p style="position:absolute;top:135px;left:534px;white-space:nowrap" class="ft80">20141383.&#160;doi:10.1098/rsif.2014.1383.&#160;</p>
+<p style="position:absolute;top:153px;left:480px;white-space:nowrap" class="ft80">King,&#160;&#160;Ryan&#160;&#160;S.,&#160;&#160;and&#160;&#160;Philip&#160;&#160;A.&#160;&#160;Newmark.&#160;&#160;2012.&#160;&#160;“The&#160;&#160;Cel&#160;&#160;Biology&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:171px;left:534px;white-space:nowrap" class="ft80">Regeneration.”&#160;<i>The&#160;Journal&#160;of&#160;Cel&#160;Biology</i>&#160;196&#160;(5):&#160;553–62.&#160;</p>
+<p style="position:absolute;top:189px;left:534px;white-space:nowrap" class="ft80">doi:10.1083/jcb.201105099.&#160;</p>
+<p style="position:absolute;top:207px;left:480px;white-space:nowrap" class="ft80">Kundu,&#160;Pijush&#160;K.,&#160;Ira&#160;M.&#160;Cohen,&#160;and&#160;David&#160;R.&#160;Dowling&#160;Ph.D.&#160;2011.&#160;<i>Fluid&#160;</i></p>
+<p style="position:absolute;top:225px;left:534px;white-space:nowrap" class="ft81"><i>Mechanics</i>.&#160;5th&#160;Edition.&#160;Academic&#160;Press.&#160;</p>
+<p style="position:absolute;top:243px;left:480px;white-space:nowrap" class="ft80">Lobo,&#160;&#160;Daniel,&#160;&#160;Wendy&#160;&#160;S.&#160;&#160;Beane,&#160;&#160;and&#160;&#160;Michael&#160;&#160;Levin.&#160;&#160;2012.&#160;&#160;“Modeling&#160;</p>
+<p style="position:absolute;top:261px;left:534px;white-space:nowrap" class="ft80">Planarian&#160;Regeneration:&#160;A&#160;Primer&#160;for&#160;Reverse-Engineering&#160;the&#160;</p>
+<p style="position:absolute;top:279px;left:534px;white-space:nowrap" class="ft80">Worm.”&#160;&#160;<i>PLoS&#160;&#160;Comput&#160;&#160;Biol</i>&#160;&#160;8&#160;&#160;(4):&#160;&#160;e1002481.&#160;</p>
+<p style="position:absolute;top:297px;left:534px;white-space:nowrap" class="ft80">doi:10.1371/journal.pcbi.1002481.&#160;</p>
+<p style="position:absolute;top:315px;left:480px;white-space:nowrap" class="ft80">Love,&#160;Nick&#160;R.,&#160;Yaoyao&#160;Chen,&#160;Shoko&#160;Ishibashi,&#160;Paraskevi&#160;Kritsiligkou,&#160;Robert&#160;</p>
+<p style="position:absolute;top:333px;left:534px;white-space:nowrap" class="ft80">Lea,&#160;Yvete&#160;Koh,&#160;Jennifer&#160;L.&#160;Galop,&#160;Karel&#160;Dorey,&#160;and&#160;Enrique&#160;</p>
+<p style="position:absolute;top:351px;left:534px;white-space:nowrap" class="ft80">Amaya.&#160;2013.&#160;“Amputation-Induced&#160;Reactive&#160;Oxygen&#160;Species&#160;</p>
+<p style="position:absolute;top:369px;left:534px;white-space:nowrap" class="ft80">Are&#160;&#160;Required&#160;&#160;for&#160;&#160;Successful&#160;&#160;Xenopus&#160;&#160;Tadpole&#160;&#160;Tail&#160;</p>
+<p style="position:absolute;top:387px;left:534px;white-space:nowrap" class="ft80">Regeneration.”&#160;&#160;<i>Nature&#160;&#160;Cel&#160;&#160;Biology</i>&#160;&#160;15&#160;&#160;(2):&#160;&#160;222–28.&#160;</p>
+<p style="position:absolute;top:405px;left:534px;white-space:nowrap" class="ft80">doi:10.1038/ncb2659.&#160;</p>
+<p style="position:absolute;top:423px;left:480px;white-space:nowrap" class="ft80">Osher,&#160;&#160;Stanley,&#160;&#160;and&#160;&#160;James&#160;&#160;A&#160;&#160;Sethian.&#160;&#160;1988.&#160;&#160;“Fronts&#160;&#160;Propagating&#160;&#160;with&#160;</p>
+<p style="position:absolute;top:441px;left:534px;white-space:nowrap" class="ft80">Curvature-Dependent&#160;Speed:&#160;Algorithms&#160;Based&#160;on&#160;Hamilton-</p>
+<p style="position:absolute;top:459px;left:534px;white-space:nowrap" class="ft80">Jacobi&#160;Formulations.”&#160;<i>Journal&#160;of&#160;Computational&#160;Physics</i>&#160;79&#160;(1):&#160;</p>
+<p style="position:absolute;top:477px;left:534px;white-space:nowrap" class="ft80">12–49.&#160;doi:10.1016/0021-9991(88)90002-2.&#160;</p>
+<p style="position:absolute;top:495px;left:480px;white-space:nowrap" class="ft80">Reid,&#160;Brian,&#160;Bing&#160;Song,&#160;and&#160;Min&#160;Zhao.&#160;2009.&#160;“Electric&#160;Cur&#160;ents&#160;in&#160;Xenopus&#160;</p>
+<p style="position:absolute;top:513px;left:534px;white-space:nowrap" class="ft80">Tadpole&#160;&#160;Tail&#160;&#160;Regeneration.”&#160;&#160;<i>Developmental&#160;&#160;Biology</i>&#160;&#160;335&#160;&#160;(1):&#160;</p>
+<p style="position:absolute;top:531px;left:534px;white-space:nowrap" class="ft80">198–207.&#160;doi:10.1016/j.ydbio.2009.08.028.&#160;</p>
+<p style="position:absolute;top:549px;left:480px;white-space:nowrap" class="ft80">Rejniak,&#160;&#160;Katarzyna&#160;&#160;A.,&#160;&#160;and&#160;&#160;Alexander&#160;&#160;R.&#160;&#160;A.&#160;&#160;Anderson.&#160;&#160;2011.&#160;&#160;“Hybrid&#160;</p>
+<p style="position:absolute;top:567px;left:534px;white-space:nowrap" class="ft80">Models&#160;&#160;of&#160;&#160;Tumor&#160;&#160;Growth.”&#160;&#160;<i>Wiley&#160;&#160;Interdisciplinary&#160;&#160;Reviews:&#160;</i></p>
+<p style="position:absolute;top:585px;left:534px;white-space:nowrap" class="ft81"><i>Systems&#160;&#160;Biology&#160;&#160;and&#160;&#160;Medicine</i>&#160;&#160;3&#160;&#160;(1):&#160;&#160;115–25.&#160;</p>
+<p style="position:absolute;top:603px;left:534px;white-space:nowrap" class="ft80">doi:10.1002/wsbm.102.&#160;</p>
+<p style="position:absolute;top:621px;left:480px;white-space:nowrap" class="ft80">Sethian,&#160;&#160;J.&#160;&#160;A.&#160;&#160;1985.&#160;&#160;“Curvature&#160;&#160;and&#160;&#160;the&#160;&#160;Evolution&#160;&#160;of&#160;&#160;Fronts.”&#160;</p>
+<p style="position:absolute;top:639px;left:534px;white-space:nowrap" class="ft81"><i>Communications&#160;&#160;in&#160;&#160;Mathematical&#160;&#160;Physics</i>&#160;&#160;101&#160;&#160;(4):&#160;&#160;487–99.&#160;</p>
+<p style="position:absolute;top:657px;left:534px;white-space:nowrap" class="ft80">doi:10.1007/BF01210742.&#160;</p>
+<p style="position:absolute;top:675px;left:480px;white-space:nowrap" class="ft80">Sethian,&#160;J.A.&#160;n.d.&#160;<i>Level&#160;Set&#160;Methods:&#160;Evolving&#160;Interfaces&#160;in&#160;Geometry,&#160;Fluid&#160;</i></p>
+<p style="position:absolute;top:693px;left:534px;white-space:nowrap" class="ft81"><i>Mechanics,&#160;Computer&#160;Vision,&#160;and&#160;Materials&#160;Science</i>.&#160;Cambridge&#160;</p>
+<p style="position:absolute;top:711px;left:534px;white-space:nowrap" class="ft80">Monographs&#160;on&#160;Applied&#160;and&#160;Computational&#160;Mathematics.&#160;</p>
+<p style="position:absolute;top:729px;left:480px;white-space:nowrap" class="ft80">Sethian,&#160;James.&#160;1984.&#160;“Turbulent&#160;Combustion&#160;in&#160;Open&#160;and&#160;Closed&#160;Vessels.”&#160;</p>
+<p style="position:absolute;top:747px;left:534px;white-space:nowrap" class="ft81"><i>Journal&#160;&#160;of&#160;&#160;Computational&#160;&#160;Physics</i>&#160;&#160;54&#160;&#160;(3):&#160;&#160;425–56.&#160;</p>
+<p style="position:absolute;top:765px;left:534px;white-space:nowrap" class="ft80">doi:10.1016/0021-9991(84)90126-8.&#160;</p>
+<p style="position:absolute;top:783px;left:480px;white-space:nowrap" class="ft80">Suzuki,&#160;Makoto,&#160;Nayuta&#160;Yakushiji,&#160;Yasuaki&#160;Nakada,&#160;Akira&#160;Satoh,&#160;Hiroyuki&#160;</p>
+<p style="position:absolute;top:801px;left:534px;white-space:nowrap" class="ft80">Ide,&#160;and&#160;Koji&#160;Tamura.&#160;2006.&#160;“Limb&#160;Regeneration&#160;in&#160;<i>Xenopus&#160;</i></p>
+<p style="position:absolute;top:819px;left:534px;white-space:nowrap" class="ft81"><i>Laevis</i>&#160;&#160;Froglet.”&#160;&#160;<i>The&#160;&#160;Scientific&#160;&#160;World&#160;&#160;Journal</i>&#160;&#160;6:&#160;&#160;26–37.&#160;</p>
+<p style="position:absolute;top:837px;left:534px;white-space:nowrap" class="ft80">doi:10.1100/tsw.2006.325.&#160;</p>
+<p style="position:absolute;top:855px;left:480px;white-space:nowrap" class="ft80">Walker,&#160;D.C.,&#160;G.&#160;Hil,&#160;S.M.&#160;Wood,&#160;R.H.&#160;Smalwood,&#160;and&#160;J.&#160;Southgate.&#160;2004.&#160;</p>
+<p style="position:absolute;top:873px;left:534px;white-space:nowrap" class="ft80">“Agent-Based&#160;Computational&#160;Modeling&#160;of&#160;Wounded&#160;Epithelial&#160;</p>
+<p style="position:absolute;top:891px;left:534px;white-space:nowrap" class="ft80">Cel&#160;Monolayers.”&#160;<i>IEEE&#160;Transactions&#160;on&#160;NanoBioscience</i>&#160;3&#160;(3):&#160;</p>
+<p style="position:absolute;top:909px;left:534px;white-space:nowrap" class="ft80">153–63.&#160;doi:10.1109/TNB.2004.833680.&#160;</p>
+<p style="position:absolute;top:927px;left:480px;white-space:nowrap" class="ft80">Zhang,&#160;&#160;Ying,&#160;&#160;and&#160;&#160;Michael&#160;&#160;Levin.&#160;&#160;2009.&#160;&#160;“Particle&#160;&#160;Tracking&#160;&#160;Model&#160;&#160;of&#160;</p>
+<p style="position:absolute;top:945px;left:534px;white-space:nowrap" class="ft80">Electrophoretic&#160;&#160;Morphogen&#160;&#160;Movement&#160;&#160;Reveals&#160;&#160;Stochastic&#160;</p>
+<p style="position:absolute;top:963px;left:534px;white-space:nowrap" class="ft80">Dynamics&#160;of&#160;Embryonic&#160;Gradient.”&#160;<i>Developmental&#160;Dynamics</i>,&#160;</p>
+<p style="position:absolute;top:981px;left:534px;white-space:nowrap" class="ft80">no.&#160;238:&#160;1923–35.&#160;</p>
+<p style="position:absolute;top:998px;left:480px;white-space:nowrap" class="ft80">&#160;</p>
+<p style="position:absolute;top:1093px;left:448px;white-space:nowrap" class="ft80">535</p>
+</div>
+</body>
+</html>

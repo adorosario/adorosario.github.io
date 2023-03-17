@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>7811230fb87b3ee80abb13366ace60b5-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:19px;font-family:Times;color:#000000;}
+	.ft11{font-size:15px;font-family:Times;color:#000000;}
+	.ft12{font-size:9px;font-family:Times;color:#000000;}
+	.ft13{font-size:8px;font-family:Times;color:#000000;}
+	.ft14{font-size:12px;font-family:Times;color:#000000;}
+	.ft15{font-size:11px;font-family:Times;color:#000000;}
+	.ft16{font-size:12px;font-family:Times;color:#000000;}
+	.ft17{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft18{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:148px;left:260px;white-space:nowrap" class="ft10">Pattern&#160;Regeneration&#160;in&#160;Coupled&#160;Networks</p>
+<p style="position:absolute;top:196px;left:259px;white-space:nowrap" class="ft11">Douglas&#160;G.&#160;Moore1,&#160;Sara&#160;I.&#160;Walker1&#160;and&#160;Michael&#160;Levin2</p>
+<p style="position:absolute;top:232px;left:275px;white-space:nowrap" class="ft13">1BEYOND&#160;Center,&#160;Arizona&#160;State&#160;University,&#160;Tempe,&#160;AZ&#160;85281</p>
+<p style="position:absolute;top:250px;left:275px;white-space:nowrap" class="ft13">2Allen&#160;Discovery&#160;Center,&#160;Tufts&#160;University,&#160;Medford,&#160;MA&#160;02155</p>
+<p style="position:absolute;top:270px;left:387px;white-space:nowrap" class="ft14">douglas.g.moore@asu.edu</p>
+<p style="position:absolute;top:329px;left:232px;white-space:nowrap" class="ft14">Abstract</p>
+<p style="position:absolute;top:362px;left:96px;white-space:nowrap" class="ft17">Many&#160;organisms&#160;such&#160;as&#160;planaria,&#160;axolotls&#160;and&#160;deer&#160;exhibit<br/>prodigious&#160;regenerative&#160;abilities,&#160;being&#160;capable&#160;of&#160;regenerat-<br/>ing&#160;complex&#160;organs&#160;or&#160;entire&#160;body&#160;plans.&#160;An&#160;understanding<br/>of&#160;how&#160;these&#160;organisms&#160;store&#160;and&#160;modify&#160;their&#160;morphological<br/>patterning&#160;information&#160;is&#160;necessary&#160;to&#160;identify&#160;modes&#160;of&#160;con-<br/>trol&#160;and&#160;intervention.&#160;Insight&#160;into&#160;this&#160;process&#160;is&#160;key&#160;to&#160;the<br/>development&#160;of&#160;novel&#160;biomedical&#160;applications.&#160;In&#160;this&#160;work,<br/>we&#160;present&#160;the&#160;CANN(k)&#160;model:&#160;an&#160;abstract&#160;computational<br/>model&#160;of&#160;pattern&#160;regeneration&#160;which&#160;couples&#160;an&#160;artificial&#160;neu-<br/>ral&#160;network&#160;(ANN)&#160;with&#160;a&#160;k-color&#160;cellular&#160;automaton&#160;(CA).<br/>The&#160;ANN&#160;provides&#160;a&#160;global&#160;information&#160;processing&#160;system<br/>which&#160;generates&#160;state-dependent&#160;update&#160;rules&#160;for&#160;the&#160;CA.&#160;The<br/>CANN(k)&#160;models&#160;are&#160;constructed&#160;to&#160;generate&#160;target&#160;patterns<br/>which&#160;are&#160;stable&#160;under&#160;perturbations&#160;of&#160;the&#160;pattern.&#160;We&#160;gen-<br/>erate&#160;ensembles&#160;of&#160;CANN(4)&#160;models&#160;for&#160;each&#160;of&#160;the&#160;4-color<br/>patterns,&#160;assess&#160;their&#160;sensitivity&#160;to&#160;changes&#160;of&#160;the&#160;ANN&#160;struc-<br/>ture.&#160;This&#160;provides&#160;a&#160;novel&#160;model&#160;for&#160;understanding&#160;the&#160;im-<br/>portant&#160;biological&#160;phenomenon&#160;of&#160;neural&#160;control&#160;of&#160;cellular<br/>morphogenesis&#160;in&#160;development&#160;or&#160;regeneration.</p>
+<p style="position:absolute;top:677px;left:211px;white-space:nowrap" class="ft11">Introduction</p>
+<p style="position:absolute;top:702px;left:81px;white-space:nowrap" class="ft18">Many&#160;animals&#160;are&#160;capable&#160;of&#160;regenerating&#160;complex&#160;struc-<br/>tures&#160;after&#160;amputation&#160;(Birnbaum&#160;and&#160;S´anchez&#160;Alvarado,<br/>2008).&#160;For&#160;example,&#160;planaria&#160;can&#160;regenerate&#160;their&#160;entire<br/>body&#160;from&#160;a&#160;fragment&#160;as&#160;small&#160;as&#160;1</p>
+<p style="position:absolute;top:755px;left:295px;white-space:nowrap" class="ft14">/279&#160;of&#160;the&#160;original&#160;an-</p>
+<p style="position:absolute;top:774px;left:81px;white-space:nowrap" class="ft18">imal&#160;(Handberg-Thorsager&#160;et&#160;al.,&#160;2008).&#160;Control&#160;of&#160;cellular<br/>activity&#160;toward&#160;the&#160;creation&#160;and&#160;repair&#160;of&#160;complex&#160;anatom-<br/>ical&#160;patterns&#160;is&#160;a&#160;central&#160;aspect&#160;of&#160;evolutionary&#160;biology&#160;as<br/>well&#160;as&#160;birth&#160;defects,&#160;traumatic&#160;injury&#160;and&#160;cancer.&#160;The&#160;abil-<br/>ity&#160;to&#160;intervene&#160;upon&#160;and&#160;effectively&#160;control&#160;these&#160;processes<br/>is&#160;key&#160;to&#160;developing&#160;novel&#160;biomedical&#160;applications&#160;(Baddour<br/>et&#160;al.,&#160;2012;&#160;Levin,&#160;2011).&#160;Modes&#160;of&#160;control&#160;over&#160;the&#160;process<br/>of&#160;large-scale,&#160;complex&#160;homeostasis&#160;are&#160;still&#160;lacking,&#160;despite<br/>significant&#160;development&#160;in&#160;our&#160;understanding&#160;of&#160;the&#160;molec-<br/>ular&#160;mechanisms&#160;necessary&#160;for&#160;these&#160;processes&#160;(Stocum&#160;and<br/>Cameron,&#160;2011).&#160;Specifically,&#160;while&#160;it&#160;is&#160;known&#160;that&#160;the&#160;ner-<br/>vous&#160;system&#160;can&#160;guide&#160;complex&#160;morphogenesis&#160;(Herrera-<br/>Rincon&#160;et&#160;al.,&#160;2017),&#160;the&#160;control&#160;dynamics&#160;of&#160;this&#160;process<br/>are&#160;very&#160;poorly&#160;understood.&#160;An&#160;important&#160;open&#160;question&#160;is<br/>whether&#160;regenerative&#160;processes&#160;require&#160;large-scale&#160;informa-<br/>tion&#160;about&#160;the&#160;current&#160;state&#160;of&#160;the&#160;organism,&#160;or&#160;if&#160;information</p>
+<p style="position:absolute;top:329px;left:479px;white-space:nowrap" class="ft18">local&#160;to&#160;each&#160;cell&#160;or&#160;tissue&#160;is&#160;sufficient.&#160;The&#160;answer&#160;to&#160;this<br/>question&#160;will&#160;suggest&#160;the&#160;ideal&#160;level&#160;and&#160;method&#160;of&#160;interven-<br/>tion&#160;necessary&#160;to&#160;control&#160;regenerative&#160;processes.</p>
+<p style="position:absolute;top:383px;left:494px;white-space:nowrap" class="ft14">This&#160;work&#160;presents&#160;an&#160;abstract&#160;model&#160;of&#160;pattern&#160;regener-</p>
+<p style="position:absolute;top:401px;left:479px;white-space:nowrap" class="ft18">ation&#160;that&#160;combines&#160;both&#160;global&#160;information&#160;processing&#160;and<br/>local&#160;update&#160;rules&#160;to&#160;generate&#160;stable&#160;target&#160;patterns.</p>
+<p style="position:absolute;top:454px;left:578px;white-space:nowrap" class="ft11">Methods&#160;and&#160;Results</p>
+<p style="position:absolute;top:481px;left:479px;white-space:nowrap" class="ft18">The&#160;model&#160;of&#160;pattern&#160;regeneration&#160;considered&#160;here,&#160;referred<br/>to&#160;as&#160;a&#160;CANN(</p>
+<p style="position:absolute;top:498px;left:567px;white-space:nowrap" class="ft14">k)&#160;model,&#160;is&#160;composed&#160;of&#160;two&#160;parts:&#160;a&#160;k-color</p>
+<p style="position:absolute;top:517px;left:479px;white-space:nowrap" class="ft18">cellular&#160;automaton&#160;(CA),&#160;and&#160;a&#160;feed-forward&#160;artificial&#160;neu-<br/>ral&#160;network&#160;(ANN).&#160;The</p>
+<p style="position:absolute;top:534px;left:635px;white-space:nowrap" class="ft14">k-color&#160;CA&#160;is&#160;a&#160;one-dimensional</p>
+<p style="position:absolute;top:552px;left:479px;white-space:nowrap" class="ft14">array&#160;of&#160;cells,&#160;each&#160;of&#160;which&#160;can&#160;be&#160;in&#160;one&#160;of</p>
+<p style="position:absolute;top:552px;left:745px;white-space:nowrap" class="ft14">k&#160;states&#160;(or&#160;col-</p>
+<p style="position:absolute;top:570px;left:479px;white-space:nowrap" class="ft18">ors).&#160;The&#160;state&#160;of&#160;each&#160;cell&#160;is&#160;updated&#160;according&#160;to&#160;a&#160;nearest-<br/>neighbor&#160;rule&#160;with&#160;the&#160;same&#160;rule&#160;applied&#160;to&#160;each&#160;cell&#160;concur-<br/>rently.&#160;Traditionally,&#160;a&#160;fixed&#160;rule&#160;is&#160;applied&#160;at&#160;each&#160;time&#160;step,<br/>and&#160;the&#160;process&#160;is&#160;iterated&#160;to&#160;generate&#160;a&#160;<i>trajectory&#160;</i>of&#160;states<br/>that&#160;terminates&#160;in&#160;an&#160;attractor&#160;cycle,&#160;a&#160;sequence&#160;of&#160;states&#160;that<br/>repeats&#160;indefinitely.&#160;The&#160;distinguishing&#160;characteristic&#160;of&#160;a<br/>CANN(</p>
+<p style="position:absolute;top:677px;left:527px;white-space:nowrap" class="ft14">k)&#160;model&#160;is&#160;that&#160;the&#160;rule&#160;used&#160;at&#160;each&#160;time&#160;step&#160;is&#160;not</p>
+<p style="position:absolute;top:696px;left:479px;white-space:nowrap" class="ft18">fixed.&#160;Instead,&#160;the&#160;state&#160;of&#160;the&#160;CA&#160;is&#160;provided&#160;as&#160;input&#160;to<br/>the&#160;CANN(</p>
+<p style="position:absolute;top:713px;left:550px;white-space:nowrap" class="ft14">k)’s&#160;ANN&#160;which&#160;outputs&#160;the&#160;CA&#160;update&#160;rule&#160;to</p>
+<p style="position:absolute;top:732px;left:479px;white-space:nowrap" class="ft18">use&#160;at&#160;the&#160;current&#160;time&#160;step.&#160;Another&#160;important&#160;choice&#160;for<br/>these&#160;lattice-type&#160;models&#160;is&#160;the&#160;boundary&#160;conditions&#160;for&#160;the<br/>ends&#160;of&#160;the&#160;CA&#160;lattice.&#160;Here&#160;we&#160;employ&#160;a&#160;fixed,&#160;open&#160;bound-<br/>ary&#160;condition&#160;where&#160;each&#160;boundary&#160;cell&#160;uses&#160;an&#160;unchanging<br/>“white”&#160;cell&#160;for&#160;its&#160;missing&#160;neighbor’s&#160;state.&#160;See&#160;Figure&#160;1a<br/>for&#160;a&#160;schematic&#160;representation&#160;of&#160;a&#160;CANN(</p>
+<p style="position:absolute;top:821px;left:737px;white-space:nowrap" class="ft14">k)&#160;model.</p>
+<p style="position:absolute;top:840px;left:494px;white-space:nowrap" class="ft14">The&#160;objective&#160;is&#160;to&#160;better&#160;understand&#160;how&#160;morphological</p>
+<p style="position:absolute;top:858px;left:479px;white-space:nowrap" class="ft18">patterns&#160;can&#160;be&#160;faithfully&#160;regenerated&#160;when&#160;the&#160;pattern&#160;is<br/>perturbed.&#160;We&#160;say&#160;that&#160;the&#160;pattern,&#160;or&#160;particular&#160;sequence&#160;of<br/>colored&#160;CA&#160;states,&#160;regenerates&#160;if&#160;it&#160;is&#160;recovered&#160;as&#160;a&#160;fixed-<br/>point&#160;attractor&#160;under&#160;the&#160;model’s&#160;dynamics.&#160;If&#160;the&#160;pattern&#160;is<br/>perturbed,&#160;will&#160;the&#160;system&#160;ultimately&#160;return&#160;to&#160;and&#160;retain&#160;the<br/>desired&#160;pattern?&#160;In&#160;particular,&#160;given&#160;a&#160;desired&#160;target&#160;pattern<br/>and&#160;a&#160;set&#160;of&#160;perturbations,&#160;we&#160;wish&#160;to&#160;construct&#160;and&#160;analyze<br/>a&#160;CANN(</p>
+<p style="position:absolute;top:983px;left:537px;white-space:nowrap" class="ft14">k)&#160;model&#160;with&#160;the&#160;following&#160;three&#160;properties:</p>
+<p style="position:absolute;top:1007px;left:476px;white-space:nowrap" class="ft18">1.&#160;The&#160;target&#160;pattern&#160;is&#160;a&#160;fixed-point&#160;attractor&#160;of&#160;the&#160;dynamic.<br/>2.&#160;Every&#160;admissible&#160;perturbation&#160;of&#160;the&#160;target&#160;pattern&#160;ulti-</p>
+<p style="position:absolute;top:1043px;left:494px;white-space:nowrap" class="ft14">mately&#160;converges&#160;to&#160;that&#160;target&#160;pattern.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>7811230fb87b3ee80abb13366ace60b5-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:11px;font-family:Times;color:#000000;}
+	.ft23{font-size:6px;font-family:Times;color:#000000;}
+	.ft24{font-size:15px;font-family:Times;color:#000000;}
+	.ft25{font-size:11px;font-family:Times;color:#000000;}
+	.ft26{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft27{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft28{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft29{font-size:11px;line-height:15px;font-family:Times;color:#000000;}
+	.ft210{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:86px;left:77px;white-space:nowrap" class="ft20">3.&#160;No&#160;cell&#160;that&#160;is&#160;colored&#160;becomes&#160;white&#160;in&#160;the&#160;next&#160;time&#160;step</p>
+<p style="position:absolute;top:104px;left:96px;white-space:nowrap" class="ft20">along&#160;any&#160;of&#160;the&#160;perturbed&#160;trajectories.</p>
+<p style="position:absolute;top:128px;left:81px;white-space:nowrap" class="ft26">We&#160;employed&#160;a&#160;simulated&#160;annealing&#160;(SA)&#160;algorithm&#160;(Kirk-<br/>patrick&#160;et&#160;al.,&#160;1983)&#160;to&#160;construct&#160;CANN(</p>
+<p style="position:absolute;top:145px;left:334px;white-space:nowrap" class="ft20">k)&#160;models&#160;which</p>
+<p style="position:absolute;top:164px;left:81px;white-space:nowrap" class="ft26">satisfy&#160;all&#160;three&#160;criteria.&#160;The&#160;decision&#160;to&#160;employ&#160;SA&#160;for<br/>training&#160;was&#160;based&#160;primarily&#160;on&#160;the&#160;constraint-based&#160;spec-<br/>ification&#160;of&#160;the&#160;problem.&#160;A&#160;deterministic&#160;algorithm,&#160;such<br/>as&#160;back-propagation,&#160;is&#160;ill-suited&#160;here&#160;as&#160;we&#160;are&#160;primarily<br/>interested&#160;in&#160;the&#160;final&#160;pattern&#160;generated&#160;rather&#160;than&#160;the&#160;par-<br/>ticular&#160;sequence&#160;of&#160;states&#160;in&#160;the&#160;time&#160;series,&#160;and&#160;we&#160;do&#160;no<br/>have&#160;a&#160;well-defined&#160;training&#160;set.&#160;One&#160;advantage&#160;of&#160;the&#160;SA<br/>approach&#160;is&#160;each&#160;model&#160;is&#160;endowed&#160;with&#160;an&#160;<i>energy&#160;</i>which<br/>quantifies&#160;how&#160;well&#160;it&#160;solves&#160;the&#160;problem&#160;at&#160;hand.&#160;This&#160;pro-<br/>vides&#160;a&#160;way&#160;of&#160;quantifying&#160;the&#160;difference&#160;in&#160;effectiveness<br/>between&#160;two&#160;models.&#160;This&#160;energy&#160;is,&#160;in&#160;our&#160;case,&#160;defined&#160;in<br/>terms&#160;of&#160;three&#160;factors&#160;which&#160;mirror&#160;the&#160;constraints&#160;above:</p>
+<p style="position:absolute;top:386px;left:77px;white-space:nowrap" class="ft20">1.</p>
+<p style="position:absolute;top:385px;left:96px;white-space:nowrap" class="ft27">δ&#160;is&#160;the&#160;fraction&#160;of&#160;cells&#160;of&#160;the&#160;target&#160;pattern&#160;that&#160;are&#160;not<br/>fixed&#160;by&#160;the&#160;CANN(</p>
+<p style="position:absolute;top:403px;left:217px;white-space:nowrap" class="ft20">k)&#160;update&#160;rule.</p>
+<p style="position:absolute;top:422px;left:77px;white-space:nowrap" class="ft20">2.</p>
+<p style="position:absolute;top:421px;left:96px;white-space:nowrap" class="ft27">κ&#160;is&#160;the&#160;fraction&#160;of&#160;observed&#160;states&#160;that&#160;do&#160;not&#160;transition<br/>into&#160;the&#160;target&#160;state&#160;after&#160;some&#160;number&#160;of&#160;time&#160;steps.</p>
+<p style="position:absolute;top:458px;left:77px;white-space:nowrap" class="ft20">3.</p>
+<p style="position:absolute;top:457px;left:96px;white-space:nowrap" class="ft27">τ&#160;is&#160;the&#160;fraction&#160;of&#160;observed&#160;states&#160;which&#160;introduce&#160;new<br/>white&#160;cells.</p>
+<p style="position:absolute;top:501px;left:81px;white-space:nowrap" class="ft20">We&#160;then&#160;define&#160;the&#160;energy&#160;as</p>
+<p style="position:absolute;top:525px;left:200px;white-space:nowrap" class="ft20">E&#160;=&#160;αδ&#160;+&#160;βκ&#160;+&#160;γτ</p>
+<p style="position:absolute;top:526px;left:421px;white-space:nowrap" class="ft20">(1)</p>
+<p style="position:absolute;top:551px;left:81px;white-space:nowrap" class="ft20">with&#160;0&#160;≤</p>
+<p style="position:absolute;top:551px;left:143px;white-space:nowrap" class="ft20">α,&#160;β,&#160;γ&#160;≤&#160;1&#160;and&#160;δ&#160;+&#160;κ&#160;+&#160;γ&#160;=&#160;1.&#160;For&#160;this&#160;work,</p>
+<p style="position:absolute;top:569px;left:81px;white-space:nowrap" class="ft20">we&#160;chose</p>
+<p style="position:absolute;top:568px;left:143px;white-space:nowrap" class="ft20">α&#160;=&#160;β&#160;=&#160;4/9,&#160;and&#160;γ&#160;=&#160;1/9,&#160;though&#160;these&#160;can</p>
+<p style="position:absolute;top:587px;left:81px;white-space:nowrap" class="ft26">be&#160;adjusted&#160;freely.&#160;There&#160;is&#160;no&#160;strict&#160;guarantee&#160;that&#160;the&#160;SA<br/>algorithm&#160;will&#160;find&#160;a&#160;solution;&#160;however,&#160;the&#160;energy&#160;in&#160;eq.&#160;(1)<br/>ensures&#160;that&#160;the&#160;degenerate&#160;global&#160;minimum&#160;satisfies&#160;our&#160;de-<br/>sired&#160;heuristic&#160;properties.</p>
+<p style="position:absolute;top:661px;left:96px;white-space:nowrap" class="ft20">We&#160;generated&#160;ensembles&#160;of&#160;100&#160;CANN(4)&#160;models&#160;for</p>
+<p style="position:absolute;top:679px;left:81px;white-space:nowrap" class="ft20">each&#160;of&#160;the&#160;729&#160;possible&#160;6&#160;cell,&#160;4-color&#160;(&#160;,</p>
+<p style="position:absolute;top:679px;left:367px;white-space:nowrap" class="ft20">,</p>
+<p style="position:absolute;top:679px;left:394px;white-space:nowrap" class="ft20">and</p>
+<p style="position:absolute;top:679px;left:434px;white-space:nowrap" class="ft20">)</p>
+<p style="position:absolute;top:697px;left:81px;white-space:nowrap" class="ft26">target&#160;patterns&#160;with&#160;no&#160;white&#160;cells.&#160;We&#160;limited&#160;the&#160;set&#160;of&#160;pat-<br/>tern&#160;perturbations&#160;which&#160;must&#160;converge&#160;to&#160;the&#160;target&#160;pattern<br/>to&#160;<i>amputations&#160;</i>of&#160;the&#160;desired&#160;pattern.&#160;An&#160;amputation&#160;is&#160;the<br/>removal&#160;of&#160;a&#160;contiguous&#160;region&#160;from&#160;either&#160;end&#160;of&#160;the&#160;target<br/>pattern,&#160;i.e.&#160;setting&#160;cells&#160;on&#160;either&#160;end&#160;of&#160;the&#160;array&#160;to&#160;white.<br/>This&#160;limited&#160;type&#160;of&#160;perturbation&#160;roughly&#160;models&#160;a&#160;common<br/>type&#160;of&#160;intervention&#160;biologists&#160;perform,&#160;and&#160;from&#160;which&#160;re-<br/>generative&#160;organisms&#160;should&#160;recover.&#160;An&#160;example&#160;of&#160;an&#160;am-<br/>putation&#160;and&#160;regeneration&#160;process&#160;is&#160;depicted&#160;in&#160;Figure&#160;1b.</p>
+<p style="position:absolute;top:861px;left:96px;white-space:nowrap" class="ft20">We&#160;then&#160;assessed&#160;the&#160;sensitivity&#160;of&#160;the&#160;resulting&#160;CANN(4)</p>
+<p style="position:absolute;top:879px;left:81px;white-space:nowrap" class="ft26">models&#160;to&#160;small&#160;perturbations&#160;<i>of&#160;the&#160;underlying&#160;ANN</i>.&#160;This&#160;is<br/>defined&#160;as&#160;the&#160;average&#160;change&#160;in&#160;energy&#160;of&#160;the&#160;model&#160;when<br/>either&#160;one&#160;weight&#160;or&#160;one&#160;threshold&#160;of&#160;the&#160;ANN&#160;is&#160;modified,<br/>and&#160;is&#160;distinct&#160;from&#160;the&#160;types&#160;of&#160;perturbations&#160;applied&#160;to&#160;the<br/>CA&#160;state&#160;discussed&#160;above.&#160;We&#160;find&#160;that&#160;6-cell&#160;CANN(4)<br/>models&#160;exhibit&#160;an&#160;average&#160;sensitivity&#160;of&#160;0</p>
+<p style="position:absolute;top:968px;left:327px;white-space:nowrap" class="ft20">.020&#160;±&#160;0.009.&#160;This</p>
+<p style="position:absolute;top:987px;left:81px;white-space:nowrap" class="ft26">suggests&#160;that&#160;the&#160;target&#160;pattern&#160;remains&#160;a&#160;fixed-point&#160;under<br/>small&#160;perturbations&#160;of&#160;the&#160;ANN,&#160;but&#160;that&#160;the&#160;system&#160;looses<br/>the&#160;ability&#160;to&#160;properly&#160;regenerate&#160;from&#160;all&#160;amputations.</p>
+<p style="position:absolute;top:1043px;left:96px;white-space:nowrap" class="ft20">Subsequent&#160;work&#160;will&#160;include&#160;improving&#160;the&#160;training&#160;al-</p>
+<p style="position:absolute;top:220px;left:557px;white-space:nowrap" class="ft22">(a)&#160;A&#160;CANN&#160;Model</p>
+<p style="position:absolute;top:220px;left:709px;white-space:nowrap" class="ft22">(b)&#160;Trajectory</p>
+<p style="position:absolute;top:250px;left:479px;white-space:nowrap" class="ft28">Figure&#160;1:&#160;(a)&#160;A&#160;3-cell&#160;CANN(k)&#160;model&#160;consists&#160;of&#160;a&#160;cellular&#160;au-<br/>tomaton&#160;(CA)&#160;and&#160;a&#160;feed-forward,&#160;artificial&#160;neural&#160;network.&#160;(i.)&#160;At<br/>each&#160;time&#160;step,&#160;the&#160;state&#160;of&#160;the&#160;CA&#160;is&#160;provided&#160;as&#160;input&#160;into&#160;the<br/>ANN.&#160;(ii.)&#160;The&#160;ANN&#160;processes&#160;that&#160;input&#160;and&#160;generates&#160;k</p>
+<p style="position:absolute;top:293px;left:788px;white-space:nowrap" class="ft23">3&#160;outputs</p>
+<p style="position:absolute;top:310px;left:479px;white-space:nowrap" class="ft22">with&#160;values</p>
+<p style="position:absolute;top:309px;left:545px;white-space:nowrap" class="ft22">{0,&#160;.&#160;.&#160;.&#160;,&#160;k&#160;−&#160;1}.&#160;(iii.)&#160;The&#160;outputs&#160;are&#160;assembled&#160;into</p>
+<p style="position:absolute;top:325px;left:479px;white-space:nowrap" class="ft28">a&#160;CA&#160;rule&#160;and&#160;(iv.)&#160;used&#160;to&#160;update&#160;the&#160;state&#160;of&#160;the&#160;CA.&#160;(b)&#160;An&#160;Ex-<br/>ample&#160;6-cell&#160;CANN(4)&#160;Trajectory.&#160;The&#160;top-most&#160;row&#160;represents<br/>an&#160;extreme&#160;amputation&#160;(setting&#160;colored&#160;cells&#160;to&#160;white)&#160;of&#160;the&#160;target<br/>pattern&#160;(bottom&#160;row).&#160;Each&#160;row&#160;from&#160;top&#160;to&#160;bottom&#160;represents&#160;suc-<br/>cessive&#160;updates&#160;of&#160;the&#160;state&#160;according&#160;to&#160;the&#160;underlying&#160;CANN(4)<br/>model.&#160;The&#160;final&#160;row&#160;is&#160;the&#160;fully&#160;regenerated,&#160;stable&#160;target&#160;pattern.</p>
+<p style="position:absolute;top:424px;left:479px;white-space:nowrap" class="ft26">gorithms,&#160;either&#160;by&#160;choosing&#160;an&#160;alternative&#160;approach&#160;or<br/>modifying&#160;the&#160;constraint-based&#160;energy&#160;function,&#160;assessing<br/>the&#160;scalability&#160;of&#160;this&#160;approach,&#160;and&#160;performing&#160;a&#160;detailed<br/>sensitivity&#160;analyses&#160;of&#160;generalized&#160;models.</p>
+<p style="position:absolute;top:509px;left:584px;white-space:nowrap" class="ft24">Acknowledgements</p>
+<p style="position:absolute;top:533px;left:479px;white-space:nowrap" class="ft26">This&#160;work&#160;was&#160;supported&#160;by&#160;the&#160;Templeton&#160;Foundation<br/>(TWCF0089/AB55&#160;and&#160;TWCF0140).&#160;M.L.&#160;gratefully&#160;ac-<br/>knowledges&#160;support&#160;by&#160;the&#160;Allen&#160;Discovery&#160;Center&#160;program<br/>through&#160;The&#160;Paul&#160;G.&#160;Allen&#160;Frontiers&#160;Group&#160;(12171).</p>
+<p style="position:absolute;top:617px;left:616px;white-space:nowrap" class="ft24">References</p>
+<p style="position:absolute;top:638px;left:479px;white-space:nowrap" class="ft22">Baddour,&#160;J.&#160;A.,&#160;Sousounis,&#160;K.,&#160;and&#160;Tsonis,&#160;P.&#160;A.&#160;(2012).&#160;Organ</p>
+<p style="position:absolute;top:653px;left:509px;white-space:nowrap" class="ft29">repair&#160;and&#160;regeneration:&#160;an&#160;overview.&#160;<i>Birth&#160;defects&#160;research.<br/>Part&#160;C,&#160;Embryo&#160;today:&#160;reviews</i></p>
+<p style="position:absolute;top:668px;left:676px;white-space:nowrap" class="ft22">,&#160;96(1):1–29.</p>
+<p style="position:absolute;top:694px;left:479px;white-space:nowrap" class="ft22">Birnbaum,&#160;K.&#160;D.&#160;and&#160;S´anchez&#160;Alvarado,&#160;A.&#160;(2008).</p>
+<p style="position:absolute;top:694px;left:799px;white-space:nowrap" class="ft22">Slicing</p>
+<p style="position:absolute;top:709px;left:509px;white-space:nowrap" class="ft28">across&#160;kingdoms:&#160;regeneration&#160;in&#160;plants&#160;and&#160;animals.&#160;<i>Cell</i>,<br/>132(4):697–710.</p>
+<p style="position:absolute;top:749px;left:479px;white-space:nowrap" class="ft22">Handberg-Thorsager,&#160;M.,&#160;Fernandez,&#160;E.,&#160;and&#160;Salo,&#160;E.&#160;(2008).&#160;Stem</p>
+<p style="position:absolute;top:764px;left:509px;white-space:nowrap" class="ft29">cells&#160;and&#160;regeneration&#160;in&#160;planarians.&#160;<i>Frontiers&#160;in&#160;bioscience:<br/>a&#160;journal&#160;and&#160;virtual&#160;library</i></p>
+<p style="position:absolute;top:779px;left:662px;white-space:nowrap" class="ft22">,&#160;13:6374–6394.</p>
+<p style="position:absolute;top:804px;left:479px;white-space:nowrap" class="ft22">Herrera-Rincon,&#160;C.,&#160;Pai,&#160;V.&#160;P.,&#160;Moran,&#160;K.&#160;M.,&#160;Lemire,&#160;J.&#160;M.,&#160;and</p>
+<p style="position:absolute;top:819px;left:509px;white-space:nowrap" class="ft29">Levin,&#160;M.&#160;(2017).&#160;The&#160;brain&#160;is&#160;required&#160;for&#160;normal&#160;muscle<br/>and&#160;nerve&#160;patterning&#160;during&#160;early&#160;xenopus&#160;development.&#160;<i>Na-<br/>ture&#160;communications</i></p>
+<p style="position:absolute;top:849px;left:622px;white-space:nowrap" class="ft22">,&#160;8(1):587.</p>
+<p style="position:absolute;top:874px;left:479px;white-space:nowrap" class="ft22">Kirkpatrick,&#160;S.,&#160;Gelatt,&#160;Jr,&#160;C.&#160;D.,&#160;and&#160;Vecchi,&#160;M.&#160;P.&#160;(1983).&#160;Op-</p>
+<p style="position:absolute;top:889px;left:509px;white-space:nowrap" class="ft28">timization&#160;by&#160;simulated&#160;annealing.&#160;<i>Science</i>,&#160;220(4598):671–<br/>680.</p>
+<p style="position:absolute;top:929px;left:479px;white-space:nowrap" class="ft22">Levin,&#160;M.&#160;(2011).&#160;The&#160;wisdom&#160;of&#160;the&#160;body:&#160;future&#160;techniques&#160;and</p>
+<p style="position:absolute;top:944px;left:509px;white-space:nowrap" class="ft28">approaches&#160;to&#160;morphogenetic&#160;fields&#160;in&#160;regenerative&#160;medicine,<br/>developmental&#160;biology&#160;and&#160;cancer.&#160;<i>Regenerative&#160;medicine</i>,<br/>6(6):667–673.</p>
+<p style="position:absolute;top:999px;left:479px;white-space:nowrap" class="ft22">Stocum,&#160;D.&#160;L.&#160;and&#160;Cameron,&#160;J.&#160;A.&#160;(2011).&#160;Looking&#160;proximally&#160;and</p>
+<p style="position:absolute;top:1014px;left:509px;white-space:nowrap" class="ft210">distally:&#160;100&#160;years&#160;of&#160;limb&#160;regeneration&#160;and&#160;beyond.&#160;<i>Devel-<br/>opmental&#160;dynamics:&#160;an&#160;official&#160;publication&#160;of&#160;the&#160;American<br/>Association&#160;of&#160;Anatomists</i></p>
+<p style="position:absolute;top:1044px;left:649px;white-space:nowrap" class="ft22">,&#160;240(5):943–968.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:25px;font-family:Times;color:#000000;}
+	.ft11{font-size:25px;font-family:Times;color:#000000;}
+	.ft12{font-size:19px;font-family:Times;color:#000000;}
+	.ft13{font-size:16px;font-family:Times;color:#000000;}
+	.ft14{font-size:16px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:366px;left:129px;white-space:nowrap" class="ft10"><b>Application of Genetic Algorithms to Molecular Biology:&#160;</b></p>
+<p style="position:absolute;top:414px;left:223px;white-space:nowrap" class="ft11">Locating Putative Protein Signal Sequences</p>
+<p style="position:absolute;top:630px;left:454px;white-space:nowrap" class="ft12">Michael Levin</p>
+<p style="position:absolute;top:672px;left:454px;white-space:nowrap" class="ft12">Genetics dept.</p>
+<p style="position:absolute;top:714px;left:454px;white-space:nowrap" class="ft12">Harvard Medical School</p>
+<p style="position:absolute;top:756px;left:454px;white-space:nowrap" class="ft12">200 Longwood Ave.,</p>
+<p style="position:absolute;top:798px;left:454px;white-space:nowrap" class="ft12">Boston, MA 02115</p>
+<p style="position:absolute;top:840px;left:454px;white-space:nowrap" class="ft12">(617) 432-7758</p>
+<p style="position:absolute;top:882px;left:454px;white-space:nowrap" class="ft12">mlevin@husc.harvard.edu</p>
+<p style="position:absolute;top:924px;left:454px;white-space:nowrap" class="ft12">&#160;</p>
+<p style="position:absolute;top:93px;left:566px;white-space:nowrap" class="ft14">published in: &#34;Applications Handbook of&#160;<br/>Genetic Algorithms&#34;, Vol. 2, pp. 53-66,&#160;</p>
+<p style="position:absolute;top:141px;left:566px;white-space:nowrap" class="ft13">CRC Press: FL, 1995</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:19px;font-family:Times;color:#000000;}
+	.ft21{font-size:19px;font-family:Times;color:#000000;}
+	.ft22{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft23{font-size:19px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:114px;left:415px;white-space:nowrap" class="ft20"><b>Summary</b></p>
+<p style="position:absolute;top:198px;left:112px;white-space:nowrap" class="ft22">&#160; &#160; &#160;This paper presents an application of genetic algorithms to a problem in mo-<br/>lecular biology. Many proteins occurring in cells participate in biochemical events<br/>such as degradation, chemical modification, directional transport, etc. &#160;It has been<br/>shown that in certain cases, a string of amino-acids serves as a specific signal;<br/>thus proteins which carry this sequence within their primary structures participate<br/>in some molecular event, while proteins lacking this sequence do not (the<br/>endoplasmic reticulum retention signal &#34;KDEL&#34; is a good example). Finding the<br/>sequence of a specific possible signal based only on the primary structures of a<br/>group of proteins thought to carry it is a very difficult task. No good algorithm<br/>currently exists for locating brand new signals. A genetic algorithm is described<br/>here which is able to discover such sequences. This algorithm is able to search the<br/>enormous state space of all possible signals in reasonable time, and locate likely<br/>signal sequences (which can then be tested empirically). The algorithm can also<br/>be used to find signature sequences in related proteins. Since genetic algorithms<br/>are domain-independent, a parametrization study is also presented, which shows<br/>optimal values of certain constants for this specific task.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:16px;font-family:Times;color:#000000;}
+	.ft31{font-size:19px;font-family:Times;color:#000000;}
+	.ft32{font-size:19px;font-family:Times;color:#000000;}
+	.ft33{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft34{font-size:19px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft30">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft30">-1-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft31"><b>Introduction</b></p>
+<p style="position:absolute;top:156px;left:112px;white-space:nowrap" class="ft34">&#160; &#160; &#160;Many proteins important in cell function participate in various processes (re-<br/>tention in or targeting to specific organelles, chemical modification, degradation,<br/>secretion, etc.). In certain cases, the signal which determines exactly which pro-<br/>teins participate in a given process is a short string of amino acids within the pri-<br/>mary structure of the proteins. The endoplasmic retention signal, K-D-E-L, is a<br/>good example of this (Pelham, 1990).&#160;</p>
+<p style="position:absolute;top:318px;left:112px;white-space:nowrap" class="ft33">&#160; &#160; &#160;So many examples of signals have been found (Bairoch, 1991) that when one<br/>has several proteins (called the &#34;in&#34; group), all of which undergo some particular<br/>event, it becomes tempting to search for a sequence which might serve as the rec-<br/>ognition signal. Once a potential sequence has been found (one that occurs in, and<br/>only in, that group of proteins), the hypothesis can be tested by artificially graft-<br/>ing the signal onto a protein which doesn’t normally participate in the event. If the<br/>chimeric protein is seen to then undergo the event, the hypothesis is confirmed.&#160;</p>
+<p style="position:absolute;top:504px;left:112px;white-space:nowrap" class="ft33">&#160; &#160; &#160;One problem with this process is that given the primary structures of several<br/>proteins, it is a very difficult task to come up with a potential signal sequence; if<br/>the proteins are of significant length, it is very hard to identify a common (but<br/>unique to the group) region by eye, especially since certain amino-acid homology<br/>rules and groupings may apply. If one has a pretty good idea what this signal<br/>might be, simple pattern matching, weight matrix analysis, or discriminant analy-<br/>sis can be used. However, there are no good methods for easily finding a com-<br/>pletely new signal.&#160;</p>
+<p style="position:absolute;top:714px;left:112px;white-space:nowrap" class="ft33">&#160; &#160; &#160;This problem reduces to the task of finding the longest string which matches<br/>optimally somewhere within all members of the functionally-defined &#34;in&#34; group,<br/>and does not match a random set of proteins not belonging to the group (the &#34;out&#34;<br/>group). A closely related problem is to find a signature sequence which can be<br/>used to tell certain proteins apart from similar ones (such as the &#34;A-G-L-x-F-P-V&#34;<br/>signature for histone H2B, Wells, 1989). This task thus touches on features of ma-<br/>chine learning, pattern recognition, classification systems, and feature abstraction.&#160;</p>
+<p style="position:absolute;top:900px;left:112px;white-space:nowrap" class="ft34">&#160; &#160; &#160;Considering the fact that the data is noisy (i.e., one or more of the &#34;in&#34; group<br/>proteins may not carry the signal, but participate in the event of interest for other<br/>reasons), and the fact that the signal sequence may not be 100% conserved among<br/>all proteins, the search space of all possible signals of a given length (usually 3-10<br/>amino-acids long) is a very difficult one. If a very fast computer is available, and<br/>one is willing to restrict the search to signals less than about six amino-acids long,<br/>an exhaustive search of all possible short strings may be feasible. However, as the</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:16px;font-family:Times;color:#000000;}
+	.ft41{font-size:19px;font-family:Times;color:#000000;}
+	.ft42{font-size:12px;font-family:Times;color:#000000;}
+	.ft43{font-size:18px;font-family:Times;color:#000000;}
+	.ft44{font-size:9px;font-family:Times;color:#000000;}
+	.ft45{font-size:19px;font-family:Times;color:#000000;}
+	.ft46{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft47{font-size:18px;line-height:24px;font-family:Times;color:#000000;}
+	.ft48{font-size:18px;line-height:23px;font-family:Times;color:#000000;}
+	.ft49{font-size:19px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft40">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft40">-2-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft46">length of the proteins involved grows, and one wants to look at signals which may<br/>be somewhat longer, this quickly becomes impractical with respect to the time in-<br/>volved to perform the search (the time required is proportional to 30</p>
+<p style="position:absolute;top:156px;left:696px;white-space:nowrap" class="ft42">N&#160;where N is</p>
+<p style="position:absolute;top:186px;left:112px;white-space:nowrap" class="ft43">the maximum number of characters in the signal).</p>
+<p style="position:absolute;top:228px;left:112px;white-space:nowrap" class="ft47">&#160; &#160; &#160;A set of &#160;algorithms which has recently been shown to be able to find solutions<br/>in difficult search spaces is known as &#34;genetic algorithms&#34; (Goldberg, 1989,<br/>Davis, 1991, Holland, 1992, Koza, 1992). These domain-independent algorithms<br/>simulate evolution by retaining the best of a population of potential solutions, and<br/>mutating these to arrive at the next generation’s population. This process is re-<br/>peated until a solution of sufficient quality is found (or computational resources<br/>are exhausted). The algorithms have proven to be robust and effective for a wide<br/>variety of problems, such as symbolic regression, process control, generation of<br/>emergent behavior, classification, and pattern recognition (see Koza, 1992 and<br/>references therein). GAs have also been used in molecular biology (Dandekar,<br/>1992).</p>
+<p style="position:absolute;top:510px;left:112px;white-space:nowrap" class="ft47">&#160; &#160; &#160;This approach can be used to locate likely candidates for functional protein<br/>signals&#160;(De La Maza and Tidor, 1992, used a very similar problem to study the<br/>effects of Boltzman selective pressure). This is done by performing random muta-<br/>tion and fitness selection over a population of candidate signal sequences. Each<br/>individual in this population is a string of amino-acids of some length. Its fitness<br/>is proportional to how well this sequence matches the members of the &#34;in&#34; group,<br/>and inversely proportional to its match with the &#34;out&#34; group. Genetic algorithms<br/>are used, rather than the more general technique of genetic programming because<br/>in this case the map from discrete character set genome to the possible solution<br/>space is a very natural one. This algorithm is shown to effectively and easily lo-<br/>cate potential signal sequences with no initial data other than the functional<br/>grouping of proteins and their primary structure. &#160;Since the genetic algorithm ap-<br/>proach is domain-independent, a parametrization study is performed, to determine<br/>the optimal parameters for locating such sequences.</p>
+<p style="position:absolute;top:864px;left:112px;white-space:nowrap" class="ft45"><b>Implementation</b></p>
+<p style="position:absolute;top:906px;left:112px;white-space:nowrap" class="ft49">&#160; &#160; &#160;The algorithm is fairly simple, and is easily coded in C. Each member of the<br/>population is a string (called a &#34;schema&#34;) of some length (minimum length is usu-<br/>ally set to 3, maximum length to 10) over the alphabet consisting of the single let-<br/>ter codes for amino-acids, plus the symbols&#160;<b>*</b>&#160;(the wildcard, or &#34;any amino acid&#34;<br/>symbol), a&#160;(&#34;an acidic amino acid&#34;),&#160;&#160;b&#160;(&#34;a basic amino acid&#34;),&#160;&#160;n&#160;(&#34;a neutral amino<br/>acid&#34;), h&#160;(&#34;a hydrophobic amino acid&#34;),&#160;</p>
+<p style="position:absolute;top:1026px;left:481px;white-space:nowrap" class="ft41">p&#160;(&#34;a polar amino acid&#34;), and&#160;</p>
+<p style="position:absolute;top:1026px;left:761px;white-space:nowrap" class="ft41">c&#160;(&#34;a</p>
+<p style="position:absolute;top:1050px;left:112px;white-space:nowrap" class="ft41">charged amino acid&#34;). This string can be directly compared to any protein’s pri-</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:16px;font-family:Times;color:#000000;}
+	.ft51{font-size:19px;font-family:Times;color:#000000;}
+	.ft52{font-size:12px;font-family:Times;color:#000000;}
+	.ft53{font-size:18px;font-family:Times;color:#000000;}
+	.ft54{font-size:19px;font-family:Times;color:#000000;}
+	.ft55{font-size:19px;font-family:Times;color:#000000;}
+	.ft56{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft50">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft50">-3-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft56">mary structure. Thus for example, the hypothetical string &#34;TY*Sa&#34; would match a<br/>protein which contained a threonine, followed by a tyrosine, followed by any<br/>amino acid, followed by a serine, followed by any acidic amino acid. Additional<br/>symbols can be added (such as the numbers 0&#160;through&#160;9) which can stand for cer-<br/>tain other homologies (for example, 0&#160;may stand for &#34;either S or A here&#34;). The<br/>string is the member’s genetic material - one chromosome.</p>
+<p style="position:absolute;top:276px;left:112px;white-space:nowrap" class="ft56">&#160; &#160; &#160;Several operators are used. Firstly, a fitness function has to be defined, which<br/>can evaluate the worth (i.e., success at differentiating the &#34;in&#34; proteins from the<br/>&#34;out&#34; proteins) of any individual. This is returned as a scalar floating point num-<br/>ber, which allows unambiguous ordered ranking of all individuals. This number is<br/>based on parameters designed to take into account several desirable qualities of a<br/>candidate solution; higher numbers indicate better schemata. The fitness function<br/>used in this implementation, when applied to a schema S, returns a number which<br/>is equal to:</p>
+<p style="position:absolute;top:486px;left:179px;white-space:nowrap" class="ft51">k</p>
+<p style="position:absolute;top:497px;left:189px;white-space:nowrap" class="ft52">1·<i>knowledge</i>(S) + k2·<i>size</i>(S) - k3·<i>vagueness</i>(S) &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;<b>(1)</b></p>
+<p style="position:absolute;top:528px;left:112px;white-space:nowrap" class="ft51">where&#160;<i>knowledge</i>(S) is equal to:</p>
+<p style="position:absolute;top:570px;left:183px;white-space:nowrap" class="ft51">&#160;<i>match_ins</i>(S) - k</p>
+<p style="position:absolute;top:581px;left:328px;white-space:nowrap" class="ft52">4·<i>match_outs</i>(S) &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;<b>&#160; (2)</b></p>
+<p style="position:absolute;top:612px;left:112px;white-space:nowrap" class="ft56"><i>match_ins</i>(S) determines how well schema S matches the proteins in the &#34;in&#34;<br/>group.&#160;<i>match_outs</i>(S) does the same for the &#34;outs&#34; group. The degree of match is<br/>computed as the sum of all matches to proteins in a group, divided by the number<br/>of members in the group. The degree of match to a given protein is defined as the<br/>number of matching characters (at the best-matching position&#160;within the protein)<br/>divided by the length of the schema. The match to the &#34;out&#34; group is subtracted, to<br/>ensure that the best individuals are those which match the &#34;out&#34; group least.</p>
+<p style="position:absolute;top:798px;left:112px;white-space:nowrap" class="ft56"><i>size</i>(S) determines the effects of the schema size. In general, the value of&#160;<i>size</i>(S)<br/>should be proportional to the length of the schema, because it is better to have the<br/>complete signal sequence than a part of it. It may however include special<br/>nonlinear terms to punish schemata that are too long.&#160;</p>
+<p style="position:absolute;top:912px;left:112px;white-space:nowrap" class="ft56"><i>vagueness</i>(S) determines how specific the schema is. It is proportional to the<br/>number of non-specific symbols occurring in S (such as *&#160;etc.). &#160;This term is also<br/>subtracted in equation 1 because it is best to have as specific a sequence as possi-<br/>ble (while still matching optimally).</p>
+<p style="position:absolute;top:1026px;left:112px;white-space:nowrap" class="ft51">&#160; &#160; &#160;The constants k</p>
+<p style="position:absolute;top:1037px;left:272px;white-space:nowrap" class="ft52">1&#160;through k4&#160;are parameters than the user can adjust for specific</p>
+<p style="position:absolute;top:1050px;left:112px;white-space:nowrap" class="ft53">effects. Normally k</p>
+<p style="position:absolute;top:1061px;left:275px;white-space:nowrap" class="ft52">1&#160;» k2, k3&#160;because the most important thing is for the schema to</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:16px;font-family:Times;color:#000000;}
+	.ft61{font-size:19px;font-family:Times;color:#000000;}
+	.ft62{font-size:12px;font-family:Times;color:#000000;}
+	.ft63{font-size:18px;font-family:Times;color:#000000;}
+	.ft64{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft65{font-size:18px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft60">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft60">-4-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft64">differentiate between the &#34;in&#34; group and the &#34;out&#34; group. However, the other<br/>terms ensure that if two individuals have similar matching ability, the more spe-<br/>cific and longer ones will be considered more fit. The constant k</p>
+<p style="position:absolute;top:173px;left:661px;white-space:nowrap" class="ft62">4&#160;can be changed</p>
+<p style="position:absolute;top:186px;left:112px;white-space:nowrap" class="ft65">to control how specific the signal is to the &#34;in&#34; group. It is usually less than 1.0<br/>because even a signal that occurs somewhat in non-belonging proteins can be use-<br/>ful if it always occurs in belonging ones.</p>
+<p style="position:absolute;top:276px;left:112px;white-space:nowrap" class="ft65">&#160; &#160; &#160;Once the most fit members of a population are identified, their genotypes are<br/>used to construct the next generation. Two possible operators are mutation, and<br/>cross-over. A single mutation event performed on a schema S (asexual reproduc-<br/>tion), as used in this algorithm, consists of choosing at random among: deleting a<br/>symbol at a random position within S, adding a random symbol somewhere<br/>within S, or changing a random symbol within S to some other random symbol.<br/>Appropriate safeguards are used to ensure that schemata don’t become too small<br/>or too large. Other than that, the mutation is completely random, with no foresight<br/>as to the effects on its performance. Cross-over consists of picking two individu-<br/>als, and producing two new ones by swapping random parts of the parents’<br/>genome.&#160;</p>
+<p style="position:absolute;top:558px;left:112px;white-space:nowrap" class="ft65">&#160; &#160; &#160;Cross-over was used in the initial trials of these experiments, but resulted in<br/>premature convergence of the population on sub-optimal solutions (data not<br/>shown). This can be ameliorated by biasing cross-over to avoid mating between<br/>similar individuals. This kind of artificial &#34;incest taboo&#34; seems to prevent some of<br/>the problems inherent in pure cross-over, but it is unclear as to whether it is better<br/>than no cross-over at all. All results shown in this paper utilize simple mutation<br/>only. These results are consistent with those of Fogel and Atmar, 1990, who con-<br/>clude that complex genetic operators such as cross-over and regional inversion do<br/>not compare favorably with simple mutation (unlike Holland, 1975 and Koza,<br/>1992, who claim that cross-over produces better results than mutation).</p>
+<p style="position:absolute;top:816px;left:112px;white-space:nowrap" class="ft65">&#160; &#160; &#160;The control flow of the algorithm is shown in Fig. 1. After the parameters are<br/>set, the &#34;in&#34; and &#34;out&#34; groups are read in from disk. The &#34;out&#34; group should ide-<br/>ally consist of &#160;proteins which are related to the proteins in the &#34;in&#34; group, but<br/>known (from empirical evidence) not to participate in whatever event functionally<br/>defines the &#34;in&#34; group. Alternatively, the &#34;out&#34; group can consist of randomly-<br/>chosen proteins, or even of random sequences of amino-acid symbols.</p>
+<p style="position:absolute;top:978px;left:112px;white-space:nowrap" class="ft65">&#160; &#160; &#160;An initial random population is then created. The population size is the pa-<br/>rameter P</p>
+<p style="position:absolute;top:1013px;left:194px;white-space:nowrap" class="ft62">1&#160;- this is what determines how many solutions the algorithm is working</p>
+<p style="position:absolute;top:1026px;left:112px;white-space:nowrap" class="ft63">with at any time. The bigger the value of P</p>
+<p style="position:absolute;top:1037px;left:487px;white-space:nowrap" class="ft62">1,&#160;the longer it takes to evaluate each</p>
+<p style="position:absolute;top:1050px;left:112px;white-space:nowrap" class="ft63">generation; however, higher values of P</p>
+<p style="position:absolute;top:1061px;left:451px;white-space:nowrap" class="ft62">1&#160;make it more likely that a good solution</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:16px;font-family:Times;color:#000000;}
+	.ft71{font-size:19px;font-family:Times;color:#000000;}
+	.ft72{font-size:12px;font-family:Times;color:#000000;}
+	.ft73{font-size:18px;font-family:Times;color:#000000;}
+	.ft74{font-size:18px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft70">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft70">-5-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft71">will be found. Typical values of P</p>
+<p style="position:absolute;top:125px;left:401px;white-space:nowrap" class="ft72">1&#160;can be from 300 to 1000. The user can, at this</p>
+<p style="position:absolute;top:138px;left:112px;white-space:nowrap" class="ft74">point, seed the initial population with several initial guesses. This can be used to<br/>improve a guess obtained by other means, or to help speed up the search when<br/>some of the signal is known, but it is not a good practice in general because it can<br/>cause the search to prematurely converge on some solution and ignore one which<br/>may turn out to be better. &#160;</p>
+<p style="position:absolute;top:276px;left:112px;white-space:nowrap" class="ft74">&#160; &#160; &#160;Then, each individual is evaluated according to the fitness function, and the<br/>top P</p>
+<p style="position:absolute;top:311px;left:156px;white-space:nowrap" class="ft72">2&#160;schemas are chosen. &#160;P2&#160;is usually between 10% and 70% of P1. Too high a</p>
+<p style="position:absolute;top:324px;left:112px;white-space:nowrap" class="ft73">value of P</p>
+<p style="position:absolute;top:335px;left:199px;white-space:nowrap" class="ft72">2&#160;results in slow convergence, while too low a value may cause prema-</p>
+<p style="position:absolute;top:348px;left:112px;white-space:nowrap" class="ft74">ture convergence due to early elimination of potentially good schemata. It is im-<br/>portant to note that evaluating the fitness of a given individual is the most<br/>computation-intensive step in this algorithm. As the population homogeneity be-<br/>gins to rise, a simple trick can be used to cut down the evaluation time (which can<br/>be critical, when the &#34;in&#34; group is large). This method takes advantage of the fact<br/>that if more than one schema in the population have identical sequences, only one<br/>has to be evaluated, and its fitness can be assigned to all of them. Thus, previous<br/>to evaluating fitnesses, the population is sorted by alphabetical order. For each<br/>schema S</p>
+<p style="position:absolute;top:551px;left:193px;white-space:nowrap" class="ft72">n&#160;(n&gt;1) if it is identical to Sn-1, then the fitness assigned to Sn&#160;is simply</p>
+<p style="position:absolute;top:564px;left:112px;white-space:nowrap" class="ft73">copied from S</p>
+<p style="position:absolute;top:575px;left:231px;white-space:nowrap" class="ft72">n-1; otherwise, the fitness of Sn&#160;is calculated explicitly.&#160;</p>
+<p style="position:absolute;top:606px;left:112px;white-space:nowrap" class="ft74">&#160; &#160; &#160;The population is then rebuilt, to consist of mutated copies of the best indi-<br/>viduals, as well as unchanged versions of these individuals. This is &#34;elitist&#34; selec-<br/>tion, and ensures that good schemas are never lost from the population. This proc-<br/>ess continues until either an acceptable solution is found, or the time limit expires.<br/>This process can contain several additional features. For example, if the popula-<br/>tion homogeneity becomes too high, some copies of the most frequent individuals<br/>can be replaced with random schemas, or mutated heavily in an attempt to inject<br/>variety into the system (the elitist selection ensures that this cannot decrease the<br/>maximum fitness found in the population). The whole algorithm is summarized<br/>by the following pseudocode:</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:16px;font-family:Times;color:#000000;}
+	.ft81{font-size:15px;font-family:Times;color:#000000;}
+	.ft82{font-size:19px;font-family:Times;color:#000000;}
+	.ft83{font-size:19px;font-family:Times;color:#000000;}
+	.ft84{font-size:15px;line-height:20px;font-family:Times;color:#000000;}
+	.ft85{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft80">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft80">-6-</p>
+<p style="position:absolute;top:128px;left:122px;white-space:nowrap" class="ft81">1. Read initial data - in and out groups, parameters N, P, Q, R, S, etc. Place protein&#160;</p>
+<p style="position:absolute;top:149px;left:207px;white-space:nowrap" class="ft81">sequences in two-dimensional string arrays.</p>
+<p style="position:absolute;top:188px;left:122px;white-space:nowrap" class="ft81">2. Build up a random population of schemas, or read them in from a file. Place sequences&#160;</p>
+<p style="position:absolute;top:209px;left:207px;white-space:nowrap" class="ft84">into two-dimensional string array. Cross-over and mutation are accomplished as<br/>string operations (i.e., character and substring substitutions, deletions,&#160;<br/>inversions, etc.) on the members of these arrays.</p>
+<p style="position:absolute;top:290px;left:122px;white-space:nowrap" class="ft81">3. Until top fitness is acceptable, or allotted time has expired, do:</p>
+<p style="position:absolute;top:329px;left:122px;white-space:nowrap" class="ft81">&#160; &#160; &#160;A. Compute fitness for each member of the population, by matching its sequence to each</p>
+<p style="position:absolute;top:350px;left:207px;white-space:nowrap" class="ft84">member of the in and out groups. Fitness is calculated as in eq. 1 above, using&#160;<br/>simple string matching.</p>
+<p style="position:absolute;top:410px;left:122px;white-space:nowrap" class="ft81">&#160; &#160; &#160;B. Sort the population. Leave the top N members unchanged. Set the next P members to&#160;</p>
+<p style="position:absolute;top:431px;left:207px;white-space:nowrap" class="ft84">strings which arise from cross-overs between randomly-chosen members of the&#160;<br/>N best. The choice is biased to favor cross-overs between dissimilar schemata.&#160;</p>
+<p style="position:absolute;top:491px;left:122px;white-space:nowrap" class="ft81">&#160; &#160; C. Introduce Q mutations into the members resulting from cross-over, and &#160;set the &#160; &#160;</p>
+<p style="position:absolute;top:512px;left:207px;white-space:nowrap" class="ft84">remainder of the population to consist of mutated versions of the top N&#160;<br/>members.</p>
+<p style="position:absolute;top:572px;left:122px;white-space:nowrap" class="ft81">&#160; &#160; &#160;D. Compute and plot the top fitness, average fitness, and homogeneity of population as a</p>
+<p style="position:absolute;top:593px;left:207px;white-space:nowrap" class="ft81">function of generation number.</p>
+<p style="position:absolute;top:632px;left:122px;white-space:nowrap" class="ft81">&#160; &#160; &#160;E. Compute total homogeneity of population. If this is higher than an acceptable level R,&#160;</p>
+<p style="position:absolute;top:653px;left:207px;white-space:nowrap" class="ft84">then eliminate all but one copy of each individual, and fill in the rest of the&#160;<br/>population with crossovers between the remaining individuals and random&#160;<br/>schemata.</p>
+<p style="position:absolute;top:734px;left:122px;white-space:nowrap" class="ft81">4. Print out the top S non-identical schemata, their fitnesses, and their locations within&#160;</p>
+<p style="position:absolute;top:755px;left:207px;white-space:nowrap" class="ft81">each member of the in group.</p>
+<p style="position:absolute;top:833px;left:112px;white-space:nowrap" class="ft85">&#160; &#160; &#160;In this algorithm, the computational complexity (as measured in the number of<br/>string comparisons per generation) as a function of total protein lengths is O(n).<br/>That is, it increases only linearly with increases in the number of total amino acids<br/>in the in and out groups. However, the total time spent on the search is not neces-<br/>sarily O(n) because different numbers of total generations are required to find<br/>adequate solutions for different sets of proteins, and because of the stochastic na-<br/>ture of the algorithm.</p>
+<p style="position:absolute;top:1019px;left:112px;white-space:nowrap" class="ft83"><b>Results of Sample Applications</b></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:16px;font-family:Times;color:#000000;}
+	.ft91{font-size:19px;font-family:Times;color:#000000;}
+	.ft92{font-size:19px;font-family:Times;color:#000000;}
+	.ft93{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft94{font-size:19px;line-height:23px;font-family:Times;color:#000000;}
+	.ft95{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft90">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft90">-7-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft93">&#160; &#160; &#160;This algorithm was tested on many different kinds of signals (data not shown).<br/>Two examples are illustrated here in detail. Figures 2 and 3 show the progress of<br/>the search over time (in generations on the abscissa). Three quantities (explained<br/>below) are monitored; their magnitude is normalized between 0 and 1 (on the or-<br/>dinate).</p>
+<p style="position:absolute;top:252px;left:112px;white-space:nowrap" class="ft93">&#160; &#160; &#160;The first sample application illustrates how the algorithm finds the KDEL sig-<br/>nal given the sequences of the following proteins found in the GenEMBL data-<br/>base):&#160;<i>H. vulgare</i>&#160;GRP94 homologue, rat immunoglobulin heavy chain binding<br/>protein (BiP), rat calreticulin, and rat protein disulfide isomerase (accession num-<br/>bers X67960, M14050, X53363, X02918 respectively). For this run, the parame-<br/>ters are set as shown in column 1 of Table 1. &#160;The results of the run are seen in<br/>Fig. 2. The KDEL sequence is found in 64 generations, which represents about<br/>2.5 hours of real time on a lightly loaded (average system load during run = 1.05)<br/>DecStation 5000 workstation. Interestingly (perhaps), it initially found other se-<br/>quences common to these proteins (with 100% fit to each): &#34;EED&#34; and &#34;EEEa&#34;.<br/>Once a schema has been found, and determined (empirically) not to be of interest,<br/>others can be searched for by entering this sequence into the &#34;out&#34; group (to en-<br/>sure that the search disregards it).</p>
+<p style="position:absolute;top:582px;left:112px;white-space:nowrap" class="ft93">&#160; &#160; &#160;The second sample application illustrates how this method can be used to find<br/>signature sequences. In this case, the histone H2A signature A-G-L-x-F-P-V<br/>(Wells, 1989) can be found by running H2A variants in the &#34;in&#34; group and the<br/>H2B, H3, and H4 proteins in the &#34;out&#34; group. In this experiment, the &#34;in&#34; group<br/>consisted of sea urchin (<i>P. miliaris</i>) late histone H2A-2, human histone H2A gene<br/>(lambda-HHG55),&#160;<i>P. miliaris</i>&#160;histone H2A-2.1 gene, and the murine H2A gene<br/>(accession numbers M11085, K01889, M14140, X16495 respectively). The &#34;out&#34;<br/>group consisted of sea urchin (<i>P. miliaris</i>) late histone H2B-2,&#160;<i>P. miliaris</i>&#160;histone<br/>H2B-2.2 gene,&#160;<i>P. miliaris</i>&#160;gene for histone H3, chicken histone H3 gene,&#160;<i>A. thali-<br/>ana</i>&#160;histone H3 gene,&#160;<i>X. laevis</i>&#160;histone H4-1 gene, and the newt histone H4 gene<br/>(accession numbers M11088, M14143, V01140, J00869, M35387, M23776,&#160;<br/>M23777, J00954 respectively). For this, the specificity constant needs to be<br/>higher than usual. The constants in this experiment are given in column 2 of Table<br/>1. Figure 3 shows that the H2A signature is found at generation 206. &#160;Interest-<br/>ingly, another one is found, which is considered by the algorithm to be even better<br/>(because it doesn’t contain any non-specific characters): LQFPVGR at generation<br/>84.</p>
+<p style="position:absolute;top:1008px;left:112px;white-space:nowrap" class="ft93">&#160; &#160; &#160;Several interesting things can be noted from these sample runs. The solid line<br/>shows the fitness of the best individual at each generation. This curve is<br/>monotonic, since the elitist selection ensures the best individuals are never lost.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:16px;font-family:Times;color:#000000;}
+	.ft101{font-size:19px;font-family:Times;color:#000000;}
+	.ft102{font-size:19px;font-family:Times;color:#000000;}
+	.ft103{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft104{font-size:19px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft100">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft100">-8-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft103">In these and some other runs (data not shown) the maximum fitness curve is remi-<br/>niscent of the punctuated equilibrium hypothesis (Eldredge, 1985) - long stretches<br/>of little change interrupted by sharp improvements. This may be due to the fact<br/>that the mutation rate used here is too low to cause changes in top fitness over<br/>small time periods.</p>
+<p style="position:absolute;top:252px;left:112px;white-space:nowrap" class="ft103">&#160; &#160; &#160;The maximum fitness of the second plot starts out much lower than that of plot<br/>2, since the target string of experiment 2 is more complex, and the average fitness<br/>of a random individual is likely to be lower. The dashed line representing the av-<br/>erage length of all schemata drops quickly to the optimal length. This is somewhat<br/>surprising since the length constant in the fitness function is low, and it might be<br/>expected that the length not be important (and thus not be selected for) until the<br/>fitness becomes quite high and the population converges. &#160;The dotted line repre-<br/>sents the population homogeneity (as computed by taking the sum of the average<br/>similarities of each individual to all others in the population). Interestingly, it is<br/>non-monotonic and complex; this is an emergent phenomenon - there is nothing<br/>in the fitness function to directly cause such a curve. Note that these curves are<br/>very different between Figures 2 and 3, suggesting that the large-scale population<br/>dynamics are different for different instances of this search problem.</p>
+<p style="position:absolute;top:582px;left:112px;white-space:nowrap" class="ft102"><b>Parametrization study</b></p>
+<p style="position:absolute;top:624px;left:112px;white-space:nowrap" class="ft103">&#160; &#160; &#160;With so many variables in this domain-independent algorithm, it becomes in-<br/>teresting to 1) determine what combination of settings are optimal for the protein<br/>signal problem, and 2) examine the properties of the algorithm as they vary with<br/>the parameters. For these purposes, a parametrization study was performed. In all<br/>of these studies, the dependent variable was the generation number in which the<br/>desired answer first appeared (&#34;generation of discovery&#34;). The problem set in all<br/>cases was to locate the KDEL sequence (using half-lengths of the proteins given<br/>above). All parameters except the one being changed are set to the values in col-<br/>umn 3 of Table 1. A study of variation (since the algorithm is a non-deterministic<br/>one) was performed; 20 repetitions of exactly the same problem and parameters<br/>showed that differences in generation of discovery were of the range ±13 (data<br/>not shown). This is to be considered as the significant difference level for the ex-<br/>periments described below. &#160;In all of the figures, the value shown is the average of<br/>10 repeat runs.</p>
+<p style="position:absolute;top:978px;left:112px;white-space:nowrap" class="ft103">&#160; &#160; &#160;The first part of this study examined the dependence of the algorithm’s effi-<br/>ciency in finding the KDEL sequence on the size of the population used. A popu-<br/>lation size of 400 found the solution in 41 generations, while a population size of<br/>1400 found the solution in only 17 generations. Intermediate values of population</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:16px;font-family:Times;color:#000000;}
+	.ft111{font-size:19px;font-family:Times;color:#000000;}
+	.ft112{font-size:19px;font-family:Times;color:#000000;}
+	.ft113{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft114{font-size:19px;line-height:23px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft110">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:448px;white-space:nowrap" class="ft110">-9-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft113">size produced intermediate values of generation of discovery. Populations of sizes<br/>300 and smaller did not tend to locate the solution at all (within 2000 genera-<br/>tions). Figure 4 summarizes the dependence of generation of discovery on the size<br/>of the population. Clearly it is better to use larger generation sizes. However,<br/>since larger generation sizes also take longer to evaluate, it is interesting to exam-<br/>ine how the time&#160;of discovery relates to the generation size. It is important to note<br/>that these times are relative (because they depend on what kind of computer the<br/>tests are run on).&#160;</p>
+<p style="position:absolute;top:324px;left:112px;white-space:nowrap" class="ft113">&#160; &#160; &#160;A population of size 400 found the solution in 58 minutes, while a population<br/>of size 1400 found it in 80 minutes. Intermediate population sizes produced inter-<br/>mediate results. Figure 5 summarizes this data, showing a U-shaped relationship.<br/>For small generation sizes, it takes longer to find the solution because of the large<br/>number of generations necessary. For large population sizes, it also takes longer,<br/>because of the computational cost of evaluating large populations. The optimal<br/>value seems to be about 800, which allows the solution to be found in just 31 min-<br/>utes.</p>
+<p style="position:absolute;top:534px;left:112px;white-space:nowrap" class="ft113">&#160; &#160; &#160;The second part of this study examined the role of the number of survivors at<br/>each generation. Since this value in itself does not alter the computation time,<br/>only generation of discovery (not absolute time of discovery) was studied. When<br/>20% of the best individuals are allowed to reproduce at each generation, the solu-<br/>tion can be found in 20 generations. When 90% are allowed, the average is 320<br/>generations. Reproduction values of less than 20% tended not to find the solution<br/>at all. Too few reproducers lead to premature convergence on local maxima, while<br/>too many lead to very slow convergence to the global maximum. Figure 6 sum-<br/>marizes this data, and shows that the optimal tradeoff seems to occur at a survival<br/>size of about 20%.&#160;</p>
+<p style="position:absolute;top:792px;left:112px;white-space:nowrap" class="ft113">&#160; &#160; &#160;The final part of this study looked at the role of mutation. In these experi-<br/>ments, the same problem as above was examined, with varying numbers of muta-<br/>tions in each offspring. Figure 7 summarizes the data, which shows that when<br/>each offspring is subject to between 1 and 256 mutations, the solution is found on<br/>average at the same generation number (around &#160;35). The differences between<br/>these values are not significant, showing (surprisingly) that the algorithm’s effi-<br/>ciency is tolerant to a wide range of mutation incidences.</p>
+<p style="position:absolute;top:978px;left:112px;white-space:nowrap" class="ft112"><b>Future directions</b></p>
+<p style="position:absolute;top:1020px;left:112px;white-space:nowrap" class="ft114">&#160; &#160; &#160;There are several ways in which this algorithm could be improved. Firstly, it<br/>would easily lend itself to paralellization on a computer such as the Connection</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:16px;font-family:Times;color:#000000;}
+	.ft121{font-size:19px;font-family:Times;color:#000000;}
+	.ft122{font-size:19px;font-family:Times;color:#000000;}
+	.ft123{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft120">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft120">-10-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft123">Machine. Immense savings in time would be accomplished by running the fitness<br/>evaluations of each individual in parallel. The algorithm could also be made to<br/>deal better with noise in the experimental data by choosing to disregard a member<br/>of the &#34;in&#34; group if a schema is found which matches all the other members very<br/>well, but does not match it. &#160;Other varieties of genetic algorithms (steady-state<br/>populations, demes, etc.) may also produce better results.</p>
+<p style="position:absolute;top:318px;left:112px;white-space:nowrap" class="ft122"><b>Acknowledgments</b></p>
+<p style="position:absolute;top:360px;left:112px;white-space:nowrap" class="ft121">&#160; &#160; &#160;I would like to acknowledge several helpful discussions with David Fogel.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:16px;font-family:Times;color:#000000;}
+	.ft131{font-size:19px;font-family:Times;color:#000000;}
+	.ft132{font-size:19px;font-family:Times;color:#000000;}
+	.ft133{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft130">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft130">-11-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft131"><b>Figure Captions</b></p>
+<p style="position:absolute;top:198px;left:112px;white-space:nowrap" class="ft132">Figure 1: flow of control for genetic algorithm</p>
+<p style="position:absolute;top:240px;left:112px;white-space:nowrap" class="ft132">Figure 2: locating the KDEL sequence</p>
+<p style="position:absolute;top:282px;left:198px;white-space:nowrap" class="ft132">A genetic algorithm search was performed with the parameters given in</p>
+<p style="position:absolute;top:306px;left:112px;white-space:nowrap" class="ft133">column 1 of Table 1. The solid line represents the fitness of the most fit schema at<br/>any generation. The dashed line represents the average length of the schemata at a<br/>given generation. The dotted line represents the homogeneity of the population.</p>
+<p style="position:absolute;top:396px;left:112px;white-space:nowrap" class="ft132">Figure 3: locating the histone H2A signature sequence</p>
+<p style="position:absolute;top:438px;left:198px;white-space:nowrap" class="ft132">A genetic algorithm search was performed with the parameters given in</p>
+<p style="position:absolute;top:462px;left:112px;white-space:nowrap" class="ft133">column 1 of Table 1. The solid line represents the fitness of the most fit schema at<br/>any generation. The dashed line represents the average length of the schemata at a<br/>given generation. The dotted line represents the homogeneity of the population.</p>
+<p style="position:absolute;top:552px;left:112px;white-space:nowrap" class="ft132">Figure 4: dependence of generation of discovery on population size</p>
+<p style="position:absolute;top:594px;left:198px;white-space:nowrap" class="ft132">A series of genetic search algorithms was performed on the KDEL</p>
+<p style="position:absolute;top:618px;left:112px;white-space:nowrap" class="ft133">problem, each using a different population size (given on the X axis). The other<br/>parameters are set as in the 3rd column of Table 1. The generation number at<br/>which the KDEL sequence was found is plotted on the Y axis.</p>
+<p style="position:absolute;top:708px;left:112px;white-space:nowrap" class="ft132">Figure 5: dependence of raw time to discovery on population size</p>
+<p style="position:absolute;top:750px;left:198px;white-space:nowrap" class="ft132">A series of genetic search algorithms was performed on the KDEL</p>
+<p style="position:absolute;top:774px;left:112px;white-space:nowrap" class="ft133">problem, each using a different population size (given on the X axis). The other<br/>parameters are set as in the 3rd column of Table 1. The time (in minutes) at which<br/>the KDEL sequence was found (relative to start time) is plotted on the Y axis.</p>
+<p style="position:absolute;top:864px;left:112px;white-space:nowrap" class="ft132">Figure 6: dependence of generation of discovery on survival size</p>
+<p style="position:absolute;top:906px;left:198px;white-space:nowrap" class="ft132">A series of genetic search algorithms was performed on the KDEL</p>
+<p style="position:absolute;top:930px;left:112px;white-space:nowrap" class="ft133">problem, each allowing a different percentage of the top individuals to contribute<br/>genetic material to the next generation (given on the X axis). The other parame-<br/>ters are set as in the 3rd column of Table 1. The generation number at which the<br/>KDEL sequence was found is plotted on the Y axis.</p>
+<p style="position:absolute;top:1044px;left:112px;white-space:nowrap" class="ft132">Figure 7: dependence of generation of discovery on mutation incidence</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:16px;font-family:Times;color:#000000;}
+	.ft141{font-size:19px;font-family:Times;color:#000000;}
+	.ft142{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft140">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft140">-12-</p>
+<p style="position:absolute;top:114px;left:198px;white-space:nowrap" class="ft141">A series of genetic search algorithms was performed on the KDEL</p>
+<p style="position:absolute;top:138px;left:112px;white-space:nowrap" class="ft142">problem, each allowing a different number of mutation events to occur when a top<br/>individual contributes genetic material to the next generation (given on the X<br/>axis). The other parameters are set as in the 3rd column of Table 1. The genera-<br/>tion number at which the KDEL sequence was found is plotted on the Y axis.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:16px;font-family:Times;color:#000000;}
+	.ft151{font-size:19px;font-family:Times;color:#000000;}
+	.ft152{font-size:19px;font-family:Times;color:#000000;}
+	.ft153{font-size:19px;font-family:Times;color:#000000;}
+	.ft154{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+	.ft155{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft150">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft150">-13-</p>
+<p style="position:absolute;top:114px;left:112px;white-space:nowrap" class="ft151"><b>References</b></p>
+<p style="position:absolute;top:156px;left:112px;white-space:nowrap" class="ft152">Bairoch A., (1991), PROSITE: a dictionary of sites and patterns in proteins, &#160;</p>
+<p style="position:absolute;top:180px;left:198px;white-space:nowrap" class="ft153"><i>Nucleic Acids Res.</i>,&#160;<b>19</b>: 2241-2245</p>
+<p style="position:absolute;top:222px;left:112px;white-space:nowrap" class="ft152">Dandekar, T., (1992), Potential of genetic algorithms in protein folding,<b>&#160;</b><i>Protein&#160;</i></p>
+<p style="position:absolute;top:246px;left:198px;white-space:nowrap" class="ft153"><i>Engineering</i>,&#160;<b>5</b>(7): 637-645</p>
+<p style="position:absolute;top:288px;left:112px;white-space:nowrap" class="ft152">Davis, Lawrence, Handbook of Genetic Algorithms, Van Nostrand Reinhold, NY:</p>
+<p style="position:absolute;top:312px;left:198px;white-space:nowrap" class="ft152">1991</p>
+<p style="position:absolute;top:354px;left:112px;white-space:nowrap" class="ft152">De La Maza, Michael, Bruce Tidor, (1992), Increased flexibility in genetic&#160;</p>
+<p style="position:absolute;top:378px;left:198px;white-space:nowrap" class="ft154">algorithms, in Proceedings of the ORCA CSTS Conference: Computer&#160;<br/>Science and Operations Research: New Developments in Their&#160;<br/>Interfaces, pp. 425-440</p>
+<p style="position:absolute;top:468px;left:112px;white-space:nowrap" class="ft152">Eldredge, Niles, Time Frames, Simon and Schuster, New York: 1985</p>
+<p style="position:absolute;top:510px;left:112px;white-space:nowrap" class="ft152">Fogel, D. B., (1990), Comparing genetic operators with Gaussian mutations in&#160;</p>
+<p style="position:absolute;top:534px;left:198px;white-space:nowrap" class="ft155">simulated evolutionary processes using linear systems,&#160;<i>Biological&#160;<br/>Cybernetics</i>,&#160;<b>63</b>: 111-114</p>
+<p style="position:absolute;top:600px;left:112px;white-space:nowrap" class="ft152">Goldberg, David E., Genetic Algorithms in Search, &#160;Optimization, and Machine&#160;</p>
+<p style="position:absolute;top:624px;left:198px;white-space:nowrap" class="ft152">Learning&#34;, Addison-Wesley, MA: 1989</p>
+<p style="position:absolute;top:666px;left:112px;white-space:nowrap" class="ft152">Holland, John H., Adaptation in Natural and Artificial Systems, Univ. of&#160;</p>
+<p style="position:absolute;top:690px;left:198px;white-space:nowrap" class="ft152">Michigan Pr., Ann Arbor: 1975</p>
+<p style="position:absolute;top:732px;left:112px;white-space:nowrap" class="ft152">Holland, John H., Adaptation in Natural and Artificial Systems, MIT Press, MA:&#160;</p>
+<p style="position:absolute;top:756px;left:198px;white-space:nowrap" class="ft152">1992</p>
+<p style="position:absolute;top:798px;left:112px;white-space:nowrap" class="ft152">Koza, John R., Genetic Programming, MIT Press, MA: 1992</p>
+<p style="position:absolute;top:840px;left:112px;white-space:nowrap" class="ft152">Michalewicz, Z., Genetic Algorithms + Data Structures = Evolution Programs,&#160;</p>
+<p style="position:absolute;top:864px;left:198px;white-space:nowrap" class="ft152">Springer-Verlag, NY: 1992</p>
+<p style="position:absolute;top:906px;left:112px;white-space:nowrap" class="ft152">Pelham, H.R.B., (1990), The retention signal for soluble proteins of the&#160;</p>
+<p style="position:absolute;top:930px;left:198px;white-space:nowrap" class="ft152">endoplasmic &#160;reticulum,&#160;<i>Trends Biochem. Sci.</i>&#160;<b>15</b>: 483-486</p>
+<p style="position:absolute;top:972px;left:112px;white-space:nowrap" class="ft152">Wells D.E., McBride C., (1989), A comprehensive compilation and alignment of&#160;</p>
+<p style="position:absolute;top:996px;left:198px;white-space:nowrap" class="ft152">histones and histone genes, &#160;<i>Nucleic Acids Res</i>.&#160;<b>17</b>: r311-r346</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:16px;font-family:Times;color:#000000;}
+	.ft161{font-size:15px;font-family:Times;color:#000000;}
+	.ft162{font-size:18px;font-family:Times;color:#000000;}
+	.ft163{font-size:18px;font-family:Times;color:#000000;}
+	.ft164{font-size:15px;line-height:20px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft160">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft160">-14-</p>
+<p style="position:absolute;top:233px;left:297px;white-space:nowrap" class="ft164">Initialization: set parameters, load &#34;in&#34; and<br/>&#34;out&#34; sequences, load population seeds if<br/>any, create random population.</p>
+<p style="position:absolute;top:365px;left:261px;white-space:nowrap" class="ft164">Evaluate each member of the population; sort the<br/>members by fitness, and retain only the top ones.&#160;<br/>Collect statistical data on the population.</p>
+<p style="position:absolute;top:722px;left:288px;white-space:nowrap" class="ft164">Fill in population with the<br/>best sequences, and mu-<br/>tants of the best ones.</p>
+<p style="position:absolute;top:862px;left:291px;white-space:nowrap" class="ft161">If the population is too homogeneous, replace</p>
+<p style="position:absolute;top:883px;left:303px;white-space:nowrap" class="ft161">very common schemas with random ones.&#160;</p>
+<p style="position:absolute;top:560px;left:355px;white-space:nowrap" class="ft161">Acceptable</p>
+<p style="position:absolute;top:581px;left:341px;white-space:nowrap" class="ft161">schema found?</p>
+<p style="position:absolute;top:543px;left:605px;white-space:nowrap" class="ft164">Print out the top ones<br/>with their fitnesses,<br/>and quit.</p>
+<p style="position:absolute;top:559px;left:528px;white-space:nowrap" class="ft161">Yes</p>
+<p style="position:absolute;top:672px;left:403px;white-space:nowrap" class="ft161">No</p>
+<p style="position:absolute;top:163px;left:128px;white-space:nowrap" class="ft162"><b>Figure 1</b>: the genetic algorithm flow of control</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:16px;font-family:Times;color:#000000;}
+	.ft171{font-size:18px;font-family:Times;color:#000000;}
+	.ft172{font-size:18px;font-family:Times;color:#000000;}
+	.ft173{font-size:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft170">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft170">-15-</p>
+<p style="position:absolute;top:130px;left:126px;white-space:nowrap" class="ft171"><b>Figure 2</b>: locating the KDEL sequence</p>
+<p style="position:absolute;top:177px;left:529px;white-space:nowrap" class="ft173">KDEL found at generation 64</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:16px;font-family:Times;color:#000000;}
+	.ft181{font-size:18px;font-family:Times;color:#000000;}
+	.ft182{font-size:18px;font-family:Times;color:#000000;}
+	.ft183{font-size:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft180">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft180">-16-</p>
+<p style="position:absolute;top:153px;left:128px;white-space:nowrap" class="ft181"><b>Figure 3</b>: locating the histone H2A signature sequence</p>
+<p style="position:absolute;top:213px;left:288px;white-space:nowrap" class="ft183">AGL*FPV found at generation 206</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:16px;font-family:Times;color:#000000;}
+	.ft191{font-size:18px;font-family:Times;color:#000000;}
+	.ft192{font-size:18px;font-family:Times;color:#000000;}
+	.ft193{font-size:15px;font-family:Courier;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft190">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft190">-17-</p>
+<p style="position:absolute;top:126px;left:132px;white-space:nowrap" class="ft191"><b>Figure 4</b>: &#160;dependence of solution rate on population size</p>
+<p style="position:absolute;top:370px;left:245px;white-space:nowrap" class="ft193">50</p>
+<p style="position:absolute;top:694px;left:245px;white-space:nowrap" class="ft193">10</p>
+<p style="position:absolute;top:653px;left:245px;white-space:nowrap" class="ft193">15</p>
+<p style="position:absolute;top:613px;left:245px;white-space:nowrap" class="ft193">20</p>
+<p style="position:absolute;top:572px;left:245px;white-space:nowrap" class="ft193">25</p>
+<p style="position:absolute;top:532px;left:245px;white-space:nowrap" class="ft193">30</p>
+<p style="position:absolute;top:492px;left:245px;white-space:nowrap" class="ft193">35</p>
+<p style="position:absolute;top:451px;left:245px;white-space:nowrap" class="ft193">40</p>
+<p style="position:absolute;top:411px;left:245px;white-space:nowrap" class="ft193">45</p>
+<p style="position:absolute;top:735px;left:746px;white-space:nowrap" class="ft193">1500</p>
+<p style="position:absolute;top:716px;left:266px;white-space:nowrap" class="ft193">200</p>
+<p style="position:absolute;top:735px;left:341px;white-space:nowrap" class="ft193">400</p>
+<p style="position:absolute;top:716px;left:416px;white-space:nowrap" class="ft193">600</p>
+<p style="position:absolute;top:735px;left:490px;white-space:nowrap" class="ft193">800</p>
+<p style="position:absolute;top:716px;left:560px;white-space:nowrap" class="ft193">1000</p>
+<p style="position:absolute;top:735px;left:634px;white-space:nowrap" class="ft193">1200</p>
+<p style="position:absolute;top:716px;left:710px;white-space:nowrap" class="ft193">1400</p>
+<p style="position:absolute;top:759px;left:460px;white-space:nowrap" class="ft192">Population size</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:16px;font-family:Times;color:#000000;}
+	.ft201{font-size:18px;font-family:Times;color:#000000;}
+	.ft202{font-size:18px;font-family:Times;color:#000000;}
+	.ft203{font-size:15px;font-family:Courier;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft200">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft200">-18-</p>
+<p style="position:absolute;top:144px;left:138px;white-space:nowrap" class="ft201"><b>Figure 5</b>: &#160;dependence of time to discovery on population size</p>
+<p style="position:absolute;top:340px;left:228px;white-space:nowrap" class="ft203">90</p>
+<p style="position:absolute;top:688px;left:228px;white-space:nowrap" class="ft203">20</p>
+<p style="position:absolute;top:637px;left:228px;white-space:nowrap" class="ft203">30</p>
+<p style="position:absolute;top:588px;left:228px;white-space:nowrap" class="ft203">40</p>
+<p style="position:absolute;top:539px;left:228px;white-space:nowrap" class="ft203">50</p>
+<p style="position:absolute;top:489px;left:228px;white-space:nowrap" class="ft203">60</p>
+<p style="position:absolute;top:439px;left:228px;white-space:nowrap" class="ft203">70</p>
+<p style="position:absolute;top:389px;left:228px;white-space:nowrap" class="ft203">80</p>
+<p style="position:absolute;top:732px;left:722px;white-space:nowrap" class="ft203">1500</p>
+<p style="position:absolute;top:712px;left:248px;white-space:nowrap" class="ft203">200</p>
+<p style="position:absolute;top:732px;left:323px;white-space:nowrap" class="ft203">400</p>
+<p style="position:absolute;top:712px;left:396px;white-space:nowrap" class="ft203">600</p>
+<p style="position:absolute;top:732px;left:469px;white-space:nowrap" class="ft203">800</p>
+<p style="position:absolute;top:712px;left:538px;white-space:nowrap" class="ft203">1000</p>
+<p style="position:absolute;top:732px;left:612px;white-space:nowrap" class="ft203">1200</p>
+<p style="position:absolute;top:712px;left:686px;white-space:nowrap" class="ft203">1400</p>
+<p style="position:absolute;top:758px;left:448px;white-space:nowrap" class="ft202">Population size</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:16px;font-family:Times;color:#000000;}
+	.ft211{font-size:16px;font-family:Courier;color:#000000;}
+	.ft212{font-size:18px;font-family:Times;color:#000000;}
+	.ft213{font-size:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft210">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft210">-19-</p>
+<p style="position:absolute;top:335px;left:225px;white-space:nowrap" class="ft211">340</p>
+<p style="position:absolute;top:613px;left:247px;white-space:nowrap" class="ft211">0</p>
+<p style="position:absolute;top:572px;left:236px;white-space:nowrap" class="ft211">50</p>
+<p style="position:absolute;top:531px;left:225px;white-space:nowrap" class="ft211">100</p>
+<p style="position:absolute;top:490px;left:225px;white-space:nowrap" class="ft211">150</p>
+<p style="position:absolute;top:450px;left:225px;white-space:nowrap" class="ft211">200</p>
+<p style="position:absolute;top:408px;left:225px;white-space:nowrap" class="ft211">250</p>
+<p style="position:absolute;top:368px;left:225px;white-space:nowrap" class="ft211">300</p>
+<p style="position:absolute;top:633px;left:767px;white-space:nowrap" class="ft211">100</p>
+<p style="position:absolute;top:633px;left:268px;white-space:nowrap" class="ft211">0</p>
+<p style="position:absolute;top:633px;left:314px;white-space:nowrap" class="ft211">10</p>
+<p style="position:absolute;top:633px;left:365px;white-space:nowrap" class="ft211">20</p>
+<p style="position:absolute;top:633px;left:416px;white-space:nowrap" class="ft211">30</p>
+<p style="position:absolute;top:633px;left:467px;white-space:nowrap" class="ft211">40</p>
+<p style="position:absolute;top:633px;left:518px;white-space:nowrap" class="ft211">50</p>
+<p style="position:absolute;top:633px;left:568px;white-space:nowrap" class="ft211">60</p>
+<p style="position:absolute;top:633px;left:619px;white-space:nowrap" class="ft211">70</p>
+<p style="position:absolute;top:633px;left:670px;white-space:nowrap" class="ft211">80</p>
+<p style="position:absolute;top:633px;left:721px;white-space:nowrap" class="ft211">90</p>
+<p style="position:absolute;top:136px;left:149px;white-space:nowrap" class="ft212"><b>Figure 6</b>: &#160;dependence of generation of discovery on survival size</p>
+<p style="position:absolute;top:671px;left:354px;white-space:nowrap" class="ft213">% of population taken for next generation</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft220{font-size:16px;font-family:Times;color:#000000;}
+	.ft221{font-size:18px;font-family:Times;color:#000000;}
+	.ft222{font-size:18px;font-family:Times;color:#000000;}
+	.ft223{font-size:15px;font-family:Courier;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page22-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft220">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft220">-20-</p>
+<p style="position:absolute;top:134px;left:148px;white-space:nowrap" class="ft221"><b>Figure 7</b>: &#160;dependence of generation of discovery on mutation incidence</p>
+<p style="position:absolute;top:393px;left:232px;white-space:nowrap" class="ft223">100</p>
+<p style="position:absolute;top:704px;left:254px;white-space:nowrap" class="ft223">0</p>
+<p style="position:absolute;top:642px;left:243px;white-space:nowrap" class="ft223">20</p>
+<p style="position:absolute;top:580px;left:243px;white-space:nowrap" class="ft223">40</p>
+<p style="position:absolute;top:517px;left:243px;white-space:nowrap" class="ft223">60</p>
+<p style="position:absolute;top:455px;left:243px;white-space:nowrap" class="ft223">80</p>
+<p style="position:absolute;top:727px;left:275px;white-space:nowrap" class="ft223">1</p>
+<p style="position:absolute;top:727px;left:323px;white-space:nowrap" class="ft223">2</p>
+<p style="position:absolute;top:727px;left:388px;white-space:nowrap" class="ft223">5</p>
+<p style="position:absolute;top:727px;left:431px;white-space:nowrap" class="ft223">10</p>
+<p style="position:absolute;top:727px;left:479px;white-space:nowrap" class="ft223">20</p>
+<p style="position:absolute;top:727px;left:544px;white-space:nowrap" class="ft223">50</p>
+<p style="position:absolute;top:727px;left:587px;white-space:nowrap" class="ft223">100</p>
+<p style="position:absolute;top:727px;left:635px;white-space:nowrap" class="ft223">200</p>
+<p style="position:absolute;top:727px;left:698px;white-space:nowrap" class="ft223">500&#160;1000</p>
+<p style="position:absolute;top:774px;left:338px;white-space:nowrap" class="ft222">No. of mutations performed on each survivor&#160;</p>
+<p style="position:absolute;top:807px;left:483px;white-space:nowrap" class="ft222">(Log scale)</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft230{font-size:16px;font-family:Times;color:#000000;}
+	.ft231{font-size:18px;font-family:Times;color:#000000;}
+	.ft232{font-size:18px;font-family:Times;color:#000000;}
+	.ft233{font-size:15px;font-family:Times;color:#000000;}
+	.ft234{font-size:19px;font-family:Times;color:#000000;}
+	.ft235{font-size:12px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page23-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:40px;left:115px;white-space:nowrap" class="ft230">Locating Protein Signals by GAs</p>
+<p style="position:absolute;top:1120px;left:443px;white-space:nowrap" class="ft230">-21-</p>
+<p style="position:absolute;top:126px;left:127px;white-space:nowrap" class="ft231"><b>Table 1</b>: parameter settings for various runs</p>
+<p style="position:absolute;top:198px;left:133px;white-space:nowrap" class="ft233">Parameter</p>
+<p style="position:absolute;top:198px;left:392px;white-space:nowrap" class="ft233">KDEL</p>
+<p style="position:absolute;top:198px;left:479px;white-space:nowrap" class="ft233">Histone signature</p>
+<p style="position:absolute;top:198px;left:652px;white-space:nowrap" class="ft233">Default</p>
+<p style="position:absolute;top:255px;left:133px;white-space:nowrap" class="ft234">Population size (P</p>
+<p style="position:absolute;top:265px;left:286px;white-space:nowrap" class="ft235">1)</p>
+<p style="position:absolute;top:255px;left:392px;white-space:nowrap" class="ft232">800</p>
+<p style="position:absolute;top:255px;left:479px;white-space:nowrap" class="ft232">800</p>
+<p style="position:absolute;top:255px;left:652px;white-space:nowrap" class="ft232">800</p>
+<p style="position:absolute;top:311px;left:133px;white-space:nowrap" class="ft232">survival size (P</p>
+<p style="position:absolute;top:321px;left:263px;white-space:nowrap" class="ft235">2)</p>
+<p style="position:absolute;top:311px;left:392px;white-space:nowrap" class="ft232">300</p>
+<p style="position:absolute;top:311px;left:479px;white-space:nowrap" class="ft232">300</p>
+<p style="position:absolute;top:311px;left:652px;white-space:nowrap" class="ft232">30%</p>
+<p style="position:absolute;top:367px;left:133px;white-space:nowrap" class="ft232">K</p>
+<p style="position:absolute;top:378px;left:148px;white-space:nowrap" class="ft235">1</p>
+<p style="position:absolute;top:367px;left:392px;white-space:nowrap" class="ft232">15</p>
+<p style="position:absolute;top:367px;left:479px;white-space:nowrap" class="ft232">15</p>
+<p style="position:absolute;top:367px;left:652px;white-space:nowrap" class="ft232">15</p>
+<p style="position:absolute;top:423px;left:133px;white-space:nowrap" class="ft232">K</p>
+<p style="position:absolute;top:434px;left:148px;white-space:nowrap" class="ft235">2</p>
+<p style="position:absolute;top:423px;left:392px;white-space:nowrap" class="ft232">2</p>
+<p style="position:absolute;top:423px;left:479px;white-space:nowrap" class="ft232">2</p>
+<p style="position:absolute;top:423px;left:652px;white-space:nowrap" class="ft232">2</p>
+<p style="position:absolute;top:479px;left:133px;white-space:nowrap" class="ft232">K</p>
+<p style="position:absolute;top:490px;left:148px;white-space:nowrap" class="ft235">3</p>
+<p style="position:absolute;top:479px;left:392px;white-space:nowrap" class="ft232">3</p>
+<p style="position:absolute;top:479px;left:479px;white-space:nowrap" class="ft232">3</p>
+<p style="position:absolute;top:479px;left:652px;white-space:nowrap" class="ft232">3</p>
+<p style="position:absolute;top:535px;left:133px;white-space:nowrap" class="ft232">K</p>
+<p style="position:absolute;top:546px;left:148px;white-space:nowrap" class="ft235">4</p>
+<p style="position:absolute;top:535px;left:392px;white-space:nowrap" class="ft232">0.1</p>
+<p style="position:absolute;top:535px;left:479px;white-space:nowrap" class="ft232">0.8</p>
+<p style="position:absolute;top:535px;left:652px;white-space:nowrap" class="ft232">0.1</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6e26a6c50a64b003b383274a81cbaab3-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft240{font-size:19px;font-family:Times;color:#000000;}
+	.ft241{font-size:19px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page24-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:114px;left:631px;white-space:nowrap" class="ft240">&#160; &#160; &#160; Aug. 28, 1993</p>
+<p style="position:absolute;top:147px;left:112px;white-space:nowrap" class="ft240">Michael Levin</p>
+<p style="position:absolute;top:180px;left:112px;white-space:nowrap" class="ft240">43 Worcester Ave.</p>
+<p style="position:absolute;top:213px;left:112px;white-space:nowrap" class="ft240">Swampscott, MA</p>
+<p style="position:absolute;top:246px;left:112px;white-space:nowrap" class="ft240">&#160; &#160; &#160; &#160;01907</p>
+<p style="position:absolute;top:279px;left:112px;white-space:nowrap" class="ft240">(617) 599-3231</p>
+<p style="position:absolute;top:312px;left:112px;white-space:nowrap" class="ft240">mlevin@husc8.harvard.edu</p>
+<p style="position:absolute;top:345px;left:112px;white-space:nowrap" class="ft240">Cell and Developmental Biology Dept.</p>
+<p style="position:absolute;top:378px;left:112px;white-space:nowrap" class="ft240">Harvard Medical School</p>
+<p style="position:absolute;top:411px;left:112px;white-space:nowrap" class="ft240">Boston, MA</p>
+<p style="position:absolute;top:477px;left:112px;white-space:nowrap" class="ft240">Dear Professor Kauffman,</p>
+<p style="position:absolute;top:543px;left:112px;white-space:nowrap" class="ft241">&#160; &#160; &#160;Enclosed please find a manuscript which I would like to submit for considera-<br/>tion of the Journal of Theoretical Biology. The paper describes a successful appli-<br/>cation of genetic algorithms to a problem in molecular biology. I believe this<br/>work to be important both to the molecular biology community as well as to those<br/>interested in genetic algorithms. It presents a tool for solving a problem for which<br/>no good algorithm currently exists, determines the optimal parameters for this al-<br/>gorithm, and shows yet another problem area in which genetic algorithms can be<br/>successfully applied. I thank you for your consideration, and hope to hear from<br/>you soon.</p>
+<p style="position:absolute;top:801px;left:544px;white-space:nowrap" class="ft240">Sincerely,</p>
+<p style="position:absolute;top:900px;left:544px;white-space:nowrap" class="ft240">Michael Levin</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:28px;font-family:Times;color:#000000;}
+	.ft11{font-size:19px;font-family:Times;color:#000000;}
+	.ft12{font-size:11px;font-family:Times;color:#000000;}
+	.ft13{font-size:6px;font-family:Times;color:#000000;}
+	.ft14{font-size:9px;font-family:Times;color:#000000;}
+	.ft15{font-size:12px;font-family:Times;color:#000000;}
+	.ft16{font-size:7px;font-family:Times;color:#000000;}
+	.ft17{font-size:15px;font-family:Times;color:#000000;}
+	.ft18{font-size:8px;font-family:Times;color:#000000;}
+	.ft19{font-size:28px;line-height:34px;font-family:Times;color:#000000;}
+	.ft110{font-size:19px;line-height:25px;font-family:Times;color:#000000;}
+	.ft111{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft112{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft113{font-size:12px;line-height:19px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:105px;left:77px;white-space:nowrap" class="ft19">Machine&#160;Learning-Driven&#160;Bioelectronics&#160;for&#160;Closed-Loop<br/>Control&#160;of&#160;Cells</p>
+<p style="position:absolute;top:193px;left:77px;white-space:nowrap" class="ft110">John&#160;Selberg,&#160;Mohammad&#160;Jafari,&#160;Juanita&#160;Mathews,&#160;Manping&#160;Jia,&#160;Pattawong&#160;Pansodtee,<br/>Harika&#160;Dechiraju,&#160;Chunxiao&#160;Wu,&#160;Sergio&#160;Cordero,&#160;Alexander&#160;Flora,&#160;Nebyu&#160;Yonas,<br/>Sophia&#160;Jannetty,&#160;Miranda&#160;Diberardinis,&#160;Mircea&#160;Teodorescu,&#160;Michael&#160;Levin,*<br/>Marcella&#160;Gomez,*&#160;and&#160;Marco&#160;Rolandi*</p>
+<p style="position:absolute;top:726px;left:77px;white-space:nowrap" class="ft111">Life&#160;is&#160;built&#160;upon&#160;closed-loop&#160;feedback&#160;and&#160;regulation&#160;systems<br/>that&#160;maintain&#160;a&#160;delicate&#160;balance&#160;of&#160;environmental&#160;and&#160;metabolic<br/>conditions&#160;that&#160;support&#160;cellular&#160;function.</p>
+<p style="position:absolute;top:757px;left:307px;white-space:nowrap" class="ft13">[1]&#160;Bioelectronic&#160;devices</p>
+<p style="position:absolute;top:328px;left:579px;white-space:nowrap" class="ft111">interface&#160;electronic&#160;devices&#160;with&#160;biology<br/>with&#160;potential&#160;for&#160;sensing&#160;and&#160;actu-<br/>ation.</p>
+<p style="position:absolute;top:359px;left:611px;white-space:nowrap" class="ft13">[2</p>
+<p style="position:absolute;top:357px;left:618px;white-space:nowrap" class="ft13">–5]&#160;A&#160;challenge&#160;for&#160;bioelectronic</p>
+<p style="position:absolute;top:378px;left:579px;white-space:nowrap" class="ft111">devices&#160;is&#160;translating&#160;between&#160;ionic&#160;and<br/>biochemical&#160;signals&#160;that&#160;dominate&#160;biology<br/>into&#160;electronic&#160;currents&#160;in&#160;the&#160;devices<br/>and&#160;vice&#160;versa.&#160;Iontronics&#160;addresses&#160;this<br/>challenge&#160;by&#160;modulating&#160;ions&#160;directly&#160;at<br/>the&#160;device&#160;level&#160;rather&#160;than&#160;electron&#160;and<br/>holes&#160;as&#160;in&#160;traditional&#160;semiconductors.</p>
+<p style="position:absolute;top:475px;left:810px;white-space:nowrap" class="ft13">[6]</p>
+<p style="position:absolute;top:495px;left:579px;white-space:nowrap" class="ft111">Electrophoretic&#160;ion&#160;pumps&#160;mediate&#160;the<br/>delivery&#160;of&#160;ions&#160;and&#160;charged&#160;molecules<br/>with&#160;an&#160;induced&#160;electric</p>
+<p style="position:absolute;top:525px;left:734px;white-space:nowrap" class="ft12">ﬁeld[7]&#160;to&#160;treat</p>
+<p style="position:absolute;top:544px;left:579px;white-space:nowrap" class="ft12">epilepsy,</p>
+<p style="position:absolute;top:542px;left:628px;white-space:nowrap" class="ft13">[6]&#160;chronic&#160;pain,[8]&#160;in</p>
+<p style="position:absolute;top:542px;left:741px;white-space:nowrap" class="ft12">ﬂammation,[9]</p>
+<p style="position:absolute;top:561px;left:579px;white-space:nowrap" class="ft12">and&#160;to&#160;actuate&#160;movement&#160;in&#160;plants.</p>
+<p style="position:absolute;top:558px;left:805px;white-space:nowrap" class="ft13">[10]</p>
+<p style="position:absolute;top:578px;left:579px;white-space:nowrap" class="ft111">In&#160;addition,&#160;bioprotonic&#160;devices&#160;can&#160;sense<br/>and&#160;actuate&#160;the</p>
+<p style="position:absolute;top:591px;left:673px;white-space:nowrap" class="ft12">ﬂow&#160;of&#160;Hþ&#160;in&#160;ﬁeld&#160;effect</p>
+<p style="position:absolute;top:611px;left:579px;white-space:nowrap" class="ft12">transistors</p>
+<p style="position:absolute;top:611px;left:655px;white-space:nowrap" class="ft12">(Hþ-FETs),</p>
+<p style="position:absolute;top:608px;left:718px;white-space:nowrap" class="ft13">[11,12]</p>
+<p style="position:absolute;top:611px;left:763px;white-space:nowrap" class="ft12">enzymatic</p>
+<p style="position:absolute;top:628px;left:579px;white-space:nowrap" class="ft12">logic&#160;gates,</p>
+<p style="position:absolute;top:625px;left:642px;white-space:nowrap" class="ft13">[12]&#160;and&#160;ion&#160;channels.[13]</p>
+<p style="position:absolute;top:644px;left:594px;white-space:nowrap" class="ft12">A&#160;cell</p>
+<p style="position:absolute;top:641px;left:629px;white-space:nowrap" class="ft12">’s&#160;resting&#160;potential,&#160;Vmem,&#160;is&#160;an</p>
+<p style="position:absolute;top:661px;left:579px;white-space:nowrap" class="ft111">electrical&#160;control&#160;signal&#160;that&#160;occurs&#160;between<br/>the&#160;interior&#160;of&#160;the&#160;cell&#160;and&#160;the&#160;extracellular<br/>environment&#160;regulated&#160;by&#160;ion&#160;channels.</p>
+<p style="position:absolute;top:691px;left:805px;white-space:nowrap" class="ft13">[14]</p>
+<p style="position:absolute;top:711px;left:579px;white-space:nowrap" class="ft12">In&#160;nonexcitable&#160;cells,</p>
+<p style="position:absolute;top:708px;left:701px;white-space:nowrap" class="ft13">[15]</p>
+<p style="position:absolute;top:708px;left:722px;white-space:nowrap" class="ft12">Vmem&#160;affects&#160;cell</p>
+<p style="position:absolute;top:727px;left:459px;white-space:nowrap" class="ft111">physiology&#160;and&#160;functions&#160;such&#160;as&#160;proliferation,&#160;differentiation,<br/>migration,&#160;and&#160;apoptosis,&#160;as&#160;well&#160;as&#160;cell</p>
+<p style="position:absolute;top:741px;left:699px;white-space:nowrap" class="ft12">–cell&#160;communication</p>
+<p style="position:absolute;top:761px;left:459px;white-space:nowrap" class="ft12">and&#160;large-scale&#160;morphogenesis.</p>
+<p style="position:absolute;top:758px;left:642px;white-space:nowrap" class="ft13">[16]&#160;Recently,&#160;optically&#160;actuated</p>
+<p style="position:absolute;top:799px;left:77px;white-space:nowrap" class="ft112">J.&#160;Selberg,&#160;M.&#160;Jia,&#160;P.&#160;Pansodtee,&#160;H.&#160;Dechiraju,&#160;Dr.&#160;C.&#160;Wu,&#160;S.&#160;Cordero,<br/>A.&#160;Flora,&#160;N.&#160;Yonas,&#160;Prof.&#160;M.&#160;Teodorescu,&#160;Prof.&#160;M.&#160;Rolandi<br/>Department&#160;of&#160;Electrical&#160;and&#160;Computer&#160;Engineering<br/>University&#160;of&#160;California&#160;Santa&#160;Cruz<br/>Santa&#160;Cruz,&#160;CA&#160;95064,&#160;USA<br/>E-mail:&#160;<a href="mailto:mrolandi@ucsc.edu">mrolandi@ucsc.edu</a></p>
+<p style="position:absolute;top:889px;left:77px;white-space:nowrap" class="ft112">Dr.&#160;M.&#160;Jafari,&#160;Prof.&#160;M.&#160;Gomez<br/>Department&#160;of&#160;Applied&#160;Mathematics<br/>University&#160;of&#160;California&#160;Santa&#160;Cruz<br/>Santa&#160;Cruz,&#160;CA&#160;95064,&#160;USA<br/>E-mail:&#160;<a href="mailto:mgomez26@ucsc.edu">mgomez26@ucsc.edu</a></p>
+<p style="position:absolute;top:966px;left:96px;white-space:nowrap" class="ft14">The&#160;ORCID&#160;identi</p>
+<p style="position:absolute;top:963px;left:186px;white-space:nowrap" class="ft14">ﬁcation&#160;number(s)&#160;for&#160;the&#160;author(s)&#160;of&#160;this&#160;article</p>
+<p style="position:absolute;top:979px;left:96px;white-space:nowrap" class="ft14">can&#160;be&#160;found&#160;under&#160;<a href="https://doi.org/10.1002/aisy.202000140">https://doi.org/10.1002/aisy.202000140.</a></p>
+<p style="position:absolute;top:1002px;left:77px;white-space:nowrap" class="ft112">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH.&#160;This&#160;is&#160;an&#160;open<br/>access&#160;article&#160;under&#160;the&#160;terms&#160;of&#160;the&#160;<a href="http://creativecommons.org/licenses/by/4.0/">Creative&#160;Commons&#160;Attribution<br/></a>License,&#160;which&#160;permits&#160;use,&#160;distribution&#160;and&#160;reproduction&#160;in&#160;any<br/>medium,&#160;provided&#160;the&#160;original&#160;work&#160;is&#160;properly&#160;cited.</p>
+<p style="position:absolute;top:1063px;left:77px;white-space:nowrap" class="ft12">DOI:&#160;10.1002/aisy.202000140</p>
+<p style="position:absolute;top:799px;left:459px;white-space:nowrap" class="ft112">Dr.&#160;J.&#160;Mathews,&#160;S.&#160;Jannetty,&#160;M.&#160;Diberardinis,&#160;Prof.&#160;M.&#160;Levin<br/>Allen&#160;Discovery&#160;Center<br/>Tufts&#160;University<br/>Medford,&#160;MA&#160;02155,&#160;USA<br/>E-mail:&#160;<a href="mailto:michael.levin@tufts.edu">michael.levin@tufts.edu</a></p>
+<p style="position:absolute;top:875px;left:459px;white-space:nowrap" class="ft112">Dr.&#160;J.&#160;Mathews,&#160;S.&#160;Jannetty,&#160;M.&#160;Diberardinis,&#160;Prof.&#160;M.&#160;Levin<br/>Department&#160;of&#160;Biology<br/>Tufts&#160;University<br/>Medford,&#160;MA&#160;02155,&#160;USA</p>
+<p style="position:absolute;top:939px;left:459px;white-space:nowrap" class="ft112">Prof.&#160;M.&#160;Levin<br/>Wyss&#160;Institute&#160;for&#160;Biologically&#160;Inspired&#160;Engineering<br/>Harvard&#160;University<br/>Boston,&#160;MA&#160;02155,&#160;USA</p>
+<p style="position:absolute;top:344px;left:77px;white-space:nowrap" class="ft113">From&#160;the&#160;simplest&#160;unicellular&#160;organisms&#160;to&#160;complex&#160;animals,&#160;feedback&#160;control<br/>based&#160;on&#160;sensing&#160;and&#160;actuation&#160;is&#160;a&#160;staple&#160;of&#160;self-regulation&#160;in&#160;biological&#160;pro-<br/>cesses&#160;and&#160;is&#160;a&#160;key&#160;to&#160;life&#160;itself.&#160;Malfunctioning&#160;of&#160;this&#160;control&#160;loop&#160;can&#160;often&#160;lead<br/>to&#160;disease&#160;or&#160;death.&#160;Bioelectronic&#160;devices&#160;that&#160;interface&#160;electronics&#160;with&#160;biological<br/>systems&#160;can&#160;be&#160;used&#160;for&#160;sensing&#160;and&#160;actuation&#160;of&#160;biological&#160;processes&#160;and&#160;have<br/>potential&#160;for&#160;novel&#160;therapeutic&#160;applications.&#160;Due&#160;to&#160;the&#160;complexity&#160;of&#160;biological<br/>systems&#160;and&#160;the&#160;challenge&#160;of&#160;affecting&#160;their&#160;innate&#160;self-regulation,&#160;closing&#160;the<br/>loop&#160;between&#160;sensing&#160;and&#160;actuation&#160;with&#160;bioelectronics&#160;is&#160;dif</p>
+<p style="position:absolute;top:478px;left:432px;white-space:nowrap" class="ft15">ﬁcult&#160;to&#160;achieve.</p>
+<p style="position:absolute;top:500px;left:77px;white-space:nowrap" class="ft15">Herein,&#160;bioelectronic&#160;proton-conducting&#160;devices&#160;are&#160;integrated&#160;with</p>
+<p style="position:absolute;top:497px;left:470px;white-space:nowrap" class="ft15">ﬂuorescence</p>
+<p style="position:absolute;top:520px;left:77px;white-space:nowrap" class="ft113">sensing&#160;using&#160;machine&#160;learning&#160;to&#160;provide&#160;closed-loop&#160;control&#160;of&#160;bioelectronic<br/>actuation&#160;in&#160;living&#160;cells.&#160;Proton-conducting&#160;bioelectronic&#160;devices&#160;control&#160;pH&#160;in&#160;a<br/>micro</p>
+<p style="position:absolute;top:556px;left:109px;white-space:nowrap" class="ft15">ﬂuidic&#160;system&#160;that&#160;houses&#160;pluripotent&#160;mammalian&#160;stem&#160;cells.&#160;This&#160;pH&#160;control</p>
+<p style="position:absolute;top:578px;left:77px;white-space:nowrap" class="ft15">affects&#160;the&#160;membrane&#160;voltage&#160;(</p>
+<p style="position:absolute;top:578px;left:251px;white-space:nowrap" class="ft15">Vmem)&#160;of&#160;the&#160;cells&#160;that&#160;is&#160;measured&#160;using&#160;genetically</p>
+<p style="position:absolute;top:598px;left:77px;white-space:nowrap" class="ft15">encoded</p>
+<p style="position:absolute;top:595px;left:129px;white-space:nowrap" class="ft15">ﬂuorescent&#160;Vmem&#160;reporters.&#160;In&#160;this&#160;fashion,&#160;proof-of-concept&#160;real-time</p>
+<p style="position:absolute;top:617px;left:77px;white-space:nowrap" class="ft15">control&#160;of</p>
+<p style="position:absolute;top:617px;left:135px;white-space:nowrap" class="ft15">Vmem&#160;toward&#160;a&#160;desired&#160;set-point&#160;is&#160;demonstrated.&#160;Given&#160;the&#160;importance</p>
+<p style="position:absolute;top:637px;left:77px;white-space:nowrap" class="ft15">of</p>
+<p style="position:absolute;top:637px;left:92px;white-space:nowrap" class="ft15">Vmem&#160;in&#160;cell&#160;function,&#160;differentiation,&#160;and&#160;proliferation,&#160;this&#160;proof-of-concept</p>
+<p style="position:absolute;top:656px;left:77px;white-space:nowrap" class="ft15">opens&#160;up&#160;many&#160;possibilities&#160;in&#160;bioelectronic&#160;closed-loop&#160;control&#160;of&#160;cell&#160;systems.</p>
+<p style="position:absolute;top:32px;left:77px;white-space:nowrap" class="ft17">COMMUNICATION</p>
+<p style="position:absolute;top:67px;left:708px;white-space:nowrap" class="ft14"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:77px;white-space:nowrap" class="ft18">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:350px;white-space:nowrap" class="ft12">2000140&#160;(1&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:582px;white-space:nowrap" class="ft18">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:11px;font-family:Times;color:#000000;}
+	.ft21{font-size:6px;font-family:Times;color:#000000;}
+	.ft22{font-size:9px;font-family:Times;color:#000000;}
+	.ft23{font-size:5px;font-family:Times;color:#000000;}
+	.ft24{font-size:8px;font-family:Times;color:#000000;}
+	.ft25{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft26{font-size:11px;line-height:13px;font-family:Times;color:#000000;}
+	.ft27{font-size:11px;line-height:19px;font-family:Times;color:#000000;}
+	.ft28{font-size:9px;line-height:12px;font-family:Times;color:#000000;}
+	.ft29{font-size:9px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:106px;left:72px;white-space:nowrap" class="ft20">capacitors&#160;have&#160;achieved&#160;transient</p>
+<p style="position:absolute;top:103px;left:265px;white-space:nowrap" class="ft20">Vmem&#160;control&#160;in&#160;oocyte&#160;cells.[5]</p>
+<p style="position:absolute;top:123px;left:72px;white-space:nowrap" class="ft20">The&#160;ability&#160;to&#160;control</p>
+<p style="position:absolute;top:120px;left:191px;white-space:nowrap" class="ft20">Vmem&#160;for&#160;long&#160;term&#160;is&#160;an&#160;essential&#160;enabling</p>
+<p style="position:absolute;top:139px;left:72px;white-space:nowrap" class="ft25">step&#160;to&#160;the&#160;modulation&#160;of&#160;cell&#160;function,&#160;metabolism,&#160;and&#160;morpho-<br/>genesis,&#160;especially&#160;in&#160;bioengineering,&#160;regenerative&#160;medicine,&#160;and<br/>synthetic&#160;morphology&#160;applications.</p>
+<p style="position:absolute;top:170px;left:271px;white-space:nowrap" class="ft21">[17]</p>
+<p style="position:absolute;top:189px;left:87px;white-space:nowrap" class="ft20">Controlling&#160;cells&#160;with&#160;bioelectronics&#160;is&#160;dif</p>
+<p style="position:absolute;top:186px;left:336px;white-space:nowrap" class="ft20">ﬁcult&#160;due&#160;to&#160;the</p>
+<p style="position:absolute;top:205px;left:72px;white-space:nowrap" class="ft25">complexity&#160;of&#160;cellular&#160;response&#160;to&#160;changing&#160;environmental<br/>conditions.&#160;Cellular&#160;processes&#160;are&#160;hard&#160;to&#160;model&#160;due&#160;to&#160;noise<br/>and&#160;uncertainty.</p>
+<p style="position:absolute;top:236px;left:163px;white-space:nowrap" class="ft21">[18]&#160;This&#160;complexity&#160;limits&#160;most&#160;examples&#160;of&#160;bio-</p>
+<p style="position:absolute;top:255px;left:72px;white-space:nowrap" class="ft20">control&#160;to&#160;simpli</p>
+<p style="position:absolute;top:252px;left:169px;white-space:nowrap" class="ft20">ﬁed&#160;systems&#160;such&#160;as&#160;synthetic&#160;gene&#160;networks</p>
+<p style="position:absolute;top:271px;left:72px;white-space:nowrap" class="ft25">engineered&#160;with&#160;feedback&#160;to&#160;achieve&#160;noise&#160;rejection&#160;and<br/>adaptation.</p>
+<p style="position:absolute;top:285px;left:134px;white-space:nowrap" class="ft21">[19]&#160;As&#160;the&#160;complexity&#160;of&#160;biological&#160;systems&#160;scale</p>
+<p style="position:absolute;top:304px;left:72px;white-space:nowrap" class="ft25">up,&#160;the&#160;challenge&#160;of&#160;feedback&#160;design&#160;increases.&#160;Without&#160;a&#160;model,<br/>a&#160;standard&#160;approach&#160;to&#160;bioelectronic&#160;control&#160;would&#160;require<br/>information&#160;a&#160;priori&#160;of&#160;how&#160;the&#160;biological&#160;variable&#160;will&#160;respond<br/>to&#160;an&#160;electronic&#160;stimulus.</p>
+<p style="position:absolute;top:351px;left:216px;white-space:nowrap" class="ft21">[20]&#160;This&#160;information&#160;is&#160;often&#160;not&#160;avail-</p>
+<p style="position:absolute;top:370px;left:72px;white-space:nowrap" class="ft25">able.&#160;In&#160;addition,&#160;such&#160;an&#160;approach&#160;does&#160;not&#160;account&#160;for&#160;potential<br/>adaptation&#160;in&#160;system&#160;response&#160;or&#160;unknown&#160;changes&#160;in&#160;the&#160;envi-<br/>ronment&#160;or&#160;device&#160;response.&#160;For&#160;example,&#160;the&#160;commonly&#160;used<br/>controller&#160;in&#160;practice,&#160;known&#160;as&#160;the&#160;proportional</p>
+<p style="position:absolute;top:417px;left:377px;white-space:nowrap" class="ft20">–integral–</p>
+<p style="position:absolute;top:436px;left:72px;white-space:nowrap" class="ft25">derivative&#160;(PID)&#160;controller,&#160;might&#160;not&#160;function&#160;properly&#160;when<br/>the&#160;system&#160;under&#160;control&#160;is&#160;exposed&#160;to&#160;the&#160;uncertainties,<br/>nonlinearities,&#160;and&#160;unknown&#160;disturbances&#160;caused&#160;by&#160;undesired<br/>phenomena&#160;such&#160;as&#160;varying&#160;environmental&#160;conditions.</p>
+<p style="position:absolute;top:483px;left:387px;white-space:nowrap" class="ft21">[21]</p>
+<p style="position:absolute;top:502px;left:87px;white-space:nowrap" class="ft20">Machine&#160;learning&#160;(ML)&#160;has&#160;successfully&#160;controlled&#160;biological</p>
+<p style="position:absolute;top:519px;left:72px;white-space:nowrap" class="ft20">systems&#160;when&#160;of</p>
+<p style="position:absolute;top:516px;left:168px;white-space:nowrap" class="ft20">ﬂine&#160;training&#160;and&#160;large&#160;datasets&#160;are&#160;available&#160;a</p>
+<p style="position:absolute;top:535px;left:72px;white-space:nowrap" class="ft20">priori.</p>
+<p style="position:absolute;top:533px;left:107px;white-space:nowrap" class="ft21">[22]&#160;However,&#160;deep-learning&#160;ML&#160;methods&#160;such&#160;as&#160;deep</p>
+<p style="position:absolute;top:552px;left:72px;white-space:nowrap" class="ft25">neural&#160;networks,&#160;deep&#160;recurrent&#160;neural&#160;networks,&#160;and&#160;generative<br/>adversarial&#160;networks&#160;are&#160;slow&#160;to&#160;update&#160;in&#160;response&#160;to&#160;system<br/>changes.&#160;Real-time&#160;ML-based&#160;methods,&#160;such&#160;as&#160;adaptive&#160;ML<br/>algorithms,&#160;in&#160;combination&#160;with&#160;tools&#160;from&#160;control&#160;theory&#160;learn<br/>and&#160;respond&#160;to&#160;different&#160;operational&#160;conditions</p>
+<p style="position:absolute;top:615px;left:335px;white-space:nowrap" class="ft21">[23,24]&#160;and&#160;are&#160;able</p>
+<p style="position:absolute;top:634px;left:72px;white-space:nowrap" class="ft25">to&#160;work&#160;with&#160;nonlinearities,&#160;noise,&#160;and&#160;system&#160;uncertainty&#160;that<br/>are&#160;typical&#160;of&#160;cells&#160;or&#160;bioelectronic&#160;devices.&#160;Here,&#160;we&#160;leverage<br/>a&#160;single-layer&#160;neural&#160;network&#160;with&#160;a</p>
+<p style="position:absolute;top:664px;left:296px;white-space:nowrap" class="ft20">“sense&#160;and&#160;respond”[25]</p>
+<p style="position:absolute;top:684px;left:72px;white-space:nowrap" class="ft25">composed&#160;of&#160;radial&#160;basis&#160;functions&#160;(RBFs).&#160;RBFs&#160;act&#160;as&#160;universal<br/>approximators</p>
+<p style="position:absolute;top:698px;left:153px;white-space:nowrap" class="ft21">[25]&#160;and&#160;are&#160;fast&#160;converging,&#160;thus&#160;ideal&#160;for&#160;real-time</p>
+<p style="position:absolute;top:717px;left:72px;white-space:nowrap" class="ft20">control&#160;applications.</p>
+<p style="position:absolute;top:714px;left:187px;white-space:nowrap" class="ft21">[24,26]</p>
+<p style="position:absolute;top:733px;left:87px;white-space:nowrap" class="ft20">Here,&#160;we&#160;demonstrate&#160;an&#160;array&#160;of&#160;bioelectronic&#160;proton</p>
+<p style="position:absolute;top:750px;left:72px;white-space:nowrap" class="ft20">pumps</p>
+<p style="position:absolute;top:747px;left:111px;white-space:nowrap" class="ft21">[27]&#160;merged&#160;with&#160;an&#160;adaptive&#160;ML-based&#160;controller&#160;that</p>
+<p style="position:absolute;top:766px;left:72px;white-space:nowrap" class="ft20">can&#160;provide&#160;control&#160;of</p>
+<p style="position:absolute;top:763px;left:207px;white-space:nowrap" class="ft20">Vmem&#160;for&#160;an&#160;extended&#160;amount&#160;of&#160;time</p>
+<p style="position:absolute;top:783px;left:72px;white-space:nowrap" class="ft25">(Figure&#160;1).&#160;In&#160;brief,&#160;a&#160;bioelectronic&#160;proton&#160;pump&#160;array&#160;adds&#160;or<br/>removes&#160;Hþ&#160;from&#160;solution&#160;and&#160;changes&#160;[Hþ]&#160;in&#160;proximity&#160;of<br/>human-induced&#160;pluripotent&#160;stem&#160;cells&#160;(hiPSCs)&#160;(Figure&#160;S1,<br/>Supporting&#160;Information).&#160;In&#160;hiPSCs,&#160;an&#160;increase&#160;in&#160;extracellular<br/>[Hþ]&#160;results&#160;in&#160;cell&#160;depolarization&#160;(lower</p>
+<p style="position:absolute;top:846px;left:299px;white-space:nowrap" class="ft20">Vmem)&#160;and&#160;a&#160;decrease&#160;in</p>
+<p style="position:absolute;top:865px;left:72px;white-space:nowrap" class="ft27">extracellular&#160;[Hþ]&#160;results&#160;in&#160;cell&#160;hyperpolarization&#160;(higher<br/>Vmem).[28]&#160;We&#160;measure&#160;relative&#160;changes&#160;in&#160;Vmem&#160;of&#160;the&#160;cells<br/>using&#160;ArcLight,&#160;a</p>
+<p style="position:absolute;top:895px;left:171px;white-space:nowrap" class="ft20">ﬂuorescent&#160;reporter&#160;for&#160;membrane&#160;voltage&#160;that</p>
+<p style="position:absolute;top:915px;left:72px;white-space:nowrap" class="ft20">we&#160;expressed&#160;on&#160;the&#160;cell&#160;membrane.</p>
+<p style="position:absolute;top:912px;left:280px;white-space:nowrap" class="ft21">[29]&#160;To&#160;monitor&#160;and&#160;control</p>
+<p style="position:absolute;top:931px;left:72px;white-space:nowrap" class="ft20">the&#160;dynamics&#160;of</p>
+<p style="position:absolute;top:928px;left:165px;white-space:nowrap" class="ft20">Vmem&#160;in&#160;real&#160;time,&#160;ﬂuorescent&#160;images&#160;are&#160;taken</p>
+<p style="position:absolute;top:948px;left:72px;white-space:nowrap" class="ft20">at&#160;regularly&#160;spaced&#160;time&#160;intervals.&#160;To&#160;set&#160;and&#160;maintain&#160;a&#160;speci</p>
+<p style="position:absolute;top:945px;left:420px;white-space:nowrap" class="ft20">ﬁc</p>
+<p style="position:absolute;top:961px;left:72px;white-space:nowrap" class="ft27">Vmem&#160;value&#160;for&#160;a&#160;given&#160;cell,&#160;we&#160;control&#160;the&#160;system&#160;using&#160;a<br/>ML-based&#160;algorithm&#160;that&#160;maps&#160;changes&#160;in</p>
+<p style="position:absolute;top:978px;left:327px;white-space:nowrap" class="ft20">Vmem&#160;to&#160;prior&#160;Hþ</p>
+<p style="position:absolute;top:997px;left:72px;white-space:nowrap" class="ft25">stimuli&#160;from&#160;the&#160;proton&#160;pump.&#160;Using&#160;this&#160;information,&#160;the<br/>ML&#160;algorithm&#160;decides&#160;whether&#160;the&#160;[Hþ]&#160;surrounding&#160;a&#160;speci</p>
+<p style="position:absolute;top:1011px;left:420px;white-space:nowrap" class="ft20">ﬁc</p>
+<p style="position:absolute;top:1030px;left:72px;white-space:nowrap" class="ft20">cell&#160;should&#160;be&#160;increased&#160;or&#160;decreased&#160;to&#160;achieve&#160;the&#160;desired</p>
+<p style="position:absolute;top:1027px;left:402px;white-space:nowrap" class="ft20">Vmem</p>
+<p style="position:absolute;top:1047px;left:72px;white-space:nowrap" class="ft20">value&#160;and&#160;sends&#160;a&#160;control&#160;voltage&#160;(</p>
+<p style="position:absolute;top:1044px;left:259px;white-space:nowrap" class="ft20">VHþ)&#160;to&#160;the&#160;proton&#160;pump&#160;in&#160;the</p>
+<p style="position:absolute;top:1063px;left:72px;white-space:nowrap" class="ft20">array,&#160;thus&#160;closing&#160;the&#160;control&#160;loop.&#160;The&#160;algorithm&#160;is&#160;not&#160;trained</p>
+<p style="position:absolute;top:535px;left:455px;white-space:nowrap" class="ft25">on&#160;any&#160;data&#160;a&#160;priori&#160;and&#160;makes&#160;no&#160;use&#160;of&#160;a&#160;model&#160;for&#160;either&#160;the<br/>bioelectronic&#160;device&#160;or&#160;the</p>
+<p style="position:absolute;top:549px;left:603px;white-space:nowrap" class="ft20">ﬂuorescently&#160;tagged&#160;hiPSCs.&#160;Based&#160;on</p>
+<p style="position:absolute;top:568px;left:455px;white-space:nowrap" class="ft25">the&#160;target&#160;goal&#160;and&#160;current&#160;state,&#160;the&#160;parameters&#160;of&#160;the&#160;neural<br/>network&#160;are&#160;updated&#160;in&#160;between&#160;the&#160;time-lapse</p>
+<p style="position:absolute;top:582px;left:753px;white-space:nowrap" class="ft20">ﬂuorescent</p>
+<p style="position:absolute;top:601px;left:455px;white-space:nowrap" class="ft20">images&#160;such&#160;that&#160;the</p>
+<p style="position:absolute;top:598px;left:582px;white-space:nowrap" class="ft20">“learning”&#160;happens&#160;in&#160;real&#160;time&#160;and&#160;the</p>
+<p style="position:absolute;top:618px;left:455px;white-space:nowrap" class="ft20">target</p>
+<p style="position:absolute;top:615px;left:491px;white-space:nowrap" class="ft20">Vmem&#160;is&#160;ultimately&#160;achieved.</p>
+<p style="position:absolute;top:634px;left:470px;white-space:nowrap" class="ft20">Each&#160;individual&#160;pump&#160;within&#160;the&#160;array&#160;is&#160;made&#160;of&#160;a&#160;palladium/</p>
+<p style="position:absolute;top:651px;left:455px;white-space:nowrap" class="ft25">palladium&#160;hydride&#160;(Pd/PdH)&#160;contact&#160;that&#160;is&#160;able&#160;to&#160;transfer&#160;Hþ&#160;to<br/>and&#160;from&#160;the&#160;solution&#160;depending&#160;on&#160;an&#160;applied&#160;voltage</p>
+<p style="position:absolute;top:664px;left:791px;white-space:nowrap" class="ft20">VHþ</p>
+<p style="position:absolute;top:684px;left:455px;white-space:nowrap" class="ft20">(Figure&#160;2A).</p>
+<p style="position:absolute;top:681px;left:522px;white-space:nowrap" class="ft21">[12]&#160;Previously&#160;described&#160;proton&#160;pump&#160;arrays[27]&#160;were</p>
+<p style="position:absolute;top:700px;left:455px;white-space:nowrap" class="ft20">fabricated&#160;on&#160;transparent&#160;substrates&#160;with&#160;integrated&#160;micro</p>
+<p style="position:absolute;top:697px;left:780px;white-space:nowrap" class="ft20">ﬂuidic</p>
+<p style="position:absolute;top:717px;left:455px;white-space:nowrap" class="ft25">channels&#160;to&#160;enable&#160;on-chip&#160;cell&#160;culture&#160;and&#160;monitoring&#160;of&#160;device<br/>performance&#160;and&#160;cell&#160;responses&#160;via</p>
+<p style="position:absolute;top:730px;left:674px;white-space:nowrap" class="ft20">ﬂuorescence&#160;microscopy</p>
+<p style="position:absolute;top:750px;left:455px;white-space:nowrap" class="ft25">(Figure&#160;S2,&#160;Supporting&#160;Information).&#160;The&#160;reservoir&#160;and&#160;target<br/>chambers&#160;consist&#160;of&#160;two&#160;micro</p>
+<p style="position:absolute;top:763px;left:633px;white-space:nowrap" class="ft20">ﬂuidic&#160;channels&#160;with&#160;40&#160;μm&#160;tall</p>
+<p style="position:absolute;top:783px;left:455px;white-space:nowrap" class="ft20">side&#160;walls&#160;and&#160;a&#160;ceiling&#160;of&#160;transparent&#160;micro</p>
+<p style="position:absolute;top:780px;left:744px;white-space:nowrap" class="ft20">ﬂuidic&#160;tape.</p>
+<p style="position:absolute;top:799px;left:455px;white-space:nowrap" class="ft25">At&#160;the&#160;closest&#160;point,&#160;the&#160;reservoir&#160;and&#160;target&#160;chambers&#160;run<br/>parallel&#160;to&#160;each&#160;other&#160;with&#160;a&#160;distance&#160;of&#160;1&#160;mm,&#160;with&#160;the&#160;ion&#160;bridge<br/>(brown&#160;lines)&#160;connecting&#160;the&#160;two&#160;solutions&#160;(Figure&#160;2B).&#160;A&#160;2&#160;mm<br/>diameter&#160;window&#160;is&#160;excised&#160;from&#160;the&#160;micro</p>
+<p style="position:absolute;top:846px;left:721px;white-space:nowrap" class="ft20">ﬂuidic&#160;tape&#160;and</p>
+<p style="position:absolute;top:865px;left:455px;white-space:nowrap" class="ft20">aligned&#160;to&#160;the&#160;array&#160;of&#160;100</p>
+<p style="position:absolute;top:862px;left:620px;white-space:nowrap" class="ft20">μm&#160;&#160;100&#160;μm&#160;proton&#160;pump&#160;array</p>
+<p style="position:absolute;top:882px;left:455px;white-space:nowrap" class="ft20">pixels&#160;aligned&#160;in&#160;a&#160;5</p>
+<p style="position:absolute;top:879px;left:574px;white-space:nowrap" class="ft20">&#160;4&#160;grid&#160;with&#160;a&#160;250&#160;μm&#160;pitch&#160;in&#160;the&#160;target</p>
+<p style="position:absolute;top:898px;left:455px;white-space:nowrap" class="ft20">chamber&#160;prior&#160;to&#160;sealing&#160;the</p>
+<p style="position:absolute;top:895px;left:616px;white-space:nowrap" class="ft20">ﬂuidics&#160;to&#160;allow&#160;for&#160;interfacing&#160;with</p>
+<p style="position:absolute;top:915px;left:455px;white-space:nowrap" class="ft25">removable&#160;polydimethylsiloxane&#160;(PDMS)&#160;slides&#160;through&#160;clamp-<br/>ing&#160;(Figure&#160;S3,&#160;Supporting&#160;Information).&#160;The&#160;micro</p>
+<p style="position:absolute;top:928px;left:746px;white-space:nowrap" class="ft20">ﬂuidic&#160;chan-</p>
+<p style="position:absolute;top:948px;left:455px;white-space:nowrap" class="ft20">nels&#160;allow&#160;for&#160;distinct&#160;electrolyte&#160;solution&#160;to&#160;be</p>
+<p style="position:absolute;top:945px;left:723px;white-space:nowrap" class="ft20">ﬂown&#160;within&#160;the</p>
+<p style="position:absolute;top:964px;left:455px;white-space:nowrap" class="ft25">reservoir&#160;and&#160;target&#160;channels.&#160;Silver/silver&#160;chloride&#160;(Ag/AgCl)<br/>electrodes&#160;located&#160;in&#160;the&#160;reservoir&#160;and&#160;target&#160;channels&#160;are&#160;paired<br/>with&#160;the&#160;Pd/PdH&#160;electrodes&#160;located&#160;beneath&#160;the&#160;ion&#160;bridge&#160;at<br/>each&#160;pixel&#160;in&#160;the&#160;proton&#160;pump&#160;array&#160;to&#160;control&#160;ionic</p>
+<p style="position:absolute;top:1011px;left:777px;white-space:nowrap" class="ft20">ﬂux&#160;in</p>
+<p style="position:absolute;top:1030px;left:455px;white-space:nowrap" class="ft20">and&#160;out&#160;of&#160;the&#160;device.&#160;A&#160;positive&#160;value&#160;for</p>
+<p style="position:absolute;top:1027px;left:695px;white-space:nowrap" class="ft20">VHþ&#160;applied&#160;between</p>
+<p style="position:absolute;top:1047px;left:455px;white-space:nowrap" class="ft25">the&#160;array&#160;pixel&#160;and&#160;the&#160;Ag/AgCl&#160;electrode&#160;in&#160;the&#160;target&#160;channel<br/>will&#160;release&#160;Hþ&#160;into&#160;the&#160;target&#160;channel,&#160;thus&#160;increasing&#160;[Hþ]&#160;of</p>
+<p style="position:absolute;top:455px;left:455px;white-space:nowrap" class="ft22">Figure&#160;1.&#160;Closed-loop&#160;bioelectronic&#160;control&#160;of</p>
+<p style="position:absolute;top:455px;left:683px;white-space:nowrap" class="ft22">Vmem.&#160;An&#160;adaptive&#160;learning</p>
+<p style="position:absolute;top:470px;left:455px;white-space:nowrap" class="ft29">algorithm&#160;controls&#160;a&#160;proton&#160;pump&#160;array&#160;to&#160;change&#160;the&#160;pH&#160;of&#160;extracellular<br/>ﬂuid&#160;and&#160;alter&#160;Vmem&#160;to&#160;a&#160;target&#160;value;&#160;Vmem&#160;is&#160;measured&#160;by&#160;a&#160;ﬂuorescent<br/>indicator&#160;for&#160;feedback&#160;to&#160;the&#160;control&#160;algorithm.</p>
+<p style="position:absolute;top:67px;left:72px;white-space:nowrap" class="ft22"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:703px;white-space:nowrap" class="ft22"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:72px;white-space:nowrap" class="ft24">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:346px;white-space:nowrap" class="ft20">2000140&#160;(2&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:577px;white-space:nowrap" class="ft24">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:11px;font-family:Times;color:#000000;}
+	.ft31{font-size:6px;font-family:Times;color:#000000;}
+	.ft32{font-size:8px;font-family:Times;color:#000000;}
+	.ft33{font-size:9px;font-family:Times;color:#000000;}
+	.ft34{font-size:5px;font-family:Times;color:#000000;}
+	.ft35{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft36{font-size:9px;line-height:14px;font-family:Times;color:#000000;}
+	.ft37{font-size:9px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:815px;left:77px;white-space:nowrap" class="ft30">the&#160;solution&#160;(Figure&#160;2C);&#160;a&#160;negative&#160;value&#160;for</p>
+<p style="position:absolute;top:812px;left:327px;white-space:nowrap" class="ft30">VHþ&#160;will&#160;absorb&#160;Hþ</p>
+<p style="position:absolute;top:832px;left:77px;white-space:nowrap" class="ft35">from&#160;the&#160;solution&#160;into&#160;the&#160;contact,&#160;thus&#160;decreasing&#160;[Hþ]&#160;of&#160;the<br/>solution&#160;(Figure&#160;2D).&#160;A&#160;voltage</p>
+<p style="position:absolute;top:845px;left:267px;white-space:nowrap" class="ft30">VRES&#160;between&#160;the&#160;array&#160;pixel</p>
+<p style="position:absolute;top:865px;left:77px;white-space:nowrap" class="ft35">and&#160;the&#160;reservoir&#160;can&#160;be&#160;used&#160;to&#160;move&#160;Hþ&#160;from&#160;reservoir&#160;to<br/>Pd&#160;contact&#160;forming&#160;PdH,&#160;which&#160;increase&#160;the&#160;ef</p>
+<p style="position:absolute;top:879px;left:355px;white-space:nowrap" class="ft30">ﬁciency&#160;of&#160;the</p>
+<p style="position:absolute;top:898px;left:77px;white-space:nowrap" class="ft35">proton&#160;pump&#160;by&#160;localizing&#160;Hþ&#160;to&#160;the&#160;array&#160;pixel&#160;although&#160;for<br/>the&#160;work&#160;presented&#160;here&#160;only</p>
+<p style="position:absolute;top:912px;left:250px;white-space:nowrap" class="ft30">VHþ&#160;is&#160;used.[27]</p>
+<p style="position:absolute;top:931px;left:92px;white-space:nowrap" class="ft30">Given&#160;that&#160;cells&#160;and&#160;their&#160;associated</p>
+<p style="position:absolute;top:928px;left:296px;white-space:nowrap" class="ft30">Vmem&#160;are&#160;highly&#160;sensitive</p>
+<p style="position:absolute;top:948px;left:77px;white-space:nowrap" class="ft30">even&#160;to&#160;very&#160;small&#160;changes&#160;in&#160;[Hþ],&#160;we</p>
+<p style="position:absolute;top:945px;left:297px;white-space:nowrap" class="ft30">ﬁrst&#160;demonstrate&#160;that&#160;we</p>
+<p style="position:absolute;top:964px;left:77px;white-space:nowrap" class="ft35">can&#160;precisely&#160;set&#160;[Hþ]&#160;in&#160;a&#160;desired&#160;location&#160;at&#160;a&#160;given&#160;time&#160;so&#160;that<br/>a&#160;speci</p>
+<p style="position:absolute;top:978px;left:119px;white-space:nowrap" class="ft30">ﬁc&#160;[Hþ]&#160;value&#160;is&#160;regulated&#160;in&#160;the&#160;extracellular&#160;ﬂuid</p>
+<p style="position:absolute;top:997px;left:77px;white-space:nowrap" class="ft35">(Figure&#160;3).&#160;To&#160;do&#160;so,&#160;we&#160;drive&#160;the&#160;proton&#160;pump&#160;with&#160;a&#160;ML-based<br/>control&#160;algorithm&#160;(Figure&#160;S4,&#160;Supporting&#160;Information)&#160;consist-<br/>ing&#160;of&#160;a&#160;RBF&#160;arti</p>
+<p style="position:absolute;top:1027px;left:178px;white-space:nowrap" class="ft30">ﬁcial&#160;neural&#160;network&#160;(Figure&#160;S5,&#160;Supporting</p>
+<p style="position:absolute;top:1047px;left:77px;white-space:nowrap" class="ft35">Information).&#160;In&#160;this&#160;case,&#160;[Hþ]&#160;response&#160;from&#160;an&#160;area&#160;of&#160;interest<br/>is&#160;mapped&#160;using&#160;a&#160;dye&#160;whose</p>
+<p style="position:absolute;top:1060px;left:287px;white-space:nowrap" class="ft30">ﬂuorescence&#160;is&#160;inversely</p>
+<p style="position:absolute;top:106px;left:459px;white-space:nowrap" class="ft30">proportional&#160;to&#160;[Hþ]&#160;(SNARF).</p>
+<p style="position:absolute;top:104px;left:629px;white-space:nowrap" class="ft31">[30]&#160;The&#160;algorithm&#160;leverages&#160;a&#160;neu-</p>
+<p style="position:absolute;top:123px;left:459px;white-space:nowrap" class="ft35">ral&#160;network&#160;composed&#160;of&#160;an&#160;input&#160;layer,&#160;a&#160;hidden&#160;layer,&#160;and&#160;an<br/>output&#160;layer&#160;(Figure&#160;3A).&#160;The&#160;input&#160;layer&#160;receives&#160;the&#160;error&#160;value<br/>between&#160;the&#160;desired&#160;and&#160;the&#160;measured&#160;[Hþ]&#160;values,&#160;information<br/>on&#160;prior&#160;[Hþ]&#160;stimuli,&#160;as&#160;well&#160;as&#160;current&#160;and&#160;previous&#160;[Hþ]<br/>response&#160;to&#160;the&#160;applied</p>
+<p style="position:absolute;top:186px;left:604px;white-space:nowrap" class="ft30">VHþ.&#160;The&#160;desired&#160;output&#160;consists&#160;of</p>
+<p style="position:absolute;top:205px;left:459px;white-space:nowrap" class="ft30">desired&#160;values&#160;at&#160;time</p>
+<p style="position:absolute;top:202px;left:585px;white-space:nowrap" class="ft30">k&#160;þ&#160;1,&#160;k,&#160;and&#160;k&#160;&#160;1,&#160;and&#160;the&#160;measured&#160;out-</p>
+<p style="position:absolute;top:222px;left:459px;white-space:nowrap" class="ft30">put&#160;consists&#160;of&#160;measured&#160;values&#160;at&#160;time</p>
+<p style="position:absolute;top:219px;left:690px;white-space:nowrap" class="ft30">k&#160;&#160;1,&#160;k&#160;&#160;2,&#160;and&#160;k&#160;&#160;3.</p>
+<p style="position:absolute;top:238px;left:459px;white-space:nowrap" class="ft35">The&#160;hidden&#160;layer&#160;converges&#160;to&#160;a&#160;mapping&#160;that&#160;allows&#160;it&#160;to<br/>discern&#160;which&#160;value&#160;of</p>
+<p style="position:absolute;top:252px;left:592px;white-space:nowrap" class="ft30">VHþ&#160;should&#160;be&#160;applied&#160;to&#160;the&#160;individual</p>
+<p style="position:absolute;top:271px;left:459px;white-space:nowrap" class="ft35">proton&#160;pump&#160;surrounding&#160;the&#160;area&#160;of&#160;interest&#160;to&#160;achieve&#160;the<br/>desired&#160;[Hþ].</p>
+<p style="position:absolute;top:304px;left:474px;white-space:nowrap" class="ft30">Open-loop&#160;tests&#160;of&#160;the&#160;proton&#160;pump&#160;with&#160;SNARF&#160;dye&#160;in&#160;0.1&#160;M</p>
+<p style="position:absolute;top:321px;left:459px;white-space:nowrap" class="ft35">Tris&#160;buffer&#160;show&#160;pH&#160;gradients&#160;forming&#160;locally&#160;around&#160;actuated<br/>pixels&#160;(Figure&#160;S6,&#160;Supporting&#160;Information).&#160;For&#160;closed-loop<br/>testing&#160;with&#160;ML-based&#160;controller,&#160;we&#160;start&#160;with&#160;relatively&#160;simple<br/>target&#160;changes&#160;in&#160;[Hþ]&#160;to&#160;simulate&#160;what&#160;may&#160;be&#160;needed&#160;when<br/>working&#160;with&#160;cells&#160;over&#160;1600&#160;s&#160;trials.&#160;In&#160;all&#160;experiments,&#160;we</p>
+<p style="position:absolute;top:384px;left:798px;white-space:nowrap" class="ft30">ﬁrst</p>
+<p style="position:absolute;top:403px;left:459px;white-space:nowrap" class="ft30">set&#160;a&#160;target&#160;[Hþ]&#160;as&#160;measured&#160;by&#160;the</p>
+<p style="position:absolute;top:400px;left:679px;white-space:nowrap" class="ft30">ﬂuorescence&#160;intensity&#160;of</p>
+<p style="position:absolute;top:420px;left:459px;white-space:nowrap" class="ft35">SNARF&#160;(black&#160;dashed&#160;line),&#160;and&#160;we&#160;compare&#160;it&#160;with&#160;the&#160;actual<br/>solution&#160;[Hþ]&#160;as&#160;measured&#160;by&#160;the</p>
+<p style="position:absolute;top:433px;left:675px;white-space:nowrap" class="ft30">ﬂuorescence&#160;intensity&#160;of</p>
+<p style="position:absolute;top:453px;left:459px;white-space:nowrap" class="ft35">SNARF&#160;(red&#160;line)&#160;(Figure&#160;3B).&#160;A&#160;difference&#160;between&#160;target<br/>[Hþ]&#160;and&#160;actual&#160;[Hþ]&#160;results&#160;in&#160;an&#160;error&#160;value,&#160;which,&#160;in&#160;turn,<br/>triggers</p>
+<p style="position:absolute;top:483px;left:506px;white-space:nowrap" class="ft30">VHþ&#160;actuation&#160;of&#160;the&#160;speciﬁc&#160;pixel&#160;(blue&#160;line).&#160;We&#160;show</p>
+<p style="position:absolute;top:502px;left:459px;white-space:nowrap" class="ft35">the&#160;ability&#160;of&#160;the&#160;proton&#160;pump&#160;to&#160;perform&#160;temporal&#160;control&#160;over<br/>the&#160;pH&#160;in&#160;the&#160;form&#160;of&#160;ramp&#160;functions&#160;with&#160;both&#160;positive&#160;and<br/>negative&#160;slopes;&#160;these&#160;ramp&#160;functions&#160;combined&#160;to&#160;form&#160;a&#160;trian-<br/>gle&#160;wave&#160;(Figure&#160;3B).&#160;To&#160;test&#160;repeated&#160;stimulation&#160;over&#160;time,&#160;we<br/>demonstrate&#160;the&#160;ability&#160;of&#160;the&#160;proton&#160;pump&#160;to&#160;perform&#160;temporal<br/>control&#160;over&#160;the&#160;pH&#160;in&#160;the&#160;form&#160;of&#160;a&#160;sine&#160;wave&#160;over&#160;two&#160;periods<br/>(Figure&#160;3C).&#160;In&#160;addition,&#160;the&#160;sine&#160;function&#160;displays&#160;the&#160;ability&#160;of<br/>the&#160;ML-based&#160;controller&#160;to&#160;track&#160;a&#160;function&#160;with&#160;a&#160;gradually<br/>changing&#160;slope</p>
+<p style="position:absolute;top:631px;left:544px;white-space:nowrap" class="ft30">—a&#160;challenging&#160;feature&#160;to&#160;achieve&#160;with&#160;open-loop</p>
+<p style="position:absolute;top:651px;left:459px;white-space:nowrap" class="ft35">control.&#160;Finally,&#160;we&#160;use&#160;a&#160;square&#160;wave&#160;to&#160;step&#160;to&#160;and&#160;maintain<br/>certain&#160;pH&#160;(Figure&#160;3D).&#160;In&#160;addition&#160;to&#160;temporal&#160;control,&#160;we<br/>achieve&#160;spatial&#160;control&#160;by&#160;independently&#160;setting&#160;[Hþ]&#160;for&#160;two<br/>separate&#160;areas&#160;using&#160;two&#160;sets&#160;of&#160;proton&#160;pumps&#160;(Figure&#160;3E</p>
+<p style="position:absolute;top:697px;left:796px;white-space:nowrap" class="ft30">–G).</p>
+<p style="position:absolute;top:717px;left:459px;white-space:nowrap" class="ft35">To&#160;this&#160;end,&#160;we&#160;set&#160;for&#160;[Hþ]&#160;to&#160;increase&#160;as&#160;function&#160;of&#160;time&#160;in<br/>the&#160;area&#160;on&#160;the&#160;left&#160;of&#160;Figure&#160;3E&#160;(green&#160;boxes),&#160;while&#160;we&#160;set<br/>for&#160;[Hþ]&#160;to&#160;decrease&#160;as&#160;a&#160;function&#160;of&#160;time&#160;in&#160;the&#160;selected&#160;area<br/>on&#160;the&#160;left&#160;of&#160;Figure&#160;3E&#160;(green&#160;boxes).&#160;These&#160;[Hþ]&#160;set&#160;points&#160;cor-<br/>respond&#160;to&#160;the&#160;downward&#160;sloping&#160;black&#160;trace&#160;in&#160;Figure&#160;3F&#160;and&#160;the<br/>upward&#160;sloping&#160;black&#160;trace&#160;in&#160;Figure&#160;3G,&#160;respectively.&#160;With&#160;this<br/>strategy,&#160;we&#160;are&#160;able&#160;to&#160;independently&#160;increase&#160;and&#160;decrease&#160;[Hþ]<br/>in&#160;two&#160;areas&#160;that&#160;are&#160;separated&#160;by&#160;only&#160;450</p>
+<p style="position:absolute;top:829px;left:706px;white-space:nowrap" class="ft30">μm&#160;from&#160;each&#160;other</p>
+<p style="position:absolute;top:849px;left:459px;white-space:nowrap" class="ft35">(Figure&#160;3F,G).&#160;Diffusion&#160;of&#160;Hþ&#160;across&#160;the&#160;boundaries&#160;and&#160;cross<br/>talk&#160;of&#160;the&#160;electric</p>
+<p style="position:absolute;top:862px;left:567px;white-space:nowrap" class="ft30">ﬁelds&#160;generated&#160;by&#160;the&#160;contacts&#160;make&#160;this&#160;a</p>
+<p style="position:absolute;top:882px;left:459px;white-space:nowrap" class="ft30">remarkably&#160;challenging&#160;task.&#160;This&#160;challenge&#160;is&#160;con</p>
+<p style="position:absolute;top:879px;left:763px;white-space:nowrap" class="ft30">ﬁrmed&#160;by</p>
+<p style="position:absolute;top:898px;left:459px;white-space:nowrap" class="ft30">the&#160;relatively&#160;large&#160;swings&#160;of</p>
+<p style="position:absolute;top:895px;left:623px;white-space:nowrap" class="ft30">VHþ&#160;for&#160;the&#160;proton&#160;pumps&#160;on&#160;both</p>
+<p style="position:absolute;top:915px;left:459px;white-space:nowrap" class="ft35">sides&#160;that&#160;are&#160;being&#160;actuated&#160;trying&#160;to&#160;control&#160;[Hþ]&#160;(Figure&#160;3G).<br/>These&#160;large&#160;swings&#160;cause&#160;the&#160;actual&#160;[Hþ]&#160;(red&#160;trace)&#160;to&#160;oscillate<br/>visibly&#160;around&#160;the&#160;target&#160;value&#160;(black&#160;trace)&#160;until&#160;it&#160;reaches&#160;its&#160;set<br/>point&#160;toward&#160;the&#160;end&#160;of&#160;the&#160;measurement.&#160;With&#160;little&#160;a&#160;priori<br/>knowledge,&#160;the&#160;ML-based&#160;controller&#160;adapts&#160;quickly&#160;to&#160;unknown<br/>and&#160;achieves&#160;the&#160;target&#160;value.</p>
+<p style="position:absolute;top:1014px;left:474px;white-space:nowrap" class="ft30">Having&#160;demonstrated&#160;that&#160;our&#160;proton&#160;pump&#160;array&#160;precisely&#160;set</p>
+<p style="position:absolute;top:1030px;left:459px;white-space:nowrap" class="ft30">[Hþ]&#160;as&#160;a&#160;function&#160;of&#160;time&#160;in&#160;speci</p>
+<p style="position:absolute;top:1027px;left:667px;white-space:nowrap" class="ft30">ﬁc&#160;locations,&#160;we&#160;used&#160;this</p>
+<p style="position:absolute;top:1047px;left:459px;white-space:nowrap" class="ft30">ability&#160;to&#160;demonstrate&#160;proof-of-concept&#160;control&#160;of</p>
+<p style="position:absolute;top:1044px;left:769px;white-space:nowrap" class="ft30">Vmem&#160;in</p>
+<p style="position:absolute;top:1063px;left:459px;white-space:nowrap" class="ft30">hiPSCs&#160;(Figure&#160;4).&#160;The</p>
+<p style="position:absolute;top:1060px;left:609px;white-space:nowrap" class="ft30">Vmem&#160;of&#160;proliferative&#160;cells&#160;such&#160;as</p>
+<p style="position:absolute;top:716px;left:77px;white-space:nowrap" class="ft36">Figure&#160;2.&#160;Proton&#160;pump&#160;design.&#160;A)&#160;Device&#160;schematic.&#160;B)&#160;Optical&#160;image&#160;of<br/>the&#160;proton&#160;pump&#160;array&#160;pixels&#160;with&#160;the&#160;PVA:PSS&#160;ion&#160;bridge.&#160;Scale&#160;bar:<br/>1&#160;mm.&#160;C)&#160;Proton&#160;delivery&#160;to&#160;and&#160;D)&#160;proton&#160;removal&#160;from&#160;target&#160;solution<br/>upon&#160;applied&#160;bias</p>
+<p style="position:absolute;top:761px;left:169px;white-space:nowrap" class="ft33">VHþ;&#160;Ag/AgCl&#160;counter&#160;electrode&#160;is&#160;drawn&#160;out&#160;of&#160;plane</p>
+<p style="position:absolute;top:776px;left:77px;white-space:nowrap" class="ft33">for&#160;simplicity.</p>
+<p style="position:absolute;top:67px;left:77px;white-space:nowrap" class="ft33"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:708px;white-space:nowrap" class="ft33"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:77px;white-space:nowrap" class="ft32">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:350px;white-space:nowrap" class="ft30">2000140&#160;(3&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:582px;white-space:nowrap" class="ft32">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:11px;font-family:Times;color:#000000;}
+	.ft41{font-size:6px;font-family:Times;color:#000000;}
+	.ft42{font-size:9px;font-family:Times;color:#000000;}
+	.ft43{font-size:5px;font-family:Times;color:#000000;}
+	.ft44{font-size:8px;font-family:Times;color:#000000;}
+	.ft45{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft46{font-size:11px;line-height:13px;font-family:Times;color:#000000;}
+	.ft47{font-size:11px;line-height:19px;font-family:Times;color:#000000;}
+	.ft48{font-size:9px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:766px;left:72px;white-space:nowrap" class="ft45">hiPSCs,&#160;embryonic&#160;cells,&#160;and&#160;cancer&#160;cells&#160;has&#160;a&#160;large&#160;effect&#160;on<br/>their&#160;proliferative&#160;state.</p>
+<p style="position:absolute;top:779px;left:213px;white-space:nowrap" class="ft41">[31]&#160;Voltage&#160;responsive&#160;hiPSCs&#160;were</p>
+<p style="position:absolute;top:799px;left:72px;white-space:nowrap" class="ft45">generated&#160;by&#160;using&#160;a&#160;PiggyBac&#160;transposase&#160;system&#160;to&#160;integrate<br/>a&#160;genetically&#160;encoded&#160;voltage&#160;indicator&#160;called&#160;ArcLight&#160;Q239&#160;with<br/>codon&#160;optimization&#160;for&#160;mammalian&#160;expression&#160;and&#160;sequences<br/>for&#160;membrane&#160;traf</p>
+<p style="position:absolute;top:845px;left:180px;white-space:nowrap" class="ft40">ﬁcking.[32]&#160;To&#160;integrate&#160;the&#160;reporter&#160;hiPSCs</p>
+<p style="position:absolute;top:865px;left:72px;white-space:nowrap" class="ft40">with&#160;the&#160;proton&#160;pump&#160;array,&#160;we</p>
+<p style="position:absolute;top:862px;left:271px;white-space:nowrap" class="ft40">ﬁrst&#160;grow&#160;the&#160;hiPSCs&#160;on&#160;a</p>
+<p style="position:absolute;top:881px;left:72px;white-space:nowrap" class="ft45">PDMS&#160;slab&#160;that&#160;is&#160;then&#160;placed&#160;on&#160;the&#160;top&#160;of&#160;the&#160;proton&#160;pump<br/>array&#160;with&#160;the&#160;cells&#160;facing&#160;the&#160;proton&#160;pump&#160;contacts.&#160;We&#160;select<br/>a&#160;speci</p>
+<p style="position:absolute;top:912px;left:111px;white-space:nowrap" class="ft40">ﬁc&#160;area&#160;for&#160;[Hþ]&#160;actuation&#160;upon&#160;visual&#160;inspection&#160;of&#160;cells</p>
+<p style="position:absolute;top:931px;left:72px;white-space:nowrap" class="ft40">and&#160;their&#160;responsiveness&#160;to</p>
+<p style="position:absolute;top:928px;left:249px;white-space:nowrap" class="ft40">Vmem&#160;stimulation&#160;(yellow&#160;box)</p>
+<p style="position:absolute;top:948px;left:72px;white-space:nowrap" class="ft40">Figure&#160;4A.&#160;We&#160;monitor</p>
+<p style="position:absolute;top:945px;left:209px;white-space:nowrap" class="ft40">Vmem&#160;of&#160;cells&#160;by&#160;measuring&#160;the&#160;ﬂuores-</p>
+<p style="position:absolute;top:964px;left:72px;white-space:nowrap" class="ft45">cence&#160;intensity&#160;of&#160;the&#160;membrane&#160;reporter&#160;ArcLight&#160;within&#160;the<br/>red&#160;box&#160;of&#160;Figure&#160;4A.&#160;In&#160;brief,&#160;higher</p>
+<p style="position:absolute;top:978px;left:286px;white-space:nowrap" class="ft40">ﬂuorescence&#160;intensity&#160;cor-</p>
+<p style="position:absolute;top:997px;left:72px;white-space:nowrap" class="ft40">responds&#160;to&#160;a&#160;hyperpolarized</p>
+<p style="position:absolute;top:994px;left:237px;white-space:nowrap" class="ft40">Vmem&#160;which&#160;is&#160;sensitive&#160;to&#160;changes</p>
+<p style="position:absolute;top:1014px;left:72px;white-space:nowrap" class="ft45">in&#160;pH&#160;between&#160;7.1&#160;and&#160;8.8&#160;(Figure&#160;S7,&#160;Supporting&#160;Information).<br/>To&#160;demonstrate&#160;short-term&#160;control,&#160;we</p>
+<p style="position:absolute;top:1027px;left:295px;white-space:nowrap" class="ft40">ﬁrst&#160;attempt&#160;to&#160;set&#160;Vmem</p>
+<p style="position:absolute;top:1047px;left:72px;white-space:nowrap" class="ft45">for&#160;the&#160;selected&#160;hiPSCs&#160;along&#160;a&#160;triangle&#160;waveform&#160;(black&#160;trace)<br/>for&#160;a&#160;period&#160;of&#160;1400&#160;s&#160;(Figure&#160;4B).&#160;We&#160;set&#160;imaging&#160;of&#160;ArcLight</p>
+<p style="position:absolute;top:766px;left:455px;white-space:nowrap" class="ft46">and&#160;subsequent&#160;ML-based&#160;control&#160;of&#160;[Hþ]&#160;based&#160;on&#160;measured<br/>VHþ&#160;to&#160;occur&#160;every&#160;10&#160;se&#160;to&#160;avoid&#160;photobleaching.&#160;As&#160;a&#160;result,</p>
+<p style="position:absolute;top:796px;left:455px;white-space:nowrap" class="ft47">Vmem&#160;as&#160;measured&#160;by&#160;ArcLight&#160;ﬂuorescence&#160;(red&#160;trace)&#160;oscillates<br/>around&#160;the&#160;target&#160;function&#160;(black).&#160;For&#160;long-term</p>
+<p style="position:absolute;top:812px;left:738px;white-space:nowrap" class="ft40">Vmem&#160;control,</p>
+<p style="position:absolute;top:832px;left:455px;white-space:nowrap" class="ft45">we&#160;adopt&#160;a&#160;different&#160;sequence&#160;for&#160;stimulating&#160;the&#160;hiPSCs&#160;in<br/>which&#160;we&#160;alternate&#160;periods&#160;in&#160;which&#160;the&#160;proton&#160;pumps&#160;are&#160;active<br/>with&#160;periods&#160;during&#160;which&#160;the&#160;proton&#160;pumps&#160;are&#160;left</p>
+<p style="position:absolute;top:862px;left:773px;white-space:nowrap" class="ft40">ﬂoating</p>
+<p style="position:absolute;top:881px;left:455px;white-space:nowrap" class="ft45">(Figure&#160;4C).&#160;We&#160;adopted&#160;this&#160;sequence&#160;after&#160;observing&#160;stimulat-<br/>ing&#160;the&#160;cells&#160;for&#160;longer&#160;than&#160;30&#160;min&#160;at&#160;a&#160;time&#160;makes&#160;the&#160;cells&#160;less<br/>responsive&#160;to&#160;changes&#160;in&#160;[Hþ].&#160;With&#160;this&#160;sequence,&#160;we&#160;were&#160;able<br/>to&#160;stepwise&#160;increase&#160;the</p>
+<p style="position:absolute;top:928px;left:603px;white-space:nowrap" class="ft40">Vmem&#160;of&#160;the&#160;hiPSCs&#160;in&#160;the&#160;selected</p>
+<p style="position:absolute;top:948px;left:455px;white-space:nowrap" class="ft45">locations&#160;and&#160;maintain&#160;this&#160;for&#160;over&#160;1&#160;h&#160;(Figure&#160;4D).&#160;We&#160;estimate<br/>that&#160;we&#160;were&#160;able&#160;to&#160;increase</p>
+<p style="position:absolute;top:961px;left:621px;white-space:nowrap" class="ft40">Vmem&#160;by&#160;about&#160;10&#160;mV&#160;with&#160;respect</p>
+<p style="position:absolute;top:981px;left:455px;white-space:nowrap" class="ft40">to&#160;the&#160;resting</p>
+<p style="position:absolute;top:978px;left:546px;white-space:nowrap" class="ft40">Vmem&#160;by&#160;measuring&#160;the&#160;change&#160;in&#160;ArcLight</p>
+<p style="position:absolute;top:994px;left:455px;white-space:nowrap" class="ft45">ﬂuorescence.[33]&#160;These&#160;changes&#160;are&#160;consistent&#160;with&#160;what&#160;we&#160;mea-<br/>sured&#160;with&#160;patch&#160;clamping&#160;on&#160;cells&#160;exposed&#160;to&#160;solutions&#160;of&#160;dif-<br/>ferent&#160;pH&#160;(Figure&#160;S7,&#160;Supporting&#160;Information).&#160;During&#160;this&#160;time<br/>period,&#160;the&#160;ML-based&#160;control&#160;algorithm&#160;holds</p>
+<p style="position:absolute;top:1044px;left:734px;white-space:nowrap" class="ft40">VHþ&#160;negative,</p>
+<p style="position:absolute;top:1063px;left:455px;white-space:nowrap" class="ft40">which&#160;corresponds&#160;to&#160;a&#160;lower&#160;[Hþ]&#160;concentration&#160;than&#160;neutral</p>
+<p style="position:absolute;top:599px;left:72px;white-space:nowrap" class="ft42">Figure&#160;3.&#160;Control&#160;of&#160;Hþ&#160;pump&#160;with&#160;ML&#160;controller&#160;generates&#160;pH&#160;gradients&#160;in&#160;buffered&#160;media.&#160;A)&#160;A&#160;schematic&#160;of&#160;the&#160;experimental&#160;setup,&#160;the&#160;H</p>
+<p style="position:absolute;top:596px;left:774px;white-space:nowrap" class="ft42">þ&#160;pump</p>
+<p style="position:absolute;top:614px;left:72px;white-space:nowrap" class="ft48">array&#160;induces&#160;pH&#160;gradients&#160;in&#160;solution&#160;upon&#160;stimulation&#160;by&#160;a&#160;stimulation&#160;board.&#160;Fluorescence&#160;signals&#160;from&#160;pH&#160;sensitive&#160;dye&#160;SNARF-1&#160;in&#160;media&#160;are<br/>captured&#160;and&#160;fed&#160;into&#160;a&#160;neural&#160;network&#160;ML&#160;algorithm&#160;which&#160;attempts&#160;to&#160;control&#160;the&#160;stimulation&#160;board&#160;voltages&#160;to&#160;match&#160;a&#160;prescribed</p>
+<p style="position:absolute;top:626px;left:754px;white-space:nowrap" class="ft42">ﬂuorescence</p>
+<p style="position:absolute;top:644px;left:72px;white-space:nowrap" class="ft42">pattern.&#160;Temporal&#160;control&#160;of&#160;pH&#160;monitored&#160;through&#160;the</p>
+<p style="position:absolute;top:641px;left:349px;white-space:nowrap" class="ft42">ﬂuorescence&#160;response&#160;of&#160;SNARF-1&#160;dye&#160;over&#160;the&#160;actuated&#160;column&#160;of&#160;proton&#160;pumps&#160;(red&#160;traces)</p>
+<p style="position:absolute;top:659px;left:72px;white-space:nowrap" class="ft42">maps&#160;to&#160;the&#160;target&#160;B)&#160;triangle,&#160;C)&#160;sine,&#160;and&#160;D)&#160;square&#160;waveforms&#160;(black&#160;dotted&#160;traces).</p>
+<p style="position:absolute;top:659px;left:491px;white-space:nowrap" class="ft42">VHþ&#160;(blue&#160;dotted&#160;traces)&#160;for&#160;these&#160;waveforms&#160;responds&#160;to&#160;the&#160;error</p>
+<p style="position:absolute;top:674px;left:72px;white-space:nowrap" class="ft42">in&#160;the&#160;experimental</p>
+<p style="position:absolute;top:671px;left:172px;white-space:nowrap" class="ft42">ﬂuorescence&#160;value&#160;compared&#160;to&#160;the&#160;target&#160;value.&#160;E)&#160;Fluorescence&#160;image&#160;of&#160;microelectrode&#160;array&#160;with&#160;SNARF-1&#160;dye&#160;with&#160;labels&#160;for</p>
+<p style="position:absolute;top:689px;left:72px;white-space:nowrap" class="ft42">multicolumn&#160;bidirectional&#160;control,&#160;two&#160;separate&#160;electrode&#160;columns&#160;were&#160;actuated&#160;(yellow)&#160;and&#160;the</p>
+<p style="position:absolute;top:686px;left:552px;white-space:nowrap" class="ft42">ﬂuorescence&#160;intensity&#160;of&#160;SNARF&#160;in&#160;an&#160;area&#160;adjacent&#160;to</p>
+<p style="position:absolute;top:704px;left:72px;white-space:nowrap" class="ft42">the&#160;columns&#160;(green)&#160;was&#160;sampled.&#160;The</p>
+<p style="position:absolute;top:701px;left:270px;white-space:nowrap" class="ft42">ﬂuorescence&#160;response&#160;(red&#160;traces)&#160;follows&#160;target&#160;ramp&#160;functions&#160;(black&#160;dotted&#160;traces)&#160;both&#160;with&#160;F)&#160;a&#160;negative</p>
+<p style="position:absolute;top:719px;left:72px;white-space:nowrap" class="ft42">slope&#160;and&#160;G)&#160;a&#160;positive&#160;slope;</p>
+<p style="position:absolute;top:719px;left:223px;white-space:nowrap" class="ft42">VHþ&#160;is&#160;controlled&#160;in&#160;response&#160;to&#160;the&#160;error&#160;in&#160;the&#160;experimental&#160;ﬂuorescence&#160;compared&#160;with&#160;the&#160;target&#160;value&#160;(blue&#160;traces).</p>
+<p style="position:absolute;top:67px;left:72px;white-space:nowrap" class="ft42"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:703px;white-space:nowrap" class="ft42"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:72px;white-space:nowrap" class="ft44">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:346px;white-space:nowrap" class="ft40">2000140&#160;(4&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:577px;white-space:nowrap" class="ft44">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:11px;font-family:Times;color:#000000;}
+	.ft51{font-size:9px;font-family:Times;color:#000000;}
+	.ft52{font-size:5px;font-family:Times;color:#000000;}
+	.ft53{font-size:8px;font-family:Times;color:#000000;}
+	.ft54{font-size:9px;line-height:14px;font-family:Times;color:#000000;}
+	.ft55{font-size:9px;line-height:12px;font-family:Times;color:#000000;}
+	.ft56{font-size:9px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:109px;left:192px;white-space:nowrap" class="ft50">A</p>
+<p style="position:absolute;top:109px;left:433px;white-space:nowrap" class="ft50">B</p>
+<p style="position:absolute;top:302px;left:192px;white-space:nowrap" class="ft50">C</p>
+<p style="position:absolute;top:302px;left:433px;white-space:nowrap" class="ft50">D</p>
+<p style="position:absolute;top:487px;left:192px;white-space:nowrap" class="ft50">E</p>
+<p style="position:absolute;top:673px;left:192px;white-space:nowrap" class="ft50">F</p>
+<p style="position:absolute;top:872px;left:77px;white-space:nowrap" class="ft54">Figure&#160;4.&#160;Proof-of-concept&#160;patterned&#160;membrane&#160;potential&#160;changes&#160;induced&#160;in&#160;hiPSCs.&#160;A)&#160;Fluorescence&#160;of&#160;the&#160;proton&#160;pump&#160;array&#160;with&#160;hiPSCs&#160;within&#160;the<br/>micro</p>
+<p style="position:absolute;top:885px;left:105px;white-space:nowrap" class="ft51">ﬂuidic&#160;channel.&#160;A&#160;row&#160;of&#160;proton&#160;pumps&#160;is&#160;actuated&#160;(yellow&#160;box)&#160;and&#160;the&#160;area&#160;where&#160;cell&#160;ﬂuorescence&#160;is&#160;sampled&#160;(red&#160;box).&#160;B)&#160;The&#160;ﬂuorescence</p>
+<p style="position:absolute;top:902px;left:77px;white-space:nowrap" class="ft51">intensity&#160;of&#160;Arclight-hiPSCs&#160;(red&#160;trace),&#160;indicative&#160;of</p>
+<p style="position:absolute;top:902px;left:330px;white-space:nowrap" class="ft51">Vmem,&#160;follows&#160;the&#160;target&#160;triangle&#160;waveform&#160;(black&#160;dashed&#160;trace),&#160;VHþ&#160;(blue&#160;dashed&#160;trace)&#160;responds&#160;to</p>
+<p style="position:absolute;top:917px;left:77px;white-space:nowrap" class="ft56">the&#160;error&#160;in&#160;experimental&#160;versus&#160;target&#160;values.&#160;C)&#160;The&#160;pulsed-control&#160;algorithm&#160;used&#160;for&#160;prolonged&#160;control&#160;of&#160;hiPSCs.&#160;While&#160;working&#160;toward&#160;a&#160;target<br/>ﬂuorescence&#160;intensity&#160;(green&#160;trace),&#160;the&#160;controller&#160;switches&#160;between&#160;periods&#160;of&#160;stimulation&#160;where&#160;VHþ&#160;is&#160;being&#160;driven&#160;by&#160;the&#160;ML&#160;controller,&#160;and&#160;periods&#160;of<br/>no&#160;stimulation&#160;where&#160;the&#160;proton&#160;pumps&#160;are&#160;left</p>
+<p style="position:absolute;top:945px;left:321px;white-space:nowrap" class="ft51">ﬂoating&#160;(blue&#160;dotted&#160;traces).&#160;D)&#160;Medium-term&#160;control&#160;of&#160;Vmem&#160;monitored&#160;through&#160;the&#160;ﬂuorescence</p>
+<p style="position:absolute;top:962px;left:77px;white-space:nowrap" class="ft51">intensity&#160;of&#160;Arclight-hiPSCs&#160;(red&#160;trace)&#160;to&#160;form&#160;a&#160;step&#160;increase&#160;and&#160;holding&#160;at&#160;a&#160;target</p>
+<p style="position:absolute;top:960px;left:495px;white-space:nowrap" class="ft51">ﬂuorescence&#160;intensity&#160;(black&#160;trace).&#160;VHþ&#160;is&#160;pulsed&#160;according&#160;to&#160;the</p>
+<p style="position:absolute;top:977px;left:77px;white-space:nowrap" class="ft51">pulsed-control&#160;algorithm&#160;with&#160;the&#160;stimulation&#160;and&#160;rest&#160;duration&#160;being&#160;2.5&#160;min&#160;each.&#160;E)&#160;Long-term&#160;control&#160;for</p>
+<p style="position:absolute;top:977px;left:613px;white-space:nowrap" class="ft51">Vmem&#160;monitored&#160;through&#160;the</p>
+<p style="position:absolute;top:975px;left:759px;white-space:nowrap" class="ft51">ﬂuorescence</p>
+<p style="position:absolute;top:992px;left:77px;white-space:nowrap" class="ft51">intensity&#160;of&#160;Arclight-hiPSCs&#160;(red&#160;trace)&#160;toward&#160;increasing&#160;the</p>
+<p style="position:absolute;top:992px;left:379px;white-space:nowrap" class="ft51">Vmem&#160;over&#160;the&#160;course&#160;of&#160;10&#160;h.&#160;The&#160;mean</p>
+<p style="position:absolute;top:990px;left:581px;white-space:nowrap" class="ft51">ﬂuorescence&#160;intensity&#160;over&#160;the&#160;ﬂoating&#160;period&#160;of</p>
+<p style="position:absolute;top:1007px;left:77px;white-space:nowrap" class="ft51">the&#160;pulsed-control&#160;algorithm&#160;was&#160;calculated&#160;(black&#160;dotted&#160;lines)&#160;and&#160;the&#160;target</p>
+<p style="position:absolute;top:1005px;left:464px;white-space:nowrap" class="ft51">ﬂuorescence&#160;intensity&#160;during&#160;stimulation&#160;is&#160;set&#160;to&#160;two&#160;ﬂuorescence&#160;units</p>
+<p style="position:absolute;top:1022px;left:77px;white-space:nowrap" class="ft51">above&#160;that&#160;value&#160;(black&#160;solid&#160;lines).&#160;F)</p>
+<p style="position:absolute;top:1022px;left:262px;white-space:nowrap" class="ft51">VHþ&#160;is&#160;controlled&#160;during&#160;the&#160;stimulation&#160;periods&#160;of&#160;the&#160;pulsed-control&#160;algorithm&#160;to&#160;raise&#160;the&#160;Vmem&#160;and&#160;decreases&#160;in</p>
+<p style="position:absolute;top:1037px;left:77px;white-space:nowrap" class="ft51">voltage&#160;over&#160;the&#160;stimulation&#160;period,&#160;indicating&#160;a&#160;shift&#160;toward&#160;alkaline&#160;conditions&#160;around&#160;cells&#160;which&#160;is&#160;expected&#160;to&#160;raise</p>
+<p style="position:absolute;top:1037px;left:683px;white-space:nowrap" class="ft51">Vmem.</p>
+<p style="position:absolute;top:67px;left:77px;white-space:nowrap" class="ft51"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:708px;white-space:nowrap" class="ft51"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:77px;white-space:nowrap" class="ft53">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:350px;white-space:nowrap" class="ft50">2000140&#160;(5&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:582px;white-space:nowrap" class="ft53">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:11px;font-family:Times;color:#000000;}
+	.ft61{font-size:6px;font-family:Times;color:#000000;}
+	.ft62{font-size:15px;font-family:Times;color:#000000;}
+	.ft63{font-size:9px;font-family:Times;color:#000000;}
+	.ft64{font-size:5px;font-family:Times;color:#000000;}
+	.ft65{font-size:8px;font-family:Times;color:#000000;}
+	.ft66{font-size:11px;line-height:16px;font-family:Times;color:#000000;}
+	.ft67{font-size:11px;line-height:13px;font-family:Times;color:#000000;}
+	.ft68{font-size:11px;line-height:19px;font-family:Times;color:#000000;}
+	.ft69{font-size:9px;line-height:14px;font-family:Times;color:#000000;}
+	.ft610{font-size:9px;line-height:16px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:106px;left:72px;white-space:nowrap" class="ft68">in&#160;solution&#160;and&#160;it&#160;is&#160;consistent&#160;with&#160;what&#160;we&#160;have&#160;observed&#160;using<br/>electrophysiology&#160;(Figure&#160;S8,&#160;Supporting&#160;Information).&#160;To&#160;con-<br/>ﬁrm&#160;that&#160;VHþ&#160;is&#160;having&#160;an&#160;effect&#160;on&#160;Vmem,&#160;we&#160;notice&#160;that&#160;when<br/>the&#160;cells&#160;are&#160;not&#160;being&#160;stimulated,</p>
+<p style="position:absolute;top:153px;left:268px;white-space:nowrap" class="ft60">Vmem&#160;slowly&#160;drops&#160;toward&#160;its</p>
+<p style="position:absolute;top:173px;left:72px;white-space:nowrap" class="ft66">initial&#160;value&#160;likely&#160;because&#160;[Hþ]&#160;returns&#160;to&#160;its&#160;neutral&#160;level&#160;due&#160;to<br/>the&#160;diffusion&#160;of&#160;ions&#160;from&#160;the&#160;surrounding&#160;areas&#160;(Figure&#160;4D).<br/>This&#160;diffusion&#160;is&#160;slower&#160;than&#160;the&#160;timescale&#160;of&#160;our&#160;sequence&#160;so<br/>that&#160;we&#160;are&#160;able&#160;to&#160;keep</p>
+<p style="position:absolute;top:220px;left:210px;white-space:nowrap" class="ft60">Vmem&#160;to&#160;a&#160;set&#160;value&#160;with&#160;minimal&#160;oscil-</p>
+<p style="position:absolute;top:239px;left:72px;white-space:nowrap" class="ft60">lations.&#160;We&#160;demonstrate&#160;proof-of-concept</p>
+<p style="position:absolute;top:236px;left:321px;white-space:nowrap" class="ft60">Vmem&#160;control&#160;for&#160;a</p>
+<p style="position:absolute;top:256px;left:72px;white-space:nowrap" class="ft60">period&#160;of&#160;10&#160;h&#160;by&#160;setting&#160;the&#160;target&#160;ArcLight</p>
+<p style="position:absolute;top:253px;left:323px;white-space:nowrap" class="ft60">ﬂuorescence&#160;2&#160;ﬂuo-</p>
+<p style="position:absolute;top:272px;left:72px;white-space:nowrap" class="ft60">rescence&#160;units&#160;higher&#160;than&#160;the&#160;average&#160;measured</p>
+<p style="position:absolute;top:269px;left:363px;white-space:nowrap" class="ft60">Vmem&#160;of&#160;the</p>
+<p style="position:absolute;top:289px;left:72px;white-space:nowrap" class="ft60">30&#160;min&#160;period&#160;prior&#160;(Figure&#160;4E,F).&#160;We&#160;observe&#160;that&#160;the</p>
+<p style="position:absolute;top:286px;left:402px;white-space:nowrap" class="ft60">Vmem</p>
+<p style="position:absolute;top:306px;left:72px;white-space:nowrap" class="ft66">of&#160;the&#160;cells&#160;becomes&#160;more&#160;polarized&#160;during&#160;the&#160;30&#160;min&#160;of&#160;stim-<br/>ulation&#160;and&#160;depolarizes&#160;during&#160;the</p>
+<p style="position:absolute;top:319px;left:277px;white-space:nowrap" class="ft60">ﬂoating&#160;periods&#160;(red&#160;trace).</p>
+<p style="position:absolute;top:339px;left:72px;white-space:nowrap" class="ft68">Over&#160;the&#160;course&#160;of&#160;the&#160;trial&#160;the&#160;extent&#160;of&#160;polarization&#160;during<br/>the&#160;pumping&#160;period&#160;is&#160;greater&#160;than&#160;the&#160;depolarization&#160;in&#160;the<br/>ﬂoating&#160;period&#160;resulting&#160;in&#160;a&#160;gradual&#160;trend&#160;toward&#160;polarization<br/>for&#160;the&#160;hiPSCs.&#160;By&#160;calibrating&#160;the</p>
+<p style="position:absolute;top:386px;left:276px;white-space:nowrap" class="ft60">ﬂuorescence&#160;change&#160;in&#160;the</p>
+<p style="position:absolute;top:405px;left:72px;white-space:nowrap" class="ft66">ArcLight&#160;reporter,&#160;we&#160;estimate&#160;that&#160;we&#160;were&#160;able&#160;to&#160;achieve&#160;an<br/>increase</p>
+<p style="position:absolute;top:419px;left:120px;white-space:nowrap" class="ft60">Vmem&#160;of&#160;the&#160;selected&#160;hiPSCs&#160;by&#160;10&#160;mV&#160;in&#160;the&#160;10&#160;h&#160;period.</p>
+<p style="position:absolute;top:438px;left:87px;white-space:nowrap" class="ft60">Bioelectronic&#160;actuators&#160;are&#160;an&#160;important&#160;part&#160;of&#160;realizing</p>
+<p style="position:absolute;top:455px;left:72px;white-space:nowrap" class="ft66">two-way&#160;communication&#160;with&#160;living&#160;systems.&#160;Inherent&#160;chal-<br/>lenges&#160;in&#160;actuating&#160;biological&#160;tissues&#160;such&#160;as&#160;information&#160;carrier<br/>mismatch&#160;and&#160;system&#160;dynamics&#160;have&#160;limited&#160;the</p>
+<p style="position:absolute;top:485px;left:352px;white-space:nowrap" class="ft60">ﬁeld&#160;to&#160;a&#160;point</p>
+<p style="position:absolute;top:505px;left:72px;white-space:nowrap" class="ft66">where&#160;the&#160;number&#160;of&#160;examples&#160;of&#160;bioactuators&#160;is&#160;relatively&#160;few<br/>compared&#160;with&#160;that&#160;of&#160;biosensors.&#160;Here,&#160;we&#160;show&#160;that&#160;it&#160;is&#160;pos-<br/>sible&#160;to&#160;combine&#160;proton&#160;pumps&#160;as&#160;bioactuators&#160;with&#160;ML-based<br/>control&#160;approaches&#160;into&#160;biohybrid&#160;system&#160;that&#160;can&#160;address&#160;these<br/>issues&#160;to&#160;achieve&#160;precise&#160;closed-loop&#160;control&#160;of&#160;pH,&#160;which,&#160;in<br/>turn,&#160;allows&#160;long-term&#160;proof-of-concept&#160;closed-loop&#160;control&#160;of<br/>membrane&#160;voltage&#160;in&#160;cells.&#160;To&#160;the&#160;best&#160;of&#160;our&#160;knowledge,&#160;this<br/>is&#160;the</p>
+<p style="position:absolute;top:618px;left:110px;white-space:nowrap" class="ft60">ﬁrst&#160;proof-of-concept&#160;control&#160;of&#160;Vmem&#160;on&#160;nonelectrically</p>
+<p style="position:absolute;top:637px;left:72px;white-space:nowrap" class="ft66">excitable&#160;cells&#160;using&#160;closed-loop&#160;bioelectronic&#160;devices.&#160;Our&#160;ML<br/>approach&#160;did&#160;not&#160;experience&#160;failure&#160;modes&#160;dealing&#160;with<br/>uncertainties&#160;associated&#160;with&#160;overstimulation&#160;of&#160;the&#160;biology,<br/>device&#160;variability,&#160;and&#160;saturation&#160;of&#160;the&#160;system.&#160;To&#160;this&#160;end,<br/>we&#160;can&#160;manipulate</p>
+<p style="position:absolute;top:701px;left:188px;white-space:nowrap" class="ft60">Vmem&#160;for&#160;periods&#160;as&#160;long&#160;as&#160;10&#160;h&#160;opening</p>
+<p style="position:absolute;top:720px;left:72px;white-space:nowrap" class="ft66">the&#160;opportunity&#160;for&#160;long-term&#160;control&#160;of&#160;cell&#160;function&#160;and&#160;prolif-<br/>eration.&#160;This&#160;ability&#160;to&#160;induce</p>
+<p style="position:absolute;top:734px;left:237px;white-space:nowrap" class="ft60">Vmem&#160;changes&#160;on&#160;nonexcitatory&#160;cell</p>
+<p style="position:absolute;top:754px;left:72px;white-space:nowrap" class="ft66">types&#160;is&#160;of&#160;interest&#160;for&#160;applications&#160;in&#160;regenerative&#160;medicine&#160;and<br/>synthetic&#160;biology.&#160;In&#160;the&#160;future,&#160;a&#160;combination&#160;of&#160;additional<br/>monovalent&#160;and&#160;divalent&#160;ion&#160;species,&#160;and&#160;small&#160;ionic&#160;molecules,<br/>can&#160;increase&#160;the&#160;capabilities&#160;of&#160;our&#160;system.&#160;Importantly,&#160;closed-<br/>loop&#160;biohybrid&#160;systems,&#160;such&#160;as&#160;this&#160;one,&#160;are&#160;highly&#160;anticipated<br/>due&#160;to&#160;their&#160;broad&#160;applicability&#160;across&#160;the</p>
+<p style="position:absolute;top:834px;left:316px;white-space:nowrap" class="ft60">ﬁelds&#160;of&#160;biology&#160;and</p>
+<p style="position:absolute;top:853px;left:72px;white-space:nowrap" class="ft66">engineering.&#160;Thus,&#160;new&#160;technology&#160;in&#160;synthetic&#160;biology&#160;and<br/>bioelectronics&#160;with&#160;closed-loop&#160;control&#160;could&#160;result&#160;in&#160;unprece-<br/>dented&#160;spatiotemporal&#160;control&#160;over&#160;nature.</p>
+<p style="position:absolute;top:884px;left:316px;white-space:nowrap" class="ft61">[3]</p>
+<p style="position:absolute;top:933px;left:72px;white-space:nowrap" class="ft62">Experimental&#160;Section</p>
+<p style="position:absolute;top:964px;left:87px;white-space:nowrap" class="ft63">Device&#160;Fabrication:&#160;Ion&#160;pump&#160;arrays&#160;were&#160;fabricated&#160;on&#160;borosilicate</p>
+<p style="position:absolute;top:979px;left:72px;white-space:nowrap" class="ft69">glass&#160;wafer&#160;substrates&#160;which&#160;were&#160;cleaned&#160;via&#160;sonication&#160;for&#160;10&#160;min&#160;in&#160;ace-<br/>tone&#160;and&#160;isopropanol&#160;prior&#160;to&#160;a&#160;rinse&#160;with&#160;water.&#160;Au&#160;contacts&#160;and&#160;traces<br/>were&#160;patterned&#160;photolithographically&#160;with&#160;positive&#160;photoresist&#160;(S1813;<br/>Micro-Chem&#160;Corp.)&#160;and&#160;e-beam&#160;evaporation&#160;(10&#160;nm&#160;Ti,&#160;100&#160;nm&#160;Au)&#160;fol-<br/>lowed&#160;by&#160;liftoff&#160;in&#160;acetone.&#160;Subsequent&#160;patterning&#160;with&#160;S1813&#160;photoresist<br/>de</p>
+<p style="position:absolute;top:1048px;left:84px;white-space:nowrap" class="ft63">ﬁned&#160;electrode&#160;regions&#160;for&#160;electrodeposition&#160;(see&#160;“Electrodeposition”</p>
+<p style="position:absolute;top:1065px;left:72px;white-space:nowrap" class="ft63">section).&#160;After&#160;electrodeposition,&#160;a&#160;1.4</p>
+<p style="position:absolute;top:1062px;left:267px;white-space:nowrap" class="ft63">μm&#160;insulating&#160;layer&#160;of&#160;parylene-C</p>
+<p style="position:absolute;top:108px;left:455px;white-space:nowrap" class="ft69">was&#160;deposited&#160;(Specialty&#160;Coating&#160;Systems&#160;Labcoter&#160;2&#160;system)&#160;in&#160;the&#160;pres-<br/>ence&#160;of&#160;A174&#160;adhesion&#160;promoter&#160;in&#160;the&#160;deposition&#160;chamber.&#160;The&#160;parylene<br/>was&#160;etched&#160;with&#160;an&#160;oxygen&#160;plasma&#160;at&#160;200&#160;V&#160;with&#160;the&#160;regions&#160;over&#160;the<br/>electrodes&#160;and&#160;contact&#160;pads&#160;exposed,&#160;and&#160;the&#160;interconnecting&#160;regions&#160;pro-<br/>tected&#160;by&#160;a&#160;thick&#160;positive&#160;photoresist&#160;(SPR220-4.5;&#160;Micro-Chem&#160;Corp.).<br/>Prior&#160;to&#160;deposition&#160;of&#160;polymer&#160;coatings,&#160;wafers&#160;were&#160;treated&#160;with&#160;a&#160;5%<br/>solution&#160;of&#160;(3-glycidyloxypropyl)trimethoxysilane&#160;(GOPS)&#160;in&#160;ethanol&#160;via<br/>spin&#160;coating&#160;at&#160;1000&#160;rpm&#160;for&#160;30&#160;s&#160;and&#160;then&#160;baked&#160;at&#160;110&#160;C&#160;for&#160;5&#160;min&#160;to<br/>promote&#160;adhesion&#160;of&#160;the&#160;ion&#160;bridge.&#160;A&#160;mixture&#160;of&#160;8&#160;wt%&#160;polyvinyl&#160;alcohol<br/>(PVA)&#160;and&#160;2%&#160;polystyrene&#160;sulfonic&#160;acid&#160;(PSS)&#160;in&#160;water&#160;was&#160;then&#160;passed<br/>through&#160;a&#160;0.8</p>
+<p style="position:absolute;top:248px;left:527px;white-space:nowrap" class="ft63">μm&#160;mixed&#160;cellulose&#160;esters&#160;(MCE)&#160;syringe&#160;ﬁlter&#160;and&#160;spin</p>
+<p style="position:absolute;top:265px;left:455px;white-space:nowrap" class="ft69">coated&#160;on&#160;the&#160;wafers&#160;at&#160;3000&#160;rpm&#160;for&#160;30&#160;s&#160;followed&#160;by&#160;baking&#160;at&#160;120&#160;C<br/>for&#160;2&#160;h.&#160;The&#160;PVA:PSS&#160;cation&#160;exchange&#160;membrane&#160;was&#160;etched&#160;with&#160;an&#160;oxy-<br/>gen&#160;plasma&#160;at&#160;200&#160;V&#160;with&#160;the&#160;desired&#160;pattern&#160;de</p>
+<p style="position:absolute;top:291px;left:685px;white-space:nowrap" class="ft63">ﬁned&#160;with&#160;SPR220-4.5&#160;pho-</p>
+<p style="position:absolute;top:308px;left:455px;white-space:nowrap" class="ft63">toresist.&#160;A&#160;second&#160;1.4</p>
+<p style="position:absolute;top:305px;left:563px;white-space:nowrap" class="ft63">μm&#160;coating&#160;of&#160;parylene&#160;was&#160;then&#160;deposited&#160;with&#160;the</p>
+<p style="position:absolute;top:322px;left:455px;white-space:nowrap" class="ft69">same&#160;protocol&#160;as&#160;above&#160;to&#160;insulate&#160;and&#160;protect&#160;the&#160;ion&#160;bridge&#160;from&#160;the<br/>subsequent&#160;steps.&#160;To&#160;promote&#160;adhesion&#160;between&#160;the&#160;parylene&#160;and&#160;SU8<br/>photoresist,&#160;GOPS&#160;was&#160;again&#160;deposited&#160;using&#160;the&#160;aforementioned&#160;process<br/>prior&#160;to&#160;SU8&#160;patterning.&#160;SU8&#160;was&#160;spun&#160;onto&#160;the&#160;wafer&#160;at&#160;a&#160;speed&#160;of<br/>1250&#160;rpm&#160;for&#160;30&#160;s&#160;and&#160;a&#160;ramp&#160;of&#160;300&#160;rpm;&#160;micro</p>
+<p style="position:absolute;top:376px;left:692px;white-space:nowrap" class="ft63">ﬂuidic&#160;channels&#160;of&#160;height</p>
+<p style="position:absolute;top:393px;left:455px;white-space:nowrap" class="ft63">40</p>
+<p style="position:absolute;top:391px;left:469px;white-space:nowrap" class="ft63">μm&#160;were&#160;patterned&#160;forming&#160;the&#160;sidewalls&#160;reservoir&#160;and&#160;target&#160;cham-</p>
+<p style="position:absolute;top:408px;left:455px;white-space:nowrap" class="ft69">bers.&#160;The&#160;parylene&#160;insulation&#160;layer&#160;protecting&#160;the&#160;ion&#160;bridge&#160;openings<br/>in&#160;the&#160;reservoir&#160;and&#160;target&#160;channels&#160;was&#160;de</p>
+<p style="position:absolute;top:419px;left:678px;white-space:nowrap" class="ft63">ﬁned&#160;and&#160;etched&#160;using&#160;the</p>
+<p style="position:absolute;top:436px;left:455px;white-space:nowrap" class="ft69">same&#160;process&#160;as&#160;the&#160;previous&#160;parylene&#160;etch.&#160;A&#160;mixture&#160;of&#160;2.5&#160;wt%&#160;PVA<br/>and&#160;5&#160;wt%&#160;poly(diallyldimethylammonium&#160;chloride)&#160;(PDDA)&#160;in&#160;water<br/>was&#160;passed&#160;through&#160;a&#160;0.8</p>
+<p style="position:absolute;top:462px;left:593px;white-space:nowrap" class="ft63">μm&#160;MCE&#160;syringe&#160;ﬁlter&#160;and&#160;spin&#160;coated&#160;on</p>
+<p style="position:absolute;top:479px;left:455px;white-space:nowrap" class="ft69">the&#160;device&#160;at&#160;6000&#160;rpm&#160;for&#160;30&#160;s&#160;prior&#160;to&#160;baking&#160;at&#160;120&#160;C&#160;for&#160;1&#160;h&#160;prior&#160;to<br/>etch&#160;features&#160;being&#160;patterned&#160;in&#160;SPR220&#160;photoresist&#160;and&#160;etching&#160;with<br/>O2&#160;reactive&#160;ion&#160;etching.&#160;Devices&#160;were&#160;then&#160;diced&#160;from&#160;the&#160;wafers<br/>prior&#160;to&#160;sealing&#160;the&#160;micro</p>
+<p style="position:absolute;top:519px;left:588px;white-space:nowrap" class="ft63">ﬂuidics.&#160;Single-sided&#160;microﬂuidic&#160;transparent</p>
+<p style="position:absolute;top:536px;left:455px;white-space:nowrap" class="ft69">diagnostic&#160;tape&#160;(3M&#160;9964)&#160;was&#160;used&#160;to&#160;seal&#160;the&#160;microchannels&#160;on&#160;the<br/>proton&#160;pump&#160;array&#160;after&#160;the&#160;devices&#160;were&#160;diced.&#160;Features&#160;in&#160;the&#160;tape&#160;layer<br/>were&#160;punched&#160;out&#160;with&#160;1&#160;and&#160;2&#160;mm&#160;diameter&#160;biopsy&#160;punches&#160;for</p>
+<p style="position:absolute;top:562px;left:786px;white-space:nowrap" class="ft63">ﬂuidic</p>
+<p style="position:absolute;top:579px;left:455px;white-space:nowrap" class="ft69">inlets&#160;and&#160;openings&#160;for&#160;cell&#160;clamping,&#160;respectively.&#160;The&#160;tapes&#160;were&#160;then<br/>aligned&#160;to&#160;features&#160;on&#160;the&#160;device&#160;and&#160;pressed&#160;to&#160;seal&#160;by&#160;hand.</p>
+<p style="position:absolute;top:607px;left:470px;white-space:nowrap" class="ft63">Electrodeposition:&#160;Pd&#160;nanoparticles&#160;were&#160;deposited&#160;onto&#160;the&#160;electrodes</p>
+<p style="position:absolute;top:622px;left:455px;white-space:nowrap" class="ft69">using&#160;a&#160;1&#160;wt%&#160;palladium&#160;nitrate&#160;solution&#160;which&#160;was&#160;made&#160;by&#160;diluting&#160;a<br/>10&#160;wt%&#160;PdNO3&#160;solution&#160;with&#160;deionized&#160;(DI)&#160;water.&#160;The&#160;nanoparticles&#160;were<br/>electrochemically&#160;deposited&#160;by&#160;applying&#160;a&#160;DC&#160;voltage&#160;of</p>
+<p style="position:absolute;top:648px;left:748px;white-space:nowrap" class="ft63">–0.3&#160;V&#160;for&#160;4&#160;s</p>
+<p style="position:absolute;top:665px;left:455px;white-space:nowrap" class="ft69">using&#160;an&#160;AgCl&#160;reference&#160;electrode&#160;and&#160;Pt&#160;counter&#160;electrode.&#160;An&#160;Autolab<br/>Potentiostat&#160;was&#160;used&#160;for&#160;the&#160;electrodeposition.</p>
+<p style="position:absolute;top:693px;left:470px;white-space:nowrap" class="ft63">Stimulation&#160;Board:&#160;The&#160;stimulation&#160;unit&#160;is&#160;a&#160;custom&#160;designed&#160;modular</p>
+<p style="position:absolute;top:707px;left:455px;white-space:nowrap" class="ft69">circuit&#160;board&#160;for&#160;stimulating&#160;up&#160;to&#160;64&#160;electrodes&#160;simultaneously.&#160;The<br/>design&#160;consists&#160;of&#160;single-board&#160;computer,&#160;adjustable&#160;voltage&#160;sources,<br/>ammeters,&#160;and&#160;an&#160;analog&#160;switch.&#160;The&#160;adjustable&#160;voltage&#160;source&#160;can&#160;be<br/>controlled&#160;in&#160;a&#160;range&#160;of</p>
+<p style="position:absolute;top:748px;left:573px;white-space:nowrap" class="ft63">4&#160;to&#160;þ4&#160;V&#160;with&#160;a&#160;resolution&#160;of&#160;1.95&#160;mV&#160;and&#160;able</p>
+<p style="position:absolute;top:765px;left:455px;white-space:nowrap" class="ft69">to&#160;source&#160;current&#160;up&#160;to&#160;30&#160;mA.&#160;Stimulate&#160;current&#160;can&#160;be&#160;measured&#160;in&#160;a<br/>range&#160;of</p>
+<p style="position:absolute;top:776px;left:502px;white-space:nowrap" class="ft63">1650&#160;to&#160;þ1650&#160;nA&#160;with&#160;a&#160;resolution&#160;of&#160;0.8&#160;nA&#160;using&#160;built-in</p>
+<p style="position:absolute;top:793px;left:455px;white-space:nowrap" class="ft69">ammeters.&#160;Ultra-Low-Leakage&#160;CMOS&#160;Analog&#160;switches&#160;allow&#160;the&#160;stimula-<br/>tion&#160;unit&#160;to&#160;connect/disconnect&#160;individual&#160;electrodes,&#160;resulting&#160;in&#160;the&#160;addi-<br/>tion&#160;output&#160;stage,</p>
+<p style="position:absolute;top:819px;left:555px;white-space:nowrap" class="ft63">ﬂoating.&#160;The&#160;stimulation&#160;unit&#160;can&#160;operate&#160;in&#160;two</p>
+<p style="position:absolute;top:836px;left:455px;white-space:nowrap" class="ft69">different&#160;modes,&#160;standalone&#160;and&#160;network.&#160;The&#160;standalone&#160;mode&#160;is&#160;where<br/>the&#160;output&#160;stages&#160;(voltage)&#160;of&#160;the&#160;stimulation&#160;unit&#160;are&#160;preprogrammed<br/>and&#160;run&#160;sequentially.&#160;On&#160;the&#160;contrary,&#160;in&#160;network&#160;mode,&#160;the&#160;stimulation<br/>unit&#160;will&#160;be&#160;listening&#160;to&#160;an&#160;incoming&#160;User&#160;Datagram&#160;Protocol&#160;packet,&#160;and<br/>output&#160;stages&#160;can&#160;be&#160;programmed&#160;in&#160;real&#160;time&#160;via&#160;a&#160;wireless&#160;connection.<br/>The&#160;network&#160;mode&#160;allows&#160;the&#160;ML-based&#160;control&#160;algorithm,&#160;which&#160;runs&#160;in&#160;a<br/>different&#160;machine&#160;to&#160;perform&#160;closed-loop&#160;control&#160;using&#160;feedback&#160;from<br/>both</p>
+<p style="position:absolute;top:933px;left:481px;white-space:nowrap" class="ft63">ﬂuorescent&#160;images&#160;and&#160;measured&#160;current.</p>
+<p style="position:absolute;top:950px;left:470px;white-space:nowrap" class="ft63">[H</p>
+<p style="position:absolute;top:948px;left:482px;white-space:nowrap" class="ft63">þ]&#160;Measurement:&#160;We&#160;used&#160;microscope-based&#160;real-time&#160;imaging&#160;over</p>
+<p style="position:absolute;top:965px;left:455px;white-space:nowrap" class="ft63">the&#160;Pd&#160;electrodes&#160;to&#160;monitor&#160;[Hþ]&#160;change.&#160;We&#160;used&#160;50</p>
+<p style="position:absolute;top:962px;left:737px;white-space:nowrap" class="ft63">μM&#160;SNARF&#160;dis-</p>
+<p style="position:absolute;top:979px;left:455px;white-space:nowrap" class="ft63">pensed&#160;in&#160;0.1&#160;M&#160;Tris&#160;buffer&#160;as&#160;a</p>
+<p style="position:absolute;top:976px;left:625px;white-space:nowrap" class="ft63">ﬂuorescent&#160;[Hþ]&#160;indicator,&#160;which&#160;was</p>
+<p style="position:absolute;top:990px;left:455px;white-space:nowrap" class="ft610">ﬂowed&#160;into&#160;the&#160;target&#160;chamber&#160;via&#160;a&#160;sealed&#160;microﬂuidic&#160;channel.<br/>Thereafter,&#160;the&#160;device&#160;was&#160;monitored&#160;by&#160;BZ-X710</p>
+<p style="position:absolute;top:1005px;left:694px;white-space:nowrap" class="ft63">ﬂuorescence&#160;microscope</p>
+<p style="position:absolute;top:1022px;left:455px;white-space:nowrap" class="ft63">with&#160;10</p>
+<p style="position:absolute;top:1019px;left:491px;white-space:nowrap" class="ft63">&#160;Nikon&#160;objective&#160;(excitation:&#160;560/40&#160;nm,&#160;emission:&#160;630/75&#160;nm),</p>
+<p style="position:absolute;top:1036px;left:455px;white-space:nowrap" class="ft69">and&#160;data&#160;were&#160;collected&#160;every&#160;2&#160;s&#160;in&#160;real&#160;time.&#160;Each&#160;set&#160;of&#160;experiments&#160;was<br/>repeated&#160;a&#160;minimum&#160;of&#160;3&#160;times;&#160;representative&#160;recordings&#160;are&#160;presented.<br/>Data&#160;were&#160;analyzed&#160;using&#160;ImageJ&#160;software.</p>
+<p style="position:absolute;top:67px;left:72px;white-space:nowrap" class="ft63"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:703px;white-space:nowrap" class="ft63"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:72px;white-space:nowrap" class="ft65">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:346px;white-space:nowrap" class="ft60">2000140&#160;(6&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:577px;white-space:nowrap" class="ft65">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:9px;font-family:Times;color:#000000;}
+	.ft71{font-size:5px;font-family:Times;color:#000000;}
+	.ft72{font-size:6px;font-family:Times;color:#000000;}
+	.ft73{font-size:15px;font-family:Times;color:#000000;}
+	.ft74{font-size:8px;font-family:Times;color:#000000;}
+	.ft75{font-size:11px;font-family:Times;color:#000000;}
+	.ft76{font-size:9px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:107px;left:92px;white-space:nowrap" class="ft70">Cells:&#160;hiPSCs&#160;were&#160;a&#160;generous&#160;donation&#160;from&#160;David&#160;Kaplan</p>
+<p style="position:absolute;top:105px;left:396px;white-space:nowrap" class="ft70">’s&#160;group</p>
+<p style="position:absolute;top:122px;left:77px;white-space:nowrap" class="ft70">(ND418566,&#160;NINDS&#160;Human&#160;Genetics&#160;and&#160;DNA&#160;Cell&#160;Line&#160;Repository).</p>
+<p style="position:absolute;top:119px;left:425px;white-space:nowrap" class="ft71">[34]</p>
+<p style="position:absolute;top:136px;left:77px;white-space:nowrap" class="ft76">Stem&#160;cells&#160;were&#160;maintained&#160;at&#160;5%&#160;CO2&#160;in&#160;StemFlex&#160;Medium&#160;(A3349401;<br/>ThermoFisher)&#160;on&#160;hESC&#160;Quali</p>
+<p style="position:absolute;top:148px;left:235px;white-space:nowrap" class="ft70">ﬁed&#160;Matrigel&#160;Matrix&#160;(354277;&#160;Corning)</p>
+<p style="position:absolute;top:165px;left:77px;white-space:nowrap" class="ft76">coated&#160;plates&#160;with&#160;the&#160;dilution&#160;recommended&#160;by&#160;the&#160;manufacturer.<br/>Cells&#160;were&#160;disassociated&#160;with&#160;TrypLE&#160;Select&#160;(12563029;&#160;ThermoFisher).<br/>Transgenic&#160;cells&#160;were&#160;made&#160;by&#160;transfecting&#160;500&#160;ng&#160;of&#160;plasmid&#160;via&#160;1</p>
+<p style="position:absolute;top:191px;left:426px;white-space:nowrap" class="ft70">μL</p>
+<p style="position:absolute;top:208px;left:77px;white-space:nowrap" class="ft76">of&#160;lipofectamine&#160;3000&#160;(L3000008;&#160;ThermoFisher)&#160;per&#160;well&#160;of&#160;24&#160;well&#160;plate<br/>containing&#160;500</p>
+<p style="position:absolute;top:219px;left:156px;white-space:nowrap" class="ft70">μL&#160;of&#160;Opti-MEM&#160;(31985062;&#160;ThermoFisher)&#160;with&#160;1X</p>
+<p style="position:absolute;top:236px;left:77px;white-space:nowrap" class="ft76">RevitaCell&#160;(A2644501;&#160;ThermoFisher).&#160;Reagent&#160;was&#160;removed&#160;after&#160;4&#160;h<br/>and&#160;replaced&#160;with&#160;StemFlex.&#160;Cells&#160;were&#160;allowed&#160;to&#160;recover&#160;for&#160;3&#160;days&#160;before<br/>being&#160;selected&#160;with&#160;50</p>
+<p style="position:absolute;top:262px;left:189px;white-space:nowrap" class="ft70">μg&#160;mL1&#160;G418&#160;in&#160;StemFlex&#160;with&#160;10&#160;μg&#160;mL1&#160;ROCK</p>
+<p style="position:absolute;top:279px;left:77px;white-space:nowrap" class="ft76">inhibitor&#160;Y-27632&#160;(72304;&#160;STEMCELL&#160;Technologies).&#160;After&#160;selection,&#160;a&#160;sta-<br/>ble,&#160;clonally&#160;pure&#160;line&#160;was&#160;made&#160;by&#160;serial&#160;dilution&#160;using&#160;StemFlex&#160;with&#160;1X<br/>RevitaCell.&#160;Clones&#160;were&#160;expanded&#160;in&#160;StemFlex&#160;and&#160;then&#160;assayed&#160;for&#160;alka-<br/>line&#160;phosphatase&#160;activity&#160;(SCR004;&#160;Millipore).&#160;The&#160;clone&#160;with&#160;best<br/>membrane&#160;localization&#160;and&#160;expression&#160;of&#160;ArcLight&#160;was&#160;chosen&#160;for&#160;further<br/>experimentation&#160;and&#160;frozen&#160;down&#160;using&#160;NutriFreez&#160;D10&#160;(05-713-1E;<br/>Biological&#160;Industries).&#160;Prior&#160;to&#160;being&#160;used&#160;in&#160;experiments,&#160;hiPSC<br/>ArcLight&#160;cells&#160;were&#160;plated&#160;in&#160;mTeSR1&#160;no&#160;phenol&#160;red&#160;(05876;&#160;STEMCELL<br/>Technologies)&#160;and&#160;allowed&#160;to&#160;expand&#160;for&#160;two&#160;passages&#160;prior&#160;to&#160;seeding&#160;on<br/>PDMS&#160;slabs&#160;that&#160;were&#160;coated&#160;in&#160;hESC&#160;Quali</p>
+<p style="position:absolute;top:405px;left:304px;white-space:nowrap" class="ft70">ﬁed&#160;Matrigel&#160;Matrix.&#160;Slabs</p>
+<p style="position:absolute;top:422px;left:77px;white-space:nowrap" class="ft70">were&#160;used&#160;in&#160;bioelectronic&#160;chips&#160;1</p>
+<p style="position:absolute;top:419px;left:261px;white-space:nowrap" class="ft70">–3&#160;days&#160;after&#160;seeding.&#160;Cells&#160;were</p>
+<p style="position:absolute;top:436px;left:77px;white-space:nowrap" class="ft70">perfused&#160;with&#160;mTeSR1&#160;no&#160;phenol&#160;red&#160;during&#160;experiments.</p>
+<p style="position:absolute;top:450px;left:92px;white-space:nowrap" class="ft70">Plasmid&#160;Construction:&#160;A&#160;pENTR1A&#160;plasmid&#160;with&#160;a&#160;CAG&#160;promoter&#160;and</p>
+<p style="position:absolute;top:465px;left:77px;white-space:nowrap" class="ft76">multiple&#160;cloning&#160;site&#160;followed&#160;by&#160;a&#160;SV40&#160;poly&#160;A&#160;was&#160;used&#160;to&#160;clone&#160;in<br/>the&#160;mammalian&#160;codon&#160;optimized&#160;ArcLight&#160;Q239&#160;from&#160;the&#160;plasmid<br/>CMV</p>
+<p style="position:absolute;top:493px;left:114px;white-space:nowrap" class="ft70">ArcLightCo</p>
+<p style="position:absolute;top:493px;left:181px;white-space:nowrap" class="ft70">(Q239)-T2A-nls-mCherry,</p>
+<p style="position:absolute;top:493px;left:318px;white-space:nowrap" class="ft70">a</p>
+<p style="position:absolute;top:493px;left:336px;white-space:nowrap" class="ft70">gift</p>
+<p style="position:absolute;top:493px;left:364px;white-space:nowrap" class="ft70">from</p>
+<p style="position:absolute;top:493px;left:401px;white-space:nowrap" class="ft70">Vincent</p>
+<p style="position:absolute;top:507px;left:77px;white-space:nowrap" class="ft76">Pieribone&#160;(Addgene&#160;plasmid&#160;#&#160;85806&#160;;&#160;<a href="http://n2t.net/addgene:85806">http://n2t.net/addgene:85806;<br/></a>RRID:Addgene_85806).&#160;Cloning&#160;was&#160;done&#160;by&#160;In-Fusion&#160;HD&#160;Cloning<br/>Plus&#160;(638909;&#160;Takara)&#160;with&#160;HindIII&#160;and&#160;SalI&#160;restriction&#160;enzyme&#160;sites&#160;added.<br/>Polymerase&#160;chain&#160;reaction&#160;was&#160;done&#160;using&#160;PrimeSTAR&#160;GXL&#160;DNA&#160;polymer-<br/>ase&#160;(R050A;&#160;Takara).&#160;The&#160;resulting&#160;pENTR1A&#160;CAG&#160;ArcLightCo&#160;construct<br/>was&#160;then&#160;Gateway&#160;LR&#160;clonased&#160;(11791020;&#160;ThermoFisher)&#160;into&#160;the<br/>hyperactive&#160;piggyBac&#160;transposase-based,&#160;helper-independent,&#160;and&#160;self-<br/>inactivating&#160;delivery&#160;system,&#160;pmhyGENIE-3&#160;containing&#160;a&#160;neomycin&#160;resis-<br/>tance&#160;gene&#160;in&#160;the&#160;backbone&#160;for&#160;selection,&#160;a&#160;gift&#160;from&#160;Stefan&#160;Moisyadi.</p>
+<p style="position:absolute;top:619px;left:425px;white-space:nowrap" class="ft71">[35]</p>
+<p style="position:absolute;top:636px;left:77px;white-space:nowrap" class="ft76">The&#160;resulting&#160;plasmid&#160;HypG3NeoBBArcLightCo&#160;(Q239)&#160;was&#160;used&#160;for<br/>subsequent&#160;transfections.</p>
+<p style="position:absolute;top:665px;left:92px;white-space:nowrap" class="ft70">HiPSC&#160;ArcLight&#160;pH&#160;Response&#160;Assay:&#160;A&#160;PDMS&#160;micro</p>
+<p style="position:absolute;top:662px;left:355px;white-space:nowrap" class="ft70">ﬂuidic&#160;chip&#160;with</p>
+<p style="position:absolute;top:679px;left:77px;white-space:nowrap" class="ft76">multiple&#160;inputs&#160;was&#160;used&#160;to&#160;sequentially&#160;add&#160;mTeSR1&#160;no&#160;phenol&#160;red&#160;media<br/>set&#160;at&#160;different&#160;pH&#160;by&#160;adding&#160;5&#160;N&#160;NaOH&#160;or&#160;1&#160;N&#160;HCl&#160;to&#160;large&#160;colonies&#160;of<br/>hiPSC&#160;ArcLight&#160;cells.&#160;The&#160;pH&#160;of&#160;the&#160;media&#160;was&#160;tested&#160;before&#160;and&#160;after&#160;the<br/>experiment&#160;to&#160;make&#160;sure&#160;that&#160;it&#160;had&#160;stayed&#160;constant&#160;during&#160;the&#160;experi-<br/>ment.&#160;Each&#160;pH&#160;solution&#160;was</p>
+<p style="position:absolute;top:733px;left:231px;white-space:nowrap" class="ft70">ﬂowed&#160;over&#160;the&#160;cells&#160;for&#160;5&#160;min&#160;followed</p>
+<p style="position:absolute;top:750px;left:77px;white-space:nowrap" class="ft76">by&#160;the&#160;control&#160;media&#160;and&#160;images&#160;were&#160;taken&#160;of&#160;the&#160;cells&#160;every&#160;minute<br/>using&#160;an&#160;EVOS&#160;FL&#160;Auto2&#160;imaging&#160;system&#160;with&#160;a&#160;standard&#160;GFP</p>
+<p style="position:absolute;top:762px;left:413px;white-space:nowrap" class="ft70">ﬁlter.</p>
+<p style="position:absolute;top:779px;left:77px;white-space:nowrap" class="ft76">Each&#160;solution&#160;was&#160;tested&#160;twice&#160;to&#160;make&#160;sure&#160;that&#160;the&#160;genetically&#160;encoded<br/>reporter&#160;was&#160;still&#160;responsive&#160;even&#160;after&#160;high&#160;pH&#160;media&#160;was&#160;applied.</p>
+<p style="position:absolute;top:807px;left:92px;white-space:nowrap" class="ft70">Electrophysiology:&#160;hiPSC&#160;ArcLight&#160;cells&#160;were&#160;grown&#160;in&#160;mTeSR1&#160;with&#160;no</p>
+<p style="position:absolute;top:822px;left:77px;white-space:nowrap" class="ft70">phenol&#160;red&#160;for&#160;two&#160;passages.&#160;Cells&#160;were&#160;then&#160;seeded&#160;on&#160;hESC&#160;Quali</p>
+<p style="position:absolute;top:819px;left:420px;white-space:nowrap" class="ft70">ﬁed</p>
+<p style="position:absolute;top:836px;left:77px;white-space:nowrap" class="ft76">Matrigel&#160;Matrix&#160;coated&#160;cover&#160;slips&#160;at&#160;a&#160;very&#160;low&#160;density.&#160;Cells&#160;were&#160;patched<br/>using&#160;mTeSR&#160;no&#160;phenol&#160;red&#160;media&#160;as&#160;the&#160;external&#160;media&#160;with&#160;or&#160;without<br/>8.31&#160;mM&#160;NaOH.&#160;The&#160;internal&#160;solution&#160;was&#160;130&#160;mM&#160;KCl,&#160;10&#160;mM&#160;NaCl,<br/>0.5&#160;mM&#160;MgCl2,&#160;10&#160;mM&#160;HEPES,&#160;1&#160;mM&#160;EGTA,&#160;2&#160;mM&#160;Mg-ATP,&#160;adjusted<br/>to&#160;pH&#160;7.2&#160;with&#160;NaOH.&#160;Resting&#160;membrane&#160;potential&#160;recordings&#160;were<br/>obtained&#160;by&#160;current&#160;clamp&#160;at&#160;0&#160;pA&#160;for&#160;10&#160;sweeps&#160;for&#160;10&#160;s&#160;each.</p>
+<p style="position:absolute;top:922px;left:92px;white-space:nowrap" class="ft70">ML-Based&#160;Controller&#160;Algorithm:&#160;ML-based&#160;controller&#160;performs&#160;in&#160;real</p>
+<p style="position:absolute;top:936px;left:77px;white-space:nowrap" class="ft76">time&#160;and&#160;updates&#160;its&#160;parameters&#160;online.&#160;The&#160;technique&#160;could&#160;roughly&#160;be<br/>considered&#160;as&#160;supervised&#160;learning&#160;because&#160;we&#160;know&#160;our&#160;target&#160;response<br/>for&#160;the&#160;cellular&#160;system&#160;and&#160;actively&#160;correct&#160;bad&#160;behavior&#160;by&#160;the&#160;algorithm.<br/>There&#160;was&#160;no&#160;training&#160;of&#160;the&#160;ML-based&#160;algorithm&#160;prior&#160;to&#160;the&#160;initiation&#160;of<br/>the&#160;experiments.&#160;Hyperparameters&#160;were&#160;tuned&#160;on&#160;the</p>
+<p style="position:absolute;top:990px;left:344px;white-space:nowrap" class="ft70">ﬂy&#160;at&#160;the&#160;beginning</p>
+<p style="position:absolute;top:1007px;left:77px;white-space:nowrap" class="ft76">of&#160;the&#160;experiment&#160;(if&#160;needed)&#160;and&#160;the&#160;neural&#160;network&#160;parameters&#160;were<br/>randomly&#160;initialized.&#160;The</p>
+<p style="position:absolute;top:1019px;left:199px;white-space:nowrap" class="ft70">“training”&#160;happened&#160;in&#160;real&#160;time&#160;by&#160;learning&#160;each</p>
+<p style="position:absolute;top:1036px;left:77px;white-space:nowrap" class="ft76">time&#160;a&#160;new&#160;data&#160;point&#160;was&#160;generated&#160;through&#160;the&#160;course&#160;of&#160;the&#160;experi-<br/>ment.&#160;To&#160;provide&#160;an&#160;appropriate&#160;real-time&#160;ML-based&#160;controller,&#160;the&#160;total<br/>instantaneous&#160;error&#160;energy&#160;function&#160;of&#160;the&#160;system&#160;(i.e.,</p>
+<p style="position:absolute;top:1064px;left:354px;white-space:nowrap" class="ft70">E</p>
+<p style="position:absolute;top:1062px;left:361px;white-space:nowrap" class="ft70">ðkÞ&#160;¼&#160;1</p>
+<p style="position:absolute;top:1071px;left:391px;white-space:nowrap" class="ft72">2&#160;e</p>
+<p style="position:absolute;top:1063px;left:402px;white-space:nowrap" class="ft72">2</p>
+<p style="position:absolute;top:1062px;left:407px;white-space:nowrap" class="ft70">ðkÞ)&#160;is</p>
+<p style="position:absolute;top:108px;left:459px;white-space:nowrap" class="ft76">considered&#160;as&#160;a&#160;Lyapunov&#160;candidate&#160;to&#160;be&#160;utilized&#160;for&#160;updating&#160;the<br/>ML-based&#160;controller</p>
+<p style="position:absolute;top:119px;left:561px;white-space:nowrap" class="ft70">’s&#160;parameters&#160;for&#160;guaranteed&#160;convergence.&#160;Here,</p>
+<p style="position:absolute;top:136px;left:459px;white-space:nowrap" class="ft70">e(k)&#160;is&#160;the&#160;system&#160;error&#160;(i.e.,&#160;e</p>
+<p style="position:absolute;top:133px;left:617px;white-space:nowrap" class="ft70">ðkÞ&#160;¼&#160;RðkÞ&#160;&#160;YðkÞ),&#160;R(k)&#160;is&#160;the&#160;target&#160;of</p>
+<p style="position:absolute;top:150px;left:459px;white-space:nowrap" class="ft70">the&#160;system,&#160;and</p>
+<p style="position:absolute;top:150px;left:539px;white-space:nowrap" class="ft70">Y(k)&#160;is&#160;the&#160;output&#160;of&#160;the&#160;system.&#160;The&#160;updates&#160;to&#160;the&#160;adap-</p>
+<p style="position:absolute;top:165px;left:459px;white-space:nowrap" class="ft70">tive&#160;ML-based&#160;controller</p>
+<p style="position:absolute;top:162px;left:579px;white-space:nowrap" class="ft70">’s&#160;parameters&#160;are&#160;made&#160;by&#160;computing&#160;the&#160;appro-</p>
+<p style="position:absolute;top:179px;left:459px;white-space:nowrap" class="ft76">priate&#160;gradients&#160;which&#160;are&#160;all&#160;derived&#160;utilizing&#160;the&#160;aforementioned<br/>Lyapunov&#160;candidate.&#160;The&#160;ML-based&#160;controller&#160;updates&#160;its&#160;centers</p>
+<p style="position:absolute;top:191px;left:801px;white-space:nowrap" class="ft70">’&#160;ci,</p>
+<p style="position:absolute;top:208px;left:459px;white-space:nowrap" class="ft70">weights</p>
+<p style="position:absolute;top:205px;left:496px;white-space:nowrap" class="ft70">’&#160;wi,&#160;and&#160;bias&#160;term&#160;w0&#160;by&#160;using&#160;equations&#160;(S5,&#160;S6,&#160;and&#160;S7,</p>
+<p style="position:absolute;top:222px;left:459px;white-space:nowrap" class="ft76">Supporting&#160;Information)&#160;in&#160;supplementary&#160;materials,&#160;respectively.<br/>Algorithm&#160;S1,&#160;Supporting&#160;Information&#160;is&#160;summarizing&#160;the&#160;overall&#160;real-time<br/>adaptive&#160;ML-based&#160;control&#160;methodology&#160;used&#160;in&#160;this&#160;article&#160;as&#160;pseudocode.</p>
+<p style="position:absolute;top:296px;left:459px;white-space:nowrap" class="ft73">Supporting&#160;Information</p>
+<p style="position:absolute;top:324px;left:459px;white-space:nowrap" class="ft76">Supporting&#160;Information&#160;is&#160;available&#160;from&#160;the&#160;Wiley&#160;Online&#160;Library&#160;or&#160;from<br/>the&#160;author.</p>
+<p style="position:absolute;top:383px;left:459px;white-space:nowrap" class="ft73">Acknowledgements</p>
+<p style="position:absolute;top:411px;left:459px;white-space:nowrap" class="ft76">The&#160;authors&#160;acknowledge&#160;Dr.&#160;Tom&#160;Yuzvinsky&#160;for&#160;fruitful&#160;discussions<br/>regarding&#160;fabrication.&#160;This&#160;research&#160;was&#160;sponsored&#160;by&#160;the&#160;Defense<br/>Advanced&#160;Research&#160;Projects&#160;Agency&#160;(DARPA),&#160;Army&#160;Research&#160;Of</p>
+<p style="position:absolute;top:437px;left:804px;white-space:nowrap" class="ft70">ﬁce</p>
+<p style="position:absolute;top:454px;left:459px;white-space:nowrap" class="ft70">and</p>
+<p style="position:absolute;top:454px;left:490px;white-space:nowrap" class="ft70">was</p>
+<p style="position:absolute;top:454px;left:521px;white-space:nowrap" class="ft70">accomplished</p>
+<p style="position:absolute;top:454px;left:601px;white-space:nowrap" class="ft70">under</p>
+<p style="position:absolute;top:454px;left:642px;white-space:nowrap" class="ft70">Cooperative</p>
+<p style="position:absolute;top:454px;left:713px;white-space:nowrap" class="ft70">Agreement</p>
+<p style="position:absolute;top:454px;left:779px;white-space:nowrap" class="ft70">Number</p>
+<p style="position:absolute;top:468px;left:459px;white-space:nowrap" class="ft76">W911NF-18-2-0104.&#160;The&#160;content&#160;of&#160;the&#160;information&#160;does&#160;not&#160;necessarily<br/>re</p>
+<p style="position:absolute;top:480px;left:469px;white-space:nowrap" class="ft70">ﬂect&#160;the&#160;position&#160;or&#160;the&#160;policy&#160;of&#160;the&#160;Government,&#160;and&#160;no&#160;ofﬁcial</p>
+<p style="position:absolute;top:497px;left:459px;white-space:nowrap" class="ft76">endorsement&#160;should&#160;be&#160;inferred.&#160;Microfabrication&#160;was&#160;performed&#160;using<br/>equipment&#160;sponsored&#160;by&#160;the&#160;W.M.&#160;Keck&#160;Center&#160;for&#160;Nanoscale<br/>Opto</p>
+<p style="position:absolute;top:523px;left:485px;white-space:nowrap" class="ft70">ﬂuidics,&#160;the&#160;California&#160;Institute&#160;for&#160;Quantitative&#160;Biosciences&#160;(QB3),</p>
+<p style="position:absolute;top:540px;left:459px;white-space:nowrap" class="ft70">and&#160;the&#160;Army&#160;Research&#160;Of</p>
+<p style="position:absolute;top:537px;left:593px;white-space:nowrap" class="ft70">ﬁce&#160;award&#160;W911NF-17-1-0460.</p>
+<p style="position:absolute;top:585px;left:459px;white-space:nowrap" class="ft73">Con</p>
+<p style="position:absolute;top:581px;left:488px;white-space:nowrap" class="ft73">ﬂict&#160;of&#160;Interest</p>
+<p style="position:absolute;top:613px;left:459px;white-space:nowrap" class="ft70">The&#160;authors&#160;declare&#160;no&#160;con</p>
+<p style="position:absolute;top:610px;left:598px;white-space:nowrap" class="ft70">ﬂict&#160;of&#160;interest.</p>
+<p style="position:absolute;top:658px;left:459px;white-space:nowrap" class="ft73">Author&#160;Contributions</p>
+<p style="position:absolute;top:686px;left:459px;white-space:nowrap" class="ft76">J.S.&#160;designed&#160;proton&#160;pump&#160;devices&#160;and&#160;fabricated&#160;them&#160;with&#160;M.Ji.,&#160;C.W.,<br/>and&#160;H.D.&#160;S.C.,&#160;A.J.,&#160;and&#160;N.Y.&#160;developed&#160;processes&#160;required&#160;for&#160;fabrication.<br/>J.S.&#160;and&#160;M.Ji.&#160;characterized&#160;the&#160;devices.&#160;M.Ja.&#160;developed&#160;and&#160;tested&#160;ML-<br/>based&#160;control&#160;algorithms.&#160;P.P.&#160;developed&#160;microcontrollers&#160;and&#160;interfaces<br/>for&#160;assembly.&#160;J.M.&#160;and&#160;S.J.&#160;created&#160;cell&#160;lines&#160;and&#160;assembled&#160;pump&#160;with<br/>cells.&#160;J.M.&#160;and&#160;M.D.&#160;performed&#160;biological&#160;assays.&#160;M.Ja.,&#160;M.Ji.,&#160;J.M.,<br/>P.P.,&#160;and&#160;J.S.&#160;performed&#160;ML-based&#160;experiments&#160;with&#160;cells.&#160;J.S.&#160;drafted<br/>the&#160;manuscript&#160;with&#160;input&#160;from&#160;M.Ja.,&#160;J.M.,&#160;P.P.,&#160;M.T.,&#160;M.L.,&#160;M.G.,&#160;and<br/>M.R.&#160;M.R.&#160;directed&#160;and&#160;designed&#160;the&#160;overall&#160;research&#160;with&#160;M.G.&#160;and&#160;M.L.</p>
+<p style="position:absolute;top:856px;left:459px;white-space:nowrap" class="ft73">Keywords</p>
+<p style="position:absolute;top:884px;left:459px;white-space:nowrap" class="ft70">biocontrol,&#160;bioelectronics,&#160;bioelectricity,&#160;machine&#160;learning,&#160;stem&#160;cells</p>
+<p style="position:absolute;top:909px;left:701px;white-space:nowrap" class="ft70">Received:&#160;June&#160;22,&#160;2020</p>
+<p style="position:absolute;top:924px;left:694px;white-space:nowrap" class="ft70">Revised:&#160;August&#160;21,&#160;2020</p>
+<p style="position:absolute;top:939px;left:734px;white-space:nowrap" class="ft70">Published&#160;online:</p>
+<p style="position:absolute;top:988px;left:465px;white-space:nowrap" class="ft70">[1]&#160;a)&#160;A.&#160;Y.&#160;Mitrophanov,&#160;E.&#160;A.&#160;Groisman,</p>
+<p style="position:absolute;top:987px;left:696px;white-space:nowrap" class="ft70">Bioessays&#160;2008,&#160;30,&#160;542;</p>
+<p style="position:absolute;top:1003px;left:483px;white-space:nowrap" class="ft70">b)&#160;C.&#160;Cosentino,&#160;D.&#160;Bates,</p>
+<p style="position:absolute;top:1003px;left:632px;white-space:nowrap" class="ft70">Feedback&#160;Control&#160;in&#160;Systems&#160;Biology,</p>
+<p style="position:absolute;top:1018px;left:483px;white-space:nowrap" class="ft70">CRC&#160;Press,&#160;Boca&#160;Raton,&#160;FL&#160;2012.</p>
+<p style="position:absolute;top:1034px;left:465px;white-space:nowrap" class="ft70">[2]&#160;S.&#160;Keene,&#160;Y.&#160;van&#160;de&#160;Burgt,</p>
+<p style="position:absolute;top:1034px;left:619px;white-space:nowrap" class="ft70">Nat.&#160;Mater.&#160;2020,&#160;19,&#160;584.</p>
+<p style="position:absolute;top:1049px;left:465px;white-space:nowrap" class="ft70">[3]&#160;a)&#160;M.&#160;Levin,&#160;J.&#160;Selberg,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:1049px;left:695px;white-space:nowrap" class="ft70">iScience&#160;2019,&#160;22,&#160;519;</p>
+<p style="position:absolute;top:1065px;left:483px;white-space:nowrap" class="ft70">b)&#160;J.&#160;Selberg,&#160;M.&#160;Gomez,&#160;M.&#160;Rolandi,&#160;,</p>
+<p style="position:absolute;top:1064px;left:682px;white-space:nowrap" class="ft70">Cell&#160;Syst.&#160;2018,&#160;7,&#160;231.</p>
+<p style="position:absolute;top:67px;left:77px;white-space:nowrap" class="ft70"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:708px;white-space:nowrap" class="ft70"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:77px;white-space:nowrap" class="ft74">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:350px;white-space:nowrap" class="ft75">2000140&#160;(7&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:582px;white-space:nowrap" class="ft74">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>6f530fca4aec1e8bae957f0681274eb6-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:9px;font-family:Times;color:#000000;}
+	.ft81{font-size:8px;font-family:Times;color:#000000;}
+	.ft82{font-size:11px;font-family:Times;color:#000000;}
+	.ft83{font-size:9px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:893px;height:1173px;">
+<p style="position:absolute;top:108px;left:78px;white-space:nowrap" class="ft80">[4]&#160;a)&#160;H.&#160;Yuk,&#160;B.&#160;Lu,&#160;X.&#160;Zhao,</p>
+<p style="position:absolute;top:107px;left:220px;white-space:nowrap" class="ft80">Chem.&#160;Soc.&#160;Rev.&#160;2019,&#160;48,&#160;1642;&#160;b)&#160;A.&#160;Zhang,</p>
+<p style="position:absolute;top:123px;left:96px;white-space:nowrap" class="ft80">C.&#160;M.&#160;Lieber,</p>
+<p style="position:absolute;top:123px;left:166px;white-space:nowrap" class="ft80">Chem.&#160;Rev.&#160;2016,&#160;116,&#160;215.</p>
+<p style="position:absolute;top:138px;left:78px;white-space:nowrap" class="ft80">[5]&#160;M.&#160;Jake</p>
+<p style="position:absolute;top:136px;left:135px;white-space:nowrap" class="ft80">šová,&#160;M.&#160;Silverå&#160;Ejneby,&#160;V.&#160;Đerek,&#160;T.&#160;Schmidt,&#160;M.&#160;Gryszel,</p>
+<p style="position:absolute;top:154px;left:96px;white-space:nowrap" class="ft83">J.&#160;Brask,&#160;R.&#160;Schindl,&#160;D.&#160;T.&#160;Simon,&#160;M.&#160;Berggren,&#160;F.&#160;Elinder,<br/>E.&#160;D.&#160;G</p>
+<p style="position:absolute;top:166px;left:134px;white-space:nowrap" class="ft80">łowacki,&#160;Sci.&#160;Adv.&#160;2019,&#160;5,&#160;eaav5265.</p>
+<p style="position:absolute;top:184px;left:78px;white-space:nowrap" class="ft80">[6]&#160;T.&#160;Arbring&#160;Sjöström,&#160;M.&#160;Berggren,&#160;E.&#160;O.&#160;Gabrielsson,&#160;P.&#160;Janson,</p>
+<p style="position:absolute;top:200px;left:96px;white-space:nowrap" class="ft80">D.&#160;J.&#160;Poxson,&#160;M.&#160;Seitanidou,&#160;D.&#160;T.&#160;Simon,</p>
+<p style="position:absolute;top:200px;left:329px;white-space:nowrap" class="ft80">Adv.&#160;Mater.&#160;Technol.</p>
+<p style="position:absolute;top:215px;left:96px;white-space:nowrap" class="ft80">2018,</p>
+<p style="position:absolute;top:215px;left:127px;white-space:nowrap" class="ft80">3,&#160;1700360.</p>
+<p style="position:absolute;top:230px;left:78px;white-space:nowrap" class="ft80">[7]&#160;a)&#160;J.&#160;Isaksson,&#160;P.&#160;Kjall,&#160;D.&#160;Nilsson,&#160;N.&#160;D.&#160;Robinson,&#160;M.&#160;Berggren,</p>
+<p style="position:absolute;top:246px;left:96px;white-space:nowrap" class="ft80">A.&#160;Richter-Dahlfors,</p>
+<p style="position:absolute;top:246px;left:205px;white-space:nowrap" class="ft80">Nat.&#160;Mater.&#160;2007,&#160;6,&#160;673;&#160;b)&#160;R.&#160;Epsztein,</p>
+<p style="position:absolute;top:261px;left:96px;white-space:nowrap" class="ft80">E.&#160;Shaulsky,&#160;M.&#160;Qin,&#160;M.&#160;Elimelech,</p>
+<p style="position:absolute;top:261px;left:275px;white-space:nowrap" class="ft80">J.&#160;Membr.&#160;Sci.&#160;2019,&#160;580,&#160;316.</p>
+<p style="position:absolute;top:277px;left:78px;white-space:nowrap" class="ft80">[8]&#160;a)&#160;A.&#160;Williamson,&#160;J.&#160;Rivnay,&#160;L.&#160;Kergoat,&#160;A.&#160;Jonsson,&#160;S.&#160;Inal,&#160;I.&#160;Uguz,</p>
+<p style="position:absolute;top:292px;left:96px;white-space:nowrap" class="ft83">M.&#160;Ferro,&#160;A.&#160;Ivanov,&#160;T.&#160;A.&#160;Sjostrom,&#160;D.&#160;T.&#160;Simon,&#160;M.&#160;Berggren,<br/>G.&#160;G.&#160;Malliaras,&#160;C.&#160;Bernard,</p>
+<p style="position:absolute;top:307px;left:271px;white-space:nowrap" class="ft80">Adv.&#160;Mater.&#160;2015,&#160;27,&#160;3138;</p>
+<p style="position:absolute;top:323px;left:96px;white-space:nowrap" class="ft83">b)&#160;A.&#160;Jonsson,&#160;Z.&#160;Y.&#160;Song,&#160;D.&#160;Nilsson,&#160;B.&#160;A.&#160;Meyerson,<br/>D.&#160;T.&#160;Simon,&#160;B.&#160;Linderoth,&#160;M.&#160;Berggren,</p>
+<p style="position:absolute;top:338px;left:334px;white-space:nowrap" class="ft80">Sci.&#160;Adv.&#160;2015,&#160;1,</p>
+<p style="position:absolute;top:354px;left:96px;white-space:nowrap" class="ft80">e1500039.</p>
+<p style="position:absolute;top:369px;left:78px;white-space:nowrap" class="ft80">[9]&#160;M.&#160;Seitanidou,&#160;R.&#160;Blomgran,&#160;G.&#160;Pushpamithran,&#160;M.&#160;Berggren,</p>
+<p style="position:absolute;top:384px;left:96px;white-space:nowrap" class="ft80">D.&#160;T.&#160;Simon,</p>
+<p style="position:absolute;top:384px;left:165px;white-space:nowrap" class="ft80">Adv.&#160;Healthcare&#160;Mater.&#160;2019,&#160;8,&#160;1900813.</p>
+<p style="position:absolute;top:400px;left:72px;white-space:nowrap" class="ft80">[10]&#160;I.&#160;Bernacka-Wojcik,&#160;M.&#160;Huerta,&#160;K.&#160;Tybrandt,&#160;M.&#160;Karady,&#160;M.&#160;Y.&#160;Mulla,</p>
+<p style="position:absolute;top:415px;left:96px;white-space:nowrap" class="ft83">D.&#160;J.&#160;Poxson,&#160;E.&#160;O.&#160;Gabrielsson,&#160;K.&#160;Ljung,&#160;D.&#160;T.&#160;Simon,&#160;M.&#160;Berggren,<br/>E.&#160;Stavrinidou,</p>
+<p style="position:absolute;top:430px;left:173px;white-space:nowrap" class="ft80">Small&#160;2019,&#160;15,&#160;1970233.</p>
+<p style="position:absolute;top:446px;left:72px;white-space:nowrap" class="ft80">[11]&#160;a)&#160;Y.&#160;Deng,&#160;E.&#160;Josberger,&#160;J.&#160;Jin,&#160;A.&#160;F.&#160;Rousdari,&#160;B.&#160;A.&#160;Helms,&#160;C.&#160;Zhong,</p>
+<p style="position:absolute;top:461px;left:96px;white-space:nowrap" class="ft80">M.&#160;Anantram,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:461px;left:227px;white-space:nowrap" class="ft80">Sci.&#160;Rep.&#160;2013,&#160;3;&#160;b)&#160;T.&#160;Miyake,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:476px;left:96px;white-space:nowrap" class="ft83">J.&#160;Phys.&#160;Condens.&#160;Matter&#160;2015,&#160;28,&#160;023001;&#160;c)&#160;C.&#160;Zhong,&#160;Y.&#160;Deng,<br/>A.&#160;F.&#160;Roudsari,&#160;A.&#160;Kapetanovic,&#160;M.&#160;Anantram,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:492px;left:412px;white-space:nowrap" class="ft80">Nat.</p>
+<p style="position:absolute;top:507px;left:96px;white-space:nowrap" class="ft80">Commun.&#160;2011,&#160;2,&#160;476.</p>
+<p style="position:absolute;top:523px;left:72px;white-space:nowrap" class="ft80">[12]&#160;T.&#160;Miyake,&#160;E.&#160;E.&#160;Josberger,&#160;S.&#160;Keene,&#160;Y.&#160;Deng,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:523px;left:379px;white-space:nowrap" class="ft80">APL&#160;Mater.</p>
+<p style="position:absolute;top:538px;left:96px;white-space:nowrap" class="ft80">2015,</p>
+<p style="position:absolute;top:538px;left:127px;white-space:nowrap" class="ft80">3,&#160;014906.</p>
+<p style="position:absolute;top:553px;left:72px;white-space:nowrap" class="ft80">[13]&#160;a)&#160;Z.&#160;Hemmatian,&#160;S.&#160;Keene,&#160;E.&#160;Josberger,&#160;T.&#160;Miyake,&#160;C.&#160;Arboleda,</p>
+<p style="position:absolute;top:569px;left:96px;white-space:nowrap" class="ft80">J.&#160;Soto-Rodriguez,&#160;F.&#160;Baneyx,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:569px;left:313px;white-space:nowrap" class="ft80">Nat.&#160;Commun.&#160;2016,&#160;7;</p>
+<p style="position:absolute;top:584px;left:96px;white-space:nowrap" class="ft83">b)&#160;J.&#160;Soto-Rodriguez,&#160;Z.&#160;Hemmatian,&#160;E.&#160;E.&#160;Josberger,&#160;M.&#160;Rolandi,<br/>F.&#160;Baneyx,</p>
+<p style="position:absolute;top:599px;left:151px;white-space:nowrap" class="ft80">Adv.&#160;Mater.&#160;2016,&#160;28,&#160;6581.</p>
+<p style="position:absolute;top:615px;left:72px;white-space:nowrap" class="ft80">[14]&#160;a)&#160;D.&#160;J.&#160;Blackiston,&#160;K.&#160;A.&#160;McLaughlin,&#160;M.&#160;Levin,</p>
+<p style="position:absolute;top:615px;left:342px;white-space:nowrap" class="ft80">Cell&#160;Cycle&#160;2009,&#160;8,</p>
+<p style="position:absolute;top:630px;left:96px;white-space:nowrap" class="ft80">3527;&#160;b)&#160;S.&#160;H.&#160;Wright,</p>
+<p style="position:absolute;top:630px;left:240px;white-space:nowrap" class="ft80">Adv.&#160;Physiol.&#160;Educ.&#160;2004,&#160;28,&#160;139;</p>
+<p style="position:absolute;top:646px;left:96px;white-space:nowrap" class="ft80">c)&#160;C.&#160;M.&#160;Ajo-Franklin,&#160;A.&#160;Noy,</p>
+<p style="position:absolute;top:646px;left:277px;white-space:nowrap" class="ft80">Adv.&#160;Mater.&#160;2015,&#160;27,&#160;5797;</p>
+<p style="position:absolute;top:661px;left:96px;white-space:nowrap" class="ft80">d)&#160;J.&#160;L.&#160;Whited,&#160;M.&#160;Levin,</p>
+<p style="position:absolute;top:661px;left:228px;white-space:nowrap" class="ft80">Curr.&#160;Opin.&#160;Genet.&#160;Dev.&#160;2019,&#160;57,&#160;61.</p>
+<p style="position:absolute;top:676px;left:72px;white-space:nowrap" class="ft80">[15]&#160;H.&#160;F.&#160;Lodish,</p>
+<p style="position:absolute;top:676px;left:164px;white-space:nowrap" class="ft80">Molecular&#160;Cell&#160;Biology,&#160;W.H.&#160;Freeman,&#160;New&#160;York&#160;2000.</p>
+<p style="position:absolute;top:692px;left:72px;white-space:nowrap" class="ft80">[16]&#160;a)&#160;S.&#160;Sundelacruz,&#160;M.&#160;Levin,&#160;D.&#160;L.&#160;Kaplan,</p>
+<p style="position:absolute;top:692px;left:308px;white-space:nowrap" class="ft80">Stem&#160;Cell&#160;Rev.&#160;Rep.&#160;2009,</p>
+<p style="position:absolute;top:707px;left:96px;white-space:nowrap" class="ft83">5,&#160;231;&#160;b)&#160;M.&#160;Levin,&#160;G.&#160;Pezzulo,&#160;J.&#160;M.&#160;Finkelstein,&#160;Annu.&#160;Rev.&#160;Biomed.<br/>Eng.&#160;2017,&#160;19,&#160;353.</p>
+<p style="position:absolute;top:738px;left:72px;white-space:nowrap" class="ft80">[17]&#160;a)&#160;L.&#160;Abdul&#160;Kadir,&#160;M.&#160;Stacey,&#160;R.&#160;Barrett-Jolley,</p>
+<p style="position:absolute;top:738px;left:333px;white-space:nowrap" class="ft80">Front.&#160;Physiol.&#160;2018,</p>
+<p style="position:absolute;top:753px;left:96px;white-space:nowrap" class="ft83">9,&#160;1661;&#160;b)&#160;M.&#160;Levin,&#160;G.&#160;Pezzulo,&#160;J.&#160;M.&#160;Finkelstein,&#160;Annu.&#160;Rev.<br/>Biomed.&#160;Eng.&#160;2017,&#160;19,&#160;353.</p>
+<p style="position:absolute;top:784px;left:72px;white-space:nowrap" class="ft80">[18]&#160;a)&#160;R.&#160;Kwok,</p>
+<p style="position:absolute;top:784px;left:160px;white-space:nowrap" class="ft80">Nature&#160;2010,&#160;463,&#160;288;&#160;b)&#160;M.&#160;B.&#160;Elowitz,&#160;A.&#160;J.&#160;Levine,</p>
+<p style="position:absolute;top:799px;left:96px;white-space:nowrap" class="ft80">E.&#160;D.&#160;Siggia,&#160;P.&#160;S.&#160;Swain,</p>
+<p style="position:absolute;top:799px;left:226px;white-space:nowrap" class="ft80">Science&#160;2002,&#160;297,&#160;1183.</p>
+<p style="position:absolute;top:815px;left:72px;white-space:nowrap" class="ft80">[19]&#160;a)</p>
+<p style="position:absolute;top:815px;left:118px;white-space:nowrap" class="ft80">S.</p>
+<p style="position:absolute;top:815px;left:140px;white-space:nowrap" class="ft80">K.</p>
+<p style="position:absolute;top:815px;left:162px;white-space:nowrap" class="ft80">Aoki,</p>
+<p style="position:absolute;top:815px;left:199px;white-space:nowrap" class="ft80">G.</p>
+<p style="position:absolute;top:815px;left:222px;white-space:nowrap" class="ft80">Lillacci,</p>
+<p style="position:absolute;top:815px;left:271px;white-space:nowrap" class="ft80">A.</p>
+<p style="position:absolute;top:815px;left:293px;white-space:nowrap" class="ft80">Gupta,</p>
+<p style="position:absolute;top:815px;left:338px;white-space:nowrap" class="ft80">A.</p>
+<p style="position:absolute;top:815px;left:361px;white-space:nowrap" class="ft80">Baumschlager,</p>
+<p style="position:absolute;top:830px;left:96px;white-space:nowrap" class="ft80">D.&#160;Schweingruber,&#160;M.&#160;Khammash,</p>
+<p style="position:absolute;top:830px;left:299px;white-space:nowrap" class="ft80">Nature&#160;2019,&#160;570,&#160;533;</p>
+<p style="position:absolute;top:845px;left:96px;white-space:nowrap" class="ft83">b)&#160;L.&#160;Bleris,&#160;Z.&#160;Xie,&#160;D.&#160;Glass,&#160;A.&#160;Adadey,&#160;E.&#160;Sontag,&#160;Y.&#160;Benenson,<br/>Mol.&#160;Syst.&#160;Biol.&#160;2011,&#160;7,&#160;519;&#160;c)&#160;C.&#160;Briat,&#160;A.&#160;Gupta,&#160;M.&#160;Khammash,<br/>J.&#160;R.&#160;Soc.&#160;Interface&#160;2018,&#160;15,&#160;20180079;&#160;d)&#160;C.&#160;Briat,&#160;M.&#160;Khammash,<br/>ACS&#160;Synth.&#160;Biol.&#160;2018,&#160;7,&#160;419;&#160;e)&#160;C.&#160;Briat,&#160;C.&#160;Zechner,<br/>M.&#160;Khammash,</p>
+<p style="position:absolute;top:907px;left:185px;white-space:nowrap" class="ft80">ACS&#160;Synth.&#160;Biol.&#160;2016,&#160;5,&#160;1108;&#160;f&#160;)&#160;J.&#160;Doyle,</p>
+<p style="position:absolute;top:108px;left:479px;white-space:nowrap" class="ft80">M.&#160;Csete,</p>
+<p style="position:absolute;top:107px;left:532px;white-space:nowrap" class="ft80">PLoS&#160;Biol.&#160;2005,&#160;3,&#160;e392;&#160;g)&#160;M.&#160;Freeman,&#160;Nature&#160;2000,</p>
+<p style="position:absolute;top:123px;left:479px;white-space:nowrap" class="ft83">408,&#160;313;&#160;h)&#160;T.&#160;W.&#160;Grunberg,&#160;D.&#160;Del&#160;Vecchio,&#160;Curr.&#160;Opin.<br/>Biotechnol.&#160;2019,&#160;63,&#160;41;&#160;i)&#160;M.&#160;Lawrynczuk,&#160;Chem.&#160;Eng.&#160;J.&#160;2008,<br/>145,&#160;290;&#160;j)&#160;D.&#160;Mishra,&#160;P.&#160;M.&#160;Rivera,&#160;A.&#160;Lin,&#160;D.&#160;Del&#160;Vecchio,<br/>R.&#160;Weiss,</p>
+<p style="position:absolute;top:169px;left:529px;white-space:nowrap" class="ft80">Nat.&#160;Biotechnol.&#160;2014,&#160;32,&#160;1268.</p>
+<p style="position:absolute;top:184px;left:455px;white-space:nowrap" class="ft80">[20]&#160;a)&#160;F.&#160;Menolascina,&#160;G.&#160;Fiore,&#160;E.&#160;Orabona,&#160;L.&#160;De&#160;Stefano,&#160;M.&#160;Ferry,</p>
+<p style="position:absolute;top:200px;left:479px;white-space:nowrap" class="ft80">J.&#160;Hasty,&#160;M.&#160;di&#160;Bernardo,&#160;D.&#160;di&#160;Bernardo,</p>
+<p style="position:absolute;top:200px;left:715px;white-space:nowrap" class="ft80">PLoS&#160;Comput.&#160;Biol.</p>
+<p style="position:absolute;top:215px;left:479px;white-space:nowrap" class="ft80">2014,</p>
+<p style="position:absolute;top:215px;left:512px;white-space:nowrap" class="ft80">10,&#160;e1003625;&#160;b)&#160;A.&#160;Milias-Argeitis,&#160;M.&#160;Rullan,&#160;S.&#160;K.&#160;Aoki,</p>
+<p style="position:absolute;top:230px;left:479px;white-space:nowrap" class="ft80">P.&#160;Buchmann,&#160;M.&#160;Khammash,</p>
+<p style="position:absolute;top:230px;left:634px;white-space:nowrap" class="ft80">Nat.&#160;Commun.&#160;2016,&#160;7,&#160;12546.</p>
+<p style="position:absolute;top:246px;left:455px;white-space:nowrap" class="ft80">[21]&#160;a)&#160;K.&#160;H.&#160;Ang,&#160;G.&#160;Chong,&#160;Y.&#160;Li,</p>
+<p style="position:absolute;top:246px;left:626px;white-space:nowrap" class="ft80">IEEE&#160;Trans.&#160;Control&#160;Syst.&#160;Technol.&#160;2005,</p>
+<p style="position:absolute;top:261px;left:479px;white-space:nowrap" class="ft83">13,&#160;559;&#160;b)&#160;G.&#160;Fiore,&#160;G.&#160;Perrino,&#160;M.&#160;Di&#160;Bernardo,&#160;D.&#160;Di&#160;Bernardo,&#160;ACS<br/>Synth.&#160;Biol.&#160;2016,&#160;5,&#160;154;&#160;c)&#160;J.-B.&#160;Lugagne,&#160;S.&#160;S.&#160;Carrillo,&#160;M.&#160;Kirch,<br/>A.&#160;Köhler,&#160;G.&#160;Batt,&#160;P.&#160;Hersen,</p>
+<p style="position:absolute;top:292px;left:632px;white-space:nowrap" class="ft80">Nat.&#160;Commun.&#160;2017,&#160;8,&#160;1.</p>
+<p style="position:absolute;top:307px;left:455px;white-space:nowrap" class="ft80">[22]&#160;a)&#160;V.&#160;G.&#160;Maltarollo,&#160;K.&#160;M.&#160;Honório,&#160;A.&#160;B.&#160;F.&#160;da&#160;Silva,</p>
+<p style="position:absolute;top:307px;left:756px;white-space:nowrap" class="ft80">Artif.&#160;Neural</p>
+<p style="position:absolute;top:323px;left:479px;white-space:nowrap" class="ft83">Netw.&#160;Architect.&#160;Appl.&#160;2013,&#160;203;&#160;b)&#160;C.&#160;Angermueller,&#160;T.&#160;Pärnamaa,<br/>L.&#160;Parts,&#160;O.&#160;Stegle,</p>
+<p style="position:absolute;top:338px;left:589px;white-space:nowrap" class="ft80">Mol.&#160;Syst.&#160;Biol.&#160;2016,&#160;12,&#160;878;&#160;c)&#160;Y.&#160;Park,</p>
+<p style="position:absolute;top:354px;left:479px;white-space:nowrap" class="ft80">M.&#160;Kellis,</p>
+<p style="position:absolute;top:353px;left:536px;white-space:nowrap" class="ft80">Nat.&#160;Biotechnol.&#160;2015,&#160;33,&#160;825;&#160;d)&#160;D.&#160;M.&#160;Camacho,</p>
+<p style="position:absolute;top:369px;left:479px;white-space:nowrap" class="ft80">K.&#160;M.&#160;Collins,&#160;R.&#160;K.&#160;Powers,&#160;J.&#160;C.&#160;Costello,&#160;J.&#160;J.&#160;Collins,</p>
+<p style="position:absolute;top:369px;left:766px;white-space:nowrap" class="ft80">Cell&#160;2018,</p>
+<p style="position:absolute;top:384px;left:479px;white-space:nowrap" class="ft80">173,&#160;1581.</p>
+<p style="position:absolute;top:400px;left:455px;white-space:nowrap" class="ft80">[23]&#160;a)&#160;S.&#160;N.&#160;Kumpati,&#160;P.&#160;Kannan,</p>
+<p style="position:absolute;top:400px;left:632px;white-space:nowrap" class="ft80">IEEE&#160;Trans.&#160;Neural&#160;Netw.&#160;1990,&#160;1,&#160;4;</p>
+<p style="position:absolute;top:415px;left:479px;white-space:nowrap" class="ft80">b)&#160;E.&#160;Lavretsky,&#160;K.&#160;A.&#160;Wise,</p>
+<p style="position:absolute;top:415px;left:624px;white-space:nowrap" class="ft80">Advanced&#160;Robust&#160;and&#160;Adaptive&#160;Control</p>
+<p style="position:absolute;top:430px;left:479px;white-space:nowrap" class="ft80">With&#160;Aerospace&#160;Applications,&#160;Springer,&#160;London&#160;2013.</p>
+<p style="position:absolute;top:446px;left:455px;white-space:nowrap" class="ft80">[24]&#160;M.&#160;Jafari,&#160;G.&#160;Marquez,&#160;J.&#160;Selberg,&#160;M.&#160;Jia,&#160;H.&#160;Dechiraju,&#160;P.&#160;Pansodtee,</p>
+<p style="position:absolute;top:461px;left:479px;white-space:nowrap" class="ft80">M.&#160;Teodorescu,&#160;M.&#160;Rolandi,&#160;M.&#160;Gomez,</p>
+<p style="position:absolute;top:461px;left:677px;white-space:nowrap" class="ft80">IEEE&#160;Control&#160;Syst.&#160;Lett.&#160;2020,</p>
+<p style="position:absolute;top:476px;left:479px;white-space:nowrap" class="ft80">5,&#160;1133.</p>
+<p style="position:absolute;top:492px;left:455px;white-space:nowrap" class="ft80">[25]&#160;J.&#160;Park,&#160;I.&#160;W.&#160;Sandberg,</p>
+<p style="position:absolute;top:492px;left:600px;white-space:nowrap" class="ft80">Neural&#160;Comput.&#160;1991,&#160;3,&#160;246.</p>
+<p style="position:absolute;top:507px;left:455px;white-space:nowrap" class="ft80">[26]&#160;G.&#160;Marquez,&#160;B.&#160;Johnson,&#160;M.&#160;Jafari,&#160;M.&#160;Gomez,&#160;in</p>
+<p style="position:absolute;top:507px;left:717px;white-space:nowrap" class="ft80">IEEE&#160;Symp.&#160;Series&#160;on</p>
+<p style="position:absolute;top:523px;left:479px;white-space:nowrap" class="ft80">Computational&#160;Intelligence&#160;(SSCI),&#160;Xiamen,&#160;China&#160;2019,&#160;pp.&#160;120</p>
+<p style="position:absolute;top:520px;left:789px;white-space:nowrap" class="ft80">–125.</p>
+<p style="position:absolute;top:538px;left:455px;white-space:nowrap" class="ft80">[27]&#160;a)&#160;X.&#160;Strakosas,&#160;J.&#160;Selberg,&#160;X.&#160;Zhang,&#160;N.&#160;Christie,&#160;P.&#160;H.&#160;Hsu,</p>
+<p style="position:absolute;top:553px;left:479px;white-space:nowrap" class="ft80">A.</p>
+<p style="position:absolute;top:553px;left:502px;white-space:nowrap" class="ft80">Almutairi,</p>
+<p style="position:absolute;top:553px;left:564px;white-space:nowrap" class="ft80">M.</p>
+<p style="position:absolute;top:553px;left:591px;white-space:nowrap" class="ft80">Rolandi,</p>
+<p style="position:absolute;top:553px;left:644px;white-space:nowrap" class="ft80">Adv.</p>
+<p style="position:absolute;top:553px;left:679px;white-space:nowrap" class="ft80">Sci.</p>
+<p style="position:absolute;top:553px;left:709px;white-space:nowrap" class="ft80">2019,</p>
+<p style="position:absolute;top:553px;left:749px;white-space:nowrap" class="ft80">6,</p>
+<p style="position:absolute;top:553px;left:771px;white-space:nowrap" class="ft80">1970041;</p>
+<p style="position:absolute;top:569px;left:479px;white-space:nowrap" class="ft80">b)</p>
+<p style="position:absolute;top:569px;left:504px;white-space:nowrap" class="ft80">Z.</p>
+<p style="position:absolute;top:569px;left:529px;white-space:nowrap" class="ft80">Hemmatian,</p>
+<p style="position:absolute;top:569px;left:607px;white-space:nowrap" class="ft80">E.</p>
+<p style="position:absolute;top:569px;left:631px;white-space:nowrap" class="ft80">Jalilian,</p>
+<p style="position:absolute;top:569px;left:681px;white-space:nowrap" class="ft80">S.</p>
+<p style="position:absolute;top:569px;left:706px;white-space:nowrap" class="ft80">Lee,</p>
+<p style="position:absolute;top:569px;left:741px;white-space:nowrap" class="ft80">X.</p>
+<p style="position:absolute;top:569px;left:766px;white-space:nowrap" class="ft80">Strakosas,</p>
+<p style="position:absolute;top:584px;left:479px;white-space:nowrap" class="ft80">A.&#160;Khademhosseini,&#160;A.&#160;Almutairi,&#160;S.&#160;R.&#160;Shin,&#160;M.&#160;Rolandi,</p>
+<p style="position:absolute;top:584px;left:795px;white-space:nowrap" class="ft80">ACS</p>
+<p style="position:absolute;top:599px;left:479px;white-space:nowrap" class="ft80">Appl.&#160;Mater.&#160;Interfaces&#160;2018,&#160;10,&#160;21782.</p>
+<p style="position:absolute;top:615px;left:455px;white-space:nowrap" class="ft80">[28]&#160;a)&#160;A.&#160;Massa,&#160;F.&#160;Perut,&#160;T.&#160;Chano,&#160;A.&#160;Woloszyk,&#160;T.&#160;A.&#160;Mitsiadis,</p>
+<p style="position:absolute;top:630px;left:479px;white-space:nowrap" class="ft80">S.&#160;Avnet,&#160;N.&#160;Baldini,</p>
+<p style="position:absolute;top:630px;left:586px;white-space:nowrap" class="ft80">Eur.&#160;Cell&#160;Mater.&#160;2017,&#160;33,&#160;252;&#160;b)&#160;S.&#160;C.&#160;Chao,</p>
+<p style="position:absolute;top:646px;left:479px;white-space:nowrap" class="ft83">G.&#160;J.&#160;Wu,&#160;S.&#160;F.&#160;Huang,&#160;N.&#160;T.&#160;Dai,&#160;H.&#160;K.&#160;Huang,&#160;M.&#160;F.&#160;Chou,<br/>Y.&#160;T.&#160;Tsai,&#160;S.&#160;P.&#160;Lee,&#160;S.&#160;H.&#160;Loh,</p>
+<p style="position:absolute;top:661px;left:676px;white-space:nowrap" class="ft80">World&#160;J.&#160;Stem&#160;Cells&#160;2018,</p>
+<p style="position:absolute;top:676px;left:479px;white-space:nowrap" class="ft80">10,&#160;196.</p>
+<p style="position:absolute;top:692px;left:455px;white-space:nowrap" class="ft80">[29]&#160;Y.&#160;Xu,&#160;P.&#160;Zou,&#160;A.&#160;E.&#160;Cohen,</p>
+<p style="position:absolute;top:692px;left:620px;white-space:nowrap" class="ft80">Curr.&#160;Opin.&#160;Chem.&#160;Biol.&#160;2017,&#160;39,&#160;1.</p>
+<p style="position:absolute;top:707px;left:455px;white-space:nowrap" class="ft80">[30]&#160;R.&#160;Kateklum,&#160;B.&#160;Manuel,&#160;C.&#160;Pieralli,&#160;S.&#160;Mankhetkorn,&#160;B.&#160;Wacogne,</p>
+<p style="position:absolute;top:722px;left:479px;white-space:nowrap" class="ft80">Int.&#160;J.&#160;Photochem.&#160;Photobiol.&#160;2017,&#160;2,&#160;94</p>
+<p style="position:absolute;top:738px;left:455px;white-space:nowrap" class="ft80">[31]&#160;R.&#160;Binggeli,&#160;R.&#160;C.&#160;Weinstein,</p>
+<p style="position:absolute;top:738px;left:624px;white-space:nowrap" class="ft80">J.&#160;Theor.&#160;Biol.&#160;1986,&#160;123,&#160;377.</p>
+<p style="position:absolute;top:753px;left:455px;white-space:nowrap" class="ft80">[32]&#160;J.&#160;Platisa,&#160;G.&#160;Vasan,&#160;A.&#160;Yang,&#160;V.&#160;A.&#160;Pieribone,</p>
+<p style="position:absolute;top:753px;left:712px;white-space:nowrap" class="ft80">ACS&#160;Chem.&#160;Neurosci.</p>
+<p style="position:absolute;top:769px;left:479px;white-space:nowrap" class="ft80">2017,</p>
+<p style="position:absolute;top:769px;left:510px;white-space:nowrap" class="ft80">8,&#160;513.</p>
+<p style="position:absolute;top:784px;left:455px;white-space:nowrap" class="ft80">[33]&#160;L.&#160;Jin,&#160;Z.&#160;Han,&#160;J.&#160;Platisa,&#160;J.&#160;R.&#160;Wooltorton,&#160;L.&#160;B.&#160;Cohen,&#160;V.&#160;A.&#160;Pieribone,</p>
+<p style="position:absolute;top:799px;left:479px;white-space:nowrap" class="ft80">Neuron&#160;2012,&#160;75,&#160;779.</p>
+<p style="position:absolute;top:815px;left:455px;white-space:nowrap" class="ft80">[34]&#160;S.</p>
+<p style="position:absolute;top:815px;left:500px;white-space:nowrap" class="ft80">Almeida,</p>
+<p style="position:absolute;top:815px;left:555px;white-space:nowrap" class="ft80">Z.</p>
+<p style="position:absolute;top:815px;left:578px;white-space:nowrap" class="ft80">Zhang,</p>
+<p style="position:absolute;top:815px;left:624px;white-space:nowrap" class="ft80">G.</p>
+<p style="position:absolute;top:815px;left:648px;white-space:nowrap" class="ft80">Coppola,</p>
+<p style="position:absolute;top:815px;left:704px;white-space:nowrap" class="ft80">W.</p>
+<p style="position:absolute;top:815px;left:729px;white-space:nowrap" class="ft80">Mao,</p>
+<p style="position:absolute;top:815px;left:767px;white-space:nowrap" class="ft80">K.</p>
+<p style="position:absolute;top:815px;left:788px;white-space:nowrap" class="ft80">Futai,</p>
+<p style="position:absolute;top:830px;left:479px;white-space:nowrap" class="ft83">A.&#160;Karydas,&#160;M.&#160;D.&#160;Geschwind,&#160;M.&#160;C.&#160;Tartaglia,&#160;F.&#160;Gao,&#160;D.&#160;Gianni,<br/>M.&#160;Sena-Esteves,&#160;D.&#160;H.&#160;Geschwind,&#160;B.&#160;L.&#160;Miller,&#160;R.&#160;V.&#160;Farese,&#160;Jr.,<br/>F.&#160;B.&#160;Gao,</p>
+<p style="position:absolute;top:861px;left:534px;white-space:nowrap" class="ft80">Cell&#160;Rep.&#160;2012,&#160;2,&#160;789.</p>
+<p style="position:absolute;top:876px;left:455px;white-space:nowrap" class="ft80">[35]&#160;J.&#160;Marh,&#160;Z.&#160;Stoytcheva,&#160;J.&#160;Urschitz,&#160;A.&#160;Sugawara,&#160;H.&#160;Yamashiro,</p>
+<p style="position:absolute;top:892px;left:479px;white-space:nowrap" class="ft83">J.&#160;B.&#160;Owens,&#160;I.&#160;Stoytchev,&#160;P.&#160;Pelczar,&#160;R.&#160;Yanagimachi,&#160;S.&#160;Moisyadi,<br/>Proc.&#160;Natl.&#160;Acad.&#160;Sci.&#160;USA&#160;2012,&#160;109,&#160;19184.</p>
+<p style="position:absolute;top:67px;left:72px;white-space:nowrap" class="ft80"><a href="http://www.advancedsciencenews.com">www.advancedsciencenews.com</a></p>
+<p style="position:absolute;top:67px;left:703px;white-space:nowrap" class="ft80"><a href="http://www.advintellsyst.com">www.advintellsyst.com</a></p>
+<p style="position:absolute;top:1111px;left:72px;white-space:nowrap" class="ft81">Adv.&#160;Intell.&#160;Syst.&#160;2020,&#160;2000140</p>
+<p style="position:absolute;top:1109px;left:346px;white-space:nowrap" class="ft82">2000140&#160;(8&#160;of&#160;8)</p>
+<p style="position:absolute;top:1111px;left:577px;white-space:nowrap" class="ft81">©&#160;2020&#160;The&#160;Authors.&#160;Published&#160;by&#160;Wiley-VCH&#160;GmbH</p>
+</div>
+</body>
+</html>

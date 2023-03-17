@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:12px;font-family:Times;color:#000000;}
+	.ft11{font-size:12px;font-family:Times;color:#000000;}
+	.ft12{font-size:33px;font-family:Times;color:#000000;}
+	.ft13{font-size:14px;font-family:Times;color:#000000;}
+	.ft14{font-size:9px;font-family:Times;color:#000000;}
+	.ft15{font-size:8px;font-family:Times;color:#000000;}
+	.ft16{font-size:9px;font-family:Times;color:#000000;}
+	.ft17{font-size:14px;font-family:Times;color:#000000;}
+	.ft18{font-size:14px;font-family:Times;color:#ffffff;}
+	.ft19{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft110{font-size:11px;font-family:Times;color:#000000;}
+	.ft111{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft112{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft113{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft114{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:25px;left:81px;white-space:nowrap" class="ft112"><b>Robotics:&#160;Science&#160;and&#160;Systems&#160;2021<br/>Held&#160;Virtually,&#160;July&#160;12–16,&#160;2021</b></p>
+<p style="position:absolute;top:1200px;left:456px;white-space:nowrap" class="ft11">1</p>
+<p style="position:absolute;top:93px;left:141px;white-space:nowrap" class="ft12">Scale&#160;invariant&#160;robot&#160;behavior&#160;with&#160;fractals</p>
+<p style="position:absolute;top:153px;left:174px;white-space:nowrap" class="ft13">Sam&#160;Kriegman1,&#160;Amir&#160;Mohammadi&#160;Nasab2,&#160;Douglas&#160;Blackiston3,&#160;Hannah&#160;Steele2,</p>
+<p style="position:absolute;top:176px;left:251px;white-space:nowrap" class="ft13">Michael&#160;Levin3,&#160;Rebecca&#160;Kramer-Bottiglio2,&#160;Josh&#160;Bongard1</p>
+<p style="position:absolute;top:196px;left:273px;white-space:nowrap" class="ft15">1University&#160;of&#160;Vermont,&#160;2Yale&#160;University,&#160;3Tufts&#160;University</p>
+<p style="position:absolute;top:460px;left:86px;white-space:nowrap" class="ft16"><b>reality</b></p>
+<p style="position:absolute;top:390px;left:100px;white-space:nowrap" class="ft17"><b>e</b></p>
+<p style="position:absolute;top:390px;left:280px;white-space:nowrap" class="ft18"><b>f</b></p>
+<p style="position:absolute;top:390px;left:675px;white-space:nowrap" class="ft17"><b>h</b></p>
+<p style="position:absolute;top:390px;left:494px;white-space:nowrap" class="ft17"><b>g</b></p>
+<p style="position:absolute;top:327px;left:86px;white-space:nowrap" class="ft16"><b>simulation</b></p>
+<p style="position:absolute;top:227px;left:692px;white-space:nowrap" class="ft14">Behavior when combined</p>
+<p style="position:absolute;top:227px;left:526px;white-space:nowrap" class="ft14">Fractal aggregation</p>
+<p style="position:absolute;top:227px;left:142px;white-space:nowrap" class="ft14">Behavior alone</p>
+<p style="position:absolute;top:227px;left:342px;white-space:nowrap" class="ft14">Mass produce</p>
+<p style="position:absolute;top:251px;left:100px;white-space:nowrap" class="ft17"><b>a</b></p>
+<p style="position:absolute;top:251px;left:494px;white-space:nowrap" class="ft17"><b>c</b></p>
+<p style="position:absolute;top:251px;left:675px;white-space:nowrap" class="ft17"><b>d</b></p>
+<p style="position:absolute;top:251px;left:280px;white-space:nowrap" class="ft18"><b>b</b></p>
+<p style="position:absolute;top:522px;left:73px;white-space:nowrap" class="ft14">Fig.&#160;1.</p>
+<p style="position:absolute;top:522px;left:118px;white-space:nowrap" class="ft14">An&#160;evolved&#160;robot&#160;generates&#160;forward&#160;movement&#160;alone&#160;(a,e),&#160;and&#160;then&#160;attaches&#160;with&#160;clones&#160;(b,f)&#160;to&#160;form&#160;a&#160;fractal&#160;robot&#160;(c,g)&#160;with&#160;the&#160;same&#160;behavior</p>
+<p style="position:absolute;top:535px;left:73px;white-space:nowrap" class="ft14">at&#160;a&#160;larger&#160;size&#160;scale&#160;(d,h).&#160;More&#160;information,&#160;videos&#160;and&#160;code&#160;can&#160;be&#160;found&#160;at&#160;<a href="https://fractalrobots.github.io">fractalrobots.github.io.</a></p>
+<p style="position:absolute;top:565px;left:88px;white-space:nowrap" class="ft110">Abstract—Robots&#160;deployed&#160;at&#160;orders&#160;of&#160;magnitude&#160;different</p>
+<p style="position:absolute;top:580px;left:73px;white-space:nowrap" class="ft113">size&#160;scales,&#160;and&#160;that&#160;retain&#160;the&#160;same&#160;desired&#160;behavior&#160;at&#160;any&#160;of<br/>those&#160;scales,&#160;would&#160;greatly&#160;expand&#160;the&#160;environments&#160;in&#160;which<br/>the&#160;robots&#160;could&#160;operate.&#160;However&#160;it&#160;is&#160;currently&#160;not&#160;known<br/>whether&#160;such&#160;robots&#160;exist,&#160;and,&#160;if&#160;they&#160;do,&#160;how&#160;to&#160;design&#160;them.<br/>Since&#160;self&#160;similar&#160;structures&#160;in&#160;nature&#160;often&#160;exhibit&#160;self&#160;similar<br/>behavior&#160;at&#160;different&#160;scales,&#160;we&#160;hypothesize&#160;that&#160;there&#160;may&#160;exist<br/>robot&#160;designs&#160;that&#160;have&#160;the&#160;same&#160;property.&#160;Here&#160;we&#160;demonstrate<br/>that&#160;this&#160;is&#160;indeed&#160;the&#160;case&#160;for&#160;some,&#160;but&#160;not&#160;all,&#160;modular&#160;soft<br/>robots:&#160;there&#160;are&#160;robot&#160;designs&#160;that&#160;exhibit&#160;a&#160;desired&#160;behavior&#160;at<br/>a&#160;small&#160;size&#160;scale,&#160;and&#160;if&#160;copies&#160;of&#160;that&#160;robot&#160;are&#160;attached&#160;together<br/>to&#160;realize&#160;the&#160;same&#160;design&#160;at&#160;higher&#160;scales,&#160;those&#160;larger&#160;robots<br/>exhibit&#160;similar&#160;behavior.&#160;We&#160;show&#160;how&#160;to&#160;find&#160;such&#160;designs&#160;in<br/>simulation&#160;using&#160;an&#160;evolutionary&#160;algorithm.&#160;Further,&#160;when&#160;fractal<br/>attachment&#160;is&#160;not&#160;assumed&#160;and&#160;attachment&#160;geometries&#160;must&#160;thus<br/>be&#160;evolved&#160;along&#160;with&#160;the&#160;design&#160;of&#160;the&#160;base&#160;robot&#160;unit,&#160;scale<br/>invariant&#160;behavior&#160;is&#160;not&#160;achieved,&#160;demonstrating&#160;that&#160;structural<br/>self&#160;similarity,&#160;when&#160;combined&#160;with&#160;appropriate&#160;designs,&#160;is&#160;a<br/>useful&#160;path&#160;to&#160;realizing&#160;scale&#160;invariant&#160;robot&#160;behavior.&#160;We<br/>validate&#160;our&#160;findings&#160;by&#160;demonstrating&#160;successful&#160;transferal&#160;of<br/>self&#160;similar&#160;structure&#160;and&#160;behavior&#160;to&#160;pneumatically-controlled<br/>soft&#160;robots.&#160;Finally,&#160;we&#160;show&#160;that&#160;biobots&#160;can&#160;spontaneously<br/>exhibit&#160;self&#160;similar&#160;attachment&#160;geometries,&#160;thereby&#160;suggesting<br/>that&#160;self&#160;similar&#160;behavior&#160;via&#160;self&#160;similar&#160;structure&#160;may&#160;be<br/>realizable&#160;across&#160;a&#160;wide&#160;range&#160;of&#160;robot&#160;platforms&#160;in&#160;future.</p>
+<p style="position:absolute;top:958px;left:203px;white-space:nowrap" class="ft11">I.&#160;INTRODUCTION</p>
+<p style="position:absolute;top:985px;left:88px;white-space:nowrap" class="ft11">Fractals&#160;are&#160;ubiquitous&#160;in&#160;nature&#160;and&#160;increasingly&#160;prevalent</p>
+<p style="position:absolute;top:1003px;left:73px;white-space:nowrap" class="ft114">in&#160;artificial&#160;structures&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[6,&#160;27].&#160;</a>Coastlines,&#160;rivers,&#160;and&#160;trees&#160;all<br/>exhibit&#160;self-similar&#160;structures—accurate&#160;replicas&#160;of&#160;themselves<br/>within&#160;themselves.&#160;Fractals&#160;are&#160;also&#160;prevalent&#160;across&#160;length<br/>scales&#160;in&#160;animals&#160;and&#160;cellular&#160;structures:&#160;respiratory&#160;and&#160;vas-<br/>cular&#160;systems,&#160;brains&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[14],&#160;</a>and&#160;DNA&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[20]&#160;</a>all&#160;exploit&#160;space</p>
+<p style="position:absolute;top:564px;left:468px;white-space:nowrap" class="ft114">filling&#160;fractal&#160;networks.&#160;At&#160;the&#160;largest&#160;known&#160;length&#160;scale,<br/>the&#160;universe&#160;itself&#160;consists&#160;of&#160;a&#160;fractal&#160;clustering&#160;of&#160;spiraling<br/>galaxies&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">[36].&#160;</a>However,&#160;the&#160;ways&#160;in&#160;which&#160;fractals&#160;may&#160;be<br/>useful&#160;in&#160;robotics&#160;is&#160;mostly&#160;unexplored.</p>
+<p style="position:absolute;top:640px;left:483px;white-space:nowrap" class="ft11">One&#160;desirable&#160;property&#160;of&#160;fractals&#160;derives&#160;from&#160;their&#160;ability</p>
+<p style="position:absolute;top:658px;left:468px;white-space:nowrap" class="ft114">to&#160;represent&#160;infinite&#160;complexity&#160;within&#160;a&#160;compact&#160;representa-<br/>tion:&#160;a&#160;simple&#160;rule&#160;applied&#160;to&#160;itself,&#160;recursively.&#160;Hornby&#160;and<br/>Pollack&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[9]&#160;</a>exploited&#160;this&#160;phenomenon&#160;in&#160;robotics&#160;by&#160;evolving<br/>branching&#160;kinematic&#160;chains&#160;in&#160;simulation&#160;and&#160;then&#160;building<br/>physical&#160;instances&#160;of&#160;the&#160;most&#160;promising&#160;designs&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[10].&#160;</a>The<br/>resulting&#160;robots&#160;yielded&#160;an&#160;order&#160;of&#160;magnitude&#160;more&#160;physical<br/>elements&#160;than&#160;any&#160;other&#160;simulated&#160;robots&#160;at&#160;that&#160;time:&#160;Whereas<br/>Sims&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">[32]&#160;</a>and&#160;Bongard&#160;and&#160;Pfeifer&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#8">[3]&#160;</a>evolved&#160;simulated<br/>robots&#160;composed&#160;of&#160;no&#160;more&#160;than&#160;14&#160;and&#160;50&#160;parts,&#160;respectively,<br/>Hornby&#160;and&#160;Pollack&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[9]&#160;</a>utilized&#160;Lindenmayer-systems&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[21]&#160;</a>to<br/>produce&#160;branching&#160;structures&#160;of&#160;up&#160;to&#160;350&#160;parts.</p>
+<p style="position:absolute;top:860px;left:483px;white-space:nowrap" class="ft11">The&#160;ubiquity&#160;of&#160;self-similar&#160;forms&#160;in&#160;living&#160;systems&#160;sug-</p>
+<p style="position:absolute;top:878px;left:468px;white-space:nowrap" class="ft114">gests&#160;that&#160;fractals&#160;may&#160;confer&#160;adaptive&#160;benefits&#160;in&#160;addition<br/>to&#160;reduced&#160;descriptive&#160;complexity,&#160;which&#160;could&#160;be&#160;useful&#160;in<br/>artificial&#160;systems&#160;such&#160;as&#160;robots.&#160;One&#160;such&#160;potential&#160;use&#160;of<br/>fractals&#160;in&#160;robotics&#160;is&#160;that&#160;self&#160;similar&#160;structure&#160;can,&#160;in&#160;some<br/>cases,&#160;result&#160;in&#160;self&#160;similar&#160;behavior&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[13].&#160;</a>Branching&#160;arteries<br/>and&#160;capillaries&#160;maximize&#160;efficient&#160;blood&#160;flow&#160;at&#160;the&#160;macro<br/>and&#160;micro&#160;scales,&#160;respectively&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[24].&#160;</a>In&#160;the&#160;gecko,&#160;nanoscale<br/>spatulae&#160;branch&#160;from&#160;microscale&#160;setae,&#160;which&#160;in&#160;turn&#160;branch<br/>from&#160;toes,&#160;which&#160;in&#160;turn&#160;branch&#160;from&#160;feet,&#160;and&#160;together&#160;max-<br/>imize&#160;the&#160;probability&#160;of&#160;adhesion&#160;of&#160;spatulae,&#160;setae,&#160;toes,&#160;and<br/>ultimately&#160;the&#160;animal&#160;itself&#160;to&#160;vertical&#160;surfaces&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#8">[1].&#160;</a>However,<br/>with&#160;the&#160;exception&#160;of&#160;artificial&#160;gecko&#160;feet&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">[37]&#160;</a>and&#160;Moravec</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft111">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:9px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;font-family:Times;color:#000000;}
+	.ft22{font-size:13px;font-family:Times;color:#000000;}
+	.ft23{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft24{font-size:8px;font-family:Times;color:#000000;}
+	.ft25{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft26{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft27{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:193px;left:73px;white-space:nowrap" class="ft20">Fig.&#160;2.</p>
+<p style="position:absolute;top:193px;left:119px;white-space:nowrap" class="ft20">Fractalizing&#160;mass-produced&#160;robots.&#160;As&#160;an&#160;example&#160;of&#160;how&#160;basal</p>
+<p style="position:absolute;top:207px;left:73px;white-space:nowrap" class="ft26">robots&#160;are&#160;here&#160;combined&#160;in&#160;fractals,&#160;the&#160;well-known&#160;Menger&#160;sponge&#160;is&#160;shown<br/>in&#160;place&#160;of&#160;an&#160;evolved&#160;design&#160;(1&#160;sponge)&#160;at&#160;three&#160;fractal&#160;scales.&#160;A&#160;single&#160;(basal)<br/>sponge&#160;is&#160;a&#160;3-by-3-by-3&#160;cube&#160;of&#160;voxels&#160;with&#160;the&#160;middle&#160;voxel&#160;missing&#160;on&#160;each<br/>face,&#160;and&#160;no&#160;center&#160;voxel&#160;(a&#160;total&#160;of&#160;20&#160;voxels).&#160;Replacing&#160;each&#160;voxel&#160;with<br/>a&#160;copy&#160;of&#160;the&#160;entire&#160;sponge&#160;creates&#160;a&#160;fractal:&#160;a&#160;self-similar&#160;aggregation&#160;of&#160;20<br/>sponges.&#160;Repeating&#160;this&#160;operation&#160;yields&#160;larger&#160;and&#160;larger&#160;fractals.</p>
+<p style="position:absolute;top:304px;left:73px;white-space:nowrap" class="ft27">and&#160;Easudes’&#160;hypothetical&#160;trillion-fingered&#160;Bush&#160;Robot&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[25],<br/></a>this&#160;particular&#160;property&#160;of&#160;fractals&#160;remains&#160;unexplored&#160;in<br/>robotics.&#160;Here,&#160;we&#160;explore&#160;whether&#160;self&#160;similar&#160;structure&#160;can<br/>confer&#160;self&#160;similar&#160;behavior&#160;in&#160;modular&#160;robots.</p>
+<p style="position:absolute;top:376px;left:88px;white-space:nowrap" class="ft21">Conventional&#160;robots&#160;contain&#160;numerous&#160;smaller&#160;components</p>
+<p style="position:absolute;top:394px;left:73px;white-space:nowrap" class="ft27">(legs,&#160;wheels,&#160;end&#160;effectors,&#160;servomotors,&#160;sensors,&#160;battery<br/>packs)&#160;but&#160;these&#160;parts&#160;are&#160;highly&#160;specialized,&#160;interdependent,<br/>and&#160;incapable&#160;of&#160;independent&#160;or&#160;self-similar&#160;behavior.&#160;Modular<br/>robots&#160;differ&#160;in&#160;that&#160;they&#160;consist&#160;of&#160;repeated&#160;robotic&#160;elements<br/>that&#160;are&#160;to&#160;some&#160;degree&#160;self-sufficient,&#160;able&#160;to&#160;behave&#160;and<br/>survive&#160;on&#160;their&#160;own.&#160;They&#160;often&#160;autonomously&#160;detach,&#160;move<br/>about&#160;each&#160;other,&#160;and&#160;reattach&#160;to&#160;reconfigure&#160;the&#160;robot’s&#160;overall<br/>geometry&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[11,&#160;26,&#160;28].&#160;</a>But&#160;robot&#160;modules&#160;tend&#160;to&#160;be&#160;cubes<br/>or&#160;other&#160;simple&#160;geometries&#160;that&#160;do&#160;not&#160;reprise&#160;the&#160;shape&#160;of<br/>the&#160;whole&#160;robot,&#160;unless&#160;the&#160;robot’s&#160;overall&#160;structure&#160;is&#160;also&#160;a<br/>simple&#160;geometry&#160;(e.g.&#160;a&#160;cube&#160;of&#160;cubes).&#160;In&#160;all&#160;cases,&#160;the&#160;target<br/>behavior&#160;of&#160;a&#160;module&#160;is,&#160;by&#160;design,&#160;different&#160;from&#160;that&#160;of&#160;the<br/>whole&#160;robot.</p>
+<p style="position:absolute;top:627px;left:88px;white-space:nowrap" class="ft21">Swarms&#160;of&#160;hundreds&#160;or&#160;thousands&#160;of&#160;individual&#160;robots&#160;have</p>
+<p style="position:absolute;top:645px;left:73px;white-space:nowrap" class="ft27">loosely&#160;coupled&#160;to&#160;form&#160;amorphous&#160;phototatic&#160;aggregates&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[18]<br/></a>or&#160;moved&#160;within&#160;a&#160;shared&#160;shell&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[30],&#160;</a>however&#160;these&#160;robots<br/>have&#160;largely&#160;been&#160;restricted&#160;to&#160;cylindrical&#160;geometries&#160;and<br/>2D&#160;interaction&#160;in-plane&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[29].&#160;</a>Most&#160;robot&#160;swarms&#160;comprise<br/>rigid-bodied&#160;electromechanical&#160;robots&#160;which,&#160;in&#160;order&#160;to&#160;be<br/>produced&#160;in&#160;large&#160;quantities,&#160;are&#160;designed&#160;to&#160;be&#160;as&#160;simple&#160;as<br/>possible.&#160;A&#160;consequence&#160;of&#160;this&#160;is&#160;that&#160;each&#160;robot&#160;may&#160;be&#160;more<br/>or&#160;less&#160;behaviorally&#160;static&#160;(functionless)&#160;in&#160;isolation&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[18,&#160;30].</a></p>
+<p style="position:absolute;top:788px;left:88px;white-space:nowrap" class="ft21">Here,&#160;we&#160;test&#160;whether&#160;self-similar&#160;forms&#160;can&#160;facilitate</p>
+<p style="position:absolute;top:806px;left:73px;white-space:nowrap" class="ft27">the&#160;evolution&#160;of&#160;scale&#160;invariant&#160;behavior&#160;as&#160;follows.&#160;Shapes<br/>of&#160;basal&#160;robots&#160;(e.g.&#160;Fig&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#1">1a)&#160;</a>are&#160;evolved&#160;in&#160;a&#160;voxel-based<br/>simulation;&#160;each&#160;design&#160;can&#160;be&#160;composed&#160;with&#160;copies&#160;of&#160;itself,<br/>using&#160;the&#160;same&#160;pattern,&#160;indefinitely&#160;to&#160;realize&#160;self-similar&#160;form<br/>at&#160;a&#160;range&#160;of&#160;size&#160;scales.&#160;However,&#160;if&#160;the&#160;desired&#160;behavior<br/>is&#160;lost&#160;and&#160;needs&#160;to&#160;be&#160;relearned&#160;de&#160;novo&#160;at&#160;each&#160;level&#160;of<br/>recursion,&#160;then&#160;training&#160;such&#160;a&#160;system&#160;to&#160;operate&#160;on&#160;more&#160;than<br/>one&#160;size&#160;scale&#160;becomes&#160;computationally&#160;infeasible.&#160;Thus,&#160;an<br/>evolutionary&#160;algorithm&#160;is&#160;here&#160;employed&#160;to&#160;find&#160;behaviorally<br/>scale-invariant&#160;fractal&#160;robots:&#160;they&#160;must&#160;demonstrate&#160;similar<br/>behavior,&#160;normalized&#160;for&#160;scale,&#160;at&#160;three&#160;different&#160;size&#160;scales.<br/>The&#160;results&#160;demonstrate&#160;that&#160;robots&#160;with&#160;this&#160;property&#160;can&#160;be<br/>automatically&#160;designed&#160;and&#160;in&#160;some&#160;cases,&#160;manufactured&#160;in<br/>reality.</p>
+<p style="position:absolute;top:1057px;left:88px;white-space:nowrap" class="ft21">In&#160;the&#160;first&#160;attempts&#160;to&#160;transfer&#160;simulated&#160;scale&#160;invariant&#160;be-</p>
+<p style="position:absolute;top:1075px;left:73px;white-space:nowrap" class="ft21">havior&#160;to&#160;a&#160;physical&#160;system,&#160;computer-generated&#160;mold&#160;designs</p>
+<p style="position:absolute;top:91px;left:478px;white-space:nowrap" class="ft22"><b>a</b></p>
+<p style="position:absolute;top:91px;left:666px;white-space:nowrap" class="ft22"><b>b</b></p>
+<p style="position:absolute;top:266px;left:468px;white-space:nowrap" class="ft20">Fig.&#160;3.</p>
+<p style="position:absolute;top:266px;left:520px;white-space:nowrap" class="ft20">Evolved&#160;single-actuator&#160;fractal.&#160;An&#160;asymmetrical&#160;quadrupedal</p>
+<p style="position:absolute;top:279px;left:468px;white-space:nowrap" class="ft26">fractal&#160;was&#160;the&#160;best&#160;fractal&#160;found&#160;by&#160;evolution&#160;when&#160;every&#160;basal&#160;robot&#160;(a)<br/>must&#160;synchronize&#160;their&#160;volumetric&#160;actuation&#160;in&#160;time.&#160;The&#160;entire&#160;structure&#160;(b)<br/>can&#160;thus&#160;be&#160;treated&#160;as&#160;a&#160;single&#160;bladder&#160;and&#160;pressurized&#160;by&#160;a&#160;single&#160;air&#160;inlet,<br/>at&#160;any&#160;size&#160;scale.&#160;Videos:&#160;the&#160;<a href="https://youtu.be/FnHZBylM_JU">simulation;&#160;</a>the&#160;physical&#160;robot&#160;at&#160;the&#160;<a href="https://youtu.be/u7jEvPp-CrU">basal&#160;</a>and<br/><a href="https://youtu.be/jr2Toz6YCn8">middle&#160;</a>scales.&#160;At&#160;atmospheric&#160;pressure,&#160;the&#160;basal&#160;robot&#160;fits&#160;inside&#160;a&#160;2×2×2<br/>cm&#160;cube;&#160;its&#160;chamber&#160;walls&#160;are&#160;2&#160;mm&#160;thick.</p>
+<p style="position:absolute;top:378px;left:468px;white-space:nowrap" class="ft27">were&#160;3D&#160;printed&#160;and&#160;then&#160;used&#160;to&#160;rapidly&#160;fabricate&#160;identical,<br/>hollow&#160;elastomeric&#160;modules&#160;that&#160;can&#160;be&#160;de/pressurized&#160;to<br/>induce&#160;volumetric&#160;actuation&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[17].&#160;</a>Modules&#160;behaved&#160;in&#160;isolation<br/>and&#160;together&#160;when&#160;attached&#160;to&#160;form&#160;a&#160;fractal&#160;soft&#160;robot.</p>
+<p style="position:absolute;top:450px;left:483px;white-space:nowrap" class="ft21">Scale&#160;invariant&#160;fractal&#160;design&#160;principles&#160;could&#160;also&#160;provide</p>
+<p style="position:absolute;top:468px;left:468px;white-space:nowrap" class="ft27">novel&#160;solutions&#160;to&#160;challenges&#160;facing&#160;in&#160;vitro&#160;bioengineering.<br/>One&#160;such&#160;challenge&#160;is&#160;the&#160;size&#160;limit&#160;of&#160;biobots&#160;without&#160;vascular<br/>systems&#160;in&#160;which&#160;diffusion&#160;does&#160;not&#160;bring&#160;sufficient&#160;oxygen<br/>and&#160;other&#160;key&#160;metabolites&#160;beyond&#160;approximately&#160;1&#160;mm.&#160;As<br/>proof&#160;of&#160;principle,&#160;we&#160;show&#160;that&#160;“xenobots”&#160;(motile&#160;biolog-<br/>ical&#160;machines&#160;built&#160;from&#160;amphibian&#160;stem&#160;cells&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#8">[2,&#160;</a><a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">16])&#160;</a>can<br/>be&#160;mechanically&#160;joined&#160;forming&#160;permanent&#160;multi-individual<br/>subunits&#160;that&#160;do&#160;not&#160;need&#160;vacular&#160;systems&#160;because&#160;they&#160;always<br/>keep&#160;their&#160;cells&#160;close&#160;to&#160;an&#160;interface&#160;with&#160;a&#160;nutrient&#160;medium.<br/>These&#160;subunits&#160;can&#160;then&#160;be&#160;stacked&#160;and&#160;multiplexed&#160;to&#160;form<br/>increasingly&#160;large&#160;fractal&#160;biobots.</p>
+<p style="position:absolute;top:678px;left:612px;white-space:nowrap" class="ft21">II.&#160;METHODS</p>
+<p style="position:absolute;top:703px;left:468px;white-space:nowrap" class="ft21">A.&#160;Fractalizing&#160;robots.</p>
+<p style="position:absolute;top:727px;left:483px;white-space:nowrap" class="ft21">Robots&#160;in&#160;this&#160;paper&#160;are&#160;modeled&#160;as&#160;polycubes&#160;with&#160;at</p>
+<p style="position:absolute;top:745px;left:468px;white-space:nowrap" class="ft27">most&#160;c&#160;cubes&#160;(voxels)&#160;connected&#160;face-to-face&#160;inside&#160;a&#160;bounding<br/>box&#160;with&#160;length&#160;m&#160;voxels.&#160;A&#160;fractal&#160;aggregation&#160;is&#160;made&#160;by<br/>replacing&#160;each&#160;voxel&#160;in&#160;a&#160;basal&#160;robot&#160;with&#160;a&#160;copy&#160;of&#160;itself.&#160;This<br/>operation&#160;can&#160;be&#160;repeated&#160;(to&#160;form&#160;an&#160;aggregate&#160;of&#160;aggregates<br/>of&#160;elements)&#160;either&#160;recursively—replacing&#160;voxels&#160;with&#160;the&#160;cur-<br/>rent&#160;aggregate—or&#160;iteratively—replacing&#160;voxels&#160;with&#160;the&#160;basal<br/>robot.&#160;We&#160;use&#160;iteration&#160;here&#160;to&#160;achieve&#160;additional&#160;size&#160;scales<br/>with&#160;fewer&#160;elements.&#160;However,&#160;the&#160;results&#160;of&#160;this&#160;paper&#160;are<br/>not&#160;reliant&#160;on&#160;the&#160;distinction&#160;between&#160;recursion&#160;and&#160;iteration.</p>
+<p style="position:absolute;top:907px;left:483px;white-space:nowrap" class="ft21">The&#160;Menger&#160;sponge&#160;provides&#160;a&#160;familiar&#160;example&#160;(Fig&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#2">2).&#160;</a>A</p>
+<p style="position:absolute;top:924px;left:468px;white-space:nowrap" class="ft27">basal&#160;sponge&#160;is&#160;a&#160;box,&#160;m&#160;=&#160;3&#160;voxels&#160;in&#160;length,&#160;with&#160;a&#160;hole<br/>through&#160;the&#160;center&#160;of&#160;each&#160;plane.&#160;Replacing&#160;each&#160;of&#160;the&#160;c&#160;=&#160;20<br/>voxels&#160;within&#160;an&#160;basal&#160;sponge&#160;generates&#160;a&#160;fractal&#160;sponge&#160;of<br/>20&#160;sponges.&#160;Repeating&#160;this&#160;operation&#160;a&#160;second&#160;time&#160;generates<br/>a&#160;sponge&#160;of&#160;20&#160;sponges&#160;composed&#160;of&#160;20&#160;smaller&#160;sponges&#160;(400<br/>sponges&#160;in&#160;total).&#160;And&#160;so&#160;on.</p>
+<p style="position:absolute;top:1032px;left:483px;white-space:nowrap" class="ft21">The&#160;Menger&#160;sponge&#160;has&#160;Hausdorff&#160;dimension:</p>
+<p style="position:absolute;top:1068px;left:527px;white-space:nowrap" class="ft21">H&#160;=&#160;log</p>
+<p style="position:absolute;top:1074px;left:580px;white-space:nowrap" class="ft24">m(c)&#160;=</p>
+<p style="position:absolute;top:1058px;left:634px;white-space:nowrap" class="ft21">log&#160;c</p>
+<p style="position:absolute;top:1078px;left:631px;white-space:nowrap" class="ft21">log&#160;m</p>
+<p style="position:absolute;top:1068px;left:672px;white-space:nowrap" class="ft21">=</p>
+<p style="position:absolute;top:1058px;left:689px;white-space:nowrap" class="ft21">log&#160;20</p>
+<p style="position:absolute;top:1078px;left:693px;white-space:nowrap" class="ft21">log&#160;3</p>
+<p style="position:absolute;top:1067px;left:732px;white-space:nowrap" class="ft21">≈&#160;2.727,</p>
+<p style="position:absolute;top:1068px;left:827px;white-space:nowrap" class="ft21">(1)</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft25">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:9px;font-family:Times;color:#000000;}
+	.ft31{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft32{font-size:12px;font-family:Times;color:#000000;}
+	.ft33{font-size:8px;font-family:Times;color:#000000;}
+	.ft34{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft35{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft36{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:657px;left:73px;white-space:nowrap" class="ft30">Fig.&#160;4.</p>
+<p style="position:absolute;top:657px;left:118px;white-space:nowrap" class="ft30">Evolved&#160;fractal&#160;robots.&#160;Four&#160;designs&#160;(columns;&#160;a-b)&#160;evolved&#160;for&#160;scale&#160;invariant&#160;locomotion&#160;in&#160;fractal&#160;aggregations&#160;at&#160;three&#160;size&#160;scales&#160;(rows):&#160;one</p>
+<p style="position:absolute;top:671px;left:73px;white-space:nowrap" class="ft35">robot&#160;(top;&#160;3&#160;cm&#160;wide),&#160;robots&#160;inside&#160;of&#160;a&#160;robot&#160;(middle;&#160;9&#160;cm),&#160;and&#160;robots&#160;inside&#160;of&#160;robots&#160;inside&#160;of&#160;a&#160;robot&#160;(bottom;&#160;27&#160;cm)&#160;<a href="https://youtu.be/EhQ4RakFRok">(video).&#160;</a>Voxels&#160;are&#160;1&#160;cm<br/>in&#160;length&#160;in&#160;simulation.&#160;Cyan&#160;and&#160;red&#160;voxels&#160;actuate&#160;in&#160;antiphase&#160;at&#160;5&#160;Hz.&#160;The&#160;fitness&#160;of&#160;a&#160;scale&#160;invariant&#160;design&#160;is&#160;the&#160;least&#160;amount&#160;of&#160;net&#160;displacement&#160;it<br/>generates&#160;across&#160;the&#160;three&#160;size&#160;scales&#160;(body&#160;lengths&#160;per&#160;minute;&#160;Eq.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#4">2).</a></p>
+<p style="position:absolute;top:729px;left:73px;white-space:nowrap" class="ft36">which&#160;describes&#160;the&#160;space&#160;filled&#160;by&#160;a&#160;fractal&#160;geometry&#160;in&#160;the<br/>limit.&#160;The&#160;Hausdorff&#160;dimension&#160;is&#160;zero&#160;for&#160;a&#160;single&#160;voxel;&#160;one<br/>for&#160;a&#160;column&#160;of&#160;three&#160;voxels&#160;(log3(3)&#160;=&#160;1);&#160;two&#160;for&#160;a&#160;3-by-3<br/>plane&#160;of&#160;nine&#160;voxels&#160;(log3(9)&#160;=&#160;2);&#160;and&#160;three&#160;for&#160;a&#160;3-by-3-by-<br/>3&#160;cube&#160;of&#160;27&#160;voxels&#160;(log3(27)&#160;=&#160;3).&#160;The&#160;design&#160;space&#160;here<br/>spans&#160;these&#160;(smooth)&#160;structures&#160;and&#160;many&#160;more&#160;in&#160;between.<br/>Since&#160;all&#160;fractals&#160;here&#160;have&#160;m&#160;=&#160;3,&#160;H&#160;∝&#160;log&#160;c.</p>
+<p style="position:absolute;top:855px;left:88px;white-space:nowrap" class="ft32">Hausdorff&#160;dimension&#160;provides&#160;an&#160;interpretable&#160;measure</p>
+<p style="position:absolute;top:873px;left:73px;white-space:nowrap" class="ft36">of&#160;the&#160;structural&#160;complexity&#160;(or&#160;“roughness”)&#160;of&#160;the&#160;robots<br/>evolved&#160;in&#160;this&#160;paper.&#160;It&#160;will&#160;allow&#160;us&#160;to&#160;analyze&#160;how&#160;fractals<br/>with&#160;scale&#160;invariant&#160;behavior&#160;can&#160;emerge&#160;from&#160;initially&#160;random<br/>fractals&#160;over&#160;evolutionary&#160;time.</p>
+<p style="position:absolute;top:961px;left:73px;white-space:nowrap" class="ft32">B.&#160;Simulating&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:985px;left:88px;white-space:nowrap" class="ft32">Voxels&#160;are&#160;simulated&#160;by&#160;a&#160;point&#160;mass&#160;and&#160;up&#160;to&#160;six&#160;Euler-</p>
+<p style="position:absolute;top:1003px;left:73px;white-space:nowrap" class="ft36">Bernoulli&#160;beams&#160;connecting&#160;to&#160;neighbors&#160;on&#160;each&#160;voxel&#160;face.<br/>There&#160;are&#160;two&#160;kinds&#160;of&#160;voxels&#160;(red&#160;and&#160;blue)&#160;which&#160;actuate<br/>in&#160;antiphase.&#160;Volumetric&#160;actuation&#160;is&#160;implemented&#160;by&#160;treating<br/>the&#160;beams&#160;as&#160;pistons&#160;and&#160;adjusting&#160;their&#160;rest&#160;length&#160;at&#160;every<br/>time&#160;step&#160;according&#160;to&#160;a&#160;sine&#160;wave&#160;with&#160;a&#160;phase&#160;shift&#160;stored</p>
+<p style="position:absolute;top:729px;left:468px;white-space:nowrap" class="ft36">at&#160;each&#160;voxel.&#160;A&#160;given&#160;voxelyzed&#160;robot&#160;can&#160;be&#160;fractalized&#160;by<br/>replacing&#160;each&#160;voxel&#160;with&#160;a&#160;copy&#160;of&#160;the&#160;entire&#160;robot,&#160;just&#160;like<br/>the&#160;Menger&#160;sponge.</p>
+<p style="position:absolute;top:785px;left:483px;white-space:nowrap" class="ft32">To&#160;simulate&#160;the&#160;high&#160;mechanical&#160;resolution&#160;of&#160;fractal</p>
+<p style="position:absolute;top:803px;left:468px;white-space:nowrap" class="ft36">robots&#160;we&#160;used&#160;voxcraft-sim&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[22],&#160;</a>a&#160;GPU-accelerated&#160;re-<br/>implementation&#160;of&#160;Voxelyze&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[8].&#160;</a>In&#160;Voxelyze,&#160;voxels&#160;are<br/>evaluated&#160;sequentially&#160;on&#160;a&#160;single&#160;thread&#160;of&#160;a&#160;CPU,&#160;one&#160;after<br/>another.&#160;In&#160;voxcraft-sim,&#160;voxels&#160;are&#160;evaluated&#160;concurrently&#160;on<br/>GPUs.&#160;Collisions&#160;in&#160;Voxelyze&#160;are&#160;resolved&#160;in&#160;a&#160;double&#160;loop&#160;of<br/>all&#160;n&#160;surface&#160;voxels,&#160;with&#160;time&#160;complexity&#160;O(n2).&#160;In&#160;voxcraft-<br/>sim,&#160;collisions&#160;are&#160;handled&#160;using&#160;a&#160;bounding&#160;volume&#160;hierarchy<br/>tree&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[12]&#160;</a>with&#160;O(n&#160;log&#160;n).</p>
+<p style="position:absolute;top:950px;left:483px;white-space:nowrap" class="ft32">The&#160;basic&#160;simulated&#160;elements&#160;of&#160;Voxelyze&#160;and&#160;voxcraft-sim</p>
+<p style="position:absolute;top:968px;left:468px;white-space:nowrap" class="ft36">are&#160;the&#160;same&#160;(beams&#160;and&#160;masses)&#160;but&#160;computing&#160;dynamics<br/>in&#160;parallel&#160;and&#160;handling&#160;collisions&#160;with&#160;a&#160;BVH&#160;tree&#160;makes&#160;it<br/>possible&#160;to&#160;simulate&#160;geometrically&#160;interesting&#160;robots&#160;with&#160;com-<br/>plicated&#160;surface&#160;areas&#160;that&#160;self&#160;collide.&#160;Here,&#160;evolution&#160;operates<br/>in&#160;a&#160;273&#160;voxel&#160;workspace&#160;(up&#160;to&#160;19,683&#160;total&#160;voxels).&#160;Due&#160;to<br/>past&#160;computational&#160;limits,&#160;previous&#160;evolutionary&#160;robotics&#160;work<br/>was&#160;largely&#160;restricted&#160;to&#160;voxel&#160;workspaces&#160;with&#160;less&#160;than&#160;a</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft34">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:9px;font-family:Times;color:#000000;}
+	.ft41{font-size:6px;font-family:Times;color:#000000;}
+	.ft42{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft43{font-size:12px;font-family:Times;color:#000000;}
+	.ft44{font-size:8px;font-family:Times;color:#000000;}
+	.ft45{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft46{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft47{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft48{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:482px;left:73px;white-space:nowrap" class="ft40">Fig.&#160;5.</p>
+<p style="position:absolute;top:482px;left:118px;white-space:nowrap" class="ft40">Manufacturing&#160;fractal&#160;robots.&#160;(1)&#160;3D&#160;printed&#160;mold&#160;was&#160;partially&#160;filled&#160;with&#160;Dragon&#160;Skin&#160;10&#160;Slow&#160;and&#160;then&#160;placed&#160;in&#160;a&#160;vacuum&#160;oven&#160;to&#160;degas&#160;for</p>
+<p style="position:absolute;top:496px;left:73px;white-space:nowrap" class="ft47">5&#160;minutes.&#160;(2)&#160;Second&#160;3D&#160;printed&#160;mold&#160;was&#160;inserted&#160;into&#160;the&#160;first&#160;mold&#160;slowly&#160;to&#160;avoid&#160;introducing&#160;air&#160;bubbles&#160;into&#160;the&#160;silicone.&#160;(3)&#160;Flanges&#160;on&#160;the&#160;second<br/>mold&#160;were&#160;adjusted&#160;on&#160;the&#160;first&#160;mold&#160;to&#160;keep&#160;a&#160;2&#160;mm&#160;clearance&#160;between&#160;the&#160;walls&#160;of&#160;the&#160;molds.&#160;Silicone&#160;was&#160;cured&#160;in&#160;the&#160;oven&#160;at&#160;60◦C&#160;for&#160;75&#160;minutes.&#160;(4)<br/>The&#160;module&#160;was&#160;removed&#160;from&#160;the&#160;mold&#160;and&#160;the&#160;edges&#160;were&#160;trimmed.&#160;(5)&#160;The&#160;module&#160;was&#160;flipped&#160;over&#160;an&#160;uncured&#160;layer&#160;of&#160;silicone&#160;and&#160;its&#160;top&#160;side&#160;was<br/>sealed.&#160;(6)&#160;The&#160;module&#160;was&#160;removed&#160;from&#160;the&#160;substrate&#160;and&#160;its&#160;edges&#160;were&#160;trimmed.&#160;(7a)&#160;A&#160;hole&#160;was&#160;punched&#160;in&#160;one&#160;of&#160;the&#160;sides&#160;of&#160;the&#160;module&#160;and&#160;a&#160;rubber<br/>tube&#160;was&#160;inserted&#160;and&#160;glued&#160;using&#160;Sil-poxy&#160;as&#160;the&#160;bonding&#160;agent&#160;to&#160;make&#160;a&#160;robot&#160;<a href="https://youtu.be/bHJR8srK8LI">(video).&#160;</a>(7b)&#160;Basal&#160;robots&#160;join&#160;together&#160;to&#160;form&#160;a&#160;fractal&#160;robot&#160;<a href="https://youtu.be/m6hYhY7g91E">(video).</a></p>
+<p style="position:absolute;top:584px;left:73px;white-space:nowrap" class="ft48">thousand&#160;voxels.&#160;The&#160;lone&#160;exception&#160;was&#160;Hiller&#160;and&#160;Lipson<br/><a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[7],&#160;</a>who&#160;evolved&#160;soft&#160;robots&#160;within&#160;a&#160;203&#160;voxel&#160;workspace&#160;(up<br/>to&#160;8000&#160;voxels).&#160;However,&#160;strong&#160;morphological&#160;convergence<br/>led&#160;to&#160;a&#160;scooting&#160;mass&#160;that&#160;filled&#160;less&#160;than&#160;a&#160;quarter&#160;of&#160;the<br/>workspace&#160;(less&#160;than&#160;2000&#160;voxels).&#160;Here,&#160;we&#160;demonstrate&#160;how<br/>fractals&#160;can&#160;provide&#160;a&#160;more&#160;scalable&#160;encoding.</p>
+<p style="position:absolute;top:710px;left:73px;white-space:nowrap" class="ft43">C.&#160;Evolving&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:737px;left:88px;white-space:nowrap" class="ft43">Encoding.</p>
+<p style="position:absolute;top:736px;left:158px;white-space:nowrap" class="ft43">Each&#160;basal&#160;robot&#160;design&#160;is&#160;generated&#160;by&#160;an</p>
+<p style="position:absolute;top:754px;left:73px;white-space:nowrap" class="ft48">evolved&#160;Composition&#160;Pattern-Producing&#160;Network&#160;(CPPN;&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#8">[4,<br/></a><a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">33]).&#160;</a>Each&#160;network&#160;“paints”&#160;a&#160;pair&#160;of&#160;floating&#160;point&#160;values&#160;in<br/>the&#160;range&#160;[-1,1]&#160;at&#160;every&#160;(x,y,z)&#160;location&#160;in&#160;the&#160;3-by-3-by-3<br/>workspace.&#160;The&#160;first&#160;value&#160;is&#160;thresholded&#160;at&#160;0&#160;to&#160;determine<br/>the&#160;presence&#160;or&#160;absence&#160;of&#160;material&#160;at&#160;that&#160;point.&#160;The&#160;second<br/>is&#160;thresholded&#160;at&#160;0&#160;to&#160;determine&#160;the&#160;type&#160;of&#160;material&#160;(if&#160;any)&#160;at<br/>that&#160;point.&#160;The&#160;largest&#160;connected&#160;component&#160;of&#160;material&#160;output<br/>by&#160;a&#160;network&#160;(genotype)&#160;is&#160;taken&#160;to&#160;be&#160;the&#160;morphology&#160;of&#160;the<br/>basal&#160;robot&#160;(phenotype).&#160;For&#160;more&#160;details&#160;see&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[16].</a></p>
+<p style="position:absolute;top:917px;left:88px;white-space:nowrap" class="ft43">Fitness.</p>
+<p style="position:absolute;top:917px;left:141px;white-space:nowrap" class="ft43">Each&#160;basal&#160;robot&#160;design&#160;is&#160;evaluated&#160;three&#160;times:</p>
+<p style="position:absolute;top:935px;left:73px;white-space:nowrap" class="ft48">first&#160;alone,&#160;and&#160;then&#160;twice&#160;more&#160;in&#160;fractal&#160;aggregations&#160;of<br/>increasing&#160;size.&#160;Performance&#160;at&#160;the&#160;i-th&#160;size&#160;scale&#160;is&#160;measured<br/>by&#160;the&#160;net&#160;displacement&#160;di&#160;the&#160;robot&#160;or&#160;aggregate&#160;traveled<br/>(measured&#160;in&#160;body&#160;lengths)&#160;at&#160;the&#160;end&#160;of&#160;the&#160;5&#160;second<br/>evaluation&#160;period&#160;(i.e.&#160;25&#160;actuation&#160;cycles&#160;at&#160;5&#160;Hz).&#160;A&#160;design’s<br/>fitness,&#160;F&#160;,&#160;is&#160;taken&#160;to&#160;be&#160;the&#160;least&#160;performance&#160;achieved&#160;across<br/>the&#160;three&#160;size&#160;scales:</p>
+<p style="position:absolute;top:1075px;left:197px;white-space:nowrap" class="ft43">F&#160;=&#160;min(d1,&#160;d2,&#160;d3).</p>
+<p style="position:absolute;top:1075px;left:433px;white-space:nowrap" class="ft43">(2)</p>
+<p style="position:absolute;top:584px;left:483px;white-space:nowrap" class="ft43">Simulation&#160;hyperparameters.</p>
+<p style="position:absolute;top:584px;left:661px;white-space:nowrap" class="ft43">Actuation&#160;here&#160;occurs&#160;at&#160;5&#160;Hz,</p>
+<p style="position:absolute;top:601px;left:468px;white-space:nowrap" class="ft48">with&#160;amplitude&#160;A&#160;=&#160;±50%&#160;resting&#160;volume.&#160;Material&#160;was<br/>simulated&#160;with&#160;10&#160;kg/m3&#160;density,&#160;Young’s&#160;modulus&#160;104&#160;Pa,&#160;and<br/>Poisson’s&#160;ratio&#160;0.5.&#160;Each&#160;voxel&#160;is&#160;1&#160;cm&#160;in&#160;length.&#160;A&#160;Coulomb<br/>friction&#160;model&#160;is&#160;used&#160;for&#160;the&#160;surface&#160;plane.&#160;Coefficients&#160;of<br/>static&#160;and&#160;dynamic&#160;friction&#160;were&#160;1&#160;and&#160;0.5,&#160;respectively.&#160;Beams<br/>and&#160;collisions&#160;are&#160;damped&#160;with&#160;ζ&#160;=&#160;1&#160;and&#160;0.8,&#160;respectively.</p>
+<p style="position:absolute;top:710px;left:483px;white-space:nowrap" class="ft43">Algorithm&#160;hyperparameters.</p>
+<p style="position:absolute;top:710px;left:665px;white-space:nowrap" class="ft43">Populations&#160;of&#160;CPPNs&#160;were</p>
+<p style="position:absolute;top:728px;left:468px;white-space:nowrap" class="ft48">evolved&#160;with&#160;“age&#160;protection”&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">[31],&#160;</a>an&#160;additional&#160;selection<br/>pressure&#160;that&#160;maintains&#160;diversity&#160;by&#160;relaxing&#160;competition&#160;on<br/>newer&#160;genetic&#160;lineages.&#160;A&#160;randomly-generated&#160;CPPN,&#160;with<br/>age&#160;0,&#160;is&#160;injected&#160;into&#160;the&#160;population&#160;at&#160;every&#160;generation.<br/>Mutations&#160;add/remove/modify&#160;vertices&#160;and&#160;edges&#160;within&#160;a<br/>selected&#160;network.&#160;The&#160;activation&#160;functions&#160;at&#160;each&#160;vertex&#160;are<br/>randomly&#160;chosen&#160;from&#160;the&#160;following&#160;functions:&#160;sine,&#160;absolute<br/>value,&#160;square,&#160;square&#160;root,&#160;and&#160;a&#160;step&#160;function.&#160;For&#160;more&#160;details<br/>see&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[16].&#160;</a>The&#160;radial&#160;distance&#160;from&#160;the&#160;center&#160;of&#160;the&#160;workspace<br/>and&#160;a&#160;bias&#160;of&#160;1&#160;were&#160;also&#160;input&#160;to&#160;each&#160;network,&#160;in&#160;addition<br/>to&#160;cartesian&#160;coordinates&#160;x,y,z.</p>
+<p style="position:absolute;top:926px;left:483px;white-space:nowrap" class="ft43">Source&#160;code&#160;can&#160;be&#160;found&#160;at&#160;<a href="https://fractalrobots.github.io/code">fractalrobots.github.io/code.</a></p>
+<p style="position:absolute;top:960px;left:468px;white-space:nowrap" class="ft43">D.&#160;Manufacturing&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:985px;left:483px;white-space:nowrap" class="ft43">Previous&#160;work&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[15,&#160;17]&#160;</a>used&#160;a&#160;rotational&#160;molding&#160;technique</p>
+<p style="position:absolute;top:1003px;left:468px;white-space:nowrap" class="ft48">to&#160;fabricate&#160;hollow&#160;cubic&#160;silicone&#160;modules&#160;(physical&#160;voxels)<br/>as&#160;building&#160;blocks&#160;of&#160;pneumatic&#160;robots.&#160;Here&#160;we&#160;introduce<br/>a&#160;molding&#160;technique,&#160;which&#160;reduces&#160;the&#160;weight&#160;of&#160;silicone<br/>required&#160;for&#160;module&#160;fabrication,&#160;and&#160;allows&#160;for&#160;the&#160;creation&#160;of<br/>custom-shaped&#160;basal&#160;modules.</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft46">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:8px;font-family:Times;color:#262626;}
+	.ft51{font-size:9px;font-family:Times;color:#262626;}
+	.ft52{font-size:9px;font-family:Times;color:#262626;-moz-transform: matrix(         0,         -1,          1,          0, 0, 0);-webkit-transform: matrix(         0,         -1,          1,          0, 0, 0);-o-transform: matrix(         0,         -1,          1,          0, 0, 0);-ms-transform: matrix(         0,         -1,          1,          0, 0, 0);-moz-transform-origin: left 75%;-webkit-transform-origin: left 75%;-o-transform-origin: left 75%;-ms-transform-origin: left 75%;}
+	.ft53{font-size:9px;font-family:Times;color:#000000;}
+	.ft54{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft55{font-size:10px;font-family:Times;color:#262626;}
+	.ft56{font-size:12px;font-family:Times;color:#000000;}
+	.ft57{font-size:8px;font-family:Times;color:#000000;}
+	.ft58{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft59{font-size:8px;line-height:15px;font-family:Times;color:#262626;}
+	.ft510{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft511{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:303px;left:129px;white-space:nowrap" class="ft50">0</p>
+<p style="position:absolute;top:303px;left:174px;white-space:nowrap" class="ft50">50</p>
+<p style="position:absolute;top:303px;left:218px;white-space:nowrap" class="ft50">100</p>
+<p style="position:absolute;top:303px;left:266px;white-space:nowrap" class="ft50">150</p>
+<p style="position:absolute;top:303px;left:313px;white-space:nowrap" class="ft50">200</p>
+<p style="position:absolute;top:303px;left:360px;white-space:nowrap" class="ft50">250</p>
+<p style="position:absolute;top:303px;left:407px;white-space:nowrap" class="ft50">300</p>
+<p style="position:absolute;top:319px;left:252px;white-space:nowrap" class="ft51">Generation</p>
+<p style="position:absolute;top:284px;left:103px;white-space:nowrap" class="ft50">0</p>
+<p style="position:absolute;top:245px;left:103px;white-space:nowrap" class="ft50">2</p>
+<p style="position:absolute;top:205px;left:103px;white-space:nowrap" class="ft50">4</p>
+<p style="position:absolute;top:166px;left:103px;white-space:nowrap" class="ft50">6</p>
+<p style="position:absolute;top:126px;left:103px;white-space:nowrap" class="ft50">8</p>
+<p style="position:absolute;top:87px;left:98px;white-space:nowrap" class="ft50">10</p>
+<p style="position:absolute;top:216px;left:90px;white-space:nowrap" class="ft52">Body lengths</p>
+<p style="position:absolute;top:101px;left:162px;white-space:nowrap" class="ft59">3 cm<br/>9 cm<br/>27 cm</p>
+<p style="position:absolute;top:346px;left:73px;white-space:nowrap" class="ft53">Fig.&#160;6.</p>
+<p style="position:absolute;top:346px;left:122px;white-space:nowrap" class="ft53">Evolving&#160;scale-invariant&#160;behavior&#160;at&#160;three&#160;fractal&#160;scales.&#160;The</p>
+<p style="position:absolute;top:360px;left:73px;white-space:nowrap" class="ft510">mean&#160;fitness&#160;of&#160;the&#160;best&#160;design&#160;(in&#160;body&#160;lengths&#160;per&#160;minute)&#160;is&#160;plotted&#160;for&#160;ten<br/>independent&#160;evolutionary&#160;trials&#160;(95%&#160;confidence&#160;intervals).&#160;Fitness&#160;was&#160;taken<br/>to&#160;be&#160;the&#160;worst&#160;performance&#160;out&#160;of&#160;the&#160;three&#160;size&#160;scales:&#160;a&#160;single&#160;robot&#160;(3&#160;cm),<br/>a&#160;fractal&#160;aggregation&#160;of&#160;robots&#160;(9&#160;cm),&#160;and&#160;a&#160;fractal&#160;aggregation&#160;of&#160;fractal<br/>aggregations&#160;of&#160;robots&#160;(27&#160;cm).&#160;The&#160;null&#160;hypothesis&#160;is&#160;that&#160;of&#160;no&#160;evolutionary<br/>improvement&#160;in&#160;fitness&#160;(scale-invariant&#160;locomotion).&#160;On&#160;the&#160;basis&#160;of&#160;two<br/>samples&#160;(randomly-generated&#160;designs&#160;(generation&#160;0)&#160;versus&#160;evolved&#160;designs<br/>(generation&#160;325))—and&#160;a&#160;distribution-free&#160;rank&#160;sum&#160;test&#160;(Wilcoxon)—we<br/>reject&#160;the&#160;null&#160;hypothesis&#160;of&#160;no&#160;evolutionary&#160;effect&#160;(p&#160;&lt;&#160;0.001).</p>
+<p style="position:absolute;top:303px;left:517px;white-space:nowrap" class="ft50">0</p>
+<p style="position:absolute;top:303px;left:561px;white-space:nowrap" class="ft50">100</p>
+<p style="position:absolute;top:303px;left:611px;white-space:nowrap" class="ft50">200</p>
+<p style="position:absolute;top:303px;left:661px;white-space:nowrap" class="ft50">300</p>
+<p style="position:absolute;top:303px;left:710px;white-space:nowrap" class="ft50">400</p>
+<p style="position:absolute;top:303px;left:761px;white-space:nowrap" class="ft50">500</p>
+<p style="position:absolute;top:303px;left:811px;white-space:nowrap" class="ft50">600</p>
+<p style="position:absolute;top:319px;left:644px;white-space:nowrap" class="ft51">Generation</p>
+<p style="position:absolute;top:284px;left:495px;white-space:nowrap" class="ft50">0</p>
+<p style="position:absolute;top:245px;left:495px;white-space:nowrap" class="ft50">2</p>
+<p style="position:absolute;top:205px;left:495px;white-space:nowrap" class="ft50">4</p>
+<p style="position:absolute;top:166px;left:495px;white-space:nowrap" class="ft50">6</p>
+<p style="position:absolute;top:126px;left:495px;white-space:nowrap" class="ft50">8</p>
+<p style="position:absolute;top:87px;left:489px;white-space:nowrap" class="ft50">10</p>
+<p style="position:absolute;top:216px;left:482px;white-space:nowrap" class="ft52">Body lengths</p>
+<p style="position:absolute;top:101px;left:554px;white-space:nowrap" class="ft59">3 cm<br/>9 cm<br/>27 cm</p>
+<p style="position:absolute;top:346px;left:465px;white-space:nowrap" class="ft510">Fig.&#160;7.&#160;Evolving&#160;scale-invariant&#160;behavior&#160;without&#160;the&#160;fractal&#160;assumption.<br/>The&#160;mean&#160;fitness&#160;of&#160;the&#160;best&#160;design&#160;(in&#160;body&#160;lengths&#160;per&#160;minute)&#160;is&#160;plotted<br/>for&#160;15&#160;independent&#160;evolutionary&#160;trials&#160;(95%&#160;CIs).&#160;Fitness&#160;is&#160;the&#160;worst<br/>performance&#160;out&#160;of&#160;the&#160;three&#160;fractal&#160;size&#160;scales&#160;(3&#160;cm,&#160;9&#160;cm,&#160;27&#160;cm).&#160;The&#160;null<br/>hypothesis&#160;of&#160;interest&#160;is&#160;that&#160;there&#160;is&#160;no&#160;difference&#160;in&#160;fitness&#160;(scale-invariant<br/>locomotion)&#160;whether&#160;or&#160;not&#160;fractals&#160;are&#160;imposed.&#160;Thus,&#160;we&#160;have&#160;two&#160;samples:<br/>one&#160;that&#160;assumes&#160;fractals&#160;(the&#160;performance&#160;curves&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">6)&#160;</a>and&#160;another&#160;that<br/>does&#160;not&#160;explicitly&#160;utilize&#160;fractals&#160;(the&#160;curves&#160;here&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">7)&#160;</a><a href="https://youtu.be/oJsRpRkQ9F0">(video).&#160;</a>Using&#160;a<br/>distribution-free&#160;rank&#160;sum&#160;test&#160;(Wilcoxon),&#160;we&#160;reject&#160;the&#160;null&#160;hypothesis&#160;that<br/>there&#160;is&#160;no&#160;evolutionary&#160;effect&#160;of&#160;fractals&#160;(p&#160;&lt;&#160;0.001).</p>
+<p style="position:absolute;top:719px;left:134px;white-space:nowrap" class="ft50">0</p>
+<p style="position:absolute;top:719px;left:178px;white-space:nowrap" class="ft50">50</p>
+<p style="position:absolute;top:719px;left:222px;white-space:nowrap" class="ft50">100</p>
+<p style="position:absolute;top:719px;left:269px;white-space:nowrap" class="ft50">150</p>
+<p style="position:absolute;top:719px;left:316px;white-space:nowrap" class="ft50">200</p>
+<p style="position:absolute;top:719px;left:363px;white-space:nowrap" class="ft50">250</p>
+<p style="position:absolute;top:719px;left:410px;white-space:nowrap" class="ft50">300</p>
+<p style="position:absolute;top:735px;left:256px;white-space:nowrap" class="ft55">Generation</p>
+<p style="position:absolute;top:700px;left:99px;white-space:nowrap" class="ft50">1.0</p>
+<p style="position:absolute;top:650px;left:99px;white-space:nowrap" class="ft50">1.5</p>
+<p style="position:absolute;top:600px;left:99px;white-space:nowrap" class="ft50">2.0</p>
+<p style="position:absolute;top:550px;left:99px;white-space:nowrap" class="ft50">2.5</p>
+<p style="position:absolute;top:499px;left:99px;white-space:nowrap" class="ft50">3.0</p>
+<p style="position:absolute;top:659px;left:90px;white-space:nowrap" class="ft55">H</p>
+<p style="position:absolute;top:651px;left:90px;white-space:nowrap" class="ft55">au</p>
+<p style="position:absolute;top:637px;left:90px;white-space:nowrap" class="ft55">sd</p>
+<p style="position:absolute;top:625px;left:90px;white-space:nowrap" class="ft55">or</p>
+<p style="position:absolute;top:614px;left:90px;white-space:nowrap" class="ft55">ff&#160;</p>
+<p style="position:absolute;top:604px;left:90px;white-space:nowrap" class="ft55">di</p>
+<p style="position:absolute;top:595px;left:90px;white-space:nowrap" class="ft55">m</p>
+<p style="position:absolute;top:585px;left:90px;white-space:nowrap" class="ft55">en</p>
+<p style="position:absolute;top:571px;left:90px;white-space:nowrap" class="ft55">si</p>
+<p style="position:absolute;top:563px;left:90px;white-space:nowrap" class="ft55">on</p>
+<p style="position:absolute;top:549px;left:90px;white-space:nowrap" class="ft55">&#160;(</p>
+<p style="position:absolute;top:544px;left:90px;white-space:nowrap" class="ft55">H</p>
+<p style="position:absolute;top:532px;left:90px;white-space:nowrap" class="ft55">)</p>
+<p style="position:absolute;top:763px;left:73px;white-space:nowrap" class="ft510">Fig.&#160;8.&#160;Hausdorff&#160;dimension&#160;across&#160;ten&#160;evolutionary&#160;trials.&#160;Smooth&#160;fractal<br/>geometries&#160;such&#160;as&#160;points,&#160;straight&#160;lines,&#160;flat&#160;planes,&#160;and&#160;cubes&#160;have&#160;Hausdorff<br/>dimension&#160;0,&#160;1,&#160;2&#160;and&#160;3,&#160;respectively.&#160;More&#160;rough&#160;fractal&#160;surfaces&#160;have&#160;non-<br/>integer&#160;Hausdorff&#160;dimension&#160;(H).&#160;Each&#160;individual&#160;color&#160;plots&#160;H&#160;of&#160;the&#160;most<br/>scale&#160;invariant&#160;design,&#160;at&#160;each&#160;generation,&#160;of&#160;a&#160;single&#160;evolutionary&#160;trial.&#160;Half<br/>of&#160;the&#160;trials&#160;ended&#160;in&#160;a&#160;plane&#160;of&#160;voxels&#160;(H&#160;=&#160;2),&#160;the&#160;the&#160;other&#160;half&#160;found<br/>rougher,&#160;more&#160;geometrically&#160;interesting&#160;designs&#160;with&#160;2.5&#160;&lt;&#160;H&#160;&lt;&#160;2.7.</p>
+<p style="position:absolute;top:878px;left:88px;white-space:nowrap" class="ft56">Evolved&#160;fractal&#160;robots&#160;were&#160;fabricated&#160;using&#160;Dragon&#160;Skin</p>
+<p style="position:absolute;top:896px;left:73px;white-space:nowrap" class="ft511">10&#160;Slow&#160;in&#160;a&#160;multistep&#160;molding&#160;and&#160;assembly&#160;process&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#4">5).<br/></a>Two&#160;rigid&#160;molds&#160;for&#160;casting&#160;were&#160;3D&#160;printed.&#160;The&#160;outer&#160;mold<br/>was&#160;treated&#160;with&#160;a&#160;release&#160;agent&#160;(Ease&#160;Release&#160;200),&#160;half-filled<br/>with&#160;silicone,&#160;and&#160;then&#160;degassed&#160;in&#160;a&#160;vacuum&#160;oven&#160;at&#160;room<br/>temperature&#160;for&#160;5&#160;min.&#160;Next,&#160;the&#160;inner&#160;mold&#160;was&#160;treated&#160;with<br/>release&#160;agent,&#160;and&#160;inserted&#160;into&#160;the&#160;outer&#160;mold.&#160;Four&#160;flanges<br/>on&#160;four&#160;sides&#160;of&#160;the&#160;inner&#160;mold&#160;ensure&#160;that&#160;it&#160;remains&#160;centered<br/>with&#160;a&#160;2&#160;mm&#160;clearance&#160;from&#160;the&#160;outer&#160;mold.&#160;Silicone&#160;was&#160;then<br/>allowed&#160;to&#160;cure&#160;in&#160;an&#160;oven&#160;at&#160;60◦C&#160;for&#160;75&#160;min.</p>
+<p style="position:absolute;top:1057px;left:88px;white-space:nowrap" class="ft56">Once&#160;cured,&#160;the&#160;module&#160;was&#160;removed&#160;from&#160;the&#160;mold,&#160;flipped</p>
+<p style="position:absolute;top:1075px;left:73px;white-space:nowrap" class="ft56">over,&#160;and&#160;placed&#160;on&#160;a&#160;draw-coated&#160;layer&#160;of&#160;uncured&#160;silicone</p>
+<p style="position:absolute;top:501px;left:468px;white-space:nowrap" class="ft511">with&#160;2&#160;mm&#160;thickness&#160;to&#160;seal&#160;its&#160;top&#160;side.&#160;A&#160;hole&#160;was&#160;poked<br/>into&#160;one&#160;of&#160;the&#160;side&#160;walls&#160;of&#160;the&#160;module&#160;and&#160;a&#160;rubber&#160;tube&#160;was<br/>inserted&#160;and&#160;glued&#160;with&#160;Sil-Poxy&#160;to&#160;create&#160;the&#160;basal&#160;robot.</p>
+<p style="position:absolute;top:555px;left:483px;white-space:nowrap" class="ft56">To&#160;assemble&#160;a&#160;fractal&#160;aggregation,&#160;single&#160;modules&#160;were</p>
+<p style="position:absolute;top:573px;left:468px;white-space:nowrap" class="ft511">attached&#160;to&#160;each&#160;other&#160;using&#160;silicone&#160;elastomer&#160;as&#160;bonding<br/>agent.&#160;Finally,&#160;holes&#160;were&#160;punched&#160;in&#160;the&#160;side&#160;walls&#160;of&#160;the<br/>adjacent&#160;modules&#160;located&#160;in&#160;each&#160;horizontal&#160;plane.&#160;This&#160;allows<br/>groups&#160;of&#160;modules&#160;within&#160;the&#160;same&#160;plane&#160;to&#160;be&#160;pressurized&#160;by<br/>a&#160;single&#160;air&#160;inlet.&#160;For&#160;example,&#160;the&#160;robot&#160;in&#160;Fig.&#160;1g,h&#160;has&#160;two<br/>groups&#160;of&#160;modules&#160;in&#160;the&#160;lowest&#160;horizontal&#160;plane&#160;(two&#160;“feet”),<br/>one&#160;group&#160;of&#160;modules&#160;in&#160;the&#160;middle&#160;plane,&#160;and&#160;one&#160;group&#160;on<br/>the&#160;highest&#160;plane,&#160;requiring&#160;just&#160;four&#160;independent&#160;air&#160;inlets,<br/>instead&#160;of&#160;18.&#160;Once&#160;assembled,&#160;robots&#160;were&#160;placed&#160;on&#160;top<br/>of&#160;a&#160;sheet&#160;of&#160;ABS&#160;Plastic&#160;(MyStudio&#160;MS20CYC&#160;Background<br/>Cyclorama),&#160;which&#160;was&#160;covered&#160;in&#160;cornstarch&#160;(Argo®,&#160;ACH<br/>Food&#160;Companies,&#160;Inc.)&#160;to&#160;reduce&#160;the&#160;friction&#160;between&#160;the<br/>silicone&#160;body&#160;of&#160;the&#160;robot&#160;and&#160;the&#160;plastic&#160;substrate&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[17].</a></p>
+<p style="position:absolute;top:819px;left:468px;white-space:nowrap" class="ft56">E.&#160;Culturing&#160;fractal&#160;biobots.</p>
+<p style="position:absolute;top:842px;left:483px;white-space:nowrap" class="ft56">Living&#160;biobots,&#160;called&#160;xenobots&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[16],&#160;</a>were&#160;produced&#160;using</p>
+<p style="position:absolute;top:860px;left:468px;white-space:nowrap" class="ft511">two&#160;methods.&#160;In&#160;the&#160;first,&#160;the&#160;animal&#160;cap&#160;of&#160;Xenopus&#160;embryos<br/>(Nieuwkoop&#160;and&#160;Faber&#160;stage&#160;10)&#160;were&#160;removed&#160;using&#160;surgical<br/>forceps&#160;and&#160;cultured&#160;in&#160;a&#160;mild&#160;saline&#160;solution&#160;(0.75x&#160;Marc’s<br/>Modified&#160;Ringers&#160;[MMR],&#160;pH&#160;7.8)&#160;for&#160;24&#160;hours&#160;at&#160;14◦C.<br/>Individuals&#160;do&#160;not&#160;naturally&#160;adhere&#160;to&#160;each&#160;other&#160;but&#160;can&#160;be<br/>induced&#160;to&#160;do&#160;so&#160;via&#160;wounding&#160;the&#160;outer&#160;surface&#160;with&#160;forceps.<br/>Following&#160;injury,&#160;individuals&#160;are&#160;manually&#160;held&#160;together&#160;for<br/>five&#160;seconds,&#160;after&#160;which&#160;they&#160;heal&#160;together&#160;permanently.</p>
+<p style="position:absolute;top:1003px;left:483px;white-space:nowrap" class="ft56">For&#160;the&#160;second&#160;method,&#160;animal&#160;cap&#160;tissue&#160;is&#160;harvested</p>
+<p style="position:absolute;top:1021px;left:468px;white-space:nowrap" class="ft511">from&#160;Xenopus&#160;embryos&#160;as&#160;above&#160;and&#160;moved&#160;to&#160;a&#160;cal-<br/>cium/magnesium&#160;free&#160;dissociation&#160;media.&#160;This&#160;solution&#160;allows<br/>the&#160;pigmented&#160;outer&#160;layer&#160;of&#160;cells&#160;to&#160;be&#160;separated&#160;and&#160;dis-<br/>carded,&#160;leaving&#160;the&#160;white&#160;inner&#160;layer&#160;which&#160;form&#160;spheroids</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft58">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:12px;font-family:Times;color:#000000;}
+	.ft61{font-size:9px;font-family:Times;color:#000000;}
+	.ft62{font-size:8px;font-family:Times;color:#000000;}
+	.ft63{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft64{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft65{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft66{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft65">when&#160;moved&#160;to&#160;a&#160;mild&#160;saline&#160;solution&#160;(0.75x&#160;Marc’s&#160;Modified<br/>Ringers&#160;[MMR],&#160;pH&#160;7.8).&#160;After&#160;24&#160;hours&#160;of&#160;development<br/>at&#160;14°C,&#160;these&#160;spheroids&#160;will&#160;naturally&#160;adhere&#160;to&#160;neighbors<br/>upon&#160;touching,&#160;allowing&#160;multi-individual&#160;chains&#160;to&#160;be&#160;formed<br/>through&#160;simple&#160;contact.</p>
+<p style="position:absolute;top:188px;left:219px;white-space:nowrap" class="ft60">III.&#160;RESULTS</p>
+<p style="position:absolute;top:210px;left:73px;white-space:nowrap" class="ft60">A.&#160;Simulated&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:233px;left:88px;white-space:nowrap" class="ft60">Ten&#160;independent&#160;evolutionary&#160;trials&#160;were&#160;conducted,&#160;each</p>
+<p style="position:absolute;top:251px;left:73px;white-space:nowrap" class="ft65">starting&#160;from&#160;a&#160;different&#160;set&#160;of&#160;random&#160;initial&#160;conditions.&#160;Basal<br/>robots&#160;were&#160;evolved&#160;inside&#160;a&#160;3-by-3-by-3&#160;voxel&#160;workspace<br/>(m&#160;=&#160;3)&#160;using&#160;up&#160;to&#160;c&#160;=&#160;27&#160;voxels,&#160;which&#160;are&#160;each&#160;1&#160;cm<br/>in&#160;length.&#160;Basal&#160;robots&#160;were&#160;recursed&#160;twice&#160;to&#160;yield&#160;9-by-9-<br/>by-9&#160;(up&#160;to&#160;729&#160;voxels)&#160;and&#160;27-by-27-by-27&#160;(up&#160;to&#160;19,683<br/>voxels)&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:358px;left:88px;white-space:nowrap" class="ft60">Each&#160;trial&#160;used&#160;8&#160;NVIDIA&#160;Tesla&#160;V100s.&#160;No&#160;trial&#160;took&#160;less</p>
+<p style="position:absolute;top:376px;left:73px;white-space:nowrap" class="ft65">than&#160;40&#160;hours&#160;or&#160;more&#160;than&#160;43&#160;hours&#160;to&#160;complete&#160;325&#160;genera-<br/>tions&#160;of&#160;evolution.&#160;Each&#160;generation&#160;consisted&#160;of&#160;48&#160;simulations<br/>(16&#160;designs&#160;in&#160;the&#160;current&#160;population,&#160;each&#160;evaluated&#160;at&#160;three<br/>size&#160;scales),&#160;for&#160;a&#160;total&#160;of&#160;325∗48&#160;=&#160;15,600&#160;design&#160;evaluations<br/>per&#160;trial.</p>
+<p style="position:absolute;top:466px;left:88px;white-space:nowrap" class="ft60">Scale&#160;invariant&#160;behavior.</p>
+<p style="position:absolute;top:466px;left:254px;white-space:nowrap" class="ft60">Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">6&#160;</a>shows&#160;evolutionary&#160;im-</p>
+<p style="position:absolute;top:483px;left:73px;white-space:nowrap" class="ft65">provement&#160;occurring&#160;on&#160;all&#160;three&#160;size&#160;scales.&#160;Usually&#160;(but&#160;not<br/>always)&#160;the&#160;largest&#160;fractals&#160;(27&#160;cm)&#160;generated&#160;less&#160;forward<br/>movement&#160;than&#160;the&#160;middle&#160;(9&#160;cm)&#160;and&#160;basal&#160;(3&#160;cm)&#160;scales,<br/>as&#160;evidenced&#160;by&#160;the&#160;low&#160;orange&#160;and&#160;blue&#160;curves&#160;in&#160;Fig,&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">6.<br/></a>There&#160;was&#160;not&#160;a&#160;significant&#160;difference&#160;in&#160;performance&#160;between<br/>the&#160;middle&#160;(9&#160;cm)&#160;and&#160;largest&#160;(27&#160;cm)&#160;size&#160;scales.&#160;Because<br/>fitness&#160;is&#160;driven&#160;by&#160;the&#160;size&#160;scale&#160;with&#160;the&#160;worst&#160;performance<br/>(Eq.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#4">2),&#160;</a>after&#160;∼50&#160;generations&#160;of&#160;evolution,&#160;there&#160;seems&#160;to&#160;be,<br/>on&#160;average,&#160;little&#160;to&#160;no&#160;selection&#160;pressure&#160;on&#160;the&#160;performance<br/>of&#160;the&#160;basal&#160;and&#160;middle&#160;fractal&#160;scales.&#160;This&#160;can&#160;be&#160;seen&#160;to&#160;some<br/>extent&#160;in&#160;the&#160;aggregate&#160;curves&#160;of&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">6.&#160;</a>Whenever&#160;a&#160;one&#160;of&#160;the<br/>curves&#160;drops&#160;in&#160;performance&#160;over&#160;successive&#160;generations,&#160;the<br/>average&#160;improvement&#160;in&#160;scale&#160;invariant&#160;behavior&#160;was&#160;driven&#160;by<br/>another&#160;size&#160;scale.&#160;The&#160;largest&#160;fractal&#160;scale&#160;more&#160;consistently<br/>trends&#160;upward&#160;in&#160;performance,&#160;relative&#160;to&#160;the&#160;middle&#160;and&#160;basal<br/>fractal&#160;scales.&#160;This&#160;is&#160;likely&#160;due&#160;to&#160;the&#160;increased&#160;mass,&#160;but&#160;fixed<br/>elastic&#160;modulus&#160;and&#160;actuation&#160;amplitude,&#160;of&#160;the&#160;robot&#160;at&#160;larger<br/>fractal&#160;scales.</p>
+<p style="position:absolute;top:806px;left:88px;white-space:nowrap" class="ft60">Evolved&#160;fractals.</p>
+<p style="position:absolute;top:806px;left:200px;white-space:nowrap" class="ft60">The&#160;confidence&#160;bands&#160;visible&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">6</a></p>
+<p style="position:absolute;top:824px;left:73px;white-space:nowrap" class="ft65">indicate&#160;that&#160;evolution&#160;did&#160;not&#160;converge&#160;to&#160;a&#160;single&#160;fractal<br/>design&#160;across&#160;the&#160;ten&#160;trials.&#160;The&#160;diversity&#160;of&#160;form&#160;can&#160;be<br/>seen&#160;in&#160;the&#160;four&#160;evolved&#160;robots&#160;drawn&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4&#160;</a>at&#160;the&#160;three<br/>fractal&#160;scales.&#160;These&#160;four&#160;robots&#160;have&#160;interesting&#160;roughness:<br/>fractal&#160;geometries&#160;that&#160;fill&#160;much&#160;more&#160;than&#160;a&#160;2D&#160;plane&#160;but<br/>less&#160;than&#160;a&#160;full&#160;3D&#160;cube.&#160;Their&#160;roughness&#160;is&#160;formally&#160;measured<br/>by&#160;their&#160;Hausdorff&#160;dimension&#160;(Eq.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#2">1),&#160;</a>which&#160;is&#160;plotted&#160;over<br/>evolutionary&#160;time&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">8.&#160;</a>Early&#160;in&#160;evolution&#160;there&#160;were&#160;some<br/>full&#160;cubes&#160;(H&#160;=&#160;3).&#160;At&#160;the&#160;end&#160;of&#160;evolution&#160;there&#160;were&#160;five<br/>full&#160;planes&#160;(H&#160;=&#160;2)&#160;and&#160;five&#160;designs&#160;with&#160;more&#160;roughness<br/>(2.5&#160;&lt;&#160;H&#160;&lt;&#160;2.7).&#160;As&#160;the&#160;basal&#160;shape&#160;changes&#160;in&#160;each&#160;column<br/>of&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4,&#160;</a>so&#160;too&#160;does&#160;the&#160;distribution&#160;of&#160;performance&#160;at&#160;each<br/>size&#160;scale.&#160;For&#160;some&#160;shapes,&#160;performance&#160;was&#160;highest&#160;at&#160;the<br/>smallest&#160;fractal&#160;scale&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4a,c).&#160;</a>For&#160;others,&#160;performance&#160;was<br/>highest&#160;at&#160;the&#160;middle&#160;fractal&#160;scale&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4b,d).&#160;</a>Some&#160;have&#160;more</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft65">uniform&#160;performance&#160;across&#160;size&#160;scales&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4b,c).&#160;</a>Others<br/>have&#160;one&#160;size&#160;scale&#160;in&#160;which&#160;performance&#160;is&#160;two&#160;or&#160;three&#160;times<br/>as&#160;high&#160;as&#160;their&#160;next&#160;best&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4a,d).</a></p>
+<p style="position:absolute;top:143px;left:483px;white-space:nowrap" class="ft60">Comparison&#160;to&#160;non-fractals.</p>
+<p style="position:absolute;top:143px;left:660px;white-space:nowrap" class="ft60">To&#160;determine&#160;how&#160;much&#160;(if&#160;at</p>
+<p style="position:absolute;top:161px;left:468px;white-space:nowrap" class="ft65">all)&#160;fractals&#160;aid&#160;the&#160;evolution&#160;of&#160;scale&#160;invariant&#160;behavior,&#160;we<br/>compared&#160;against&#160;an&#160;otherwise&#160;equivalent&#160;algorithm&#160;that&#160;freely<br/>combines&#160;3&#160;cm&#160;basal&#160;robots&#160;into&#160;any&#160;aggregate&#160;structure&#160;within<br/>a&#160;9&#160;cm2&#160;bounding&#160;box,&#160;without&#160;imposing&#160;self-similarity.&#160;At&#160;the<br/>third&#160;fractal&#160;size&#160;scale,&#160;aggregates&#160;are&#160;freely&#160;combined&#160;within<br/>a&#160;27&#160;cm2&#160;bounding&#160;box&#160;to&#160;form&#160;an&#160;aggregate&#160;of&#160;aggregates<br/>of&#160;basal&#160;robots.&#160;Because&#160;we&#160;removed&#160;the&#160;assumption&#160;of<br/>self-similarity,&#160;some&#160;rule&#160;must&#160;be&#160;introduced&#160;to&#160;orchestrate<br/>aggregation&#160;at&#160;every&#160;size&#160;scale.&#160;Because&#160;additional&#160;selection<br/>pressures&#160;are&#160;necessary&#160;to&#160;induce&#160;modularity&#160;in&#160;separate<br/>outputs&#160;of&#160;the&#160;same&#160;CPPN&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[5],&#160;</a>we&#160;here&#160;use&#160;three&#160;independent<br/>CPPNs&#160;to&#160;dictate&#160;the&#160;shape&#160;at&#160;the&#160;three&#160;size&#160;scales.</p>
+<p style="position:absolute;top:376px;left:483px;white-space:nowrap" class="ft60">Note&#160;that&#160;if&#160;modularity&#160;was&#160;not&#160;artificially&#160;induced,&#160;then</p>
+<p style="position:absolute;top:394px;left:468px;white-space:nowrap" class="ft65">the&#160;aggregation&#160;strategies&#160;produced&#160;by&#160;a&#160;single&#160;CPPN&#160;would<br/>by&#160;default&#160;be&#160;strongly&#160;correlated,&#160;yielding&#160;fractals,&#160;and&#160;thus<br/>defeating&#160;the&#160;purpose&#160;of&#160;this&#160;control&#160;experiment.&#160;However,<br/>fractals&#160;can&#160;emerge&#160;spontaneously&#160;under&#160;these&#160;conditions&#160;if<br/>the&#160;independent&#160;CPPNs&#160;converge&#160;to&#160;identical&#160;aggregation<br/>functions&#160;that&#160;mirror&#160;the&#160;basal&#160;robot’s&#160;internal&#160;voxel&#160;structure.</p>
+<p style="position:absolute;top:502px;left:483px;white-space:nowrap" class="ft60">The&#160;behavior&#160;of&#160;a&#160;random&#160;nonfractal&#160;robot&#160;(before&#160;evolu-</p>
+<p style="position:absolute;top:520px;left:468px;white-space:nowrap" class="ft65">tion)&#160;can&#160;be&#160;seen&#160;<a href="https://youtu.be/oJsRpRkQ9F0">here.&#160;</a>The&#160;results&#160;after&#160;evolution&#160;indicate<br/>that&#160;searching&#160;for&#160;multiple&#160;aggregation&#160;policies,&#160;even&#160;just&#160;a<br/>two&#160;size&#160;scales,&#160;can&#160;significantly&#160;slow&#160;the&#160;evolution&#160;of&#160;scale<br/>invariant&#160;behavior&#160;compared&#160;to&#160;assuming&#160;fractality&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">7).</a></p>
+<p style="position:absolute;top:592px;left:483px;white-space:nowrap" class="ft60">Transferal&#160;to&#160;reality.</p>
+<p style="position:absolute;top:592px;left:609px;white-space:nowrap" class="ft60">Two&#160;additional&#160;evolutionary&#160;trials&#160;were</p>
+<p style="position:absolute;top:610px;left:468px;white-space:nowrap" class="ft65">conducted.&#160;In&#160;the&#160;first,&#160;we&#160;used&#160;phase&#160;shifted&#160;actuation:&#160;Instead<br/>of&#160;using&#160;cyan&#160;and&#160;red&#160;voxels&#160;that&#160;actuate&#160;in&#160;anti-phase,&#160;a<br/>wave&#160;of&#160;phase&#160;shifted&#160;actuation&#160;propagates&#160;through&#160;the&#160;body,<br/>from&#160;anterior&#160;to&#160;posterior,&#160;repeating&#160;every&#160;0.2&#160;seconds.&#160;This<br/>experiment&#160;was&#160;conducted&#160;a&#160;few&#160;weeks&#160;before&#160;the&#160;experiments<br/>using&#160;anti-phase&#160;materials&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4).&#160;</a>Thus,&#160;the&#160;robot&#160;with<br/>the&#160;most&#160;scale&#160;invariant&#160;behavior&#160;that&#160;evolved&#160;under&#160;these<br/>conditions&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#11">10)&#160;</a>was&#160;the&#160;first&#160;to&#160;be&#160;manufactured&#160;in&#160;reality<br/>(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#1">1).</a></p>
+<p style="position:absolute;top:771px;left:483px;white-space:nowrap" class="ft60">After&#160;observing&#160;the&#160;transferal&#160;of&#160;a&#160;phase&#160;shifted&#160;actuation,</p>
+<p style="position:absolute;top:789px;left:468px;white-space:nowrap" class="ft65">a&#160;single&#160;bladder&#160;design&#160;was&#160;evolved&#160;in&#160;which&#160;all&#160;basal&#160;robots<br/>synchronized&#160;their&#160;actuation&#160;in&#160;time&#160;(zero&#160;phase-offsets&#160;across<br/>the&#160;body).&#160;The&#160;evolved&#160;single&#160;actuator&#160;fractal&#160;robot&#160;with&#160;the<br/>most&#160;scale&#160;invariant&#160;behavior&#160;was&#160;then&#160;fabricated.&#160;The&#160;winning<br/>design&#160;is&#160;shown&#160;in&#160;simulation&#160;and&#160;reality&#160;in&#160;Figs.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#2">3&#160;</a>and&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#12">11,<br/></a>respectively.</p>
+<p style="position:absolute;top:908px;left:468px;white-space:nowrap" class="ft60">B.&#160;Physical&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:932px;left:483px;white-space:nowrap" class="ft60">The&#160;best&#160;evolved&#160;fractal&#160;robot&#160;utilizing&#160;a&#160;phase&#160;shifted&#160;actu-</p>
+<p style="position:absolute;top:950px;left:468px;white-space:nowrap" class="ft65">ation&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#1">1)&#160;</a>was&#160;fabricated&#160;first&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#4">5).&#160;</a>At&#160;the&#160;basal&#160;fractal<br/>scale,&#160;the&#160;robot&#160;was&#160;actuated&#160;with&#160;'&#160;6&#160;kPa&#160;at&#160;a&#160;frequency&#160;of<br/>3&#160;Hz&#160;and&#160;a&#160;locomotion&#160;behavior&#160;was&#160;observed&#160;similar&#160;to&#160;the<br/>prediction&#160;from&#160;simulation.&#160;At&#160;the&#160;middle&#160;fractal&#160;scale,&#160;the<br/>robot&#160;was&#160;first&#160;actuated&#160;using&#160;a&#160;cam&#160;system&#160;which&#160;was&#160;pow-<br/>ered&#160;by&#160;a&#160;DC&#160;motor&#160;(Pololu&#160;131:1)&#160;with&#160;maximum&#160;rotational<br/>speed&#160;of&#160;72&#160;RPM&#160;and&#160;designed&#160;to&#160;operate&#160;two&#160;piston-cylinder<br/>assemblies&#160;(Clippard&#160;Inc.)&#160;for&#160;pressurizing/depressurizing&#160;the</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft64">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:9px;font-family:Times;color:#000000;}
+	.ft71{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft72{font-size:12px;font-family:Times;color:#000000;}
+	.ft73{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft74{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+	.ft75{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft76{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:569px;left:73px;white-space:nowrap" class="ft70">Fig.&#160;9.</p>
+<p style="position:absolute;top:569px;left:118px;white-space:nowrap" class="ft70">Culturing&#160;fractal&#160;biobots.&#160;Embryonic&#160;amphibian&#160;stem&#160;cells&#160;(Xenopus&#160;laevis&#160;species)&#160;form&#160;spheres&#160;of&#160;motile&#160;(ciliated-driven)&#160;epidermis&#160;(a)&#160;without</p>
+<p style="position:absolute;top:583px;left:73px;white-space:nowrap" class="ft74">additional&#160;intervention.&#160;Spheroids&#160;can&#160;be&#160;combined&#160;into&#160;various&#160;macro-combinations&#160;(a’,&#160;a”)&#160;through&#160;the&#160;induction&#160;of&#160;a&#160;laceration,&#160;which&#160;allows&#160;individual<br/>xenobots&#160;to&#160;fuse&#160;at&#160;the&#160;wound&#160;site&#160;<a href="https://youtu.be/qgsz8Sq621I">(video).&#160;</a>Using&#160;a&#160;separate&#160;construction&#160;method&#160;which&#160;removes&#160;the&#160;outer&#160;pigmented&#160;cell&#160;layer&#160;(b),&#160;spheroids&#160;are&#160;naturally<br/>sticky&#160;and&#160;can&#160;be&#160;daisy-chained&#160;through&#160;simple&#160;contact&#160;(b’)&#160;enabling&#160;rapid&#160;connection&#160;of&#160;tens&#160;or&#160;hundreds&#160;of&#160;individuals&#160;(b”)&#160;<a href="https://youtu.be/YCvmK_UBF9U">(video).&#160;</a>Scale&#160;bars:&#160;500µm.</p>
+<p style="position:absolute;top:644px;left:73px;white-space:nowrap" class="ft75">robot.&#160;This&#160;design&#160;led&#160;to&#160;a&#160;controlled&#160;actuation&#160;of&#160;the&#160;robot<br/>with&#160;maximum&#160;'&#160;4&#160;kPa&#160;pressure&#160;at&#160;a&#160;maximum&#160;frequency&#160;of<br/>1.2&#160;Hz.&#160;This&#160;combination&#160;of&#160;the&#160;pressure&#160;and&#160;frequency&#160;did&#160;not<br/>lead&#160;to&#160;locomotion&#160;for&#160;the&#160;robot.&#160;Due&#160;to&#160;this&#160;limitation&#160;of&#160;the<br/>cam&#160;system,&#160;a&#160;secondary&#160;testing&#160;method&#160;was&#160;also&#160;employed<br/>in&#160;which&#160;the&#160;pressure&#160;inlet&#160;was&#160;manually&#160;switched&#160;between&#160;an<br/>airline&#160;with&#160;20&#160;kPa&#160;pressure&#160;and&#160;a&#160;vacuum&#160;pump&#160;for&#160;50&#160;cycles<br/>resulting&#160;in&#160;an&#160;average&#160;actuation&#160;frequency&#160;of&#160;0.55&#160;Hz.&#160;The<br/>robot&#160;was&#160;then&#160;able&#160;to&#160;locomote&#160;at&#160;the&#160;middle&#160;fractal&#160;scale,<br/>but&#160;at&#160;a&#160;much&#160;lower&#160;speed&#160;compared&#160;to&#160;the&#160;basal&#160;scale,&#160;due&#160;to<br/>hardware&#160;constraints&#160;in&#160;applying&#160;similar&#160;combination&#160;of&#160;input<br/>pressure&#160;and&#160;actuation&#160;frequency.</p>
+<p style="position:absolute;top:896px;left:88px;white-space:nowrap" class="ft72">The&#160;best&#160;evolved&#160;single&#160;actuator&#160;fractal&#160;robot&#160;was&#160;the&#160;second</p>
+<p style="position:absolute;top:914px;left:73px;white-space:nowrap" class="ft75">design&#160;to&#160;be&#160;fabricated&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#2">3).&#160;</a>In&#160;the&#160;single&#160;actuator&#160;case,<br/>scale&#160;invariant&#160;behavior&#160;successfully&#160;transferred:&#160;the&#160;physical<br/>robot&#160;behaved&#160;similarly&#160;at&#160;the&#160;basal&#160;and&#160;middle&#160;fractal&#160;scales.<br/>However,&#160;the&#160;direction&#160;of&#160;the&#160;robot’s&#160;movement&#160;did&#160;not&#160;match<br/>the&#160;prediction&#160;from&#160;simulation.&#160;We&#160;suspect&#160;that&#160;this&#160;is&#160;due<br/>to&#160;an&#160;overly&#160;simplistic&#160;(Coulomb)&#160;friction&#160;model.&#160;Given&#160;that<br/>the&#160;direction&#160;of&#160;locomotion&#160;for&#160;soft&#160;robots&#160;can&#160;be&#160;reversed<br/>by&#160;tuning&#160;the&#160;tribological&#160;properties&#160;of&#160;the&#160;surface&#160;plane&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[23],<br/></a>future&#160;work&#160;should&#160;either&#160;modify&#160;the&#160;simulator,&#160;or&#160;the&#160;physical<br/>surface&#160;on&#160;which&#160;the&#160;robot&#160;operates,&#160;or&#160;both.</p>
+<p style="position:absolute;top:644px;left:468px;white-space:nowrap" class="ft72">C.&#160;Living&#160;fractal&#160;biobots.</p>
+<p style="position:absolute;top:666px;left:483px;white-space:nowrap" class="ft72">In&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#7">9&#160;</a>living&#160;xenobots&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[16]&#160;</a>were&#160;formed&#160;from&#160;amphibian</p>
+<p style="position:absolute;top:684px;left:468px;white-space:nowrap" class="ft76">stem&#160;cells&#160;harvested&#160;from&#160;embryos&#160;of&#160;the&#160;African&#160;clawed&#160;frog<br/>Xenopus&#160;laevis</p>
+<p style="position:absolute;top:702px;left:562px;white-space:nowrap" class="ft72">.&#160;The&#160;apical&#160;surface&#160;of&#160;individual&#160;spheroids</p>
+<p style="position:absolute;top:720px;left:468px;white-space:nowrap" class="ft75">are&#160;not&#160;naturally&#160;adherent&#160;to&#160;neighbors,&#160;however,&#160;following<br/>mechanical&#160;laceration&#160;with&#160;microsurgery&#160;forceps&#160;individuals<br/>can&#160;be&#160;attached&#160;to&#160;one&#160;another&#160;during&#160;the&#160;healing&#160;process.<br/>This&#160;attachment&#160;is&#160;stable&#160;(connected&#160;members&#160;can&#160;be&#160;pushed<br/>with&#160;forceps&#160;or&#160;moved&#160;via&#160;pipetting&#160;without&#160;detaching)&#160;and<br/>permanent,&#160;although&#160;members&#160;can&#160;be&#160;manually&#160;decoupled<br/>through&#160;bisection&#160;with&#160;forceps&#160;or&#160;a&#160;scalpel.</p>
+<p style="position:absolute;top:846px;left:483px;white-space:nowrap" class="ft72">If&#160;the&#160;pigmented&#160;outer&#160;epidermal&#160;layer&#160;is&#160;removed&#160;during</p>
+<p style="position:absolute;top:864px;left:468px;white-space:nowrap" class="ft75">construction,&#160;the&#160;resultant&#160;biobot&#160;is&#160;naturally&#160;adherent&#160;to<br/>neighbors&#160;through&#160;contact—allowing&#160;for&#160;the&#160;rapid&#160;connection<br/>of&#160;many&#160;individuals.&#160;Long&#160;term&#160;stability&#160;is&#160;less&#160;using&#160;this<br/>construction&#160;method&#160;as&#160;the&#160;increased&#160;adherence&#160;can&#160;result&#160;in<br/>neighbors&#160;fusing&#160;into&#160;one&#160;large&#160;spheroid.&#160;Future&#160;work&#160;would<br/>allow&#160;these&#160;connected&#160;systems&#160;to&#160;be&#160;stacked&#160;vertically,&#160;creating<br/>three&#160;dimensional&#160;fractalized&#160;designs.</p>
+<p style="position:absolute;top:999px;left:603px;white-space:nowrap" class="ft72">IV.&#160;DISCUSSION</p>
+<p style="position:absolute;top:1021px;left:483px;white-space:nowrap" class="ft72">In&#160;this&#160;paper,&#160;scale&#160;invariant&#160;robot&#160;behavior&#160;was&#160;achieved</p>
+<p style="position:absolute;top:1039px;left:468px;white-space:nowrap" class="ft75">using&#160;fractals.&#160;The&#160;results&#160;demonstrate&#160;that,&#160;under&#160;certain<br/>conditions,&#160;the&#160;nonrandom&#160;behavior&#160;of&#160;a&#160;single&#160;robot&#160;can<br/>be&#160;preserved&#160;when&#160;connected&#160;with&#160;copies&#160;of&#160;itself&#160;fractally.</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft73">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:12px;font-family:Times;color:#000000;}
+	.ft81{font-size:8px;font-family:Times;color:#000000;}
+	.ft82{font-size:9px;font-family:Times;color:#000000;}
+	.ft83{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft84{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft85{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft84">However,&#160;this&#160;depends&#160;on&#160;the&#160;morphology&#160;of&#160;the&#160;basal&#160;robot.&#160;A<br/>majority&#160;of&#160;the&#160;fractals&#160;tested&#160;did&#160;not&#160;exhibit&#160;the&#160;same&#160;behavior<br/>at&#160;multiple&#160;size&#160;scales.&#160;An&#160;evolutionary&#160;algorithm&#160;was&#160;used&#160;to<br/>weed&#160;out&#160;robots&#160;that&#160;behaved&#160;incorrectly&#160;at&#160;any&#160;of&#160;the&#160;tested<br/>size&#160;scales.</p>
+<p style="position:absolute;top:179px;left:88px;white-space:nowrap" class="ft80">Fractal&#160;robots&#160;were&#160;fabricated&#160;in&#160;reality&#160;using&#160;two&#160;distinct</p>
+<p style="position:absolute;top:197px;left:73px;white-space:nowrap" class="ft84">hardware&#160;platforms:&#160;pneumatic&#160;soft&#160;robots&#160;and&#160;ciliated&#160;biobots.<br/>Using&#160;pneumatically&#160;actuated&#160;silicone&#160;bladders,&#160;two&#160;centime-<br/>ters&#160;across,&#160;self&#160;similar&#160;structure&#160;was&#160;readily&#160;assembled,&#160;and<br/>the&#160;physical&#160;robot&#160;exhibited&#160;scale&#160;invariant&#160;behavior.&#160;However,<br/>the&#160;amount&#160;of&#160;locomotion&#160;was&#160;limited&#160;and&#160;the&#160;direction&#160;did<br/>not&#160;always&#160;match&#160;the&#160;simulated&#160;prediction.&#160;The&#160;micrometer<br/>length&#160;scale&#160;biobots&#160;investigated&#160;here&#160;exhibited&#160;spontaneous<br/>attachment&#160;and&#160;scale&#160;invariant&#160;behavior&#160;up&#160;to&#160;supermillimeter<br/>length&#160;scales.&#160;However,&#160;self&#160;similar&#160;structure&#160;was&#160;more&#160;chal-<br/>lenging&#160;to&#160;produce&#160;out&#160;of&#160;plane.</p>
+<p style="position:absolute;top:376px;left:88px;white-space:nowrap" class="ft80">The&#160;following&#160;discussion&#160;highlights&#160;the&#160;key&#160;limitations&#160;of</p>
+<p style="position:absolute;top:394px;left:73px;white-space:nowrap" class="ft84">the&#160;current&#160;methods&#160;and&#160;important&#160;opportunities&#160;for&#160;future<br/>work.</p>
+<p style="position:absolute;top:442px;left:73px;white-space:nowrap" class="ft80">A.&#160;Limitations&#160;of&#160;current&#160;fractal&#160;design.</p>
+<p style="position:absolute;top:465px;left:88px;white-space:nowrap" class="ft80">For&#160;locomotion&#160;on&#160;a&#160;flat&#160;surface&#160;plane,&#160;larger&#160;robots&#160;can</p>
+<p style="position:absolute;top:483px;left:73px;white-space:nowrap" class="ft84">move&#160;farther&#160;in&#160;terms&#160;of&#160;raw&#160;distance&#160;but&#160;not&#160;necessarily<br/>in&#160;terms&#160;of&#160;body&#160;lengths&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#5">6),&#160;</a>and&#160;they&#160;cannot&#160;fit&#160;into<br/>smaller&#160;3D&#160;spatial&#160;constraints.&#160;If&#160;a&#160;robot’s&#160;task&#160;environment&#160;is<br/>constrained&#160;spatially&#160;in&#160;one&#160;dimension&#160;(e.g.&#160;a&#160;low&#160;overhang)<br/>or&#160;two&#160;dimensions&#160;(e.g.&#160;a&#160;narrow&#160;pipe)&#160;then&#160;the&#160;Mengerian<br/>fractalization&#160;(Figs.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#2">2&#160;</a>and&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#3">4)&#160;</a>used&#160;here&#160;may&#160;not&#160;be&#160;appropriate.<br/>Thus,&#160;instead&#160;of&#160;uniformly&#160;repeating&#160;basal&#160;robots&#160;in&#160;3D&#160;space,<br/>future&#160;work&#160;will&#160;explore&#160;allometry:&#160;how&#160;fractals&#160;may&#160;expand<br/>at&#160;different&#160;rates&#160;along&#160;different&#160;axes,&#160;as&#160;dictated&#160;by&#160;physical<br/>constraints&#160;and&#160;selection&#160;for&#160;specific&#160;target&#160;behaviors.</p>
+<p style="position:absolute;top:663px;left:88px;white-space:nowrap" class="ft80">It&#160;is&#160;also&#160;possible&#160;that&#160;the&#160;coordinate&#160;system&#160;itself&#160;was&#160;a</p>
+<p style="position:absolute;top:681px;left:73px;white-space:nowrap" class="ft84">poor&#160;choice.&#160;A&#160;cubic&#160;grid&#160;was&#160;assumed&#160;because&#160;the&#160;simulator<br/>we&#160;used&#160;was&#160;voxel-based.&#160;However,&#160;fractals&#160;formed&#160;using<br/>using&#160;spherical&#160;modules&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#9">[19,&#160;</a><a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">34]&#160;</a>and&#160;spherical&#160;coordinates<br/>(Mandelbulbs)&#160;may&#160;be&#160;better&#160;suited&#160;for&#160;forms&#160;and&#160;functions<br/>that&#160;depend&#160;on&#160;radial&#160;symmetries.</p>
+<p style="position:absolute;top:771px;left:88px;white-space:nowrap" class="ft80">In&#160;addition&#160;to&#160;self-similar&#160;geometry&#160;and&#160;movement,&#160;a&#160;sys-</p>
+<p style="position:absolute;top:789px;left:73px;white-space:nowrap" class="ft84">tem’s&#160;statics&#160;(e.g.&#160;structural&#160;integrity)&#160;could&#160;also&#160;be&#160;fratalic.<br/>Such&#160;a&#160;robot&#160;may&#160;not&#160;look&#160;the&#160;same&#160;at&#160;all&#160;scales&#160;but&#160;it<br/>would&#160;resist&#160;forces&#160;passively&#160;in&#160;the&#160;same&#160;way.&#160;Scale&#160;invariant<br/>statics&#160;could&#160;also&#160;provide&#160;an&#160;easier&#160;target&#160;than&#160;scale&#160;invariant<br/>movement&#160;for&#160;system&#160;identification&#160;and&#160;calibrating&#160;simulations<br/>prior&#160;to&#160;optimization&#160;and&#160;mass&#160;manufacture.</p>
+<p style="position:absolute;top:896px;left:88px;white-space:nowrap" class="ft80">Finally,&#160;it&#160;should&#160;be&#160;noted&#160;that&#160;the&#160;choice&#160;of&#160;a&#160;synchronous</p>
+<p style="position:absolute;top:914px;left:73px;white-space:nowrap" class="ft84">evolutionary&#160;algorithm&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">[31]&#160;</a>was&#160;somewhat&#160;arbitrary.&#160;It&#160;is&#160;likely<br/>that&#160;other&#160;computational&#160;search&#160;methods&#160;that&#160;are&#160;capable&#160;of<br/>producing&#160;self&#160;similar&#160;robot&#160;forms&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#10">[35,&#160;38]&#160;</a>could&#160;be&#160;modified<br/>to&#160;generate&#160;scale&#160;invariant&#160;behavior&#160;in&#160;a&#160;similar&#160;fashion.</p>
+<p style="position:absolute;top:998px;left:73px;white-space:nowrap" class="ft80">B.&#160;Limitations&#160;of&#160;current&#160;physical&#160;fractal&#160;robots.</p>
+<p style="position:absolute;top:1021px;left:88px;white-space:nowrap" class="ft80">As&#160;the&#160;number&#160;of&#160;modules&#160;within&#160;a&#160;fractal&#160;robot&#160;increases</p>
+<p style="position:absolute;top:1039px;left:73px;white-space:nowrap" class="ft84">at&#160;higher&#160;size&#160;scales,&#160;so&#160;does&#160;the&#160;volume&#160;of&#160;the&#160;air&#160;required&#160;to<br/>attain&#160;a&#160;given&#160;pressure&#160;level.&#160;This&#160;makes&#160;pressurizing&#160;a&#160;larger<br/>fractal&#160;robot&#160;at&#160;high&#160;frequency&#160;more&#160;challenging.&#160;The&#160;modules</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft84">fabricated&#160;here&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#1">1e)&#160;</a>had&#160;a&#160;chamber&#160;volume&#160;of&#160;18&#160;cm3.<br/>When&#160;18&#160;of&#160;these&#160;modules&#160;were&#160;assembled&#160;to&#160;form&#160;a&#160;fractal<br/>(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#4">5h)&#160;</a>the&#160;chamber&#160;volume&#160;increased&#160;to&#160;182&#160;=&#160;324&#160;cm3,<br/>which&#160;was&#160;more&#160;difficult&#160;to&#160;actuate&#160;at&#160;higher&#160;frequencies&#160;and<br/>thus&#160;slowed&#160;the&#160;robot’s&#160;locomotion&#160;speed.&#160;To&#160;facilitate&#160;the<br/>actuation&#160;of&#160;the&#160;physical&#160;fractal&#160;robots,&#160;the&#160;volume&#160;of&#160;the<br/>base&#160;module&#160;should&#160;be&#160;miniaturized&#160;as&#160;much&#160;as&#160;the&#160;fabrication<br/>procedure&#160;allows.&#160;The&#160;number&#160;of&#160;pistons&#160;in&#160;the&#160;cam&#160;testing<br/>system&#160;could&#160;also&#160;be&#160;increased&#160;to&#160;allow&#160;for&#160;a&#160;higher&#160;pressure<br/>within&#160;robot&#160;while&#160;maintaining&#160;a&#160;high&#160;frequency.</p>
+<p style="position:absolute;top:268px;left:483px;white-space:nowrap" class="ft80">The&#160;designs&#160;transferred&#160;from&#160;simulation&#160;to&#160;reality&#160;in&#160;this</p>
+<p style="position:absolute;top:286px;left:468px;white-space:nowrap" class="ft84">paper&#160;served&#160;as&#160;a&#160;proof&#160;of&#160;principle&#160;that&#160;fractal&#160;robots&#160;with<br/>scale&#160;invariant&#160;behavior&#160;could&#160;in&#160;fact&#160;be&#160;realized.&#160;However,&#160;it<br/>may&#160;be&#160;impossible&#160;in&#160;practice&#160;to&#160;retain&#160;a&#160;useful&#160;behavior&#160;across<br/>a&#160;meaningful&#160;range&#160;of&#160;length&#160;scales&#160;using&#160;current&#160;soft&#160;robot<br/>technologies,&#160;such&#160;as&#160;those&#160;that&#160;rely&#160;on&#160;pneumatic&#160;actuation.</p>
+<p style="position:absolute;top:388px;left:468px;white-space:nowrap" class="ft80">C.&#160;Limitations&#160;of&#160;current&#160;fractal&#160;biobots.</p>
+<p style="position:absolute;top:411px;left:483px;white-space:nowrap" class="ft80">The&#160;construction&#160;of&#160;fractalized&#160;biobots&#160;faces&#160;a&#160;number&#160;of</p>
+<p style="position:absolute;top:429px;left:468px;white-space:nowrap" class="ft84">biological&#160;challenges&#160;and&#160;constraints.&#160;First,&#160;the&#160;developmen-<br/>tal&#160;timing&#160;permissive&#160;for&#160;attachment&#160;is&#160;narrow&#160;and&#160;requires<br/>frequent&#160;manual&#160;manipulation.&#160;If&#160;development&#160;is&#160;too&#160;early<br/>(less&#160;than&#160;24&#160;hours&#160;of&#160;culturing),&#160;individuals&#160;fuse&#160;completely<br/>forming&#160;one&#160;large&#160;sphere,&#160;and&#160;if&#160;development&#160;is&#160;too&#160;late<br/>(48&#160;hours&#160;or&#160;more)&#160;the&#160;outer&#160;surface&#160;becomes&#160;covered&#160;natu-<br/>rally&#160;occurring&#160;mucus,&#160;making&#160;attachment&#160;difficult.&#160;Second,<br/>individuals&#160;must&#160;be&#160;manually&#160;connected&#160;and&#160;observed&#160;for<br/>healing&#160;for&#160;10-20&#160;minutes&#160;each,&#160;necessitating&#160;significant&#160;time<br/>for&#160;husbandry&#160;from&#160;the&#160;investigator.&#160;Finally,&#160;living&#160;biological<br/>system&#160;are&#160;not&#160;static&#160;and&#160;continue&#160;to&#160;remodel&#160;throughout&#160;their<br/>lifespan.&#160;Cell&#160;division&#160;and&#160;cell&#160;death&#160;are&#160;natural&#160;components<br/>of&#160;all&#160;developmental&#160;systems,&#160;which&#160;makes&#160;the&#160;long-term<br/>stability&#160;of&#160;such&#160;fractalized&#160;designs&#160;an&#160;interesting&#160;area&#160;of&#160;study.</p>
+<p style="position:absolute;top:692px;left:583px;white-space:nowrap" class="ft80">ACKNOWLEDGEMENTS</p>
+<p style="position:absolute;top:716px;left:483px;white-space:nowrap" class="ft80">This&#160;work&#160;was&#160;supported&#160;by&#160;DARPA&#160;contract&#160;HR0011-18-</p>
+<p style="position:absolute;top:734px;left:468px;white-space:nowrap" class="ft84">2-0022,&#160;NSF&#160;EFRI&#160;award&#160;1830870,&#160;and&#160;NSF&#160;NAIRI&#160;award<br/>2020247.</p>
+<p style="position:absolute;top:782px;left:614px;white-space:nowrap" class="ft80">REFERENCES</p>
+<p style="position:absolute;top:806px;left:475px;white-space:nowrap" class="ft80">[1]&#160;Kellar&#160;Autumn,&#160;Yiching&#160;A&#160;Liang,&#160;S&#160;Tonia&#160;Hsieh,&#160;Wolf-</p>
+<p style="position:absolute;top:824px;left:500px;white-space:nowrap" class="ft84">gang&#160;Zesch,&#160;Wai&#160;Pang&#160;Chan,&#160;Thomas&#160;W&#160;Kenny,&#160;Ronald<br/>Fearing,&#160;and&#160;Robert&#160;J&#160;Full.&#160;Adhesive&#160;force&#160;of&#160;a&#160;single<br/>gecko&#160;foot-hair.&#160;Nature,&#160;405(6787):681–685,&#160;2000.</p>
+<p style="position:absolute;top:878px;left:475px;white-space:nowrap" class="ft80">[2]&#160;Douglas&#160;Blackiston,&#160;Emma&#160;Lederer,&#160;Sam&#160;Kriegman,&#160;Si-</p>
+<p style="position:absolute;top:896px;left:500px;white-space:nowrap" class="ft84">mon&#160;Garnier,&#160;Josh&#160;Bongard,&#160;and&#160;Michael&#160;Levin.&#160;A&#160;new<br/>cellular&#160;platform&#160;for&#160;the&#160;development&#160;of&#160;synthetic&#160;living<br/>machines.&#160;Science&#160;Robotics,&#160;6(52):eabf1571,&#160;2021.</p>
+<p style="position:absolute;top:950px;left:475px;white-space:nowrap" class="ft80">[3]&#160;Josh&#160;C&#160;Bongard&#160;and&#160;Rolf&#160;Pfeifer.&#160;Repeated&#160;structure&#160;and</p>
+<p style="position:absolute;top:968px;left:500px;white-space:nowrap" class="ft84">dissociation&#160;of&#160;genotypic&#160;and&#160;phenotypic&#160;complexity&#160;in<br/>artificial&#160;ontogeny.&#160;In&#160;Proceedings&#160;of&#160;the&#160;3rd&#160;Annual<br/>Conference&#160;on&#160;Genetic&#160;and&#160;Evolutionary&#160;Computation<br/>(GECCO)</p>
+<p style="position:absolute;top:1021px;left:561px;white-space:nowrap" class="ft80">,&#160;page&#160;829–836,&#160;2001.</p>
+<p style="position:absolute;top:1039px;left:475px;white-space:nowrap" class="ft80">[4]&#160;Nick&#160;Cheney,&#160;Robert&#160;MacCurdy,&#160;Jeff&#160;Clune,&#160;and&#160;Hod</p>
+<p style="position:absolute;top:1057px;left:500px;white-space:nowrap" class="ft84">Lipson.&#160;Unshackling&#160;evolution:&#160;evolving&#160;soft&#160;robots&#160;with<br/>multiple&#160;materials&#160;and&#160;a&#160;powerful&#160;generative&#160;encoding.</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft83">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:12px;font-family:Times;color:#000000;}
+	.ft91{font-size:12px;font-family:Times;color:#0000ff;}
+	.ft92{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft93{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft94{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft95{font-size:12px;line-height:17px;font-family:Times;color:#0000ff;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:106px;white-space:nowrap" class="ft93">In&#160;Proceedings&#160;of&#160;the&#160;Genetic&#160;and&#160;Evolutionary&#160;Com-<br/>putation&#160;Conference&#160;(GECCO)</p>
+<p style="position:absolute;top:107px;left:298px;white-space:nowrap" class="ft90">,&#160;pages&#160;167–174.&#160;ACM,</p>
+<p style="position:absolute;top:125px;left:106px;white-space:nowrap" class="ft90">2013.</p>
+<p style="position:absolute;top:143px;left:81px;white-space:nowrap" class="ft90">[5]&#160;Jeff&#160;Clune,&#160;Benjamin&#160;E&#160;Beckmann,&#160;Philip&#160;K&#160;McKinley,</p>
+<p style="position:absolute;top:161px;left:106px;white-space:nowrap" class="ft94">and&#160;Charles&#160;Ofria.&#160;Investigating&#160;whether&#160;HyperNEAT<br/>produces&#160;modular&#160;neural&#160;networks.&#160;In&#160;Proceedings&#160;of<br/>the&#160;Genetic&#160;and&#160;Evolutionary&#160;Computation&#160;Conference<br/>(GECCO)</p>
+<p style="position:absolute;top:214px;left:166px;white-space:nowrap" class="ft90">,&#160;pages&#160;635–642,&#160;2010.</p>
+<p style="position:absolute;top:232px;left:81px;white-space:nowrap" class="ft90">[6]&#160;Jonathan&#160;A&#160;Fan,&#160;Woon-Hong&#160;Yeo,&#160;Yewang&#160;Su,&#160;Yoshiaki</p>
+<p style="position:absolute;top:250px;left:106px;white-space:nowrap" class="ft93">Hattori,&#160;Woosik&#160;Lee,&#160;Sung-Young&#160;Jung,&#160;Yihui&#160;Zhang,<br/>Zhuangjian&#160;Liu,&#160;Huanyu&#160;Cheng,&#160;Leo&#160;Falgout,&#160;et&#160;al.&#160;Frac-<br/>tal&#160;design&#160;concepts&#160;for&#160;stretchable&#160;electronics.&#160;Nature<br/>communications</p>
+<p style="position:absolute;top:304px;left:204px;white-space:nowrap" class="ft90">,&#160;5(1):1–8,&#160;2014.</p>
+<p style="position:absolute;top:322px;left:81px;white-space:nowrap" class="ft90">[7]&#160;Jonathan&#160;Hiller&#160;and&#160;Hod&#160;Lipson.</p>
+<p style="position:absolute;top:322px;left:339px;white-space:nowrap" class="ft90">Automatic&#160;design</p>
+<p style="position:absolute;top:340px;left:106px;white-space:nowrap" class="ft93">and&#160;manufacture&#160;of&#160;soft&#160;robots.&#160;IEEE&#160;Transactions&#160;on<br/>Robotics</p>
+<p style="position:absolute;top:358px;left:158px;white-space:nowrap" class="ft90">,&#160;28(2):457–466,&#160;2012.</p>
+<p style="position:absolute;top:376px;left:81px;white-space:nowrap" class="ft90">[8]&#160;Jonathan&#160;Hiller&#160;and&#160;Hod&#160;Lipson.&#160;Dynamic&#160;simulation</p>
+<p style="position:absolute;top:394px;left:106px;white-space:nowrap" class="ft94">of&#160;soft&#160;multimaterial&#160;3d-printed&#160;objects.&#160;Soft&#160;Robotics,&#160;1<br/>(1):88–101,&#160;2014.</p>
+<p style="position:absolute;top:430px;left:81px;white-space:nowrap" class="ft90">[9]&#160;Gregory&#160;S&#160;Hornby&#160;and&#160;Jordan&#160;B&#160;Pollack.</p>
+<p style="position:absolute;top:430px;left:396px;white-space:nowrap" class="ft90">Evolving</p>
+<p style="position:absolute;top:447px;left:106px;white-space:nowrap" class="ft93">L-systems&#160;to&#160;generate&#160;virtual&#160;creatures.&#160;Computers&#160;&amp;<br/>Graphics</p>
+<p style="position:absolute;top:465px;left:161px;white-space:nowrap" class="ft90">,&#160;25(6):1041–1048,&#160;2001.</p>
+<p style="position:absolute;top:483px;left:73px;white-space:nowrap" class="ft90">[10]&#160;Gregory&#160;S&#160;Hornby,&#160;Hod&#160;Lipson,&#160;and&#160;Jordan&#160;B&#160;Pollack.</p>
+<p style="position:absolute;top:501px;left:106px;white-space:nowrap" class="ft93">Generative&#160;representations&#160;for&#160;the&#160;automated&#160;design&#160;of<br/>modular&#160;physical&#160;robots.&#160;IEEE&#160;Transactions&#160;on&#160;Robotics<br/>and&#160;Automation</p>
+<p style="position:absolute;top:537px;left:203px;white-space:nowrap" class="ft90">,&#160;19(4):703–719,&#160;2003.</p>
+<p style="position:absolute;top:555px;left:73px;white-space:nowrap" class="ft90">[11]&#160;Gangyuan&#160;Jing,&#160;Tarik&#160;Tosun,&#160;Mark&#160;Yim,&#160;and&#160;Hadas</p>
+<p style="position:absolute;top:573px;left:106px;white-space:nowrap" class="ft93">Kress-Gazit.&#160;An&#160;end-to-end&#160;system&#160;for&#160;accomplishing<br/>tasks&#160;with&#160;modular&#160;robots.&#160;In&#160;Proceedings&#160;of&#160;Robotics:<br/>Science&#160;and&#160;Systems&#160;(RSS)</p>
+<p style="position:absolute;top:609px;left:271px;white-space:nowrap" class="ft90">,&#160;2016.</p>
+<p style="position:absolute;top:627px;left:73px;white-space:nowrap" class="ft90">[12]&#160;Tero&#160;Karras.&#160;Maximizing&#160;parallelism&#160;in&#160;the&#160;construction</p>
+<p style="position:absolute;top:645px;left:106px;white-space:nowrap" class="ft94">of&#160;BVHs,&#160;octrees,&#160;and&#160;k-d&#160;trees.&#160;In&#160;Proceedings&#160;of&#160;the<br/>Fourth&#160;ACM&#160;SIGGRAPH/Eurographics&#160;Conference&#160;on<br/>High-Performance&#160;Graphics</p>
+<p style="position:absolute;top:681px;left:278px;white-space:nowrap" class="ft90">,&#160;pages&#160;33–37,&#160;2012.</p>
+<p style="position:absolute;top:699px;left:73px;white-space:nowrap" class="ft90">[13]&#160;Yara&#160;Khaluf,&#160;Eliseo&#160;Ferrante,&#160;Pieter&#160;Simoens,&#160;and</p>
+<p style="position:absolute;top:716px;left:106px;white-space:nowrap" class="ft93">Cristi´an&#160;Huepe.&#160;Scale&#160;invariance&#160;in&#160;natural&#160;and&#160;artificial<br/>collective&#160;systems:&#160;a&#160;review.&#160;Journal&#160;of&#160;the&#160;royal&#160;society<br/>interface</p>
+<p style="position:absolute;top:752px;left:159px;white-space:nowrap" class="ft90">,&#160;14(136):20170662,&#160;2017.</p>
+<p style="position:absolute;top:770px;left:73px;white-space:nowrap" class="ft90">[14]&#160;Valerij&#160;G&#160;Kiselev,&#160;Klaus&#160;R&#160;Hahn,&#160;and&#160;Dorothee&#160;P&#160;Auer.</p>
+<p style="position:absolute;top:788px;left:106px;white-space:nowrap" class="ft94">Is&#160;the&#160;brain&#160;cortex&#160;a&#160;fractal?&#160;Neuroimage,&#160;20(3):1765–<br/>1774,&#160;2003.</p>
+<p style="position:absolute;top:824px;left:73px;white-space:nowrap" class="ft90">[15]&#160;Sam&#160;Kriegman,&#160;Stephanie&#160;Walker,&#160;Dylan&#160;Shah,&#160;Michael</p>
+<p style="position:absolute;top:842px;left:106px;white-space:nowrap" class="ft93">Levin,&#160;Rebecca&#160;Kramer-Bottiglio,&#160;and&#160;Josh&#160;Bongard.&#160;Au-<br/>tomated&#160;shapeshifting&#160;for&#160;function&#160;recovery&#160;in&#160;damaged<br/>robots.&#160;In&#160;Proceedings&#160;of&#160;Robotics:&#160;Science&#160;and&#160;Systems<br/>(RSS)</p>
+<p style="position:absolute;top:896px;left:140px;white-space:nowrap" class="ft90">,&#160;2019.</p>
+<p style="position:absolute;top:914px;left:73px;white-space:nowrap" class="ft90">[16]&#160;Sam&#160;Kriegman,&#160;Douglas&#160;Blackiston,&#160;Michael&#160;Levin,&#160;and</p>
+<p style="position:absolute;top:932px;left:106px;white-space:nowrap" class="ft93">Josh&#160;Bongard.&#160;A&#160;scalable&#160;pipeline&#160;for&#160;designing&#160;reconfig-<br/>urable&#160;organisms.&#160;Proceedings&#160;of&#160;the&#160;National&#160;Academy<br/>of&#160;Sciences</p>
+<p style="position:absolute;top:968px;left:174px;white-space:nowrap" class="ft90">,&#160;117(4):1853–1859,&#160;2020.</p>
+<p style="position:absolute;top:985px;left:73px;white-space:nowrap" class="ft90">[17]&#160;Sam&#160;Kriegman,&#160;Amir&#160;Mohammadi&#160;Nasab,&#160;Dylan&#160;Shah,</p>
+<p style="position:absolute;top:1003px;left:106px;white-space:nowrap" class="ft94">Hannah&#160;Steele,&#160;Gabrielle&#160;Branin,&#160;Michael&#160;Levin,&#160;Josh<br/>Bongard,&#160;and&#160;Rebecca&#160;Kramer-Bottiglio.&#160;Scalable&#160;sim-<br/>to-real&#160;transfer&#160;of&#160;soft&#160;robot&#160;designs.&#160;In&#160;Proceedings&#160;of<br/>the&#160;3rd&#160;IEEE&#160;International&#160;Conference&#160;on&#160;Soft&#160;Robotics<br/>(RoboSoft)</p>
+<p style="position:absolute;top:1075px;left:171px;white-space:nowrap" class="ft90">,&#160;2020.</p>
+<p style="position:absolute;top:89px;left:468px;white-space:nowrap" class="ft90">[18]&#160;Shuguang&#160;Li,&#160;Richa&#160;Batra,&#160;David&#160;Brown,&#160;Hyun-Dong</p>
+<p style="position:absolute;top:107px;left:500px;white-space:nowrap" class="ft94">Chang,&#160;Nikhil&#160;Ranganathan,&#160;Chuck&#160;Hoberman,&#160;Daniela<br/>Rus,&#160;and&#160;Hod&#160;Lipson.&#160;Particle&#160;robotics&#160;based&#160;on&#160;statis-<br/>tical&#160;mechanics&#160;of&#160;loosely&#160;coupled&#160;components.&#160;Nature,<br/>567(7748):361–365,&#160;2019.</p>
+<p style="position:absolute;top:178px;left:468px;white-space:nowrap" class="ft90">[19]&#160;Guanqi&#160;Liang,&#160;Haobo&#160;Luo,&#160;Ming&#160;Li,&#160;Huihuan&#160;Qian,</p>
+<p style="position:absolute;top:196px;left:500px;white-space:nowrap" class="ft93">and&#160;Tin&#160;Lun&#160;Lam.&#160;Freebot:&#160;A&#160;freeform&#160;modular&#160;self-<br/>reconfigurable&#160;robot&#160;with&#160;arbitrary&#160;connection&#160;point-<br/>design&#160;and&#160;implementation.&#160;In&#160;IEEE/RSJ&#160;Int.&#160;Conf.&#160;Intell.<br/>Robots&#160;Syst.&#160;(IROS)</p>
+<p style="position:absolute;top:250px;left:622px;white-space:nowrap" class="ft90">,&#160;2020.</p>
+<p style="position:absolute;top:268px;left:468px;white-space:nowrap" class="ft90">[20]&#160;Erez&#160;Lieberman-Aiden,&#160;Nynke&#160;L&#160;Van&#160;Berkum,&#160;Louise</p>
+<p style="position:absolute;top:286px;left:500px;white-space:nowrap" class="ft94">Williams,&#160;Maxim&#160;Imakaev,&#160;Tobias&#160;Ragoczy,&#160;Agnes<br/>Telling,&#160;Ido&#160;Amit,&#160;Bryan&#160;R&#160;Lajoie,&#160;Peter&#160;J&#160;Sabo,<br/>Michael&#160;O&#160;Dorschner,&#160;et&#160;al.&#160;Comprehensive&#160;mapping<br/>of&#160;long-range&#160;interactions&#160;reveals&#160;folding&#160;principles&#160;of<br/>the&#160;human&#160;genome.&#160;Science,&#160;326(5950):289–293,&#160;2009.</p>
+<p style="position:absolute;top:376px;left:468px;white-space:nowrap" class="ft90">[21]&#160;Aristid&#160;Lindenmayer.&#160;Mathematical&#160;models&#160;for&#160;cellular</p>
+<p style="position:absolute;top:394px;left:500px;white-space:nowrap" class="ft90">interactions&#160;in&#160;development.</p>
+<p style="position:absolute;top:394px;left:700px;white-space:nowrap" class="ft90">Journal&#160;of&#160;Theoretical</p>
+<p style="position:absolute;top:412px;left:500px;white-space:nowrap" class="ft90">Biology</p>
+<p style="position:absolute;top:412px;left:547px;white-space:nowrap" class="ft90">,&#160;18(3):300–315,&#160;1968.</p>
+<p style="position:absolute;top:430px;left:468px;white-space:nowrap" class="ft90">[22]&#160;Sida&#160;Liu,&#160;David&#160;Matthews,&#160;Sam&#160;Kriegman,&#160;and&#160;Josh</p>
+<p style="position:absolute;top:447px;left:500px;white-space:nowrap" class="ft95">Bongard.&#160;Voxcraft-sim,&#160;a&#160;GPU-accelerated&#160;voxel-based<br/>physics&#160;engine,&#160;2020.&#160;URL&#160;<a href="https://github.com/voxcraft/voxcraft-sim">https://github.com/voxcraft/<br/>voxcraft-sim.</a></p>
+<p style="position:absolute;top:501px;left:468px;white-space:nowrap" class="ft90">[23]&#160;Carmel&#160;Majidi,&#160;Robert&#160;F&#160;Shepherd,&#160;Rebecca&#160;K&#160;Kramer,</p>
+<p style="position:absolute;top:519px;left:500px;white-space:nowrap" class="ft93">George&#160;M&#160;Whitesides,&#160;and&#160;Robert&#160;J&#160;Wood.&#160;Influence&#160;of<br/>surface&#160;traction&#160;on&#160;soft&#160;robot&#160;undulation.&#160;The&#160;Interna-<br/>tional&#160;Journal&#160;of&#160;Robotics&#160;Research</p>
+<p style="position:absolute;top:555px;left:721px;white-space:nowrap" class="ft90">,&#160;32(13):1577–1584,</p>
+<p style="position:absolute;top:573px;left:500px;white-space:nowrap" class="ft90">2013.</p>
+<p style="position:absolute;top:591px;left:468px;white-space:nowrap" class="ft90">[24]&#160;Benoit&#160;B&#160;Mandelbrot.&#160;The&#160;Fractal&#160;Geometry&#160;of&#160;Nature.</p>
+<p style="position:absolute;top:609px;left:500px;white-space:nowrap" class="ft90">Freeman,&#160;New&#160;York,&#160;1982.</p>
+<p style="position:absolute;top:627px;left:468px;white-space:nowrap" class="ft90">[25]&#160;Hans&#160;Moravec&#160;and&#160;Jesse&#160;Easudes.</p>
+<p style="position:absolute;top:627px;left:735px;white-space:nowrap" class="ft90">Fractal&#160;branching</p>
+<p style="position:absolute;top:645px;left:500px;white-space:nowrap" class="ft93">ultra-dexterous&#160;robots.&#160;NASA&#160;Advanced&#160;Concepts&#160;Re-<br/>search&#160;Projects</p>
+<p style="position:absolute;top:663px;left:594px;white-space:nowrap" class="ft90">,&#160;1999.</p>
+<p style="position:absolute;top:681px;left:468px;white-space:nowrap" class="ft90">[26]&#160;Deepak&#160;Pathak,&#160;Chris&#160;Lu,&#160;Trevor&#160;Darrell,&#160;Phillip&#160;Isola,</p>
+<p style="position:absolute;top:699px;left:500px;white-space:nowrap" class="ft93">and&#160;Alexei&#160;A&#160;Efros.&#160;Learning&#160;to&#160;control&#160;self-assembling<br/>morphologies:&#160;A&#160;study&#160;of&#160;generalization&#160;via&#160;modularity.<br/>In&#160;Advances&#160;in&#160;Neural&#160;Information&#160;Processing&#160;Systems<br/>(NeurIPS)</p>
+<p style="position:absolute;top:752px;left:562px;white-space:nowrap" class="ft90">,&#160;2019.</p>
+<p style="position:absolute;top:770px;left:468px;white-space:nowrap" class="ft90">[27]&#160;C&#160;Puente,&#160;J&#160;Romeu,&#160;R&#160;Pous,&#160;X&#160;Garcia,&#160;and&#160;F&#160;Benitez.</p>
+<p style="position:absolute;top:788px;left:500px;white-space:nowrap" class="ft93">Fractal&#160;multiband&#160;antenna&#160;based&#160;on&#160;the&#160;Sierpinski&#160;gasket.<br/>Electronics&#160;Letters</p>
+<p style="position:absolute;top:806px;left:614px;white-space:nowrap" class="ft90">,&#160;32(1):1–2,&#160;1996.</p>
+<p style="position:absolute;top:824px;left:468px;white-space:nowrap" class="ft90">[28]&#160;John&#160;W&#160;Romanishin,&#160;Kyle&#160;Gilpin,&#160;Sebastian&#160;Claici,&#160;and</p>
+<p style="position:absolute;top:842px;left:500px;white-space:nowrap" class="ft93">Daniela&#160;Rus.&#160;3D&#160;M-Blocks:&#160;Self-reconfiguring&#160;robots<br/>capable&#160;of&#160;locomotion&#160;via&#160;pivoting&#160;in&#160;three&#160;dimensions.<br/>In&#160;Proceedings&#160;of&#160;the&#160;IEEE&#160;International&#160;Conference<br/>on&#160;Robotics&#160;and&#160;Automation&#160;(ICRA)</p>
+<p style="position:absolute;top:896px;left:725px;white-space:nowrap" class="ft90">,&#160;pages&#160;1925–1932.</p>
+<p style="position:absolute;top:914px;left:500px;white-space:nowrap" class="ft90">IEEE,&#160;2015.</p>
+<p style="position:absolute;top:932px;left:468px;white-space:nowrap" class="ft90">[29]&#160;Michael&#160;Rubenstein,&#160;Alejandro&#160;Cornejo,&#160;and&#160;Radhika</p>
+<p style="position:absolute;top:950px;left:500px;white-space:nowrap" class="ft94">Nagpal.&#160;Programmable&#160;self-assembly&#160;in&#160;a&#160;thousand-robot<br/>swarm.&#160;Science,&#160;345(6198):795–799,&#160;2014.</p>
+<p style="position:absolute;top:985px;left:468px;white-space:nowrap" class="ft90">[30]&#160;William&#160;Savoie,&#160;Thomas&#160;A&#160;Berrueta,&#160;Zachary&#160;Jackson,</p>
+<p style="position:absolute;top:1003px;left:500px;white-space:nowrap" class="ft94">Ana&#160;Pervan,&#160;Ross&#160;Warkentin,&#160;Shengkai&#160;Li,&#160;Todd&#160;D<br/>Murphey,&#160;Kurt&#160;Wiesenfeld,&#160;and&#160;Daniel&#160;I&#160;Goldman.&#160;A<br/>robot&#160;made&#160;of&#160;robots:&#160;Emergent&#160;transport&#160;and&#160;control&#160;of<br/>a&#160;smarticle&#160;ensemble.&#160;Science&#160;Robotics,&#160;4(34):eaax4316,<br/>2019.</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft92">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:12px;font-family:Times;color:#000000;}
+	.ft101{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft102{font-size:12px;line-height:18px;font-family:Times;color:#000000;}
+	.ft103{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:89px;left:73px;white-space:nowrap" class="ft100">[31]&#160;Michael&#160;Schmidt&#160;and&#160;Hod&#160;Lipson.&#160;Age-fitness&#160;pareto</p>
+<p style="position:absolute;top:107px;left:106px;white-space:nowrap" class="ft100">optimization.</p>
+<p style="position:absolute;top:107px;left:206px;white-space:nowrap" class="ft100">In&#160;Genetic&#160;Programming&#160;Theory&#160;and</p>
+<p style="position:absolute;top:125px;left:106px;white-space:nowrap" class="ft100">Practice&#160;VIII</p>
+<p style="position:absolute;top:125px;left:186px;white-space:nowrap" class="ft100">,&#160;pages&#160;129–146.&#160;Springer,&#160;2011.</p>
+<p style="position:absolute;top:143px;left:73px;white-space:nowrap" class="ft100">[32]&#160;Karl&#160;Sims.&#160;Evolving&#160;3D&#160;morphology&#160;and&#160;behavior&#160;by</p>
+<p style="position:absolute;top:161px;left:106px;white-space:nowrap" class="ft100">competition.&#160;Artificial&#160;life,&#160;1(4):353–372,&#160;1994.</p>
+<p style="position:absolute;top:178px;left:73px;white-space:nowrap" class="ft100">[33]&#160;Kenneth&#160;O&#160;Stanley.</p>
+<p style="position:absolute;top:178px;left:244px;white-space:nowrap" class="ft100">Compositional&#160;pattern&#160;producing</p>
+<p style="position:absolute;top:196px;left:106px;white-space:nowrap" class="ft102">networks:&#160;A&#160;novel&#160;abstraction&#160;of&#160;development.&#160;Genetic<br/>Programming&#160;and&#160;Evolvable&#160;Machines</p>
+<p style="position:absolute;top:214px;left:353px;white-space:nowrap" class="ft100">,&#160;8(2):131–162,</p>
+<p style="position:absolute;top:232px;left:106px;white-space:nowrap" class="ft100">2007.</p>
+<p style="position:absolute;top:250px;left:73px;white-space:nowrap" class="ft100">[34]&#160;Petras&#160;Swissler&#160;and&#160;Michael&#160;Rubenstein.&#160;Fireant3d:&#160;a</p>
+<p style="position:absolute;top:268px;left:106px;white-space:nowrap" class="ft102">3d&#160;self-climbing&#160;robot&#160;towards&#160;non-latticed&#160;robotic&#160;self-<br/>assembly.&#160;In&#160;IEEE/RSJ&#160;Int.&#160;Conf.&#160;Intell.&#160;Robots&#160;Syst.<br/>(IROS)</p>
+<p style="position:absolute;top:304px;left:148px;white-space:nowrap" class="ft100">,&#160;2020.</p>
+<p style="position:absolute;top:322px;left:73px;white-space:nowrap" class="ft100">[35]&#160;Merel&#160;Van&#160;Diepen&#160;and&#160;Kristina&#160;Shea.&#160;A&#160;spatial&#160;grammar</p>
+<p style="position:absolute;top:340px;left:106px;white-space:nowrap" class="ft103">method&#160;for&#160;the&#160;computational&#160;design&#160;synthesis&#160;of&#160;virtual<br/>soft&#160;locomotion&#160;robots.&#160;Journal&#160;of&#160;Mechanical&#160;Design,<br/>141(10),&#160;2019.</p>
+<p style="position:absolute;top:394px;left:73px;white-space:nowrap" class="ft100">[36]&#160;Kelvin&#160;KS&#160;Wu,&#160;Ofer&#160;Lahav,&#160;and&#160;Martin&#160;J&#160;Rees.&#160;The</p>
+<p style="position:absolute;top:412px;left:106px;white-space:nowrap" class="ft100">large-scale&#160;smoothness&#160;of&#160;the&#160;universe.</p>
+<p style="position:absolute;top:412px;left:375px;white-space:nowrap" class="ft100">Nature</p>
+<p style="position:absolute;top:412px;left:416px;white-space:nowrap" class="ft100">,&#160;397</p>
+<p style="position:absolute;top:430px;left:106px;white-space:nowrap" class="ft100">(6716):225–230,&#160;1999.</p>
+<p style="position:absolute;top:447px;left:73px;white-space:nowrap" class="ft100">[37]&#160;Zhiwei&#160;Yu,&#160;Ye&#160;Shi,&#160;Jiaxing&#160;Xie,&#160;Simon&#160;X&#160;Yang,&#160;and</p>
+<p style="position:absolute;top:465px;left:106px;white-space:nowrap" class="ft102">Zhendong&#160;Dai.&#160;Design&#160;and&#160;analysis&#160;of&#160;a&#160;bionic&#160;adhesive<br/>foot&#160;for&#160;gecko&#160;robot&#160;climbing&#160;the&#160;ceiling.&#160;International<br/>Journal&#160;of&#160;Robotics&#160;and&#160;Automation</p>
+<p style="position:absolute;top:501px;left:329px;white-space:nowrap" class="ft100">,&#160;33(4),&#160;2018.</p>
+<p style="position:absolute;top:519px;left:73px;white-space:nowrap" class="ft100">[38]&#160;Allan&#160;Zhao,&#160;Jie&#160;Xu,&#160;Mina&#160;Konakovi´c-Lukovi´c,&#160;Josephine</p>
+<p style="position:absolute;top:537px;left:106px;white-space:nowrap" class="ft103">Hughes,&#160;Andrew&#160;Spielberg,&#160;Daniela&#160;Rus,&#160;and&#160;Wojciech<br/>Matusik.</p>
+<p style="position:absolute;top:555px;left:176px;white-space:nowrap" class="ft100">Robogrammar:&#160;graph&#160;grammar&#160;for&#160;terrain-</p>
+<p style="position:absolute;top:573px;left:106px;white-space:nowrap" class="ft102">optimized&#160;robot&#160;design.&#160;ACM&#160;Transactions&#160;on&#160;Graphics<br/>(TOG)</p>
+<p style="position:absolute;top:591px;left:145px;white-space:nowrap" class="ft100">,&#160;39(6):1–16,&#160;2020.</p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft101">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:9px;font-family:Times;color:#000000;}
+	.ft111{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft112{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft113{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:986px;left:73px;white-space:nowrap" class="ft110">Fig.&#160;10.</p>
+<p style="position:absolute;top:985px;left:124px;white-space:nowrap" class="ft110">Instructions&#160;for&#160;building&#160;the&#160;evolved&#160;fractal&#160;with&#160;the&#160;most&#160;scale&#160;invariant&#160;behavior&#160;using&#160;phase&#160;shifted&#160;actuation.&#160;The&#160;local&#160;volume&#160;of&#160;the</p>
+<p style="position:absolute;top:999px;left:73px;white-space:nowrap" class="ft113">robot&#160;fluctuates&#160;according&#160;to&#160;a&#160;sine&#160;wave&#160;with&#160;a&#160;preselected&#160;phase&#160;offset&#160;at&#160;each&#160;module&#160;(dark&#160;pink):&#160;each&#160;wave&#160;of&#160;actuation&#160;propagates&#160;through&#160;the&#160;body,<br/>from&#160;anterior&#160;to&#160;posterior,&#160;repeating&#160;every&#160;0.2&#160;seconds&#160;<a href="https://youtu.be/okLwbe17-9Y">(video).&#160;</a>The&#160;basal&#160;robot&#160;(pictured&#160;in&#160;step&#160;19)&#160;was&#160;designed&#160;in&#160;simulation&#160;by&#160;combining&#160;up&#160;to&#160;27&#160;voxels<br/>inside&#160;a&#160;3-by-3-by-3&#160;workspace&#160;(steps&#160;1-18).&#160;The&#160;same&#160;steps&#160;were&#160;repeated&#160;using&#160;the&#160;basal&#160;robot&#160;instead&#160;of&#160;a&#160;single&#160;voxel&#160;(steps&#160;19-36)&#160;to&#160;create&#160;a&#160;self&#160;similar<br/>aggregate&#160;machine.&#160;Note&#160;that&#160;the&#160;voxels&#160;only&#160;exist&#160;in&#160;simulation&#160;as&#160;design&#160;tools;&#160;there&#160;are&#160;no&#160;physical&#160;voxels;&#160;a&#160;custom&#160;mold&#160;is&#160;made&#160;according&#160;to&#160;the&#160;basal<br/>robot’s&#160;shape&#160;(Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#4">5).&#160;</a>The&#160;physical&#160;robot&#160;assembled&#160;according&#160;to&#160;these&#160;instructions&#160;can&#160;be&#160;seen,&#160;turned&#160;right&#160;side&#160;up,&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#1">1e-h.</a></p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft112">&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>b2da1ebd3b9abaab2dae51ade56621de-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:9px;font-family:Times;color:#000000;}
+	.ft121{font-size:9px;font-family:Times;color:#0000ff;}
+	.ft122{font-size:823px;font-family:Helvetica;color:#000000;}
+	.ft123{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:918px;height:1188px;">
+<p style="position:absolute;top:998px;left:73px;white-space:nowrap" class="ft123">Fig.&#160;11.&#160;Instructions&#160;for&#160;building&#160;the&#160;evolved&#160;single&#160;bladder&#160;fractal&#160;robot&#160;with&#160;the&#160;most&#160;scale&#160;invariant&#160;behavior.&#160;The&#160;entire&#160;robot&#160;is&#160;a&#160;single&#160;actuator:&#160;it<br/>expands&#160;and&#160;contracts&#160;in&#160;unison&#160;according&#160;to&#160;a&#160;central&#160;pattern&#160;generator&#160;<a href="https://youtu.be/FnHZBylM_JU">(video).&#160;</a>The&#160;basal&#160;robot&#160;(pictured&#160;in&#160;step&#160;19)&#160;is&#160;designed&#160;in&#160;simulation&#160;by&#160;combining<br/>up&#160;to&#160;27&#160;voxels&#160;inside&#160;a&#160;3-by-3-by-3&#160;workspace&#160;(steps&#160;1-18).&#160;The&#160;same&#160;steps&#160;are&#160;repeated&#160;using&#160;the&#160;basal&#160;robot&#160;instead&#160;of&#160;a&#160;single&#160;voxel&#160;(steps&#160;19-36)&#160;to<br/>create&#160;a&#160;fractal&#160;assemblage.&#160;The&#160;physical&#160;robot&#160;fabricated&#160;according&#160;to&#160;these&#160;instructions&#160;can&#160;be&#160;seen,&#160;flipped&#160;right&#160;side&#160;up,&#160;in&#160;Fig.&#160;<a href="b2da1ebd3b9abaab2dae51ade56621des.html#2">3.</a></p>
+<p style="position:absolute;top:1px;left:0px;white-space:nowrap" class="ft122">&#160;</p>
+</div>
+</body>
+</html>

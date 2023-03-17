@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:15px;font-family:Times;color:#000000;}
+	.ft11{font-size:12px;font-family:Times;color:#000000;}
+	.ft12{font-size:8px;font-family:Times;color:#000000;}
+	.ft13{font-size:9px;font-family:Times;color:#000000;}
+	.ft14{font-size:11px;font-family:Times;color:#000000;}
+	.ft15{font-size:11px;line-height:14px;font-family:Times;color:#000000;}
+	.ft16{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:126px;left:171px;white-space:nowrap" class="ft10">Evolution&#160;vs.&#160;Design:&#160;Genetic&#160;Algorithms</p>
+<p style="position:absolute;top:147px;left:218px;white-space:nowrap" class="ft10">May&#160;Clarify&#160;the&#160;Controversy</p>
+<p style="position:absolute;top:203px;left:285px;white-space:nowrap" class="ft11">MICHAEL&#160;LEVIN</p>
+<p style="position:absolute;top:226px;left:105px;white-space:nowrap" class="ft13">Department&#160;of&#160;Cytokine&#160;Biology,&#160;The&#160;Forsyth&#160;Institute,&#160;and&#160;Department&#160;of&#160;Craniofacial&#160;and</p>
+<p style="position:absolute;top:239px;left:108px;white-space:nowrap" class="ft13">Developmental&#160;Biology,&#160;Harvard&#160;School&#160;of&#160;Medicine,&#160;140&#160;The&#160;Fenway,&#160;Boston,&#160;MA&#160;02115</p>
+<p style="position:absolute;top:253px;left:265px;white-space:nowrap" class="ft13">e-mail:&#160;mlevin@forsyth.org</p>
+<p style="position:absolute;top:297px;left:117px;white-space:nowrap" class="ft14">Abstract—</p>
+<p style="position:absolute;top:297px;left:180px;white-space:nowrap" class="ft14">The&#160;dominant&#160;paradigm&#160;in&#160;biology&#160;today&#160;is&#160;Neo-Darwinism.&#160;This</p>
+<p style="position:absolute;top:312px;left:117px;white-space:nowrap" class="ft15">attempt&#160;to&#160;explain&#160;the&#160;origin&#160;of&#160;biological&#160;complexity&#160;through&#160;random&#160;changes<br/>coupled&#160;to&#160;selection&#160;has&#160;met&#160;with&#160;challenges&#160;from&#160;advocates&#160;of&#160;‘‘design’’&#160;who<br/>claim&#160;that&#160;this&#160;process&#160;is&#160;simply&#160;insufficient&#160;to&#160;result&#160;in&#160;the&#160;complexity&#160;we<br/>observe&#160;in&#160;the&#160;biosphere.&#160;Progress&#160;on&#160;this&#160;empirical&#160;question&#160;has&#160;been&#160;slow<br/>because&#160;the&#160;debate&#160;has&#160;been&#160;at&#160;the&#160;level&#160;of&#160;philosophical&#160;speculation&#160;and<br/>arguments&#160;over&#160;probability.&#160;It&#160;is&#160;simply&#160;not&#160;known&#160;whether&#160;or&#160;not&#160;random<br/>changes&#160;in&#160;the&#160;genome,&#160;coupled&#160;with&#160;selection,&#160;are&#160;sufficient&#160;to&#160;result&#160;in&#160;the&#160;rich<br/>biosphere&#160;of&#160;today.&#160;Here,&#160;I&#160;propose&#160;that&#160;both&#160;mainstream&#160;biologists&#160;and&#160;adherents<br/>of&#160;design&#160;hypotheses&#160;can&#160;profit&#160;from&#160;attention&#160;to&#160;Genetic&#160;Programming&#160;(GP)—an<br/>area&#160;of&#160;computer&#160;science&#160;with&#160;deep&#160;analogies&#160;for&#160;the&#160;question&#160;of&#160;biological<br/>evolution.&#160;The&#160;GP&#160;field&#160;is&#160;unique&#160;in&#160;that&#160;it&#160;provides&#160;a&#160;research&#160;program&#160;for<br/>beginning&#160;to&#160;empirically&#160;resolve&#160;the&#160;debate&#160;of&#160;design&#160;vs.&#160;Darwinian&#160;evolution.<br/>Recent&#160;progress&#160;in&#160;evolving&#160;complex&#160;computer&#160;programs&#160;shows&#160;that&#160;our&#160;intuition<br/>badly&#160;underestimates&#160;what&#160;can&#160;be&#160;accomplished&#160;by&#160;a&#160;‘‘blind’’&#160;evolutionary<br/>process.&#160;The&#160;degree&#160;of&#160;progress&#160;of&#160;the&#160;field&#160;of&#160;GP&#160;will&#160;enable&#160;insights&#160;into&#160;both&#160;the<br/>limits&#160;and&#160;the&#160;power&#160;of&#160;un-directed&#160;evolution.</p>
+<p style="position:absolute;top:558px;left:117px;white-space:nowrap" class="ft14">Keywords:&#160;genetic&#160;algorithms—genetic&#160;programming—evolution—design</p>
+<p style="position:absolute;top:610px;left:90px;white-space:nowrap" class="ft16">The&#160;incredible&#160;richness&#160;of&#160;the&#160;biosphere&#160;challenges&#160;scientists&#160;to&#160;explain&#160;the&#160;origin<br/>of&#160;today’s&#160;complex&#160;plants&#160;and&#160;animals.&#160;Thus,&#160;biologists&#160;seek&#160;models&#160;of&#160;the&#160;kinds<br/>of&#160;processes&#160;that&#160;could&#160;account&#160;for&#160;the&#160;appearance&#160;of&#160;complex&#160;creatures&#160;well<br/>suited&#160;to&#160;their&#160;environments.&#160;Such&#160;models&#160;must&#160;address&#160;the&#160;forces&#160;underlying<br/>transitions&#160;from&#160;simple&#160;to&#160;more&#160;sophisticated&#160;organisms,&#160;and&#160;these&#160;models&#160;must<br/>also&#160;comment&#160;on&#160;the&#160;issue&#160;of&#160;whether&#160;or&#160;not&#160;such&#160;forces&#160;possess&#160;an&#160;inherent&#160;drive<br/>towards&#160;greater&#160;complexity&#160;or&#160;even&#160;specific&#160;design&#160;endpoints.&#160;Theories&#160;of&#160;this<br/>process&#160;predate&#160;modern&#160;biology,&#160;but&#160;currently&#160;the&#160;field&#160;is&#160;dominated&#160;by&#160;a&#160;synthesis<br/>of&#160;the&#160;great&#160;recent&#160;progress&#160;in&#160;biochemistry,&#160;molecular&#160;biology,&#160;and&#160;genetics&#160;with<br/>Darwinian&#160;evolution&#160;(Dawkins,&#160;1987;&#160;Laszlo,&#160;1987;&#160;Maynard&#160;Smith,&#160;1975).</p>
+<p style="position:absolute;top:789px;left:105px;white-space:nowrap" class="ft11">The&#160;classical&#160;‘‘Darwinian’’&#160;theory&#160;begins&#160;with&#160;three&#160;observations,&#160;all&#160;of&#160;which</p>
+<p style="position:absolute;top:807px;left:90px;white-space:nowrap" class="ft16">were&#160;known&#160;long&#160;before&#160;Darwin’s&#160;day.&#160;These&#160;basic&#160;axioms&#160;are:&#160;A1)&#160;offspring<br/>resemble&#160;their&#160;parents&#160;more&#160;than&#160;they&#160;resemble&#160;unrelated&#160;individuals&#160;(i.e.,&#160;traits<br/>are&#160;hereditary);&#160;A2)&#160;offspring&#160;are&#160;not&#160;always&#160;exactly&#160;like&#160;their&#160;parents&#160;(the<br/>transmission&#160;of&#160;characters&#160;occurs&#160;with&#160;high&#160;but&#160;imperfect&#160;fidelity);&#160;and&#160;A3)</p>
+<p style="position:absolute;top:54px;left:90px;white-space:nowrap" class="ft12">Journal&#160;of&#160;Scientific&#160;Exploration,&#160;Vol.&#160;19,&#160;No.&#160;1,&#160;pp.&#160;115–122,&#160;2005</p>
+<p style="position:absolute;top:54px;left:515px;white-space:nowrap" class="ft12">0892-3310/05</p>
+<p style="position:absolute;top:904px;left:321px;white-space:nowrap" class="ft11">115</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:12px;font-family:Times;color:#000000;}
+	.ft21{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:74px;white-space:nowrap" class="ft21">resources&#160;(such&#160;as&#160;food,&#160;mates,&#160;territory,&#160;etc.)&#160;are&#160;limiting&#160;because&#160;of&#160;the<br/>exponential&#160;proliferation&#160;of&#160;organisms&#160;during&#160;times&#160;of&#160;plenty.&#160;The&#160;genius&#160;of<br/>Darwin&#160;was&#160;to&#160;realize&#160;(and&#160;support&#160;by&#160;painstaking&#160;observation)&#160;that&#160;these&#160;three<br/>facts,&#160;when&#160;joined&#160;together,&#160;may&#160;form&#160;a&#160;powerful&#160;system&#160;for&#160;explaining&#160;biological<br/>complexity.&#160;He&#160;argued&#160;that&#160;because&#160;of&#160;the&#160;intense&#160;competition&#160;for&#160;limiting<br/>resources,&#160;even&#160;small&#160;advantages&#160;lead&#160;to&#160;increased&#160;chances&#160;for&#160;the&#160;bearer&#160;to<br/>survive&#160;and&#160;leave&#160;offspring&#160;carrying&#160;the&#160;same&#160;advantages;&#160;thus,&#160;beneficial&#160;errors<br/>in&#160;hereditary&#160;transmission&#160;(rare&#160;though&#160;they&#160;may&#160;be)&#160;will&#160;accumulate&#160;and&#160;come&#160;to<br/>dominate&#160;the&#160;population&#160;over&#160;geological&#160;time&#160;scales.&#160;While&#160;simple&#160;organisms&#160;are<br/>usually&#160;at&#160;least&#160;as&#160;successful&#160;as&#160;complex&#160;ones,&#160;the&#160;relentless&#160;accumulation&#160;of<br/>beneficial&#160;traits&#160;thus&#160;drives&#160;upwards&#160;the&#160;overall&#160;complexity&#160;of&#160;the&#160;biosphere&#160;as<br/>organisms&#160;explore&#160;every&#160;possible&#160;way&#160;of&#160;staying&#160;alive.</p>
+<p style="position:absolute;top:305px;left:89px;white-space:nowrap" class="ft20">The&#160;most&#160;fundamental&#160;aspect&#160;of&#160;modern&#160;Evolutionary&#160;Theory&#160;(ET),&#160;and&#160;the</p>
+<p style="position:absolute;top:323px;left:74px;white-space:nowrap" class="ft21">one&#160;which&#160;is&#160;sometimes&#160;challenged,&#160;is&#160;its&#160;insistence&#160;that&#160;the&#160;genetic&#160;changes&#160;that<br/>occur&#160;are&#160;not&#160;in&#160;any&#160;way</p>
+<p style="position:absolute;top:341px;left:233px;white-space:nowrap" class="ft20">correlated&#160;with&#160;their&#160;consequences&#160;for&#160;the&#160;survival&#160;of</p>
+<p style="position:absolute;top:359px;left:74px;white-space:nowrap" class="ft21">the&#160;organism&#160;(although&#160;they&#160;may&#160;not&#160;be&#160;precisely&#160;random,&#160;as&#160;some&#160;types&#160;of<br/>changes&#160;to&#160;genetic&#160;material&#160;occur&#160;more&#160;often&#160;than&#160;others);&#160;the&#160;changes&#160;are&#160;not<br/>teleological&#160;(do&#160;not&#160;occur&#160;with&#160;a&#160;purpose&#160;and&#160;are&#160;not&#160;aimed&#160;at&#160;any&#160;subsequent<br/>goal).&#160;The&#160;key&#160;is&#160;that,&#160;counter&#160;to&#160;older&#160;theories,&#160;events&#160;occurring&#160;to&#160;the<br/>individual&#160;(such&#160;as&#160;the&#160;giraffe&#160;stretching&#160;his&#160;neck&#160;as&#160;he&#160;reaches&#160;for&#160;higher<br/>leaves)&#160;do&#160;not&#160;affect&#160;the&#160;distribution&#160;of&#160;mutations&#160;that&#160;occur&#160;to&#160;that&#160;creature’s<br/>offspring&#160;(will&#160;not&#160;result&#160;in&#160;offspring&#160;which&#160;have&#160;longer&#160;necks).&#160;This&#160;lack&#160;of<br/>teleology&#160;in&#160;genetic&#160;changes&#160;is&#160;the&#160;main&#160;feature&#160;of&#160;ET,&#160;which&#160;makes&#160;a&#160;striking<br/>empirical&#160;claim:&#160;that&#160;constrained&#160;by&#160;boundary&#160;conditions&#160;A1–A3,&#160;such<br/>uncorrelated&#160;genetic&#160;changes&#160;will&#160;over&#160;time&#160;result&#160;in&#160;creatures&#160;which&#160;are&#160;very<br/>complex&#160;and&#160;are&#160;incredibly&#160;well&#160;adapted&#160;to&#160;their&#160;environment.</p>
+<p style="position:absolute;top:556px;left:89px;white-space:nowrap" class="ft20">The&#160;three&#160;axioms&#160;are&#160;individually&#160;true,&#160;and&#160;cannot&#160;rationally&#160;be&#160;denied.</p>
+<p style="position:absolute;top:574px;left:74px;white-space:nowrap" class="ft21">However,&#160;the&#160;main&#160;claim&#160;of&#160;ET&#160;is&#160;an&#160;empirical&#160;one,&#160;and&#160;is&#160;not&#160;obviously&#160;true&#160;or<br/>false:&#160;is&#160;random&#160;genetic&#160;change&#160;sufficient&#160;as&#160;a&#160;source&#160;of&#160;novelty&#160;to&#160;account&#160;for&#160;the<br/>observed&#160;complexity,&#160;or&#160;is&#160;it&#160;not?&#160;A&#160;number&#160;of&#160;lesser&#160;challenges&#160;to&#160;ET&#160;have&#160;been<br/>proposed,&#160;including&#160;non-traditional&#160;transfer&#160;of&#160;genetic&#160;material&#160;(Jablonka&#160;&amp;<br/>Lamb,&#160;1995;&#160;Margulis&#160;&amp;&#160;Fester,&#160;1991;&#160;Steele&#160;et&#160;al.,&#160;1998),&#160;and&#160;‘‘order&#160;for&#160;free’’<br/>from&#160;complexity&#160;theory&#160;(Ho&#160;&amp;&#160;Fox,&#160;1988;&#160;Ho&#160;&amp;&#160;Saunders,&#160;1984;&#160;Kauffman,<br/>1993,&#160;1995;&#160;Shapiro,&#160;1999a,&#160;1999b,&#160;2002;&#160;Sol&#160;&amp;&#160;Goodwin,&#160;2000;&#160;Webster&#160;&amp;<br/>Goodwin,&#160;1996).&#160;Fascinating&#160;as&#160;these&#160;details&#160;are,&#160;none&#160;of&#160;them&#160;are&#160;major<br/>challenges&#160;because&#160;ET&#160;itself&#160;has&#160;no&#160;specific&#160;commitment&#160;to&#160;any&#160;genetic<br/>mechanism.&#160;What’s&#160;important&#160;for&#160;ET&#160;is&#160;that&#160;the&#160;genetic&#160;change&#160;is&#160;not&#160;directed<br/>toward&#160;any&#160;specific&#160;outcome.&#160;This&#160;constraint&#160;is&#160;compatible&#160;with&#160;genetic&#160;operators<br/>other&#160;than&#160;simple&#160;mutation,&#160;such&#160;as&#160;the&#160;acquisition&#160;of&#160;genetic&#160;material&#160;from&#160;other<br/>creatures&#160;(such&#160;as&#160;the&#160;symbiosis&#160;observed&#160;in&#160;mitochondria,&#160;or&#160;virus-mediated<br/>gene&#160;transfer)&#160;and&#160;recombination&#160;(rearrangement&#160;of&#160;stretches&#160;of&#160;genetic&#160;material).<br/>Thus,&#160;these&#160;sorts&#160;of&#160;‘‘non-Darwinian’’&#160;mechanisms&#160;are&#160;not&#160;anomalous&#160;and<br/>represent&#160;perfectly&#160;mainstream&#160;science.&#160;More&#160;exotic&#160;proposals&#160;deriving&#160;teleology<br/>in&#160;genetic&#160;change&#160;from&#160;quantum&#160;physics&#160;have&#160;also&#160;been&#160;made&#160;(McFadden,&#160;2001).</p>
+<p style="position:absolute;top:54px;left:74px;white-space:nowrap" class="ft20">116</p>
+<p style="position:absolute;top:54px;left:288px;white-space:nowrap" class="ft20">M.&#160;Levin</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:12px;font-family:Times;color:#000000;}
+	.ft31{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:105px;white-space:nowrap" class="ft30">The&#160;major&#160;challenge&#160;for&#160;ET&#160;has&#160;come&#160;from&#160;advocates&#160;of&#160;the&#160;design&#160;hypothesis</p>
+<p style="position:absolute;top:108px;left:90px;white-space:nowrap" class="ft31">(Behe,&#160;1996;&#160;Behe&#160;et&#160;al.,&#160;2000;&#160;Dembski,&#160;2002,&#160;2004a,&#160;2004b;&#160;Dembski&#160;&amp;<br/>Kushiner,&#160;2001;&#160;Dembski&#160;&amp;&#160;Ruse,&#160;2004;&#160;Denton,&#160;1986;&#160;Moreland,&#160;1994;<br/>Sheldrake,&#160;1981,&#160;1988;&#160;Spetner,&#160;1997).&#160;While&#160;mainstream&#160;biology&#160;mostly&#160;ignores<br/>advocates&#160;of&#160;design,&#160;it&#160;is&#160;not&#160;in&#160;fact&#160;true&#160;that&#160;one&#160;has&#160;to&#160;be&#160;‘‘crazy&#160;or&#160;ignorant’’<br/>(Dawkins,&#160;1989)&#160;to&#160;ask&#160;for&#160;direct&#160;evidence&#160;to&#160;support&#160;the&#160;claim&#160;that&#160;evolutionary<br/>processes&#160;are&#160;indeed&#160;sufficient&#160;to&#160;provide&#160;the&#160;complexity&#160;we&#160;observe.&#160;Regardless<br/>of&#160;the&#160;personal&#160;motivations&#160;(religious&#160;or&#160;otherwise)&#160;of&#160;the&#160;various&#160;participants&#160;in<br/>this&#160;debate,&#160;two&#160;variations&#160;of&#160;the&#160;design&#160;hypothesis&#160;as&#160;such&#160;are&#160;scientific&#160;in<br/>structure.&#160;On&#160;the&#160;one&#160;hand,&#160;one&#160;may&#160;propose&#160;that&#160;mutations&#160;are&#160;not&#160;in&#160;fact&#160;random<br/>with&#160;respect&#160;to&#160;their&#160;effects&#160;on&#160;the&#160;organism.&#160;More&#160;strongly,&#160;one&#160;may&#160;doubt&#160;ET’s<br/>claim&#160;that&#160;random&#160;genetic&#160;change&#160;is&#160;sufficient&#160;to&#160;account&#160;for&#160;complex&#160;life&#160;forms<br/>and&#160;propose&#160;the&#160;search&#160;for&#160;additional&#160;organizing&#160;principles.&#160;Even&#160;stronger&#160;claims,<br/>however&#160;(such&#160;as,&#160;‘‘God&#160;did&#160;it’’),&#160;leave&#160;the&#160;realm&#160;of&#160;scientific&#160;inquiry,&#160;but&#160;even&#160;the<br/>more&#160;reserved&#160;design&#160;hypotheses&#160;are&#160;anomalous&#160;in&#160;the&#160;sense&#160;that&#160;they&#160;are&#160;at&#160;odds<br/>with&#160;the&#160;direction&#160;of&#160;science&#160;as&#160;we&#160;know&#160;it.</p>
+<p style="position:absolute;top:377px;left:105px;white-space:nowrap" class="ft30">This&#160;paper&#160;is&#160;an&#160;attempt&#160;to&#160;elevate&#160;the&#160;debate&#160;beyond&#160;philosophy.&#160;My</p>
+<p style="position:absolute;top:394px;left:90px;white-space:nowrap" class="ft31">intended&#160;audience&#160;comprises&#160;those&#160;interested&#160;in&#160;the&#160;scientific&#160;pursuit&#160;of&#160;the&#160;truth<br/>on&#160;this&#160;matter.&#160;This&#160;proposal&#160;will&#160;make&#160;no&#160;impact&#160;on&#160;those&#160;who&#160;read&#160;scripture&#160;in<br/>such&#160;a&#160;way&#160;as&#160;to&#160;tightly&#160;constrain&#160;the&#160;mechanism&#160;by&#160;which&#160;God’s&#160;creation&#160;gave<br/>rise&#160;to&#160;living&#160;things,&#160;nor&#160;on&#160;those&#160;scientists&#160;for&#160;whom&#160;the&#160;sufficiency&#160;of&#160;random<br/>genetic&#160;change&#160;is&#160;an&#160;unassailable&#160;dogma.&#160;Although&#160;the&#160;debate&#160;among&#160;these<br/>camps&#160;has&#160;generated&#160;significant&#160;heat&#160;(insofar&#160;as&#160;it&#160;impacts&#160;public&#160;policy&#160;in<br/>education),&#160;it&#160;is&#160;now&#160;necessary&#160;to&#160;sharpen&#160;the&#160;discussion&#160;to&#160;abstract&#160;from&#160;hand-<br/>waving&#160;arguments&#160;and&#160;explore&#160;ways&#160;in&#160;which&#160;empirical&#160;data&#160;can&#160;help<br/>distinguish&#160;between&#160;the&#160;two&#160;views.</p>
+<p style="position:absolute;top:556px;left:105px;white-space:nowrap" class="ft30">A&#160;compromise&#160;view&#160;can&#160;be&#160;tempting:&#160;maybe&#160;God&#160;subtly&#160;tweaks&#160;mutations&#160;by</p>
+<p style="position:absolute;top:574px;left:90px;white-space:nowrap" class="ft31">orchestrating&#160;chemical&#160;changes&#160;in&#160;DNA&#160;in&#160;concert&#160;with&#160;some&#160;grand&#160;plan?&#160;At<br/>first&#160;blush,&#160;this&#160;shouldn’t&#160;offend&#160;the&#160;biologists&#160;since&#160;it&#160;is&#160;compatible&#160;with<br/>whatever&#160;mechanisms&#160;they&#160;discover&#160;to&#160;be&#160;operating.&#160;The&#160;reason&#160;why&#160;this&#160;is<br/>unsatisfactory&#160;to&#160;modern&#160;science&#160;is&#160;instructive&#160;and&#160;important.&#160;The&#160;striking<br/>power&#160;of&#160;Darwinian&#160;Evolution&#160;is&#160;in&#160;its&#160;minimalism—it&#160;proposes&#160;to&#160;explain&#160;all&#160;of<br/>biological&#160;complexity&#160;without&#160;recourse&#160;to&#160;an&#160;even&#160;more&#160;complex&#160;entity&#160;(a<br/>designer).&#160;This&#160;is&#160;Occam’s&#160;razor&#160;at&#160;its&#160;finest,&#160;and&#160;is&#160;in&#160;perfect&#160;consilience&#160;with<br/>science’s&#160;(strikingly&#160;successful)&#160;attempt&#160;to&#160;explain&#160;phenomena&#160;by&#160;reduction&#160;to<br/>simple&#160;underpinnings&#160;(Dennett,&#160;1995;&#160;Wilson,&#160;1998).&#160;Thus,&#160;the&#160;commitment&#160;of<br/>most&#160;scientists&#160;to&#160;ET&#160;is&#160;not&#160;based&#160;just&#160;on&#160;specific&#160;evidence&#160;for&#160;this&#160;model,&#160;but&#160;is<br/>also&#160;driven&#160;by&#160;the&#160;metaphysical&#160;commitment&#160;to&#160;reductive&#160;physicalism.</p>
+<p style="position:absolute;top:771px;left:105px;white-space:nowrap" class="ft30">ET’s&#160;main&#160;thrust&#160;is&#160;an&#160;empirical&#160;claim,&#160;and&#160;is&#160;in&#160;fact&#160;a&#160;promissory&#160;note.</p>
+<p style="position:absolute;top:789px;left:90px;white-space:nowrap" class="ft31">Biologists&#160;can&#160;almost&#160;never&#160;specify&#160;fitness&#160;in&#160;advance—those&#160;animals&#160;with&#160;the<br/>highest&#160;fitness&#160;survive&#160;best&#160;(a&#160;tautology)—but&#160;it&#160;is&#160;often&#160;not&#160;clear&#160;what&#160;in&#160;fact<br/>will&#160;confer&#160;highest&#160;fitness&#160;(especially&#160;when&#160;one&#160;tries&#160;to&#160;consider&#160;the&#160;costs&#160;of<br/>various&#160;body&#160;features).&#160;Also,&#160;the&#160;main&#160;claim&#160;of&#160;evolution&#160;cannot&#160;be&#160;tested&#160;by<br/>direct&#160;experiment&#160;on&#160;tractable&#160;time-scales;&#160;moreover,&#160;the&#160;genetic&#160;changes</p>
+<p style="position:absolute;top:54px;left:192px;white-space:nowrap" class="ft30">Genetic&#160;Algorithms&#160;and&#160;Evolution&#160;vs.&#160;Design</p>
+<p style="position:absolute;top:54px;left:551px;white-space:nowrap" class="ft30">117</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:12px;font-family:Times;color:#000000;}
+	.ft41{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:74px;white-space:nowrap" class="ft41">produced&#160;in&#160;labs&#160;do&#160;not&#160;give&#160;rise&#160;to&#160;a&#160;more&#160;successful&#160;species—they&#160;are&#160;almost<br/>without&#160;exception&#160;deleterious&#160;and&#160;do&#160;not&#160;induce&#160;the&#160;kind&#160;of&#160;macroscopic,&#160;co-<br/>ordinated&#160;changes&#160;we&#160;associate&#160;with&#160;different&#160;phyla.</p>
+<p style="position:absolute;top:143px;left:89px;white-space:nowrap" class="ft40">ET&#160;is&#160;a&#160;scientific&#160;theory&#160;that&#160;postulates&#160;that&#160;genetic&#160;change&#160;is&#160;random&#160;with</p>
+<p style="position:absolute;top:161px;left:74px;white-space:nowrap" class="ft41">respect&#160;to&#160;outcome.&#160;It&#160;therefore&#160;holds&#160;that&#160;some&#160;sort&#160;of&#160;plausible&#160;evolutionary<br/>story&#160;must&#160;be&#160;available&#160;for&#160;every&#160;biological&#160;feature,&#160;whether&#160;or&#160;not&#160;we&#160;know&#160;the<br/>details&#160;of&#160;each&#160;story.&#160;The&#160;theory&#160;is&#160;capable&#160;of&#160;making&#160;predictions&#160;that&#160;can&#160;be<br/>tested,&#160;like&#160;other&#160;scientific&#160;theories,&#160;by&#160;observation&#160;if&#160;not&#160;always&#160;by&#160;experiment.<br/>ET&#160;has&#160;had&#160;considerable&#160;success&#160;in&#160;biology&#160;and&#160;biomedicine,&#160;which&#160;cannot,&#160;as<br/>yet,&#160;be&#160;said&#160;for&#160;the&#160;design&#160;hypothesis.</p>
+<p style="position:absolute;top:269px;left:89px;white-space:nowrap" class="ft40">Despite&#160;what&#160;most&#160;biologists&#160;and&#160;educated&#160;laymen&#160;think,&#160;the&#160;onus&#160;of&#160;proving</p>
+<p style="position:absolute;top:287px;left:74px;white-space:nowrap" class="ft41">the&#160;case&#160;is&#160;really&#160;split.&#160;Evolutionists&#160;have&#160;to&#160;show&#160;that&#160;ET&#160;is&#160;in&#160;fact&#160;sufficient&#160;for<br/>generating&#160;the&#160;observed&#160;complexity.&#160;Similarly,&#160;adherents&#160;of&#160;design&#160;have&#160;to<br/>propose&#160;an&#160;alternative&#160;model&#160;and/or&#160;a&#160;research&#160;program&#160;that&#160;is&#160;useful&#160;in&#160;moving<br/>science&#160;forward.&#160;The&#160;debate&#160;to&#160;date&#160;can&#160;basically&#160;be&#160;encapsulated&#160;thus.&#160;Some<br/>advocate&#160;of&#160;design&#160;proposes&#160;a&#160;specific&#160;element&#160;of&#160;the&#160;organism&#160;which&#160;is&#160;‘‘an<br/>example&#160;of&#160;irreducible&#160;complexity&#160;which&#160;could&#160;never&#160;arise&#160;by&#160;small&#160;steps’’<br/>(Behe,&#160;1996).&#160;Evolutionists&#160;respond,&#160;‘‘It&#160;had&#160;to&#160;arise&#160;that&#160;way,&#160;therefore&#160;we’re<br/>sure&#160;that&#160;someday&#160;we’ll&#160;find&#160;out&#160;exactly&#160;what&#160;those&#160;steps&#160;were,&#160;and&#160;we’ll&#160;have<br/>a&#160;causal&#160;chain&#160;where&#160;each&#160;step&#160;is,&#160;by&#160;itself,&#160;advantageous.’’&#160;Aside&#160;from&#160;the<br/>search&#160;for&#160;the&#160;perfect&#160;example&#160;of&#160;irreducible&#160;complexity,&#160;there&#160;are&#160;also&#160;a&#160;number<br/>of&#160;critiques&#160;of&#160;evolution&#160;from&#160;the&#160;perspective&#160;of&#160;metaphysics.&#160;All&#160;of&#160;these,<br/>although&#160;interesting&#160;and&#160;perhaps&#160;instructive,&#160;are&#160;ultimately&#160;cheap&#160;claims&#160;to<br/>make&#160;without&#160;specific&#160;proof&#160;as&#160;to&#160;whether&#160;evolution&#160;can&#160;or&#160;cannot&#160;happen&#160;by&#160;the<br/>non-teleological&#160;mechanisms&#160;of&#160;ET.</p>
+<p style="position:absolute;top:538px;left:89px;white-space:nowrap" class="ft40">The&#160;debate&#160;can&#160;be&#160;refocused&#160;along&#160;practical&#160;lines&#160;that&#160;provide&#160;an&#160;empirical</p>
+<p style="position:absolute;top:556px;left:74px;white-space:nowrap" class="ft41">way&#160;to&#160;answer&#160;this&#160;question.&#160;The&#160;field&#160;which&#160;can&#160;enrich&#160;this&#160;debate&#160;is&#160;Genetic<br/>Programming&#160;(Bck,&#160;1995;&#160;Fogel,&#160;1998;&#160;Kinnear,&#160;1994;&#160;Koza,&#160;1992,&#160;1999;<br/>Miettinen,&#160;1999).&#160;Genetic&#160;Programming&#160;(GP),&#160;also&#160;known&#160;as&#160;Genetic<br/>Algorithms&#160;and&#160;Evolutionary&#160;Programming,&#160;is&#160;a&#160;special&#160;case&#160;of&#160;the&#160;field&#160;of<br/>Artificial&#160;Life—exploring&#160;the&#160;properties&#160;of&#160;complex&#160;systems&#160;through&#160;computer<br/>simulation&#160;(Adami,&#160;1998;&#160;Langton,&#160;1995).&#160;Rather&#160;than&#160;designing&#160;computer<br/>programs&#160;to&#160;accomplish&#160;specific&#160;ends&#160;as&#160;is&#160;done&#160;in&#160;conventional&#160;programming,<br/>in&#160;GP&#160;an&#160;evolutionary&#160;paradigm&#160;is&#160;used.&#160;The&#160;process&#160;starts&#160;with&#160;a&#160;population&#160;of<br/>randomly&#160;created&#160;programs&#160;(random&#160;strings&#160;of&#160;instructions).&#160;These&#160;are&#160;evaluated<br/>with&#160;respect&#160;to&#160;their&#160;ability&#160;to&#160;perform&#160;the&#160;desired&#160;task&#160;(e.g.,&#160;fit&#160;a&#160;curve&#160;to&#160;a&#160;set&#160;of<br/>numbers,&#160;or&#160;balance&#160;a&#160;robot&#160;as&#160;it&#160;climbs&#160;stairs).&#160;The&#160;top&#160;performers,&#160;even&#160;though<br/>they&#160;are&#160;pitiful&#160;at&#160;first,&#160;are&#160;kept,&#160;and&#160;the&#160;next&#160;round’s&#160;population&#160;consists&#160;of<br/>mutated&#160;and&#160;recombined&#160;versions&#160;of&#160;the&#160;fittest.&#160;The&#160;process&#160;continues&#160;until<br/>a&#160;desired&#160;level&#160;of&#160;performance&#160;is&#160;reached.&#160;A&#160;number&#160;of&#160;bells&#160;and&#160;whistles&#160;can&#160;be<br/>superimposed&#160;on&#160;this&#160;basic&#160;process&#160;to&#160;improve&#160;its&#160;efficiency&#160;in&#160;finding&#160;a<br/>program&#160;of&#160;sufficient&#160;fitness&#160;(e.g.,&#160;modeling&#160;recombination&#160;or&#160;other&#160;rearrange-<br/>ments&#160;of&#160;whole&#160;sections&#160;of&#160;the&#160;genome,&#160;co-evolution&#160;of&#160;several&#160;competing<br/>‘‘species’’&#160;in&#160;the&#160;same&#160;artificial&#160;world,&#160;etc.).</p>
+<p style="position:absolute;top:54px;left:74px;white-space:nowrap" class="ft40">118</p>
+<p style="position:absolute;top:54px;left:288px;white-space:nowrap" class="ft40">M.&#160;Levin</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:12px;font-family:Times;color:#000000;}
+	.ft51{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:105px;white-space:nowrap" class="ft50">Upon&#160;hearing&#160;such&#160;a&#160;plan,&#160;anyone&#160;who&#160;has&#160;ever&#160;struggled&#160;to&#160;write&#160;a&#160;working</p>
+<p style="position:absolute;top:108px;left:90px;white-space:nowrap" class="ft51">computer&#160;program&#160;will&#160;have&#160;the&#160;same&#160;reaction&#160;as&#160;would&#160;Paley&#160;(1814),&#160;if&#160;con-<br/>fronted&#160;with&#160;a&#160;watch&#160;in&#160;the&#160;forest&#160;and&#160;told&#160;that&#160;it&#160;came&#160;about&#160;by&#160;random&#160;movement<br/>of&#160;metal.&#160;It&#160;seems&#160;absolutely&#160;ludicrous&#160;to&#160;think&#160;that&#160;a&#160;satisfactory&#160;computer<br/>program&#160;can&#160;arise&#160;‘‘by&#160;accident’’;&#160;however,&#160;it&#160;works.&#160;It&#160;is&#160;indeed&#160;possible&#160;to&#160;obtain<br/>useful&#160;programs&#160;in&#160;this&#160;fashion,&#160;and&#160;sometimes,&#160;programs&#160;performing&#160;tasks&#160;that<br/>had&#160;resisted&#160;the&#160;development&#160;of&#160;algorithms&#160;by&#160;specific&#160;design&#160;(e.g.,&#160;programs<br/>which&#160;distinguish&#160;male&#160;faces&#160;from&#160;female&#160;faces).&#160;This&#160;is&#160;a&#160;crucial&#160;point:&#160;it&#160;shows&#160;us<br/>that</p>
+<p style="position:absolute;top:233px;left:115px;white-space:nowrap" class="ft50">our&#160;initial,&#160;basic&#160;intuitions&#160;about&#160;what&#160;kind&#160;of&#160;complexity&#160;can&#160;and&#160;cannot&#160;arise</p>
+<p style="position:absolute;top:251px;left:90px;white-space:nowrap" class="ft51">through&#160;evolutionary&#160;methods&#160;are&#160;simply&#160;not&#160;well&#160;calibrated.&#160;Analogously&#160;to&#160;the<br/>way&#160;our&#160;brains,&#160;optimized&#160;for&#160;medium-sized&#160;objects&#160;moving&#160;at&#160;slow&#160;speeds,&#160;do<br/>not&#160;immediately&#160;grasp&#160;the&#160;reality&#160;revealed&#160;by&#160;relativity&#160;theory&#160;and&#160;quantum<br/>mechanics,&#160;our&#160;basic&#160;expectation&#160;about&#160;what&#160;can&#160;occur&#160;through&#160;an&#160;evolutionary<br/>process&#160;is&#160;too&#160;low.</p>
+<p style="position:absolute;top:341px;left:105px;white-space:nowrap" class="ft50">GP&#160;illustrates&#160;a&#160;number&#160;of&#160;other&#160;important&#160;aspects&#160;of&#160;evolutionary&#160;theory.&#160;As</p>
+<p style="position:absolute;top:359px;left:90px;white-space:nowrap" class="ft51">in&#160;ET,&#160;the&#160;whole&#160;process&#160;can&#160;only&#160;get&#160;off&#160;the&#160;ground&#160;once&#160;a&#160;self-replicating&#160;unit<br/>and&#160;a&#160;system&#160;of&#160;heredity&#160;exist.&#160;In&#160;EP,&#160;this&#160;is&#160;provided&#160;explicitly&#160;as&#160;part&#160;of&#160;the<br/>framework&#160;within&#160;which&#160;the&#160;programs&#160;compete.&#160;The&#160;origin&#160;of&#160;the&#160;self-<br/>replicating&#160;unit,&#160;which&#160;is&#160;likely&#160;to&#160;require&#160;a&#160;considerable&#160;minimal&#160;complexity,&#160;is<br/>unknown.&#160;This&#160;of&#160;course&#160;is&#160;of&#160;key&#160;importance&#160;to&#160;critics&#160;of&#160;ET.&#160;Another&#160;analogy<br/>is&#160;the&#160;rate&#160;of&#160;progress&#160;in&#160;the&#160;field&#160;of&#160;EP.&#160;While&#160;it&#160;(rightly)&#160;generated&#160;considerable<br/>interest&#160;and&#160;a&#160;fury&#160;of&#160;theoretical&#160;and&#160;practical&#160;research,&#160;one&#160;could&#160;argue&#160;that<br/>progress&#160;has&#160;slowed&#160;considerably.&#160;The&#160;scaling&#160;problem&#160;has&#160;not&#160;been&#160;solved:<br/>there&#160;seems&#160;to&#160;be&#160;a&#160;slump&#160;in&#160;generating&#160;solutions&#160;to&#160;big,&#160;real-world&#160;problems.<br/>This&#160;may&#160;be&#160;relevant&#160;to&#160;the&#160;observation&#160;that&#160;genetic&#160;change&#160;via&#160;mutation&#160;is&#160;well<br/>suited&#160;to&#160;tuning&#160;small&#160;differences&#160;in&#160;traits&#160;but&#160;it&#160;is&#160;harder&#160;to&#160;see&#160;how&#160;major<br/>beneficial&#160;innovations&#160;may&#160;arise.&#160;Recent&#160;attempts&#160;to&#160;overcome&#160;these&#160;problems<br/>have&#160;involved&#160;the&#160;addition&#160;of&#160;other&#160;genetic&#160;operators&#160;(e.g.,&#160;recombination)&#160;in&#160;GP<br/>algorithms.&#160;GP&#160;also&#160;provides&#160;an&#160;illustration&#160;of&#160;the&#160;non-optimal&#160;nature&#160;of<br/>problem&#160;solving&#160;by&#160;evolutionary&#160;processes.&#160;Supporters&#160;of&#160;ET&#160;commonly&#160;point&#160;to<br/>the&#160;fact&#160;that&#160;biological&#160;systems&#160;are&#160;cobbled&#160;together&#160;by&#160;re-using&#160;existing&#160;parts<br/>and&#160;by&#160;satisficing&#160;and&#160;do&#160;not&#160;exhibit&#160;the&#160;kind&#160;of&#160;optimal&#160;and&#160;clean&#160;design&#160;that<br/>might&#160;be&#160;expected&#160;from&#160;a&#160;‘‘designer’’.&#160;Successful&#160;programs&#160;developed&#160;by&#160;GP<br/>share&#160;this&#160;feature,&#160;often&#160;including&#160;extremely&#160;convoluted&#160;information&#160;paths.</p>
+<p style="position:absolute;top:699px;left:105px;white-space:nowrap" class="ft50">My&#160;proposal&#160;is&#160;that&#160;both&#160;advocates&#160;of&#160;design&#160;and&#160;mainstream&#160;biologists&#160;pay</p>
+<p style="position:absolute;top:717px;left:90px;white-space:nowrap" class="ft51">attention&#160;to,&#160;support,&#160;and&#160;draw&#160;insights&#160;from&#160;the&#160;developing&#160;field&#160;of&#160;GP.&#160;This&#160;is<br/>a&#160;rich&#160;literature&#160;and&#160;body&#160;of&#160;work&#160;that&#160;is&#160;not&#160;commonly&#160;known&#160;to&#160;biologists,&#160;and<br/>does&#160;not&#160;seem&#160;to&#160;feature&#160;at&#160;all&#160;in&#160;arguments&#160;about&#160;evolution&#160;from&#160;either&#160;side.<br/>Deep&#160;insights&#160;are&#160;available&#160;to&#160;both&#160;camps&#160;here.&#160;While&#160;a&#160;number&#160;of&#160;biologists<br/>have&#160;attempted&#160;computer&#160;simulations&#160;of&#160;the&#160;evolution&#160;of&#160;specific&#160;structures&#160;such<br/>as&#160;the&#160;eye&#160;(Nilsson&#160;&amp;&#160;Pelger,&#160;1994),&#160;the&#160;most&#160;important&#160;advances&#160;will&#160;come<br/>from&#160;an&#160;analysis&#160;of&#160;how&#160;generalized&#160;complexity&#160;and&#160;problem-solving&#160;can&#160;be<br/>obtained&#160;from&#160;evolutionary&#160;processes.&#160;Examination&#160;of&#160;successful&#160;GP&#160;cases&#160;will<br/>enable&#160;both&#160;sides&#160;to&#160;sharpen&#160;their&#160;tools&#160;for&#160;the&#160;detection&#160;of&#160;design&#160;vs.&#160;apparent</p>
+<p style="position:absolute;top:54px;left:192px;white-space:nowrap" class="ft50">Genetic&#160;Algorithms&#160;and&#160;Evolution&#160;vs.&#160;Design</p>
+<p style="position:absolute;top:54px;left:551px;white-space:nowrap" class="ft50">119</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:12px;font-family:Times;color:#000000;}
+	.ft61{font-size:9px;font-family:Times;color:#000000;}
+	.ft62{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	.ft63{font-size:9px;line-height:13px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:74px;white-space:nowrap" class="ft62">design,&#160;and&#160;develop&#160;algorithms&#160;for&#160;the&#160;objective&#160;analysis&#160;of&#160;‘‘optimality’’.&#160;These<br/>analytical&#160;paradigms&#160;can&#160;then&#160;bring&#160;significant&#160;novel&#160;insight&#160;to&#160;the&#160;evolution<br/>debate&#160;as&#160;they&#160;are&#160;applied&#160;to&#160;real&#160;biological&#160;systems.</p>
+<p style="position:absolute;top:143px;left:89px;white-space:nowrap" class="ft60">What&#160;is&#160;also&#160;needed&#160;is&#160;a&#160;solution&#160;to&#160;the&#160;‘‘slump’’&#160;in&#160;the&#160;GP&#160;field.&#160;If&#160;GP&#160;can&#160;be</p>
+<p style="position:absolute;top:161px;left:74px;white-space:nowrap" class="ft62">shown&#160;to&#160;effectively&#160;generate&#160;extremely&#160;complex&#160;programs&#160;suited&#160;to&#160;arbitrary<br/>real-world&#160;problems,&#160;it&#160;will&#160;be&#160;powerful&#160;evidence&#160;against&#160;an&#160;upper&#160;bound&#160;to&#160;the<br/>complexity&#160;that&#160;can&#160;indeed&#160;be&#160;generated&#160;by&#160;such&#160;a&#160;process.&#160;The&#160;most&#160;promising<br/>areas&#160;for&#160;making&#160;such&#160;advances&#160;is&#160;the&#160;introduction&#160;within&#160;GP&#160;paradigms&#160;of&#160;self-<br/>organizing&#160;properties&#160;of&#160;networks&#160;(Kauffman,&#160;1993),&#160;and&#160;of&#160;an&#160;analogy&#160;to<br/>embryonic&#160;development—the&#160;layer&#160;which&#160;links&#160;genetic&#160;material&#160;to&#160;physical&#160;form<br/>and&#160;function&#160;(Gerhart&#160;&amp;&#160;Kirschner,&#160;1997;&#160;Hall,&#160;1999;&#160;Raff,&#160;1996;&#160;Raff&#160;&amp;<br/>Kaufman,&#160;1991;&#160;Raff&#160;&amp;&#160;Raff,&#160;1987;&#160;Salthe,&#160;1993).&#160;Most&#160;arguments&#160;about<br/>evolution&#160;neglect&#160;the&#160;fact&#160;that</p>
+<p style="position:absolute;top:305px;left:255px;white-space:nowrap" class="ft60">genes&#160;do&#160;not&#160;encode&#160;traits.&#160;Genes&#160;encode&#160;the&#160;shape</p>
+<p style="position:absolute;top:323px;left:74px;white-space:nowrap" class="ft62">of&#160;molecular&#160;building&#160;blocks,&#160;which,&#160;during&#160;embryonic&#160;development,&#160;interact<br/>according&#160;to&#160;mathematical&#160;and&#160;physical&#160;principles&#160;governing&#160;self-organizing<br/>systems&#160;to&#160;build&#160;a&#160;complex&#160;organism.&#160;The&#160;various&#160;traits&#160;of&#160;this&#160;organism&#160;arise<br/>epiphenomenally&#160;from&#160;the&#160;interaction&#160;of&#160;the&#160;building&#160;blocks&#160;created&#160;by&#160;the<br/>genome;&#160;thus,&#160;an&#160;appreciation&#160;of&#160;what&#160;sorts&#160;of&#160;structures&#160;and&#160;physiological<br/>functions&#160;can&#160;arise&#160;from&#160;changes&#160;in&#160;the&#160;genome&#160;must&#160;take&#160;into&#160;account&#160;the<br/>properties&#160;of&#160;embryonic&#160;morphogenesis.&#160;It&#160;is&#160;only&#160;through&#160;development&#160;that&#160;the<br/>genome&#160;builds&#160;the&#160;phenotype,&#160;upon&#160;which&#160;selection&#160;eventually&#160;acts.</p>
+<p style="position:absolute;top:466px;left:89px;white-space:nowrap" class="ft60">This&#160;work&#160;will&#160;be&#160;extremely&#160;useful&#160;for&#160;evolutionary&#160;biologists&#160;because&#160;it&#160;will</p>
+<p style="position:absolute;top:484px;left:74px;white-space:nowrap" class="ft60">be&#160;able&#160;to&#160;provide&#160;a&#160;direct&#160;example&#160;of&#160;complexity&#160;arising</p>
+<p style="position:absolute;top:484px;left:413px;white-space:nowrap" class="ft60">de&#160;novo,&#160;as&#160;well&#160;as&#160;allow</p>
+<p style="position:absolute;top:502px;left:74px;white-space:nowrap" class="ft62">them&#160;to&#160;study&#160;the&#160;properties&#160;of&#160;ET&#160;in&#160;a&#160;tractable&#160;time&#160;frame&#160;in&#160;a&#160;medium&#160;in&#160;which<br/>all&#160;aspects&#160;can&#160;be&#160;controlled&#160;and&#160;observed&#160;by&#160;the&#160;user.&#160;Advocates&#160;of&#160;design&#160;will<br/>benefit&#160;by&#160;increased&#160;attention&#160;to&#160;GP&#160;because&#160;it&#160;gives&#160;them&#160;a&#160;way&#160;to&#160;propose<br/>a&#160;direct&#160;and&#160;specific&#160;challenge&#160;to&#160;evolutionists&#160;to&#160;cash&#160;in&#160;their&#160;promissory&#160;note.<br/>More&#160;specifically,&#160;the&#160;successes&#160;and&#160;failures&#160;of&#160;GP&#160;approaches&#160;can&#160;be&#160;instructive<br/>regarding&#160;areas&#160;where&#160;evolutionary&#160;processes&#160;may&#160;or&#160;may&#160;not&#160;be&#160;successful,<br/>allowing&#160;them&#160;to&#160;focus&#160;their&#160;analyses&#160;of&#160;living&#160;systems&#160;more&#160;appropriately.</p>
+<p style="position:absolute;top:662px;left:281px;white-space:nowrap" class="ft60">References</p>
+<p style="position:absolute;top:688px;left:74px;white-space:nowrap" class="ft61">Adami,&#160;C.&#160;(1998).</p>
+<p style="position:absolute;top:688px;left:167px;white-space:nowrap" class="ft61">Introduction&#160;to&#160;Artificial&#160;Life.&#160;Santa&#160;Clara,&#160;CA:&#160;Telos/Springer-Verlag.</p>
+<p style="position:absolute;top:701px;left:74px;white-space:nowrap" class="ft61">Ba¨ck,&#160;T.&#160;(1995).</p>
+<p style="position:absolute;top:701px;left:156px;white-space:nowrap" class="ft61">Evolutionary&#160;Algorithms&#160;in&#160;Theory&#160;and&#160;Practice:&#160;Evolution&#160;Strategies,&#160;Evolutionary</p>
+<p style="position:absolute;top:715px;left:92px;white-space:nowrap" class="ft61">Programming,&#160;Genetic&#160;Algorithms.&#160;Oxford&#160;University&#160;Press.</p>
+<p style="position:absolute;top:728px;left:74px;white-space:nowrap" class="ft61">Behe,&#160;M.&#160;J.&#160;(1996).</p>
+<p style="position:absolute;top:728px;left:173px;white-space:nowrap" class="ft61">Darwin’s&#160;Black&#160;Box:&#160;The&#160;Biochemical&#160;Challenge&#160;to&#160;Evolution.&#160;Free&#160;Press.</p>
+<p style="position:absolute;top:742px;left:74px;white-space:nowrap" class="ft61">Behe,&#160;M.&#160;J.,&#160;Dembski,&#160;W.&#160;A.,&#160;Meyer,&#160;S.&#160;C.,&#160;&amp;&#160;Wethersfield&#160;Institute.&#160;(2000).</p>
+<p style="position:absolute;top:742px;left:439px;white-space:nowrap" class="ft61">Science&#160;and&#160;Evidence&#160;for</p>
+<p style="position:absolute;top:755px;left:92px;white-space:nowrap" class="ft63">Design&#160;in&#160;the&#160;Universe.&#160;Papers&#160;Presented&#160;at&#160;a&#160;Conference&#160;Sponsored&#160;by&#160;the&#160;Wethersfield&#160;Institute,<br/>New&#160;York&#160;City,&#160;September&#160;25,&#160;1999.&#160;San&#160;Francisco:&#160;Ignatius&#160;Press.</p>
+<p style="position:absolute;top:782px;left:74px;white-space:nowrap" class="ft61">Dawkins,&#160;R.&#160;(1987).</p>
+<p style="position:absolute;top:782px;left:180px;white-space:nowrap" class="ft61">The&#160;Blind&#160;Watchmaker:&#160;Why&#160;the&#160;Evidence&#160;of&#160;Evolution&#160;Reveals&#160;a&#160;Universe</p>
+<p style="position:absolute;top:796px;left:92px;white-space:nowrap" class="ft61">Without&#160;Design.&#160;Norton.</p>
+<p style="position:absolute;top:809px;left:74px;white-space:nowrap" class="ft61">Dawkins,&#160;R.&#160;(1989).&#160;Put&#160;your&#160;money&#160;on&#160;evolution.</p>
+<p style="position:absolute;top:809px;left:317px;white-space:nowrap" class="ft61">New&#160;York&#160;Times,&#160;9&#160;April&#160;1989,&#160;section&#160;VII,&#160;pp.&#160;35.</p>
+<p style="position:absolute;top:822px;left:74px;white-space:nowrap" class="ft61">Dembski,&#160;W.&#160;A.&#160;(2002).</p>
+<p style="position:absolute;top:822px;left:197px;white-space:nowrap" class="ft61">No&#160;Free&#160;Lunch:&#160;Why&#160;Specified&#160;Complexity&#160;Cannot&#160;Be&#160;Purchased&#160;Without</p>
+<p style="position:absolute;top:836px;left:92px;white-space:nowrap" class="ft61">Intelligence.&#160;Rowman&#160;&amp;&#160;Littlefield.</p>
+<p style="position:absolute;top:849px;left:74px;white-space:nowrap" class="ft61">Dembski,&#160;W.&#160;A.&#160;(2004a).</p>
+<p style="position:absolute;top:849px;left:197px;white-space:nowrap" class="ft61">The&#160;Design&#160;Revolution:&#160;Answering&#160;the&#160;Toughest&#160;Questions&#160;About&#160;Intelligent</p>
+<p style="position:absolute;top:863px;left:92px;white-space:nowrap" class="ft61">Design.&#160;Downers&#160;Grove,&#160;IL:&#160;InterVarsity&#160;Press.</p>
+<p style="position:absolute;top:54px;left:74px;white-space:nowrap" class="ft60">120</p>
+<p style="position:absolute;top:54px;left:288px;white-space:nowrap" class="ft60">M.&#160;Levin</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:9px;font-family:Times;color:#000000;}
+	.ft71{font-size:12px;font-family:Times;color:#000000;}
+	.ft72{font-size:9px;line-height:14px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:90px;white-space:nowrap" class="ft70">Dembski,&#160;W.&#160;A.&#160;(2004b).</p>
+<p style="position:absolute;top:90px;left:223px;white-space:nowrap" class="ft70">Uncommon&#160;Dissent:&#160;Intellectuals&#160;Who&#160;Find&#160;Darwinism&#160;Unconvincing.</p>
+<p style="position:absolute;top:104px;left:108px;white-space:nowrap" class="ft70">Wilmington,&#160;DE:&#160;ISI&#160;Books.</p>
+<p style="position:absolute;top:117px;left:90px;white-space:nowrap" class="ft70">Dembski,&#160;W.&#160;A.,&#160;&amp;&#160;Kushiner,&#160;J.&#160;M.&#160;(2001).</p>
+<p style="position:absolute;top:117px;left:305px;white-space:nowrap" class="ft70">Signs&#160;of&#160;Intelligence:&#160;Understanding&#160;Intelligent&#160;Design.</p>
+<p style="position:absolute;top:132px;left:108px;white-space:nowrap" class="ft70">Grand&#160;Rapids,&#160;MI:&#160;Brazos&#160;Press.</p>
+<p style="position:absolute;top:145px;left:90px;white-space:nowrap" class="ft70">Dembski,&#160;W.&#160;A.,&#160;&amp;&#160;Ruse,&#160;M.&#160;(2004).</p>
+<p style="position:absolute;top:145px;left:270px;white-space:nowrap" class="ft70">Debating&#160;Design:&#160;From&#160;Darwin&#160;to&#160;DNA.&#160;Cambridge&#160;University</p>
+<p style="position:absolute;top:159px;left:108px;white-space:nowrap" class="ft70">Press.</p>
+<p style="position:absolute;top:173px;left:90px;white-space:nowrap" class="ft70">Dennett,&#160;D.&#160;C.&#160;(1995).</p>
+<p style="position:absolute;top:173px;left:207px;white-space:nowrap" class="ft70">Darwin’s&#160;Dangerous&#160;Idea:&#160;Evolution&#160;and&#160;the&#160;Meanings&#160;of&#160;Life.&#160;Simon&#160;&amp;</p>
+<p style="position:absolute;top:187px;left:108px;white-space:nowrap" class="ft70">Schuster.</p>
+<p style="position:absolute;top:201px;left:90px;white-space:nowrap" class="ft70">Denton,&#160;M.&#160;(1986).</p>
+<p style="position:absolute;top:201px;left:188px;white-space:nowrap" class="ft70">Evolution:&#160;A&#160;Theory&#160;in&#160;Crisis.&#160;Bethesda,&#160;MD:&#160;Adler&#160;&amp;&#160;Adler.</p>
+<p style="position:absolute;top:214px;left:90px;white-space:nowrap" class="ft70">Fogel,&#160;D.&#160;B.&#160;(1998).</p>
+<p style="position:absolute;top:214px;left:193px;white-space:nowrap" class="ft70">Evolutionary&#160;Computation:&#160;The&#160;Fossil&#160;Record.&#160;New&#160;York:&#160;IEEE&#160;Press.</p>
+<p style="position:absolute;top:227px;left:90px;white-space:nowrap" class="ft70">Gerhart,&#160;J.,&#160;&amp;&#160;Kirschner,&#160;M.&#160;(1997).</p>
+<p style="position:absolute;top:227px;left:254px;white-space:nowrap" class="ft70">Cells,&#160;Embryos,&#160;and&#160;Evolution:&#160;Toward&#160;a&#160;Cellular&#160;and&#160;Developmental</p>
+<p style="position:absolute;top:242px;left:108px;white-space:nowrap" class="ft70">Understanding&#160;of&#160;Phenotypic&#160;Variation&#160;and&#160;Evolutionary&#160;Adaptability.&#160;Blackwell&#160;Science.</p>
+<p style="position:absolute;top:255px;left:90px;white-space:nowrap" class="ft70">Hall,&#160;B.&#160;K.&#160;(1999).</p>
+<p style="position:absolute;top:255px;left:186px;white-space:nowrap" class="ft70">Evolutionary&#160;Developmental&#160;Biology.&#160;Kluwer.</p>
+<p style="position:absolute;top:269px;left:90px;white-space:nowrap" class="ft70">Ho,&#160;M.-W.,&#160;&amp;&#160;Fox,&#160;S.&#160;W.&#160;(1988).</p>
+<p style="position:absolute;top:269px;left:259px;white-space:nowrap" class="ft70">Evolutionary&#160;Processes&#160;and&#160;Metaphors.&#160;Wiley.</p>
+<p style="position:absolute;top:282px;left:90px;white-space:nowrap" class="ft70">Ho,&#160;M.-W.,&#160;&amp;&#160;Saunders,&#160;P.&#160;T.&#160;(1984).</p>
+<p style="position:absolute;top:282px;left:300px;white-space:nowrap" class="ft70">Beyond&#160;Neo-Darwinism:&#160;An&#160;Introduction&#160;to&#160;the&#160;New</p>
+<p style="position:absolute;top:296px;left:108px;white-space:nowrap" class="ft70">Evolutionary&#160;Paradigm.&#160;Academic&#160;Press.</p>
+<p style="position:absolute;top:310px;left:90px;white-space:nowrap" class="ft70">Jablonka,&#160;E.,&#160;&amp;&#160;Lamb,&#160;M.&#160;J.&#160;(1995).</p>
+<p style="position:absolute;top:310px;left:292px;white-space:nowrap" class="ft70">Epigenetic&#160;Inheritance&#160;and&#160;Evolution:&#160;The&#160;Lamarckian</p>
+<p style="position:absolute;top:324px;left:108px;white-space:nowrap" class="ft70">Dimension.&#160;Oxford&#160;University&#160;Press.</p>
+<p style="position:absolute;top:338px;left:90px;white-space:nowrap" class="ft70">Kauffman,&#160;S.&#160;(1993).&#160;The&#160;Origins&#160;of&#160;Order:&#160;Self-Organization&#160;and&#160;Selection&#160;in&#160;Evolution.&#160;Oxford</p>
+<p style="position:absolute;top:352px;left:108px;white-space:nowrap" class="ft70">University&#160;Press.</p>
+<p style="position:absolute;top:365px;left:90px;white-space:nowrap" class="ft70">Kauffman,&#160;S.&#160;A.&#160;(1995).</p>
+<p style="position:absolute;top:365px;left:213px;white-space:nowrap" class="ft70">At&#160;Home&#160;in&#160;the&#160;Universe&#160;:&#160;The&#160;Search&#160;for&#160;Laws&#160;of&#160;Self-Organization&#160;and</p>
+<p style="position:absolute;top:380px;left:108px;white-space:nowrap" class="ft70">Complexity.&#160;Oxford&#160;University&#160;Press.</p>
+<p style="position:absolute;top:393px;left:90px;white-space:nowrap" class="ft70">Kinnear,&#160;K.&#160;E.&#160;(1994).</p>
+<p style="position:absolute;top:393px;left:203px;white-space:nowrap" class="ft70">Advances&#160;in&#160;Genetic&#160;Programming.&#160;MIT&#160;Press.</p>
+<p style="position:absolute;top:407px;left:90px;white-space:nowrap" class="ft70">Koza,&#160;J.&#160;R.&#160;(1992).</p>
+<p style="position:absolute;top:406px;left:185px;white-space:nowrap" class="ft70">Genetic&#160;Programming:&#160;On&#160;the&#160;Programming&#160;of&#160;Computers&#160;by&#160;Means&#160;of&#160;Natural</p>
+<p style="position:absolute;top:421px;left:108px;white-space:nowrap" class="ft70">Selection.&#160;MIT&#160;Press.</p>
+<p style="position:absolute;top:434px;left:90px;white-space:nowrap" class="ft70">Koza,&#160;J.&#160;R.&#160;(1999).</p>
+<p style="position:absolute;top:434px;left:195px;white-space:nowrap" class="ft70">Genetic&#160;Programming&#160;III:&#160;Darwinian&#160;Invention&#160;and&#160;Problem&#160;Solving.&#160;San</p>
+<p style="position:absolute;top:449px;left:108px;white-space:nowrap" class="ft70">Francisco:&#160;Morgan&#160;Kaufmann.</p>
+<p style="position:absolute;top:462px;left:90px;white-space:nowrap" class="ft70">Langton,&#160;C.&#160;G.&#160;(1995).</p>
+<p style="position:absolute;top:462px;left:205px;white-space:nowrap" class="ft70">Artificial&#160;Life:&#160;An&#160;Overview.&#160;MIT&#160;Press.</p>
+<p style="position:absolute;top:475px;left:90px;white-space:nowrap" class="ft70">Laszlo,&#160;E.&#160;(1987).</p>
+<p style="position:absolute;top:475px;left:181px;white-space:nowrap" class="ft70">Evolution:&#160;The&#160;Grand&#160;Synthesis.&#160;Boston:&#160;New&#160;Science&#160;Library.</p>
+<p style="position:absolute;top:489px;left:90px;white-space:nowrap" class="ft70">Margulis,&#160;L.,&#160;&amp;&#160;Fester,&#160;R.&#160;(1991).</p>
+<p style="position:absolute;top:489px;left:256px;white-space:nowrap" class="ft70">Symbiosis&#160;as&#160;a&#160;Source&#160;of&#160;Evolutionary&#160;Innovation:&#160;Speciation&#160;and</p>
+<p style="position:absolute;top:503px;left:108px;white-space:nowrap" class="ft70">Morphogenesis.&#160;MIT&#160;Press.</p>
+<p style="position:absolute;top:517px;left:90px;white-space:nowrap" class="ft70">Maynard&#160;Smith,&#160;J.&#160;(1975).</p>
+<p style="position:absolute;top:517px;left:222px;white-space:nowrap" class="ft70">The&#160;Theory&#160;of&#160;Evolution.&#160;Penguin.</p>
+<p style="position:absolute;top:530px;left:90px;white-space:nowrap" class="ft70">McFadden,&#160;J.&#160;(2001).</p>
+<p style="position:absolute;top:530px;left:197px;white-space:nowrap" class="ft70">Quantum&#160;Evolution.&#160;Norton.</p>
+<p style="position:absolute;top:544px;left:90px;white-space:nowrap" class="ft70">Miettinen,&#160;K.&#160;(1999).</p>
+<p style="position:absolute;top:543px;left:206px;white-space:nowrap" class="ft70">Evolutionary&#160;Algorithms&#160;in&#160;Engineering&#160;and&#160;Computer&#160;Science:&#160;Recent</p>
+<p style="position:absolute;top:558px;left:108px;white-space:nowrap" class="ft72">Advances&#160;in&#160;Genetic&#160;Algorithms,&#160;Evolution&#160;Strategies,&#160;Evolutionary&#160;Programming,&#160;Genetic<br/>Programming,&#160;and&#160;Industrial&#160;Applications.&#160;Wiley.</p>
+<p style="position:absolute;top:586px;left:90px;white-space:nowrap" class="ft70">Moreland,&#160;J.&#160;P.&#160;(1994).</p>
+<p style="position:absolute;top:585px;left:210px;white-space:nowrap" class="ft70">The&#160;Creation&#160;Hypothesis:&#160;Scientific&#160;Evidence&#160;for&#160;an&#160;Intelligent&#160;Designer.</p>
+<p style="position:absolute;top:600px;left:108px;white-space:nowrap" class="ft70">Downers&#160;Grove,&#160;IL:&#160;InterVarsity&#160;Press.</p>
+<p style="position:absolute;top:613px;left:90px;white-space:nowrap" class="ft70">Nilsson,&#160;D.&#160;E.,&#160;&amp;&#160;Pelger,&#160;S.&#160;(1994).&#160;A&#160;pessimistic&#160;estimate&#160;of&#160;the&#160;time&#160;required&#160;for&#160;an&#160;eye&#160;to&#160;evolve.</p>
+<p style="position:absolute;top:627px;left:108px;white-space:nowrap" class="ft70">Proceedings&#160;of&#160;the&#160;Royal&#160;Society&#160;of&#160;London.&#160;Series&#160;B.&#160;Biological&#160;Sciences,&#160;256,&#160;53–58.</p>
+<p style="position:absolute;top:641px;left:90px;white-space:nowrap" class="ft70">Paley,&#160;W.&#160;(1814).</p>
+<p style="position:absolute;top:641px;left:183px;white-space:nowrap" class="ft70">Natural&#160;Theology:&#160;Or,&#160;Evidences&#160;of&#160;the&#160;Existence&#160;and&#160;Attributes&#160;of&#160;the&#160;Deity,</p>
+<p style="position:absolute;top:655px;left:108px;white-space:nowrap" class="ft70">Collected&#160;from&#160;the&#160;Appearances&#160;of&#160;Nature.&#160;Philadelphia:&#160;M.&#160;Thomas.</p>
+<p style="position:absolute;top:669px;left:90px;white-space:nowrap" class="ft70">Raff,&#160;R.&#160;A.&#160;(1996).</p>
+<p style="position:absolute;top:669px;left:191px;white-space:nowrap" class="ft70">The&#160;Shape&#160;of&#160;Life:&#160;Genes,&#160;Development,&#160;and&#160;the&#160;Evolution&#160;of&#160;Animal&#160;Form.</p>
+<p style="position:absolute;top:683px;left:108px;white-space:nowrap" class="ft70">University&#160;of&#160;Chicago&#160;Press.</p>
+<p style="position:absolute;top:696px;left:90px;white-space:nowrap" class="ft70">Raff,&#160;R.&#160;A.,&#160;&amp;&#160;Kaufman,&#160;T.&#160;C.&#160;(1991).</p>
+<p style="position:absolute;top:696px;left:280px;white-space:nowrap" class="ft70">Embryos,&#160;Genes,&#160;and&#160;Evolution:&#160;The&#160;Developmental-Genetic</p>
+<p style="position:absolute;top:711px;left:108px;white-space:nowrap" class="ft70">Basis&#160;of&#160;Evolutionary&#160;Change.&#160;Indiana&#160;University&#160;Press.</p>
+<p style="position:absolute;top:724px;left:90px;white-space:nowrap" class="ft70">Raff,&#160;R.&#160;A.,&#160;&amp;&#160;Raff,&#160;E.&#160;C.&#160;(1987).</p>
+<p style="position:absolute;top:724px;left:250px;white-space:nowrap" class="ft70">Development&#160;as&#160;an&#160;Evolutionary&#160;Process:&#160;Proceedings&#160;of&#160;a&#160;Meeting</p>
+<p style="position:absolute;top:738px;left:108px;white-space:nowrap" class="ft72">Held&#160;at&#160;the&#160;Marine&#160;Biological&#160;Laboratory&#160;in&#160;Woods&#160;Hole,&#160;Massachusetts,&#160;August&#160;23&#160;and&#160;24,<br/>1985.&#160;New&#160;York:&#160;A.&#160;R.&#160;Liss.</p>
+<p style="position:absolute;top:766px;left:90px;white-space:nowrap" class="ft70">Salthe,&#160;S.&#160;N.&#160;(1993).</p>
+<p style="position:absolute;top:766px;left:194px;white-space:nowrap" class="ft70">Development&#160;and&#160;Evolution:&#160;Complexity&#160;and&#160;Change&#160;in&#160;Biology.&#160;MIT&#160;Press.</p>
+<p style="position:absolute;top:780px;left:90px;white-space:nowrap" class="ft70">Shapiro,&#160;J.&#160;A.&#160;(1999a).&#160;Genome&#160;system&#160;architecture&#160;and&#160;natural&#160;genetic&#160;engineering&#160;in&#160;evolution.</p>
+<p style="position:absolute;top:794px;left:108px;white-space:nowrap" class="ft70">Annals&#160;of&#160;the&#160;New&#160;York&#160;Academy&#160;of&#160;Science,&#160;870,&#160;23–35.</p>
+<p style="position:absolute;top:807px;left:90px;white-space:nowrap" class="ft70">Shapiro,&#160;J.&#160;A.&#160;(1999b).&#160;Transposable&#160;elements&#160;as&#160;the&#160;key&#160;to&#160;a&#160;21st&#160;century&#160;view&#160;of&#160;evolution.</p>
+<p style="position:absolute;top:822px;left:108px;white-space:nowrap" class="ft70">Genetica,&#160;107,&#160;171–179.</p>
+<p style="position:absolute;top:835px;left:90px;white-space:nowrap" class="ft70">Shapiro,&#160;J.&#160;A.&#160;(2002).&#160;Genome&#160;organization&#160;and&#160;reorganization&#160;in&#160;evolution:&#160;Formatting&#160;for</p>
+<p style="position:absolute;top:849px;left:108px;white-space:nowrap" class="ft70">computation&#160;and&#160;function.</p>
+<p style="position:absolute;top:849px;left:238px;white-space:nowrap" class="ft70">Annals&#160;of&#160;the&#160;New&#160;York&#160;Academy&#160;of&#160;Science,&#160;981,&#160;111–134.</p>
+<p style="position:absolute;top:863px;left:90px;white-space:nowrap" class="ft70">Sheldrake,&#160;R.&#160;(1981).</p>
+<p style="position:absolute;top:863px;left:196px;white-space:nowrap" class="ft70">A&#160;New&#160;Science&#160;of&#160;Life:&#160;The&#160;Hypothesis&#160;of&#160;Formative&#160;Causation.&#160;J.&#160;P.&#160;Tarcher.</p>
+<p style="position:absolute;top:54px;left:192px;white-space:nowrap" class="ft71">Genetic&#160;Algorithms&#160;and&#160;Evolution&#160;vs.&#160;Design</p>
+<p style="position:absolute;top:54px;left:551px;white-space:nowrap" class="ft71">121</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>23e359eec026498668ea9de28bd80f52-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:9px;font-family:Times;color:#000000;}
+	.ft81{font-size:12px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:648px;height:972px;">
+<p style="position:absolute;top:90px;left:74px;white-space:nowrap" class="ft80">Sheldrake,&#160;R.&#160;(1988).</p>
+<p style="position:absolute;top:90px;left:181px;white-space:nowrap" class="ft80">The&#160;Presence&#160;of&#160;the&#160;Past:&#160;Morphic&#160;Resonance&#160;and&#160;the&#160;Habits&#160;of&#160;Nature.&#160;New</p>
+<p style="position:absolute;top:103px;left:92px;white-space:nowrap" class="ft80">York:&#160;Times&#160;Books.</p>
+<p style="position:absolute;top:117px;left:74px;white-space:nowrap" class="ft80">Sole´,&#160;R.&#160;V.,&#160;&amp;&#160;Goodwin,&#160;B.&#160;C.&#160;(2000).</p>
+<p style="position:absolute;top:116px;left:259px;white-space:nowrap" class="ft80">Signs&#160;of&#160;Life:&#160;How&#160;Complexity&#160;Pervades&#160;Biology.&#160;Basic&#160;Books.</p>
+<p style="position:absolute;top:130px;left:74px;white-space:nowrap" class="ft80">Spetner,&#160;L.&#160;M.&#160;(1997).</p>
+<p style="position:absolute;top:130px;left:193px;white-space:nowrap" class="ft80">Not&#160;by&#160;Chance!&#160;Shattering&#160;the&#160;Modern&#160;Theory&#160;of&#160;Evolution.&#160;New&#160;York:</p>
+<p style="position:absolute;top:143px;left:92px;white-space:nowrap" class="ft80">Judaica&#160;Press.</p>
+<p style="position:absolute;top:157px;left:74px;white-space:nowrap" class="ft80">Steele,&#160;E.&#160;J.,&#160;Lindley,&#160;R.&#160;A.,&#160;&amp;&#160;Blanden,&#160;R.&#160;V.&#160;(1998).</p>
+<p style="position:absolute;top:157px;left:349px;white-space:nowrap" class="ft80">Lamarck’s&#160;Signature:&#160;How&#160;Retrogenes&#160;are</p>
+<p style="position:absolute;top:170px;left:92px;white-space:nowrap" class="ft80">Changing&#160;Darwin’s&#160;Natural&#160;Selection&#160;Paradigm.&#160;Perseus&#160;Books.</p>
+<p style="position:absolute;top:184px;left:74px;white-space:nowrap" class="ft80">Webster,&#160;G.,&#160;&amp;&#160;Goodwin,&#160;B.&#160;C.&#160;(1996).</p>
+<p style="position:absolute;top:184px;left:286px;white-space:nowrap" class="ft80">Form&#160;and&#160;Transformation:&#160;Generative&#160;and&#160;Relational</p>
+<p style="position:absolute;top:197px;left:92px;white-space:nowrap" class="ft80">Principles&#160;in&#160;Biology.&#160;Cambridge&#160;University&#160;Press.</p>
+<p style="position:absolute;top:211px;left:74px;white-space:nowrap" class="ft80">Wilson,&#160;E.&#160;O.&#160;(1998).</p>
+<p style="position:absolute;top:211px;left:183px;white-space:nowrap" class="ft80">Consilience:&#160;The&#160;Unity&#160;of&#160;Knowledge.&#160;Knopf.</p>
+<p style="position:absolute;top:54px;left:74px;white-space:nowrap" class="ft81">122</p>
+<p style="position:absolute;top:54px;left:288px;white-space:nowrap" class="ft81">M.&#160;Levin</p>
+</div>
+</body>
+</html>

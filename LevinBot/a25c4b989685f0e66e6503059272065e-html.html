@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft10{font-size:9px;font-family:Times;color:#000000;}
+	.ft11{font-size:43px;font-family:Times;color:#000000;}
+	.ft12{font-size:16px;font-family:Times;color:#000000;}
+	.ft13{font-size:13px;font-family:Times;color:#000000;}
+	.ft14{font-size:11px;font-family:Times;color:#ababab;}
+	.ft15{font-size:17px;font-family:Times;color:#ababab;}
+	.ft16{font-size:13px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page1-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft10">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft10">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft10">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft10">1/22</p>
+<p style="position:absolute;top:140px;left:60px;white-space:nowrap" class="ft11">Growing&#160;Neural&#160;Cel&#160;ular&#160;Automata</p>
+<p style="position:absolute;top:202px;left:60px;white-space:nowrap" class="ft12">Differentiable&#160;Model&#160;of&#160;Morphogenesis</p>
+<p style="position:absolute;top:1009px;left:116px;white-space:nowrap" class="ft16">Click&#160;or&#160;tap&#160;the&#160;image&#160;to&#160;erase&#160;the&#160;part&#160;of&#160;the&#160;pattern&#160;and&#160;see&#160;it&#160;regenerate.&#160;Double&#160;clicking<br/>places&#160;a&#160;new&#160;seed&#160;cel&#160;&#160;on&#160;the&#160;grid.</p>
+<p style="position:absolute;top:67px;left:610px;white-space:nowrap" class="ft14"><a href="https://distill.pub/about/">ABOUT</a></p>
+<p style="position:absolute;top:65px;left:656px;white-space:nowrap" class="ft13"><a href="https://distill.pub/about/">&#160;</a></p>
+<p style="position:absolute;top:67px;left:687px;white-space:nowrap" class="ft14"><a href="https://distill.pub/prize/">PRIZE</a></p>
+<p style="position:absolute;top:65px;left:724px;white-space:nowrap" class="ft13"><a href="https://distill.pub/prize/">&#160;</a></p>
+<p style="position:absolute;top:67px;left:755px;white-space:nowrap" class="ft14"><a href="https://distill.pub/journal/">SUBMIT</a></p>
+<p style="position:absolute;top:64px;left:89px;white-space:nowrap" class="ft15"><a href="https://distill.pub/">&#160;Distil</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft20{font-size:9px;font-family:Times;color:#000000;}
+	.ft21{font-size:7px;font-family:Times;color:#000000;}
+	.ft22{font-size:10px;font-family:Times;color:#000000;}
+	.ft23{font-size:13px;font-family:Times;color:#000000;}
+	.ft24{font-size:11px;font-family:Courier;color:#000000;}
+	.ft25{font-size:12px;font-family:Times;color:#000000;}
+	.ft26{font-size:10px;font-family:Times;color:#565656;}
+	.ft27{font-size:18px;font-family:Times;color:#000000;}
+	.ft28{font-size:11px;font-family:Times;color:#000000;}
+	.ft29{font-size:8px;font-family:Times;color:#2e6db6;}
+	.ft210{font-size:10px;font-family:Times;color:#2e6db6;}
+	.ft211{font-size:13px;line-height:22px;font-family:Times;color:#000000;}
+	.ft212{font-size:13px;line-height:21px;font-family:Times;color:#000000;}
+	.ft213{font-size:12px;line-height:28px;font-family:Times;color:#000000;}
+	.ft214{font-size:11px;line-height:23px;font-family:Times;color:#000000;}
+	.ft215{font-size:11px;line-height:24px;font-family:Times;color:#000000;}
+	.ft216{font-size:10px;line-height:18px;font-family:Times;color:#2e6db6;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page2-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft20">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft20">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft20">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft20">2/22</p>
+<p style="position:absolute;top:459px;left:60px;white-space:nowrap" class="ft21">AUTHORS</p>
+<p style="position:absolute;top:459px;left:437px;white-space:nowrap" class="ft21">AFFILIATIONS</p>
+<p style="position:absolute;top:479px;left:60px;white-space:nowrap" class="ft22"><a href="https://znah.net/">Alexander&#160;Mordvintsev</a></p>
+<p style="position:absolute;top:479px;left:437px;white-space:nowrap" class="ft22"><a href="https://ai.google/">Google</a></p>
+<p style="position:absolute;top:502px;left:60px;white-space:nowrap" class="ft22">Ettore&#160;Randazzo</p>
+<p style="position:absolute;top:502px;left:437px;white-space:nowrap" class="ft22"><a href="https://ai.google/">Google</a></p>
+<p style="position:absolute;top:524px;left:60px;white-space:nowrap" class="ft22"><a href="https://eyvind.me/">Eyvind&#160;Niklasson</a></p>
+<p style="position:absolute;top:524px;left:437px;white-space:nowrap" class="ft22"><a href="https://ai.google/">Google</a></p>
+<p style="position:absolute;top:547px;left:60px;white-space:nowrap" class="ft22"><a href="http://www.drmichaellevin.org/">Michael&#160;Levin</a></p>
+<p style="position:absolute;top:547px;left:437px;white-space:nowrap" class="ft22"><a href="http://allencenter.tufts.edu/">Al&#160;en&#160;Discovery&#160;Center&#160;at&#160;Tufts&#160;University</a></p>
+<p style="position:absolute;top:584px;left:60px;white-space:nowrap" class="ft21">PUBLISHED</p>
+<p style="position:absolute;top:604px;left:60px;white-space:nowrap" class="ft22">Feb.&#160;11,&#160;2020</p>
+<p style="position:absolute;top:584px;left:437px;white-space:nowrap" class="ft21">DOI</p>
+<p style="position:absolute;top:604px;left:437px;white-space:nowrap" class="ft22"><a href="https://doi.org/10.23915/distill.00023">10.23915/distil&#160;.00023</a></p>
+<p style="position:absolute;top:82px;left:109px;white-space:nowrap" class="ft23">&#160;</p>
+<p style="position:absolute;top:46px;left:195px;white-space:nowrap" class="ft23">Speed:&#160;1x</p>
+<p style="position:absolute;top:88px;left:195px;white-space:nowrap" class="ft24">Step&#160;215&#160;(7.3&#160;step/s)</p>
+<p style="position:absolute;top:140px;left:60px;white-space:nowrap" class="ft23">Model&#160;type:</p>
+<p style="position:absolute;top:162px;left:84px;white-space:nowrap" class="ft211">&#160;Growing<br/>&#160;Persistent<br/>&#160;Regenerating</p>
+<p style="position:absolute;top:140px;left:195px;white-space:nowrap" class="ft23">Rotation&#160;0°<a href="a25c4b989685f0e66e6503059272065es.html#12"> [experiment&#160;4]&#160;</a></p>
+<p style="position:absolute;top:252px;left:60px;white-space:nowrap" class="ft212">Regenerating&#160;models&#160;were&#160;subject&#160;to&#160;pattern&#160;damages&#160;during&#160;training,&#160;so&#160;their&#160;regenerative<br/>capabilities&#160;are&#160;much&#160;stronger,&#160;especial&#160;y&#160;in&#160;the&#160;central&#160;area.&#160;<a href="a25c4b989685f0e66e6503059272065es.html#10">[experiment&#160;3]</a></p>
+<p style="position:absolute;top:383px;left:358px;white-space:nowrap" class="ft26"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb">TRY&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:383px;left:439px;white-space:nowrap" class="ft26"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb">NOTEBOOK</a></p>
+<p style="position:absolute;top:682px;left:64px;white-space:nowrap" class="ft27">Contents</p>
+<p style="position:absolute;top:730px;left:64px;white-space:nowrap" class="ft213"><a href="a25c4b989685f0e66e6503059272065es.html#3">Model<br/></a><a href="a25c4b989685f0e66e6503059272065es.html#7">Experiments</a></p>
+<p style="position:absolute;top:786px;left:77px;white-space:nowrap" class="ft214"><a href="a25c4b989685f0e66e6503059272065es.html#7">Learning&#160;to&#160;Grow<br/></a><a href="a25c4b989685f0e66e6503059272065es.html#8">What&#160;persists,&#160;exists<br/></a><a href="a25c4b989685f0e66e6503059272065es.html#10">Learning&#160;to&#160;regenerate<br/></a><a href="a25c4b989685f0e66e6503059272065es.html#12">Rotating&#160;the&#160;perceptive&#160;field</a></p>
+<p style="position:absolute;top:884px;left:64px;white-space:nowrap" class="ft213"><a href="a25c4b989685f0e66e6503059272065es.html#13">Related&#160;Work<br/></a><a href="a25c4b989685f0e66e6503059272065es.html#15">Discussion</a></p>
+<p style="position:absolute;top:994px;left:151px;white-space:nowrap" class="ft215">This&#160;article&#160;is&#160;part&#160;of&#160;the&#160;<a href="https://distill.pub/2020/selforg/">Differentiable&#160;Self-organizing&#160;Systems&#160;Thread,</a>&#160;an&#160;experimental&#160;format<br/>col&#160;ecting&#160;invited&#160;short&#160;articles&#160;delving&#160;into&#160;differentiable&#160;self-organizing&#160;systems,&#160;interspersed&#160;with<br/>critical&#160;commentary&#160;from&#160;several&#160;experts&#160;in&#160;adjacent&#160;fields.</p>
+<p style="position:absolute;top:1085px;left:151px;white-space:nowrap" class="ft29"><a href="https://distill.pub/2020/selforg/">←&#160;PREVIOUS&#160;ARTICLE</a></p>
+<p style="position:absolute;top:1108px;left:151px;white-space:nowrap" class="ft216"><a href="https://distill.pub/2020/selforg/">Differentiable&#160;Self-organizing<br/>Systems&#160;Thread</a></p>
+<p style="position:absolute;top:1085px;left:421px;white-space:nowrap" class="ft29"><a href="https://distill.pub/2020/selforg/mnist/">NEXT&#160;ARTICLE&#160;→</a></p>
+<p style="position:absolute;top:1108px;left:421px;white-space:nowrap" class="ft210"><a href="https://distill.pub/2020/selforg/mnist/">Self-classifying&#160;MNIST&#160;Digits</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft30{font-size:9px;font-family:Times;color:#000000;}
+	.ft31{font-size:13px;font-family:Times;color:#000000;}
+	.ft32{font-size:13px;font-family:Times;color:#000000;}
+	.ft33{font-size:25px;font-family:Times;color:#000000;}
+	.ft34{font-size:9px;font-family:Times;color:#043861;}
+	.ft35{font-size:9px;font-family:Times;color:#000000;}
+	.ft36{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page3-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft30">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft30">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft30">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft30">3/22</p>
+<p style="position:absolute;top:101px;left:60px;white-space:nowrap" class="ft36">Most&#160;multicel&#160;ular&#160;organisms&#160;begin&#160;their&#160;life&#160;as&#160;a&#160;single&#160;egg&#160;cel&#160;&#160;-&#160;a&#160;single&#160;cel&#160;&#160;whose&#160;progeny&#160;reliably<br/>self-assemble&#160;into&#160;highly&#160;complex&#160;anatomies&#160;with&#160;many&#160;organs&#160;and&#160;tissues&#160;in&#160;precisely&#160;the&#160;same<br/>arrangement&#160;each&#160;time.&#160;The&#160;ability&#160;to&#160;build&#160;their&#160;own&#160;bodies&#160;is&#160;probably&#160;the&#160;most&#160;fundamental&#160;skil<br/>every&#160;living&#160;creature&#160;possesses.&#160;Morphogenesis&#160;(the&#160;process&#160;of&#160;an&#160;organismʼs&#160;shape&#160;development)&#160;is<br/>one&#160;of&#160;the&#160;most&#160;striking&#160;examples&#160;of&#160;a&#160;phenomenon&#160;cal&#160;ed&#160;<i>self-organisation</i>.&#160;Cel&#160;s,&#160;the&#160;tiny&#160;building<br/>blocks&#160;of&#160;bodies,&#160;communicate&#160;with&#160;their&#160;neighbors&#160;to&#160;decide&#160;the&#160;shape&#160;of&#160;organs&#160;and&#160;body&#160;plans,<br/>where&#160;to&#160;grow&#160;each&#160;organ,&#160;how&#160;to&#160;interconnect&#160;them,&#160;and&#160;when&#160;to&#160;eventual&#160;y&#160;stop.&#160;Understanding&#160;the<br/>interplay&#160;of&#160;the&#160;emergence&#160;of&#160;complex&#160;outcomes&#160;from&#160;simple&#160;rules&#160;and&#160;homeostatic&#160;&#160;feedback&#160;loops<br/>is&#160;an&#160;active&#160;area&#160;of&#160;research&#160;</p>
+<p style="position:absolute;top:300px;left:301px;white-space:nowrap" class="ft31">.&#160;What&#160;is&#160;clear&#160;is&#160;that&#160;evolution&#160;has&#160;learned&#160;to&#160;exploit&#160;the&#160;laws&#160;of</p>
+<p style="position:absolute;top:324px;left:60px;white-space:nowrap" class="ft36">physics&#160;and&#160;computation&#160;to&#160;implement&#160;the&#160;highly&#160;robust&#160;morphogenetic&#160;software&#160;that&#160;runs&#160;on<br/>genome-encoded&#160;cel&#160;ular&#160;hardware.</p>
+<p style="position:absolute;top:390px;left:60px;white-space:nowrap" class="ft36">This&#160;process&#160;is&#160;extremely&#160;robust&#160;to&#160;perturbations.&#160;Even&#160;when&#160;the&#160;organism&#160;is&#160;ful&#160;y&#160;developed,&#160;some<br/>species&#160;stil&#160;&#160;have&#160;the&#160;capability&#160;to&#160;repair&#160;damage&#160;-&#160;a&#160;process&#160;known&#160;as&#160;regeneration.&#160;Some&#160;creatures,<br/>such&#160;as&#160;salamanders,&#160;can&#160;ful&#160;y&#160;regenerate&#160;vital&#160;organs,&#160;limbs,&#160;eyes,&#160;or&#160;even&#160;parts&#160;of&#160;the&#160;brain!<br/>Morphogenesis&#160;is&#160;a&#160;surprisingly&#160;adaptive&#160;process.&#160;Sometimes&#160;even&#160;a&#160;very&#160;atypical&#160;development<br/>process&#160;can&#160;result&#160;in&#160;a&#160;viable&#160;organism&#160;-&#160;for&#160;example,&#160;when&#160;an&#160;early&#160;mammalian&#160;embryo&#160;is&#160;cut&#160;in&#160;two,<br/>each&#160;half&#160;wil&#160;&#160;form&#160;a&#160;complete&#160;individual&#160;-&#160;monozygotic&#160;twins!</p>
+<p style="position:absolute;top:554px;left:60px;white-space:nowrap" class="ft36">The&#160;biggest&#160;puzzle&#160;in&#160;this&#160;field&#160;is&#160;the&#160;question&#160;of&#160;how&#160;the&#160;cel&#160;&#160;col&#160;ective&#160;knows&#160;what&#160;to&#160;build&#160;and&#160;when<br/>to&#160;stop.&#160;The&#160;sciences&#160;of&#160;genomics&#160;and&#160;stem&#160;cel&#160;&#160;biology&#160;are&#160;only&#160;part&#160;of&#160;the&#160;puzzle,&#160;as&#160;they&#160;explain<br/>the&#160;distribution&#160;of&#160;specific&#160;components&#160;in&#160;each&#160;cel&#160;,&#160;and&#160;the&#160;establishment&#160;of&#160;different&#160;types&#160;of&#160;cel&#160;s.<br/>While&#160;we&#160;know&#160;of&#160;many&#160;genes&#160;that&#160;are&#160;<i>required</i>&#160;for&#160;the&#160;process&#160;of&#160;regeneration,&#160;we&#160;stil&#160;&#160;do&#160;not&#160;know<br/>the&#160;algorithm&#160;that&#160;is&#160;<i>sufficient</i>&#160;for&#160;cel&#160;s&#160;to&#160;know&#160;how&#160;to&#160;build&#160;or&#160;remodel&#160;complex&#160;organs&#160;to&#160;a&#160;very<br/>specific&#160;anatomical&#160;end-goal.&#160;Thus,&#160;one&#160;major&#160;lynch-pin&#160;of&#160;future&#160;work&#160;in&#160;biomedicine&#160;is&#160;the&#160;discovery<br/>of&#160;the&#160;process&#160;by&#160;which&#160;large-scale&#160;anatomy&#160;is&#160;specified&#160;within&#160;cel&#160;&#160;col&#160;ectives,&#160;and&#160;how&#160;we&#160;can<br/>rewrite&#160;this&#160;information&#160;to&#160;have&#160;rational&#160;control&#160;of&#160;growth&#160;and&#160;form.&#160;It&#160;is&#160;also&#160;becoming&#160;clear&#160;that&#160;the<br/>software&#160;of&#160;life&#160;possesses&#160;numerous&#160;modules&#160;or&#160;subroutines,&#160;such&#160;as&#160;“build&#160;an&#160;eye&#160;here”,&#160;which&#160;can<br/>be&#160;activated&#160;with&#160;simple&#160;signal&#160;triggers</p>
+<p style="position:absolute;top:777px;left:365px;white-space:nowrap" class="ft31">.&#160;Discovery&#160;of&#160;such&#160;subroutines&#160;and&#160;a&#160;mapping&#160;out&#160;of&#160;the</p>
+<p style="position:absolute;top:802px;left:60px;white-space:nowrap" class="ft36">developmental&#160;logic&#160;is&#160;a&#160;new&#160;field&#160;at&#160;the&#160;intersection&#160;of&#160;developmental&#160;biology&#160;and&#160;computer&#160;science.<br/>An&#160;important&#160;next&#160;step&#160;is&#160;to&#160;try&#160;to&#160;formulate&#160;computational&#160;models&#160;of&#160;this&#160;process,&#160;both&#160;to&#160;enrich&#160;the<br/>conceptual&#160;toolkit&#160;of&#160;biologists&#160;and&#160;to&#160;help&#160;translate&#160;the&#160;discoveries&#160;of&#160;biology&#160;into&#160;better&#160;robotics&#160;and<br/>computational&#160;technology.</p>
+<p style="position:absolute;top:917px;left:60px;white-space:nowrap" class="ft36">Imagine&#160;if&#160;we&#160;could&#160;design&#160;systems&#160;of&#160;the&#160;same&#160;plasticity&#160;and&#160;robustness&#160;as&#160;biological&#160;life:&#160;structures<br/>and&#160;machines&#160;that&#160;could&#160;grow&#160;and&#160;repair&#160;themselves.&#160;Such&#160;technology&#160;would&#160;transform&#160;the&#160;current<br/>efforts&#160;in&#160;regenerative&#160;medicine,&#160;where&#160;scientists&#160;and&#160;clinicians&#160;seek&#160;to&#160;discover&#160;the&#160;inputs&#160;or&#160;stimuli<br/>that&#160;could&#160;cause&#160;cel&#160;s&#160;in&#160;the&#160;body&#160;to&#160;build&#160;structures&#160;on&#160;demand&#160;as&#160;needed.&#160;To&#160;help&#160;crack&#160;the&#160;puzzle<br/>of&#160;the&#160;morphogenetic&#160;code,&#160;and&#160;also&#160;exploit&#160;the&#160;insights&#160;of&#160;biology&#160;to&#160;create&#160;self-repairing&#160;systems&#160;in<br/>real&#160;life,&#160;we&#160;try&#160;to&#160;replicate&#160;some&#160;of&#160;the&#160;desired&#160;properties&#160;in&#160;an&#160;<i>in&#160;silico</i>&#160;experiment.</p>
+<p style="position:absolute;top:1111px;left:60px;white-space:nowrap" class="ft33">Model</p>
+<p style="position:absolute;top:273px;left:676px;white-space:nowrap" class="ft34">1&#160;</p>
+<p style="position:absolute;top:301px;left:270px;white-space:nowrap" class="ft34">[1,&#160;2]</p>
+<p style="position:absolute;top:778px;left:346px;white-space:nowrap" class="ft34">[3]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft40{font-size:9px;font-family:Times;color:#000000;}
+	.ft41{font-size:13px;font-family:Times;color:#000000;}
+	.ft42{font-size:18px;font-family:Times;color:#000000;}
+	.ft43{font-size:11px;font-family:Times;color:#000000;}
+	.ft44{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page4-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft40">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft40">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft40">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft40">4/22</p>
+<p style="position:absolute;top:82px;left:60px;white-space:nowrap" class="ft44">Those&#160;in&#160;engineering&#160;disciplines&#160;and&#160;researchers&#160;often&#160;use&#160;many&#160;kinds&#160;of&#160;simulations&#160;incorporating<br/>local&#160;interaction,&#160;including&#160;systems&#160;of&#160;partial&#160;derivative&#160;equation&#160;(PDEs),&#160;particle&#160;systems,&#160;and&#160;various<br/>kinds&#160;of&#160;Cel&#160;ular&#160;Automata&#160;(CA).&#160;We&#160;wil&#160;&#160;focus&#160;on&#160;Cel&#160;ular&#160;Automata&#160;models&#160;as&#160;a&#160;roadmap&#160;for&#160;the&#160;effort<br/>of&#160;identifying&#160;cel&#160;-level&#160;rules&#160;which&#160;give&#160;rise&#160;to&#160;complex,&#160;regenerative&#160;behavior&#160;of&#160;the&#160;col&#160;ective.&#160;CAs<br/>typical&#160;y&#160;consist&#160;of&#160;a&#160;grid&#160;of&#160;cel&#160;s&#160;being&#160;iteratively&#160;updated,&#160;with&#160;the&#160;same&#160;set&#160;of&#160;rules&#160;being&#160;applied&#160;to<br/>each&#160;cel&#160;&#160;at&#160;every&#160;step.&#160;The&#160;new&#160;state&#160;of&#160;a&#160;cel&#160;&#160;depends&#160;only&#160;on&#160;the&#160;states&#160;of&#160;the&#160;few&#160;cel&#160;s&#160;in&#160;its<br/>immediate&#160;neighborhood.&#160;Despite&#160;their&#160;apparent&#160;simplicity,&#160;CAs&#160;often&#160;demonstrate&#160;rich,&#160;interesting<br/>behaviours,&#160;and&#160;have&#160;a&#160;long&#160;history&#160;of&#160;being&#160;applied&#160;to&#160;modeling&#160;biological&#160;phenomena.</p>
+<p style="position:absolute;top:296px;left:60px;white-space:nowrap" class="ft44">Letʼs&#160;try&#160;to&#160;develop&#160;a&#160;cel&#160;ular&#160;automata&#160;update&#160;rule&#160;that,&#160;starting&#160;from&#160;a&#160;single&#160;cel&#160;,&#160;wil&#160;&#160;produce&#160;a<br/>predefined&#160;multicel&#160;ular&#160;pattern&#160;on&#160;a&#160;2D&#160;grid.&#160;This&#160;is&#160;our&#160;analogous&#160;toy&#160;model&#160;of&#160;organism<br/>development.&#160;To&#160;design&#160;the&#160;CA,&#160;we&#160;must&#160;specify&#160;the&#160;possible&#160;cel&#160;&#160;states,&#160;and&#160;their&#160;update&#160;function.<br/>Typical&#160;CA&#160;models&#160;represent&#160;cel&#160;&#160;states&#160;with&#160;a&#160;set&#160;of&#160;discrete&#160;values,&#160;although&#160;variants&#160;using&#160;vectors<br/>of&#160;continuous&#160;values&#160;exist.&#160;The&#160;use&#160;of&#160;continuous&#160;values&#160;has&#160;the&#160;virtue&#160;of&#160;al&#160;owing&#160;the&#160;update&#160;rule&#160;to<br/>be&#160;a&#160;differentiable&#160;function&#160;of&#160;the&#160;cel&#160;ʼs&#160;neighbourhoodʼs&#160;states.&#160;The&#160;rules&#160;that&#160;guide&#160;individual&#160;cel<br/>behavior&#160;based&#160;on&#160;the&#160;local&#160;environment&#160;are&#160;analogous&#160;to&#160;the&#160;low-level&#160;hardware&#160;specification<br/>encoded&#160;by&#160;the&#160;genome&#160;of&#160;an&#160;organism.&#160;Running&#160;our&#160;model&#160;for&#160;a&#160;set&#160;amount&#160;of&#160;steps&#160;from&#160;a&#160;starting<br/>configuration&#160;wil&#160;&#160;reveal&#160;the&#160;patterning&#160;behavior&#160;that&#160;is&#160;enabled&#160;by&#160;such&#160;hardware.</p>
+<p style="position:absolute;top:535px;left:60px;white-space:nowrap" class="ft44">So&#160;-&#160;what&#160;is&#160;so&#160;special&#160;about&#160;differentiable&#160;update&#160;rules?&#160;They&#160;wil&#160;&#160;al&#160;ow&#160;us&#160;to&#160;use&#160;the&#160;powerful<br/>language&#160;of&#160;loss&#160;functions&#160;to&#160;express&#160;our&#160;wishes,&#160;and&#160;the&#160;extensive&#160;existing&#160;machinery&#160;around<br/>gradient-based&#160;numerical&#160;optimization&#160;to&#160;fulfil&#160;&#160;them.&#160;The&#160;art&#160;of&#160;stacking&#160;together&#160;differentiable<br/>functions,&#160;and&#160;optimizing&#160;their&#160;parameters&#160;to&#160;perform&#160;various&#160;tasks&#160;has&#160;a&#160;long&#160;history.&#160;In&#160;recent&#160;years<br/>it&#160;has&#160;flourished&#160;under&#160;various&#160;names,&#160;such&#160;as&#160;(Deep)&#160;Neural&#160;Networks,&#160;Deep&#160;Learning&#160;or<br/>Differentiable&#160;Programming.</p>
+<p style="position:absolute;top:1105px;left:60px;white-space:nowrap" class="ft42">Cell&#160;State</p>
+<p style="position:absolute;top:1020px;left:323px;white-space:nowrap" class="ft43">A&#160;single&#160;update&#160;step&#160;of&#160;the&#160;model.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft50{font-size:9px;font-family:Times;color:#000000;}
+	.ft51{font-size:13px;font-family:Times;color:#000000;}
+	.ft52{font-size:18px;font-family:Times;color:#000000;}
+	.ft53{font-size:13px;font-family:Times;color:#000000;}
+	.ft54{font-size:16px;font-family:Times;color:#000000;}
+	.ft55{font-size:16px;font-family:Times;color:#000000;}
+	.ft56{font-size:11px;font-family:Times;color:#000000;}
+	.ft57{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page5-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft50">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft50">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft50">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft50">5/22</p>
+<p style="position:absolute;top:50px;left:60px;white-space:nowrap" class="ft57">We&#160;wil&#160;&#160;represent&#160;each&#160;cel&#160;&#160;state&#160;as&#160;a&#160;vector&#160;of&#160;16&#160;real&#160;values&#160;(see&#160;the&#160;figure&#160;above).&#160;The&#160;first&#160;three<br/>channels&#160;represent&#160;the&#160;cel&#160;&#160;color&#160;visible&#160;to&#160;us&#160;(RGB).&#160;The&#160;target&#160;pattern&#160;has&#160;color&#160;channel&#160;values&#160;in<br/>range&#160;</p>
+<p style="position:absolute;top:99px;left:172px;white-space:nowrap" class="ft51">&#160;and&#160;an&#160;&#160;&#160;equal&#160;to&#160;1.0&#160;for&#160;foreground&#160;pixels,&#160;and&#160;0.0&#160;for&#160;background.</p>
+<p style="position:absolute;top:140px;left:60px;white-space:nowrap" class="ft57">The&#160;alpha&#160;channel&#160;(&#160;)&#160;has&#160;a&#160;special&#160;meaning:&#160;it&#160;demarcates&#160;living&#160;cel&#160;s,&#160;those&#160;belonging&#160;to&#160;the&#160;pattern<br/>being&#160;grown.&#160;In&#160;particular,&#160;cel&#160;s&#160;having&#160;</p>
+<p style="position:absolute;top:164px;left:403px;white-space:nowrap" class="ft51">&#160;and&#160;their&#160;neighbors&#160;are&#160;considered&#160;“living”.&#160;Other&#160;cel&#160;s</p>
+<p style="position:absolute;top:189px;left:60px;white-space:nowrap" class="ft57">are&#160;“dead”&#160;or&#160;empty&#160;and&#160;have&#160;their&#160;state&#160;vector&#160;values&#160;explicitly&#160;set&#160;to&#160;0.0&#160;at&#160;each&#160;time&#160;step.&#160;Thus<br/>cel&#160;s&#160;with&#160;</p>
+<p style="position:absolute;top:214px;left:193px;white-space:nowrap" class="ft51">&#160;can&#160;be&#160;thought&#160;of&#160;as&#160;“mature”,&#160;while&#160;their&#160;neighbors&#160;with&#160;</p>
+<p style="position:absolute;top:214px;left:675px;white-space:nowrap" class="ft51">&#160;are&#160;“growing”,</p>
+<p style="position:absolute;top:239px;left:60px;white-space:nowrap" class="ft51">and&#160;can&#160;become&#160;mature&#160;if&#160;their&#160;alpha&#160;passes&#160;the&#160;0.1&#160;threshold.</p>
+<p style="position:absolute;top:495px;left:60px;white-space:nowrap" class="ft57">Hidden&#160;channels&#160;donʼt&#160;have&#160;a&#160;predefined&#160;meaning,&#160;and&#160;itʼs&#160;up&#160;to&#160;the&#160;update&#160;rule&#160;to&#160;decide&#160;what&#160;to&#160;use<br/>them&#160;for.&#160;They&#160;can&#160;be&#160;interpreted&#160;as&#160;concentrations&#160;of&#160;some&#160;chemicals,&#160;electric&#160;potentials&#160;or&#160;some<br/>other&#160;signaling&#160;mechanism&#160;that&#160;are&#160;used&#160;by&#160;cel&#160;s&#160;to&#160;orchestrate&#160;the&#160;growth.&#160;In&#160;terms&#160;of&#160;our&#160;biological<br/>analogy&#160;-&#160;al&#160;&#160;our&#160;cel&#160;s&#160;share&#160;the&#160;same&#160;genome&#160;(update&#160;rule)&#160;and&#160;are&#160;only&#160;differentiated&#160;by&#160;the<br/>information&#160;encoded&#160;the&#160;chemical&#160;signal&#160;ing&#160;they&#160;receive,&#160;emit,&#160;and&#160;store&#160;internal&#160;y&#160;(their&#160;state<br/>vectors).</p>
+<p style="position:absolute;top:700px;left:60px;white-space:nowrap" class="ft52">Cellular&#160;Automaton&#160;rule</p>
+<p style="position:absolute;top:749px;left:60px;white-space:nowrap" class="ft57">Now&#160;itʼs&#160;time&#160;to&#160;define&#160;the&#160;update&#160;rule.&#160;Our&#160;CA&#160;runs&#160;on&#160;a&#160;regular&#160;2D&#160;grid&#160;of&#160;16-dimensional&#160;vectors,<br/>essential&#160;y&#160;a&#160;3D&#160;array&#160;of&#160;shape&#160;[height,&#160;width,&#160;16].&#160;We&#160;want&#160;to&#160;apply&#160;the&#160;same&#160;operation&#160;to&#160;each&#160;cel&#160;,<br/>and&#160;the&#160;result&#160;of&#160;this&#160;operation&#160;can&#160;only&#160;depend&#160;on&#160;the&#160;smal&#160;&#160;(3x3)&#160;neighborhood&#160;of&#160;the&#160;cel&#160;.&#160;This&#160;is<br/>heavily&#160;reminiscent&#160;of&#160;the&#160;convolution&#160;operation,&#160;one&#160;of&#160;the&#160;cornerstones&#160;of&#160;signal&#160;processing&#160;and<br/>differential&#160;programming.&#160;Convolution&#160;is&#160;a&#160;linear&#160;operation,&#160;but&#160;it&#160;can&#160;be&#160;combined&#160;with&#160;other&#160;per-cel<br/>operations&#160;to&#160;produce&#160;a&#160;complex&#160;update&#160;rule,&#160;capable&#160;of&#160;learning&#160;the&#160;desired&#160;behaviour.&#160;Our&#160;cel<br/>update&#160;rule&#160;can&#160;be&#160;split&#160;into&#160;the&#160;fol&#160;owing&#160;phases,&#160;applied&#160;in&#160;order:</p>
+<p style="position:absolute;top:938px;left:60px;white-space:nowrap" class="ft57">Perception.&#160;This&#160;step&#160;defines&#160;what&#160;each&#160;cel&#160;&#160;perceives&#160;of&#160;the&#160;environment&#160;surrounding&#160;it.&#160;We<br/>implement&#160;this&#160;via&#160;a&#160;3x3&#160;convolution&#160;with&#160;a&#160;fixed&#160;kernel.&#160;One&#160;may&#160;argue&#160;that&#160;defining&#160;this&#160;kernel&#160;is<br/>superfluous&#160;-&#160;after&#160;al&#160;&#160;we&#160;could&#160;simply&#160;have&#160;the&#160;cel&#160;&#160;learn&#160;the&#160;requisite&#160;perception&#160;kernel&#160;coefficients.<br/>Our&#160;choice&#160;of&#160;fixed&#160;operations&#160;are&#160;motivated&#160;by&#160;the&#160;fact&#160;that&#160;real&#160;life&#160;cel&#160;s&#160;often&#160;rely&#160;only&#160;on&#160;chemical<br/>gradients&#160;to&#160;guide&#160;the&#160;organism&#160;development.&#160;Thus,&#160;we&#160;are&#160;using&#160;classical&#160;Sobel&#160;filters&#160;to&#160;estimate&#160;the<br/>partial&#160;derivatives&#160;of&#160;cel&#160;&#160;state&#160;channels&#160;in&#160;the&#160;&#160;&#160;and&#160;&#160;&#160;directions,&#160;forming&#160;a&#160;2D&#160;gradient&#160;vector&#160;in&#160;each<br/>direction,&#160;for&#160;each&#160;state&#160;channel.&#160;We&#160;concatenate&#160;those&#160;gradients&#160;with&#160;the&#160;cel&#160;s&#160;own&#160;states,&#160;forming&#160;a&#160;</p>
+<p style="position:absolute;top:1111px;left:190px;white-space:nowrap" class="ft51">&#160;dimensional&#160;<i>perception&#160;vector</i>,&#160;or&#160;rather&#160;<i>percepted&#160;vector,&#160;</i>for&#160;each&#160;cel&#160;.</p>
+<p style="position:absolute;top:97px;left:106px;white-space:nowrap" class="ft54">[0.0,&#160;1.0]</p>
+<p style="position:absolute;top:101px;left:230px;white-space:nowrap" class="ft55"><i>α</i></p>
+<p style="position:absolute;top:141px;left:203px;white-space:nowrap" class="ft55"><i>α</i></p>
+<p style="position:absolute;top:166px;left:343px;white-space:nowrap" class="ft55"><i>α</i></p>
+<p style="position:absolute;top:163px;left:360px;white-space:nowrap" class="ft54">&gt;&#160;0.1</p>
+<p style="position:absolute;top:216px;left:132px;white-space:nowrap" class="ft55"><i>α</i></p>
+<p style="position:absolute;top:212px;left:149px;white-space:nowrap" class="ft54">&gt;&#160;0.1</p>
+<p style="position:absolute;top:216px;left:614px;white-space:nowrap" class="ft55"><i>α</i></p>
+<p style="position:absolute;top:212px;left:631px;white-space:nowrap" class="ft54">≤&#160;0.1</p>
+<p style="position:absolute;top:466px;left:367px;white-space:nowrap" class="ft56">&#160;when&#160;no&#160;neighbour&#160;with&#160;</p>
+<p style="position:absolute;top:465px;left:319px;white-space:nowrap" class="ft51">→&#160;0.00</p>
+<p style="position:absolute;top:468px;left:279px;white-space:nowrap" class="ft53"><i>state</i></p>
+<p style="position:absolute;top:462px;left:301px;white-space:nowrap" class="ft51">⃗</p>
+<p style="position:absolute;top:468px;left:528px;white-space:nowrap" class="ft53"><i>α</i></p>
+<p style="position:absolute;top:465px;left:542px;white-space:nowrap" class="ft51">&gt;&#160;0.10</p>
+<p style="position:absolute;top:1064px;left:397px;white-space:nowrap" class="ft55"><i>x</i></p>
+<p style="position:absolute;top:1060px;left:409px;white-space:nowrap" class="ft54">⃗</p>
+<p style="position:absolute;top:1064px;left:444px;white-space:nowrap" class="ft55"><i>y</i></p>
+<p style="position:absolute;top:1060px;left:456px;white-space:nowrap" class="ft54">⃗</p>
+<p style="position:absolute;top:1110px;left:60px;white-space:nowrap" class="ft54">16&#160;∗&#160;2&#160;+&#160;16&#160;=&#160;48</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft60{font-size:9px;font-family:Times;color:#000000;}
+	.ft61{font-size:9px;font-family:Times;color:#0077aa;}
+	.ft62{font-size:9px;font-family:Times;color:#000000;}
+	.ft63{font-size:9px;font-family:Times;color:#892e40;}
+	.ft64{font-size:9px;font-family:Times;color:#454545;}
+	.ft65{font-size:9px;font-family:Times;color:#996e3a;}
+	.ft66{font-size:9px;font-family:Times;color:#990054;}
+	.ft67{font-size:9px;font-family:Times;color:#2e343c;}
+	.ft68{font-size:13px;font-family:Times;color:#000000;}
+	.ft69{font-size:9px;line-height:15px;font-family:Times;color:#000000;}
+	.ft610{font-size:9px;line-height:15px;font-family:Times;color:#454545;}
+	.ft611{font-size:9px;line-height:15px;font-family:Times;color:#2e343c;}
+	.ft612{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page6-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft60">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft60">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft60">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft60">6/22</p>
+<p style="position:absolute;top:62px;left:103px;white-space:nowrap" class="ft610">def&#160;perceive(state_grid):&#160;<br/>sobel_x&#160;=&#160;[[-1,&#160;0,&#160;+1],<br/>[-2,&#160;0,&#160;+2],<br/>[-1,&#160;0,&#160;+1]]&#160;<br/>sobel_y&#160;=&#160;transpose(sobel_x)<br/>#&#160;Convolve&#160;sobel&#160;filters&#160;with&#160;states<br/>#&#160;in&#160;x,&#160;y&#160;and&#160;channel&#160;dimension.&#160;<br/>grad_x&#160;=&#160;conv2d(sobel_x,&#160;state_grid)&#160;<br/>grad_y&#160;=&#160;conv2d(sobel_y,&#160;state_grid)<br/>#&#160;Concatenate&#160;the&#160;cell’s&#160;state&#160;channels,<br/>#&#160;the&#160;gradients&#160;of&#160;channels&#160;in&#160;x&#160;and<br/>#&#160;the&#160;gradient&#160;of&#160;channels&#160;in&#160;y.&#160;<br/>perception_grid&#160;=&#160;concat(&#160;<br/>state_grid,&#160;grad_x,&#160;grad_y,&#160;axis=2)<br/>return&#160;perception_grid</p>
+<p style="position:absolute;top:315px;left:60px;white-space:nowrap" class="ft612">Update&#160;rule.&#160;Each&#160;cel&#160;&#160;now&#160;applies&#160;a&#160;series&#160;of&#160;operations&#160;to&#160;the&#160;perception&#160;vector,&#160;consisting&#160;of<br/>typical&#160;differentiable&#160;programming&#160;building&#160;blocks,&#160;such&#160;as&#160;1x1-convolutions&#160;and&#160;ReLU&#160;nonlinearities,<br/>which&#160;we&#160;cal&#160;&#160;the&#160;cel&#160;ʼs&#160;“update&#160;rule”.&#160;Recal&#160;&#160;that&#160;the&#160;update&#160;rule&#160;is&#160;learned,&#160;but&#160;every&#160;cel&#160;&#160;runs&#160;the<br/>same&#160;update&#160;rule.&#160;The&#160;network&#160;parametrizing&#160;this&#160;update&#160;rule&#160;consists&#160;of&#160;approximately&#160;8,000<br/>parameters.&#160;Inspired&#160;by&#160;residual&#160;neural&#160;networks,&#160;the&#160;update&#160;rule&#160;outputs&#160;an&#160;incremental&#160;update&#160;to&#160;the<br/>cel&#160;ʼs&#160;state,&#160;which&#160;applied&#160;to&#160;the&#160;cel&#160;&#160;before&#160;the&#160;next&#160;time&#160;step.&#160;The&#160;update&#160;rule&#160;is&#160;designed&#160;to&#160;exhibit<br/>“do-nothing”&#160;initial&#160;behaviour&#160;-&#160;implemented&#160;by&#160;initializing&#160;the&#160;weights&#160;of&#160;the&#160;final&#160;convolutional&#160;layer<br/>in&#160;the&#160;update&#160;rule&#160;with&#160;zero.&#160;We&#160;also&#160;forego&#160;applying&#160;a&#160;ReLU&#160;to&#160;the&#160;output&#160;of&#160;the&#160;last&#160;layer&#160;of&#160;the<br/>update&#160;rule&#160;as&#160;the&#160;incremental&#160;updates&#160;to&#160;the&#160;cel&#160;&#160;state&#160;must&#160;necessarily&#160;be&#160;able&#160;to&#160;both&#160;add&#160;or<br/>subtract&#160;from&#160;the&#160;state.</p>
+<p style="position:absolute;top:593px;left:103px;white-space:nowrap" class="ft610">def&#160;update(perception_vector):<br/>#&#160;The&#160;following&#160;pseudocode&#160;operates&#160;on<br/>#&#160;a&#160;single&#160;cell’s&#160;perception&#160;vector.<br/>#&#160;Our&#160;reference&#160;implementation&#160;uses&#160;1D<br/>#&#160;convolutions&#160;for&#160;performance&#160;reasons.&#160;<br/>x&#160;=&#160;dense(perception_vector,&#160;output_len=128)&#160;<br/>x&#160;=&#160;relu(x)&#160;<br/>ds&#160;=&#160;dense(x,&#160;output_len=16,&#160;weights_init=0.0)<br/>return&#160;ds</p>
+<p style="position:absolute;top:752px;left:60px;white-space:nowrap" class="ft612">Stochastic&#160;cell&#160;update.&#160;Typical&#160;cel&#160;ular&#160;automata&#160;update&#160;al&#160;&#160;cel&#160;s&#160;simultaneously.&#160;This&#160;implies&#160;the<br/>existence&#160;of&#160;a&#160;global&#160;clock,&#160;synchronizing&#160;al&#160;&#160;cel&#160;s.&#160;Relying&#160;on&#160;global&#160;synchronisation&#160;is&#160;not&#160;something<br/>one&#160;expects&#160;from&#160;a&#160;self-organising&#160;system.&#160;We&#160;relax&#160;this&#160;requirement&#160;by&#160;assuming&#160;that&#160;each&#160;cel<br/>performs&#160;an&#160;update&#160;independently,&#160;waiting&#160;for&#160;a&#160;random&#160;time&#160;interval&#160;between&#160;updates.&#160;To&#160;model&#160;this<br/>behaviour&#160;we&#160;apply&#160;a&#160;random&#160;per-cel&#160;&#160;mask&#160;to&#160;update&#160;vectors,&#160;setting&#160;al&#160;&#160;update&#160;values&#160;to&#160;zero&#160;with<br/>some&#160;predefined&#160;probability&#160;(we&#160;use&#160;0.5&#160;during&#160;training).&#160;This&#160;operation&#160;can&#160;be&#160;also&#160;seen&#160;as&#160;an<br/>application&#160;of&#160;per-cel&#160;&#160;dropout&#160;to&#160;update&#160;vectors.</p>
+<p style="position:absolute;top:956px;left:103px;white-space:nowrap" class="ft69">def&#160;stochastic_update(state_grid,&#160;ds_grid):<br/>#&#160;Zero&#160;out&#160;a&#160;random&#160;fraction&#160;of&#160;the&#160;updates.&#160;<br/>rand_mask&#160;=&#160;cast(random(64,&#160;64)&#160;&lt;&#160;0.5,&#160;float32)&#160;<br/>ds_grid&#160;=&#160;ds_grid&#160;*&#160;rand_mask&#160;<br/>return&#160;state_grid&#160;+&#160;ds_grid</p>
+<p style="position:absolute;top:1052px;left:60px;white-space:nowrap" class="ft612">Living&#160;cell&#160;masking.&#160;We&#160;want&#160;to&#160;model&#160;the&#160;growth&#160;process&#160;that&#160;starts&#160;with&#160;a&#160;single&#160;cel&#160;,&#160;and&#160;donʼt<br/>want&#160;empty&#160;cel&#160;s&#160;to&#160;participate&#160;in&#160;computations&#160;or&#160;carry&#160;any&#160;hidden&#160;state.&#160;We&#160;enforce&#160;this&#160;by&#160;explicitly</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft70{font-size:9px;font-family:Times;color:#000000;}
+	.ft71{font-size:13px;font-family:Times;color:#000000;}
+	.ft72{font-size:9px;font-family:Times;color:#0077aa;}
+	.ft73{font-size:9px;font-family:Times;color:#000000;}
+	.ft74{font-size:9px;font-family:Times;color:#892e40;}
+	.ft75{font-size:9px;font-family:Times;color:#454545;}
+	.ft76{font-size:9px;font-family:Times;color:#2e343c;}
+	.ft77{font-size:9px;font-family:Times;color:#996e3a;}
+	.ft78{font-size:9px;font-family:Times;color:#990054;}
+	.ft79{font-size:25px;font-family:Times;color:#000000;}
+	.ft710{font-size:11px;font-family:Times;color:#000000;}
+	.ft711{font-size:9px;font-family:Times;color:#043861;}
+	.ft712{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+	.ft713{font-size:9px;line-height:15px;font-family:Times;color:#454545;}
+	.ft714{font-size:9px;line-height:15px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page7-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft70">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft70">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft70">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft70">7/22</p>
+<p style="position:absolute;top:45px;left:60px;white-space:nowrap" class="ft712">setting&#160;al&#160;&#160;channels&#160;of&#160;empty&#160;cel&#160;s&#160;to&#160;zeros.&#160;A&#160;cel&#160;&#160;is&#160;considered&#160;empty&#160;if&#160;there&#160;is&#160;no&#160;“mature”<br/>(alpha&gt;0.1)&#160;cel&#160;&#160;in&#160;its&#160;3x3&#160;neightborhood.</p>
+<p style="position:absolute;top:125px;left:103px;white-space:nowrap" class="ft713">def&#160;alive_masking(state_grid):<br/>#&#160;Take&#160;the&#160;alpha&#160;channel&#160;as&#160;the&#160;measure&#160;of&#160;“life”.&#160;<br/>alive&#160;=&#160;max_pool(state_grid[:,&#160;:,&#160;3],&#160;(3,3))&#160;&gt;&#160;0.1&#160;<br/>state_grid&#160;=&#160;state_grid&#160;*&#160;cast(alive,&#160;float32)<br/>return&#160;state_grid</p>
+<p style="position:absolute;top:251px;left:60px;white-space:nowrap" class="ft79">Experiment&#160;1:&#160;Learning&#160;to&#160;Grow</p>
+<p style="position:absolute;top:620px;left:60px;white-space:nowrap" class="ft712">In&#160;our&#160;first&#160;experiment,&#160;we&#160;simply&#160;train&#160;the&#160;CA&#160;to&#160;achieve&#160;a&#160;target&#160;image&#160;after&#160;a&#160;random&#160;number&#160;of<br/>updates.&#160;This&#160;approach&#160;is&#160;quite&#160;naive&#160;and&#160;wil&#160;&#160;run&#160;into&#160;issues.&#160;But&#160;the&#160;chal&#160;enges&#160;it&#160;surfaces&#160;wil&#160;&#160;help<br/>us&#160;refine&#160;future&#160;attempts.</p>
+<p style="position:absolute;top:711px;left:60px;white-space:nowrap" class="ft712">We&#160;initialize&#160;the&#160;grid&#160;with&#160;zeros,&#160;except&#160;a&#160;single&#160;seed&#160;cel&#160;&#160;in&#160;the&#160;center,&#160;which&#160;wil&#160;&#160;have&#160;al&#160;&#160;channels<br/>except&#160;RGB&#160;&#160;set&#160;to&#160;one.&#160;Once&#160;the&#160;grid&#160;is&#160;initialized,&#160;we&#160;iteratively&#160;apply&#160;the&#160;update&#160;rule.&#160;We&#160;sample&#160;a<br/>random&#160;number&#160;of&#160;CA&#160;steps&#160;from&#160;the&#160;[64,&#160;96]&#160;&#160;range&#160;for&#160;each&#160;training&#160;step,&#160;as&#160;we&#160;want&#160;the&#160;pattern&#160;to<br/>be&#160;stable&#160;across&#160;a&#160;number&#160;of&#160;iterations.&#160;At&#160;the&#160;last&#160;step&#160;we&#160;apply&#160;pixel-wise&#160;L2&#160;loss&#160;between&#160;RGBA<br/>channels&#160;in&#160;the&#160;grid&#160;and&#160;the&#160;target&#160;pattern.&#160;This&#160;loss&#160;can&#160;be&#160;differentiably&#160;optimized&#160;&#160;with&#160;respect&#160;to<br/>the&#160;update&#160;rule&#160;parameters&#160;by&#160;backpropagation-through-time,&#160;the&#160;standard&#160;method&#160;of&#160;training<br/>recurrent&#160;neural&#160;networks.</p>
+<p style="position:absolute;top:900px;left:60px;white-space:nowrap" class="ft712">Once&#160;the&#160;optimisation&#160;converges,&#160;we&#160;can&#160;run&#160;simulations&#160;to&#160;see&#160;how&#160;our&#160;learned&#160;CAs&#160;grow&#160;patterns<br/>starting&#160;from&#160;the&#160;seed&#160;cel&#160;.&#160;Letʼs&#160;see&#160;what&#160;happens&#160;when&#160;we&#160;run&#160;it&#160;for&#160;longer&#160;than&#160;the&#160;number&#160;of&#160;steps<br/>used&#160;during&#160;training.&#160;The&#160;animation&#160;below&#160;shows&#160;the&#160;behaviour&#160;of&#160;a&#160;few&#160;different&#160;models,&#160;trained&#160;to<br/>generate&#160;different&#160;emoji&#160;patterns.</p>
+<p style="position:absolute;top:575px;left:292px;white-space:nowrap" class="ft710">Training&#160;regime&#160;for&#160;learning&#160;a&#160;target&#160;pattern.</p>
+<p style="position:absolute;top:733px;left:149px;white-space:nowrap" class="ft711">2&#160;</p>
+<p style="position:absolute;top:758px;left:398px;white-space:nowrap" class="ft711">3&#160;</p>
+<p style="position:absolute;top:808px;left:673px;white-space:nowrap" class="ft711">4&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft80{font-size:9px;font-family:Times;color:#000000;}
+	.ft81{font-size:13px;font-family:Times;color:#000000;}
+	.ft82{font-size:25px;font-family:Times;color:#000000;}
+	.ft83{font-size:11px;font-family:Times;color:#000000;}
+	.ft84{font-size:10px;font-family:Times;color:#565656;}
+	.ft85{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page8-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft80">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft80">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft80">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft80">8/22</p>
+<p style="position:absolute;top:574px;left:60px;white-space:nowrap" class="ft85">We&#160;can&#160;see&#160;that&#160;different&#160;training&#160;runs&#160;can&#160;lead&#160;to&#160;models&#160;with&#160;drastical&#160;y&#160;different&#160;long&#160;term<br/>behaviours.&#160;Some&#160;tend&#160;to&#160;die&#160;out,&#160;some&#160;donʼt&#160;seem&#160;to&#160;know&#160;how&#160;to&#160;stop&#160;growing,&#160;but&#160;some&#160;happen&#160;to<br/>be&#160;almost&#160;stable!&#160;How&#160;can&#160;we&#160;steer&#160;the&#160;training&#160;towards&#160;producing&#160;persistent&#160;patterns&#160;al&#160;&#160;the&#160;time?</p>
+<p style="position:absolute;top:694px;left:60px;white-space:nowrap" class="ft82">Experiment&#160;2:&#160;What&#160;persists,&#160;exists</p>
+<p style="position:absolute;top:770px;left:60px;white-space:nowrap" class="ft85">One&#160;way&#160;of&#160;understanding&#160;why&#160;the&#160;previous&#160;experiment&#160;was&#160;unstable&#160;is&#160;to&#160;draw&#160;a&#160;paral&#160;el&#160;to&#160;dynamical<br/>systems.&#160;We&#160;can&#160;consider&#160;every&#160;cel&#160;&#160;to&#160;be&#160;a&#160;dynamical&#160;system,&#160;with&#160;each&#160;cel&#160;&#160;sharing&#160;the&#160;same<br/>dynamics,&#160;and&#160;al&#160;&#160;cel&#160;s&#160;being&#160;local&#160;y&#160;coupled&#160;amongst&#160;themselves.&#160;When&#160;we&#160;train&#160;our&#160;cel&#160;&#160;update<br/>model&#160;we&#160;are&#160;adjusting&#160;these&#160;dynamics.&#160;Our&#160;goal&#160;is&#160;to&#160;find&#160;dynamics&#160;that&#160;satisfy&#160;a&#160;number&#160;of<br/>properties.&#160;Initial&#160;y,&#160;we&#160;wanted&#160;the&#160;system&#160;to&#160;evolve&#160;from&#160;the&#160;seed&#160;pattern&#160;to&#160;the&#160;target&#160;pattern&#160;-&#160;a<br/>trajectory&#160;which&#160;we&#160;achieved&#160;in&#160;Experiment&#160;1.&#160;Now,&#160;we&#160;want&#160;to&#160;avoid&#160;the&#160;instability&#160;we&#160;observed&#160;-<br/>which&#160;in&#160;our&#160;dynamical&#160;system&#160;metaphor&#160;consists&#160;of&#160;making&#160;the&#160;target&#160;pattern&#160;an&#160;attractor.</p>
+<p style="position:absolute;top:959px;left:60px;white-space:nowrap" class="ft85">One&#160;strategy&#160;to&#160;achieve&#160;this&#160;is&#160;letting&#160;the&#160;CA&#160;iterate&#160;for&#160;much&#160;longer&#160;time&#160;and&#160;periodical&#160;y&#160;applying&#160;the<br/>loss&#160;against&#160;the&#160;target,&#160;training&#160;the&#160;system&#160;by&#160;backpropagation&#160;through&#160;these&#160;longer&#160;time&#160;intervals.<br/>Intuitively&#160;we&#160;claim&#160;that&#160;with&#160;longer&#160;time&#160;intervals&#160;and&#160;several&#160;applications&#160;of&#160;loss,&#160;the&#160;model&#160;is&#160;more<br/>likely&#160;to&#160;create&#160;an&#160;attractor&#160;for&#160;the&#160;target&#160;shape,&#160;as&#160;we&#160;iteratively&#160;mold&#160;the&#160;dynamics&#160;to&#160;return&#160;to&#160;the<br/>target&#160;pattern&#160;from&#160;wherever&#160;the&#160;system&#160;has&#160;decided&#160;to&#160;venture.&#160;However,&#160;longer&#160;time&#160;periods<br/>substantial&#160;y&#160;increase&#160;the&#160;training&#160;time&#160;and&#160;more&#160;importantly,&#160;the&#160;memory&#160;requirements,&#160;given&#160;that&#160;the<br/>entire&#160;episodeʼs&#160;intermediate&#160;activations&#160;must&#160;be&#160;stored&#160;in&#160;memory&#160;for&#160;a&#160;backwards-pass&#160;to&#160;occur.</p>
+<p style="position:absolute;top:480px;left:233px;white-space:nowrap" class="ft83">Many&#160;of&#160;the&#160;patterns&#160;exhibit&#160;instability&#160;for&#160;longer&#160;time&#160;periods.&#160;</p>
+<p style="position:absolute;top:526px;left:332px;white-space:nowrap" class="ft84"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=4O4tzfe-GRJ7">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:526px;left:465px;white-space:nowrap" class="ft84"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=4O4tzfe-GRJ7">NOTEBOOK</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft90{font-size:9px;font-family:Times;color:#000000;}
+	.ft91{font-size:13px;font-family:Times;color:#000000;}
+	.ft92{font-size:9px;font-family:Times;color:#0077aa;}
+	.ft93{font-size:9px;font-family:Times;color:#000000;}
+	.ft94{font-size:9px;font-family:Times;color:#892e40;}
+	.ft95{font-size:9px;font-family:Times;color:#454545;}
+	.ft96{font-size:9px;font-family:Times;color:#2e343c;}
+	.ft97{font-size:9px;font-family:Times;color:#996e3a;}
+	.ft98{font-size:9px;font-family:Times;color:#990054;}
+	.ft99{font-size:9px;font-family:Times;color:#669900;}
+	.ft910{font-size:11px;font-family:Times;color:#000000;}
+	.ft911{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+	.ft912{font-size:9px;line-height:15px;font-family:Times;color:#454545;}
+	.ft913{font-size:9px;line-height:15px;font-family:Times;color:#000000;}
+	.ft914{font-size:9px;line-height:15px;font-family:Times;color:#990054;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page9-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft90">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft90">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft90">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:803px;white-space:nowrap" class="ft90">9/22</p>
+<p style="position:absolute;top:44px;left:60px;white-space:nowrap" class="ft911">Instead,&#160;we&#160;propose&#160;a&#160;“sample&#160;pool”&#160;based&#160;strategy&#160;to&#160;a&#160;similar&#160;effect.&#160;We&#160;define&#160;a&#160;pool&#160;of&#160;seed<br/>states&#160;to&#160;start&#160;the&#160;iterations&#160;from,&#160;initial&#160;y&#160;fil&#160;ed&#160;with&#160;the&#160;single&#160;black&#160;pixel&#160;seed&#160;state.&#160;We&#160;then&#160;sample<br/>a&#160;batch&#160;from&#160;this&#160;pool&#160;which&#160;we&#160;use&#160;in&#160;our&#160;training&#160;step.&#160;To&#160;prevent&#160;the&#160;equivalent&#160;of&#160;“catastrophic<br/>forgetting”&#160;we&#160;replace&#160;one&#160;sample&#160;in&#160;this&#160;batch&#160;with&#160;the&#160;original,&#160;single-pixel&#160;seed&#160;state.&#160;After<br/>concluding&#160;the&#160;training&#160;step ,&#160;we&#160;replace&#160;samples&#160;in&#160;the&#160;pool&#160;that&#160;were&#160;sampled&#160;for&#160;the&#160;batch&#160;with&#160;the<br/>output&#160;states&#160;from&#160;the&#160;training&#160;step&#160;over&#160;this&#160;batch.&#160;The&#160;animation&#160;below&#160;shows&#160;a&#160;random&#160;sample&#160;of<br/>the&#160;entries&#160;in&#160;the&#160;pool&#160;every&#160;20&#160;training&#160;steps.</p>
+<p style="position:absolute;top:251px;left:103px;white-space:nowrap" class="ft913">def&#160;pool_training():<br/>#&#160;Set&#160;alpha&#160;and&#160;hidden&#160;channels&#160;to&#160;(1.0).&#160;<br/>seed&#160;=&#160;zeros(64,&#160;64,&#160;16)&#160;<br/>seed[64//2,&#160;64//2,&#160;3:]&#160;=&#160;1.0&#160;<br/>target&#160;=&#160;targets[‘lizard’]&#160;<br/>pool&#160;=&#160;[seed]&#160;*&#160;1024<br/>for&#160;i&#160;in&#160;range(training_iterations):&#160;<br/>idxs,&#160;batch&#160;=&#160;pool.sample(32)<br/>#&#160;Sort&#160;by&#160;loss,&#160;descending.&#160;<br/>batch&#160;=&#160;sort_desc(batch,&#160;loss(batch))<br/>#&#160;Replace&#160;the&#160;highest-loss&#160;sample&#160;with&#160;the&#160;seed.&#160;<br/>batch[0]&#160;=&#160;seed&#160;<br/>#&#160;Perform&#160;training.&#160;<br/>outputs,&#160;loss&#160;=&#160;train(batch,&#160;target)<br/>#&#160;Place&#160;outputs&#160;back&#160;in&#160;the&#160;pool.&#160;<br/>pool[idxs]&#160;=&#160;outputs</p>
+<p style="position:absolute;top:1117px;left:135px;white-space:nowrap" class="ft910">A&#160;random&#160;sample&#160;of&#160;the&#160;patterns&#160;in&#160;the&#160;pool&#160;during&#160;training,&#160;sampled&#160;every&#160;20&#160;training&#160;steps.&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft100{font-size:9px;font-family:Times;color:#000000;}
+	.ft101{font-size:13px;font-family:Times;color:#000000;}
+	.ft102{font-size:25px;font-family:Times;color:#000000;}
+	.ft103{font-size:10px;font-family:Times;color:#565656;}
+	.ft104{font-size:11px;font-family:Times;color:#000000;}
+	.ft105{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page10-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft100">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft100">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft100">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft100">10/22</p>
+<p style="position:absolute;top:107px;left:60px;white-space:nowrap" class="ft105">Early&#160;on&#160;in&#160;the&#160;training&#160;process,&#160;the&#160;random&#160;dynamics&#160;in&#160;the&#160;system&#160;al&#160;ow&#160;the&#160;model&#160;to&#160;end&#160;up&#160;in<br/>various&#160;incomplete&#160;and&#160;incorrect&#160;states.&#160;As&#160;these&#160;states&#160;are&#160;sampled&#160;from&#160;the&#160;pool,&#160;we&#160;refine&#160;the<br/>dynamics&#160;to&#160;be&#160;able&#160;to&#160;recover&#160;from&#160;such&#160;states.&#160;Final&#160;y,&#160;as&#160;the&#160;model&#160;becomes&#160;more&#160;robust&#160;at&#160;going<br/>from&#160;a&#160;seed&#160;state&#160;to&#160;the&#160;target&#160;state,&#160;the&#160;samples&#160;in&#160;the&#160;pool&#160;reflect&#160;this&#160;and&#160;are&#160;more&#160;likely&#160;to&#160;be&#160;very<br/>close&#160;to&#160;the&#160;target&#160;pattern,&#160;al&#160;owing&#160;the&#160;training&#160;to&#160;refine&#160;these&#160;almost&#160;completed&#160;patterns&#160;further.</p>
+<p style="position:absolute;top:247px;left:60px;white-space:nowrap" class="ft105">Essential&#160;y,&#160;we&#160;use&#160;the&#160;previous&#160;final&#160;states&#160;as&#160;new&#160;starting&#160;points&#160;to&#160;force&#160;our&#160;CA&#160;to&#160;learn&#160;how&#160;to<br/>persist&#160;or&#160;even&#160;improve&#160;an&#160;already&#160;formed&#160;pattern,&#160;in&#160;addition&#160;to&#160;being&#160;able&#160;to&#160;grow&#160;it&#160;from&#160;a&#160;seed.<br/>This&#160;makes&#160;it&#160;possible&#160;to&#160;add&#160;a&#160;periodical&#160;loss&#160;for&#160;significantly&#160;longer&#160;time&#160;intervals&#160;than&#160;otherwise<br/>possible,&#160;encouraging&#160;the&#160;generation&#160;of&#160;an&#160;attractor&#160;as&#160;the&#160;target&#160;shape&#160;in&#160;our&#160;coupled&#160;system.&#160;We<br/>also&#160;noticed&#160;that&#160;reseeding&#160;the&#160;highest&#160;loss&#160;sample&#160;in&#160;the&#160;batch,&#160;instead&#160;of&#160;a&#160;random&#160;one,&#160;makes<br/>training&#160;more&#160;stable&#160;at&#160;the&#160;initial&#160;stages,&#160;as&#160;it&#160;helps&#160;to&#160;clean&#160;up&#160;the&#160;low&#160;quality&#160;states&#160;from&#160;the&#160;pool.</p>
+<p style="position:absolute;top:411px;left:60px;white-space:nowrap" class="ft105">Here&#160;is&#160;what&#160;a&#160;typical&#160;training&#160;progress&#160;of&#160;a&#160;CA&#160;rule&#160;looks&#160;like.&#160;The&#160;cel&#160;&#160;rule&#160;learns&#160;to&#160;stabilize&#160;the<br/>pattern&#160;in&#160;paral&#160;el&#160;to&#160;refining&#160;its&#160;features.</p>
+<p style="position:absolute;top:792px;left:60px;white-space:nowrap" class="ft102">Experiment&#160;3:&#160;Learning&#160;to&#160;regenerate</p>
+<p style="position:absolute;top:868px;left:60px;white-space:nowrap" class="ft105">In&#160;addition&#160;to&#160;being&#160;able&#160;to&#160;grow&#160;their&#160;own&#160;bodies,&#160;living&#160;creatures&#160;are&#160;great&#160;at&#160;maintaining&#160;them.&#160;Not<br/>only&#160;does&#160;worn&#160;out&#160;skin&#160;get&#160;replaced&#160;with&#160;new&#160;skin,&#160;but&#160;very&#160;heavy&#160;damage&#160;to&#160;complex&#160;vital&#160;organs<br/>can&#160;be&#160;regenerated&#160;in&#160;some&#160;species.&#160;Is&#160;there&#160;a&#160;chance&#160;that&#160;some&#160;of&#160;the&#160;models&#160;we&#160;trained&#160;above&#160;have<br/>regenerative&#160;capabilities?</p>
+<p style="position:absolute;top:58px;left:332px;white-space:nowrap" class="ft103"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=B4JAbAJf6Alw">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:58px;left:465px;white-space:nowrap" class="ft103"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=B4JAbAJf6Alw">NOTEBOOK</a></p>
+<p style="position:absolute;top:668px;left:263px;white-space:nowrap" class="ft104">CA&#160;behaviour&#160;at&#160;training&#160;steps&#160;100,&#160;500,&#160;1000,&#160;4000.&#160;</p>
+<p style="position:absolute;top:714px;left:332px;white-space:nowrap" class="ft103"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=nqvkfl9W4ODI">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:714px;left:465px;white-space:nowrap" class="ft103"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=nqvkfl9W4ODI">NOTEBOOK</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft110{font-size:9px;font-family:Times;color:#000000;}
+	.ft111{font-size:13px;font-family:Times;color:#000000;}
+	.ft112{font-size:11px;font-family:Times;color:#000000;}
+	.ft113{font-size:10px;font-family:Times;color:#565656;}
+	.ft114{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page11-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft110">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft110">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft110">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft110">11/22</p>
+<p style="position:absolute;top:381px;left:60px;white-space:nowrap" class="ft114">The&#160;animation&#160;above&#160;shows&#160;three&#160;different&#160;models&#160;trained&#160;using&#160;the&#160;same&#160;settings.&#160;We&#160;let&#160;each&#160;of&#160;the<br/>models&#160;develop&#160;a&#160;pattern&#160;over&#160;100&#160;steps,&#160;then&#160;damage&#160;the&#160;final&#160;state&#160;in&#160;five&#160;different&#160;ways:&#160;by<br/>removing&#160;different&#160;halves&#160;of&#160;the&#160;formed&#160;pattern,&#160;and&#160;by&#160;cutting&#160;out&#160;a&#160;square&#160;from&#160;the&#160;center.&#160;Once<br/>again,&#160;we&#160;see&#160;that&#160;these&#160;models&#160;show&#160;quite&#160;different&#160;out-of-training&#160;mode&#160;behaviour.&#160;For&#160;example<br/>“the&#160;lizard”&#160;develops&#160;quite&#160;strong&#160;regenerative&#160;capabilities,&#160;without&#160;being&#160;explicitly&#160;trained&#160;for&#160;it!</p>
+<p style="position:absolute;top:520px;left:60px;white-space:nowrap" class="ft114">Since&#160;we&#160;trained&#160;our&#160;coupled&#160;system&#160;of&#160;cel&#160;s&#160;to&#160;generate&#160;an&#160;attractor&#160;towards&#160;a&#160;target&#160;shape&#160;from&#160;a<br/>single&#160;cel&#160;,&#160;it&#160;was&#160;likely&#160;that&#160;these&#160;systems,&#160;once&#160;damaged,&#160;would&#160;generalize&#160;towards&#160;non-self-<br/>destructive&#160;reactions.&#160;Thatʼs&#160;because&#160;the&#160;systems&#160;were&#160;trained&#160;to&#160;grow,&#160;stabilize,&#160;and&#160;never&#160;entirely<br/>self-destruct.&#160;Some&#160;of&#160;these&#160;systems&#160;might&#160;natural&#160;y&#160;gravitate&#160;towards&#160;regenerative&#160;capabilities,&#160;but<br/>nothing&#160;stops&#160;them&#160;from&#160;developing&#160;different&#160;behaviors&#160;such&#160;as&#160;explosive&#160;mitoses&#160;(uncontrol&#160;ed<br/>growth),&#160;unresponsiveness&#160;to&#160;damage&#160;(overstabilization),&#160;or&#160;even&#160;self&#160;destruction,&#160;especial&#160;y&#160;for&#160;the<br/>more&#160;severe&#160;types&#160;of&#160;damage.</p>
+<p style="position:absolute;top:709px;left:60px;white-space:nowrap" class="ft114">If&#160;we&#160;want&#160;our&#160;model&#160;to&#160;show&#160;more&#160;consistent&#160;and&#160;accurate&#160;regenerative&#160;capabilities,&#160;we&#160;can&#160;try&#160;to<br/>increase&#160;the&#160;basin&#160;of&#160;attraction&#160;for&#160;our&#160;target&#160;pattern&#160;-&#160;increase&#160;the&#160;space&#160;of&#160;cel&#160;&#160;configurations&#160;that<br/>natural&#160;y&#160;gravitate&#160;towards&#160;our&#160;target&#160;shape.&#160;We&#160;wil&#160;&#160;do&#160;this&#160;by&#160;damaging&#160;a&#160;few&#160;pool-sampled&#160;states<br/>before&#160;each&#160;training&#160;step.&#160;The&#160;system&#160;now&#160;has&#160;to&#160;be&#160;capable&#160;of&#160;regenerating&#160;from&#160;states&#160;damaged&#160;by<br/>randomly&#160;placed&#160;erasing&#160;circles.&#160;Our&#160;hope&#160;is&#160;that&#160;this&#160;wil&#160;&#160;generalize&#160;to&#160;regenerational&#160;capabilities<br/>from&#160;various&#160;types&#160;of&#160;damage.</p>
+<p style="position:absolute;top:286px;left:142px;white-space:nowrap" class="ft112">Patterns&#160;exhibit&#160;some&#160;regenerative&#160;properties&#160;upon&#160;being&#160;damaged,&#160;but&#160;not&#160;full&#160;re-growth.&#160;</p>
+<p style="position:absolute;top:332px;left:332px;white-space:nowrap" class="ft113"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=S5JRLGxX1dnX">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:332px;left:465px;white-space:nowrap" class="ft113"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=S5JRLGxX1dnX">NOTEBOOK</a></p>
+<p style="position:absolute;top:1065px;left:65px;white-space:nowrap" class="ft112">Damaging&#160;samples&#160;in&#160;the&#160;pool&#160;encourages&#160;the&#160;learning&#160;of&#160;robust&#160;regenerative&#160;qualities.&#160;Row&#160;1&#160;are&#160;samples&#160;from&#160;the</p>
+<p style="position:absolute;top:1085px;left:230px;white-space:nowrap" class="ft112">pool,&#160;Row&#160;2&#160;are&#160;their&#160;respective&#160;states&#160;after&#160;iterating&#160;the&#160;model.</p>
+<p style="position:absolute;top:1132px;left:332px;white-space:nowrap" class="ft113"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=QeXZKb5v2gxj">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:1132px;left:465px;white-space:nowrap" class="ft113"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=QeXZKb5v2gxj">NOTEBOOK</a></p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft120{font-size:9px;font-family:Times;color:#000000;}
+	.ft121{font-size:13px;font-family:Times;color:#000000;}
+	.ft122{font-size:25px;font-family:Times;color:#000000;}
+	.ft123{font-size:11px;font-family:Times;color:#000000;}
+	.ft124{font-size:10px;font-family:Times;color:#565656;}
+	.ft125{font-size:16px;font-family:Times;color:#000000;}
+	.ft126{font-size:16px;font-family:Times;color:#000000;}
+	.ft127{font-size:11px;font-family:Times;color:#000000;}
+	.ft128{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page12-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft120">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft120">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft120">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft120">12/22</p>
+<p style="position:absolute;top:75px;left:60px;white-space:nowrap" class="ft128">The&#160;animation&#160;above&#160;shows&#160;training&#160;progress,&#160;which&#160;includes&#160;sample&#160;damage.&#160;We&#160;sample&#160;8&#160;states<br/>from&#160;the&#160;pool.&#160;Then&#160;we&#160;replace&#160;the&#160;highest-loss&#160;sample&#160;(top-left-most&#160;in&#160;the&#160;above)&#160;with&#160;the&#160;seed<br/>state,&#160;and&#160;damage&#160;the&#160;three&#160;lowest-loss&#160;(top-right-most)&#160;states&#160;by&#160;setting&#160;a&#160;random&#160;circular&#160;region<br/>within&#160;the&#160;pattern&#160;to&#160;zeros.&#160;The&#160;bottom&#160;row&#160;shows&#160;states&#160;after&#160;iteration&#160;from&#160;the&#160;respective&#160;top-most<br/>starting&#160;state.&#160;As&#160;in&#160;Experiment&#160;2,&#160;the&#160;resulting&#160;states&#160;get&#160;injected&#160;back&#160;into&#160;the&#160;pool.</p>
+<p style="position:absolute;top:717px;left:60px;white-space:nowrap" class="ft128">As&#160;we&#160;can&#160;see&#160;from&#160;the&#160;animation&#160;above,&#160;models&#160;that&#160;were&#160;exposed&#160;to&#160;damage&#160;during&#160;training&#160;are<br/>much&#160;more&#160;robust,&#160;including&#160;to&#160;types&#160;of&#160;damage&#160;not&#160;experienced&#160;in&#160;the&#160;training&#160;process&#160;(for&#160;instance<br/>rectangular&#160;damage&#160;as&#160;above).</p>
+<p style="position:absolute;top:860px;left:60px;white-space:nowrap" class="ft122">Experiment&#160;4:&#160;Rotating&#160;the&#160;perceptive&#160;field</p>
+<p style="position:absolute;top:936px;left:60px;white-space:nowrap" class="ft128">As&#160;previously&#160;described,&#160;we&#160;model&#160;the&#160;cel&#160;ʼs&#160;perception&#160;of&#160;its&#160;neighbouring&#160;cel&#160;s&#160;by&#160;estimating&#160;the<br/>gradients&#160;of&#160;state&#160;channels&#160;in&#160;&#160;&#160;and&#160;&#160;&#160;using&#160;Sobel&#160;filters.&#160;A&#160;convenient&#160;analogy&#160;is&#160;that&#160;each&#160;agent&#160;has<br/>two&#160;sensors&#160;(chemosensory&#160;receptors,&#160;for&#160;instance)&#160;pointing&#160;in&#160;orthogonal&#160;directions&#160;that&#160;can&#160;sense<br/>the&#160;gradients&#160;in&#160;the&#160;concentration&#160;of&#160;certain&#160;chemicals&#160;along&#160;the&#160;axis&#160;of&#160;the&#160;sensor.&#160;What&#160;happens&#160;if<br/>we&#160;rotate&#160;those&#160;sensors?&#160;We&#160;can&#160;do&#160;this&#160;by&#160;rotating&#160;the&#160;Sobel&#160;kernels.</p>
+<p style="position:absolute;top:1136px;left:60px;white-space:nowrap" class="ft121">This&#160;simple&#160;modification&#160;of&#160;the&#160;perceptive&#160;field&#160;produces&#160;rotated&#160;versions&#160;of&#160;the&#160;pattern&#160;for&#160;an&#160;angle</p>
+<p style="position:absolute;top:623px;left:149px;white-space:nowrap" class="ft123">Patterns&#160;exposed&#160;to&#160;damage&#160;during&#160;training&#160;exhibit&#160;astounding&#160;regenerative&#160;capabilities.&#160;</p>
+<p style="position:absolute;top:669px;left:332px;white-space:nowrap" class="ft124"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=TDzJM69u4_8p">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:669px;left:465px;white-space:nowrap" class="ft124"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=TDzJM69u4_8p">NOTEBOOK</a></p>
+<p style="position:absolute;top:962px;left:279px;white-space:nowrap" class="ft125"><i>x</i></p>
+<p style="position:absolute;top:959px;left:291px;white-space:nowrap" class="ft126">⃗</p>
+<p style="position:absolute;top:962px;left:326px;white-space:nowrap" class="ft125"><i>y</i></p>
+<p style="position:absolute;top:959px;left:338px;white-space:nowrap" class="ft126">⃗</p>
+<p style="position:absolute;top:1091px;left:338px;white-space:nowrap" class="ft126">=</p>
+<p style="position:absolute;top:1091px;left:491px;white-space:nowrap" class="ft126">∗</p>
+<p style="position:absolute;top:1088px;left:287px;white-space:nowrap" class="ft126">[</p>
+<p style="position:absolute;top:1083px;left:298px;white-space:nowrap" class="ft125"><i>Kx</i></p>
+<p style="position:absolute;top:1105px;left:298px;white-space:nowrap" class="ft125"><i>Ky&#160;</i>]</p>
+<p style="position:absolute;top:1088px;left:358px;white-space:nowrap" class="ft126">[</p>
+<p style="position:absolute;top:1079px;left:368px;white-space:nowrap" class="ft126">cos&#160;<i>θ</i></p>
+<p style="position:absolute;top:1102px;left:369px;white-space:nowrap" class="ft126">sin&#160;<i>θ</i></p>
+<p style="position:absolute;top:1079px;left:424px;white-space:nowrap" class="ft126">−&#160;sin&#160;<i>θ</i></p>
+<p style="position:absolute;top:1102px;left:432px;white-space:nowrap" class="ft126">cos&#160;<i>θ&#160;</i>]&#160;[</p>
+<p style="position:absolute;top:1083px;left:515px;white-space:nowrap" class="ft125"><i>Sobelx</i></p>
+<p style="position:absolute;top:1105px;left:515px;white-space:nowrap" class="ft125"><i>Sobely&#160;</i>]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft130{font-size:9px;font-family:Times;color:#000000;}
+	.ft131{font-size:13px;font-family:Times;color:#000000;}
+	.ft132{font-size:25px;font-family:Times;color:#000000;}
+	.ft133{font-size:18px;font-family:Times;color:#000000;}
+	.ft134{font-size:11px;font-family:Times;color:#000000;}
+	.ft135{font-size:10px;font-family:Times;color:#565656;}
+	.ft136{font-size:16px;font-family:Times;color:#000000;}
+	.ft137{font-size:16px;font-family:Times;color:#000000;}
+	.ft138{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page13-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft130">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft130">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft130">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft130">13/22</p>
+<p style="position:absolute;top:32px;left:60px;white-space:nowrap" class="ft138">This&#160;simple&#160;modification&#160;of&#160;the&#160;perceptive&#160;field&#160;produces&#160;rotated&#160;versions&#160;of&#160;the&#160;pattern&#160;for&#160;an&#160;angle<br/>of&#160;choosing&#160;without&#160;retraining&#160;as&#160;seen&#160;below.</p>
+<p style="position:absolute;top:725px;left:60px;white-space:nowrap" class="ft138">In&#160;a&#160;perfect&#160;world,&#160;not&#160;quantized&#160;by&#160;individual&#160;cel&#160;s&#160;in&#160;a&#160;pixel-lattice,&#160;this&#160;would&#160;not&#160;be&#160;too&#160;surprising,<br/>as,&#160;after&#160;al&#160;,&#160;one&#160;would&#160;expect&#160;the&#160;perceived&#160;gradients&#160;in&#160;&#160;&#160;and&#160;&#160;&#160;to&#160;be&#160;invariant&#160;to&#160;the&#160;chosen&#160;angle&#160;-<br/>a&#160;simple&#160;change&#160;of&#160;frame&#160;of&#160;reference.&#160;However,&#160;it&#160;is&#160;important&#160;to&#160;note&#160;that&#160;things&#160;are&#160;not&#160;as&#160;simple&#160;in<br/>a&#160;pixel&#160;based&#160;model.&#160;Rotating&#160;pixel&#160;based&#160;graphics&#160;involves&#160;computing&#160;a&#160;mapping&#160;thatʼs&#160;not<br/>necessarily&#160;bijective&#160;and&#160;classical&#160;y&#160;involves&#160;interpolating&#160;between&#160;pixels&#160;to&#160;achieve&#160;the&#160;desired&#160;result.<br/>This&#160;is&#160;because&#160;a&#160;single&#160;pixel,&#160;when&#160;rotated,&#160;wil&#160;&#160;now&#160;likely&#160;overlap&#160;several&#160;pixels.&#160;The&#160;successful<br/>growth&#160;of&#160;patterns&#160;as&#160;above&#160;suggests&#160;a&#160;certain&#160;robustness&#160;to&#160;the&#160;underlying&#160;conditions&#160;outside&#160;of<br/>those&#160;experienced&#160;during&#160;training.</p>
+<p style="position:absolute;top:969px;left:60px;white-space:nowrap" class="ft132">Related&#160;Work</p>
+<p style="position:absolute;top:1085px;left:60px;white-space:nowrap" class="ft133">CA&#160;and&#160;PDEs</p>
+<p style="position:absolute;top:1134px;left:60px;white-space:nowrap" class="ft131">There&#160;exists&#160;an&#160;extensive&#160;body&#160;of&#160;literature&#160;that&#160;describes&#160;the&#160;various&#160;flavours&#160;of&#160;cel&#160;ular&#160;automata</p>
+<p style="position:absolute;top:630px;left:65px;white-space:nowrap" class="ft134">Rotating&#160;the&#160;axis&#160;along&#160;which&#160;the&#160;perception&#160;step&#160;computes&#160;gradients&#160;brings&#160;about&#160;rotated&#160;versions&#160;of&#160;the&#160;pattern.&#160;</p>
+<p style="position:absolute;top:677px;left:332px;white-space:nowrap" class="ft135"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=1CVR9MeYnjuY">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:677px;left:465px;white-space:nowrap" class="ft135"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=1CVR9MeYnjuY">NOTEBOOK</a></p>
+<p style="position:absolute;top:752px;left:475px;white-space:nowrap" class="ft136"><i>x</i></p>
+<p style="position:absolute;top:748px;left:487px;white-space:nowrap" class="ft137">⃗</p>
+<p style="position:absolute;top:752px;left:522px;white-space:nowrap" class="ft136"><i>y</i></p>
+<p style="position:absolute;top:748px;left:533px;white-space:nowrap" class="ft137">⃗</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft140{font-size:9px;font-family:Times;color:#000000;}
+	.ft141{font-size:13px;font-family:Times;color:#000000;}
+	.ft142{font-size:13px;font-family:Times;color:#000000;}
+	.ft143{font-size:18px;font-family:Times;color:#000000;}
+	.ft144{font-size:9px;font-family:Times;color:#043861;}
+	.ft145{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page14-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft140">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft140">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft140">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft140">14/22</p>
+<p style="position:absolute;top:29px;left:60px;white-space:nowrap" class="ft145">There&#160;exists&#160;an&#160;extensive&#160;body&#160;of&#160;literature&#160;that&#160;describes&#160;the&#160;various&#160;flavours&#160;of&#160;cel&#160;ular&#160;automata<br/>and&#160;PDE&#160;systems,&#160;and&#160;their&#160;applications&#160;to&#160;model&#160;ing&#160;physical,&#160;biological&#160;or&#160;even&#160;social&#160;systems.<br/>Although&#160;it&#160;would&#160;be&#160;impossible&#160;to&#160;present&#160;a&#160;just&#160;overview&#160;of&#160;this&#160;field&#160;in&#160;a&#160;few&#160;lines,&#160;we&#160;wil&#160;&#160;describe<br/>some&#160;prominent&#160;examples&#160;that&#160;inspired&#160;this&#160;work.&#160;Alan&#160;Turing&#160;introduced&#160;his&#160;famous&#160;Turing&#160;patterns<br/>back&#160;in&#160;1952&#160;</p>
+<p style="position:absolute;top:128px;left:178px;white-space:nowrap" class="ft141">,&#160;suggesting&#160;how&#160;reaction-diffusion&#160;systems&#160;can&#160;be&#160;a&#160;valid&#160;model&#160;for&#160;chemical</p>
+<p style="position:absolute;top:153px;left:60px;white-space:nowrap" class="ft145">behaviors&#160;during&#160;morphogenesis.&#160;A&#160;particularly&#160;inspiring&#160;reaction-diffusion&#160;model&#160;that&#160;stood&#160;the&#160;test<br/>of&#160;time&#160;is&#160;the&#160;Gray-Scott&#160;model&#160;</p>
+<p style="position:absolute;top:178px;left:314px;white-space:nowrap" class="ft141">,&#160;which&#160;shows&#160;an&#160;extreme&#160;variety&#160;of&#160;behaviors&#160;control&#160;ed&#160;by&#160;just&#160;a</p>
+<p style="position:absolute;top:203px;left:60px;white-space:nowrap" class="ft141">few&#160;variables.</p>
+<p style="position:absolute;top:243px;left:60px;white-space:nowrap" class="ft145">Ever&#160;since&#160;von&#160;Neumann&#160;introduced&#160;CAs&#160;&#160;&#160;as&#160;models&#160;for&#160;self-replication&#160;they&#160;have&#160;captivated<br/>researchersʼ&#160;minds,&#160;who&#160;observed&#160;extremely&#160;complex&#160;behaviours&#160;emerging&#160;from&#160;very&#160;simple&#160;rules.<br/>Likewise,&#160;the&#160;a&#160;broader&#160;audience&#160;outside&#160;of&#160;academia&#160;were&#160;seduced&#160;by&#160;CAʼs&#160;life-like&#160;behaviours<br/>thanks&#160;to&#160;Conwayʼs&#160;Game&#160;of&#160;Life&#160;</p>
+<p style="position:absolute;top:318px;left:323px;white-space:nowrap" class="ft141">.&#160;Perhaps&#160;motivated&#160;in&#160;part&#160;by&#160;the&#160;proof&#160;that&#160;something&#160;as&#160;simple</p>
+<p style="position:absolute;top:342px;left:60px;white-space:nowrap" class="ft141">as&#160;the&#160;Rule&#160;110&#160;is&#160;Turing&#160;complete,&#160;Wolframʼs&#160;“<i>A&#160;New&#160;Kind&#160;of&#160;Science”</i>&#160;</p>
+<p style="position:absolute;top:342px;left:598px;white-space:nowrap" class="ft141">&#160;asks&#160;for&#160;a&#160;paradigm&#160;shift</p>
+<p style="position:absolute;top:384px;left:60px;white-space:nowrap" class="ft145">centered&#160;around&#160;the&#160;extensive&#160;usage&#160;of&#160;elementary&#160;computer&#160;programs&#160;such&#160;as&#160;CA&#160;as&#160;tools&#160;for<br/>understanding&#160;the&#160;world.</p>
+<p style="position:absolute;top:449px;left:60px;white-space:nowrap" class="ft145">More&#160;recently,&#160;several&#160;researchers&#160;generalized&#160;Conwayʼs&#160;Game&#160;of&#160;life&#160;to&#160;work&#160;on&#160;more&#160;continuous<br/>domains.&#160;We&#160;were&#160;particularly&#160;inspired&#160;by&#160;Raflerʼs&#160;SmoothLife&#160;</p>
+<p style="position:absolute;top:474px;left:541px;white-space:nowrap" class="ft141">&#160;and&#160;Chanʼs&#160;Lenia&#160;</p>
+<p style="position:absolute;top:474px;left:717px;white-space:nowrap" class="ft141">,&#160;the&#160;latter</p>
+<p style="position:absolute;top:499px;left:60px;white-space:nowrap" class="ft141">of&#160;which&#160;also&#160;discovers&#160;and&#160;classifies&#160;entire&#160;species&#160;of&#160;“lifeforms”.</p>
+<p style="position:absolute;top:539px;left:60px;white-space:nowrap" class="ft145">A&#160;number&#160;of&#160;researchers&#160;have&#160;used&#160;evolutionary&#160;algorithms&#160;to&#160;find&#160;CA&#160;rules&#160;that&#160;reproduce&#160;predefined<br/>simple&#160;patterns&#160;</p>
+<p style="position:absolute;top:564px;left:224px;white-space:nowrap" class="ft141">.&#160;For&#160;example,&#160;J.&#160;Mil&#160;er&#160;</p>
+<p style="position:absolute;top:564px;left:418px;white-space:nowrap" class="ft141">&#160;proposed&#160;an&#160;experiment&#160;similar&#160;to&#160;ours,&#160;using</p>
+<p style="position:absolute;top:589px;left:60px;white-space:nowrap" class="ft145">evolutionary&#160;algorithms&#160;to&#160;design&#160;a&#160;CA&#160;rule&#160;that&#160;could&#160;build&#160;and&#160;regenerate&#160;the&#160;French&#160;flag,&#160;starting<br/>from&#160;a&#160;seed&#160;cel&#160;.</p>
+<p style="position:absolute;top:694px;left:60px;white-space:nowrap" class="ft143">Neural&#160;Networks&#160;and&#160;Self-Organisation</p>
+<p style="position:absolute;top:743px;left:60px;white-space:nowrap" class="ft145">The&#160;close&#160;relation&#160;between&#160;Convolutional&#160;Neural&#160;Networks&#160;and&#160;Cel&#160;ular&#160;Automata&#160;has&#160;already&#160;been<br/>observed&#160;by&#160;a&#160;number&#160;of&#160;researchers&#160;</p>
+<p style="position:absolute;top:768px;left:382px;white-space:nowrap" class="ft141">.&#160;The&#160;connection&#160;is&#160;so&#160;strong&#160;it&#160;al&#160;owed&#160;us&#160;to&#160;build&#160;Neural</p>
+<p style="position:absolute;top:793px;left:60px;white-space:nowrap" class="ft145">CA&#160;models&#160;using&#160;components&#160;readily&#160;available&#160;in&#160;popular&#160;ML&#160;frameworks.&#160;Thus,&#160;using&#160;a&#160;different<br/>jargon,&#160;our&#160;Neural&#160;CA&#160;could&#160;potential&#160;y&#160;be&#160;named&#160;“Recurrent&#160;Residual&#160;Convolutional&#160;Networks&#160;with<br/>‘per-pixelʼ&#160;Dropout”.</p>
+<p style="position:absolute;top:883px;left:60px;white-space:nowrap" class="ft141">The&#160;Neural&#160;GPU&#160;</p>
+<p style="position:absolute;top:883px;left:228px;white-space:nowrap" class="ft141">&#160;offers&#160;a&#160;computational&#160;architecture&#160;very&#160;similar&#160;to&#160;ours,&#160;but&#160;applied&#160;in&#160;the</p>
+<p style="position:absolute;top:908px;left:60px;white-space:nowrap" class="ft141">context&#160;of&#160;learning&#160;multiplication&#160;and&#160;a&#160;sorting&#160;algorithm.</p>
+<p style="position:absolute;top:948px;left:60px;white-space:nowrap" class="ft145">Looking&#160;more&#160;broadly,&#160;we&#160;think&#160;that&#160;the&#160;concept&#160;of&#160;self-organisation&#160;is&#160;finding&#160;its&#160;way&#160;into&#160;mainstream<br/>machine&#160;learning&#160;with&#160;popularisation&#160;of&#160;Graph&#160;Neural&#160;Network&#160;</p>
+<p style="position:absolute;top:973px;left:544px;white-space:nowrap" class="ft141">&#160;models.&#160;Typical&#160;y,&#160;GNNs&#160;run&#160;a</p>
+<p style="position:absolute;top:998px;left:60px;white-space:nowrap" class="ft145">repeated&#160;computation&#160;across&#160;vertices&#160;of&#160;a&#160;(possibly&#160;dynamic)&#160;graph.&#160;Vertices&#160;communicate&#160;local&#160;y<br/>through&#160;graph&#160;edges,&#160;and&#160;aggregate&#160;global&#160;information&#160;required&#160;to&#160;perform&#160;the&#160;task&#160;over&#160;multiple<br/>rounds&#160;of&#160;message&#160;exchanges,&#160;just&#160;as&#160;atoms&#160;can&#160;be&#160;thought&#160;of&#160;as&#160;communicating&#160;with&#160;each&#160;other&#160;to<br/>produce&#160;the&#160;emergent&#160;properties&#160;of&#160;a&#160;molecule&#160;</p>
+<p style="position:absolute;top:1072px;left:434px;white-space:nowrap" class="ft141">,&#160;or&#160;even&#160;points&#160;of&#160;a&#160;point&#160;cloud&#160;talk&#160;to&#160;their</p>
+<p style="position:absolute;top:1097px;left:60px;white-space:nowrap" class="ft141">neighbors&#160;to&#160;figure&#160;out&#160;their&#160;global&#160;shape&#160;</p>
+<p style="position:absolute;top:1097px;left:393px;white-space:nowrap" class="ft141">.</p>
+<p style="position:absolute;top:1137px;left:60px;white-space:nowrap" class="ft141">Self&#160;organization&#160;also&#160;appeared&#160;in&#160;fascinating&#160;contemporary&#160;work&#160;using&#160;more&#160;traditional&#160;dynamic</p>
+<p style="position:absolute;top:130px;left:159px;white-space:nowrap" class="ft144">[5]</p>
+<p style="position:absolute;top:179px;left:295px;white-space:nowrap" class="ft144">[6]</p>
+<p style="position:absolute;top:245px;left:362px;white-space:nowrap" class="ft144">[7]</p>
+<p style="position:absolute;top:319px;left:304px;white-space:nowrap" class="ft144">[8]</p>
+<p style="position:absolute;top:344px;left:579px;white-space:nowrap" class="ft144">[9]</p>
+<p style="position:absolute;top:476px;left:516px;white-space:nowrap" class="ft144">[10]</p>
+<p style="position:absolute;top:476px;left:675px;white-space:nowrap" class="ft144">[11,&#160;12]</p>
+<p style="position:absolute;top:566px;left:179px;white-space:nowrap" class="ft144">[13,&#160;14]</p>
+<p style="position:absolute;top:566px;left:393px;white-space:nowrap" class="ft144">[15]</p>
+<p style="position:absolute;top:769px;left:338px;white-space:nowrap" class="ft144">[16,&#160;17]</p>
+<p style="position:absolute;top:884px;left:183px;white-space:nowrap" class="ft144">[18,&#160;19]</p>
+<p style="position:absolute;top:974px;left:518px;white-space:nowrap" class="ft144">[20]</p>
+<p style="position:absolute;top:1074px;left:410px;white-space:nowrap" class="ft144">[21]</p>
+<p style="position:absolute;top:1098px;left:367px;white-space:nowrap" class="ft144">[22]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft150{font-size:9px;font-family:Times;color:#000000;}
+	.ft151{font-size:13px;font-family:Times;color:#000000;}
+	.ft152{font-size:18px;font-family:Times;color:#000000;}
+	.ft153{font-size:25px;font-family:Times;color:#000000;}
+	.ft154{font-size:9px;font-family:Times;color:#043861;}
+	.ft155{font-size:11px;font-family:Times;color:#000000;}
+	.ft156{font-size:10px;font-family:Times;color:#565656;}
+	.ft157{font-size:8px;font-family:Times;color:#043861;}
+	.ft158{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page15-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft150">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft150">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft150">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft150">15/22</p>
+<p style="position:absolute;top:33px;left:60px;white-space:nowrap" class="ft158">Self-organization&#160;also&#160;appeared&#160;in&#160;fascinating&#160;contemporary&#160;work&#160;using&#160;more&#160;traditional&#160;dynamic<br/>graph&#160;networks,&#160;where&#160;the&#160;authors&#160;evolved&#160;Self-Assembling&#160;Agents&#160;to&#160;solve&#160;a&#160;variety&#160;of&#160;virtual&#160;tasks</p>
+<p style="position:absolute;top:82px;left:88px;white-space:nowrap" class="ft151">.</p>
+<p style="position:absolute;top:162px;left:60px;white-space:nowrap" class="ft152">Swarm&#160;Robotics</p>
+<p style="position:absolute;top:212px;left:60px;white-space:nowrap" class="ft158">One&#160;of&#160;the&#160;most&#160;remarkable&#160;demonstrations&#160;of&#160;the&#160;power&#160;of&#160;self-organisation&#160;is&#160;when&#160;it&#160;is&#160;applied&#160;to<br/>swarm&#160;modeling.&#160;Back&#160;in&#160;1987,&#160;Reynoldsʼ&#160;Boids&#160;</p>
+<p style="position:absolute;top:236px;left:436px;white-space:nowrap" class="ft151">&#160;simulated&#160;the&#160;flocking&#160;behaviour&#160;of&#160;birds&#160;with&#160;just</p>
+<p style="position:absolute;top:261px;left:60px;white-space:nowrap" class="ft158">a&#160;tiny&#160;set&#160;of&#160;handcrafted&#160;rules.&#160;Nowadays,&#160;we&#160;can&#160;embed&#160;tiny&#160;robots&#160;with&#160;programs&#160;and&#160;test&#160;their<br/>col&#160;ective&#160;behavior&#160;on&#160;physical&#160;agents,&#160;as&#160;demonstrated&#160;by&#160;work&#160;such&#160;as&#160;Mergeable&#160;Nervous&#160;Systems</p>
+<p style="position:absolute;top:311px;left:88px;white-space:nowrap" class="ft151">&#160;and&#160;Kilobots&#160;</p>
+<p style="position:absolute;top:311px;left:216px;white-space:nowrap" class="ft151">.&#160;To&#160;the&#160;best&#160;of&#160;our&#160;knowledge,&#160;programs&#160;embedded&#160;into&#160;swarm&#160;robots&#160;are</p>
+<p style="position:absolute;top:336px;left:60px;white-space:nowrap" class="ft158">currently&#160;designed&#160;by&#160;humans.&#160;We&#160;hope&#160;our&#160;work&#160;can&#160;serve&#160;as&#160;an&#160;inspiration&#160;for&#160;the&#160;field&#160;and<br/>encourage&#160;the&#160;design&#160;of&#160;col&#160;ective&#160;behaviors&#160;through&#160;differentiable&#160;modeling.</p>
+<p style="position:absolute;top:431px;left:60px;white-space:nowrap" class="ft153">Discussion</p>
+<p style="position:absolute;top:546px;left:60px;white-space:nowrap" class="ft152">Embryogenetic&#160;Modeling</p>
+<p style="position:absolute;top:936px;left:60px;white-space:nowrap" class="ft158">This&#160;article&#160;describes&#160;a&#160;toy&#160;embryogenesis&#160;and&#160;regeneration&#160;model.&#160;This&#160;is&#160;a&#160;major&#160;direction&#160;for&#160;future<br/>work,&#160;with&#160;many&#160;applications&#160;in&#160;biology&#160;and&#160;beyond.&#160;In&#160;addition&#160;to&#160;the&#160;implications&#160;for&#160;understanding<br/>the&#160;evolution&#160;and&#160;control&#160;of&#160;regeneration,&#160;and&#160;harnessing&#160;this&#160;understanding&#160;for&#160;biomedical&#160;repair,<br/>there&#160;is&#160;the&#160;field&#160;of&#160;bioengineering.&#160;As&#160;the&#160;field&#160;transitions&#160;from&#160;synthetic&#160;biology&#160;of&#160;single&#160;cel<br/>col&#160;ectives&#160;to&#160;a&#160;true&#160;synthetic&#160;morphology&#160;of&#160;novel&#160;living&#160;machines&#160;</p>
+<p style="position:absolute;top:1035px;left:597px;white-space:nowrap" class="ft151">,&#160;it&#160;wil&#160;&#160;be&#160;essential&#160;to</p>
+<p style="position:absolute;top:1060px;left:60px;white-space:nowrap" class="ft158">develop&#160;strategies&#160;for&#160;programming&#160;system-level&#160;capabilities,&#160;such&#160;as&#160;anatomical&#160;homeostasis<br/>(regenerative&#160;repair).&#160;It&#160;has&#160;long&#160;been&#160;known&#160;that&#160;regenerative&#160;organisms&#160;can&#160;restore&#160;a&#160;specific<br/>anatomical&#160;pattern;&#160;however,&#160;more&#160;recently&#160;itʼs&#160;been&#160;found&#160;that&#160;the&#160;target&#160;morphology&#160;is&#160;not&#160;hard<br/>coded&#160;by&#160;the&#160;DNA&#160;but&#160;is&#160;maintained&#160;by&#160;a&#160;physiological&#160;circuit&#160;that&#160;stores&#160;a&#160;setpoint&#160;for&#160;this</p>
+<p style="position:absolute;top:84px;left:62px;white-space:nowrap" class="ft154">[23]</p>
+<p style="position:absolute;top:238px;left:410px;white-space:nowrap" class="ft154">[24]</p>
+<p style="position:absolute;top:312px;left:62px;white-space:nowrap" class="ft154">[25]</p>
+<p style="position:absolute;top:312px;left:190px;white-space:nowrap" class="ft154">[26]</p>
+<p style="position:absolute;top:841px;left:167px;white-space:nowrap" class="ft155">Regeneration-capable&#160;2-headed&#160;planarian,&#160;the&#160;creature&#160;that&#160;inspired&#160;this&#160;work&#160;</p>
+<p style="position:absolute;top:841px;left:695px;white-space:nowrap" class="ft155">&#160;</p>
+<p style="position:absolute;top:887px;left:332px;white-space:nowrap" class="ft156"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=fQ1u2MqFy7Ni">REPRODUCE&#160;IN&#160;A&#160;</a></p>
+<p style="position:absolute;top:887px;left:465px;white-space:nowrap" class="ft156"><a href="https://colab.research.google.com/github/google-research/self-organising-systems/blob/master/notebooks/growing_ca.ipynb#scrollTo=fQ1u2MqFy7Ni">NOTEBOOK</a></p>
+<p style="position:absolute;top:842px;left:673px;white-space:nowrap" class="ft157">[27]</p>
+<p style="position:absolute;top:1036px;left:550px;white-space:nowrap" class="ft154">[28,&#160;29]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft160{font-size:9px;font-family:Times;color:#000000;}
+	.ft161{font-size:13px;font-family:Times;color:#000000;}
+	.ft162{font-size:18px;font-family:Times;color:#000000;}
+	.ft163{font-size:11px;font-family:Times;color:#000000;}
+	.ft164{font-size:8px;font-family:Times;color:#2e6db6;}
+	.ft165{font-size:10px;font-family:Times;color:#2e6db6;}
+	.ft166{font-size:9px;font-family:Times;color:#043861;}
+	.ft167{font-size:13px;line-height:24px;font-family:Times;color:#000000;}
+	.ft168{font-size:11px;line-height:24px;font-family:Times;color:#000000;}
+	.ft169{font-size:10px;line-height:18px;font-family:Times;color:#2e6db6;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page16-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft160">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft160">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft160">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft160">16/22</p>
+<p style="position:absolute;top:29px;left:60px;white-space:nowrap" class="ft167">coded&#160;by&#160;the&#160;DNA,&#160;but&#160;is&#160;maintained&#160;by&#160;a&#160;physiological&#160;circuit&#160;that&#160;stores&#160;a&#160;setpoint&#160;for&#160;this<br/>anatomical&#160;homeostasis&#160;</p>
+<p style="position:absolute;top:54px;left:268px;white-space:nowrap" class="ft161">.&#160;Techniques&#160;are&#160;now&#160;available&#160;for&#160;re-writing&#160;this&#160;setpoint,&#160;resulting&#160;for</p>
+<p style="position:absolute;top:79px;left:60px;white-space:nowrap" class="ft161">example&#160;</p>
+<p style="position:absolute;top:79px;left:173px;white-space:nowrap" class="ft161">&#160;in&#160;2-headed&#160;flatworms&#160;that,&#160;when&#160;cut&#160;into&#160;pieces&#160;in&#160;plain&#160;water&#160;(with&#160;no&#160;more</p>
+<p style="position:absolute;top:104px;left:60px;white-space:nowrap" class="ft167">manipulations)&#160;result&#160;in&#160;subsequent&#160;generations&#160;of&#160;2-headed&#160;regenerated&#160;worms&#160;(as&#160;shown&#160;above).&#160;It<br/>is&#160;essential&#160;to&#160;begin&#160;to&#160;develop&#160;models&#160;of&#160;the&#160;computational&#160;processes&#160;that&#160;store&#160;the&#160;system-level<br/>target&#160;state&#160;for&#160;swarm&#160;behavior&#160;</p>
+<p style="position:absolute;top:153px;left:386px;white-space:nowrap" class="ft161">,&#160;so&#160;that&#160;efficient&#160;strategies&#160;can&#160;be&#160;developed&#160;for</p>
+<p style="position:absolute;top:178px;left:60px;white-space:nowrap" class="ft167">rational&#160;y&#160;editing&#160;this&#160;information&#160;structure,&#160;resulting&#160;in&#160;desired&#160;large-scale&#160;outcomes&#160;(thus&#160;defeating<br/>the&#160;inverse&#160;problem&#160;that&#160;holds&#160;back&#160;regenerative&#160;medicine&#160;and&#160;many&#160;other&#160;advances).</p>
+<p style="position:absolute;top:283px;left:60px;white-space:nowrap" class="ft162">Engineering&#160;and&#160;machine&#160;learning</p>
+<p style="position:absolute;top:332px;left:60px;white-space:nowrap" class="ft167">The&#160;models&#160;described&#160;in&#160;this&#160;article&#160;run&#160;on&#160;the&#160;powerful&#160;GPU&#160;of&#160;a&#160;modern&#160;computer&#160;or&#160;a&#160;smartphone.<br/>Yet,&#160;letʼs&#160;speculate&#160;about&#160;what&#160;a&#160;“more&#160;physical”&#160;implementation&#160;of&#160;such&#160;a&#160;system&#160;could&#160;look&#160;like.&#160;We</p>
+<p style="position:absolute;top:401px;left:60px;white-space:nowrap" class="ft167">can&#160;imagine&#160;it&#160;as&#160;a&#160;grid&#160;of&#160;tiny&#160;independent&#160;computers,&#160;simulating&#160;individual&#160;cel&#160;s.&#160;Each&#160;of&#160;those<br/>computers&#160;would&#160;require&#160;approximately&#160;10Kb&#160;of&#160;ROM&#160;to&#160;store&#160;the&#160;“cel&#160;&#160;genome”:&#160;neural&#160;network<br/>weights&#160;and&#160;the&#160;control&#160;code,&#160;and&#160;about&#160;256&#160;bytes&#160;of&#160;RAM&#160;for&#160;the&#160;cel&#160;&#160;state&#160;and&#160;intermediate<br/>activations.&#160;The&#160;cel&#160;s&#160;must&#160;be&#160;able&#160;to&#160;communicate&#160;their&#160;16-value&#160;state&#160;vectors&#160;to&#160;neighbors.&#160;Each&#160;cel<br/>would&#160;also&#160;require&#160;an&#160;RGB-diode&#160;to&#160;display&#160;the&#160;color&#160;of&#160;the&#160;pixel&#160;it&#160;represents.&#160;A&#160;single&#160;cel&#160;&#160;update<br/>would&#160;require&#160;about&#160;10k&#160;multiply-add&#160;operations&#160;and&#160;does&#160;not&#160;have&#160;to&#160;be&#160;synchronised&#160;across&#160;the<br/>grid.&#160;We&#160;propose&#160;that&#160;cel&#160;s&#160;might&#160;wait&#160;for&#160;random&#160;time&#160;intervals&#160;between&#160;updates.&#160;The&#160;system<br/>described&#160;above&#160;is&#160;uniform&#160;and&#160;decentralised.&#160;Yet,&#160;our&#160;method&#160;provides&#160;a&#160;way&#160;to&#160;program&#160;it&#160;to&#160;reach<br/>the&#160;predefined&#160;global&#160;state,&#160;and&#160;recover&#160;this&#160;state&#160;in&#160;case&#160;of&#160;multi-element&#160;failures&#160;and&#160;restarts.&#160;We<br/>therefore&#160;conjecture&#160;this&#160;kind&#160;of&#160;modeling&#160;may&#160;be&#160;used&#160;for&#160;designing&#160;reliable,&#160;self-organising&#160;agents.<br/>On&#160;the&#160;more&#160;theoretical&#160;machine&#160;learning&#160;front,&#160;we&#160;show&#160;an&#160;instance&#160;of&#160;a&#160;decentralized&#160;model&#160;able&#160;to<br/>accomplish&#160;remarkably&#160;complex&#160;tasks.&#160;We&#160;believe&#160;this&#160;direction&#160;to&#160;be&#160;opposite&#160;to&#160;the&#160;more&#160;traditional<br/>global&#160;modeling&#160;used&#160;in&#160;the&#160;majority&#160;of&#160;contemporary&#160;work&#160;in&#160;the&#160;deep&#160;learning&#160;field,&#160;and&#160;we&#160;hope&#160;this<br/>work&#160;to&#160;be&#160;an&#160;inspiration&#160;to&#160;explore&#160;more&#160;decentralized&#160;learning&#160;modeling.</p>
+<p style="position:absolute;top:792px;left:151px;white-space:nowrap" class="ft168">This&#160;article&#160;is&#160;part&#160;of&#160;the&#160;<a href="https://distill.pub/2020/selforg/">Differentiable&#160;Self-organizing&#160;Systems&#160;Thread,</a>&#160;an&#160;experimental&#160;format<br/>col&#160;ecting&#160;invited&#160;short&#160;articles&#160;delving&#160;into&#160;differentiable&#160;self-organizing&#160;systems,&#160;interspersed&#160;with<br/>critical&#160;commentary&#160;from&#160;several&#160;experts&#160;in&#160;adjacent&#160;fields.</p>
+<p style="position:absolute;top:883px;left:151px;white-space:nowrap" class="ft164"><a href="https://distill.pub/2020/selforg/">←&#160;PREVIOUS&#160;ARTICLE</a></p>
+<p style="position:absolute;top:904px;left:151px;white-space:nowrap" class="ft169"><a href="https://distill.pub/2020/selforg/">Differentiable&#160;Self-organizing<br/>Systems&#160;Thread</a></p>
+<p style="position:absolute;top:883px;left:421px;white-space:nowrap" class="ft164"><a href="https://distill.pub/2020/selforg/mnist/">NEXT&#160;ARTICLE&#160;→</a></p>
+<p style="position:absolute;top:904px;left:421px;white-space:nowrap" class="ft165"><a href="https://distill.pub/2020/selforg/mnist/">Self-classifying&#160;MNIST&#160;Digits</a></p>
+<p style="position:absolute;top:56px;left:242px;white-space:nowrap" class="ft166">[30]</p>
+<p style="position:absolute;top:80px;left:127px;white-space:nowrap" class="ft166">[31,&#160;32]</p>
+<p style="position:absolute;top:155px;left:294px;white-space:nowrap" class="ft166">[33,&#160;34,&#160;35,&#160;36]</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft170{font-size:9px;font-family:Times;color:#000000;}
+	.ft171{font-size:14px;font-family:Times;color:#000000;}
+	.ft172{font-size:10px;font-family:Times;color:#000000;}
+	.ft173{font-size:7px;font-family:Times;color:#043861;}
+	.ft174{font-size:7px;font-family:Times;color:#000000;}
+	.ft175{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page17-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft170">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft170">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft170">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft170">17/22</p>
+<p style="position:absolute;top:48px;left:60px;white-space:nowrap" class="ft171">Acknowledgments</p>
+<p style="position:absolute;top:86px;left:60px;white-space:nowrap" class="ft175">We&#160;would&#160;like&#160;to&#160;thank&#160;Blaise&#160;Aguera&#160;y&#160;Arcas&#160;for&#160;his&#160;support,&#160;as&#160;wel&#160;&#160;as&#160;for&#160;teasing&#160;our&#160;work&#160;in&#160;his&#160;excel&#160;ent&#160;2019&#160;talk&#160;at<br/>NeurIPS&#160;</p>
+<p style="position:absolute;top:108px;left:136px;white-space:nowrap" class="ft172">.&#160;We&#160;also&#160;thank&#160;Jyrki&#160;Alakuijala&#160;for&#160;his&#160;continuous&#160;support.&#160;We&#160;thank&#160;Damien&#160;Henry,&#160;Mark&#160;Sandler,&#160;Sean&#160;Silva</p>
+<p style="position:absolute;top:129px;left:60px;white-space:nowrap" class="ft172">and&#160;Bert&#160;Chan&#160;for&#160;their&#160;review&#160;of&#160;our&#160;early&#160;drafts,&#160;and&#160;Andrew&#160;Jackson&#160;for&#160;proofreading&#160;the&#160;text.</p>
+<p style="position:absolute;top:163px;left:60px;white-space:nowrap" class="ft175">On&#160;the&#160;Distil&#160;&#160;side,&#160;we&#160;are&#160;especial&#160;y&#160;grateful&#160;to&#160;Chris&#160;Olah&#160;for&#160;reviewing&#160;the&#160;article&#160;draft,&#160;insightful&#160;comments&#160;on&#160;text&#160;and<br/>diagrams,&#160;and&#160;general&#160;support&#160;of&#160;the&#160;publication.</p>
+<p style="position:absolute;top:232px;left:60px;white-space:nowrap" class="ft171">Author</p>
+<p style="position:absolute;top:253px;left:60px;white-space:nowrap" class="ft171">Contributions</p>
+<p style="position:absolute;top:290px;left:60px;white-space:nowrap" class="ft175">Research:&#160;Alexander&#160;came&#160;up&#160;with&#160;the&#160;Self-Organising&#160;Asynchronous&#160;Neural&#160;Cel&#160;ular&#160;Automata&#160;model&#160;and&#160;Ettore<br/>contributed&#160;to&#160;its&#160;design.&#160;Ettore&#160;designed&#160;and&#160;performed&#160;most&#160;of&#160;the&#160;experiments&#160;for&#160;this&#160;work.&#160;Alexander&#160;supervised&#160;the<br/>entire&#160;process&#160;and&#160;contributed&#160;extensively&#160;to&#160;the&#160;later&#160;stages&#160;of&#160;development&#160;by&#160;performing&#160;experiments&#160;and&#160;refining&#160;the<br/>model.</p>
+<p style="position:absolute;top:388px;left:60px;white-space:nowrap" class="ft175">The&#160;idea&#160;of&#160;applying&#160;neural&#160;networks&#160;to&#160;understanding&#160;regeneration,&#160;and&#160;to&#160;designing&#160;self-organising&#160;systems,&#160;was<br/>proposed&#160;by&#160;Michael&#160;Levin&#160;in&#160;his&#160;email&#160;to&#160;Alexander,&#160;that&#160;was&#160;sent&#160;fol&#160;owing&#160;the&#160;DeepDream&#160;</p>
+<p style="position:absolute;top:410px;left:640px;white-space:nowrap" class="ft172">&#160;publication&#160;by&#160;Alexander</p>
+<p style="position:absolute;top:431px;left:60px;white-space:nowrap" class="ft172">in&#160;2015.&#160;Alexanderʼs&#160;proposal&#160;of&#160;this&#160;model&#160;and&#160;this&#160;work&#160;were&#160;inspired&#160;by&#160;the&#160;talk&#160;</p>
+<p style="position:absolute;top:431px;left:580px;white-space:nowrap" class="ft172">&#160;given&#160;by&#160;Michael&#160;at&#160;NeurIPS&#160;2018&#160;as</p>
+<p style="position:absolute;top:452px;left:60px;white-space:nowrap" class="ft172">wel&#160;&#160;as&#160;the&#160;subsequent&#160;email&#160;exchange&#160;between&#160;Alexander&#160;and&#160;Michael.</p>
+<p style="position:absolute;top:487px;left:60px;white-space:nowrap" class="ft172">Demos:&#160;Alexander&#160;created&#160;both&#160;the&#160;WebGL&#160;and&#160;the&#160;tf.js&#160;demo.&#160;Ettore&#160;contributed&#160;to&#160;the&#160;tf.js&#160;demo.</p>
+<p style="position:absolute;top:521px;left:60px;white-space:nowrap" class="ft175">Writing&#160;&amp;&#160;Diagrams:&#160;Alexander&#160;outlined&#160;the&#160;structure&#160;of&#160;the&#160;article,&#160;and&#160;contributed&#160;to&#160;the&#160;content&#160;throughout.&#160;Ettore<br/>contributed&#160;to&#160;the&#160;content&#160;throughout.&#160;Eyvind&#160;drew&#160;al&#160;&#160;the&#160;diagrams,&#160;contributed&#160;to&#160;the&#160;content&#160;throughout,&#160;and&#160;wrote&#160;al&#160;&#160;of<br/>the&#160;pseudocode.&#160;Michael&#160;made&#160;extensive&#160;contributions&#160;to&#160;the&#160;article&#160;text,&#160;providing&#160;the&#160;biological&#160;context&#160;and&#160;motivation<br/>for&#160;this&#160;work.</p>
+<p style="position:absolute;top:633px;left:60px;white-space:nowrap" class="ft171">Implementation</p>
+<p style="position:absolute;top:654px;left:60px;white-space:nowrap" class="ft171">details</p>
+<p style="position:absolute;top:691px;left:60px;white-space:nowrap" class="ft175">WebGL&#160;playground.&#160;Starting&#160;from&#160;our&#160;first&#160;experiments&#160;on&#160;Neural&#160;CA&#160;growth&#160;and&#160;regeneration,&#160;we&#160;wanted&#160;to&#160;chal&#160;enge&#160;our<br/>models&#160;with&#160;new&#160;situations&#160;not&#160;seen&#160;during&#160;training,&#160;like&#160;removing&#160;large&#160;portions&#160;of&#160;the&#160;pattern,&#160;or&#160;seeding&#160;multiple<br/>instances&#160;side-by-side.&#160;To&#160;facilitate&#160;exploration&#160;and&#160;sharing&#160;of&#160;our&#160;models,&#160;we&#160;created&#160;a&#160;TensorFlow.js&#160;playground&#160;that<br/>al&#160;owed&#160;us&#160;to&#160;interact&#160;with&#160;trained&#160;models&#160;right&#160;in&#160;a&#160;browser.&#160;The&#160;code&#160;for&#160;exporting&#160;and&#160;loading&#160;CA&#160;models&#160;in&#160;TF.js&#160;format<br/>is&#160;available&#160;in&#160;the&#160;accompanying&#160;Colab&#160;notebook.</p>
+<p style="position:absolute;top:810px;left:60px;white-space:nowrap" class="ft175">While&#160;writing&#160;this&#160;article,&#160;we&#160;decided&#160;to&#160;see&#160;how&#160;far&#160;one&#160;can&#160;push&#160;the&#160;performance&#160;and&#160;portability&#160;of&#160;this&#160;interactive<br/>playground.&#160;We&#160;reimplemented&#160;al&#160;&#160;necessary&#160;operations&#160;from&#160;scratch&#160;using&#160;the&#160;WebGL&#160;API&#160;and&#160;GLSL&#160;shader&#160;language.&#160;This<br/>implementation&#160;powers&#160;the&#160;demo&#160;that&#160;can&#160;be&#160;found&#160;on&#160;the&#160;top&#160;of&#160;this&#160;page.&#160;We&#160;decided&#160;to&#160;quantize&#160;al&#160;&#160;model&#160;parameters<br/>and&#160;activations&#160;&#160;to&#160;8-bit&#160;values,&#160;in&#160;order&#160;to&#160;maximize&#160;the&#160;performance&#160;and&#160;compatibility&#160;with&#160;mobile&#160;hardware.</p>
+<p style="position:absolute;top:908px;left:60px;white-space:nowrap" class="ft175">The&#160;quantization&#160;was&#160;largely&#160;an&#160;afterthought,&#160;and&#160;was&#160;not&#160;accounted&#160;for&#160;during&#160;training.&#160;Thatʼs&#160;why&#160;there&#160;are&#160;slight<br/>differences&#160;in&#160;modelsʼ&#160;behaviours&#160;between&#160;the&#160;online&#160;demo&#160;and&#160;the&#160;Python&#160;version.&#160;However,&#160;most&#160;of&#160;the&#160;CAs&#160;that&#160;weʼve<br/>trained&#160;managed&#160;to&#160;survive&#160;the&#160;somewhat&#160;draconic&#160;quantization&#160;without&#160;severe&#160;artifacts,&#160;although&#160;in&#160;a&#160;few&#160;cases&#160;we&#160;had&#160;to<br/>resort&#160;to&#160;selecting&#160;the&#160;best&#160;model&#160;checkpoint&#160;between&#160;a&#160;few&#160;training&#160;runs.</p>
+<p style="position:absolute;top:1007px;left:60px;white-space:nowrap" class="ft175">Colaboratory&#160;Notebook.&#160;Al&#160;&#160;of&#160;the&#160;experiments,&#160;images&#160;and&#160;videos&#160;in&#160;this&#160;article&#160;can&#160;be&#160;recreated&#160;using&#160;the&#160;single<br/>notebook&#160;referenced&#160;at&#160;the&#160;beginning&#160;of&#160;the&#160;article.&#160;Images&#160;have&#160;a&#160;“Recreate&#160;in&#160;Colab”&#160;button&#160;which&#160;brings&#160;you&#160;to&#160;the<br/>corresponding&#160;cel&#160;&#160;that&#160;generated&#160;the&#160;image.&#160;Our&#160;reference&#160;implementation&#160;of&#160;the&#160;Neural&#160;CA&#160;was&#160;written&#160;while&#160;striving&#160;to<br/>be&#160;as&#160;concise&#160;and&#160;simple&#160;as&#160;possible&#160;and&#160;thus&#160;foregoes&#160;many&#160;performance&#160;optimizations&#160;and&#160;tricks&#160;one&#160;could&#160;implement.<br/>For&#160;the&#160;core&#160;of&#160;the&#160;CA&#160;-&#160;the&#160;neural&#160;network&#160;parametrizing&#160;the&#160;update&#160;rule&#160;-&#160;the&#160;ful&#160;&#160;code&#160;is&#160;contained&#160;in&#160;the&#160;tf.keras.Model<br/>NeuralCA&#160;class.&#160;Note&#160;that&#160;this&#160;network&#160;consists&#160;of&#160;just&#160;8.3K&#160;parameters&#160;-&#160;minute&#160;by&#160;most&#160;standards&#160;and&#160;we&#160;suspect&#160;it&#160;could</p>
+<p style="position:absolute;top:108px;left:115px;white-space:nowrap" class="ft173">[37]</p>
+<p style="position:absolute;top:410px;left:618px;white-space:nowrap" class="ft173">[38]</p>
+<p style="position:absolute;top:432px;left:559px;white-space:nowrap" class="ft173">[27]</p>
+<p style="position:absolute;top:873px;left:155px;white-space:nowrap" class="ft173">5&#160;</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft180{font-size:9px;font-family:Times;color:#000000;}
+	.ft181{font-size:10px;font-family:Times;color:#000000;}
+	.ft182{font-size:14px;font-family:Times;color:#000000;}
+	.ft183{font-size:7px;font-family:Times;color:#043861;}
+	.ft184{font-size:12px;font-family:Times;color:#000000;}
+	.ft185{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page18-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft180">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft180">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft180">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft180">18/22</p>
+<p style="position:absolute;top:46px;left:60px;white-space:nowrap" class="ft185">be&#160;minimized&#160;further&#160;employing&#160;pruning&#160;or&#160;other&#160;forms&#160;of&#160;compression.&#160;The&#160;update&#160;loop&#160;consists&#160;of&#160;a&#160;native&#160;python&#160;loop<br/>iteratively&#160;applying&#160;the&#160;aforementioned&#160;update&#160;function,&#160;and&#160;making&#160;use&#160;of&#160;various&#160;techniques&#160;weʼve&#160;described&#160;in&#160;the<br/>article,&#160;such&#160;as&#160;having&#160;a&#160;sample&#160;pool&#160;and&#160;applying&#160;damage&#160;to&#160;the&#160;starting&#160;seeds.&#160;The&#160;rest&#160;of&#160;the&#160;notebook&#160;consists&#160;of&#160;code<br/>to&#160;generate&#160;and&#160;visualize&#160;the&#160;various&#160;images&#160;and&#160;videos&#160;employed&#160;in&#160;this&#160;article,&#160;utilizing&#160;models&#160;pre-trained&#160;by&#160;us&#160;using<br/>this&#160;very&#160;same&#160;colab.&#160;These&#160;pre-trained&#160;models&#160;can&#160;be&#160;easily&#160;recreated&#160;in&#160;a&#160;matter&#160;of&#160;minutes&#160;with&#160;a&#160;current&#160;generation<br/>GPU&#160;or&#160;one&#160;provided&#160;for&#160;free&#160;in&#160;Colab.</p>
+<p style="position:absolute;top:584px;left:60px;white-space:nowrap" class="ft182">References</p>
+<p style="position:absolute;top:621px;left:69px;white-space:nowrap" class="ft181">.&#160;Top-down&#160;models&#160;in&#160;biology:&#160;explanation&#160;and&#160;control&#160;of&#160;complex&#160;living&#160;systems&#160;above&#160;the&#160;molecular&#160;level&#160; <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rsif.2016.0555">[link]</a></p>
+<p style="position:absolute;top:643px;left:77px;white-space:nowrap" class="ft185"><a href="https://doi.org/10.1098/rsif.2016.0555">Pezzulo,&#160;G.&#160;and&#160;Levin,&#160;M.,&#160;2016.&#160;Journal&#160;of&#160;The&#160;Royal&#160;Society&#160;Interface,&#160;Vol&#160;13(124),&#160;pp.&#160;20160555.&#160;DOI:<br/>10.1098/rsif.2016.0555</a></p>
+<p style="position:absolute;top:698px;left:69px;white-space:nowrap" class="ft181">.&#160;Re-membering&#160;the&#160;body:&#160;applications&#160;of&#160;computational&#160;neuroscience&#160;to&#160;the&#160;top-down&#160;control&#160;of&#160;regeneration&#160;of&#160;limbs</p>
+<p style="position:absolute;top:719px;left:77px;white-space:nowrap" class="ft185">and&#160;other&#160;complex&#160;organs&#160;<a href="http://dx.doi.org/10.1039/C5IB00221D"> [link]<br/></a><a href="https://doi.org/10.1039/C5IB00221D">Pezzulo,&#160;G.&#160;and&#160;Levin,&#160;M.,&#160;2015.&#160;Integr.&#160;Biol.,&#160;Vol&#160;7(12),&#160;pp.&#160;1487-1517.&#160;The&#160;Royal&#160;Society&#160;of&#160;Chemistry.&#160;DOI:<br/>10.1039/C5IB00221D</a></p>
+<p style="position:absolute;top:796px;left:69px;white-space:nowrap" class="ft181">.&#160;Transmembrane&#160;voltage&#160;potential&#160;controls&#160;embryonic&#160;eye&#160;patterning&#160;in&#160;Xenopus&#160;laevis&#160; <a href="https://dev.biologists.org/content/139/2/313">[link]</a></p>
+<p style="position:absolute;top:817px;left:77px;white-space:nowrap" class="ft185">Pai,&#160;V.P.,&#160;Aw,&#160;S.,&#160;Shomrat,&#160;T.,&#160;Lemire,&#160;J.M.&#160;and&#160;Levin,&#160;M.,&#160;2012.&#160;Development,&#160;Vol&#160;139(2),&#160;pp.&#160;313--323.&#160;The&#160;Company&#160;of<br/>Biologists&#160;Ltd.&#160;<a href="https://doi.org/10.1242/dev.073759">DOI:&#160;10.1242/dev.073759</a></p>
+<p style="position:absolute;top:872px;left:69px;white-space:nowrap" class="ft181">.&#160;Weight&#160;Normalization:&#160;A&#160;Simple&#160;Reparameterization&#160;to&#160;Accelerate&#160;Training&#160;of&#160;Deep&#160;Neural&#160;Networks&#160; <a href="http://arxiv.org/pdf/1602.07868.pdf">[PDF]</a></p>
+<p style="position:absolute;top:894px;left:77px;white-space:nowrap" class="ft181">Salimans,&#160;T.&#160;and&#160;Kingma,&#160;D.P.,&#160;2016.&#160;NIPS.</p>
+<p style="position:absolute;top:928px;left:69px;white-space:nowrap" class="ft181">.&#160;The&#160;chemical&#160;basis&#160;of&#160;morphogenesis&#160;<a href="https://doi.org/10.1007/BF02459572"> [link]</a></p>
+<p style="position:absolute;top:949px;left:77px;white-space:nowrap" class="ft181">Turing,&#160;A.M.,&#160;1990.&#160;Bul&#160;etin&#160;of&#160;mathematical&#160;biology,&#160;Vol&#160;52(1-2),&#160;pp.&#160;153--197.&#160;Springer.<a href="https://doi.org/10.1007/BF02459572">&#160;DOI:&#160;10.1007/BF02459572</a></p>
+<p style="position:absolute;top:984px;left:69px;white-space:nowrap" class="ft181">.&#160;Complex&#160;Patterns&#160;in&#160;a&#160;Simple&#160;System&#160; <a href="https://science.sciencemag.org/content/261/5118/189">[link]</a></p>
+<p style="position:absolute;top:1005px;left:77px;white-space:nowrap" class="ft185"><a href="https://doi.org/10.1126/science.261.5118.189">Pearson,&#160;J.E.,&#160;1993.&#160;Science,&#160;Vol&#160;261(5118),&#160;pp.&#160;189--192.&#160;American&#160;Association&#160;for&#160;the&#160;Advancement&#160;of&#160;Science.&#160;DOI:<br/>10.1126/science.261.5118.189</a></p>
+<p style="position:absolute;top:1060px;left:69px;white-space:nowrap" class="ft181">.&#160;Theory&#160;of&#160;Self-Reproducing&#160;Automata&#160;</p>
+<p style="position:absolute;top:1082px;left:77px;white-space:nowrap" class="ft181">Neumann,&#160;J.V.&#160;and&#160;Burks,&#160;A.W.,&#160;1966.&#160;University&#160;of&#160;Il&#160;inois&#160;Press.</p>
+<p style="position:absolute;top:1116px;left:69px;white-space:nowrap" class="ft181">.&#160;MATHEMATICAL&#160;GAMES&#160; <a href="http://www.jstor.org/stable/24927642">[link]</a></p>
+<p style="position:absolute;top:1137px;left:77px;white-space:nowrap" class="ft181">Gardner&#160;M&#160;1970&#160;Scientific&#160;American&#160;Vol&#160;223(4)&#160;pp&#160;120--123&#160;Scientific&#160;American&#160;a&#160;division&#160;of&#160;Nature&#160;America&#160;Inc</p>
+<p style="position:absolute;top:200px;left:60px;white-space:nowrap" class="ft182">Footnotes</p>
+<p style="position:absolute;top:237px;left:69px;white-space:nowrap" class="ft181">.&#160;Self-regulatory&#160;feedback&#160;loops&#160;trying&#160;maintain&#160;the&#160;body&#160;in&#160;a&#160;stable&#160;state&#160;or&#160;preserve&#160;its&#160;correct&#160;overal&#160;&#160;morphology&#160;under</p>
+<p style="position:absolute;top:259px;left:77px;white-space:nowrap" class="ft181">external&#160;perturbation<a href="a25c4b989685f0e66e6503059272065es.html#3">s&#160;[↩]</a></p>
+<p style="position:absolute;top:294px;left:69px;white-space:nowrap" class="ft181">.&#160;We&#160;set&#160;RGB&#160;channels&#160;of&#160;the&#160;seed&#160;to&#160;zero&#160;because&#160;we&#160;want&#160;it&#160;to&#160;be&#160;visible&#160;on&#160;the&#160;white&#160;background.&#160;<a href="a25c4b989685f0e66e6503059272065es.html#7">[↩]</a></p>
+<p style="position:absolute;top:327px;left:69px;white-space:nowrap" class="ft181">.&#160;This&#160;should&#160;be&#160;a&#160;sufficient&#160;number&#160;of&#160;steps&#160;to&#160;grow&#160;the&#160;pattern&#160;of&#160;the&#160;size&#160;we&#160;work&#160;with&#160;(40x40),&#160;even&#160;considering&#160;the</p>
+<p style="position:absolute;top:349px;left:77px;white-space:nowrap" class="ft181">stochastic&#160;nature&#160;of&#160;our&#160;update&#160;rule<a href="a25c4b989685f0e66e6503059272065es.html#7">.&#160;[↩]</a></p>
+<p style="position:absolute;top:382px;left:69px;white-space:nowrap" class="ft181">.&#160;We&#160;observed&#160;training&#160;instabilities,&#160;that&#160;were&#160;manifesting&#160;themselves&#160;as&#160;sudden&#160;jumps&#160;of&#160;the&#160;loss&#160;value&#160;in&#160;the&#160;later&#160;stages</p>
+<p style="position:absolute;top:404px;left:77px;white-space:nowrap" class="ft185">of&#160;the&#160;training.&#160;We&#160;managed&#160;to&#160;mitigate&#160;them&#160;by&#160;applying&#160;per-variable&#160;L2&#160;normalization&#160;to&#160;parameter&#160;gradients.&#160;This&#160;may<br/>have&#160;the&#160;effect&#160;similar&#160;to&#160;the&#160;weight&#160;normalization&#160;</p>
+<p style="position:absolute;top:425px;left:399px;white-space:nowrap" class="ft181">.&#160;Other&#160;training&#160;parameters&#160;are&#160;available&#160;in&#160;the&#160;accompanying</p>
+<p style="position:absolute;top:447px;left:77px;white-space:nowrap" class="ft181">source&#160;code.&#160;<a href="a25c4b989685f0e66e6503059272065es.html#7">[↩]</a></p>
+<p style="position:absolute;top:480px;left:69px;white-space:nowrap" class="ft181">.&#160;We&#160;noticed&#160;that&#160;our&#160;models&#160;are&#160;more&#160;sensitive&#160;to&#160;the&#160;accuracy&#160;of&#160;smal&#160;&#160;magnitude&#160;activation&#160;values,&#160;rather&#160;than&#160;the&#160;large</p>
+<p style="position:absolute;top:502px;left:77px;white-space:nowrap" class="ft181">ones.&#160;Thatʼs&#160;why&#160;we&#160;use&#160;the&#160;non-linear&#160;</p>
+<p style="position:absolute;top:502px;left:356px;white-space:nowrap" class="ft181">&#160;function&#160;to&#160;compress&#160;the&#160;unbounded&#160;activation&#160;values&#160;to&#160;the&#160;bounded</p>
+<p style="position:absolute;top:523px;left:77px;white-space:nowrap" class="ft181">segment,&#160;preserving&#160;the&#160;highest&#160;accuracy&#160;around&#160;zero<a href="a25c4b989685f0e66e6503059272065es.html#17">.&#160;[↩]</a></p>
+<p style="position:absolute;top:426px;left:383px;white-space:nowrap" class="ft183">[4]</p>
+<p style="position:absolute;top:500px;left:315px;white-space:nowrap" class="ft184">arctan</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft190{font-size:9px;font-family:Times;color:#000000;}
+	.ft191{font-size:10px;font-family:Times;color:#000000;}
+	.ft192{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page19-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft190">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft190">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft190">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft190">19/22</p>
+<p style="position:absolute;top:32px;left:77px;white-space:nowrap" class="ft191">Gardner,&#160;M.,&#160;1970.&#160;Scientific&#160;American,&#160;Vol&#160;223(4),&#160;pp.&#160;120&#160;123.&#160;Scientific&#160;American,&#160;a&#160;division&#160;of&#160;Nature&#160;America,&#160;Inc.</p>
+<p style="position:absolute;top:60px;left:69px;white-space:nowrap" class="ft191">.&#160;A&#160;New&#160;Kind&#160;of&#160;Science&#160; <a href="https://www.wolframscience.com/">[link]</a></p>
+<p style="position:absolute;top:82px;left:77px;white-space:nowrap" class="ft191">Wolfram,&#160;S.,&#160;2002.&#160;Wolfram&#160;Media.</p>
+<p style="position:absolute;top:117px;left:69px;white-space:nowrap" class="ft191">.&#160;Generalization&#160;of&#160;Conway's&#160;&#34;Game&#160;of&#160;Life&#34;&#160;to&#160;a&#160;continuous&#160;domain&#160;-&#160;SmoothLife&#160;</p>
+<p style="position:absolute;top:138px;left:77px;white-space:nowrap" class="ft191">Rafler,&#160;S.,&#160;2011.</p>
+<p style="position:absolute;top:172px;left:69px;white-space:nowrap" class="ft191">.&#160;Lenia:&#160;Biology&#160;of&#160;Artificial&#160;Life&#160; <a href="http://dx.doi.org/10.25088/complexsystems.28.3.251">[link]</a></p>
+<p style="position:absolute;top:193px;left:77px;white-space:nowrap" class="ft192"><a href="https://doi.org/10.25088/complexsystems.28.3.251">Chan,&#160;B.W.,&#160;2019.&#160;Complex&#160;Systems,&#160;Vol&#160;28(3),&#160;pp.&#160;251–286.&#160;Wolfram&#160;Research,&#160;Inc.&#160;DOI:<br/>10.25088/complexsystems.28.3.251</a></p>
+<p style="position:absolute;top:248px;left:69px;white-space:nowrap" class="ft191">.&#160;Intrinsically&#160;Motivated&#160;Exploration&#160;for&#160;Automated&#160;Discovery&#160;of&#160;Patterns&#160;in&#160;Morphogenetic&#160;Systems&#160;</p>
+<p style="position:absolute;top:270px;left:77px;white-space:nowrap" class="ft191">Reinke,&#160;C.,&#160;Etcheverry,&#160;M.&#160;and&#160;Oudeyer,&#160;P.,&#160;2019.&#160;ArXiv,&#160;Vol&#160;abs/1908.06663.</p>
+<p style="position:absolute;top:304px;left:69px;white-space:nowrap" class="ft191">.&#160;Evolving&#160;Self-organizing&#160;Cellular&#160;Automata&#160;Based&#160;on&#160;Neural&#160;Network&#160;Genotypes&#160;</p>
+<p style="position:absolute;top:325px;left:77px;white-space:nowrap" class="ft191">Elmenreich,&#160;W.&#160;and&#160;Fehervari,&#160;I.,&#160;2011.&#160;Self-Organizing&#160;Systems,&#160;pp.&#160;16--25.&#160;Springer&#160;Berlin&#160;Heidelberg.</p>
+<p style="position:absolute;top:359px;left:69px;white-space:nowrap" class="ft191">.&#160;CA-NEAT:&#160;Evolved&#160;Compositional&#160;Pattern&#160;Producing&#160;Networks&#160;for&#160;Cellular&#160;Automata&#160;Morphogenesis&#160;and&#160;Replication&#160;</p>
+<p style="position:absolute;top:380px;left:77px;white-space:nowrap" class="ft192">Nichele,&#160;S.,&#160;Ose,&#160;M.B.,&#160;Risi,&#160;S.&#160;and&#160;Tufte,&#160;G.,&#160;2018.&#160;IEEE&#160;Transactions&#160;on&#160;Cognitive&#160;and&#160;Developmental&#160;Systems,&#160;Vol&#160;10,<br/>pp.&#160;687-700.</p>
+<p style="position:absolute;top:435px;left:69px;white-space:nowrap" class="ft191">.&#160;Evolving&#160;a&#160;Self-Repairing,&#160;Self-Regulating,&#160;French&#160;Flag&#160;Organism&#160;</p>
+<p style="position:absolute;top:457px;left:77px;white-space:nowrap" class="ft191">Mil&#160;er,&#160;J.,&#160;2004.&#160;,&#160;Vol&#160;3102,&#160;pp.&#160;129-139.<a href="https://doi.org/10.1007/978-3-540-24854-5_12">&#160;DOI:&#160;10.1007/978-3-540-24854-5_12</a></p>
+<p style="position:absolute;top:492px;left:69px;white-space:nowrap" class="ft191">.&#160;Learning&#160;Cellular&#160;Automaton&#160;Dynamics&#160;with&#160;Neural&#160;Networks&#160;<a href="https://papers.nips.cc/paper/703-learning-cellular-automaton-dynamics-with-neural-networks.pdf"> [PDF]</a></p>
+<p style="position:absolute;top:513px;left:77px;white-space:nowrap" class="ft192">Wulff,&#160;N.H.&#160;and&#160;Hertz,&#160;J.A.,&#160;1992.&#160;Proceedings&#160;of&#160;the&#160;5th&#160;International&#160;Conference&#160;on&#160;Neural&#160;Information&#160;Processing<br/>Systems,&#160;pp.&#160;631–638.&#160;Morgan&#160;Kaufmann&#160;Publishers&#160;Inc.&#160;<a href="https://doi.org/10.5555/2987061.2987139">DOI:&#160;10.5555/2987061.2987139</a></p>
+<p style="position:absolute;top:568px;left:69px;white-space:nowrap" class="ft191">.&#160;Cellular&#160;automata&#160;as&#160;convolutional&#160;neural&#160;networks&#160;<a href="http://arxiv.org/pdf/1809.02942.pdf"> [PDF]</a></p>
+<p style="position:absolute;top:590px;left:77px;white-space:nowrap" class="ft191">Gilpin,&#160;W.,&#160;2018.&#160;Physical&#160;review.&#160;E,&#160;Vol&#160;100&#160;3-1,&#160;pp.&#160;032402.</p>
+<p style="position:absolute;top:623px;left:69px;white-space:nowrap" class="ft191">.&#160;Neural&#160;GPUs&#160;Learn&#160;Algorithms&#160;</p>
+<p style="position:absolute;top:645px;left:77px;white-space:nowrap" class="ft191">Kaiser,&#160;L.&#160;and&#160;Sutskever,&#160;I.,&#160;2015.&#160;CoRR,&#160;Vol&#160;abs/1511.08228.</p>
+<p style="position:absolute;top:679px;left:69px;white-space:nowrap" class="ft191">.&#160;Improving&#160;the&#160;Neural&#160;GPU&#160;Architecture&#160;for&#160;Algorithm&#160;Learning&#160;</p>
+<p style="position:absolute;top:700px;left:77px;white-space:nowrap" class="ft191">Freivalds,&#160;K.&#160;and&#160;Liepins,&#160;R.,&#160;2017.&#160;ArXiv,&#160;Vol&#160;abs/1702.08727.</p>
+<p style="position:absolute;top:734px;left:69px;white-space:nowrap" class="ft191">.&#160;A&#160;Comprehensive&#160;Survey&#160;on&#160;Graph&#160;Neural&#160;Networks&#160;</p>
+<p style="position:absolute;top:755px;left:77px;white-space:nowrap" class="ft191">Wu,&#160;Z.,&#160;Pan,&#160;S.,&#160;Chen,&#160;F.,&#160;Long,&#160;G.,&#160;Zhang,&#160;C.&#160;and&#160;Yu,&#160;P.S.,&#160;2019.</p>
+<p style="position:absolute;top:790px;left:69px;white-space:nowrap" class="ft191">.&#160;Convolutional&#160;Networks&#160;on&#160;Graphs&#160;for&#160;Learning&#160;Molecular&#160;Fingerprints&#160; <a href="http://papers.nips.cc/paper/5954-convolutional-networks-on-graphs-for-learning-molecular-fingerprints.pdf">[PDF]</a></p>
+<p style="position:absolute;top:812px;left:77px;white-space:nowrap" class="ft192">Duvenaud,&#160;D.,&#160;Maclaurin,&#160;D.,&#160;Aguilera-Iparraguirre,&#160;J.,&#160;G\'{o}mez-Bombarel&#160;i,&#160;R.,&#160;Hirzel,&#160;T.,&#160;Aspuru-Guzik,&#160;A.&#160;and&#160;Adams,<br/>R.P.,&#160;2015.&#160;Proceedings&#160;of&#160;the&#160;28th&#160;International&#160;Conference&#160;on&#160;Neural&#160;Information&#160;Processing&#160;Systems&#160;-&#160;Volume&#160;2,&#160;pp.<br/>2224–2232.&#160;MIT&#160;Press.&#160;<a href="https://doi.org/10.5555/2969442.2969488">DOI:&#160;10.5555/2969442.2969488</a></p>
+<p style="position:absolute;top:888px;left:69px;white-space:nowrap" class="ft191">.&#160;Dynamic&#160;Graph&#160;CNN&#160;for&#160;Learning&#160;on&#160;Point&#160;Clouds&#160; <a href="http://dx.doi.org/10.1145/3326362">[link]</a></p>
+<p style="position:absolute;top:909px;left:77px;white-space:nowrap" class="ft192">Wang,&#160;Y.,&#160;Sun,&#160;Y.,&#160;Liu,&#160;Z.,&#160;Sarma,&#160;S.E.,&#160;Bronstein,&#160;M.M.&#160;and&#160;Solomon,&#160;J.M.,&#160;2019.&#160;ACM&#160;Transactions&#160;on&#160;Graphics,&#160;Vol<br/>38(5),&#160;pp.&#160;1–12.&#160;Association&#160;for&#160;Computing&#160;Machinery&#160;(ACM).&#160;<a href="https://doi.org/10.1145/3326362">DOI:&#160;10.1145/3326362</a></p>
+<p style="position:absolute;top:965px;left:69px;white-space:nowrap" class="ft191">.&#160;Learning&#160;to&#160;Control&#160;Self-&#160;Assembling&#160;Morphologies:&#160;A&#160;Study&#160;of&#160;Generalization&#160;via&#160;Modularity&#160;<a href="https://pathak22.github.io/modular-assemblies/"> [link]</a></p>
+<p style="position:absolute;top:986px;left:77px;white-space:nowrap" class="ft191">Pathak,&#160;D.,&#160;Lu,&#160;C.,&#160;Darrel&#160;,&#160;T.,&#160;Isola,&#160;P.&#160;and&#160;Efros,&#160;A.A.,&#160;2019.&#160;NeurIPS.</p>
+<p style="position:absolute;top:1020px;left:69px;white-space:nowrap" class="ft191">.&#160;Flocks,&#160;Herds&#160;and&#160;Schools:&#160;A&#160;Distributed&#160;Behavioral&#160;Model&#160; <a href="https://doi.org/10.1145/37402.37406">[link]</a></p>
+<p style="position:absolute;top:1041px;left:77px;white-space:nowrap" class="ft192"><a href="https://doi.org/10.1145/37402.37406">Reynolds,&#160;C.W.,&#160;1987.&#160;SIGGRAPH&#160;Comput.&#160;Graph.,&#160;Vol&#160;21(4),&#160;pp.&#160;25–34.&#160;Association&#160;for&#160;Computing&#160;Machinery.&#160;DOI:<br/>10.1145/37402.37406</a></p>
+<p style="position:absolute;top:1096px;left:69px;white-space:nowrap" class="ft191">.&#160;Mergeable&#160;nervous&#160;systems&#160;for&#160;robots&#160;</p>
+<p style="position:absolute;top:1118px;left:77px;white-space:nowrap" class="ft192">Mathews,&#160;N.,&#160;Christensen,&#160;A.L.,&#160;OʼGrady,&#160;R.,&#160;Mondada,&#160;F.&#160;and&#160;Dorigo,&#160;M.,&#160;2017.&#160;Nature&#160;communications,&#160;Vol&#160;8(1),&#160;pp.&#160;1--7.<br/>Nature&#160;Publishing&#160;Group&#160;DOI:&#160;10&#160;1038/s41467&#160;017&#160;00109&#160;2</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft200{font-size:9px;font-family:Times;color:#000000;}
+	.ft201{font-size:10px;font-family:Times;color:#000000;}
+	.ft202{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page20-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft200">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft200">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft200">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft200">20/22</p>
+<p style="position:absolute;top:35px;left:77px;white-space:nowrap" class="ft201">Nature&#160;Publishing&#160;Group.&#160;<a href="https://doi.org/10.1038/s41467-017-00109-2">DOI:&#160;10.1038/s41467-017-00109-2</a></p>
+<p style="position:absolute;top:60px;left:69px;white-space:nowrap" class="ft201">.&#160;Kilobot:&#160;A&#160;low&#160;cost&#160;scalable&#160;robot&#160;system&#160;for&#160;collective&#160;behaviors&#160;</p>
+<p style="position:absolute;top:82px;left:77px;white-space:nowrap" class="ft202">{Rubenstein},&#160;M.,&#160;{Ahler},&#160;C.&#160;and&#160;{Nagpal},&#160;R.,&#160;2012.&#160;2012&#160;IEEE&#160;International&#160;Conference&#160;on&#160;Robotics&#160;and&#160;Automation,&#160;Vol<br/>(),&#160;pp.&#160;3293-3298.&#160;<a href="https://doi.org/10.1109/ICRA.2012.6224638">DOI:&#160;10.1109/ICRA.2012.6224638</a></p>
+<p style="position:absolute;top:138px;left:69px;white-space:nowrap" class="ft201">.&#160;What&#160;Bodies&#160;Think&#160;About:&#160;Bioelectric&#160;Computation&#160;Outside&#160;the&#160;Nervous&#160;System&#160;<a href="http://www.youtube.com/watch?v=RjD1aLm4Thg"> [link]</a></p>
+<p style="position:absolute;top:160px;left:77px;white-space:nowrap" class="ft201">Levin,&#160;M.,&#160;2018.</p>
+<p style="position:absolute;top:193px;left:69px;white-space:nowrap" class="ft201">.&#160;A&#160;scalable&#160;pipeline&#160;for&#160;designing&#160;reconfigurable&#160;organisms&#160;<a href="https://www.pnas.org/content/117/4/1853"> [link]</a></p>
+<p style="position:absolute;top:215px;left:77px;white-space:nowrap" class="ft202">Kriegman,&#160;S.,&#160;Blackiston,&#160;D.,&#160;Levin,&#160;M.&#160;and&#160;Bongard,&#160;J.,&#160;2020.&#160;Proceedings&#160;of&#160;the&#160;National&#160;Academy&#160;of&#160;Sciences,&#160;Vol<br/>117(4),&#160;pp.&#160;1853--1859.&#160;National&#160;Academy&#160;of&#160;Sciences.<a href="https://doi.org/10.1073/pnas.1910837117">&#160;DOI:&#160;10.1073/pnas.1910837117</a></p>
+<p style="position:absolute;top:270px;left:69px;white-space:nowrap" class="ft201">.&#160;Perspective:&#160;The&#160;promise&#160;of&#160;multi-cellular&#160;engineered&#160;living&#160;systems&#160;<a href="https://doi.org/10.1063/1.5038337"> [link]</a></p>
+<p style="position:absolute;top:291px;left:77px;white-space:nowrap" class="ft202">Kamm,&#160;R.D.,&#160;Bashir,&#160;R.,&#160;Arora,&#160;N.,&#160;Dar,&#160;R.D.,&#160;Gil&#160;ette,&#160;M.U.,&#160;Griffith,&#160;L.G.,&#160;Kemp,&#160;M.L.,&#160;Kinlaw,&#160;K.,&#160;Levin,&#160;M.,&#160;Martin,&#160;A.C.,<br/>McDevitt,&#160;T.C.,&#160;Nerem,&#160;R.M.,&#160;Powers,&#160;M.J.,&#160;Saif,&#160;T.A.,&#160;Sharpe,&#160;J.,&#160;Takayama,&#160;S.,&#160;Takeuchi,&#160;S.,&#160;Weiss,&#160;R.,&#160;Ye,&#160;K.,&#160;Yevick,&#160;H.G.<br/>and&#160;Zaman,&#160;M.H.,&#160;2018.&#160;APL&#160;Bioengineering,&#160;Vol&#160;2(4),&#160;pp.&#160;040901.&#160;<a href="https://doi.org/10.1063/1.5038337">DOI:&#160;10.1063/1.5038337</a></p>
+<p style="position:absolute;top:368px;left:69px;white-space:nowrap" class="ft201">.&#160;Physiological&#160;inputs&#160;regulate&#160;species-specific&#160;anatomy&#160;during&#160;embryogenesis&#160;and&#160;regeneration&#160; <a href="https://doi.org/10.1080/19420889.2016.1192733">[link]</a></p>
+<p style="position:absolute;top:389px;left:77px;white-space:nowrap" class="ft202">Sul&#160;ivan,&#160;K.G.,&#160;Emmons-Bel&#160;,&#160;M.&#160;and&#160;Levin,&#160;M.,&#160;2016.&#160;Communicative&#160;\&amp;&#160;Integrative&#160;Biology,&#160;Vol&#160;9(4),&#160;pp.&#160;e1192733.&#160;Taylor<br/>&amp;&#160;Francis.<a href="https://doi.org/10.1080/19420889.2016.1192733">&#160;DOI:&#160;10.1080/19420889.2016.1192733</a></p>
+<p style="position:absolute;top:444px;left:69px;white-space:nowrap" class="ft201">.&#160;Long-range&#160;neural&#160;and&#160;gap&#160;junction&#160;protein-mediated&#160;cues&#160;control&#160;polarity&#160;during&#160;planarian&#160;regeneration&#160;<a href="http://www.sciencedirect.com/science/article/pii/S001216060901402X"> [link]</a></p>
+<p style="position:absolute;top:466px;left:77px;white-space:nowrap" class="ft202">Oviedo,&#160;N.J.,&#160;Morokuma,&#160;J.,&#160;Walentek,&#160;P.,&#160;Kema,&#160;I.P.,&#160;Gu,&#160;M.B.,&#160;Ahn,&#160;J.,&#160;Hwang,&#160;J.S.,&#160;Gojobori,&#160;T.&#160;and&#160;Levin,&#160;M.,&#160;2010.<br/>Developmental&#160;Biology,&#160;Vol&#160;339(1),&#160;pp.&#160;188&#160;-&#160;199.&#160;<a href="https://doi.org/https://doi.org/10.1016/j.ydbio.2009.12.012">DOI:&#160;https://doi.org/10.1016/j.ydbio.2009.12.012</a></p>
+<p style="position:absolute;top:521px;left:69px;white-space:nowrap" class="ft201">.&#160;Long-Term,&#160;Stochastic&#160;Editing&#160;of&#160;Regenerative&#160;Anatomy&#160;via&#160;Targeting&#160;Endogenous&#160;Bioelectric&#160;Gradients&#160;<a href="http://www.sciencedirect.com/science/article/pii/S0006349517304277"> [link]</a></p>
+<p style="position:absolute;top:542px;left:77px;white-space:nowrap" class="ft202">Durant,&#160;F.,&#160;Morokuma,&#160;J.,&#160;Fields,&#160;C.,&#160;Wil&#160;iams,&#160;K.,&#160;Adams,&#160;D.S.&#160;and&#160;Levin,&#160;M.,&#160;2017.&#160;Biophysical&#160;Journal,&#160;Vol&#160;112(10),&#160;pp.<br/>2231&#160;-&#160;2243.&#160;<a href="https://doi.org/https://doi.org/10.1016/j.bpj.2017.04.011">DOI:&#160;https://doi.org/10.1016/j.bpj.2017.04.011</a></p>
+<p style="position:absolute;top:599px;left:69px;white-space:nowrap" class="ft201">.&#160;Pattern&#160;Regeneration&#160;in&#160;Coupled&#160;Networks&#160;<a href="https://www.mitpressjournals.org/doi/abs/10.1162/isal_a_00043"> [link]</a></p>
+<p style="position:absolute;top:620px;left:77px;white-space:nowrap" class="ft202"><a href="https://doi.org/10.1162/isal/_a/_00043">Moore,&#160;D.G.,&#160;Walker,&#160;S.I.&#160;and&#160;Levin,&#160;M.,&#160;2018.&#160;Artificial&#160;Life&#160;Conference&#160;Proceedings,&#160;Vol&#160;(30),&#160;pp.&#160;204-205.&#160;DOI:<br/>10.1162/isal\_a\_00043</a></p>
+<p style="position:absolute;top:675px;left:69px;white-space:nowrap" class="ft201">.&#160;Bioelectrical&#160;control&#160;of&#160;positional&#160;information&#160;in&#160;development&#160;and&#160;regeneration:&#160;A&#160;review&#160;of&#160;conceptual&#160;and</p>
+<p style="position:absolute;top:697px;left:77px;white-space:nowrap" class="ft202">computational&#160;advances&#160;<a href="http://www.sciencedirect.com/science/article/pii/S0079610718300415"> [link]<br/></a><a href="https://doi.org/https://doi.org/10.1016/j.pbiomolbio.2018.03.008">Pietak,&#160;A.&#160;and&#160;Levin,&#160;M.,&#160;2018.&#160;Progress&#160;in&#160;Biophysics&#160;and&#160;Molecular&#160;Biology,&#160;Vol&#160;137,&#160;pp.&#160;52&#160;-&#160;68.&#160;DOI:<br/>https://doi.org/10.1016/j.pbiomolbio.2018.03.008</a></p>
+<p style="position:absolute;top:773px;left:69px;white-space:nowrap" class="ft201">.&#160;Modeling&#160;Cell&#160;Migration&#160;in&#160;a&#160;Simulated&#160;Bioelectrical&#160;Signaling&#160;Network&#160;for&#160;Anatomical&#160;Regeneration&#160; <a href="https://www.mitpressjournals.org/doi/abs/10.1162/isal_a_00041">[link]</a></p>
+<p style="position:absolute;top:795px;left:77px;white-space:nowrap" class="ft202"><a href="https://doi.org/10.1162/isal/_a/_00041">Ferreira,&#160;G.B.S.,&#160;Scheutz,&#160;M.&#160;and&#160;Levin,&#160;M.,&#160;2018.&#160;Artificial&#160;Life&#160;Conference&#160;Proceedings,&#160;Vol&#160;(30),&#160;pp.&#160;194-201.&#160;DOI:<br/>10.1162/isal\_a\_00041</a></p>
+<p style="position:absolute;top:850px;left:69px;white-space:nowrap" class="ft201">.&#160;Investigating&#160;the&#160;effects&#160;of&#160;noise&#160;on&#160;a&#160;cell-to-cell&#160;communication&#160;mechanism&#160;for&#160;structure&#160;regeneration&#160;<a href="https://www.mitpressjournals.org/doi/abs/10.1162/isal_a_029"> [link]</a></p>
+<p style="position:absolute;top:871px;left:77px;white-space:nowrap" class="ft202"><a href="https://doi.org/10.1162/isal/_a/_029">Ferreira,&#160;G.B.S.,&#160;Scheutz,&#160;M.&#160;and&#160;Levin,&#160;M.,&#160;2017.&#160;Artificial&#160;Life&#160;Conference&#160;Proceedings,&#160;Vol&#160;(29),&#160;pp.&#160;170-177.&#160;DOI:<br/>10.1162/isal\_a\_029</a></p>
+<p style="position:absolute;top:926px;left:69px;white-space:nowrap" class="ft201">.&#160;Social&#160;Intelligence&#160;<a href="https://slideslive.com/38922302"> [link]</a></p>
+<p style="position:absolute;top:948px;left:77px;white-space:nowrap" class="ft201">Arcas,&#160;B.A.y.,&#160;2019.</p>
+<p style="position:absolute;top:983px;left:69px;white-space:nowrap" class="ft201">.&#160;Inceptionism:&#160;Going&#160;deeper&#160;into&#160;neural&#160;networks&#160; <a href="https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html">[HTML]</a></p>
+<p style="position:absolute;top:1004px;left:77px;white-space:nowrap" class="ft201">Mordvintsev,&#160;A.,&#160;Olah,&#160;C.&#160;and&#160;Tyka,&#160;M.,&#160;2015.&#160;Google&#160;Research&#160;Blog.</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft210{font-size:9px;font-family:Times;color:#000000;}
+	.ft211{font-size:14px;font-family:Times;color:#000000;}
+	.ft212{font-size:10px;font-family:Times;color:#000000;}
+	.ft213{font-size:10px;font-family:Courier;color:#414141;}
+	.ft214{font-size:17px;font-family:Times;color:#ababab;}
+	.ft215{font-size:13px;font-family:Times;color:#ababab;}
+	.ft216{font-size:12px;font-family:Times;color:#ababab;}
+	.ft217{font-size:10px;line-height:21px;font-family:Times;color:#000000;}
+	.ft218{font-size:10px;line-height:16px;font-family:Courier;color:#414141;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page21-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft210">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft210">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft210">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft210">21/22</p>
+<p style="position:absolute;top:150px;left:60px;white-space:nowrap" class="ft211">Updates</p>
+<p style="position:absolute;top:171px;left:60px;white-space:nowrap" class="ft211">and</p>
+<p style="position:absolute;top:193px;left:60px;white-space:nowrap" class="ft211">Corrections</p>
+<p style="position:absolute;top:229px;left:60px;white-space:nowrap" class="ft212">If&#160;you&#160;see&#160;mistakes&#160;or&#160;want&#160;to&#160;suggest&#160;changes,&#160;please&#160;<a href="https://github.com/distillpub/post--growing-ca/issues/new">create&#160;an&#160;issue&#160;on&#160;GitHub.</a></p>
+<p style="position:absolute;top:277px;left:60px;white-space:nowrap" class="ft211">Reuse</p>
+<p style="position:absolute;top:315px;left:60px;white-space:nowrap" class="ft217">Diagrams&#160;and&#160;text&#160;are&#160;licensed&#160;under&#160;Creative&#160;Commons&#160;Attribution&#160;<a href="https://creativecommons.org/licenses/by/4.0/">CC-BY&#160;4.0</a>&#160;with&#160;the<a href="https://github.com/distillpub/post--growing-ca">&#160;source&#160;available&#160;on&#160;GitHub</a>,&#160;unless<br/>noted&#160;otherwise.&#160;The&#160;figures&#160;that&#160;have&#160;been&#160;reused&#160;from&#160;other&#160;sources&#160;donʼt&#160;fal&#160;&#160;under&#160;this&#160;license&#160;and&#160;can&#160;be&#160;recognized<br/>by&#160;a&#160;note&#160;in&#160;their&#160;caption:&#160;“Figure&#160;from&#160;…”.</p>
+<p style="position:absolute;top:405px;left:60px;white-space:nowrap" class="ft211">Citation</p>
+<p style="position:absolute;top:442px;left:60px;white-space:nowrap" class="ft212">For&#160;attribution&#160;in&#160;academic&#160;contexts,&#160;please&#160;cite&#160;this&#160;work&#160;as</p>
+<p style="position:absolute;top:474px;left:81px;white-space:nowrap" class="ft213">Mordvintsev, et al., &#34;Growing Neural Cellular Automata&#34;, Distill, 2020.</p>
+<p style="position:absolute;top:516px;left:60px;white-space:nowrap" class="ft212">BibTeX&#160;citation</p>
+<p style="position:absolute;top:548px;left:81px;white-space:nowrap" class="ft218">@article{mordvintsev2020growing,&#160;<br/>&#160; author = {Mordvintsev, Alexander and Randazzo, Ettore and Niklasson, Eyvind and Levin,&#160;<br/>Michael},&#160;<br/>&#160; title = {Growing Neural Cellular Automata},&#160;<br/>&#160; journal = {Distill},&#160;<br/>&#160; year = {2020},&#160;<br/>&#160; note = {https://distill.pub/2020/growing-ca},&#160;<br/>&#160; doi = {10.23915/distill.00023}&#160;<br/>}</p>
+<p style="position:absolute;top:818px;left:89px;white-space:nowrap" class="ft214"><a href="https://distill.pub/">&#160;Distil&#160;&#160;&#160;</a>is&#160;dedicated&#160;to&#160;clear&#160;explanations&#160;of&#160;machine&#160;learning</p>
+<p style="position:absolute;top:867px;left:60px;white-space:nowrap" class="ft216"><a href="https://distill.pub/about/">About&#160;</a>&#160;<a href="https://distill.pub/journal/">Submit&#160;</a><a href="https://distill.pub/prize/">&#160;Prize&#160;</a>&#160;<a href="https://distill.pub/archive/">Archive&#160;</a><a href="https://distill.pub/rss.xml">&#160;RSS&#160;</a>&#160;<a href="https://github.com/distillpub">GitHub&#160;</a><a href="https://twitter.com/distillpub">&#160;Twitter&#160;</a>&#160;    &#160;ISSN&#160;2476-0757</p>
+</div>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<title>a25c4b989685f0e66e6503059272065e-html.html</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <br/>
+<style type="text/css">
+<!--
+	p {margin: 0; padding: 0;}	.ft220{font-size:9px;font-family:Times;color:#000000;}
+-->
+</style>
+</head>
+<body bgcolor="#A0A0A0" vlink="blue" link="blue">
+<div id="page22-div" style="position:relative;width:864px;height:1188px;">
+<p style="position:absolute;top:24px;left:40px;white-space:nowrap" class="ft220">7/18/2021</p>
+<p style="position:absolute;top:24px;left:394px;white-space:nowrap" class="ft220">Growing Neural Cellular Automata</p>
+<p style="position:absolute;top:1153px;left:40px;white-space:nowrap" class="ft220">https://distill.pub/2020/growing-ca/</p>
+<p style="position:absolute;top:1153px;left:797px;white-space:nowrap" class="ft220">22/22</p>
+</div>
+</body>
+</html>
