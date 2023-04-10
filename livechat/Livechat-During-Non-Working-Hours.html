@@ -11,7 +11,7 @@
             const currentDay = cstNow.getDay();
             const inWorkingHours = currentDay >= 1 && currentDay <= 5 && (currentHour > 9 || (currentHour === 9 && currentMinute >= 0)) && (currentHour < 17 || (currentHour === 17 && currentMinute === 0));
             
-            if (inWorkingHours) {
+            if (!inWorkingHours) {
                 const script1 = document.createElement("script");
                 script1.src = "https://cdn.customgpt.ai/js/chat.js";
                 document.body.appendChild(script1);
