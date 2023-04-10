@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Website</title>
+    <script>
+        const loadScriptDuringNonWorkingHours = () => {
+            const now = new Date();
+            const cstNow = new Date(now.toLocaleString("en-US", {timeZone: "America/Chicago"}));
+            const currentHour = cstNow.getHours();
+            const currentMinute = cstNow.getMinutes();
+            const currentDay = cstNow.getDay();
+            const inWorkingHours = currentDay >= 1 && currentDay <= 5 && (currentHour > 9 || (currentHour === 9 && currentMinute >= 0)) && (currentHour < 17 || (currentHour === 17 && currentMinute === 0));
+            
+            if (inWorkingHours) {
+                const script1 = document.createElement("script");
+                script1.src = "https://cdn.customgpt.ai/js/chat.js";
+                document.body.appendChild(script1);
+
+                script1.onload = () => {
+                    const script2 = document.createElement("script");
+                    script2.innerHTML = 'CustomGPT.init({p_id: "800", p_key: "90f0e64499c23ea5e9bb16be1596b32e" })';
+                    document.body.appendChild(script2);
+                };
+            }
+        };
+    </script>
+</head>
+<body onload="loadScriptDuringNonWorkingHours()">
+    Hello World!
+</body>
+</html>
