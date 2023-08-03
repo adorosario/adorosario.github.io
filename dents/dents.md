@@ -1,3 +1,9 @@
+# DENT'S DISEASES KEYWORD LIST
+## This keyword list was created by analyzing the top keywords related to dent's on ahrefs.com
+## Simply copy-paste this list into the "Sitemap from Google Results" to get the top 50 pages related to each keyword
+
+```
+
 about dent's disease
 are there prenatal tests for dent's disease
 can an individual with dent's disease have children in the future
@@ -52,3 +58,6 @@ what is the long term outlook for a child with dent's disease
 what is the long term outlook for someone with dent's disease
 what kind of medical assistance will the affected child need for dent's disease
 what population is affected with dent's disease
+
+```
+
