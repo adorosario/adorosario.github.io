@@ -1,5 +1,5 @@
 # LINCOLNBOT
-This is an authoritative chatbot about Abraham Lincoln powered by ChatGPT-4. This chatbot was created using [CustomGPT](https://customgpt.ai/) and authoritative sources about Lincoln. The responses are created by ChatGPT from within these sources, without making up facts. 
+This is an authoritative chatbot about [Abraham Lincoln](https://adorosario.github.io/LincolnBot/) powered by ChatGPT-4. This chatbot was created using [CustomGPT](https://customgpt.ai/) and authoritative sources about Lincoln. The responses are created by ChatGPT from within these sources, without making up facts. 
 
 # SITES
 ```
@@ -22,3 +22,4 @@ https://customgpt-streamlit.s3.amazonaws.com/customgpt-streamlit/7fb43bb2-4489-4
 https://customgpt-streamlit.s3.amazonaws.com/customgpt-streamlit/84e7c00d-7b59-4c81-ab59-94f37b3c300b.xml
 ```
 
+https://adorosario.github.io/LincolnBot/

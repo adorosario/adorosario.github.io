@@ -1,0 +1,24 @@
+
+
+https://adorosario.github.io/LevinBot/sitemap.xml
+
+
+
+Plus add: 
+https://drmichaellevin.org/  -> 
+
+
+
+https://customgpt-streamlit.s3.amazonaws.com/customgpt-streamlit/b0ef0677-897c-403d-b0f2-3f96729d1c51.xml
+
+
+
+https://customgpt-streamlit.s3.amazonaws.com/customgpt-streamlit/371de2e8-252c-448e-9fca-7f8caa19d096.xml
+
+
+
+# PDFS
+1. https://customgpt-streamlit.s3.amazonaws.com/customgpt-streamlit/67377685-e4db-43c7-920d-6d3b33cb4bb6.xml
+
+# OTHER
+1. https://customgpt-streamlit.s3.amazonaws.com/customgpt-streamlit/7a9a63ba-f9d7-489d-8fb7-0f606d8d6b9e.xml
