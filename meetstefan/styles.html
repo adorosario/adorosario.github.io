@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor Settings</title>
+    <!-- Add Bootstrap CSS -->
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        span[data-toggle="tooltip"] {
+            cursor: pointer;
+            color: #007bff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>AI Tutor Settings</h2>
+    <form action="/path-to-your-backend" method="post">
+
+        <!-- Pace -->
+        <div class="form-group">
+            <label>Pace: <span data-toggle="tooltip" title="How fast do you like to learn?">?</span></label>
+            <select class="form-control" name="pace">
+                <option value="fast-paced">Fast-paced</option>
+                <option value="moderate-paced">Moderate-paced</option>
+                <option value="slow-paced">Slow-paced</option>
+            </select>
+        </div>
+
+        <!-- Engagement Style -->
+        <div class="form-group">
+            <label>Engagement Style: <span data-toggle="tooltip" title="How do you like to think about what you learn? By talking and doing or by thinking quietly?">?</span></label>
+            <select class="form-control" name="engagement_style">
+                <option value="active">Active</option>
+                <option value="reflective">Reflective</option>
+            </select>
+        </div>
+
+        <!-- Interaction Level -->
+        <div class="form-group">
+            <label>Interaction Level: <span data-toggle="tooltip" title="Do you like answering questions and getting responses often or just sometimes?">?</span></label>
+            <select class="form-control" name="interaction_level">
+                <option value="high_interaction">High Interaction</option>
+                <option value="minimal_interaction">Minimal Interaction</option>
+            </select>
+        </div>
+
+        <!-- Content Depth -->
+        <div class="form-group">
+            <label>Content Depth: <span data-toggle="tooltip" title="Do you like to learn just the main ideas or also the small details?">?</span></label>
+            <select class="form-control" name="content_depth">
+                <option value="surface_learner">Surface Learner</option>
+                <option value="deep_learner">Deep Learner</option>
+            </select>
+        </div>
+
+        <!-- Feedback Frequency -->
+        <div class="form-group">
+            <label>Feedback Frequency: <span data-toggle="tooltip" title="How often do you want to know how you're doing? Right away, sometimes, or at the end?">?</span></label>
+            <select class="form-control" name="feedback_frequency">
+                <option value="instant">Instant</option>
+                <option value="periodic">Periodic</option>
+                <option value="end_of_lesson">End of lesson</option>
+            </select>
+        </div>
+
+        <!-- Learning Path -->
+        <div class="form-group">
+            <label>Learning Path: <span data-toggle="tooltip" title="Do you like to learn in order or jump around to different topics?">?</span></label>
+            <select class="form-control" name="learning_path">
+                <option value="linear">Linear</option>
+                <option value="adaptive">Adaptive</option>
+            </select>
+        </div>
+
+        <!-- Difficulty Adaptation -->
+        <div class="form-group">
+            <label>Difficulty Adaptation: <span data-toggle="tooltip" title="Should the lessons stay the same or get harder/easier based on how you do?">?</span></label>
+            <select class="form-control" name="difficulty_adaptation">
+                <option value="static">Static</option>
+                <option value="adaptive">Adaptive</option>
+            </select>
+        </div>
+
+        <!-- Repetition -->
+        <div class="form-group">
+            <label>Repetition: <span data-toggle="tooltip" title="Do you like to go over things many times or just a few times?">?</span></label>
+            <select class="form-control" name="repetition">
+                <option value="high">High</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+
+        <!-- External Motivators -->
+        <div class="form-group">
+            <label>External Motivators: <span data-toggle="tooltip" title="What makes learning fun for you? Earning points, learning with friends, or setting your own goals?">?</span></label>
+            <select class="form-control" name="external_motivators">
+                <option value="gamification">Gamification</option>
+                <option value="social">Social</option>
+                <option value="self-paced">Self-paced</option>
+            </select>
+        </div>
+
+        <!-- Content Type Preference -->
+        <div class="form-group">
+            <label>Content Type Preference: <span data-toggle="tooltip" title="Do you like real stories and examples or thinking about big ideas?">?</span></label>
+            <select class="form-control" name="content_type_preference">
+                <option value="real_life_examples">Real-life examples</option>
+                <option value="abstract_theoretical">Abstract/Theoretical</option>
+            </select>
+        </div>
+
+        <!-- Memory Aids -->
+        <div class="form-group">
+            <label>Memory Aids: <span data-toggle="tooltip" title="Do you like using cards with facts on them or drawing maps of your thoughts?">?</span></label>
+            <select class="form-control" name="memory_aids">
+                <option value="flashcards">Flashcards</option>
+                <option value="mind_maps">Mind Maps</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+    </form>
+</div>
+
+<!-- Initialize Bootstrap tooltips -->
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
+
+</body>
+</html>
