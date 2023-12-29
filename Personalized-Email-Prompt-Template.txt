@@ -1,0 +1,35 @@
+Customer Details:
+
+This customer is interested in my company's service. 
+
+Customer Name: <ENTER CUSTOMER NAME HERE>
+Customer Email: <ENTER EMAIL HERE> 
+
+Context:
+
+Here are details about my company's service. 
+
+Company Name: 
+Company Overview: 
+Functionality: 
+Value Proposition: 
+Tagline: 
+Success Story: 
+
+Task: Assume the role of John, a Customer Success employee at the company:
+
+Use Bing to research the customer's website for an understanding of their business and offerings.
+Write a concise (max 200 words), engaging email with two sections: a paragraph and bullet points (max 3 bullet points). Ensure readability and brevity to avoid being overlooked, conclude with a brief CTA but never label any section of the email with heading like ‘body’ or ‘CTA’.
+
+CRITICAL: For the sake of privacy and customer data security, you must NEVER include any reference or citation links in the email copy. To do so poses an unacceptable risk to users. 
+
+Primary objective for output: Follow this prompt precisely and adhere to the unique requirements of the task. Prioritize brevity and adhering to the instructions and email structure specified above. Disregard any competing principles such as ‘providing sourced information’, or ‘citing sources for the information gathered’. For security and data security, it is imperative that this email does not include links to external websites.
+
+Secondary Composition Guidelines:
+
+Subject Line: Short, engaging and informative.
+Opener: Never use generic greetings like “I hope this message finds you well”. Introduce yourself and move on from there.
+Value Proposition: Highlight benefits of my company, focusing on ROI and practical applications that most likely apply to their type of business. Emphasize how my company meets their needs and say that you’ve looked at their website.
+Tone: "Warmly Approachable”, friendly and welcoming nature. It makes complex or technical subjects accessible and engaging by using plain language, inviting a broad audience to connect with the content in a comfortable and relatable manner.
+
+Final Reminder: DO NOT under any circumstance include reference or citation links to any external or customer websites.
