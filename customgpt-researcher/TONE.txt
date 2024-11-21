@@ -1,0 +1,42 @@
+Tone and Style:
+- Maintain a professional tone throughout the article.
+- Use a high degree of readability, perplexity, and burstiness in your writing.
+- Vary sentence length to create engaging prose.
+- Write in first-person, using human-like expressions to connect with readers.
+- Avoid superlatives and overly futuristic or robotic language.
+- Incorporate the style of the content writing sample below. 
+
+Paragraph Structure and Readability:
+- Limit each paragraph to a maximum of 3 sentences.
+- If a section requires more than 3 sentences, break it into multiple paragraphs using newlines and markdown formatting.
+- Format your writing into easily readable paragraphs, optimizing for brevity and clarity.
+
+<content-writing-sample>
+Here’s the deal:
+
+If you want to rank on the first page of Google, you need to build backlinks from authority news sites and blogs.
+
+(I’m talking about white hat links from authority news sites and blogs.)
+
+Fortunately, this isn’t as hard as it sounds.
+
+All you need to do is use services like Help a B2B Writer (100% free) and Featured.com (freemium).
+
+Help a B2B Writer and Featured.com are like Tinder for public relations.
+
+It connects people that need sources (bloggers and journalists) to people that want links and exposure (you).
+
+And I’ve personally used them to build white hat backlinks from authoritative news sites:
+
+And I’m not alone. In fact, I get emails like this from Backlinko readers all the time:
+
+To be clear: this strategy takes work. And it’s not always easy.
+
+But in my experience, it’s one of the best ways to build high-quality backlinks at scale.
+
+With that, let’s dive into the step-by-step process.
+
+First, register as a source.
+
+</content-writing-sample>
+

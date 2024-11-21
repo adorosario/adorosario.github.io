@@ -1,0 +1,98 @@
+# CustomGPT.ai Researcher Documentation
+
+A powerful AI Research Agent that conducts deep research and generates a detailed research article in 30 minutes.
+
+## Quick Start
+
+1. Visit [CustomGPT Researcher](https://researcher.customgpt.ai)
+2. Enter your research topic or question
+3. Wait 30-60 minutes while the agent:
+   - Conducts thorough deep research (using Google or your custom knowledge)
+   - Analyzes findings and knowledge from different perspectives. 
+   - Generates a comprehensive research article with visual images. 
+
+## Best Practices
+
+### Writing Effective Research Articles
+
+- Be very specific about your research topic. Example: `Top 10 AI Research Agents : A Comprehensive Study`
+- Include your tone, style and voice and any other pertinent information in the "Advanced Settings" [See Example](TONE.txt)
+- Imagine you have a research assistant that is spending days on Google researching this topic. 
+
+Examples:
+```
+✅ "The Impact Of Remote Work On Employee Productivity In Tech Companies Between 2020-2023"
+❌ "Research remote work"
+```
+
+### Understanding Report Structure
+
+Each research article covers various sections based on different perspectives. The content for the section is sourced from deep Google research that is then ingested into a RAG (Retrieval Augmented Generation) project. 
+
+1. Outline
+2. Key Sections
+3. Visual Images
+4. Sources and Citations
+5. FAQ
+
+### Post-Processing Article
+
+The research article will typically be about 6,000 word of deep-research output. Please treat it as a DRAFT that saves you time researching. DO NOT consider it as a finished article (you need to check facts and humanize further if needed -- Claude might be able to help)
+
+You can also convert it into derivatives using Claude (recommended)
+
+1. Blog posts (for SEO) : You can use this [prompt template](FINALIZE-WITH-CLAUDE.txt) to convert it into a 2000 word blog post in your style. 
+2. Podcasts : You can use Google NotebookLM to [convert the article into a podcast like this](https://open.spotify.com/episode/5BrufFAH42hYWq4vwETRVy).  
+3. Academic Paper: If you want to convert it into a different format, use a [prompt like this](FINALIZE-WITH-CLAUDE.txt) to convert the article. 
+
+### Tips for Optimal Results
+
+1. **Timing**: Allow the full 30-60 minutes for comprehensive research
+2. **Scope**: Keep topics focused but not overly narrow
+3. **Tone**: Provide tone and style (e.g. should it be academic? Or professional marketer?)
+
+### Limitations
+
+1. The researcher is currently free and limited to 3 articles per day. 
+2. Please be mindful of other users (do not spam!)
+3. This researcher is based on Google research OR your custom knowledge. It does not have access to private databases. 
+4. This is "soft research" based on knowledge. It can't conduct chemical reactions and mathematical simulations at this time. 
+5. Sources limited to publicly available information
+6. Real-time data may have slight delays (if not available in Google)
+7. Some paywalled content may be inaccessible
+
+### Report Formats
+
+Available report formats:
+- Markdown
+- Word (.docx)
+
+### Helpful Articles
+1. [AI Research Agents: Set to Transform Knowledge Research in 2025 (Plus Top 3 Free Tools)](https://medium.com/towards-artificial-intelligence/ai-research-agents-set-to-transform-knowledge-research-in-2025-plus-top-3-free-tools-d37197726531)
+2. [PREDICTION : AI Research Agents Are Going To Be Huge In 2025](https://medium.com/predict/prediction-ai-research-agents-are-going-to-be-huge-in-2025-4fbbcc1d2da1)
+3. [Visual Search Engines : Using Multi-Modal Embeddings to ‘Look’ at the Image](https://medium.com/@aldendorosario/visual-search-engines-using-multi-modal-embeddings-to-look-at-the-image-3ccae8637031)
+
+## FAQs
+
+**Q: Can I interrupt the research process?**
+A: No. Once kicked off, you can't stop the job (so use your 3/day limit wisely)
+
+**Q: How recent is the research data?**
+A: The agent accesses the most current publicly available information at the time of research (so whatever is available on Google)
+
+**Q: Can I save or export reports?**
+A: Yes, reports can be downloaded in various formats including PDF and markdown. Just open the .docx in Google Docs and edit away. 
+
+## Support
+
+For technical support or questions:
+1. Reply to the email you received containing your research article.
+
+## Contributing
+
+We welcome contributions! 
+- Feedback on article quality. 
+- Bug reports
+- Feature requests
+- Code contributions
+- Documentation improvements
