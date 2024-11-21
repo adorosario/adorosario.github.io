@@ -75,12 +75,15 @@ Available report formats:
 ## FAQs
 
 **Q: Can I interrupt the research process?**
+
 A: No. Once kicked off, you can't stop the job (so use your 3/day limit wisely)
 
 **Q: How recent is the research data?**
+
 A: The agent accesses the most current publicly available information at the time of research (so whatever is available on Google)
 
 **Q: Can I save or export reports?**
+
 A: Yes, reports can be downloaded in various formats including PDF and markdown. Just open the .docx in Google Docs and edit away. 
 
 ## Support
