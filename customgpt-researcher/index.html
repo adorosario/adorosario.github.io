@@ -1,4 +1,98 @@
-# CustomGPT.ai Researcher Documentation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomGPT Researcher Documentation</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --code-bg: #f3f4f6;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--bg-color);
+        }
+
+        h1, h2, h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.25rem; }
+        h2 { 
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        h3 { font-size: 1.25rem; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        blockquote {
+            border-left: 4px solid #e5e7eb;
+            margin: 0;
+            padding-left: 1rem;
+            color: #4b5563;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+        }
+
+        .example-block {
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        # CustomGPT.ai Researcher Documentation
 
 A powerful AI Research Agent that conducts deep research and generates a detailed research article in 30 minutes.
 
@@ -70,7 +164,7 @@ Available report formats:
 ### Helpful Articles
 1. [AI Research Agents: Set to Transform Knowledge Research in 2025 (Plus Top 3 Free Tools)](https://medium.com/towards-artificial-intelligence/ai-research-agents-set-to-transform-knowledge-research-in-2025-plus-top-3-free-tools-d37197726531)
 2. [PREDICTION : AI Research Agents Are Going To Be Huge In 2025](https://medium.com/predict/prediction-ai-research-agents-are-going-to-be-huge-in-2025-4fbbcc1d2da1)
-3. [Visual Search Engines : Using Multi-Modal Embeddings to ‘Look’ at the Image](https://medium.com/@aldendorosario/visual-search-engines-using-multi-modal-embeddings-to-look-at-the-image-3ccae8637031)
+3. [Visual Search Engines : Using Multi-Modal Embeddings to 'Look' at the Image](https://medium.com/@aldendorosario/visual-search-engines-using-multi-modal-embeddings-to-look-at-the-image-3ccae8637031)
 
 ## FAQs
 
@@ -99,3 +193,13 @@ We welcome contributions!
 - Feature requests
 - Code contributions
 - Documentation improvements
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const content = document.getElementById('content');
+            content.innerHTML = marked.parse(content.textContent);
+        });
+    </script>
+</body>
+</html>
