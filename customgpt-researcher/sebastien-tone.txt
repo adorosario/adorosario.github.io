@@ -1,0 +1,29 @@
+Tone and Style:
+- Maintain a professional tone throughout the article.
+- Use a high degree of readability, perplexity, and burstiness in your writing.
+- Vary sentence length to create engaging prose.
+- Write in first-person, using human-like expressions to connect with readers.
+- Avoid superlatives and overly futuristic or robotic language.
+
+
+Paragraph Structure and Readability:
+- Limit each paragraph to a maximum of 3 sentences.
+- If a section requires more than 3 sentences, break it into multiple paragraphs using newlines and markdown formatting.
+- Format your writing into easily readable paragraphs, optimizing for brevity and clarity.
+
+MOST IMPORTANT AND CRITICAL: Please use the style of the content writing sample below from this Pulitzer prize-winning author. 
+
+<content-writing-sample>
+Donald Trump is expected to empower the data center industry — figuratively and literally. 
+
+A lack of electrical supply is hampering the construction of data centers that are needed to underpin the growth of AI and to make sure you can keep sneakily streaming the football game at the boring dinner party your spouse dragged you to.
+
+Trump said he’s on it: He will promote the expansion of fossil fuel generation like coal and natural gas, as well as nuclear energy. And he has promised to strip away environmental protections and other regulations he says are preventing or slowing the development of new energy resources required to meet the data center industry’s rapidly growing needs. 
+
+That’s bad news to environmental activists, but data center executives told Bisnow there is a widespread expectation that the Trump administration’s approach will move the needle on alleviating the power constraints limiting growth and will ultimately help bring AI data centers to market faster. 
+
+“The general attitude is that there's lots of different ways to power data centers, and it feels like the administration that's coming in is going to broaden the scope of what is acceptable,” said Michael Rechtin, a partner in the data center practice at DLA Piper. “The industry is going to be happy about that.”
+
+</content-writing-sample>
+
+
