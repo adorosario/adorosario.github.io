@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkedIn “Top Choice” Jobs — The Complete Playbook (2025)</title>
+    <meta name="description" content="A beautiful, no‑nonsense website explaining LinkedIn’s Top Choice job application signal — for applicants and for companies. Includes step‑by‑step guides, playbooks, templates, and FAQs." />
+    <meta property="og:title" content="LinkedIn Top Choice — The Complete Playbook (2025)" />
+    <meta property="og:description" content="How Top Choice works for applicants and recruiters. Best practices, playbooks, and templates." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind config (modern 2025 look)
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "Apple Color Emoji", "Segoe UI Emoji"] },
+            colors: {
+              brand: {
+                50: '#effbff', 100:'#d7f3ff', 200:'#b2e9ff', 300:'#7edcff', 400:'#3fc9ff', 500:'#0ea5e9', 600:'#0284c7', 700:'#0369a1', 800:'#075985', 900:'#0c4a6e'
+              }
+            },
+            boxShadow: {
+              soft: '0 8px 30px rgba(2,132,199,0.15)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Subtle gradient mesh background */
+      .mesh-bg{
+        background: radial-gradient(40% 60% at 10% 10%, rgba(125,211,252,.35) 0, transparent 60%),
+                    radial-gradient(35% 55% at 90% 15%, rgba(147,197,253,.35) 0, transparent 60%),
+                    radial-gradient(45% 65% at 20% 90%, rgba(186,230,253,.35) 0, transparent 60%),
+                    radial-gradient(50% 70% at 80% 80%, rgba(56,189,248,.25) 0, transparent 60%);
+      }
+      .glass{ backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(255,255,255,.75); }
+      .dark .glass{ background: rgba(2,6,23,.65); }
+      .prose a{ text-decoration: underline; }
+      .sticky-shadow{ box-shadow: 0 12px 24px rgba(2,132,199,.09); }
+      .dark .sticky-shadow{ box-shadow: 0 12px 24px rgba(2,132,199,.16); }
+    </style>
+    <script>
+      // Theme toggle – remembers preference
+      const preferDark = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      (function(){
+        const t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && preferDark())) document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body class="font-sans antialiased text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-950 mesh-bg">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:glass sticky-shadow">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="#" class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white shadow-soft">★</span>
+            <span class="text-lg font-semibold tracking-tight">Top Choice Jobs — Playbook</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#how" class="hover:text-brand-500">How it works</a>
+            <a href="#applicant" class="hover:text-brand-500">Applicant Guide</a>
+            <a href="#company" class="hover:text-brand-500">Company Guide</a>
+            <a href="#resources" class="hover:text-brand-500">Resources</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <button id="themeToggle" class="rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-xs hover:bg-slate-50 dark:hover:bg-slate-900 transition">
+              <span id="themeLabel">Dark</span> ▾
+            </button>
+            <a href="#download" class="hidden sm:inline-flex rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-sm shadow-soft">Use this site</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute inset-0 opacity-60 blur-3xl" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
+              LinkedIn “Top Choice” Jobs
+              <span class="block text-brand-600">The Complete Playbook (2025)</span>
+            </h1>
+            <p class="mt-6 text-lg text-slate-600 dark:text-slate-300 max-w-2xl">A practical, no‑fluff guide to the Top Choice signal: what it is, how to use it, and how to build a fair, effective workflow around it — for applicants <em>and</em> hiring teams.</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#applicant" class="rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-3 text-sm font-semibold">I’m an Applicant</a>
+              <a href="#company" class="rounded-xl border border-slate-300 dark:border-slate-700 px-5 py-3 text-sm font-semibold">I’m a Recruiter/Company</a>
+            </div>
+            <p class="mt-6 text-xs text-slate-500">Note: Feature availability and limits can vary by region and subscription. Treat this as guidance; always verify in your LinkedIn UI.</p>
+          </div>
+          <div class="lg:justify-self-end">
+            <div class="rounded-2xl p-1 bg-gradient-to-br from-brand-500/20 via-transparent to-brand-700/20">
+              <div class="glass rounded-2xl p-6 border border-white/50 dark:border-slate-800">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="rounded-xl p-4 border border-slate-200/80 dark:border-slate-800/80">
+                    <h3 class="text-sm font-semibold">Applicant signal</h3>
+                    <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">Mark select roles as “Top Choice” to express high intent and add a short pitch.</p>
+                  </div>
+                  <div class="rounded-xl p-4 border border-slate-200/80 dark:border-slate-800/80">
+                    <h3 class="text-sm font-semibold">Recruiter view</h3>
+                    <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">Applications show a clear badge so teams can triage and respond fast.</p>
+                  </div>
+                  <div class="rounded-xl p-4 border border-slate-200/80 dark:border-slate-800/80">
+                    <h3 class="text-sm font-semibold">Ethical use</h3>
+                    <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">Use intent signals as one input. Keep hiring equitable and structured.</p>
+                  </div>
+                  <div class="rounded-xl p-4 border border-slate-200/80 dark:border-slate-800/80">
+                    <h3 class="text-sm font-semibold">Measurable impact</h3>
+                    <p class="mt-2 text-xs text-slate-600 dark:text-slate-400">Track response rates, time‑to‑first‑touch, and conversion by signal.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">How “Top Choice” works</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">In certain LinkedIn job applications (often within Easy Apply), candidates can optionally mark the role as a <strong>Top Choice</strong> and include a short note. Recruiters then see an intent badge on that application inside their pipeline tools. LinkedIn may limit how many roles a candidate can mark per month and may require a Premium subscription — limits and availability can change over time.</p>
+        </div>
+        <div class="mt-10 grid lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white/60 dark:bg-slate-900/60">
+            <div class="text-sm font-semibold">1) Candidate applies</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">They choose “Top Choice” (if available) and add a 2–3 sentence elevator pitch tailored to the role.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white/60 dark:bg-slate-900/60">
+            <div class="text-sm font-semibold">2) Signal appears</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Recruiters see a badge/label indicating high candidate intent in LinkedIn’s hiring tools.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white/60 dark:bg-slate-900/60">
+            <div class="text-sm font-semibold">3) Faster triage</div>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Hiring teams can prioritize outreach, ask clarifying questions, and move genuine fits forward quickly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split perspectives -->
+    <section class="py-2">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <!-- Applicant -->
+          <article id="applicant" class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 bg-white/70 dark:bg-slate-900/60">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white">A</span>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight">Applicant Guide</h3>
+            </div>
+            <p class="mt-4 text-slate-600 dark:text-slate-300">Use Top Choice sparingly and intentionally. Treat it like a “priority application” you must earn with a sharp pitch and clear fit.</p>
+
+            <div class="mt-6 grid gap-6">
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Step‑by‑step</h4>
+                <ol class="mt-3 space-y-2 text-sm list-decimal list-inside text-slate-700 dark:text-slate-300">
+                  <li>Shortlist roles where (a) you meet ≥70% of the must‑haves and (b) you can explain your impact in 2–3 lines.</li>
+                  <li>Open the job post → click <em>Easy Apply</em> → look for the <em>Top Choice</em> option (if shown).</li>
+                  <li>Write a tight pitch: problem → proof → payoff. See templates below.</li>
+                  <li>Customize your resume title & keywords to mirror the job’s language.</li>
+                  <li>Submit, then follow up within 48–72 hours with a value‑add note.</li>
+                </ol>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Best practices</h4>
+                <ul class="mt-3 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                  <li><strong>Prioritize:</strong> If LinkedIn limits monthly Top Choices, reserve them for your absolute top targets.</li>
+                  <li><strong>Be specific:</strong> Name the team, metric, or product you’ll improve in 90 days.</li>
+                  <li><strong>Mirror the JD:</strong> Reuse exact phrasing for top skills (without keyword stuffing).</li>
+                  <li><strong>Bring proof:</strong> Link to a portfolio, brief case study, or GitHub repo when relevant.</li>
+                  <li><strong>Follow up politely:</strong> A concise, value‑focused message beats “just checking in.”</li>
+                </ul>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <div class="flex items-center justify-between gap-4">
+                  <h4 class="font-semibold">2–3 sentence elevator pitch templates</h4>
+                  <button class="text-xs px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800" onclick="copyBlock('pitches')">Copy all</button>
+                </div>
+                <div id="pitches" class="mt-3 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Product Manager</div>
+                    <p>In my last role at Acme, I shipped a pricing revamp that lifted self‑serve ARR by 22% in 2 quarters. For <em>[Team]</em> I’d tackle <em>[Problem]</em> first and validate with <em>[Metric]</em> in 30–45 days. Happy to share a 1‑pager on approach.</p>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Software Engineer</div>
+                    <p>I led a backend migration that cut p95 latency from 420ms → 130ms and reduced infra cost 18%. I can help <em>[Product/Area]</em> scale reliably and ship faster by owning <em>[Component]</em> and hardening <em>[SLA/SLO]</em>.</p>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Marketing</div>
+                    <p>I grew qualified pipeline 40% YoY by building an SEO + partner co‑marketing engine. For <em>[ICP]</em> at <em>[Company]</em>, my first 90‑day plan centers on 3 campaigns tied to SQLs and ACV lift.</p>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Sales (AE/SDR)</div>
+                    <p>Consistently 120%+ to quota; I opened a $2.1M expansion through a land‑and‑expand play. I’ll map <em>[Territory]</em> next week and book 10 first meetings in 30 days by combining sequences + warm intros.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Applicant checklist</h4>
+                <ul class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+                  <li class="flex items-start gap-2"><input type="checkbox" class="mt-1"> Clear 90‑day value hypothesis</li>
+                  <li class="flex items-start gap-2"><input type="checkbox" class="mt-1"> Pitch written (≤350 chars)</li>
+                  <li class="flex items-start gap-2"><input type="checkbox" class="mt-1"> Resume keywords aligned</li>
+                  <li class="flex items-start gap-2"><input type="checkbox" class="mt-1"> Work sample or portfolio link</li>
+                  <li class="flex items-start gap-2"><input type="checkbox" class="mt-1"> Follow‑up scheduled in 48–72h</li>
+                </ul>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Pitfalls to avoid</h4>
+                <ul class="mt-3 list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
+                  <li>Using Top Choice on a long‑shot role without a tailored pitch.</li>
+                  <li>Recycling the same note across different jobs.</li>
+                  <li>Over‑claiming impact without numbers or references.</li>
+                  <li>Ignoring the application questions or missing required docs.</li>
+                </ul>
+              </section>
+            </div>
+          </article>
+
+          <!-- Company -->
+          <article id="company" class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 bg-white/70 dark:bg-slate-900/60">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-white">R</span>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight">Company / Recruiter Guide</h3>
+            </div>
+            <p class="mt-4 text-slate-600 dark:text-slate-300">Treat Top Choice as an <em>intent signal</em>, not a golden ticket. Build a fair system that acknowledges enthusiasm while preserving structured, skills‑based hiring.</p>
+
+            <div class="mt-6 grid gap-6">
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Where it shows & how to use it</h4>
+                <ul class="mt-3 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                  <li>In LinkedIn Recruiter / pipeline views, applications may display a <em>Top Choice</em> badge/label.</li>
+                  <li>Create a saved view/filter for <em>Top Choice</em> + required skills to triage quickly.</li>
+                  <li>Use a short, structured reply template to acknowledge interest within 24–48 hours.</li>
+                  <li>Track performance: response rate, qualified rate, stage‑to‑stage conversion, and time‑to‑first‑touch.</li>
+                </ul>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Operational playbook (suggested)</h4>
+                <ol class="mt-3 space-y-2 text-sm list-decimal list-inside text-slate-700 dark:text-slate-300">
+                  <li><strong>Daily triage (15 min):</strong> One owner scans Top Choice queue; tags <em>Yes/Maybe/No</em> based on must‑haves.</li>
+                  <li><strong>Auto‑reply (Yes/Maybe):</strong> Send a 3‑question pre‑screen or a 10‑min scheduler link.</li>
+                  <li><strong>Structured review:</strong> Interview scorecards aligned to JD; avoid halo effects from the badge.</li>
+                  <li><strong>Feedback loop:</strong> Share common gaps to improve the JD and job ad clarity.</li>
+                  <li><strong>Quarterly audit:</strong> Compare outcomes for Top Choice vs. non‑Top Choice applicants for fairness.</li>
+                </ol>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <div class="flex items-center justify-between gap-4">
+                  <h4 class="font-semibold">Reply templates (copy‑ready)</h4>
+                  <button class="text-xs px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800" onclick="copyBlock('replies')">Copy all</button>
+                </div>
+                <div id="replies" class="mt-3 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Fast Acknowledgement</div>
+                    <p>Thanks for flagging <em>Top Choice</em> on <em>[Role]</em> — we appreciate the enthusiasm. Quick pre‑screen (reply with short answers): 1) Relevant experience for <em>[Must‑have]</em>? 2) Example impact & metric? 3) Comp expectations / location?</p>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Scheduler</div>
+                    <p>Thanks for applying to <em>[Company]</em>! Because you marked this as a Top Choice, we’d love to connect. Grab a 10‑minute slot here: <em>[Link]</em>. Bring a quick example of work you’re proud of.</p>
+                  </div>
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-slate-500">Not a Fit (Kind)</div>
+                    <p>Thank you for the thoughtful application and for marking this as a Top Choice. Based on <em>[Requirement]</em>, we’re moving forward with other candidates. We’ll keep your profile in mind for <em>[Future role]</em>. Best of luck!</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Governance & fairness</h4>
+                <ul class="mt-3 list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
+                  <li>Document how the badge affects triage priority (if at all) to ensure consistency.</li>
+                  <li>Combine with skills screens and structured interviews to reduce bias.</li>
+                  <li>Publish an inclusive job ad: requirements vs. “nice‑to‑haves” clearly separated.</li>
+                  <li>Monitor for adverse impact by gender/ethnicity/age and adjust processes accordingly.</li>
+                </ul>
+              </section>
+
+              <section class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <h4 class="font-semibold">Analytics to track</h4>
+                <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+                  <div class="rounded-lg border border-slate-200 dark:border-slate-800 p-3">
+                    <div class="text-xs text-slate-500">Time to first touch</div>
+                    <div class="text-lg font-semibold">≤48h target</div>
+                  </div>
+                  <div class="rounded-lg border border-slate-200 dark:border-slate-800 p-3">
+                    <div class="text-xs text-slate-500">Qualified rate</div>
+                    <div class="text-lg font-semibold">Benchmark over time</div>
+                  </div>
+                  <div class="rounded-lg border border-slate-200 dark:border-slate-800 p-3">
+                    <div class="text-xs text-slate-500">Stage conversion</div>
+                    <div class="text-lg font-semibold">Phone → Onsite → Offer</div>
+                  </div>
+                  <div class="rounded-lg border border-slate-200 dark:border-slate-800 p-3">
+                    <div class="text-xs text-slate-500">Diversity & fairness</div>
+                    <div class="text-lg font-semibold">Audit quarterly</div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ & Resources -->
+    <section class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-10 items-start">
+          <article class="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 bg-white/70 dark:bg-slate-900/60">
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight">FAQ</h3>
+            <div class="mt-6 divide-y divide-slate-200/70 dark:divide-slate-800/70">
+              <details class="group py-4" open>
+                <summary class="flex cursor-pointer items-center justify-between font-medium">
+                  <span>Does Top Choice guarantee an interview?</span>
+                  <span class="transition group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">No. It’s a strong interest signal, not a replacement for qualifications or structured evaluation.</p>
+              </details>
+              <details class="group py-4">
+                <summary class="flex cursor-pointer items-center justify-between font-medium">
+                  <span>Is Top Choice only for Premium?</span>
+                  <span class="transition group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Availability can vary by time and region and has often been associated with Premium Career. Check your current LinkedIn UI and plan details.</p>
+              </details>
+              <details class="group py-4">
+                <summary class="flex cursor-pointer items-center justify-between font-medium">
+                  <span>How many Top Choices can a candidate use per month?</span>
+                  <span class="transition group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">LinkedIn may impose monthly limits. Prioritize your most relevant and desired roles.</p>
+              </details>
+              <details class="group py-4">
+                <summary class="flex cursor-pointer items-center justify-between font-medium">
+                  <span>Does the badge affect ranking or search results?</span>
+                  <span class="transition group-open:rotate-180">⌄</span>
+                </summary>
+                <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Treat it as an intent indicator. Always combine with skills screens, structured interviews, and fair consideration.</p>
+              </details>
+            </div>
+          </article>
+
+          <aside id="resources" class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 bg-white/70 dark:bg-slate-900/60">
+            <h3 class="text-xl font-bold tracking-tight">Resources</h3>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Helpful links to learn more (open in a new tab):</p>
+            <ul class="mt-4 space-y-3 text-sm">
+              <li><a class="hover:text-brand-600" target="_blank" rel="noopener" href="https://www.linkedin.com/help/linkedin">LinkedIn Help Center</a></li>
+              <li><a class="hover:text-brand-600" target="_blank" rel="noopener" href="https://premium.linkedin.com/careers">LinkedIn Premium Career</a></li>
+              <li><a class="hover:text-brand-600" target="_blank" rel="noopener" href="https://www.linkedin.com/recruiter">LinkedIn Recruiter</a></li>
+              <li><a class="hover:text-brand-600" target="_blank" rel="noopener" href="https://learn.linkedin.com/talent-solutions">LinkedIn Talent Solutions</a></li>
+            </ul>
+            <div class="mt-6 text-xs text-slate-500">This independent guide is based on publicly observable product behavior and hiring best practices. Last updated: <span id="lastUpdated">Aug 9, 2025</span>.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download / How to use -->
+    <section id="download" class="py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 lg:p-8 bg-white/70 dark:bg-slate-900/60">
+          <h3 class="text-xl sm:text-2xl font-bold tracking-tight">Use this site (GitHub Pages)</h3>
+          <ol class="mt-4 list-decimal list-inside text-sm text-slate-700 dark:text-slate-300 space-y-2">
+            <li>Download this file as <code>index.html</code> and place it at the root of a public GitHub repository.</li>
+            <li>In GitHub → <em>Settings</em> → <em>Pages</em> → Source: <em>Deploy from a branch</em> → choose <code>main</code> and <code>/(root)</code>.</li>
+            <li>Wait for the green check and open your Pages URL. You’re live 🎉</li>
+            <li>Optional: swap the star logo, colors, or copy by editing this single file.</li>
+          </ol>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button onclick="downloadHTML()" class="rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 text-sm shadow-soft">Download index.html</button>
+            <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="rounded-xl border border-slate-300 dark:border-slate-700 px-5 py-3 text-sm">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-10 border-t border-slate-200/60 dark:border-slate-800/60">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+        <div>© <span id="year"></span> Top Choice Jobs — Playbook. Educational use only.</div>
+        <div class="flex items-center gap-4">
+          <a href="#how" class="hover:text-brand-600">How it works</a>
+          <a href="#applicant" class="hover:text-brand-600">Applicant</a>
+          <a href="#company" class="hover:text-brand-600">Company</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Theme toggle handler
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        document.getElementById('themeLabel').textContent = isDark ? 'Light' : 'Dark';
+      });
+      document.getElementById('themeLabel').textContent = document.documentElement.classList.contains('dark') ? 'Light' : 'Dark';
+
+      // Copy utilities
+      function copyBlock(id){
+        const el = document.getElementById(id);
+        if(!el) return;
+        const text = Array.from(el.querySelectorAll('p')).map(p=>p.textContent).join('\n\n');
+        navigator.clipboard.writeText(text).then(()=>{
+          toast('Copied to clipboard');
+        });
+      }
+
+      // Toast
+      function toast(msg){
+        const t = document.createElement('div');
+        t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2 text-sm shadow-soft';
+        t.textContent = msg;
+        document.body.appendChild(t);
+        setTimeout(()=>{ t.remove(); }, 1800);
+      }
+
+      // Download current HTML as a file
+      function downloadHTML(){
+        const source = document.documentElement.outerHTML;
+        const blob = new Blob([source], {type:'text/html'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'index.html'; a.click();
+        URL.revokeObjectURL(url);
+        toast('Downloading index.html');
+      }
+
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
