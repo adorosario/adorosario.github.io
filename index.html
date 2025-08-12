@@ -1,3 +1,416 @@
----
-layout: front
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alden Do Rosario — Builder of Practical AI</title>
+  <meta name="description" content="Alden Do Rosario — CEO at CustomGPT.ai. Builder of practical AI systems that drive revenue. Projects, writing, talks, and ways to get in touch." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Alden Do Rosario — Builder of Practical AI" />
+  <meta property="og:description" content="CEO at CustomGPT.ai. I build practical AI systems that drive revenue and delight users." />
+  <meta property="og:image" content="https://customgpt.ai/wp-content/uploads/2024/06/favicon-512.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%237C3AED'/%3E%3Cpath fill='white' d='M20 34c0-7 5-12 12-12s12 5 12 12-5 12-12 12-12-5-12-12zm12-8a8 8 0 100 16 8 8 0 000-16z'/%3E%3C/svg%3E" />
+
+  <style>
+    :root {
+      /* Brand-inspired palette (from CustomGPT.ai's purple→pink UI accents) */
+      --brand-start: #7C3AED; /* violet-600 */
+      --brand-mid: #A855F7;   /* violet-500 */
+      --brand-end:   #DB2777; /* rose-600 */
+
+      /* Surface & text */
+      --bg: #0b0b12;
+      --bg-muted: #101018;
+      --text: #e8e8ef;
+      --text-dim: #b4b4c4;
+      --card: #121221;
+      --border: #24243a;
+      --glow: 0 0 40px rgba(124,58,237,.35), 0 0 80px rgba(219,39,119,.25);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8f8ff;
+        --bg-muted: #ffffff;
+        --text: #0f1222;
+        --text-dim: #4a4d66;
+        --card: #ffffff;
+        --border: #e9e9f2;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background: radial-gradient(1200px 800px at 10% -10%, rgba(124,58,237,.18), transparent 60%),
+      radial-gradient(1000px 600px at 90% 10%, rgba(219,39,119,.16), transparent 60%),
+      radial-gradient(800px 800px at 50% 110%, rgba(124,58,237,.12), transparent 60%), var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      line-height: 1.6;
+    }
+
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(10px);
+      background: linear-gradient(180deg, rgba(11,11,18,.85), rgba(11,11,18,.65));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; }
+    .brand { display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px; font-family: "Plus Jakarta Sans", Inter, sans-serif; }
+    .brand .logo {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: conic-gradient(from 210deg, var(--brand-start), var(--brand-mid) 30%, var(--brand-end));
+      box-shadow: var(--glow);
+    }
+    nav a { text-decoration: none; color: var(--text-dim); font-weight: 600; margin-left: 1rem; padding:.5rem .7rem; border-radius: 10px; }
+    nav a:hover { color: var(--text); background: linear-gradient(90deg, rgba(124,58,237,.12), rgba(219,39,119,.12)); }
+
+    /* Hero */
+    .hero { padding: clamp(3rem, 8vw, 7rem) 0 2rem; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr .9fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+    @media (max-width: 900px){ .hero-grid { grid-template-columns: 1fr; } }
+
+    .eyebrow { display:inline-flex; gap:.5rem; align-items:center; padding:.35rem .6rem; border:1px solid var(--border); border-radius:999px; color: var(--text-dim); font-size:.9rem; }
+    .eyebrow .dot { width:.5rem; height:.5rem; border-radius:50%; background: linear-gradient(90deg, var(--brand-start), var(--brand-end)); box-shadow: var(--glow); }
+
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.05; margin: .5rem 0 1rem; font-family: "Plus Jakarta Sans", Inter, sans-serif; letter-spacing:.2px; }
+    .lead { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 60ch; }
+
+    .cta { display:flex; flex-wrap: wrap; gap:.8rem; margin-top: 1.5rem; }
+    .btn {
+      display:inline-flex; align-items:center; gap:.6rem; text-decoration:none; font-weight: 700; letter-spacing:.2px;
+      padding: .9rem 1.1rem; border-radius: 14px; border:1px solid transparent;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-primary { color:white; background: linear-gradient(90deg, var(--brand-start), var(--brand-end)); box-shadow: var(--glow); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-ghost { color: var(--text); border-color: var(--border); background: linear-gradient(0deg, rgba(124,58,237,.08), rgba(219,39,119,.08)); }
+    .btn-ghost:hover { border-color: rgba(124,58,237,.5); }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00));
+      border: 1px solid var(--border); border-radius: 20px; padding: 1.2rem; position: relative; overflow: hidden;
+    }
+    .hero-card .meter {
+      height: 10px; border-radius: 999px; background: #26263b; overflow: hidden; position: relative; margin-top: .7rem;
+    }
+    .hero-card .meter > span { display:block; height:100%; width: 92%; background: linear-gradient(90deg, var(--brand-start), var(--brand-end)); box-shadow: var(--glow); }
+    .hero-note { color: var(--text-dim); font-size:.9rem; }
+
+    /* Sections */
+    section { padding: clamp(2.2rem, 6vw, 4rem) 0; border-top: 1px solid var(--border); }
+    .section-title { font-family: "Plus Jakarta Sans", Inter, sans-serif; margin: 0 0 1rem; font-size: clamp(1.4rem, 2.6vw, 2rem); }
+    .kicker { color: var(--text-dim); margin-bottom: 1.6rem; }
+
+    /* Cards */
+    .grid { display:grid; gap: 1.2rem; }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px){ .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+      border: 1px solid var(--border); border-radius: 18px; padding: 1.2rem; transition: transform .2s ease, border-color .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); border-color: rgba(124,58,237,.45); }
+    .card h3 { margin:.3rem 0 .4rem; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--text-dim); }
+
+    .pill { display:inline-flex; align-items:center; gap:.45rem; padding:.35rem .6rem; border:1px solid var(--border); border-radius:999px; color: var(--text-dim); font-size:.85rem; }
+    .pill .swatch { width:.7rem; height:.7rem; border-radius:50%; background: linear-gradient(90deg, var(--brand-start), var(--brand-end)); box-shadow: var(--glow); }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 1.2rem; }
+    .timeline:before { content:""; position:absolute; left:.2rem; top:.2rem; bottom:.2rem; width:2px; background: linear-gradient(180deg, var(--brand-start), var(--brand-end)); opacity:.5; }
+    .titem { position:relative; padding-left:1rem; margin-bottom:1rem; }
+    .titem:before { content:""; position:absolute; left:-.47rem; top:.3rem; width:.6rem; height:.6rem; border-radius:50%; background: linear-gradient(90deg, var(--brand-start), var(--brand-end)); box-shadow: var(--glow); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0 4rem; color: var(--text-dim); }
+    .socials { display:flex; gap:.8rem; }
+    .socials a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:12px; border:1px solid var(--border); color:var(--text); text-decoration:none; }
+    .socials a:hover { border-color: rgba(124,58,237,.5); }
+
+    /* Utilities */
+    .muted { color: var(--text-dim); }
+    .nowrap { white-space: nowrap; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    /* Back to top */
+    #toTop { position: fixed; right: 1.1rem; bottom: 1.1rem; display:none; }
+  
+    /* --- UX polish & accessibility fixes --- */
+    /* Ensure header has proper contrast in both themes */
+    :root { --header-bg: rgba(11,11,18,.88); --header-link: var(--text); --header-link-dim: rgba(232,232,239,.78); }
+    @media (prefers-color-scheme: light) {
+      :root { --header-bg: rgba(255,255,255,.92); --header-link: #0f1222; --header-link-dim: rgba(15,18,34,.72); }
+    }
+    header { background: var(--header-bg); }
+    header .brand, header .brand span { color: var(--header-link); }
+    header nav a { color: var(--header-link-dim); text-decoration: none; }
+    header nav a:hover { color: var(--header-link); background: linear-gradient(90deg, rgba(124,58,237,.12), rgba(219,39,119,.12)); }
+
+    /* Prevent section headings from getting hidden behind sticky header on anchor jump */
+    section { scroll-margin-top: 86px; }
+
+    /* Remove awkward link underlines inside cards and make entire card feel like one target */
+    a.card, .card a { text-decoration: none; color: inherit; display: block; }
+    .card h3 { text-decoration: none; }
+    a.card:hover h3, .card a:hover h3 { text-decoration: none; }
+
+    /* Sensible global focus styles (keyboard a11y) */
+    a:focus-visible, button:focus-visible { outline: 2px solid rgba(124,58,237,.55); outline-offset: 3px; border-radius: 12px; }
+
+    /* Tweak header stacking and spacing just a touch */
+    header { z-index: 100; }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="logo" aria-hidden="true"></span> <span>Alden Do Rosario</span></div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#companies">Companies</a>
+        <a href="#projects">Projects</a>
+        <a href="#talks">Talks</a>
+        <a href="#writing">Writing</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> CEO @ CustomGPT.ai</span>
+          <h1>Builder of practical AI that drives revenue</h1>
+          <p class="lead">I’m Alden — entrepreneur, product thinker, and engineer. I lead <strong>CustomGPT.ai</strong>, the #1 no‑code platform for business‑ready AI agents. Previously CTO & co‑founder at Chitika. I obsess over shipping useful AI, fast — with accuracy, governance, and real‑world ROI.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://customgpt.ai/" target="_blank" rel="noopener">Explore CustomGPT.ai →</a>
+            <a class="btn btn-ghost" href="https://github.com/adorosario" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/aldendorosario/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Highlights">
+          <div class="pill"><span class="swatch"></span><span>Top 7 Emerging Leader in GenAI — GAI Insights</span></div>
+          <p class="hero-note" style="margin:.8rem 0 .6rem">Focus areas</p>
+          <ul class="hero-note" style="margin:.2rem 0 1rem; padding-left:1.2rem">
+            <li>Retrieval‑augmented generation (RAG) with verifiable citations</li>
+            <li>Enterprise‑grade security (SOC‑2 Type II, GDPR), governance & anti‑hallucination</li>
+            <li>Go‑to‑market: packaging, pricing, and proof‑of‑concepts that win</li>
+          </ul>
+          <p class="hero-note">Platform accuracy</p>
+          <div class="meter" aria-label="Accuracy meter"><span aria-hidden="true"></span></div>
+          <p class="hero-note">Third‑party verified #1 for anti‑hallucination accuracy.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="kicker">25+ years building and marketing products. I translate messy business problems into reliable AI systems with fast iteration and a bias to action.</p>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>What I’m doing now</h3>
+            <p>Scaling CustomGPT.ai for mid‑market and enterprise: accuracy benchmarks, API adoption, partner program, and high‑ROI POCs.</p>
+          </div>
+          <div class="card">
+            <h3>What I love</h3>
+            <p>Shaping products with customers in the loop. Rapid experiments, clean UX, and instrumentation that proves value.</p>
+          </div>
+          <div class="card">
+            <h3>Fun facts</h3>
+            <p>Former competitive table‑tennis player. Recent pickleball convert. Proud dad of four. Based in the Boston area.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="companies">
+      <div class="container">
+        <h2 class="section-title">Companies</h2>
+        <p class="kicker">I build simple experiences on top of complex tech.</p>
+        <div class="grid cols-3">
+          <a class="card" href="https://customgpt.ai/" target="_blank" rel="noopener">
+            <h3>CustomGPT.ai</h3>
+            <p>Business‑ready AI agents with citations and governance. 10,000+ orgs served. SOC‑2 Type II. #1 for anti‑hallucination accuracy.</p>
+          </a>
+          <a class="card" href="https://www.sortresume.ai/" target="_blank" rel="noopener">
+            <h3>SortResume.ai</h3>
+            <p>AI hiring assistant that instantly scores resumes so teams shortlist in minutes, not days.</p>
+          </a>
+          <a class="card" href="https://pollthepeople.app/" target="_blank" rel="noopener">
+            <h3>Poll the People</h3>
+            <p>Rapid user testing with real people. Make better design & marketing decisions with micro‑surveys.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="kicker">Scrappy experiments that became useful tools.</p>
+        <div class="grid cols-2">
+          <a class="card" href="https://adorosario.github.io/AldenBot/" target="_blank" rel="noopener">
+            <h3>AldenBot</h3>
+            <p>My personal AI assistant trained on my public work and writing. Ask it anything about me.</p>
+          </a>
+          <a class="card" href="https://adorosario.github.io/dents/" target="_blank" rel="noopener">
+            <h3>DentDiagnosisGPT</h3>
+            <p>Domain‑specific medical Q&A prototype built with CustomGPT + curated research corpus.</p>
+          </a>
+          <a class="card" href="https://github.com/adorosario/wordpress-to-customgpt" target="_blank" rel="noopener">
+            <h3>WordPress → CustomGPT</h3>
+            <p>No‑code/low‑code tool to sync private WordPress content into a secure CustomGPT agent.</p>
+          </a>
+          <a class="card" href="https://github.com/adorosario/search-assistant-augmentation" target="_blank" rel="noopener">
+            <h3>Universal Search Augmentation</h3>
+            <p>Drop‑in JS that enhances search boxes on docs portals and CMSs with smart suggestions.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="talks">
+      <div class="container">
+        <h2 class="section-title">Talks & Media</h2>
+        <div class="grid cols-2">
+          <a class="card" href="https://www.youtube.com/watch?v=a-rKTKIGVzI" target="_blank" rel="noopener">
+            <h3>Accuracy Benchmarks: Why RAG Quality Wins</h3>
+            <p>Interview on why anti‑hallucination accuracy and citations matter in enterprise AI.</p>
+          </a>
+          <a class="card" href="https://trendingineducation.com/tag/alden-do-rosario/" target="_blank" rel="noopener">
+            <h3>Trending in Education — Podcast</h3>
+            <p>On higher‑ed AI adoption and building custom chatbots with verifiable sources.</p>
+          </a>
+          <a class="card" href="https://www.youtube.com/watch?v=Xo7gw1q_Mr8" target="_blank" rel="noopener">
+            <h3>GAI Insights Showcase — Deep Research Agents</h3>
+            <p>Showcasing automated market analysis and research pipelines using AI agents.</p>
+          </a>
+          <a class="card" href="https://customgpt.ai/event/customgpt-ai-beats-openai-for-accuracy-in-benchmark/" target="_blank" rel="noopener">
+            <h3>Beating Big Models on Accuracy</h3>
+            <p>Behind the scenes of how disciplined retrieval boosts answer quality.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="container">
+        <h2 class="section-title">Writing</h2>
+        <p class="kicker">I share what we learn shipping AI into production.</p>
+        <div class="grid cols-3">
+          <a class="card" href="https://medium.com/@aldendorosario" target="_blank" rel="noopener">
+            <h3>Medium</h3>
+            <p>Articles on Custom GPTs, enterprise AI, and go‑to‑market lessons.</p>
+          </a>
+          <a class="card" href="https://customgpt.ai/blog/" target="_blank" rel="noopener">
+            <h3>CustomGPT.ai Blog</h3>
+            <p>Deep dives, benchmarks, and customer stories from the platform.</p>
+          </a>
+          <a class="card" href="https://www.userp.io/author/alden-do-rosario/" target="_blank" rel="noopener">
+            <h3>uSERP</h3>
+            <p>Brand building and listening to users — earlier essays on growth & marketing.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="container">
+        <h2 class="section-title">Community</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Generative AI Learning Lab</h3>
+            <p>Weekly on Mondays @ 7:00 PM ET — quick showcase + open Q&A on high‑ROI AI use cases. Join live, learn fast, share wins.</p>
+          </div>
+          <a class="card" href="https://customgpt.ai/partner-program/" target="_blank" rel="noopener">
+            <h3>Partners & POCs</h3>
+            <p>Marketing agencies and solution partners co‑sell POCs to prove value in weeks (not quarters).</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in touch</h2>
+        <p class="kicker">Advisory, partnerships, pilots — or just to say hi.</p>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Email</h3>
+            <p><a href="mailto:alden@customgpt.ai">alden@customgpt.ai</a></p>
+          </div>
+          <a class="card" href="https://www.linkedin.com/in/aldendorosario/" target="_blank" rel="noopener">
+            <h3>LinkedIn</h3>
+            <p>Connect for updates and conversations.</p>
+          </a>
+          <a class="card" href="https://github.com/adorosario" target="_blank" rel="noopener">
+            <h3>GitHub</h3>
+            <p>Open‑source experiments and utilities.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+      <div>&copy; <span id="year"></span> Alden Do Rosario. All rights reserved.</div>
+      <div class="socials" aria-label="Social links">
+        <a href="https://github.com/adorosario" target="_blank" aria-label="GitHub" rel="noopener">GH</a>
+        <a href="https://www.linkedin.com/in/aldendorosario/" target="_blank" aria-label="LinkedIn" rel="noopener">in</a>
+        <a href="https://medium.com/@aldendorosario" target="_blank" aria-label="Medium" rel="noopener">M</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Structured data for richer previews -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alden Do Rosario",
+    "url": "https://adorosario.github.io/",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "CustomGPT.ai",
+      "url": "https://customgpt.ai/"
+    },
+    "sameAs": [
+      "https://github.com/adorosario",
+      "https://www.linkedin.com/in/aldendorosario/",
+      "https://medium.com/@aldendorosario"
+    ]
+  }
+  </script>
+
+  <script>
+    // Dynamic year + scroll-to-top
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toTop = Object.assign(document.createElement('a'), { id: 'toTop', href: '#', className: 'btn btn-ghost', innerHTML: 'Top' });
+    document.body.appendChild(toTop);
+    const onScroll = () => { toTop.style.display = window.scrollY > 800 ? 'inline-flex' : 'none'; };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
