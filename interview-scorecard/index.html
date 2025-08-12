@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CustomGPT.ai – Partner AE / BDR Interview Scorecard</title>
+<style>
+  :root{
+    --brand-primary:#0EA5E9; /* sky blue */
+    --brand-accent:#6366F1;  /* indigo */
+    --ink:#0F172A;           /* slate-900 */
+    --muted:#64748B;         /* slate-500 */
+    --line:#E5E7EB;          /* slate-200 */
+    --card:#ffffff;
+    --bg:#F8FAFC;            /* slate-50 */
+    --radius:16px;
+    --shadow:0 6px 20px rgba(2,6,23,0.06);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font:14px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--ink); background:var(--bg)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 40px}
+  /* Header */
+  .topbar{position:sticky;top:0;z-index:10;backdrop-filter:saturate(1.1) blur(6px);background:rgba(255,255,255,0.75);border-bottom:1px solid #eef2f7}
+  .topbar .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1100px;margin:0 auto;padding:10px 20px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--brand-primary),var(--brand-accent));box-shadow:var(--shadow)}
+  .brand .t1{font-weight:700;font-size:14px}
+  .brand .t2{font-size:12px;color:var(--muted);margin-top:-2px}
+  .actions{display:flex;gap:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 12px;border-radius:12px;cursor:pointer;box-shadow:0 1px 0 rgba(2,6,23,0.02)}
+  .btn.primary{border-color:transparent;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));color:#fff}
+  .btn:active{transform:translateY(1px)}
+  .btn svg{width:16px;height:16px}
+  /* Title band */
+  .band{background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));color:#fff}
+  .band .wrap{padding-top:24px;padding-bottom:24px}
+  .band h1{margin:0 0 6px;font-size:24px}
+  .band p{margin:0;opacity:.95;font-size:13px}
+  /* Grid */
+  .grid{display:grid;grid-template-columns:1fr;gap:20px}
+  @media(min-width:1024px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .card h2{margin:0;padding:18px 18px 0 18px;font-size:16px}
+  .card .content{padding:16px 18px 18px 18px}
+  .row{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:center;margin:10px 0}
+  label{font-size:13px;color:#0f172acc}
+  input[type="text"],input[type="date"],textarea,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;outline:none}
+  textarea{min-height:80px;resize:vertical}
+  .subtle{color:var(--muted);font-size:12px}
+  .pill{display:inline-block;padding:8px 14px;border-radius:10px;color:#fff;background:linear-gradient(90deg,var(--brand-primary),var(--brand-accent));font-weight:800;letter-spacing:.3px}
+  .badge{display:inline-block;padding:4px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#475569;background:#fff}
+  .panel{border:1px solid var(--line);border-radius:14px;padding:14px;margin:8px 0;background:#fff}
+  .kv{display:grid;grid-template-columns:220px 1fr;gap:10px;align-items:center;margin:10px 0}
+  .rating{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .dot{width:28px;height:28px;border-radius:999px;border:1px solid #cbd5e1;display:flex;align-items:center;justify-content:center;color:#64748B;background:#fff;cursor:pointer;font-size:12px}
+  .dot.active{background:var(--brand-accent);border-color:var(--brand-accent);color:#fff;box-shadow:0 4px 14px rgba(99,102,241,0.25)}
+  .notes{min-height:58px}
+  .footer-note{max-width:1100px;margin:6px auto 30px;padding:0 20px;color:var(--muted);font-size:12px}
+  .hide{display:none}
+  /* Print styles */
+  @media print{
+    .topbar,.no-print{display:none!important}
+    .wrap{padding:0 10px 0}
+    .card{break-inside:avoid;page-break-inside:avoid}
+    @page{size:Letter;margin:0.6in}
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="topbar no-print">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="t1">CustomGPT.ai</div>
+          <div class="t2">Partner AE / BDR Interview Scorecard</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btn-copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2"/><rect x="4" y="8" width="12" height="12" rx="2"/></svg>Copy JSON</button>
+        <button class="btn" id="btn-export"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Download JSON</button>
+        <button class="btn" id="btn-reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9v3"/><path d="M3 3v6h6"/></svg>Reset</button>
+        <button class="btn primary" id="btn-print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>Print to PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Title band -->
+  <div class="band">
+    <div class="wrap">
+      <h1>Interview Scorecard</h1>
+      <p>Channel: Agencies / SIs / VARs • Focus: Recruit → Activate → Co‑sell</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="grid">
+      <!-- Candidate details -->
+      <div class="card">
+        <h2>Candidate details</h2>
+        <div class="content">
+          <div class="row"><label for="candidate">Candidate</label><input id="candidate" data-field="candidate" type="text" placeholder="Full name"/></div>
+          <div class="row"><label for="date">Date</label><input id="date" data-field="date" type="date"/></div>
+          <div class="row"><label for="interviewer">Interviewer</label><input id="interviewer" data-field="interviewer" type="text" placeholder="Your name"/></div>
+          <div class="row"><label for="role">Role</label><input id="role" data-field="role" type="text" value="Partner AE / BDR"/></div>
+        </div>
+      </div>
+
+      <!-- Gate checks -->
+      <div class="card">
+        <h2>Gate checks</h2>
+        <div class="content">
+          <div class="panel">
+            <div class="row"><label>Commute ≤ 45 min to Needham, 3+ days/week</label>
+              <div>
+                <label class="badge"><input type="radio" name="commute" value="pass" data-field="commutePass"> Pass</label>
+                <label class="badge" style="margin-left:8px"><input type="radio" name="commute" value="fail" data-field="commutePass"> Fail</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="row"><label>Graduated after 2020 & within 2–7 yrs band</label>
+              <div>
+                <label class="badge"><input type="radio" name="grad" value="pass" data-field="gradBandPass"> Pass</label>
+                <label class="badge" style="margin-left:8px"><input type="radio" name="grad" value="fail" data-field="gradBandPass"> Fail</label>
+              </div>
+            </div>
+          </div>
+          <div class="subtle">Leave blank if unknown — nothing is pre‑selected.</div>
+        </div>
+      </div>
+
+      <!-- Live exercises -->
+      <div class="card" style="grid-column:1/-1">
+        <h2>Live exercises (in‑call)</h2>
+        <div class="content">
+          <div class="panel">
+            <div class="kv"><div><strong>1) 5‑min outbound email → 20‑person Shopify agency</strong><div class="subtle">Clarity • Relevance • CTA</div></div>
+              <div class="rating" data-rate="exOutbound.clarity"></div>
+            </div>
+            <div class="kv"><div></div><div class="rating" data-rate="exOutbound.relevance"></div></div>
+            <div class="kv"><div></div><div class="rating" data-rate="exOutbound.cta"></div></div>
+            <textarea class="notes" placeholder="Comments" data-field="exOutbound.comments"></textarea>
+          </div>
+
+          <div class="panel">
+            <div class="kv"><div><strong>2) 7‑min role‑play (you = agency principal)</strong><div class="subtle">Objections: “We’re slammed” • “OpenAI brand” • “Rev‑share sounds messy”</div></div>
+              <div class="rating" data-rate="exRoleplay.discovery"></div>
+            </div>
+            <div class="kv"><div></div><div class="rating" data-rate="exRoleplay.objections"></div></div>
+            <div class="kv"><div></div><div class="rating" data-rate="exRoleplay.close"></div></div>
+            <textarea class="notes" placeholder="Comments" data-field="exRoleplay.comments"></textarea>
+          </div>
+
+          <div class="panel">
+            <div class="kv"><div><strong>3) 10‑min “First 30 Days” partner plan</strong><div class="subtle">5 targets • 10 first meetings • 3 enablement assets • 1 certification</div></div>
+              <div class="rating" data-rate="exPlan.targeting"></div>
+            </div>
+            <div class="kv"><div></div><div class="rating" data-rate="exPlan.enablement"></div></div>
+            <div class="kv"><div></div><div class="rating" data-rate="exPlan.metrics"></div></div>
+            <textarea class="notes" placeholder="Comments" data-field="exPlan.comments"></textarea>
+          </div>
+
+          <div class="panel">
+            <div class="kv"><div><strong>4) 5‑min quota math</strong><div class="subtle">Back into 120% from meetings → activations → co‑sell opps → won</div></div>
+              <div class="rating" data-rate="exQuota.assumptions"></div>
+            </div>
+            <div class="kv"><div></div><div class="rating" data-rate="exQuota.math"></div></div>
+            <div class="kv"><div></div><div class="rating" data-rate="exQuota.plan"></div></div>
+            <textarea class="notes" placeholder="Comments" data-field="exQuota.comments"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core competencies -->
+      <div class="card">
+        <h2>Core competencies (1–5)</h2>
+        <div class="content" id="competencies">
+          <!-- rows injected by JS -->
+          <textarea class="notes" placeholder="Competency notes" data-field="competencyNotes" style="margin-top:8px"></textarea>
+        </div>
+      </div>
+
+      <!-- Decision -->
+      <div class="card">
+        <h2>Decision</h2>
+        <div class="content">
+          <div class="panel" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <div>
+              <div class="subtle">Weighted score (target ≥ 4.0)</div>
+              <div id="score-pill" class="pill">0.00</div>
+            </div>
+            <div class="subtle">Auto‑calculated from competencies</div>
+          </div>
+
+          <div class="panel">
+            <div class="row"><label>Decision</label>
+              <div>
+                <label class="badge"><input type="radio" name="decision" value="Strong hire" data-field="decision"> Strong hire</label>
+                <label class="badge" style="margin-left:6px"><input type="radio" name="decision" value="Hire" data-field="decision"> Hire</label>
+                <label class="badge" style="margin-left:6px"><input type="radio" name="decision" value="Leaning no" data-field="decision"> Leaning no</label>
+                <label class="badge" style="margin-left:6px"><input type="radio" name="decision" value="No hire" data-field="decision"> No hire</label>
+              </div>
+            </div>
+            <div class="row"><label>Risks / concerns</label><textarea class="notes" data-field="risks"></textarea></div>
+            <div class="row"><label>Pedigree bias check</label><label class="badge"><input type="checkbox" data-field="biasCheck"> Checked</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note no-print">This scorecard maps to your posted JD & unspoken criteria. Rate live performance, not pedigree.</div>
+
+<script>
+(function(){
+  // ---- Config ----
+  const STORAGE_KEY = 'customgpt_interview_scorecard_standalone_v1';
+  const COMPETENCIES = [
+    { key:'quota', label:'Quota‑carrying proof & numbers', weight:2.0 },
+    { key:'outbound', label:'Outbound prospecting & appointment setting', weight:1.5 },
+    { key:'agencies', label:'Selling to/through agencies • SIs • VARs', weight:1.5 },
+    { key:'enablement', label:'Partner empathy & enablement plan', weight:1.2 },
+    { key:'hunter', label:'Hunter DNA / resilience', weight:1.2 },
+    { key:'founder', label:'Founder‑mode fit (ambiguous, multi‑hat)', weight:1.0 },
+    { key:'tech', label:'AI / technical fluency (cred with dev‑ish partners)', weight:1.0 }
+  ];
+
+  // ---- State ----
+  const today = new Date().toISOString().slice(0,10);
+  const initial = {
+    candidate:'', date:today, interviewer:'', role:'Partner AE / BDR',
+    exOutbound:{ clarity:0, relevance:0, cta:0, comments:'' },
+    exRoleplay:{ discovery:0, objections:0, close:0, comments:'' },
+    exPlan:{ targeting:0, enablement:0, metrics:0, comments:'' },
+    exQuota:{ assumptions:0, math:0, plan:0, comments:'' },
+    commutePass:null, gradBandPass:null,
+    competencies:Object.fromEntries(COMPETENCIES.map(c=>[c.key,0])),
+    competencyNotes:'', weightedScore:0,
+    decision:'', risks:'', biasCheck:false,
+  };
+  let state = load() || initial;
+
+  // ---- Helpers ----
+  function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  function load(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||''); }catch(e){ return null; } }
+  function set(path, val){
+    const segs = path.split('.');
+    let cur = state; for(let i=0;i<segs.length-1;i++){ cur = cur[segs[i]]; }
+    cur[segs[segs.length-1]] = val; save(); render();
+  }
+  function get(path){ const segs=path.split('.'); let cur=state; for(const s of segs){ if(cur==null) return undefined; cur=cur[s]; } return cur; }
+  function el(q){ return document.querySelector(q); }
+  function els(q){ return Array.from(document.querySelectorAll(q)); }
+
+  // ---- UI Wiring ----
+  // Text/Date/Checkbox fields
+  els('[data-field]').forEach(input=>{
+    const key = input.getAttribute('data-field');
+    // Initialize
+    if(input.type==='checkbox'){ input.checked = !!get(key); }
+    else if(input.type==='radio'){
+      // handled below
+    } else if(input.type==='date'){
+      input.value = get(key) || today;
+    } else {
+      input.value = get(key) || '';
+    }
+    // Change handlers
+    input.addEventListener('input',()=>{
+      if(input.type==='checkbox') set(key, input.checked);
+      else if(input.type==='date' || input.type==='text' || input.tagName==='TEXTAREA') set(key, input.value);
+    });
+    if(input.type==='checkbox'){
+      input.addEventListener('change',()=> set(key, input.checked));
+    }
+  });
+
+  // Radio groups (decision & gates)
+  els('input[type=radio][data-field]').forEach(r=>{
+    const key=r.getAttribute('data-field');
+    const val=r.value;
+    const cur=get(key);
+    if(key==='commutePass' || key==='gradBandPass'){
+      if(cur===true && val==='pass') r.checked=true;
+      if(cur===false && val==='fail') r.checked=true;
+    } else {
+      if(cur===val) r.checked=true;
+    }
+    r.addEventListener('change',()=>{
+      if(key==='commutePass' || key==='gradBandPass') set(key, r.value==='pass');
+      else set(key, r.value);
+    });
+  });
+
+  // Build rating widgets (5 bubbles)
+  function buildRater(container, path){
+    container.innerHTML='';
+    const current = get(path) || 0;
+    for(let n=1;n<=5;n++){
+      const b = document.createElement('button');
+      b.type='button'; b.className='dot'+(n<=current?' active':''); b.textContent=n;
+      b.setAttribute('aria-label', path+'-'+n);
+      b.addEventListener('click',()=>{ set(path, n); });
+      container.appendChild(b);
+    }
+  }
+
+  // Inject live exercise raters
+  els('[data-rate]').forEach(div=>{ buildRater(div, div.getAttribute('data-rate')); });
+
+  // Build competency rows with raters
+  const compWrap = el('#competencies');
+  COMPETENCIES.forEach(c=>{
+    const row = document.createElement('div');
+    row.className='kv';
+    row.innerHTML = `<div><strong>${c.label}</strong><div class="subtle">Weight ×${c.weight}</div></div><div class="rating" data-comp="${c.key}"></div>`;
+    compWrap.insertBefore(row, compWrap.querySelector('textarea'));
+  });
+  els('[data-comp]').forEach(div=>{
+    const key=div.getAttribute('data-comp');
+    buildRater(div, 'competencies.'+key);
+  });
+
+  // Weighted score
+  function computeScore(){
+    let total=0, wsum=0; 
+    COMPETENCIES.forEach(c=>{ total += (state.competencies[c.key]||0)*c.weight; wsum+=c.weight; });
+    state.weightedScore = wsum? +(total/wsum).toFixed(2) : 0;
+    el('#score-pill').textContent = state.weightedScore.toFixed(2);
+  }
+
+  // Render (refresh rating visuals)
+  function render(){
+    // Refresh all raters
+    els('[data-rate]').forEach(div=> buildRater(div, div.getAttribute('data-rate')));
+    els('[data-comp]').forEach(div=> buildRater(div, 'competencies.'+div.getAttribute('data-comp')));
+    computeScore();
+  }
+
+  // Buttons
+  el('#btn-print').addEventListener('click',()=>{ window.print(); });
+  el('#btn-reset').addEventListener('click',()=>{
+    if(confirm('Clear all fields?')){ localStorage.removeItem(STORAGE_KEY); state=JSON.parse(JSON.stringify(initial)); location.reload(); }
+  });
+  el('#btn-copy').addEventListener('click',async()=>{
+    try{ await navigator.clipboard.writeText(JSON.stringify(state,null,2)); alert('JSON copied to clipboard'); }catch(e){ alert('Copy failed'); }
+  });
+  el('#btn-export').addEventListener('click',()=>{
+    const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `scorecard-${(state.candidate||'candidate').replace(/\s+/g,'_')}.json`;
+    document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); a.remove();
+  });
+
+  // Initial render
+  // Fill simple inputs from state (again) to ensure fields reflect loaded state
+  els('[data-field]').forEach(input=>{
+    const key = input.getAttribute('data-field');
+    if(input.type==='checkbox'){ input.checked = !!get(key); }
+    else if(input.type==='radio'){}
+    else if(input.tagName==='TEXTAREA' || input.type==='text' || input.type==='date'){ input.value = get(key) || input.value || ''; }
+  });
+  render();
+})();
+</script>
+</body>
+</html>
