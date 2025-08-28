@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>American Securities — PE Value Creation Deck</title>
+<style>
+  :root{
+    --bg:#0B1220;       /* deep navy */
+    --text:#f8fafc;     /* near-white */
+    --accent:#6D28D9;   /* purple */
+    --accent2:#2563EB;  /* electric blue */
+    --surface:#0f172a;  /* slate */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif}
+  .wrap{padding:18px}
+  .deck{position:relative;height:82vh;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);background:var(--bg)}
+
+  /* Glow halos */
+  .deck::before,.deck::after{content:"";position:absolute;border-radius:50%;filter:blur(64px);opacity:.33;pointer-events:none}
+  .deck::before{width:38rem;height:38rem;left:-22rem;top:-22rem;background:radial-gradient(50% 50%, var(--accent), transparent 70%)}
+  .deck::after{width:38rem;height:38rem;right:-22rem;bottom:-22rem;background:radial-gradient(50% 50%, var(--accent2), transparent 70%)}
+
+  /* Header */
+  .head{position:absolute;left:0;right:0;top:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);backdrop-filter:saturate(120%) blur(8px);z-index:5}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .muted{color:rgba(255,255,255,.6)}
+  .controls{display:flex;gap:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);cursor:pointer}
+  .btn:hover{background:rgba(255,255,255,.12)}
+  .btn svg{width:18px;height:18px}
+
+  /* Progress */
+  .progress{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.12);overflow:hidden}
+  .progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}
+
+  /* Slides */
+  .stage{position:absolute;inset:72px 0 6px 0;padding:24px 36px 36px}
+  .slide{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:opacity .35s ease, transform .35s ease;pointer-events:none;display:flex;align-items:center;justify-content:center}
+  .slide.active{opacity:1;transform:none;pointer-events:auto}
+  .inner{width:100%;max-width:1100px}
+
+  h1,h2{margin:0}
+  h1{font-weight:850;font-size:clamp(28px,5vw,56px);letter-spacing:.2px}
+  h2{font-weight:800;font-size:clamp(24px,3.2vw,40px)}
+  .eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:rgba(255,255,255,.66)}
+  .subtitle{font-size:clamp(18px,2.2vw,26px);opacity:.85}
+  .grid{display:grid;gap:16px}
+  .g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);border-radius:18px;padding:16px}
+  .pill{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.15);border-radius:18px;background:rgba(255,255,255,.06);padding:12px 16px}
+  .iconchip{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-size:18px}
+  .bullets{display:grid;gap:12px}
+  .bullet{display:flex;gap:10px;align-items:flex-start}
+  .bullet svg{margin-top:2px;flex:0 0 20px;opacity:.95}
+  .chip{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-size:12px;margin-right:8px;margin-top:8px}
+  .aside{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .center{text-align:center}
+  .mt{margin-top:18px}
+  .mt-lg{margin-top:28px}
+
+  /* Print styles */
+  @media print{
+    body{background:#000;color:#fff}
+    .wrap{padding:0}
+    .deck{height:auto;border-radius:0;box-shadow:none}
+    .head,.progress,.controls{display:none!important}
+    .slide{position:static;opacity:1;transform:none;page-break-after:always}
+    .stage{position:static;padding:24px}
+  }
+
+  @media (max-width: 900px){
+    .g-3{grid-template-columns:1fr}
+    .g-2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="deck" id="deck">
+      <div class="head">
+        <div class="brand">
+          <div class="logo"></div>
+          <div><strong>CustomGPT.ai</strong> <span class="muted">| For American Securities</span></div>
+        </div>
+        <div class="controls">
+          <button class="btn" id="prevBtn" aria-label="Previous slide"> 
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="btn" id="nextBtn" aria-label="Next slide"> 
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="btn" id="printBtn" aria-label="Print / PDF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H18V22H6z"/><path d="M6 14H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2"/></svg>
+            <span>Print / PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="stage" id="stage"></div>
+      <div class="progress"><i id="progressBar"></i></div>
+    </div>
+  </div>
+
+<script>
+  const slides = [
+    { id:1, kind:'cover', eyebrow:'For American Securities — Value Creation', title:'AI that moves EBITDA — fast', subtitle:'Support-first pilots with LP-visible outcomes in 30 days', bullets:[ 'Land in Customer Support: deflect tickets, boost CSAT, cut cost-to-serve', 'Start with 1–2 lighthouse portcos → prove value, then scale', 'Secure, SOC‑2 Type II platform; no‑code to enterprise API' ], icon:'🚀', footer:'Tailored for Ian Robertson and the American Securities team' },
+
+    { id:2, title:'Your brief → our focus', icon:'🎯', bullets:[ 'Show LPs tangible outcomes quickly across portfolio companies', 'Anchor initial wins in the Support function (contact center & helpdesk)', 'CustomGPT.ai advantage: fastest time‑to‑value with measurable ROI' ], aside:[ {label:'Time to value', value:'Weeks'}, {label:'Footprint', value:'No‑code → API'}, {label:'Governance', value:'SOC‑2, SSO, RBAC'} ] },
+
+    { id:3, title:'American Securities at a glance', icon:'👥', bullets:[ '~31 years in private equity; >$23B committed capital', '~25 current investments; ~$51B revenue / ~$5.6B EBITDA across portfolio', 'Operating partner model focused on collaborative execution' ], chips:['Industrial & essential services','B2B & select consumer'] },
+
+    { id:4, title:'Support‑first playbook', icon:'⚔️', bullets:[ 'Triage & deflect common tickets via AI copilot + knowledge search', 'Agent assist: suggested replies, summaries, policy lookup, macros', 'Self‑service: web widget + AI agent workflows' ], callout:'Goal in 30 days: visible deflection (30–50%), faster responses, higher CSAT' },
+
+    { id:5, title:'Where to pilot (portfolio examples)', icon:'💼', twoCol:{ leftTitle:'High‑volume / consumer‑facing', left:[ 'Conair / Cuisinart — product troubleshooting, manuals, warranty, parts', 'United FP (Planet Fitness) — membership, billing, freeze/cancel, club info', 'The Aspen Group (Aspen Dental / WellNow) — scheduling, insurance FAQs, intake' ], rightTitle:'B2B & services', right:[ 'BELFOR — claim intake triage, appointment scheduling, status', 'Aramsco — order tracking, product selection, SDS/tech docs', 'Integrated Global Services — field service knowledge, parts & work orders' ] }, notes:'Pick 1 consumer + 1 B2B to demonstrate breadth and repeatability.' },
+
+    { id:6, title:'30‑day Support Pilot — blueprint', icon:'⏱️', timeline:[ {phase:'Week 0', text:'Scope use cases; define deflection & CSAT targets'}, {phase:'Week 1', text:'Connect knowledge (helpdesk, web, manuals); build flows'}, {phase:'Week 2', text:'UAT with agents; guardrails; analytics wiring'}, {phase:'Week 3–4', text:'Go‑live; daily tuning; ROI read‑out to IC/LPs'} ] },
+
+    { id:7, title:'What value looks like', icon:'📈', metrics:[ {label:'Deflection', value:'30–50% in month 1'}, {label:'CSAT', value:'+0.5–1.0 pts'}, {label:'Agent speed', value:'−20–40% handle time'} ], bullets:[ 'Track avoided contacts, first‑contact resolution, backlog, and SLA hit‑rate', 'Tie to EBITDA: lower cost‑to‑serve; protect NPS & retention' ] },
+
+    { id:8, title:'Platform fit for AS', icon:'🛡️', bullets:[ 'No‑code support agents + robust RAG API (contact center ready)', 'SOC‑2 Type II, SSO (Okta/Azure AD), RBAC, PII redaction, audit logs', 'Sources: web/helpdesk, manuals/PDFs, SharePoint, GDrive, S3; 1,400+ file types', 'White‑label widget + custom CSS; analytics mapped to KPIs' ], chips:['Secure','Compliant','Extensible'] },
+
+    { id:9, title:'Messaging to portcos', icon:'📖', bullets:[ 'Lead with dollars: show the deflection & AHT math on their volumes', 'Use peer examples from AS portfolio to create constructive FOMO', 'Founder‑to‑Founder / COO‑to‑COO outreach for pilot commitment' ] },
+
+    { id:10, title:'Rollout strategy', icon:'🎯', bullets:[ 'Start: 1 consumer + 1 B2B portco (Support)', 'Document wins → internal case study for IC & LP updates', 'Standardize playbooks & controls; repeat across portfolio' ] },
+
+    { id:11, title:'What you get', icon:'🤝', bullets:[ 'Dedicated PE playbook; enablement for agents & supervisors', 'ROI dashboards (deflection, CSAT, AHT), customer analytics, AI roadmap', 'Security review pack; enterprise deployment options' ], cta:'Pick your pilot. We’ll bring the playbook and do the heavy lifting.' },
+
+    { id:12, kind:'closing', eyebrow:'Next steps', title:'Choose 2 pilot companies. We’ll prove it in 30 days.', subtitle:'Then scale across the portfolio with confidence.', checklist:[ 'Confirm AS pilot owners + data sources', 'Agree success metrics & reporting cadence to AS', 'Schedule 60‑min technical & security review with Ian Robertson’s team' ], footer:'Contact: alden@customgpt.ai  •  customgpt.ai' }
+  ];
+
+  const stage = document.getElementById('stage');
+  const progress = document.getElementById('progressBar');
+  let i = 0;
+
+  function checkIcon(){
+    return `<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>`;
+  }
+
+  function sectionHeader(s){
+    return `
+      <div class="pill mt">
+        <div class="iconchip">${s.icon || '✨'}</div>
+        <h2>${s.title || ''}</h2>
+      </div>
+    `;
+  }
+
+  function bulletsHTML(list){
+    return `<div class='bullets'>${(list||[]).map(b=>`<div class='bullet'>${checkIcon()}<div>${b}</div></div>`).join('')}</div>`;
+  }
+
+  function chipsHTML(list){
+    return `<div class='mt'>${(list||[]).map(c=>`<span class='chip'>${c}</span>`).join('')}</div>`;
+  }
+
+  function asideHTML(items){
+    return `<div class='aside'>${(items||[]).map(a=>`<span class='chip'>${a.label}: ${a.value}</span>`).join('')}</div>`;
+  }
+
+  function timelineHTML(items){
+    return `
+      <div class='grid g-3 mt'>
+        ${(items||[]).map(t=>`<div class='card'><div class='muted' style='font-size:12px;margin-bottom:4px'>${t.phase}</div><div style='font-size:18px'>${t.text}</div></div>`).join('')}
+      </div>
+    `;
+  }
+
+  function twoColHTML(t){
+    return `
+      <div class='grid g-2 mt'>
+        <div class='card'>
+          <div class='muted' style='font-size:12px;margin-bottom:6px'>${t.leftTitle}</div>
+          ${bulletsHTML(t.left)}
+        </div>
+        <div class='card'>
+          <div class='muted' style='font-size:12px;margin-bottom:6px'>${t.rightTitle}</div>
+          ${bulletsHTML(t.right)}
+        </div>
+      </div>
+    `;
+  }
+
+  function metricsHTML(items){
+    return `
+      <div class='grid g-3 mt'>
+        ${(items||[]).map(m=>`<div class='card center'><div style='font-weight:600;margin-bottom:6px;font-size:18px'>${m.label}</div><div style='font-size:24px;opacity:.9'>${m.value}</div></div>`).join('')}
+      </div>
+    `;
+  }
+
+  function render(){
+    stage.innerHTML = slides.map((s,idx)=>{
+      const isCover = s.kind==='cover';
+      const isClosing = s.kind==='closing';
+      let body = '';
+
+      if(isCover){
+        body = `
+          <div class='center'>
+            <div class='eyebrow'>${s.eyebrow||''}</div>
+            <div class='pill mt'>
+              <div class='iconchip'>${s.icon||'🚀'}</div>
+              <h1>${s.title||''}</h1>
+            </div>
+            <div class='subtitle mt'>${s.subtitle||''}</div>
+            <div class='grid g-3 mt'>
+              ${(s.bullets||[]).map(b=>`<div class='card'>${bulletsHTML([b])}</div>`).join('')}
+            </div>
+            <div class='muted mt-lg'>${s.footer||''}</div>
+          </div>`;
+      } else if(isClosing){
+        body = `
+          <div class='center'>
+            <div class='eyebrow'>${s.eyebrow||''}</div>
+            <h1 class='mt'>${s.title||''}</h1>
+            <div class='subtitle mt'>${s.subtitle||''}</div>
+            <div class='grid g-3 mt'>
+              ${(s.checklist||[]).map(c=>`<div class='card'>${bulletsHTML([c])}</div>`).join('')}
+            </div>
+            <div class='muted mt-lg'>${s.footer||''}</div>
+          </div>`;
+      } else {
+        body = `
+          ${sectionHeader(s)}
+          ${s.eyebrow?`<div class='eyebrow mt'>${s.eyebrow}</div>`:''}
+          ${s.twoCol?twoColHTML(s.twoCol):''}
+          ${s.metrics?metricsHTML(s.metrics):''}
+          ${s.timeline?timelineHTML(s.timeline):''}
+          ${s.bullets?bulletsHTML(s.bullets):''}
+          ${s.aside?asideHTML(s.aside):''}
+          ${s.chips?chipsHTML(s.chips):''}
+          ${s.callout?`<div class='card mt' style='font-style:italic'>${s.callout}</div>`:''}
+          ${s.quote?`<div class='card mt'><div style='font-size:22px'>“${s.quote.text}”</div><div class='muted' style='margin-top:6px'>— ${s.quote.author}</div></div>`:''}
+        `;
+      }
+
+      return `
+        <section class='slide${idx===0?' active':''}' data-idx='${idx}'>
+          <div class='inner'>
+            <div style='position:absolute;right:36px;top:90px;opacity:.7;font-size:12px'>${idx+1}/${slides.length}</div>
+            ${body}
+          </div>
+        </section>`;
+    }).join('');
+
+    updateProgress();
+  }
+
+  function updateProgress(){
+    const pct = ((i+1)/slides.length)*100; 
+    progress.style.width = pct + '%';
+    setActiveSlide(i);
+  }
+
+  function setActiveSlide(idx){
+    document.querySelectorAll('.slide').forEach((el,j)=>{
+      if(j===idx){el.classList.add('active')} else {el.classList.remove('active')}
+    });
+  }
+
+  function next(){ i = Math.min(i+1, slides.length-1); updateProgress(); }
+  function prev(){ i = Math.max(i-1, 0); updateProgress(); }
+
+  // Init
+  render();
+  document.getElementById('nextBtn').addEventListener('click', next);
+  document.getElementById('prevBtn').addEventListener('click', prev);
+  document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+  document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); });
+</script>
+</body>
+</html>
