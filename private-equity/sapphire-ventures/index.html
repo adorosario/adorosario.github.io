@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sapphire Ventures — Portfolio Value Creation Deck</title>
+<style>
+  /* Brand kit – fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
+
+  :root{
+    /* Brand tokens (from CustomGPT.ai brand kit) */
+    --cgpt-purple:#6A5CF6; --cgpt-blue:#5B6CFF; --cgpt-pink:#FF59C8;
+    --cgpt-indigo-600:#4F46E5; --cgpt-fuchsia-500:#D946EF; --cgpt-blue-500:#3B82F6;
+    --cgpt-slate-900:#0F172A; --cgpt-slate-700:#334155; --cgpt-slate-500:#64748B;
+    --cgpt-slate-300:#CBD5E1; --cgpt-slate-100:#F1F5F9; --cgpt-white:#FFFFFF;
+    --deck-radius:24px; --card-radius:16px; --btn-radius:12px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--cgpt-slate-900);
+    color:var(--cgpt-white);
+    font:16px/1.55 'Inter',ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2{font-family:'Poppins','Inter',ui-sans-serif,system-ui;letter-spacing:-.02em;margin:0}
+
+  .wrap{padding:18px}
+  .deck{
+    position:relative;height:82vh;border-radius:var(--deck-radius);
+    overflow:hidden;box-shadow:0 20px 60px rgba(2,6,23,.45);
+    background:var(--cgpt-slate-900)
+  }
+
+  /* Each slide paints its own gradient so print looks great */
+  .slide{
+    background:
+      radial-gradient(1200px 800px at -10% -10%, rgba(106,92,246,.40), transparent 60%),
+      radial-gradient(1200px 800px at 110% 110%, rgba(255,89,200,.35), transparent 60%),
+      var(--cgpt-slate-900);
+  }
+
+  /* Header */
+  .head{
+    position:absolute;left:0;right:0;top:0;height:72px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 28px;border-bottom:1px solid rgba(255,255,255,.12);
+    background:rgba(2,6,23,.35);backdrop-filter:saturate(120%) blur(8px);z-index:5
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:34px;height:34px;border-radius:12px;background:linear-gradient(90deg,var(--cgpt-purple),var(--cgpt-blue) 40%,var(--cgpt-pink))}
+  .muted{color:rgba(255,255,255,.66)}
+  .controls{display:flex;gap:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--btn-radius);border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);cursor:pointer;font-weight:600}
+  .btn:hover{background:rgba(255,255,255,.12)}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:linear-gradient(90deg,var(--cgpt-purple),var(--cgpt-blue) 40%,var(--cgpt-pink));border:none;color:#fff}
+
+  /* Progress */
+  .progress{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.12);overflow:hidden}
+  .progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--cgpt-purple),var(--cgpt-blue) 40%,var(--cgpt-pink));width:0}
+
+  /* Slides */
+  .stage{position:absolute;inset:72px 0 6px 0;padding:24px 36px 36px}
+  .slide{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:opacity .35s ease, transform .35s ease;pointer-events:none;display:flex;align-items:center;justify-content:center}
+  .slide.active{opacity:1;transform:none;pointer-events:auto}
+  .inner{width:100%;max-width:1100px}
+
+  h1{font-weight:800;font-size:clamp(28px,5vw,56px)}
+  h2{font-weight:700;font-size:clamp(24px,3.2vw,40px)}
+  .eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:rgba(255,255,255,.66)}
+  .subtitle{font-size:clamp(18px,2.2vw,26px);color:rgba(255,255,255,.9)}
+  .grid{display:grid;gap:16px}
+  .g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{border:1px solid var(--cgpt-slate-100);background:rgba(255,255,255,.06);border-radius:var(--card-radius);padding:16px;box-shadow:0 8px 24px rgba(2,6,23,.08)}
+  .pill{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.15);border-radius:18px;background:rgba(255,255,255,.06);padding:12px 16px}
+  .iconchip{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:linear-gradient(90deg,var(--cgpt-purple),var(--cgpt-blue) 40%,var(--cgpt-pink));font-size:18px}
+  .bullets{display:grid;gap:12px}
+  .bullet{display:flex;gap:10px;align-items:flex-start}
+  .bullet svg{margin-top:2px;flex:0 0 20px;opacity:.95}
+  .chip{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-size:12px;margin-right:8px;margin-top:8px}
+  .aside{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .center{text-align:center}
+  .mt{margin-top:18px}
+  .mt-lg{margin-top:28px}
+
+  /* PRINT — clean, full-bleed, brand-true */
+  @media print{
+    @page{ size: Letter landscape; margin: 0; }
+    html,body{height:auto}
+    body{background:var(--cgpt-slate-900); -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+    .wrap{padding:0}
+    .deck{height:auto;border-radius:0;box-shadow:none}
+    .head,.progress,.controls{display:none!important}
+    .stage{position:static;padding:0}
+    .slide{
+      position:relative;opacity:1;transform:none;page-break-after:always;
+      width:11in;height:8.5in;display:flex;align-items:center;justify-content:center;padding:0
+    }
+    .inner{max-width:1000px;padding:48px 72px}
+    .card{background:rgba(255,255,255,.08)}
+  }
+
+  @media (max-width: 900px){
+    .g-3{grid-template-columns:1fr}
+    .g-2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="deck" id="deck">
+      <div class="head">
+        <div class="brand">
+          <div class="logo"></div>
+          <div><strong>CustomGPT.ai</strong> <span class="muted">| For Sapphire Ventures — Portfolio Growth</span></div>
+        </div>
+        <div class="controls">
+          <button class="btn" id="prevBtn" aria-label="Previous slide"> 
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="btn" id="nextBtn" aria-label="Next slide"> 
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="btn" id="printBtn" aria-label="Print / PDF">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H18V22H6z"/><path d="M6 14H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2"/></svg>
+            <span>Print / PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="stage" id="stage"></div>
+      <div class="progress"><i id="progressBar"></i></div>
+    </div>
+  </div>
+
+<script>
+  const slides = [
+    { id:1, kind:'cover', eyebrow:'For Sapphire Ventures — Portfolio Growth', title:'AI that accelerates ARR & efficiency', subtitle:'Support-first pilots with board-visible outcomes in 30 days', bullets:[ 'Start in Customer Support: deflect tickets, boost CSAT, lower cost-to-serve', 'Prove value with 1–2 lighthouse portcos, then scale across the portfolio', 'Enterprise-ready platform (SOC-2 Type II), no-code to API' ], icon:'🚀', footer:'Tailored for Rami Branitzky and the Sapphire Portfolio Growth team' },
+
+    { id:2, title:'Why this fits Sapphire', icon:'🎯', bullets:[ 'Directly aligns with Portfolio Growth’s mandate: win customers, secure talent, share best practices', 'We plug into Sapphire’s 500+ annual customer/partner intros and 7,000+ exec network to speed adoption', 'Anchor pilots where Rami is a Board Observer (Mirantis, TidalScale) for maximum alignment and faster approvals', 'Our 30-day pilot playbook produces CFO-grade ROI readouts for CEOs' ], aside:[ {label:'CEO NPS (Sapphire)', value:'82'}, {label:'Intros / year', value:'500+'}, {label:'Exec network', value:'7,000+ / 950 cos'} ] },
+
+    { id:3, title:'Sapphire at a glance', icon:'💎', bullets:[ 'Global enterprise software investor with ~$10B AUM; 30+ IPOs & 40+ M&A across 140+ companies', '$1B+ committed to next-gen enterprise AI; 60+ active AI investments', 'Portfolio Growth platform built to help CEOs scale faster' ], chips:['Growth-stage enterprise','Operator-led','AI conviction'] },
+
+    { id:4, title:'Support-first playbook', icon:'⚔️', bullets:[ 'Triage & deflect common tickets via AI copilot + knowledge search', 'Agent assist: suggested replies, summaries, policy lookup, macros', 'Self-service: web widget + AI workflows', 'Connect to existing helpdesk/CRM stack used by Mirantis & TidalScale to meet teams where they work' ], callout:'Goal in 30 days: visible deflection (30–50%), faster responses, higher CSAT' },
+
+    { id:5, title:'Where to partner — Rami-involved portcos', icon:'🤝', twoCol:{ leftTitle:'Mirantis (Board Observer)', left:[ 'Quick win: deflect repetitive Kubernetes/Cloud Native support tickets (install, provisioning, upgrades)', 'Agent assist: one-click snippet answers from docs & KB; post-call summaries; policy lookup', 'Self-serve: developer-facing widget for CLI/common errors and cluster configs', 'Analytics: reduced escalations, faster SLA attainment, fewer backlog tickets' ], rightTitle:'TidalScale (Board Observer)', right:[ 'Quick win: deflect environment/configuration questions for software-defined servers', 'Agent assist: macro responses for scale-up/scale-out scenarios and performance tuning FAQs', 'Self-serve: guided troubleshooting for system-level setup and licensing', 'Analytics: lower time-to-resolution on provisioning/debug tickets' ] }, notes:'Focus pilots where Rami has governance influence; produce board-ready ROI readouts.' },
+
+    { id:6, title:'30-day Support Pilot — blueprint', icon:'⏱️', timeline:[ {phase:'Week 0', text:'Scope use cases at Mirantis & TidalScale; define deflection, CSAT, SLA targets'}, {phase:'Week 1', text:'Connect knowledge (docs, web, manuals, KBs); wire up helpdesk/CRM in current stack'}, {phase:'Week 2', text:'UAT with support/dev relays; guardrails; analytics & QA'}, {phase:'Week 3–4', text:'Go-live; daily tuning; ROI read-out (deflection, AHT, CSAT, SLA)'} ] },
+
+    { id:7, title:'What success looks like', icon:'📈', metrics:[ {label:'Deflection', value:'30–50% in month 1'}, {label:'CSAT', value:'+0.5–1.0 pts'}, {label:'Agent speed', value:'−20–40% AHT'} ], bullets:[ 'Mirantis: fewer Kubernetes install/upgrade tickets; faster resolution on cluster provisioning issues', 'TidalScale: reduced environment/config questions; improved time-to-resolution for performance tuning', 'Track avoided contacts, FCR, backlog, SLA hit-rate; tie to EBITDA impact' ] },
+
+    { id:8, title:'Security & governance', icon:'🛡️', bullets:[ 'SOC-2 Type II, SSO (Okta/Azure AD), RBAC, PII redaction, audit logs', 'Controlled connectors: web/helpdesk, manuals/PDFs, SharePoint, GDrive, S3 (1,400+ file types)', 'White-label widget + custom CSS; analytics mapped to KPIs' ], chips:['Secure','Compliant','Extensible'] },
+
+    { id:9, title:'How Portfolio Growth amplifies impact', icon:'📣', bullets:[ 'Curate 10 buyer intros targeted for Mirantis & TidalScale ICPs (DevOps, Infra, IT Ops)', 'Host a Sapphire “Support AI ROI” roundtable featuring the two pilots', 'Leverage exec network to backfill any CX/Support leadership gaps to accelerate rollout', 'Convert outcomes into a repeatable case study for infra/cloud-native portfolio companies' ] },
+
+    { id:10, title:'Rollout strategy', icon:'🎯', bullets:[ 'Start: Mirantis + TidalScale pilots (Rami governance)', 'Publish wins → CEO updates & Portfolio Growth playbooks', 'Standardize controls & expand to adjacent infra/cloud-native portcos' ] },
+
+    { id:11, title:'What you get', icon:'🤝', bullets:[ 'Dedicated PE/Venture playbook; enablement for agents & supervisors', 'ROI dashboards (deflection, CSAT, AHT), customer analytics, AI roadmap', 'Security review pack; enterprise deployment options' ], cta:'Pick your pilot. We’ll bring the playbook and do the heavy lifting.' },
+
+    { id:12, kind:'closing', eyebrow:'Next steps', title:'Choose 2 pilot companies. We’ll prove it in 30 days.', subtitle:'Then scale across the portfolio with confidence.', checklist:[ 'Confirm pilot owners + data sources at each portco', 'Agree success metrics & reporting cadence to Portfolio Growth', 'Schedule 60-min technical & security review with Rami’s team' ], footer:'Contact: alden@customgpt.ai  •  customgpt.ai' }
+  ];
+
+  const stage = document.getElementById('stage');
+  const progress = document.getElementById('progressBar');
+  let i = 0;
+
+  function checkIcon(){
+    return `<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>`;
+  }
+
+  function sectionHeader(s){
+    return `
+      <div class="pill mt">
+        <div class="iconchip">${s.icon || '✨'}</div>
+        <h2>${s.title || ''}</h2>
+      </div>
+    `;
+  }
+
+  function bulletsHTML(list){
+    return `<div class='bullets'>${(list||[]).map(b=>`<div class='bullet'>${checkIcon()}<div>${b}</div></div>`).join('')}</div>`;
+  }
+
+  function chipsHTML(list){
+    return `<div class='mt'>${(list||[]).map(c=>`<span class='chip'>${c}</span>`).join('')}</div>`;
+  }
+
+  function asideHTML(items){
+    return `<div class='aside'>${(items||[]).map(a=>`<span class='chip'>${a.label}: ${a.value}</span>`).join('')}</div>`;
+  }
+
+  function timelineHTML(items){
+    return `
+      <div class='grid g-3 mt'>
+        ${(items||[]).map(t=>`<div class='card'><div class='muted' style='font-size:12px;margin-bottom:4px'>${t.phase}</div><div style='font-size:18px'>${t.text}</div></div>`).join('')}
+      </div>
+    `;
+  }
+
+  function twoColHTML(t){
+    return `
+      <div class='grid g-2 mt'>
+        <div class='card'>
+          <div class='muted' style='font-size:12px;margin-bottom:6px'>${t.leftTitle}</div>
+          ${bulletsHTML(t.left)}
+        </div>
+        <div class='card'>
+          <div class='muted' style='font-size:12px;margin-bottom:6px'>${t.rightTitle}</div>
+          ${bulletsHTML(t.right)}
+        </div>
+      </div>
+    `;
+  }
+
+  function metricsHTML(items){
+    return `
+      <div class='grid g-3 mt'>
+        ${(items||[]).map(m=>`<div class='card center'><div style='font-weight:600;margin-bottom:6px;font-size:18px'>${m.label}</div><div style='font-size:24px;opacity:.9'>${m.value}</div></div>`).join('')}
+      </div>
+    `;
+  }
+
+  function render(){
+    stage.innerHTML = slides.map((s,idx)=>{
+      const isCover = s.kind==='cover';
+      const isClosing = s.kind==='closing';
+      let body = '';
+
+      if(isCover){
+        body = `
+          <div class='center'>
+            <div class='eyebrow'>${s.eyebrow||''}</div>
+            <div class='pill mt'>
+              <div class='iconchip'>${s.icon||'🚀'}</div>
+              <h1>${s.title||''}</h1>
+            </div>
+            <div class='subtitle mt'>${s.subtitle||''}</div>
+            <div class='grid g-3 mt'>
+              ${(s.bullets||[]).map(b=>`<div class='card'>${bulletsHTML([b])}</div>`).join('')}
+            </div>
+            <div class='muted mt-lg'>${s.footer||''}</div>
+          </div>`;
+      } else if(isClosing){
+        body = `
+          <div class='center'>
+            <div class='eyebrow'>${s.eyebrow||''}</div>
+            <h1 class='mt'>${s.title||''}</h1>
+            <div class='subtitle mt'>${s.subtitle||''}</div>
+            <div class='grid g-3 mt'>
+              ${(s.checklist||[]).map(c=>`<div class='card'>${bulletsHTML([c])}</div>`).join('')}
+            </div>
+            <div class='muted mt-lg'>${s.footer||''}</div>
+          </div>`;
+      } else {
+        body = `
+          ${sectionHeader(s)}
+          ${s.eyebrow?`<div class='eyebrow mt'>${s.eyebrow}</div>`:''}
+          ${s.twoCol?twoColHTML(s.twoCol):''}
+          ${s.metrics?metricsHTML(s.metrics):''}
+          ${s.timeline?timelineHTML(s.timeline):''}
+          ${s.bullets?bulletsHTML(s.bullets):''}
+          ${s.aside?asideHTML(s.aside):''}
+          ${s.chips?chipsHTML(s.chips):''}
+          ${s.callout?`<div class='card mt' style='font-style:italic'>${s.callout}</div>`:''}
+          ${s.quote?`<div class='card mt'><div style='font-size:22px'>“${s.quote.text}”</div><div class='muted' style='margin-top:6px'>— ${s.quote.author}</div></div>`:''}
+        `;
+      }
+
+      return `
+        <section class='slide${idx===0?' active':''}' data-idx='${idx}'>
+          <div class='inner'>
+            <div style='position:absolute;right:36px;top:90px;opacity:.7;font-size:12px'>${idx+1}/${slides.length}</div>
+            ${body}
+          </div>
+        </section>`;
+    }).join('');
+
+    updateProgress();
+  }
+
+  function updateProgress(){
+    const pct = ((i+1)/slides.length)*100; 
+    progress.style.width = pct + '%';
+    setActiveSlide(i);
+  }
+
+  function setActiveSlide(idx){
+    document.querySelectorAll('.slide').forEach((el,j)=>{
+      if(j===idx){el.classList.add('active')} else {el.classList.remove('active')}
+    });
+  }
+
+  function next(){ i = Math.min(i+1, slides.length-1); updateProgress(); }
+  function prev(){ i = Math.max(i-1, 0); updateProgress(); }
+
+  // Init
+  render();
+  document.getElementById('nextBtn').addEventListener('click', next);
+  document.getElementById('prevBtn').addEventListener('click', prev);
+  document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+  document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); });
+</script>
+</body>
+</html>
