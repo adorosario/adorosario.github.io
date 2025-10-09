@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Analysis - simpleqa_0226</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="forensic_dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-light">Question: simpleqa_0226</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-microscope text-danger"></i>
+                    Forensic Analysis: simpleqa_0226
+                </h1>
+                <p class="lead">Complete forensic investigation of penalty case simpleqa_0226</p>
+            </div>
+        </div>
+
+        <!-- Question Details -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card question-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Question Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Question ID:</strong> <code>simpleqa_0226</code></p>
+                                <p><strong>Domain:</strong> <span class="badge bg-secondary">General</span></p>
+                                <p><strong>Complexity:</strong> 1.423</p>
+                                <p><strong>Penalty Points:</strong> <span class="text-danger fw-bold">4.0</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>CustomGPT Confidence:</strong>
+                                    <span class="badge bg-danger">0.970</span>
+                                </p>
+                                <p><strong>CustomGPT Grade:</strong> <span class="badge bg-danger grade-badge">B</span></p>
+                                <p><strong>Penalty Type:</strong> Incorrect Answer</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Question:</h5>
+                            <div class="alert alert-info">
+                                Which lake in Kashmir is connected to the Khushal Sar and Gil Sar lakes via a channel known as Nallah Amir Khan?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Comparison -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-balance-scale"></i> Answer Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>Answer</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td><strong>Target Answer</strong></td>
+                                        <td><em>Nigeen Lake</em></td>
+                                        <td><span class="badge bg-success">CORRECT</span></td>
+                                        <td><i class="fas fa-check text-success"></i> Gold Standard</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>CustomGPT</strong></td>
+                                        <td>According to my knowledge base, Anchar Lake in Kashmir is connected to the Khushal Sar and Gil Sar lakes via a channel known as "Amir Khan Nallah."</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED (-4.0 points)</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td><strong>OpenAI RAG</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-success">A</span></td>
+                                        <td><i class="fas fa-check text-success"></i> PASSED</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI Vanilla</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Evaluation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gavel"></i> Judge Evaluation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h5>Judge Reasoning:</h5>
+                            <p>The gold target states Nigeen Lake is connected to Khushal Sar and Gil Sar via Nallah Amir Khan. The predicted answer claims Anchar Lake is connected via that channel. This contradicts the gold target. Therefore, it is incorrect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5 Forensic Analysis -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> GPT-5 Deep Forensic Analysis</h3>
+                        <small class="text-muted">Advanced AI-powered failure analysis</small>
+                    </div>
+                    <div class="card-body analysis-section">
+                        <p>To comprehensively analyze the failure of the RAG provider on the question regarding the lakes in Kashmir, we need to dissect the problem across several dimensions: root cause, competitive analysis, technical recommendations, confidence analysis, and priority assessment.</p>
+<h3>1. FAILURE ROOT CAUSE</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Gap</strong>: The provider's knowledge base might lack the correct information about the connection between Nigeen Lake and the Khushal Sar and Gil Sar lakes via Nallah Amir Khan. This gap could lead to incorrect retrieval or reasoning based on incomplete data.</p>
+</li>
+<li>
+<p><strong>Retrieval Failure</strong>: The system may have retrieved documents that incorrectly associated Anchar Lake with the channel, leading to a wrong conclusion. This suggests a failure in the retrieval algorithm to prioritize or correctly identify relevant documents.</p>
+</li>
+<li>
+<p><strong>Reasoning Error</strong>: The system might have misinterpreted the retrieved information, leading to an incorrect association between Anchar Lake and the channel. This indicates a reasoning error where the system failed to correctly synthesize the information.</p>
+</li>
+<li>
+<p><strong>Confidence Miscalibration</strong>: The high confidence score (0.97) despite the incorrect answer suggests a miscalibration issue, where the system is overly confident in its incorrect output.</p>
+</li>
+<li>
+<p><strong>Factual Error in Training Data</strong>: If the training data contained incorrect associations between the lakes and the channel, this could have propagated into the system's knowledge base.</p>
+</li>
+<li>
+<p><strong>Complex Reasoning Requirement</strong>: Given the complexity score of 1.423, the question might not require complex reasoning, indicating that the failure is more likely due to factual errors or retrieval issues rather than reasoning complexity.</p>
+</li>
+</ul>
+<h3>2. COMPETITIVE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>OpenAI RAG and Vanilla</strong>: The absence of answers from OpenAI RAG and Vanilla suggests that these systems either failed to retrieve relevant information or did not attempt to answer due to confidence thresholds. This highlights a potential gap in the knowledge base or retrieval capabilities across systems.</p>
+</li>
+<li>
+<p><strong>Knowledge Sources vs. Reasoning</strong>: The failure of both systems indicates that the issue might be more related to the availability and accuracy of knowledge sources rather than reasoning capabilities. This suggests a need for enriched and accurate data sources.</p>
+</li>
+</ul>
+<h3>3. TECHNICAL RECOMMENDATIONS</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Improvements</strong>: Update the knowledge base with verified and comprehensive information about geographical connections in Kashmir. This could involve integrating authoritative geographic databases or resources.</p>
+</li>
+<li>
+<p><strong>Retrieval Algorithm Adjustments</strong>: Enhance the retrieval algorithm to better prioritize documents with high relevance and accuracy. Implementing more sophisticated filtering or ranking mechanisms could help.</p>
+</li>
+<li>
+<p><strong>Confidence Calibration Fixes</strong>: Implement mechanisms to better calibrate confidence scores, possibly by incorporating uncertainty estimation techniques or cross-verifying with multiple data sources.</p>
+</li>
+<li>
+<p><strong>Training Data Corrections</strong>: Review and correct any factual inaccuracies in the training data, especially those related to geographic information.</p>
+</li>
+<li>
+<p><strong>Reasoning Chain Improvements</strong>: Improve the reasoning capabilities to better handle geographic and relational queries, possibly by incorporating structured data reasoning or graph-based approaches.</p>
+</li>
+</ul>
+<h3>4. CONFIDENCE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>Misleading Information</strong>: The retrieved information might have been misleading, leading to a high confidence score despite being incorrect. This suggests a need for better validation of retrieved data.</p>
+</li>
+<li>
+<p><strong>Logically Sound but Factually Incorrect</strong>: The reasoning chain might have been logically sound based on the retrieved data, but the data itself was incorrect, leading to a false sense of confidence.</p>
+</li>
+<li>
+<p><strong>Systematic Overconfidence Pattern</strong>: If similar issues are observed across other queries, this indicates a systematic pattern of overconfidence that needs addressing through better calibration techniques.</p>
+</li>
+</ul>
+<h3>5. PRIORITY ASSESSMENT</h3>
+<ul>
+<li><strong>Medium Priority</strong>: This issue represents a domain-specific knowledge gap rather than a fundamental capability gap. While it affects the accuracy of geographic queries, it may not impact a wide range of questions. However, improving geographic data accuracy is important for enhancing overall system reliability.</li>
+</ul>
+<h3>ACTIONABLE INSIGHTS</h3>
+<ol>
+<li><strong>Data Enrichment</strong>: Integrate authoritative geographic databases to fill knowledge gaps.</li>
+<li><strong>Algorithm Tuning</strong>: Refine retrieval and confidence calibration algorithms to reduce errors and overconfidence.</li>
+<li><strong>Systematic Review</strong>: Conduct a systematic review of training data for factual accuracy, focusing on geographic information.</li>
+<li><strong>Cross-Verification</strong>: Implement cross-verification mechanisms to validate retrieved information against multiple sources.</li>
+</ol>
+<p>By addressing these areas, the engineering team can improve the system's accuracy and reliability in handling geographic queries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Analysis Summary -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Competitive Performance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>CustomGPT</strong></p>
+                                        <p>Confidence: 0.970</p>
+                                        <p>Penalty: -4.0 points</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-success">PASSED</h2>
+                                        <p><strong>OpenAI RAG</strong></p>
+                                        <p>Grade: A</p>
+                                        <p>Status: Outperformed CustomGPT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI Vanilla</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="forensic_dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <a href="#top" class="btn btn-secondary">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 CustomGPT Forensic Analysis - Question simpleqa_0226 - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Analysis - simpleqa_0399</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="forensic_dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-light">Question: simpleqa_0399</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-microscope text-danger"></i>
+                    Forensic Analysis: simpleqa_0399
+                </h1>
+                <p class="lead">Complete forensic investigation of penalty case simpleqa_0399</p>
+            </div>
+        </div>
+
+        <!-- Question Details -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card question-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Question Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Question ID:</strong> <code>simpleqa_0399</code></p>
+                                <p><strong>Domain:</strong> <span class="badge bg-secondary">Arts</span></p>
+                                <p><strong>Complexity:</strong> 1.384</p>
+                                <p><strong>Penalty Points:</strong> <span class="text-danger fw-bold">4.0</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>CustomGPT Confidence:</strong>
+                                    <span class="badge bg-danger">0.970</span>
+                                </p>
+                                <p><strong>CustomGPT Grade:</strong> <span class="badge bg-danger grade-badge">B</span></p>
+                                <p><strong>Penalty Type:</strong> Incorrect Answer</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Question:</h5>
+                            <div class="alert alert-info">
+                                Who was the referee in the rugby match between Georgia and Portugal that was part of the 2022 Rugby Europe Championship on February 6, 2022?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Comparison -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-balance-scale"></i> Answer Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>Answer</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td><strong>Target Answer</strong></td>
+                                        <td><em>Romain Poite</em></td>
+                                        <td><span class="badge bg-success">CORRECT</span></td>
+                                        <td><i class="fas fa-check text-success"></i> Gold Standard</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>CustomGPT</strong></td>
+                                        <td>The referee for the rugby match between Georgia and Portugal in the 2022 Rugby Europe Championship on February 6, 2022, was Manuel Bottino from Italy.</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED (-4.0 points)</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td><strong>OpenAI RAG</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-success">A</span></td>
+                                        <td><i class="fas fa-check text-success"></i> PASSED</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI Vanilla</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Evaluation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gavel"></i> Judge Evaluation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h5>Judge Reasoning:</h5>
+                            <p>The gold target states the referee was Romain Poite. The predicted answer claims it was Manuel Bottino from Italy, which contradicts the gold target. Therefore, it is incorrect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5 Forensic Analysis -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> GPT-5 Deep Forensic Analysis</h3>
+                        <small class="text-muted">Advanced AI-powered failure analysis</small>
+                    </div>
+                    <div class="card-body analysis-section">
+                        <p>To analyze the failure of the RAG provider in answering the question about the referee in the rugby match between Georgia and Portugal, we need to dissect the problem across several dimensions. Here's a comprehensive breakdown:</p>
+<h3>1. FAILURE ROOT CAUSE</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Gap</strong>: The provider's knowledge base might not have been updated with the correct information regarding the referee for this specific match. This could be due to a lack of comprehensive sports databases or updates in the knowledge source.</p>
+</li>
+<li>
+<p><strong>Retrieval Failure</strong>: The system might have retrieved documents that contained incorrect or misleading information. If the retrieval mechanism prioritized documents with incorrect data, this could lead to the wrong answer being selected.</p>
+</li>
+<li>
+<p><strong>Reasoning Error</strong>: There might have been a misinterpretation of the retrieved information. If the system retrieved multiple documents with conflicting information, it might have failed to correctly resolve these conflicts.</p>
+</li>
+<li>
+<p><strong>Confidence Miscalibration</strong>: The high confidence score (0.97) suggests that the system was overly confident in its incorrect answer. This indicates a potential issue with how confidence scores are assigned, possibly due to over-reliance on certain features or signals that were misleading in this context.</p>
+</li>
+<li>
+<p><strong>Factual Error in Training Data</strong>: If the training data included incorrect information about the match, this could have propagated through to the system's output.</p>
+</li>
+<li>
+<p><strong>Complex Reasoning Requirement</strong>: The question itself is straightforward and does not require complex reasoning, so this is unlikely to be the root cause.</p>
+</li>
+</ul>
+<h3>2. COMPETITIVE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>OpenAI RAG and Vanilla</strong>: Both failed to provide an answer, indicating a potential gap in their knowledge base or retrieval capabilities. This suggests that the information might not be readily available or indexed in their systems.</p>
+</li>
+<li>
+<p><strong>Knowledge Sources vs. Reasoning</strong>: The failure across multiple systems highlights a potential gap in the availability of niche sports data. It suggests that the issue is more about the breadth and depth of the knowledge sources rather than reasoning capabilities.</p>
+</li>
+</ul>
+<h3>3. TECHNICAL RECOMMENDATIONS</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Improvements</strong>: Integrate more comprehensive and up-to-date sports databases. Partnering with sports data providers or using APIs from sports organizations could enhance the knowledge base.</p>
+</li>
+<li>
+<p><strong>Retrieval Algorithm Adjustments</strong>: Improve the retrieval algorithm to better handle niche queries by incorporating more diverse data sources and improving document ranking based on reliability and recency.</p>
+</li>
+<li>
+<p><strong>Confidence Calibration Fixes</strong>: Implement mechanisms to better assess the reliability of the retrieved information, possibly by cross-referencing multiple sources before assigning high confidence.</p>
+</li>
+<li>
+<p><strong>Training Data Corrections</strong>: Regularly update the training data with verified information from authoritative sources to prevent propagation of factual errors.</p>
+</li>
+<li>
+<p><strong>Reasoning Chain Improvements</strong>: Enhance the system's ability to resolve conflicting information by developing better heuristics for source reliability and context understanding.</p>
+</li>
+</ul>
+<h3>4. CONFIDENCE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>Misleading Information</strong>: The retrieved information might have been misleading, leading to a high confidence score. The system might have relied on certain features (e.g., document authority or frequency of mention) that were not indicative of correctness in this case.</p>
+</li>
+<li>
+<p><strong>Logical but Factually Incorrect</strong>: The reasoning chain might have been logically sound based on the retrieved documents, but the documents themselves were incorrect.</p>
+</li>
+<li>
+<p><strong>Systematic Overconfidence</strong>: If this pattern of overconfidence is observed across other queries, it indicates a systematic issue with how confidence is calculated, necessitating a review of the confidence assignment algorithms.</p>
+</li>
+</ul>
+<h3>5. PRIORITY ASSESSMENT</h3>
+<ul>
+<li><strong>Medium Priority</strong>: This issue is domain-specific, affecting questions related to niche sports events. While not critical for all domains, it is important for maintaining accuracy in sports-related queries and should be addressed to improve the system's overall reliability in this area.</li>
+</ul>
+<p>By addressing these areas, the engineering team can enhance the system's performance and accuracy, particularly in handling specific and niche queries like the one analyzed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Analysis Summary -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Competitive Performance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>CustomGPT</strong></p>
+                                        <p>Confidence: 0.970</p>
+                                        <p>Penalty: -4.0 points</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-success">PASSED</h2>
+                                        <p><strong>OpenAI RAG</strong></p>
+                                        <p>Grade: A</p>
+                                        <p>Status: Outperformed CustomGPT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI Vanilla</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="forensic_dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <a href="#top" class="btn btn-secondary">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 CustomGPT Forensic Analysis - Question simpleqa_0399 - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

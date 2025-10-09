@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Analysis - simpleqa_0580</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="forensic_dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-light">Question: simpleqa_0580</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-microscope text-danger"></i>
+                    Forensic Analysis: simpleqa_0580
+                </h1>
+                <p class="lead">Complete forensic investigation of penalty case simpleqa_0580</p>
+            </div>
+        </div>
+
+        <!-- Question Details -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card question-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Question Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Question ID:</strong> <code>simpleqa_0580</code></p>
+                                <p><strong>Domain:</strong> <span class="badge bg-secondary">General</span></p>
+                                <p><strong>Complexity:</strong> 0.899</p>
+                                <p><strong>Penalty Points:</strong> <span class="text-danger fw-bold">4.0</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>CustomGPT Confidence:</strong>
+                                    <span class="badge bg-danger">0.980</span>
+                                </p>
+                                <p><strong>CustomGPT Grade:</strong> <span class="badge bg-danger grade-badge">B</span></p>
+                                <p><strong>Penalty Type:</strong> Incorrect Answer</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Question:</h5>
+                            <div class="alert alert-info">
+                                What is the name of the exhibition that Zanele Muholi introduced in 2009?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Comparison -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-balance-scale"></i> Answer Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>Answer</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td><strong>Target Answer</strong></td>
+                                        <td><em> Innovative Women</em></td>
+                                        <td><span class="badge bg-success">CORRECT</span></td>
+                                        <td><i class="fas fa-check text-success"></i> Gold Standard</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>CustomGPT</strong></td>
+                                        <td>In 2009, Zanele Muholi founded Inkanyiso, a forum for queer and visual activist media. However, if you are asking specifically about an exhibition introduced in 2009, my knowledge base does not provide the name of a specific exhibition by Zanele Muholi from that year. Please reach out to support for further help.</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED (-4.0 points)</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td><strong>OpenAI RAG</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-success">A</span></td>
+                                        <td><i class="fas fa-check text-success"></i> PASSED</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI Vanilla</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Evaluation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gavel"></i> Judge Evaluation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h5>Judge Reasoning:</h5>
+                            <p>The gold target states the exhibition name is "Innovative Women." The predicted answer does not provide this name and instead discusses Inkanyiso and uncertainty. It fails to provide the correct exhibition name and thus does not match the gold target.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5 Forensic Analysis -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> GPT-5 Deep Forensic Analysis</h3>
+                        <small class="text-muted">Advanced AI-powered failure analysis</small>
+                    </div>
+                    <div class="card-body analysis-section">
+                        <p>To provide a comprehensive engineering analysis of the failure in answering the question about Zanele Muholi's 2009 exhibition, we need to dissect the problem into several components. Here's a detailed breakdown:</p>
+<h3>1. FAILURE ROOT CAUSE</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Gap</strong>: The primary issue appears to be a gap in the knowledge base. The provider's response indicates a lack of specific information about the exhibition "Innovative Women." Instead, it mentions Inkanyiso, which is unrelated to the exhibition in question.</p>
+</li>
+<li>
+<p><strong>Retrieval Failure</strong>: There might have been a retrieval failure if the system did not access the correct documents containing the relevant information about the exhibition. This could be due to inadequate indexing or keyword matching.</p>
+</li>
+<li>
+<p><strong>Reasoning Error</strong>: There is no evidence of a reasoning error since the system did not attempt to infer or deduce the exhibition name from available data. The response was more about acknowledging the lack of information.</p>
+</li>
+<li>
+<p><strong>Confidence Miscalibration</strong>: The high confidence score (0.98) suggests a miscalibration. The system was overly confident in its incorrect response, likely due to the presence of related but irrelevant information (Inkanyiso).</p>
+</li>
+<li>
+<p><strong>Complex Reasoning Requirement</strong>: The question does not require complex reasoning beyond the system's capabilities. It is a straightforward factual query.</p>
+</li>
+</ul>
+<h3>2. COMPETITIVE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>OpenAI RAG and Vanilla</strong>: Both OpenAI RAG and Vanilla did not provide an answer, indicating a potential shared gap in the knowledge base or retrieval process. This suggests that the failure might be more about missing data rather than reasoning capabilities.</p>
+</li>
+<li>
+<p><strong>Knowledge Sources vs. Reasoning</strong>: The failure across different systems highlights the importance of comprehensive and up-to-date knowledge sources. The reasoning capabilities are secondary if the foundational data is missing.</p>
+</li>
+</ul>
+<h3>3. TECHNICAL RECOMMENDATIONS</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Improvements</strong>: Update the knowledge base to include more comprehensive data on exhibitions and events related to Zanele Muholi. This could involve integrating specialized databases or archives focused on art and exhibitions.</p>
+</li>
+<li>
+<p><strong>Retrieval Algorithm Adjustments</strong>: Enhance the retrieval algorithms to better match queries with relevant documents. This might involve improving keyword matching, using semantic search techniques, or incorporating more sophisticated entity recognition.</p>
+</li>
+<li>
+<p><strong>Confidence Calibration Fixes</strong>: Implement mechanisms to better calibrate confidence scores, especially when the system retrieves related but incorrect information. This could involve cross-referencing multiple sources before assigning high confidence.</p>
+</li>
+<li>
+<p><strong>Training Data Corrections</strong>: Ensure that the training data includes diverse and accurate examples of similar queries to improve the system's ability to handle such questions.</p>
+</li>
+<li>
+<p><strong>Reasoning Chain Improvements</strong>: While not directly applicable here, ensuring that the system can reason through partial information to arrive at a probable answer could be beneficial in other contexts.</p>
+</li>
+</ul>
+<h3>4. CONFIDENCE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>Misleading Information</strong>: The retrieved information about Inkanyiso might have been deemed relevant due to keyword overlap, leading to high confidence despite being incorrect.</p>
+</li>
+<li>
+<p><strong>Logical but Factually Incorrect</strong>: The system might have logically concluded that mentioning a known activity by Zanele Muholi in 2009 was sufficient, despite it not being the correct answer.</p>
+</li>
+<li>
+<p><strong>Systematic Overconfidence</strong>: This could indicate a pattern where the system is generally overconfident when it retrieves any related information, regardless of its direct relevance.</p>
+</li>
+</ul>
+<h3>5. PRIORITY ASSESSMENT</h3>
+<ul>
+<li><strong>Medium Priority</strong>: This issue represents a domain-specific knowledge gap. While not a fundamental capability gap, it is important for maintaining accuracy in factual queries, especially in specialized domains like art and exhibitions.</li>
+</ul>
+<h3>ACTIONABLE INSIGHTS</h3>
+<ol>
+<li>
+<p><strong>Expand and Update Knowledge Sources</strong>: Regularly update the knowledge base with specialized data sources relevant to the domain of art and exhibitions.</p>
+</li>
+<li>
+<p><strong>Enhance Retrieval Techniques</strong>: Implement more sophisticated retrieval techniques that can discern between related but irrelevant information.</p>
+</li>
+<li>
+<p><strong>Improve Confidence Calibration</strong>: Develop methods to better assess the relevance and accuracy of retrieved information before assigning high confidence.</p>
+</li>
+</ol>
+<p>By addressing these areas, the engineering team can improve the system's ability to accurately answer similar factual questions in the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Analysis Summary -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Competitive Performance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>CustomGPT</strong></p>
+                                        <p>Confidence: 0.980</p>
+                                        <p>Penalty: -4.0 points</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-success">PASSED</h2>
+                                        <p><strong>OpenAI RAG</strong></p>
+                                        <p>Grade: A</p>
+                                        <p>Status: Outperformed CustomGPT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI Vanilla</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="forensic_dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <a href="#top" class="btn btn-secondary">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 CustomGPT Forensic Analysis - Question simpleqa_0580 - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

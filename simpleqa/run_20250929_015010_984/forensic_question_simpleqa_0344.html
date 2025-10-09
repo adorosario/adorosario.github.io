@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Analysis - simpleqa_0344</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="forensic_dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-light">Question: simpleqa_0344</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-microscope text-danger"></i>
+                    Forensic Analysis: simpleqa_0344
+                </h1>
+                <p class="lead">Complete forensic investigation of penalty case simpleqa_0344</p>
+            </div>
+        </div>
+
+        <!-- Question Details -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card question-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Question Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Question ID:</strong> <code>simpleqa_0344</code></p>
+                                <p><strong>Domain:</strong> <span class="badge bg-secondary">History</span></p>
+                                <p><strong>Complexity:</strong> 1.375</p>
+                                <p><strong>Penalty Points:</strong> <span class="text-danger fw-bold">4.0</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>CustomGPT Confidence:</strong>
+                                    <span class="badge bg-warning">0.900</span>
+                                </p>
+                                <p><strong>CustomGPT Grade:</strong> <span class="badge bg-danger grade-badge">B</span></p>
+                                <p><strong>Penalty Type:</strong> Incorrect Answer</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Question:</h5>
+                            <div class="alert alert-info">
+                                On what day, month, and year (in A.D.) was the Rastriya Prajatantra Party, a constitutional monarchist and Hindu nationalist political party in Nepal, founded?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Comparison -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-balance-scale"></i> Answer Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>Answer</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td><strong>Target Answer</strong></td>
+                                        <td><em>29 May 1990</em></td>
+                                        <td><span class="badge bg-success">CORRECT</span></td>
+                                        <td><i class="fas fa-check text-success"></i> Gold Standard</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>CustomGPT</strong></td>
+                                        <td>The Rastriya Prajatantra Party was founded in 1990 A.D. My knowledge base does not provide the exact day and month of its founding.</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED (-4.0 points)</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td><strong>OpenAI RAG</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-success">A</span></td>
+                                        <td><i class="fas fa-check text-success"></i> PASSED</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI Vanilla</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Evaluation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gavel"></i> Judge Evaluation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h5>Judge Reasoning:</h5>
+                            <p>The gold target specifies the exact day, month, and year: 29 May 1990. The predicted answer only provides the year (1990 A.D.) and explicitly states it does not have the exact day and month. Since the question asks for the day, month, and year, the predicted answer is incomplete and thus does not contain all key information from the gold target.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5 Forensic Analysis -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> GPT-5 Deep Forensic Analysis</h3>
+                        <small class="text-muted">Advanced AI-powered failure analysis</small>
+                    </div>
+                    <div class="card-body analysis-section">
+                        <h3>1. FAILURE ROOT CAUSE</h3>
+<p>The failure in this case can be attributed to a <strong>knowledge base gap</strong>. The provider's answer indicates that the system was aware of the year (1990) but lacked the specific day and month (29 May). This suggests that the necessary information was either not present in the knowledge base or not retrieved effectively. Additionally, the explicit statement about the lack of exact day and month suggests a <strong>retrieval failure</strong>, where the system did not access documents containing the complete date. There is no indication of a reasoning error or factual error in training data, as the system correctly identified the year but failed to provide the complete date.</p>
+<h3>2. COMPETITIVE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>OpenAI RAG and Vanilla</strong>: Both failed to provide an answer, indicating potential gaps in their knowledge bases or retrieval mechanisms. This suggests that the specific information about the founding date of the Rastriya Prajatantra Party might not be readily available or indexed in their systems.</p>
+</li>
+<li>
+<p><strong>Knowledge Sources vs. Reasoning</strong>: The failure across providers highlights a common issue with knowledge sources rather than reasoning capabilities. The task required straightforward retrieval of factual information rather than complex reasoning, suggesting that the primary challenge lies in the availability and retrieval of specific historical data.</p>
+</li>
+</ul>
+<h3>3. TECHNICAL RECOMMENDATIONS</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Improvements</strong>: Enrich the knowledge base with more comprehensive historical data, particularly focusing on political events and organizations. This could involve integrating specialized databases or archives that contain detailed historical records.</p>
+</li>
+<li>
+<p><strong>Retrieval Algorithm Adjustments</strong>: Enhance the retrieval algorithms to better identify and prioritize documents containing specific dates and factual information. Implementing more sophisticated entity recognition and date extraction techniques could improve the retrieval of complete answers.</p>
+</li>
+<li>
+<p><strong>Confidence Calibration Fixes</strong>: Adjust the confidence calibration to better reflect the completeness of the answer. If the system is aware of missing information, the confidence score should be lower to indicate uncertainty.</p>
+</li>
+<li>
+<p><strong>Reasoning Chain Improvements</strong>: While reasoning was not the primary issue here, ensuring that the system can effectively combine partial information from multiple sources could help in constructing more complete answers.</p>
+</li>
+</ul>
+<h3>4. CONFIDENCE ANALYSIS</h3>
+<p>The provider's confidence level of 0.9 suggests a miscalibration, likely due to the system's partial retrieval of the correct year. The confidence might have been based on the presence of some correct information (the year), leading to an overestimation of the answer's completeness. This indicates a potential systematic overconfidence when partial information is retrieved, which could be addressed by refining the confidence scoring mechanism to account for the completeness of the answer.</p>
+<h3>5. PRIORITY ASSESSMENT</h3>
+<ul>
+<li><strong>Priority Level: Medium</strong>: This issue represents a domain-specific knowledge gap in historical data retrieval. While not a fundamental capability gap, improving the system's ability to retrieve complete factual information is important for enhancing its performance in similar queries. Addressing this will improve the system's reliability in providing comprehensive answers to historical questions.</li>
+</ul>
+<p>By implementing these recommendations, the engineering team can enhance the system's ability to retrieve and provide complete factual information, thereby improving its overall accuracy and reliability in answering historical questions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Analysis Summary -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Competitive Performance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>CustomGPT</strong></p>
+                                        <p>Confidence: 0.900</p>
+                                        <p>Penalty: -4.0 points</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-success">PASSED</h2>
+                                        <p><strong>OpenAI RAG</strong></p>
+                                        <p>Grade: A</p>
+                                        <p>Status: Outperformed CustomGPT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI Vanilla</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="forensic_dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <a href="#top" class="btn btn-secondary">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 CustomGPT Forensic Analysis - Question simpleqa_0344 - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Analysis - simpleqa_0143</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="forensic_dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-light">Question: simpleqa_0143</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-microscope text-danger"></i>
+                    Forensic Analysis: simpleqa_0143
+                </h1>
+                <p class="lead">Complete forensic investigation of penalty case simpleqa_0143</p>
+            </div>
+        </div>
+
+        <!-- Question Details -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card question-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Question Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Question ID:</strong> <code>simpleqa_0143</code></p>
+                                <p><strong>Domain:</strong> <span class="badge bg-secondary">Entertainment</span></p>
+                                <p><strong>Complexity:</strong> 1.365</p>
+                                <p><strong>Penalty Points:</strong> <span class="text-danger fw-bold">4.0</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>CustomGPT Confidence:</strong>
+                                    <span class="badge bg-warning">0.800</span>
+                                </p>
+                                <p><strong>CustomGPT Grade:</strong> <span class="badge bg-danger grade-badge">B</span></p>
+                                <p><strong>Penalty Type:</strong> Incorrect Answer</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Question:</h5>
+                            <div class="alert alert-info">
+                                What is the name of the organization to which the Society of Illustrators sold the rights to their Illustrator Show skits in 1925?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Comparison -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-balance-scale"></i> Answer Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>Answer</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td><strong>Target Answer</strong></td>
+                                        <td><em>Shubert Organization</em></td>
+                                        <td><span class="badge bg-success">CORRECT</span></td>
+                                        <td><i class="fas fa-check text-success"></i> Gold Standard</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>CustomGPT</strong></td>
+                                        <td>The Society of Illustrators sold the rights to their Illustrator Show skits in 1925 to the Shubert family, who used them for their Broadway productions of "Artists and Models."</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED (-4.0 points)</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <td><strong>OpenAI RAG</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-success">A</span></td>
+                                        <td><i class="fas fa-check text-success"></i> PASSED</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI Vanilla</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Evaluation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gavel"></i> Judge Evaluation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h5>Judge Reasoning:</h5>
+                            <p>The gold target specifies the organization as the Shubert Organization. The predicted answer states “the Shubert family,” which is not the same as naming the organization. While related, it does not match the specified organizational name and thus contradicts the exact required entity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5 Forensic Analysis -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> GPT-5 Deep Forensic Analysis</h3>
+                        <small class="text-muted">Advanced AI-powered failure analysis</small>
+                    </div>
+                    <div class="card-body analysis-section">
+                        <h3>1. FAILURE ROOT CAUSE</h3>
+<p>The failure in this case can be attributed to a <strong>reasoning error</strong> and a <strong>knowledge base gap</strong>:</p>
+<ul>
+<li>
+<p><strong>Reasoning Error</strong>: The provider's system incorrectly equated "the Shubert family" with the "Shubert Organization." While the Shubert family is indeed associated with the Shubert Organization, the question specifically asked for the name of the organization, not the family. This indicates a failure in understanding the specificity required by the question.</p>
+</li>
+<li>
+<p><strong>Knowledge Base Gap</strong>: The system might not have had access to precise information that clearly distinguishes between the Shubert family and the Shubert Organization. This could be due to incomplete or ambiguous data in the knowledge base.</p>
+</li>
+</ul>
+<h3>2. COMPETITIVE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>OpenAI RAG</strong>: The fact that OpenAI RAG did not provide an answer suggests a potential retrieval failure or a more conservative approach in confidence calibration, leading to no answer being generated when the system was unsure.</p>
+</li>
+<li>
+<p><strong>OpenAI Vanilla</strong>: Similarly, the lack of an answer indicates either a gap in the knowledge base or a retrieval failure. It might also reflect a more cautious approach in generating answers when the system lacks confidence.</p>
+</li>
+<li>
+<p><strong>Knowledge Sources vs. Reasoning</strong>: This scenario highlights the importance of precise knowledge sources. While reasoning capabilities are crucial, they rely heavily on the quality and specificity of the underlying data. The competitors' failure to provide an answer suggests that they might prioritize accuracy over attempting to answer with incomplete information.</p>
+</li>
+</ul>
+<h3>3. TECHNICAL RECOMMENDATIONS</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Improvements</strong>: Enrich the knowledge base with more detailed historical data about organizations and their affiliations. Ensure that distinctions between entities like families and organizations are clearly documented.</p>
+</li>
+<li>
+<p><strong>Retrieval Algorithm Adjustments</strong>: Enhance the retrieval system to prioritize documents that explicitly mention organizational names when such specificity is required by the question.</p>
+</li>
+<li>
+<p><strong>Confidence Calibration Fixes</strong>: Implement a more nuanced confidence calibration mechanism that can better assess when an answer is potentially misleading due to subtle distinctions in entity names.</p>
+</li>
+<li>
+<p><strong>Reasoning Chain Improvements</strong>: Develop reasoning capabilities that can better handle entity disambiguation, especially in cases where multiple related entities exist (e.g., families vs. organizations).</p>
+</li>
+</ul>
+<h3>4. CONFIDENCE ANALYSIS</h3>
+<p>The provider's confidence level of 0.8 suggests that the system found the retrieved information to be compelling, likely due to:</p>
+<ul>
+<li>
+<p><strong>Misleading Information</strong>: The retrieved documents might have contained references to both the Shubert family and the Shubert Organization, leading to confusion.</p>
+</li>
+<li>
+<p><strong>Logically Sound but Factually Incorrect Reasoning</strong>: The system might have logically deduced that the family and organization are interchangeable in this context, which is factually incorrect.</p>
+</li>
+<li>
+<p><strong>Systematic Overconfidence Pattern</strong>: If similar errors occur frequently, it may indicate a pattern of overconfidence when dealing with closely related entities.</p>
+</li>
+</ul>
+<h3>5. PRIORITY ASSESSMENT</h3>
+<ul>
+<li><strong>Medium Priority</strong>: This issue represents a domain-specific knowledge gap. While it is not a fundamental capability gap, it is important for accurately answering questions in the entertainment domain, particularly those involving historical and organizational details.</li>
+</ul>
+<h3>ACTIONABLE INSIGHTS</h3>
+<p>To improve the system, the engineering team should focus on enhancing the knowledge base with detailed historical and organizational data, refining retrieval algorithms to better handle entity specificity, and adjusting confidence calibration to prevent overconfidence in ambiguous situations. Additionally, improving reasoning capabilities to handle entity disambiguation will help in accurately answering similar questions in the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Analysis Summary -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Competitive Performance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>CustomGPT</strong></p>
+                                        <p>Confidence: 0.800</p>
+                                        <p>Penalty: -4.0 points</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-success">PASSED</h2>
+                                        <p><strong>OpenAI RAG</strong></p>
+                                        <p>Grade: A</p>
+                                        <p>Status: Outperformed CustomGPT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI Vanilla</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="forensic_dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <a href="#top" class="btn btn-secondary">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 CustomGPT Forensic Analysis - Question simpleqa_0143 - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

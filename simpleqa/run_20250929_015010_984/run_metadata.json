@@ -1,0 +1,157 @@
+{
+  "run_id": "20250929_015010_984",
+  "start_time": "2025-09-29T01:50:10.984927",
+  "providers": [
+    {
+      "name": "CustomGPT_RAG",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0,
+        "max_tokens": 1024,
+        "messages": [],
+        "system_message": null,
+        "additional_params": {
+          "top_p": 0.95,
+          "frequency_penalty": 0.0,
+          "presence_penalty": 0.0,
+          "stop": null,
+          "project_id": "81643",
+          "session_id": null,
+          "custom_persona": "You are a helpful assistant. Use the knowledge base to provide accurate, detailed answers.",
+          "prompt": null,
+          "stream": "false",
+          "external_id": null,
+          "lang": "en",
+          "response_source": "default",
+          "provider_type": "customgpt_rag",
+          "request_method": "multipart/form-data",
+          "form_data_fields": {
+            "response_source": "default",
+            "prompt": null,
+            "custom_persona": "You are a helpful assistant. Use the knowledge base to provide accurate, detailed answers."
+          }
+        }
+      },
+      "registered_at": "2025-09-29T01:50:15.832176"
+    },
+    {
+      "name": "OpenAI_Vanilla",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0,
+        "max_tokens": 1024,
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a helpful assistant. Answer questions based on your training knowledge."
+          }
+        ],
+        "system_message": "You are a helpful assistant. Answer questions based on your training knowledge.",
+        "provider_type": "vanilla_llm"
+      },
+      "registered_at": "2025-09-29T01:50:15.837004"
+    },
+    {
+      "name": "OpenAI_RAG",
+      "config": {
+        "model": "gpt-4.1",
+        "temperature": 0,
+        "max_tokens": 1024,
+        "vector_store_id": "vs_68d05fdd5d308191b6a58de03d7490c1",
+        "user_query": null,
+        "messages": [],
+        "system_message": "You are a helpful assistant. Use the knowledge base to provide accurate, detailed answers.",
+        "provider_type": "rag",
+        "tools": [
+          {
+            "type": "file_search",
+            "vector_store_ids": [
+              "vs_68d05fdd5d308191b6a58de03d7490c1"
+            ]
+          }
+        ]
+      },
+      "registered_at": "2025-09-29T01:50:15.841703"
+    }
+  ],
+  "total_questions": 1000,
+  "completed_questions": 1000,
+  "errors": [],
+  "end_time": "2025-09-29T02:37:27.033816",
+  "status": "completed",
+  "results": {
+    "total_providers": 3,
+    "successful_evaluations": 3,
+    "failed_evaluations": 0,
+    "samples_per_provider": 1000,
+    "confidence_threshold": "80% (Conservative)",
+    "expected_total_evaluations": 3000,
+    "actual_total_evaluations": 3000,
+    "evaluation_coverage_complete": true,
+    "results": [
+      {
+        "sampler_name": "OpenAI_Vanilla",
+        "duration": 1294.1505343914032,
+        "samples_evaluated": 1000,
+        "success": true,
+        "error": null,
+        "metrics": {
+          "volume_score": 0.407,
+          "quality_score": -1.957,
+          "attempted_rate": 0.998,
+          "accuracy_given_attempted": 0.40781563126252507,
+          "abstention_rate": 0.002,
+          "overconfidence_penalty": 591,
+          "threshold_value": 0.8,
+          "penalty_ratio": 4.0,
+          "n_correct": 407,
+          "n_incorrect": 591,
+          "n_not_attempted": 2,
+          "conversations": 1000
+        }
+      },
+      {
+        "sampler_name": "OpenAI_RAG",
+        "duration": 2284.1591567993164,
+        "samples_evaluated": 1000,
+        "success": true,
+        "error": null,
+        "metrics": {
+          "volume_score": 0.942,
+          "quality_score": 0.722,
+          "attempted_rate": 0.997,
+          "accuracy_given_attempted": 0.9448345035105316,
+          "abstention_rate": 0.003,
+          "overconfidence_penalty": 55,
+          "threshold_value": 0.8,
+          "penalty_ratio": 4.0,
+          "n_correct": 942,
+          "n_incorrect": 55,
+          "n_not_attempted": 3,
+          "conversations": 1000
+        }
+      },
+      {
+        "sampler_name": "CustomGPT_RAG",
+        "duration": 2820.83292388916,
+        "samples_evaluated": 1000,
+        "success": true,
+        "error": null,
+        "metrics": {
+          "volume_score": 0.926,
+          "quality_score": 0.75,
+          "attempted_rate": 0.97,
+          "accuracy_given_attempted": 0.954639175257732,
+          "abstention_rate": 0.03,
+          "overconfidence_penalty": 44,
+          "threshold_value": 0.8,
+          "penalty_ratio": 4.0,
+          "n_correct": 926,
+          "n_incorrect": 44,
+          "n_not_attempted": 30,
+          "conversations": 1000
+        }
+      }
+    ]
+  }
+}

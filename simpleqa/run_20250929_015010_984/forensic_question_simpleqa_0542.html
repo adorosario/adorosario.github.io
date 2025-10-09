@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensic Analysis - simpleqa_0542</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="forensic_dashboard.html">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-light">Question: simpleqa_0542</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-microscope text-danger"></i>
+                    Forensic Analysis: simpleqa_0542
+                </h1>
+                <p class="lead">Complete forensic investigation of penalty case simpleqa_0542</p>
+            </div>
+        </div>
+
+        <!-- Question Details -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card question-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-question-circle"></i> Question Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Question ID:</strong> <code>simpleqa_0542</code></p>
+                                <p><strong>Domain:</strong> <span class="badge bg-secondary">General</span></p>
+                                <p><strong>Complexity:</strong> 1.330</p>
+                                <p><strong>Penalty Points:</strong> <span class="text-danger fw-bold">4.0</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>CustomGPT Confidence:</strong>
+                                    <span class="badge bg-danger">0.960</span>
+                                </p>
+                                <p><strong>CustomGPT Grade:</strong> <span class="badge bg-danger grade-badge">B</span></p>
+                                <p><strong>Penalty Type:</strong> Incorrect Answer</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Question:</h5>
+                            <div class="alert alert-info">
+                                Who did Maulana Azad describe as the "Muslim Lord Haw-Haw" in India?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Comparison -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-balance-scale"></i> Answer Comparison</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Provider</th>
+                                        <th>Answer</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-success">
+                                        <td><strong>Target Answer</strong></td>
+                                        <td><em>Muhammad Ali Jinnah</em></td>
+                                        <td><span class="badge bg-success">CORRECT</span></td>
+                                        <td><i class="fas fa-check text-success"></i> Gold Standard</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>CustomGPT</strong></td>
+                                        <td>According to my knowledge base, it was Muhammad Ali Jinnah who described Maulana Azad as the "Muslim Lord Haw-Haw" and a "Congress Showboy," not the other way around. Jinnah used these phrases to criticize Azad for being too close to the Congress and for allegedly allowing Muslims to be culturally and politically dominated by the Hindu community. "Lord Haw-Haw" was a nickname for William Joyce, an American broadcaster who broadcasted Nazi propaganda to Britain from Germany in 1940. The phrases used by Jinnah against Azad became associated with Azad's name as President of the Indian National Congress.</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED (-4.0 points)</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI RAG</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <td><strong>OpenAI Vanilla</strong></td>
+                                        <td>Not available</td>
+                                        <td><span class="badge bg-danger">B</span></td>
+                                        <td><i class="fas fa-times text-danger"></i> FAILED</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Judge Evaluation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-gavel"></i> Judge Evaluation</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <h5>Judge Reasoning:</h5>
+                            <p>The gold target states that Maulana Azad described Muhammad Ali Jinnah as the 'Muslim Lord Haw-Haw'. The predicted answer claims the opposite: that Jinnah described Azad as the 'Muslim Lord Haw-Haw'. This directly contradicts the gold target, so it is incorrect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5 Forensic Analysis -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> GPT-5 Deep Forensic Analysis</h3>
+                        <small class="text-muted">Advanced AI-powered failure analysis</small>
+                    </div>
+                    <div class="card-body analysis-section">
+                        <p>To comprehensively analyze the failure of the RAG provider on the given question, we need to dissect the problem across several dimensions: root cause, competitive analysis, technical recommendations, confidence analysis, and priority assessment.</p>
+<h3>1. FAILURE ROOT CAUSE</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Gap</strong>: The provider's response indicates a potential gap in the knowledge base. The system incorrectly attributed the description of "Muslim Lord Haw-Haw" to Jinnah describing Azad, rather than the other way around. This suggests that the knowledge base might lack the specific historical context or details about this particular exchange.</p>
+</li>
+<li>
+<p><strong>Retrieval Failure</strong>: It's possible that the retrieval mechanism surfaced documents or snippets that contained information about Jinnah's criticisms of Azad, but not the specific context needed to answer the question correctly.</p>
+</li>
+<li>
+<p><strong>Reasoning Error</strong>: The system may have misinterpreted the retrieved information, leading to an incorrect association between the figures involved. This could be due to a lack of nuanced understanding of historical context.</p>
+</li>
+<li>
+<p><strong>Confidence Miscalibration</strong>: The high confidence score (0.96) despite the incorrect answer suggests a miscalibration issue, where the system is overly confident in its interpretation of the retrieved data.</p>
+</li>
+<li>
+<p><strong>Factual Error in Training Data</strong>: If the training data contained incorrect or misleading information about this historical event, it could have contributed to the error.</p>
+</li>
+<li>
+<p><strong>Complex Reasoning Requirement</strong>: The question requires understanding specific historical interactions, which might be beyond the current reasoning capabilities of the system if not explicitly covered in the training data.</p>
+</li>
+</ul>
+<h3>2. COMPETITIVE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>OpenAI RAG and Vanilla</strong>: The absence of a found answer from OpenAI RAG and Vanilla suggests that these systems either did not retrieve relevant information or chose not to provide an answer due to low confidence. This indicates a potential gap in the knowledge base or retrieval capabilities similar to the provider.</p>
+</li>
+<li>
+<p><strong>Knowledge Sources vs. Reasoning</strong>: The failure across systems highlights the importance of having comprehensive and accurate knowledge sources. It also underscores the need for robust reasoning capabilities to correctly interpret historical context.</p>
+</li>
+</ul>
+<h3>3. TECHNICAL RECOMMENDATIONS</h3>
+<ul>
+<li>
+<p><strong>Knowledge Base Improvements</strong>: Enrich the knowledge base with more detailed historical documents and context about key historical figures and their interactions. This could involve integrating specialized historical databases or texts.</p>
+</li>
+<li>
+<p><strong>Retrieval Algorithm Adjustments</strong>: Enhance the retrieval algorithm to prioritize documents that provide contextually relevant information, possibly by using more sophisticated semantic search techniques.</p>
+</li>
+<li>
+<p><strong>Confidence Calibration Fixes</strong>: Implement mechanisms to better calibrate confidence scores, especially in cases where the system retrieves conflicting or ambiguous information.</p>
+</li>
+<li>
+<p><strong>Training Data Corrections</strong>: Review and correct any potential factual inaccuracies in the training data related to historical events and figures.</p>
+</li>
+<li>
+<p><strong>Reasoning Chain Improvements</strong>: Develop more advanced reasoning capabilities that can handle complex historical narratives and distinguish between similar but distinct historical events or statements.</p>
+</li>
+</ul>
+<h3>4. CONFIDENCE ANALYSIS</h3>
+<ul>
+<li>
+<p><strong>Misleading Information</strong>: The retrieved information might have been misleading, leading the system to a false conclusion. This could be due to documents that emphasize Jinnah's criticisms of Azad without clarifying the specific context of the "Muslim Lord Haw-Haw" description.</p>
+</li>
+<li>
+<p><strong>Logical but Factually Incorrect Reasoning</strong>: The reasoning chain might have been logically sound based on the retrieved data, but factually incorrect due to missing or incorrect context.</p>
+</li>
+<li>
+<p><strong>Systematic Overconfidence</strong>: The high confidence score suggests a systematic issue where the system is overly confident in its interpretations, possibly due to insufficient differentiation between high and low-quality information.</p>
+</li>
+</ul>
+<h3>5. PRIORITY ASSESSMENT</h3>
+<ul>
+<li><strong>Medium Priority</strong>: This issue represents a domain-specific knowledge gap in historical context. While not a fundamental capability gap, it is important for accurately answering questions in the general domain, particularly those involving historical figures and events.</li>
+</ul>
+<h3>ACTIONABLE INSIGHTS</h3>
+<ol>
+<li><strong>Expand Historical Knowledge Base</strong>: Integrate more comprehensive historical data sources to fill knowledge gaps.</li>
+<li><strong>Enhance Retrieval and Reasoning</strong>: Improve retrieval algorithms and reasoning capabilities to better handle complex historical contexts.</li>
+<li><strong>Refine Confidence Calibration</strong>: Adjust confidence scoring mechanisms to better reflect the certainty of retrieved information.</li>
+<li><strong>Conduct Systematic Reviews</strong>: Regularly review and update training data to ensure accuracy and completeness, especially for historical content.</li>
+</ol>
+<p>By addressing these areas, the engineering team can improve the system's ability to accurately answer questions involving historical figures and events, reducing the likelihood of similar failures in the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Analysis Summary -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Competitive Performance Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>CustomGPT</strong></p>
+                                        <p>Confidence: 0.960</p>
+                                        <p>Penalty: -4.0 points</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI RAG</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="text-danger">FAILED</h2>
+                                        <p><strong>OpenAI Vanilla</strong></p>
+                                        <p>Grade: B</p>
+                                        <p>Status: Also failed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="forensic_dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <a href="#top" class="btn btn-secondary">
+                    <i class="fas fa-arrow-up"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 CustomGPT Forensic Analysis - Question simpleqa_0542 - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

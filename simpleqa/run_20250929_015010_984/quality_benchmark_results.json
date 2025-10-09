@@ -1,0 +1,109 @@
+{
+  "run_id": "20250929_015010_984",
+  "timestamp": "2025-09-29T02:37:33.379313",
+  "framework": "quality_benchmark",
+  "configuration": {
+    "samples_per_provider": 1000,
+    "max_workers": 8,
+    "debug_mode": false,
+    "output_directory": "results",
+    "confidence_threshold": {
+      "name": "Conservative",
+      "threshold": 0.8,
+      "penalty_ratio": 4.0,
+      "description": "Answer only if >80% confident (penalty ratio: 4.0)"
+    }
+  },
+  "audit_summary": {
+    "run_id": "20250929_015010_984",
+    "run_dir": "results/run_20250929_015010_984",
+    "providers": [
+      "CustomGPT_RAG",
+      "OpenAI_Vanilla",
+      "OpenAI_RAG"
+    ],
+    "progress": "1000/1000",
+    "logs": {
+      "provider_requests": "results/run_20250929_015010_984/provider_requests.jsonl",
+      "judge_evaluations": "results/run_20250929_015010_984/judge_evaluations.jsonl",
+      "metadata": "results/run_20250929_015010_984/run_metadata.json"
+    }
+  },
+  "results": [
+    {
+      "sampler_name": "OpenAI_Vanilla",
+      "duration": 1294.1505343914032,
+      "samples_evaluated": 1000,
+      "success": true,
+      "error": null,
+      "metrics": {
+        "volume_score": 0.407,
+        "quality_score": -1.957,
+        "attempted_rate": 0.998,
+        "accuracy_given_attempted": 0.40781563126252507,
+        "abstention_rate": 0.002,
+        "overconfidence_penalty": 591,
+        "threshold_value": 0.8,
+        "penalty_ratio": 4.0,
+        "n_correct": 407,
+        "n_incorrect": 591,
+        "n_not_attempted": 2,
+        "conversations": 1000
+      }
+    },
+    {
+      "sampler_name": "OpenAI_RAG",
+      "duration": 2284.1591567993164,
+      "samples_evaluated": 1000,
+      "success": true,
+      "error": null,
+      "metrics": {
+        "volume_score": 0.942,
+        "quality_score": 0.722,
+        "attempted_rate": 0.997,
+        "accuracy_given_attempted": 0.9448345035105316,
+        "abstention_rate": 0.003,
+        "overconfidence_penalty": 55,
+        "threshold_value": 0.8,
+        "penalty_ratio": 4.0,
+        "n_correct": 942,
+        "n_incorrect": 55,
+        "n_not_attempted": 3,
+        "conversations": 1000
+      }
+    },
+    {
+      "sampler_name": "CustomGPT_RAG",
+      "duration": 2820.83292388916,
+      "samples_evaluated": 1000,
+      "success": true,
+      "error": null,
+      "metrics": {
+        "volume_score": 0.926,
+        "quality_score": 0.75,
+        "attempted_rate": 0.97,
+        "accuracy_given_attempted": 0.954639175257732,
+        "abstention_rate": 0.03,
+        "overconfidence_penalty": 44,
+        "threshold_value": 0.8,
+        "penalty_ratio": 4.0,
+        "n_correct": 926,
+        "n_incorrect": 44,
+        "n_not_attempted": 30,
+        "conversations": 1000
+      }
+    }
+  ],
+  "evaluation_validation": {
+    "expected_total_evaluations": 3000,
+    "actual_total_evaluations": 3000,
+    "coverage_complete": true,
+    "missing_evaluations": 0,
+    "coverage_percentage": 100.0
+  },
+  "summary": {
+    "total_providers": 3,
+    "successful_evaluations": 3,
+    "failed_evaluations": 0
+  }
+}

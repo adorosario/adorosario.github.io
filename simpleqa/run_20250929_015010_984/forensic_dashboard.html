@@ -1,0 +1,1944 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUSTOMGPT Forensic Dashboard - Penalty Case Analysis</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        .question-card { border-left: 4px solid #dc3545; }
+        .metric-card { border-left: 4px solid #0d6efd; }
+        .analysis-section { background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; }
+        .grade-badge { font-size: 1.1em; }
+        .confidence-bar { height: 20px; border-radius: 10px; }
+        pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; font-size: 0.9em; }
+        .forensic-nav { background-color: #212529; }
+        .forensic-nav .nav-link { color: #adb5bd; }
+        .forensic-nav .nav-link:hover { color: #fff; }
+        .forensic-nav .nav-link.active { color: #fff; background-color: #495057; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg forensic-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">
+                <i class="fas fa-microscope"></i> CUSTOMGPT Forensic Analysis
+            </a>
+            <span class="navbar-text text-light">Run ID: run_20250929_015010_984</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                    CUSTOMGPT Penalty Case Forensic Analysis
+                </h1>
+                <p class="lead">Complete forensic investigation of all 44 penalty cases from evaluation run run_20250929_015010_984</p>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-danger">44</h2>
+                        <p class="card-text">Total Failures</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-danger">176.0</h2>
+                        <p class="card-text">Penalty Points</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-warning">0.942</h2>
+                        <p class="card-text">Avg Confidence</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card">
+                    <div class="card-body text-center">
+                        <h2 class="text-info">42/88</h2>
+                        <p class="card-text">Competitor Successes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Navigation to Individual Reports -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-file-medical"></i> Individual Question Forensic Reports</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0018</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.990<br>
+                                            <strong>Question:</strong> What is the surname of the individual who won the Marlow Award in 1983?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0018.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0016</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Arts<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> What are the dimensions in centimeters of the painting "Moving House" by Vasnets...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0016.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0022</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Sports<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> What is the last name of the player who got a yellow card in the 71st minute of ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0022.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0045</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Sports<br>
+                                            <strong>Confidence:</strong> 1.000<br>
+                                            <strong>Question:</strong> What was the song for the lip sync in Episode 5, Season 1 of RPDR?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0045.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0066</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Geography<br>
+                                            <strong>Confidence:</strong> 0.640<br>
+                                            <strong>Question:</strong> What was the complete name of the college in Delhi in which Ashraf Abbasi, the f...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0066.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0074</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Arts<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> In which round was Martina Trevisan eliminated from the 2020 French Open – Women...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0074.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0143</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Entertainment<br>
+                                            <strong>Confidence:</strong> 0.800<br>
+                                            <strong>Question:</strong> What is the name of the organization to which the Society of Illustrators sold t...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0143.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0147</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> What day, month, and year did New Zealand's Prime Minister, Christopher Luxon, m...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0147.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0154</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> Where was the first B.A.S.S. Bassmaster Tournament held?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0154.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0204</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Mathematics<br>
+                                            <strong>Confidence:</strong> 0.930<br>
+                                            <strong>Question:</strong> What was the first season in which the number of houseguests for the American ve...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0204.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0211</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.990<br>
+                                            <strong>Question:</strong> In which year were the two novel RNA viruses, distantly related to pestiviruses ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0211.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0226</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> Which lake in Kashmir is connected to the Khushal Sar and Gil Sar lakes via a ch...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0226.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0293</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> Who was named Pharmacist of the Year in 1978 by the California Pharmacists Assoc...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0293.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0310</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Geography<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> How old was Montreal native Charles Whitlaw in 1846 when he bought a grist mill ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0310.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0325</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.960<br>
+                                            <strong>Question:</strong> How many years was Tomb Raider: The Ride at Kings Island in operation before bei...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0325.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0324</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> Who was the Guy Medal in Gold awarded to in 1973?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0324.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0344</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> On what day, month, and year (in A.D.) was the Rastriya Prajatantra Party, a con...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0344.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0377</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Sports<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> In what position did Romania finish in the 2022 Rugby Europe Championship?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0377.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0378</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> Before The New 52, who was responsible for the death of Ratcatcher?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0378.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0398</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.880<br>
+                                            <strong>Question:</strong> On what day, month, and year did the Canadian Centre for Inquiry's Think Again! ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0398.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0399</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Arts<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> Who was the referee in the rugby match between Georgia and Portugal that was par...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0399.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0428</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Arts<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> In 2001, in which exhibition did Julie Mehretu participate at the Walker Art Cen...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0428.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0466</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.930<br>
+                                            <strong>Question:</strong> Who was the 7th Chief Minister of Tamil Nadu?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0466.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0474</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> In what year was the talking head of Madame Leota updated to float around the Sé...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0474.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0481</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Mathematics<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> What patch for the original Dark Souls made it so the Cracked Red Eye Orb is no ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0481.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0521</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> What were the day, month, and year of the Aseprite v1.3-beta1 release?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0521.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0532</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> What song's music video did Metal Injection rank at number 9 on the list of Top ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0532.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0542</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.960<br>
+                                            <strong>Question:</strong> Who did Maulana Azad describe as the "Muslim Lord Haw-Haw" in India?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0542.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0553</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> What were the month, day, and year when the construction of the UN headquarters ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0553.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0549</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Sports<br>
+                                            <strong>Confidence:</strong> 0.960<br>
+                                            <strong>Question:</strong> What did Daemon say to Vaemond before killing him in HOTD Season 1?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0549.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0556</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.960<br>
+                                            <strong>Question:</strong> As of which month and year did StatCounter estimate that Chrome has a 65% worldw...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0556.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0580</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> What is the name of the exhibition that Zanele Muholi introduced in 2009?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0580.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0626</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> Who was the 6th Prime Minister of Nepal?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0626.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0648</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Arts<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> What Serbian player played in the quarterfinals of the 2018 Madrid Open men's si...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0648.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0704</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> As of 2022, in which years did the Pakistani team not participate in the FIH Wor...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0704.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0717</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.940<br>
+                                            <strong>Question:</strong> How many DLCs were released for Elder Scrolls V: Skyrim as of December 5, 2012?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0717.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0768</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> Arts<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> What title did the Royal Academy of Arts appoint to Cornelia Parker in 2010?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0768.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0765</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.960<br>
+                                            <strong>Question:</strong> Which award and in which category did the animated series "Avatar: The Last Airb...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0765.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0814</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.970<br>
+                                            <strong>Question:</strong> In what year, month, and place was Rahat Kazmi, the Pakistani actor, born?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0814.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0827</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> What is the resolution of the Cat B15 Q in pixels?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0827.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0832</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.990<br>
+                                            <strong>Question:</strong> Who was the first Deputy Chief Minister of Jammu and Kashmir?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0832.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0947</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.980<br>
+                                            <strong>Question:</strong> How many A-frame structures does the 1961 Stebel House in Los Angeles comprise?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0947.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0945</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> General<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> What was the full three-word name of the crystal that the gnome who piloted the ...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0945.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <div class="card question-card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title">simpleqa_0974</h6>
+                                        <p class="card-text small">
+                                            <strong>Domain:</strong> History<br>
+                                            <strong>Confidence:</strong> 0.900<br>
+                                            <strong>Question:</strong> What day, month, and year did the actor Dylan Sprouse marry Barbara Palvin?...
+                                        </p>
+                                        <a href="forensic_question_simpleqa_0974.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-search"></i> View Forensic Report
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Available Reports -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-folder-open"></i> All Available Reports</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-file-alt"></i> Main Reports</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <a href="{provider}_engineering_report.html" class="text-decoration-none">
+                                            <i class="fas fa-tools"></i> Engineering Post-Mortem Report (HTML)
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="{provider}_engineering_report_{run_id}.md" class="text-decoration-none">
+                                            <i class="fab fa-markdown"></i> Engineering Post-Mortem Report (Markdown)
+                                        </a>
+                                    </li>
+                                    {quality_report_link}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-database"></i> Raw Data Files</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <a href="{provider}_penalty_analysis/gpt5_failure_analysis_{run_id}.json" class="text-decoration-none">
+                                            <i class="fas fa-brain"></i> GPT-5 Failure Analysis (JSON)
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="{provider}_penalty_analysis/{provider}_penalty_analysis_{run_id}.json" class="text-decoration-none">
+                                            <i class="fas fa-exclamation-circle"></i> Penalty Analysis Data (JSON)
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="{provider}_penalty_analysis/{provider}_penalty_cases_{run_id}.csv" class="text-decoration-none">
+                                            <i class="fas fa-table"></i> Penalty Cases (CSV)
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="run_metadata.json" class="text-decoration-none">
+                                            <i class="fas fa-info-circle"></i> Run Metadata (JSON)
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Domain Breakdown -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Failure Analysis by Domain</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">17</h4>
+                                        <p class="card-text">
+                                            <strong>History</strong><br>
+                                            38.6% of failures<br>
+                                            68.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">12</h4>
+                                        <p class="card-text">
+                                            <strong>General</strong><br>
+                                            27.3% of failures<br>
+                                            48.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">6</h4>
+                                        <p class="card-text">
+                                            <strong>Arts</strong><br>
+                                            13.6% of failures<br>
+                                            24.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">4</h4>
+                                        <p class="card-text">
+                                            <strong>Sports</strong><br>
+                                            9.1% of failures<br>
+                                            16.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">2</h4>
+                                        <p class="card-text">
+                                            <strong>Geography</strong><br>
+                                            4.5% of failures<br>
+                                            8.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">2</h4>
+                                        <p class="card-text">
+                                            <strong>Mathematics</strong><br>
+                                            4.5% of failures<br>
+                                            8.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">1</h4>
+                                        <p class="card-text">
+                                            <strong>Entertainment</strong><br>
+                                            2.3% of failures<br>
+                                            4.0 penalty points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Overview Table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-table"></i> All Penalty Cases Overview</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Question ID</th>
+                                    <th>Domain</th>
+                                    <th>Question</th>
+                                    <th>Confidence</th>
+                                    <th>OpenAI RAG</th>
+                                    <th>OpenAI Vanilla</th>
+                                    <th>Penalty Points</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td><code>simpleqa_0018</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>What is the surname of the individual who won the Marlow Awa...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.990</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0018.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0016</code></td>
+                                    <td><span class="badge bg-secondary">Arts</span></td>
+                                    <td>What are the dimensions in centimeters of the painting "Movi...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0016.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0022</code></td>
+                                    <td><span class="badge bg-secondary">Sports</span></td>
+                                    <td>What is the last name of the player who got a yellow card in...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0022.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0045</code></td>
+                                    <td><span class="badge bg-secondary">Sports</span></td>
+                                    <td>What was the song for the lip sync in Episode 5, Season 1 of...</td>
+                                    <td>
+                                        <span class="badge bg-danger">1.000</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0045.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0066</code></td>
+                                    <td><span class="badge bg-secondary">Geography</span></td>
+                                    <td>What was the complete name of the college in Delhi in which ...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.640</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0066.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0074</code></td>
+                                    <td><span class="badge bg-secondary">Arts</span></td>
+                                    <td>In which round was Martina Trevisan eliminated from the 2020...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0074.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0143</code></td>
+                                    <td><span class="badge bg-secondary">Entertainment</span></td>
+                                    <td>What is the name of the organization to which the Society of...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.800</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0143.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0147</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>What day, month, and year did New Zealand's Prime Minister, ...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0147.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0154</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Where was the first B.A.S.S. Bassmaster Tournament held?</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0154.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0204</code></td>
+                                    <td><span class="badge bg-secondary">Mathematics</span></td>
+                                    <td>What was the first season in which the number of houseguests...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.930</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0204.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0211</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>In which year were the two novel RNA viruses, distantly rela...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.990</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0211.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0226</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Which lake in Kashmir is connected to the Khushal Sar and Gi...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0226.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0293</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>Who was named Pharmacist of the Year in 1978 by the Californ...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0293.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0310</code></td>
+                                    <td><span class="badge bg-secondary">Geography</span></td>
+                                    <td>How old was Montreal native Charles Whitlaw in 1846 when he ...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0310.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0325</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>How many years was Tomb Raider: The Ride at Kings Island in ...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.960</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0325.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0324</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>Who was the Guy Medal in Gold awarded to in 1973?</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0324.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0344</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>On what day, month, and year (in A.D.) was the Rastriya Praj...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0344.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0377</code></td>
+                                    <td><span class="badge bg-secondary">Sports</span></td>
+                                    <td>In what position did Romania finish in the 2022 Rugby Europe...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0377.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0378</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Before The New 52, who was responsible for the death of Ratc...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0378.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0398</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>On what day, month, and year did the Canadian Centre for Inq...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.880</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0398.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0399</code></td>
+                                    <td><span class="badge bg-secondary">Arts</span></td>
+                                    <td>Who was the referee in the rugby match between Georgia and P...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0399.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0428</code></td>
+                                    <td><span class="badge bg-secondary">Arts</span></td>
+                                    <td>In 2001, in which exhibition did Julie Mehretu participate a...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0428.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0466</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Who was the 7th Chief Minister of Tamil Nadu?</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.930</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0466.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0474</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>In what year was the talking head of Madame Leota updated to...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0474.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0481</code></td>
+                                    <td><span class="badge bg-secondary">Mathematics</span></td>
+                                    <td>What patch for the original Dark Souls made it so the Cracke...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0481.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0521</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>What were the day, month, and year of the Aseprite v1.3-beta...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0521.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0532</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>What song's music video did Metal Injection rank at number 9...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0532.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0542</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Who did Maulana Azad describe as the "Muslim Lord Haw-Haw" i...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.960</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0542.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0553</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>What were the month, day, and year when the construction of ...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0553.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0549</code></td>
+                                    <td><span class="badge bg-secondary">Sports</span></td>
+                                    <td>What did Daemon say to Vaemond before killing him in HOTD Se...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.960</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0549.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0556</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>As of which month and year did StatCounter estimate that Chr...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.960</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0556.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0580</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>What is the name of the exhibition that Zanele Muholi introd...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0580.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0626</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Who was the 6th Prime Minister of Nepal?</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0626.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0648</code></td>
+                                    <td><span class="badge bg-secondary">Arts</span></td>
+                                    <td>What Serbian player played in the quarterfinals of the 2018 ...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0648.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0704</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>As of 2022, in which years did the Pakistani team not partic...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0704.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0717</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>How many DLCs were released for Elder Scrolls V: Skyrim as o...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.940</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0717.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0768</code></td>
+                                    <td><span class="badge bg-secondary">Arts</span></td>
+                                    <td>What title did the Royal Academy of Arts appoint to Cornelia...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0768.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0765</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>Which award and in which category did the animated series "A...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.960</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0765.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0814</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>In what year, month, and place was Rahat Kazmi, the Pakistan...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.970</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0814.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0827</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>What is the resolution of the Cat B15 Q in pixels?</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0827.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0832</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>Who was the first Deputy Chief Minister of Jammu and Kashmir...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.990</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0832.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0947</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>How many A-frame structures does the 1961 Stebel House in Lo...</td>
+                                    <td>
+                                        <span class="badge bg-danger">0.980</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0947.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0945</code></td>
+                                    <td><span class="badge bg-secondary">General</span></td>
+                                    <td>What was the full three-word name of the crystal that the gn...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">B</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0945.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>simpleqa_0974</code></td>
+                                    <td><span class="badge bg-secondary">History</span></td>
+                                    <td>What day, month, and year did the actor Dylan Sprouse marry ...</td>
+                                    <td>
+                                        <span class="badge bg-warning">0.900</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">A</span>
+                                    </td>
+                                    <td><span class="text-danger fw-bold">4.0</span></td>
+                                    <td>
+                                        <a href="forensic_question_simpleqa_0974.html" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-microscope"></i> Forensic
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p>&copy; 2025 {provider.upper()} Forensic Analysis - Generated on 2025-09-29 02:47:50</p>
+    </footer>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                pageLength: 25,
+                order: [[0, 'asc']],
+                responsive: true
+            });
+        });
+    </script>
+</body>
+</html>

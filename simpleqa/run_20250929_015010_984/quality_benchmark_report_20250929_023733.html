@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Provider Quality Benchmark - OpenAI's Penalty-Aware Scoring</title>
+
+    <!-- External Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="RAG Provider Quality Benchmark">
+    <meta property="og:description" content="Quality vs Volume strategy comparison using OpenAI's penalty-aware scoring methodology">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --quality-color: #8b5cf6;
+            --volume-color: #06b6d4;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            color: #1e293b;
+        }
+
+        .main-container {
+            background: white;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 10px 0;
+        }
+
+        .header .research-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header .research-link:hover {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .content-section {
+            padding: 30px;
+        }
+
+        .about-section {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .summary-card h3 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        .summary-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 5px 0;
+        }
+
+        .summary-card .description {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .table-section {
+            margin: 40px 0;
+        }
+
+        .table-section h2 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        /* DataTables Styling */
+        .dataTables_wrapper {
+            margin-top: 20px;
+        }
+
+        .table {
+            font-size: 0.9rem;
+        }
+
+        .table th {
+            background: var(--light-bg);
+            border-top: none;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .score-quality { color: var(--quality-color); font-weight: 600; }
+        .score-volume { color: var(--volume-color); font-weight: 600; }
+        .score-high { color: var(--success-color); font-weight: 600; }
+        .score-medium { color: var(--warning-color); font-weight: 600; }
+        .score-low { color: var(--danger-color); font-weight: 600; }
+
+        .provider-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .provider-customgpt { background: #dcfce7; color: #166534; }
+        .provider-openai-rag { background: #dbeafe; color: #1e40af; }
+        .provider-openai-vanilla { background: #fef3c7; color: #92400e; }
+
+        .strategy-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .strategy-quality { background: #f3e8ff; color: #7c3aed; }
+        .strategy-volume { background: #ecfdf5; color: #059669; }
+        .strategy-balanced { background: #fef3c7; color: #d97706; }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-container { margin: 10px; }
+            .content-section { padding: 20px; }
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 2rem; }
+            .summary-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1><i class="fas fa-trophy me-3"></i>RAG Provider Quality Benchmark</h1>
+            <div class="subtitle">Quality vs Volume Strategy Comparison</div>
+            <div class="subtitle">Using OpenAI's Penalty-Aware Scoring (80% Confidence Threshold)</div>
+            <a href="https://openai.com/index/why-language-models-hallucinate/" target="_blank" class="research-link">
+                <i class="fas fa-external-link-alt me-2"></i>Read the OpenAI Research Paper
+            </a>
+            <div style="margin-top: 15px; opacity: 0.8;">
+                <small>Generated: September 29, 2025 at 02:37:33</small>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <!-- About This Benchmark -->
+            <div class="about-section">
+                <h2><i class="fas fa-info-circle me-2"></i>About This Benchmark</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Research Foundation:</strong> Implements OpenAI's penalty-aware scoring from <a href="https://openai.com/index/why-language-models-hallucinate/" target="_blank">"Why Language Models Hallucinate"</a> (arXiv:2509.04664v1). Uses the recommended 80% confidence threshold to evaluate quality vs volume strategies.</p>
+                        <p><strong>Dataset:</strong> <a href="https://github.com/openai/simple-evals" target="_blank">SimpleQA benchmark</a> - factual knowledge and reasoning evaluation.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Methodology:</strong></p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-robot me-2"></i><strong>Providers:</strong> GPT-4.1 (standardized across all RAG systems)</li>
+                            <li><i class="fas fa-gavel me-2"></i><strong>Judge:</strong> GPT-5 Standard Tier (faster responses)</li>
+                            <li><i class="fas fa-shield-alt me-2"></i><strong>Threshold:</strong> 80% confidence (recommended in paper)</li>
+                            <li><i class="fas fa-calculator me-2"></i><strong>Penalty Ratio:</strong> 4.0 (wrong answers = -4 points)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Summary -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3><i class="fas fa-users me-2"></i>Providers Tested</h3>
+                    <div class="value">3</div>
+                    <div class="description">RAG providers evaluated</div>
+                </div>
+                <div class="summary-card">
+                    <h3><i class="fas fa-questions me-2"></i>Questions Per Provider</h3>
+                    <div class="value">1000</div>
+                    <div class="description">SimpleQA evaluation questions</div>
+                </div>
+                <div class="summary-card">
+                    <h3><i class="fas fa-tasks me-2"></i>Total Evaluations</h3>
+                    <div class="value">3000</div>
+                    <div class="description">Questions × Providers</div>
+                </div>
+                <div class="summary-card">
+                    <h3><i class="fas fa-check-circle me-2"></i>Coverage Status</h3>
+                    <div class="value" style="color: var(--success-color);">
+                        ✅ Complete
+                    </div>
+                    <div class="description">3000/3000 evaluations</div>
+                </div>
+            </div>
+
+            <!-- Key Research Insights -->
+            <div class="alert alert-info">
+                <h4><i class="fas fa-lightbulb me-2"></i>Quality vs Volume Strategy Comparison</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><strong><i class="fas fa-chart-line me-1" style="color: var(--volume-color);"></i>Volume Strategy (Traditional)</strong></h6>
+                        <ul>
+                            <li><strong>Scoring:</strong> Correct=+1, Wrong=0, IDK=0</li>
+                            <li><strong>Philosophy:</strong> Rewards guessing and penalizes uncertainty</li>
+                            <li><strong>Problem:</strong> Creates "I Don't Know" tax for conservative systems</li>
+                            <li><strong>Best for:</strong> High-volume, low-stakes applications</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong><i class="fas fa-shield-alt me-1" style="color: var(--quality-color);"></i>Quality Strategy (Penalty-Aware)</strong></h6>
+                        <ul>
+                            <li><strong>Scoring:</strong> Correct=+1, Wrong=-4, IDK=0</li>
+                            <li><strong>Philosophy:</strong> Rewards appropriate uncertainty and calibration</li>
+                            <li><strong>Advantage:</strong> Penalizes overconfident incorrect responses</li>
+                            <li><strong>Best for:</strong> High-stakes applications where accuracy matters</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Provider Leaderboard -->
+            <div class="table-section">
+                <h2><i class="fas fa-trophy me-2"></i>Provider Performance Leaderboard</h2>
+                <div class="table-responsive">
+                    <table id="providerTable" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Provider</th>
+                                <th>Total Examples</th>
+                                <th>API Errors</th>
+                                <th><i class="fas fa-shield-alt me-1" style="color: var(--quality-color);"></i>Quality Score</th>
+                                <th><i class="fas fa-chart-line me-1" style="color: var(--volume-color);"></i>Volume Score</th>
+                                <th>Attempted Rate</th>
+                                <th>Success Rate</th>
+                                <th>Abstention Rate</th>
+                                <th>Strategy Assessment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#1</strong></td>
+                                <td><span class="provider-badge provider-customgpt-rag">CustomGPT_RAG</span></td>
+                                <td>1000</td>
+                                <td><span class="score-high">0 (0.0%)</span></td>
+                                <td><span class="score-quality score-high">0.750</span></td>
+                                <td><span class="score-volume score-high">0.926</span></td>
+                                <td>97.0%</td>
+                                <td>95.5%</td>
+                                <td>3.0%</td>
+                                <td><span class="strategy-badge strategy-volume">Volume-Focused</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#2</strong></td>
+                                <td><span class="provider-badge provider-openai-rag">OpenAI_RAG</span></td>
+                                <td>1000</td>
+                                <td><span class="score-high">0 (0.0%)</span></td>
+                                <td><span class="score-quality score-high">0.722</span></td>
+                                <td><span class="score-volume score-high">0.942</span></td>
+                                <td>99.7%</td>
+                                <td>94.5%</td>
+                                <td>0.3%</td>
+                                <td><span class="strategy-badge strategy-volume">Volume-Focused</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#3</strong></td>
+                                <td><span class="provider-badge provider-openai-vanilla">OpenAI_Vanilla</span></td>
+                                <td>1000</td>
+                                <td><span class="score-high">0 (0.0%)</span></td>
+                                <td><span class="score-quality score-low">-1.957</span></td>
+                                <td><span class="score-volume score-medium">0.407</span></td>
+                                <td>99.8%</td>
+                                <td>40.8%</td>
+                                <td>0.2%</td>
+                                <td><span class="strategy-badge strategy-volume">Volume-Focused</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Methodology Notes -->
+            <div class="alert alert-secondary">
+                <h6><i class="fas fa-info-circle me-2"></i>Methodology Notes</h6>
+                <p><strong>80% Confidence Threshold:</strong> Based on OpenAI's research recommendation, judges only accept responses where they are >80% confident in the evaluation. This conservative threshold filters out borderline decisions that could distort results.</p>
+                <p><strong>Penalty Ratio 4.0:</strong> Wrong answers receive -4 points, making incorrect responses costly relative to abstaining (0 points). This encourages appropriate uncertainty rather than overconfident guessing.</p>
+                <p><strong>API Error Handling:</strong> Technical failures (timeouts, rate limits, network errors) are tracked separately and excluded from scoring calculations. This prevents technical issues from being confused with intentional abstentions.</p>
+                <p><strong>Intelligent Abstention Detection:</strong> Uses GPT-5-nano classifier with few-shot examples to distinguish intentional abstentions ("I don't know") from uncertain attempts ("I think it might be X"). Replaces brittle string matching with robust intent classification.</p>
+                <p><strong>Post-hoc Evaluation:</strong> Providers give natural responses without threshold contamination. The confidence framework is applied during evaluation, not during response generation.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactive Features -->
+    <script>
+        // Initialize DataTables for provider leaderboard
+        $(document).ready(function() {
+            $('#providerTable').DataTable({
+                responsive: true,
+                pageLength: 25,
+                order: [[2, 'desc']], // Sort by Quality Score descending
+                columnDefs: [
+                    { targets: [2, 3], type: 'num' },
+                    { targets: [4, 5, 6], render: $.fn.dataTable.render.percentBar('round', '#dbeafe', '#1e40af', '#f1f5f9', '#374151', 0, 'right') }
+                ],
+                language: {
+                    search: "Search providers:",
+                    lengthMenu: "Show _MENU_ entries"
+                }
+            });
+        });
+    </script>
+</body>
+</html>
