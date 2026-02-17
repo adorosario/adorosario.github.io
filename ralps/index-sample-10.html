@@ -65,7 +65,7 @@
       <table class="w-full border-collapse text-sm">
         <thead>
           <tr>
-            <th colspan="10" class="px-3 py-1.5 bg-gray-200 border-b text-left text-[10px] font-bold text-gray-500 uppercase tracking-widest">Input (CRM)</th>
+            <th colspan="9" class="px-3 py-1.5 bg-gray-200 border-b text-left text-[10px] font-bold text-gray-500 uppercase tracking-widest">Input (CRM)</th>
             <th colspan="8" class="px-3 py-1.5 bg-purple-200 border-b border-l-2 border-l-purple-300 text-left text-[10px] font-bold text-purple-700 uppercase tracking-widest">Output (LLM)</th>
           </tr>
           <tr>
@@ -78,7 +78,6 @@
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Industry</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-center text-xs font-semibold text-gray-600 uppercase tracking-wide">Emp</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Country</th>
-            <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">About Us</th>
             <th class="px-3 py-2 bg-purple-100 border-b border-l-2 border-l-purple-300 text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Industry (AI)</th>
             <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Headline</th>
             <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Subheadline</th>
@@ -89,9 +88,9 @@
             <th class="px-3 py-2 bg-purple-100 border-b text-right text-xs font-semibold text-purple-700 uppercase tracking-wide">Cost</th>
           </tr>
         </thead>
-        <tbody>
 
-        <tr class="bg-white hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        <tbody x-data="{ open: false }">
+        <tr class="bg-white hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="auren-personas-seleccion-executive-search.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Auren Personas - Selección &amp; E&hellip;</a>
@@ -100,7 +99,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://auren.es" target="_blank" class="text-blue-600 hover:underline">auren.es</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">yosu.diazdecerio@auren.es</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">yosu.diazdecerio@auren.es</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Yosu Díaz de Cerio R&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -109,7 +108,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">HUMAN_RESOURCES</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">1000</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Human Resources</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">Auren Personas: AI Support Tailored for Execu&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut candidate research and role‑fit analysis from hours&hellip;</td>
@@ -121,7 +119,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -136,9 +134,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>HUMAN_RESOURCES</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>1000</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">3/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">3/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -173,7 +170,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="ebs-executive-benefit-solutions.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">EBS - Executive Benefit Soluti&hellip;</a>
@@ -182,7 +181,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">cwyrtzen@ebs-boston.com</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">cwyrtzen@ebs-boston.com</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Chris Wyrtzen</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Managing Director</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -191,7 +190,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">--</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United States</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Executive Benefits Consul&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for EBS – Executive Benefit Solution&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your consultants instant, accurate answers on comp&hellip;</td>
@@ -203,7 +201,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -218,9 +216,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United States</dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">1/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">1/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -253,7 +250,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-white hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-white hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="elliott-investment-management-lp.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Elliott Investment Management &hellip;</a>
@@ -262,7 +261,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">lhayslett@elliottmgmt.com</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">lhayslett@elliottmgmt.com</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Logan Hayslett</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -271,7 +270,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">--</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Financial Services</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Elliott Investment Management’s &hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Turn dense filings, portfolio documents, and internal m&hellip;</td>
@@ -283,7 +281,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -298,9 +296,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">0/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">0/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -332,7 +329,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="hr-block-canada.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">H&amp;R Block Canada</a>
@@ -341,7 +340,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://hrblock.ca" target="_blank" class="text-blue-600 hover:underline">hrblock.ca</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">stephen.bennett@hrblock.ca</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">stephen.bennett@hrblock.ca</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">2481233 Ontario Limi&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Franchise General Ma&hellip;</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -350,7 +349,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">ACCOUNTING</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">5000</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">Canada</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Accounting</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for H&amp;R Block Canada’s Nationwide Ta&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut tax‑related search and policy lookup time for your &hellip;</td>
@@ -362,7 +360,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -377,9 +375,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>ACCOUNTING</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>5000</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>Canada</dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">4/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -415,7 +412,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-white hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-white hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="ignitionsystemsio.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">IgnitionSystems.io</a>
@@ -424,7 +423,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://ignitionsystems.io" target="_blank" class="text-blue-600 hover:underline">ignitionsystems.io</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">anthony@ignitionsystems.io</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">anthony@ignitionsystems.io</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Anthony Cullen</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Founder &amp; CEO</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -433,7 +432,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">PROFESSIONAL_TRAINING_COA&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">50</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United States</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Professional Training and&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">IgnitionSystems.io, Meet the AI Engine That F&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut curriculum search and client support time from hour&hellip;</td>
@@ -445,7 +443,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -460,9 +458,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>PROFESSIONAL_TRAINING_COACHING</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>50</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United States</dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">4/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -498,7 +495,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="lakepointe-church.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Lakepointe Church</a>
@@ -507,7 +506,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://lakepointe.church" target="_blank" class="text-blue-600 hover:underline">lakepointe.church</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">cody.kiker@lakepointe.church</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">cody.kiker@lakepointe.church</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Cody KIker</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Director Of Analytic&hellip;</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -516,7 +515,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">CONSUMER_SERVICES</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">1000</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Religious and Nonprofit O&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Lakepointe Church’s 1,000‑Member&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your staff and volunteers instant answers to churc&hellip;</td>
@@ -528,7 +526,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -543,9 +541,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>CONSUMER_SERVICES</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>1000</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">3/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">3/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -580,7 +577,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-white hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-white hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="mobilenik.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Mobilenik</a>
@@ -589,7 +588,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://mobilenik.com" target="_blank" class="text-blue-600 hover:underline">mobilenik.com</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">sebastian@mobilenik.com</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">sebastian@mobilenik.com</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Sofia Sebastian</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Administración y RRH&hellip;</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -598,7 +597,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">COMPUTER_SOFTWARE</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">50</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">Argentina</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Computer Software</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI That Accelerates Mobilenik’s Software Team</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut your engineers’ search and support time from hours &hellip;</td>
@@ -610,7 +608,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -625,9 +623,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>COMPUTER_SOFTWARE</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>50</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>Argentina</dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">4/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -663,7 +660,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="msh-healthcare.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">MSH Healthcare</a>
@@ -672,7 +671,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://mshhealthcare.co.uk" target="_blank" class="text-blue-600 hover:underline">mshhealthcare.co.uk</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">paul.smeaton@mshcare.co.uk</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">paul.smeaton@mshcare.co.uk</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Paul Smeaton</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Managing Director</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -681,7 +680,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">HOSPITAL_HEALTH_CARE</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">50</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United Kingdom</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Hospital Health Care</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">MSH Healthcare’s AI Assistant for Faster, Saf&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your staff instant, accurate answers from your cli&hellip;</td>
@@ -693,7 +691,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -708,9 +706,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>HOSPITAL_HEALTH_CARE</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>50</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United Kingdom</dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">4/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -746,7 +743,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-white hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-white hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="osmind.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Osmind</a>
@@ -755,7 +754,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://osmind.org" target="_blank" class="text-blue-600 hover:underline">osmind.org</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">jamoberges@gmail.com</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">jamoberges@gmail.com</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">James Berges</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Helping clinicians c&hellip;</td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -764,7 +763,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">HOSPITAL_HEALTH_CARE</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">250</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United States</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Hospital Health Care</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Osmind’s Clinical and Operationa&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your clinicians and operations team instant answer&hellip;</td>
@@ -776,7 +774,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -791,9 +789,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>HOSPITAL_HEALTH_CARE</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>250</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United States</dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">4/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -829,7 +826,9 @@
             </div>
           </td>
         </tr>
-        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors" x-data="{ open: false }">
+        </tbody>
+        <tbody x-data="{ open: false }">
+        <tr class="bg-gray-50 hover:bg-purple-50 transition-colors">
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="rebelics-internet-computer-services.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Rebelics Internet &amp; Computer S&hellip;</a>
@@ -838,7 +837,7 @@
                     x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
           <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://rebelics.nl" target="_blank" class="text-blue-600 hover:underline">rebelics.nl</a></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[120px]">info@rebelics.nl</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[140px]">info@rebelics.nl</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Nick Dominic Haenen</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs min-w-[90px]">
@@ -847,7 +846,6 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">COMPUTER_SOFTWARE</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[50px]">10</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Computer Software</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">Smarter AI Support and Automation for Rebelic&hellip;</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut project research, document lookups, and client-resp&hellip;</td>
@@ -859,7 +857,7 @@
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="18" class="px-6 py-4 border-b">
+          <td colspan="17" class="px-6 py-4 border-b">
             <div class="grid grid-cols-3 gap-6 text-xs">
               <!-- Column 1: Full CRM Record -->
               <div>
@@ -874,9 +872,8 @@
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>COMPUTER_SOFTWARE</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>10</dd></div>
                   <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
-                <div class="mt-3 text-[10px] text-gray-400">3/5 enrichment fields populated</div>
+                <div class="mt-3 text-[10px] text-gray-400">3/4 enrichment fields populated</div>
               </div>
 
               <!-- Column 2: What was sent to LLM -->
@@ -937,7 +934,7 @@
 
     <!-- Footer -->
     <div class="mt-4 text-center text-xs text-gray-400">
-      Generated 2026-02-17 16:10 UTC
+      Generated 2026-02-17 16:35 UTC
       <br>
       <a href="index.html" class="text-purple-500 hover:underline">View all landing pages</a>
     </div>
