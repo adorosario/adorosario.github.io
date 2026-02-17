@@ -20,17 +20,20 @@
     <!-- Header -->
     <div class="mb-6">
       <div class="flex items-center gap-3 mb-2">
-        <img src="https://customgpt.ai/wp-content/uploads/2024/02/CustomGPT_Logo_Wh-bg.webp" alt="CustomGPT.ai" class="h-8">
-        <h1 class="text-2xl font-bold text-gray-900">ABM Landing Pages - Sample 10</h1>
+        <img src="https://customgpt.ai/wp-content/uploads/2023/11/CustomGPT-logo.svg" alt="CustomGPT.ai" class="h-8">
+        <h1 class="text-2xl font-bold text-gray-900">ABM Landing Pages &mdash; Sample 10</h1>
       </div>
-      <p class="text-gray-500 text-sm">Input CRM attributes (from BigQuery/HubSpot) and LLM-generated output for each personalized landing page. Click [+] to expand details.</p>
+      <p class="text-gray-500 text-sm">
+        Full CRM input record (BigQuery/HubSpot) &rarr; PII-stripped prompt &rarr; LLM output for each personalized landing page.
+        <br>Click <span class="font-mono text-purple-600">[+]</span> to expand the full input &rarr; prompt &rarr; output for any row.
+      </p>
     </div>
 
     <!-- Summary Cards -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
       <div class="bg-white rounded-lg shadow-sm border p-4">
         <div class="text-2xl font-bold text-purple-700">10</div>
-        <div class="text-xs text-gray-500 uppercase tracking-wide">Pages Generated</div>
+        <div class="text-xs text-gray-500 uppercase tracking-wide">Pages</div>
       </div>
       <div class="bg-white rounded-lg shadow-sm border p-4">
         <div class="text-2xl font-bold text-gray-800">16,225</div>
@@ -44,12 +47,17 @@
         <div class="text-2xl font-bold text-gray-800">$0.0077</div>
         <div class="text-xs text-gray-500 uppercase tracking-wide">Avg Cost/Page</div>
       </div>
+      <div class="bg-white rounded-lg shadow-sm border p-4">
+        <div class="text-2xl font-bold text-gray-800">gpt-5.1</div>
+        <div class="text-xs text-gray-500 uppercase tracking-wide">Model</div>
+      </div>
     </div>
 
     <!-- Legend -->
-    <div class="flex gap-4 mb-4 text-xs text-gray-500">
-      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-gray-200 border inline-block"></span> Input (CRM)</span>
-      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-purple-100 border border-purple-200 inline-block"></span> Output (LLM)</span>
+    <div class="flex flex-wrap gap-4 mb-4 text-xs text-gray-500">
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-gray-200 border inline-block"></span> Input (CRM record)</span>
+      <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-purple-100 border border-purple-200 inline-block"></span> Output (LLM-generated)</span>
+      <span class="flex items-center gap-1"><span class="bg-red-100 text-red-700 px-1.5 py-0.5 rounded-full text-[10px]">Churned</span> = former customer</span>
     </div>
 
     <!-- Table -->
@@ -57,21 +65,26 @@
       <table class="w-full border-collapse text-sm">
         <thead>
           <tr>
+            <th colspan="10" class="px-3 py-1.5 bg-gray-200 border-b text-left text-[10px] font-bold text-gray-500 uppercase tracking-widest">Input (CRM)</th>
+            <th colspan="8" class="px-3 py-1.5 bg-purple-200 border-b border-l-2 border-l-purple-300 text-left text-[10px] font-bold text-purple-700 uppercase tracking-widest">Output (LLM)</th>
+          </tr>
+          <tr>
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide sticky left-0 z-20">Company</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Domain</th>
+            <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Email</th>
+            <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Contact</th>
+            <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Title</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Status</th>
-            <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Industry (raw)</th>
+            <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Industry</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-center text-xs font-semibold text-gray-600 uppercase tracking-wide">Emp</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">Country</th>
             <th class="px-3 py-2 bg-gray-100 border-b text-left text-xs font-semibold text-gray-600 uppercase tracking-wide">About Us</th>
             <th class="px-3 py-2 bg-purple-100 border-b border-l-2 border-l-purple-300 text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Industry (AI)</th>
             <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Headline</th>
             <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Subheadline</th>
-            <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Pain Points</th>
-            <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Use Cases</th>
-            <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">Features</th>
-            <th class="px-3 py-2 bg-purple-100 border-b text-left text-xs font-semibold text-purple-700 uppercase tracking-wide">CTA Headline</th>
-            <th class="px-3 py-2 bg-purple-100 border-b text-center text-xs font-semibold text-purple-700 uppercase tracking-wide">Model</th>
+            <th class="px-3 py-2 bg-purple-100 border-b text-center text-xs font-semibold text-purple-700 uppercase tracking-wide">Pains</th>
+            <th class="px-3 py-2 bg-purple-100 border-b text-center text-xs font-semibold text-purple-700 uppercase tracking-wide">UCs</th>
+            <th class="px-3 py-2 bg-purple-100 border-b text-center text-xs font-semibold text-purple-700 uppercase tracking-wide">Feats</th>
             <th class="px-3 py-2 bg-purple-100 border-b text-right text-xs font-semibold text-purple-700 uppercase tracking-wide">Tokens</th>
             <th class="px-3 py-2 bg-purple-100 border-b text-right text-xs font-semibold text-purple-700 uppercase tracking-wide">Cost</th>
           </tr>
@@ -82,10 +95,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="auren-personas-seleccion-executive-search.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Auren Personas - Selección &amp; E&hellip;</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">auren.es</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://auren.es" target="_blank" class="text-blue-600 hover:underline">auren.es</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">yosu.diazdecerio@auren.es</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Yosu Díaz de Cerio R&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]"><span class="text-gray-400 italic">--</span></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">HUMAN_RESOURCES</td>
@@ -93,46 +111,63 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Human Resources</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">Auren Personas: AI Support Tailored for Executive &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut candidate research and role‑fit analysis from hours to m&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Slow, manual candidate intelligence; Inconsistent knowledge &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant access to past search methodologies; AI support for &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG‑powered accuracy; Support for all your content sources; &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How Your Search Teams Can Work Hours Faster Th&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">Auren Personas: AI Support Tailored for Execu&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut candidate research and role‑fit analysis from hours&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,647</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0078</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>Auren Personas - Selección &amp; Executive Search</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>auren.es</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>HUMAN_RESOURCES</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>1000</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">Auren Personas - Selección &amp; Executive Search</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://auren.es" target="_blank" class="text-blue-600 hover:underline">auren.es</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>yosu.diazdecerio@auren.es</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Yosu Díaz de Cerio Ramsden</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>HUMAN_RESOURCES</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>1000</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">3/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Human Resources</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">Auren Personas: AI Support Tailored for Executive Search Teams</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Cut candidate research and role‑fit analysis from hours to minutes with an AI assistant grounded entirely in your firm’s own processes and methodologies.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Slow, manual candidate intelligence</li><li>Inconsistent knowledge across teams</li><li>Clients expect faster, clearer answers</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant access to past search methodologies</li><li>AI support for candidate briefing preparation</li><li>Faster internal coordination across 1,000 employees</li><li>Client‑facing Q&amp;A via secure AI</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG‑powered accuracy</li><li>Support for all your content sources</li><li>Enterprise‑grade privacy and compliance</li><li>Deploy anywhere your teams work</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How Your Search Teams Can Work Hours Faster This Week</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free, no‑commitment 15‑minute demo to experience your own data powering an AI assistant built for executive search.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,647</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0078</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;Auren Personas - Selecci\u00f3n &amp; Executive Search&quot;,
+  &quot;domain&quot;: &quot;auren.es&quot;,
+  &quot;industry&quot;: &quot;Human Resources&quot;,
+  &quot;employee_count&quot;: &quot;1000&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 888 tok |
+                  Completion: 759 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Human Resources</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">Auren Personas: AI Support Tailored for Executive Search Teams</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Cut candidate research and role‑fit analysis from hours to minutes with an AI assistant grounded entirely in your firm’s own processes and methodologies.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Slow, manual candidate intelligence: <span class='text-gray-400'>Consultants spend hours collecting insights from scattered internal documents, r&hellip;</span></li><li>Inconsistent knowledge across teams: <span class='text-gray-400'>With multiple offices and practice areas, critical expertise is locked in indivi&hellip;</span></li><li>Clients expect faster, clearer answers: <span class='text-gray-400'>Partners are pressured to respond instantly to client questions about profiles, &hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant access to past search methodologies</li><li>AI support for candidate briefing preparation</li><li>Faster internal coordination across 1,000 employees</li><li>Client‑facing Q&amp;A via secure AI</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG‑powered accuracy</li><li>Support for all your content sources</li><li>Enterprise‑grade privacy and compliance</li><li>Deploy anywhere your teams work</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How Your Search Teams Can Work Hours Faster This Week</dd><dd class="text-gray-600">Book a free, no‑commitment 15‑minute demo to experience your own data powering an AI assistant built for executive search.</dd></div>
                 </dl>
               </div>
             </div>
@@ -142,10 +177,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="ebs-executive-benefit-solutions.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">EBS - Executive Benefit Soluti&hellip;</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">cwyrtzen@ebs-boston.com</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Chris Wyrtzen</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Managing Director</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
@@ -153,46 +193,61 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United States</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Executive Benefits Consul&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for EBS – Executive Benefit Solutions</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your consultants instant, accurate answers on complex e&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Manual research slows consultant output; Information scatter&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant answers on plan design questions; AI-assisted modeli&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG-based answers grounded in your documents; Support for ov&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How EBS Can Reduce Plan Research Time by 80% T&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for EBS – Executive Benefit Solution&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your consultants instant, accurate answers on comp&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,625</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0078</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>EBS - Executive Benefit Solutions</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd>United States</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">EBS - Executive Benefit Solutions</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><span class="text-gray-400 italic">--</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>cwyrtzen@ebs-boston.com</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Chris Wyrtzen</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Managing Director</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United States</dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">1/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Executive Benefits Consulting</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">AI Built for EBS – Executive Benefit Solutions</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Give your consultants instant, accurate answers on complex executive benefit plans—cutting research and document searches from hours to seconds.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Manual research slows consultant output</li><li>Information scattered across files and formats</li><li>Compliance precision requires flawless consistency</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant answers on plan design questions</li><li>AI-assisted modeling of benefit plan variations</li><li>On-demand expertise for compensation terminology</li><li>Client-ready summaries generated instantly</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG-based answers grounded in your documents</li><li>Support for over 1,400 file types</li><li>Deployment across your internal workflow</li><li>Enterprise-grade security and privacy</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How EBS Can Reduce Plan Research Time by 80% This Month</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free 15‑minute demo — no commitment, just a clear look at what’s possible for your team.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,625</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0078</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;EBS - Executive Benefit Solutions&quot;,
+  &quot;country&quot;: &quot;United States&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 873 tok |
+                  Completion: 752 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Executive Benefits Consulting</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">AI Built for EBS – Executive Benefit Solutions</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Give your consultants instant, accurate answers on complex executive benefit plans—cutting research and document searches from hours to seconds.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Manual research slows consultant output: <span class='text-gray-400'>EBS advisors spend hours digging through plan documents, contracts, and complian&hellip;</span></li><li>Information scattered across files and formats: <span class='text-gray-400'>Executive benefit plans rely on PDFs, spreadsheets, legal documents, and histori&hellip;</span></li><li>Compliance precision requires flawless consistency: <span class='text-gray-400'>Benefit consulting demands accuracy—one outdated clause or missed nuance can sta&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant answers on plan design questions</li><li>AI-assisted modeling of benefit plan variations</li><li>On-demand expertise for compensation terminology</li><li>Client-ready summaries generated instantly</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG-based answers grounded in your documents</li><li>Support for over 1,400 file types</li><li>Deployment across your internal workflow</li><li>Enterprise-grade security and privacy</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How EBS Can Reduce Plan Research Time by 80% This Month</dd><dd class="text-gray-600">Book a free 15‑minute demo — no commitment, just a clear look at what’s possible for your team.</dd></div>
                 </dl>
               </div>
             </div>
@@ -202,10 +257,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="elliott-investment-management-lp.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Elliott Investment Management &hellip;</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">lhayslett@elliottmgmt.com</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Logan Hayslett</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]"><span class="text-gray-400 italic">--</span></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]"><span class="text-gray-400 italic">--</span></td>
@@ -213,46 +273,60 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Financial Services</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Elliott Investment Management’s Resea&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Turn dense filings, portfolio documents, and internal memos &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Analysts lose hours searching documents; Critical insights b&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant answers from filings and portfolio documents; AI ass&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG-powered answers grounded in your private documents; Ente&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See how Elliott’s teams can reclaim hours of resea&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Elliott Investment Management’s &hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Turn dense filings, portfolio documents, and internal m&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,623</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0078</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>Elliott Investment Management L.P.</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">Elliott Investment Management L.P.</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><span class="text-gray-400 italic">--</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>lhayslett@elliottmgmt.com</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Logan Hayslett</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">0/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Financial Services</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">AI Built for Elliott Investment Management’s Research and Operations</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Turn dense filings, portfolio documents, and internal memos into instant, reliable answers—cutting hours of analyst search time down to seconds.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Analysts lose hours searching documents</li><li>Critical insights buried in fragmented sources</li><li>High-security workflows slow down knowledge access</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant answers from filings and portfolio documents</li><li>AI assistant for legal and compliance teams</li><li>Support for investment committees</li><li>Secure internal knowledge hub for operational teams</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG-powered answers grounded in your private documents</li><li>Enterprise-grade security and compliance</li><li>Flexible ingestion for your research ecosystem</li><li>Deploy across your firm’s workflow</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See how Elliott’s teams can reclaim hours of research time this week</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free 15‑minute demo—no commitment, just a clear look at your potential ROI.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,623</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0078</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;Elliott Investment Management L.P.&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 866 tok |
+                  Completion: 757 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Financial Services</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">AI Built for Elliott Investment Management’s Research and Operations</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Turn dense filings, portfolio documents, and internal memos into instant, reliable answers—cutting hours of analyst search time down to seconds.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Analysts lose hours searching documents: <span class='text-gray-400'>In investment research, speed matters. Sifting through years of filings, letters&hellip;</span></li><li>Critical insights buried in fragmented sources: <span class='text-gray-400'>Important information lives across PDFs, emails, meeting notes, and data rooms. &hellip;</span></li><li>High-security workflows slow down knowledge access: <span class='text-gray-400'>Strict confidentiality and compliance requirements make information sharing diff&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant answers from filings and portfolio documents</li><li>AI assistant for legal and compliance teams</li><li>Support for investment committees</li><li>Secure internal knowledge hub for operational teams</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG-powered answers grounded in your private documents</li><li>Enterprise-grade security and compliance</li><li>Flexible ingestion for your research ecosystem</li><li>Deploy across your firm’s workflow</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See how Elliott’s teams can reclaim hours of research time this week</dd><dd class="text-gray-600">Book a free 15‑minute demo—no commitment, just a clear look at your potential ROI.</dd></div>
                 </dl>
               </div>
             </div>
@@ -262,10 +336,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="hr-block-canada.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">H&amp;R Block Canada</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">hrblock.ca</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://hrblock.ca" target="_blank" class="text-blue-600 hover:underline">hrblock.ca</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">stephen.bennett@hrblock.ca</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">2481233 Ontario Limi&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Franchise General Ma&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">ACCOUNTING</td>
@@ -273,46 +352,64 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">Canada</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Accounting</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for H&amp;R Block Canada’s Nationwide Tax Ope&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut tax‑related search and policy lookup time for your 5,000&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Slow answers during peak tax season; Training seasonal staff&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant answers to CRA and tax‑code questions; On‑demand sup&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG responses grounded in your tax documents; Enterprise‑gra&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How H&amp;R Block Canada Could Resolve 93% of Tax &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for H&amp;R Block Canada’s Nationwide Ta&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut tax‑related search and policy lookup time for your &hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,601</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0075</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>H&amp;R Block Canada</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>hrblock.ca</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>ACCOUNTING</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>5000</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd>Canada</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">H&amp;R Block Canada</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://hrblock.ca" target="_blank" class="text-blue-600 hover:underline">hrblock.ca</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>stephen.bennett@hrblock.ca</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>2481233 Ontario Limited</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Franchise General Manager</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>ACCOUNTING</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>5000</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>Canada</dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Accounting</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">AI Built for H&amp;R Block Canada’s Nationwide Tax Operations</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Cut tax‑related search and policy lookup time for your 5,000 employees from hours to seconds—right when seasonal volume peaks.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Slow answers during peak tax season</li><li>Training seasonal staff is expensive</li><li>Risk of inconsistent or outdated info</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant answers to CRA and tax‑code questions</li><li>On‑demand support for seasonal staff</li><li>Client‑facing tax FAQ assistant</li><li>Secure knowledge hub for corporate operations</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG responses grounded in your tax documents</li><li>Enterprise‑grade security and compliance</li><li>Works with your existing tools</li><li>Supports 92+ languages</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How H&amp;R Block Canada Could Resolve 93% of Tax Questions Automatically</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free 15‑minute demo—no commitment, just a clear look at your potential time savings.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,601</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0075</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;H&amp;R Block Canada&quot;,
+  &quot;domain&quot;: &quot;hrblock.ca&quot;,
+  &quot;industry&quot;: &quot;Accounting&quot;,
+  &quot;employee_count&quot;: &quot;5000&quot;,
+  &quot;country&quot;: &quot;Canada&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 884 tok |
+                  Completion: 717 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Accounting</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">AI Built for H&amp;R Block Canada’s Nationwide Tax Operations</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Cut tax‑related search and policy lookup time for your 5,000 employees from hours to seconds—right when seasonal volume peaks.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Slow answers during peak tax season: <span class='text-gray-400'>Preparers waste minutes per client hunting through tax guidelines, CRA updates, &hellip;</span></li><li>Training seasonal staff is expensive: <span class='text-gray-400'>New and returning seasonal employees struggle to find consistent, up‑to‑date inf&hellip;</span></li><li>Risk of inconsistent or outdated info: <span class='text-gray-400'>With constant CRA changes, relying on scattered documents increases the risk of &hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant answers to CRA and tax‑code questions</li><li>On‑demand support for seasonal staff</li><li>Client‑facing tax FAQ assistant</li><li>Secure knowledge hub for corporate operations</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG responses grounded in your tax documents</li><li>Enterprise‑grade security and compliance</li><li>Works with your existing tools</li><li>Supports 92+ languages</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How H&amp;R Block Canada Could Resolve 93% of Tax Questions Automatically</dd><dd class="text-gray-600">Book a free 15‑minute demo—no commitment, just a clear look at your potential time savings.</dd></div>
                 </dl>
               </div>
             </div>
@@ -322,10 +419,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="ignitionsystemsio.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">IgnitionSystems.io</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">ignitionsystems.io</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://ignitionsystems.io" target="_blank" class="text-blue-600 hover:underline">ignitionsystems.io</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">anthony@ignitionsystems.io</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Anthony Cullen</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Founder &amp; CEO</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">PROFESSIONAL_TRAINING_COA&hellip;</td>
@@ -333,46 +435,64 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United States</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Professional Training and&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">IgnitionSystems.io, Meet the AI Engine That Fuels &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut curriculum search and client support time from hours to &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Coaches spend hours digging for content; Client questions ov&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant curriculum lookup for your coaching team; Participan&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG-based accuracy; No‑code setup; Multi‑channel deployment;&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How IgnitionSystems.io Can Save Your Team Hour&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">IgnitionSystems.io, Meet the AI Engine That F&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut curriculum search and client support time from hour&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,592</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0074</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>IgnitionSystems.io</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>ignitionsystems.io</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>PROFESSIONAL_TRAINING_COACHING</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>50</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd>United States</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">IgnitionSystems.io</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://ignitionsystems.io" target="_blank" class="text-blue-600 hover:underline">ignitionsystems.io</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>anthony@ignitionsystems.io</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Anthony Cullen</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Founder &amp; CEO</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>PROFESSIONAL_TRAINING_COACHING</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>50</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United States</dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Professional Training and Coaching</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">IgnitionSystems.io, Meet the AI Engine That Fuels Your Training Ops</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Cut curriculum search and client support time from hours to seconds — powered by your own training materials.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Coaches spend hours digging for content</li><li>Client questions overwhelm your inbox</li><li>Training assets are underused</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant curriculum lookup for your coaching team</li><li>Participant support without manual effort</li><li>AI-powered internal knowledge base</li><li>Automated prep for workshops and sessions</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG-based accuracy</li><li>No‑code setup</li><li>Multi‑channel deployment</li><li>Enterprise‑grade security</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How IgnitionSystems.io Can Save Your Team Hours Every Week</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free 15‑minute demo — fast, simple, and no commitment required.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,592</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0074</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;IgnitionSystems.io&quot;,
+  &quot;domain&quot;: &quot;ignitionsystems.io&quot;,
+  &quot;industry&quot;: &quot;Professional Training Coaching&quot;,
+  &quot;employee_count&quot;: &quot;50&quot;,
+  &quot;country&quot;: &quot;United States&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 887 tok |
+                  Completion: 705 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Professional Training and Coaching</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">IgnitionSystems.io, Meet the AI Engine That Fuels Your Training Ops</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Cut curriculum search and client support time from hours to seconds — powered by your own training materials.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Coaches spend hours digging for content: <span class='text-gray-400'>With a 50‑person team managing multiple programs, valuable time disappears into &hellip;</span></li><li>Client questions overwhelm your inbox: <span class='text-gray-400'>Participants routinely ask the same questions about modules, scheduling, or fram&hellip;</span></li><li>Training assets are underused: <span class='text-gray-400'>Your best playbooks, case studies, and models often go unseen because learners a&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant curriculum lookup for your coaching team</li><li>Participant support without manual effort</li><li>AI-powered internal knowledge base</li><li>Automated prep for workshops and sessions</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG-based accuracy</li><li>No‑code setup</li><li>Multi‑channel deployment</li><li>Enterprise‑grade security</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How IgnitionSystems.io Can Save Your Team Hours Every Week</dd><dd class="text-gray-600">Book a free 15‑minute demo — fast, simple, and no commitment required.</dd></div>
                 </dl>
               </div>
             </div>
@@ -382,10 +502,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="lakepointe-church.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Lakepointe Church</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">lakepointe.church</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://lakepointe.church" target="_blank" class="text-blue-600 hover:underline">lakepointe.church</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">cody.kiker@lakepointe.church</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Cody KIker</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Director Of Analytic&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">CONSUMER_SERVICES</td>
@@ -393,46 +518,63 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Religious and Nonprofit O&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Lakepointe Church’s 1,000‑Member Staf&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your staff and volunteers instant answers to church pol&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Staff buried in repeated questions; Information scattered ac&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant staff answers from policies and ministry docs; AI as&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG engine grounded in Lakepointe’s content; No‑code setup; &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Give Lakepointe Staff Instant Access to Every Poli&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Lakepointe Church’s 1,000‑Member&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your staff and volunteers instant answers to churc&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,618</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0077</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>Lakepointe Church</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>lakepointe.church</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>CONSUMER_SERVICES</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>1000</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">Lakepointe Church</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://lakepointe.church" target="_blank" class="text-blue-600 hover:underline">lakepointe.church</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>cody.kiker@lakepointe.church</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Cody KIker</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Director Of Analytics</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>CONSUMER_SERVICES</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>1000</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">3/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Religious and Nonprofit Organization</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">AI Built for Lakepointe Church’s 1,000‑Member Staff and Ministries</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Give your staff and volunteers instant answers to church policies, event details, and ministry information—cutting search time from hours to seconds.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Staff buried in repeated questions</li><li>Information scattered across teams</li><li>Congregation inquiries overload communication teams</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant staff answers from policies and ministry docs</li><li>AI assistant for congregation FAQs</li><li>Volunteer onboarding and training support</li><li>Event information and logistics assistant</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG engine grounded in Lakepointe’s content</li><li>No‑code setup</li><li>Enterprise‑grade security</li><li>Deploy anywhere your teams work</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">Give Lakepointe Staff Instant Access to Every Policy and Ministry Detail</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book your free 15‑minute demo—no commitment, just a clear look at how quickly your team can benefit.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,618</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0077</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;Lakepointe Church&quot;,
+  &quot;domain&quot;: &quot;lakepointe.church&quot;,
+  &quot;industry&quot;: &quot;Consumer Services&quot;,
+  &quot;employee_count&quot;: &quot;1000&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 880 tok |
+                  Completion: 738 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Religious and Nonprofit Organization</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">AI Built for Lakepointe Church’s 1,000‑Member Staff and Ministries</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Give your staff and volunteers instant answers to church policies, event details, and ministry information—cutting search time from hours to seconds.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Staff buried in repeated questions: <span class='text-gray-400'>With 1,000 team members and ministry leaders, simple questions about events, pro&hellip;</span></li><li>Information scattered across teams: <span class='text-gray-400'>Documents live in drives, emails, and planning tools. Finding the right version &hellip;</span></li><li>Congregation inquiries overload communication teams: <span class='text-gray-400'>Common questions about service times, baptism steps, giving, or campus‑specific &hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant staff answers from policies and ministry docs</li><li>AI assistant for congregation FAQs</li><li>Volunteer onboarding and training support</li><li>Event information and logistics assistant</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG engine grounded in Lakepointe’s content</li><li>No‑code setup</li><li>Enterprise‑grade security</li><li>Deploy anywhere your teams work</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">Give Lakepointe Staff Instant Access to Every Policy and Ministry Detail</dd><dd class="text-gray-600">Book your free 15‑minute demo—no commitment, just a clear look at how quickly your team can benefit.</dd></div>
                 </dl>
               </div>
             </div>
@@ -442,10 +584,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="mobilenik.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Mobilenik</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">mobilenik.com</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://mobilenik.com" target="_blank" class="text-blue-600 hover:underline">mobilenik.com</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">sebastian@mobilenik.com</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Sofia Sebastian</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Administración y RRH&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">COMPUTER_SOFTWARE</td>
@@ -454,45 +601,63 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Computer Software</td>
           <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI That Accelerates Mobilenik’s Software Team</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut your engineers’ search and support time from hours to se&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Engineers Lose Hours Hunting for Answers; Internal Knowledge&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant Answers to Engineering and Product Questions; AI Sup&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">No‑Code Setup; Grounded RAG Answers; Fits Your Existing Work&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How Mobilenik Could Save Hours Each Week</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut your engineers’ search and support time from hours &hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,602</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0075</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>Mobilenik</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>mobilenik.com</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>COMPUTER_SOFTWARE</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>50</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd>Argentina</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">Mobilenik</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://mobilenik.com" target="_blank" class="text-blue-600 hover:underline">mobilenik.com</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>sebastian@mobilenik.com</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Sofia Sebastian</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Administración y RRHH</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>COMPUTER_SOFTWARE</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>50</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>Argentina</dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Computer Software</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">AI That Accelerates Mobilenik’s Software Team</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Cut your engineers’ search and support time from hours to seconds with an AI that answers using Mobilenik’s own code, docs, and internal knowledge.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Engineers Lose Hours Hunting for Answers</li><li>Internal Knowledge Lives in Too Many Places</li><li>Support Repeats the Same Explanations</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant Answers to Engineering and Product Questions</li><li>AI Support Assistant for Repetitive Inquiries</li><li>Centralized Knowledge Hub for New Hires</li><li>AI-Powered Search Across All Your Documentation</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>No‑Code Setup</li><li>Grounded RAG Answers</li><li>Fits Your Existing Workflow</li><li>Enterprise‑Grade Security</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How Mobilenik Could Save Hours Each Week</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free, no‑commitment 15‑minute demo and get a tailored walkthrough for your team.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,602</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0075</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;Mobilenik&quot;,
+  &quot;domain&quot;: &quot;mobilenik.com&quot;,
+  &quot;industry&quot;: &quot;Computer Software&quot;,
+  &quot;employee_count&quot;: &quot;50&quot;,
+  &quot;country&quot;: &quot;Argentina&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 884 tok |
+                  Completion: 718 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Computer Software</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">AI That Accelerates Mobilenik’s Software Team</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Cut your engineers’ search and support time from hours to seconds with an AI that answers using Mobilenik’s own code, docs, and internal knowledge.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Engineers Lose Hours Hunting for Answers: <span class='text-gray-400'>With a 50‑person software team, duplicated questions across Slack, docs, and rep&hellip;</span></li><li>Internal Knowledge Lives in Too Many Places: <span class='text-gray-400'>Product specs, API notes, meeting summaries, and legacy documentation get scatte&hellip;</span></li><li>Support Repeats the Same Explanations: <span class='text-gray-400'>Internal and external stakeholders often ask similar questions, forcing your tea&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant Answers to Engineering and Product Questions</li><li>AI Support Assistant for Repetitive Inquiries</li><li>Centralized Knowledge Hub for New Hires</li><li>AI-Powered Search Across All Your Documentation</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>No‑Code Setup</li><li>Grounded RAG Answers</li><li>Fits Your Existing Workflow</li><li>Enterprise‑Grade Security</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How Mobilenik Could Save Hours Each Week</dd><dd class="text-gray-600">Book a free, no‑commitment 15‑minute demo and get a tailored walkthrough for your team.</dd></div>
                 </dl>
               </div>
             </div>
@@ -502,10 +667,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="msh-healthcare.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">MSH Healthcare</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">mshhealthcare.co.uk</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://mshhealthcare.co.uk" target="_blank" class="text-blue-600 hover:underline">mshhealthcare.co.uk</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">paul.smeaton@mshcare.co.uk</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Paul Smeaton</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Managing Director</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">HOSPITAL_HEALTH_CARE</td>
@@ -513,46 +683,64 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United Kingdom</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Hospital Health Care</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">MSH Healthcare’s AI Assistant for Faster, Safer Cl&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your staff instant, accurate answers from your clinical&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Clinical staff lose hours searching for information; Policy &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant answers to clinical protocols; Automated onboarding &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Healthcare‑grade data security; Grounded, reliable answers; &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How MSH Healthcare Can Cut Admin Time This Wee&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">MSH Healthcare’s AI Assistant for Faster, Saf&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your staff instant, accurate answers from your cli&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,656</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0079</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>MSH Healthcare</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>mshhealthcare.co.uk</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>HOSPITAL_HEALTH_CARE</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>50</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd>United Kingdom</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">MSH Healthcare</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://mshhealthcare.co.uk" target="_blank" class="text-blue-600 hover:underline">mshhealthcare.co.uk</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>paul.smeaton@mshcare.co.uk</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Paul Smeaton</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Managing Director</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>HOSPITAL_HEALTH_CARE</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>50</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United Kingdom</dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Hospital Health Care</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">MSH Healthcare’s AI Assistant for Faster, Safer Clinical Operations</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Give your staff instant, accurate answers from your clinical protocols, policies, and patient pathways—reducing admin time and supporting safer care delivery.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Clinical staff lose hours searching for information</li><li>Policy updates don’t reach everyone consistently</li><li>Internal questions overwhelm your managers</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant answers to clinical protocols</li><li>Automated onboarding and training support</li><li>AI-driven HR and operations helpdesk</li><li>Centralised knowledge for compliance readiness</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Healthcare‑grade data security</li><li>Grounded, reliable answers</li><li>Supports 1,400+ document and data formats</li><li>Deploy anywhere your team works</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How MSH Healthcare Can Cut Admin Time This Week</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free 15‑minute demo—no commitment, just a quick walkthrough of your real workflows.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,656</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0079</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;MSH Healthcare&quot;,
+  &quot;domain&quot;: &quot;mshhealthcare.co.uk&quot;,
+  &quot;industry&quot;: &quot;Hospital Health Care&quot;,
+  &quot;employee_count&quot;: &quot;50&quot;,
+  &quot;country&quot;: &quot;United Kingdom&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 888 tok |
+                  Completion: 768 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Hospital Health Care</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">MSH Healthcare’s AI Assistant for Faster, Safer Clinical Operations</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Give your staff instant, accurate answers from your clinical protocols, policies, and patient pathways—reducing admin time and supporting safer care delivery.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Clinical staff lose hours searching for information: <span class='text-gray-400'>With a 50‑person team rotating across shifts, every minute spent digging through&hellip;</span></li><li>Policy updates don’t reach everyone consistently: <span class='text-gray-400'>In healthcare, outdated guidance risks compliance issues and inconsistent care. &hellip;</span></li><li>Internal questions overwhelm your managers: <span class='text-gray-400'>Clinical leads and administrators field the same operational questions all day—H&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant answers to clinical protocols</li><li>Automated onboarding and training support</li><li>AI-driven HR and operations helpdesk</li><li>Centralised knowledge for compliance readiness</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Healthcare‑grade data security</li><li>Grounded, reliable answers</li><li>Supports 1,400+ document and data formats</li><li>Deploy anywhere your team works</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How MSH Healthcare Can Cut Admin Time This Week</dd><dd class="text-gray-600">Book a free 15‑minute demo—no commitment, just a quick walkthrough of your real workflows.</dd></div>
                 </dl>
               </div>
             </div>
@@ -562,10 +750,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-white z-10 min-w-[160px]">
             <a href="osmind.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Osmind</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">osmind.org</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://osmind.org" target="_blank" class="text-blue-600 hover:underline">osmind.org</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">jamoberges@gmail.com</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">James Berges</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Helping clinicians c&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">HOSPITAL_HEALTH_CARE</td>
@@ -573,46 +766,64 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]">United States</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Hospital Health Care</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Osmind’s Clinical and Operational Wor&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your clinicians and operations team instant answers fro&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Clinical staff buried in documents; Inconsistent answers acr&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Instant clinical protocol retrieval; Faster answers for bill&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG grounded in Osmind’s data only; HIPAA-ready, secure acce&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How Osmind Can Reduce Clinical and Operational&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">AI Built for Osmind’s Clinical and Operationa&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Give your clinicians and operations team instant answer&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,619</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0076</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>Osmind</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>osmind.org</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>HOSPITAL_HEALTH_CARE</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>250</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd>United States</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">Osmind</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://osmind.org" target="_blank" class="text-blue-600 hover:underline">osmind.org</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>jamoberges@gmail.com</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>James Berges</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd>Helping clinicians create time, freedom, and impact—In and outside</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>HOSPITAL_HEALTH_CARE</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>250</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd>United States</dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">4/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Hospital Health Care</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">AI Built for Osmind’s Clinical and Operational Workflows</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Give your clinicians and operations team instant answers from your own protocols, documentation, and compliance resources—cutting hours of manual search from every week.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Clinical staff buried in documents</li><li>Inconsistent answers across teams</li><li>Healthcare compliance demands rapid accuracy</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Instant clinical protocol retrieval</li><li>Faster answers for billing and coding teams</li><li>AI support agent for internal operations</li><li>Automated staff training and knowledge access</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG grounded in Osmind’s data only</li><li>HIPAA-ready, secure access controls</li><li>Deploy anywhere your teams work</li><li>No‑code setup for rapid launch</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How Osmind Can Reduce Clinical and Operational Search Time This Week</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free, no‑commitment 15‑minute demo to see your own workflows running in CustomGPT.ai.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,619</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0076</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;Osmind&quot;,
+  &quot;domain&quot;: &quot;osmind.org&quot;,
+  &quot;industry&quot;: &quot;Hospital Health Care&quot;,
+  &quot;employee_count&quot;: &quot;250&quot;,
+  &quot;country&quot;: &quot;United States&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 885 tok |
+                  Completion: 734 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Hospital Health Care</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">AI Built for Osmind’s Clinical and Operational Workflows</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Give your clinicians and operations team instant answers from your own protocols, documentation, and compliance resources—cutting hours of manual search from every week.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Clinical staff buried in documents: <span class='text-gray-400'>With a 250‑person healthcare organization, clinicians and coordinators waste hou&hellip;</span></li><li>Inconsistent answers across teams: <span class='text-gray-400'>Different teams rely on different versions of internal guidelines, creating vari&hellip;</span></li><li>Healthcare compliance demands rapid accuracy: <span class='text-gray-400'>HIPAA‑sensitive processes require precise, audit‑ready information. Manual searc&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Instant clinical protocol retrieval</li><li>Faster answers for billing and coding teams</li><li>AI support agent for internal operations</li><li>Automated staff training and knowledge access</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG grounded in Osmind’s data only</li><li>HIPAA-ready, secure access controls</li><li>Deploy anywhere your teams work</li><li>No‑code setup for rapid launch</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How Osmind Can Reduce Clinical and Operational Search Time This Week</dd><dd class="text-gray-600">Book a free, no‑commitment 15‑minute demo to see your own workflows running in CustomGPT.ai.</dd></div>
                 </dl>
               </div>
             </div>
@@ -622,10 +833,15 @@
           <td class="px-3 py-3 border-b text-sm font-medium sticky left-0 bg-gray-50 z-10 min-w-[160px]">
             <a href="rebelics-internet-computer-services.html" target="_blank"
                class="text-purple-700 font-semibold hover:underline">Rebelics Internet &amp; Computer S&hellip;</a>
-            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs">[+]</button>
+            <button @click="open = !open" class="ml-1 text-gray-400 hover:text-purple-600 text-xs cursor-pointer"
+                    :class="{ 'text-purple-600': open }"
+                    x-text="open ? '[-]' : '[+]'">[+]</button>
           </td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">rebelics.nl</td>
-          <td class="px-3 py-3 border-b text-xs min-w-[100px]">
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]"><a href="https://rebelics.nl" target="_blank" class="text-blue-600 hover:underline">rebelics.nl</a></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[120px]">info@rebelics.nl</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]">Nick Dominic Haenen</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[110px]"><span class="text-gray-400 italic">--</span></td>
+          <td class="px-3 py-3 border-b text-xs min-w-[90px]">
             <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full text-xs font-medium">Churned</span>
           </td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[120px]">COMPUTER_SOFTWARE</td>
@@ -633,46 +849,63 @@
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[80px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[140px]"><span class="text-gray-400 italic">--</span></td>
           <td class="px-3 py-3 border-b border-l-2 border-l-purple-200 text-xs font-medium text-purple-700 min-w-[120px]">Computer Software</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">Smarter AI Support and Automation for Rebelics Int&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut project research, document lookups, and client-response &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Technical knowledge scattered across tools; Clients waiting &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">Technical Knowledge Base for Your Team; Client-Facing Suppor&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">RAG Answering Grounded in Your Data; Supports 1,400+ Technic&hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[180px]">See How Rebelics Can Save Hours Each Week With an &hellip;</td>
-          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[60px]">gpt-5.1</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-800 min-w-[200px]">Smarter AI Support and Automation for Rebelic&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 min-w-[200px]">Cut project research, document lookups, and client-resp&hellip;</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">3</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
+          <td class="px-3 py-3 border-b text-xs text-gray-600 text-center min-w-[40px]">4</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">1,642</td>
           <td class="px-3 py-3 border-b text-xs text-gray-600 text-right min-w-[60px]">$0.0078</td>
         </tr>
         <!-- Expanded detail row -->
         <tr x-show="open" x-cloak class="bg-purple-50/50">
-          <td colspan="17" class="px-6 py-4 border-b">
-            <div class="grid grid-cols-2 gap-6 text-xs">
+          <td colspan="18" class="px-6 py-4 border-b">
+            <div class="grid grid-cols-3 gap-6 text-xs">
+              <!-- Column 1: Full CRM Record -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Input (CRM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Company</dt><dd>Rebelics Internet &amp; Computer Services</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Domain</dt><dd>rebelics.nl</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Industry (raw)</dt><dd>COMPUTER_SOFTWARE</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Employees</dt><dd>10</dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
-                  <div class="flex"><dt class="w-28 font-medium text-gray-500">About Us</dt><dd class="max-w-md"><span class="text-gray-400 italic">empty</span></dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Full CRM Record (BigQuery)</h4>
+                <dl class="space-y-1.5">
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Company</dt><dd class="font-medium">Rebelics Internet &amp; Computer Services</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Domain</dt><dd><a href="https://rebelics.nl" target="_blank" class="text-blue-600 hover:underline">rebelics.nl</a></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Email</dt><dd>info@rebelics.nl</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Contact</dt><dd>Nick Dominic Haenen</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Job Title</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Status</dt><dd><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Churned</span></dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Industry</dt><dd>COMPUTER_SOFTWARE</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Employees</dt><dd>10</dd></div>
+                  <div class="flex"><dt class="w-24 font-medium text-gray-500 shrink-0">Country</dt><dd><span class="text-gray-400 italic">empty</span></dd></div>
+                  <div class="flex flex-col"><dt class="w-24 font-medium text-gray-500">About Us</dt><dd class="mt-0.5 text-gray-600 max-w-sm"><span class="text-gray-400 italic">empty</span></dd></div>
                 </dl>
+                <div class="mt-3 text-[10px] text-gray-400">3/5 enrichment fields populated</div>
               </div>
+
+              <!-- Column 2: What was sent to LLM -->
               <div>
-                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide">Output (LLM)</h4>
-                <dl class="space-y-1">
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-medium">Computer Software</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Headline</dt><dd class="font-medium text-gray-800">Smarter AI Support and Automation for Rebelics Internet &amp; Computer Services</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Subheadline</dt><dd class="text-gray-700">Cut project research, document lookups, and client-response time from hours to seconds with an AI that actually understands your technical work.</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Technical knowledge scattered across tools</li><li>Clients waiting on repeat questions</li><li>Small team, big documentation overhead</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>Technical Knowledge Base for Your Team</li><li>Client-Facing Support Agent</li><li>Faster Onboarding for New Hires</li><li>Automated Documentation Q&amp;A for Projects</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600"><li>RAG Answering Grounded in Your Data</li><li>Supports 1,400+ Technical File Types</li><li>Deploy Anywhere You Work</li><li>Enterprise‑Grade Security</li></ul></dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Headline</dt><dd class="font-medium text-gray-800">See How Rebelics Can Save Hours Each Week With an AI Built on Your Data</dd></div>
-                  <div class="flex flex-col"><dt class="font-medium text-gray-500 mb-0.5">CTA Subheadline</dt><dd class="text-gray-700">Book a free 15‑minute demo—quick, practical, and with zero commitment.</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Model</dt><dd class="font-mono">gpt-5.1-chat-2025-11-13</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Tokens</dt><dd>1,642</dd></div>
-                  <div class="flex"><dt class="w-32 font-medium text-gray-500">Cost</dt><dd>$0.0078</dd></div>
+                <h4 class="font-semibold text-gray-700 mb-2 uppercase tracking-wide text-[11px]">Sent to LLM (PII stripped)</h4>
+                <pre class="bg-gray-800 text-green-300 rounded p-3 text-[11px] leading-relaxed overflow-x-auto font-mono">{
+  &quot;company_name&quot;: &quot;Rebelics Internet &amp; Computer Services&quot;,
+  &quot;domain&quot;: &quot;rebelics.nl&quot;,
+  &quot;industry&quot;: &quot;Computer Software&quot;,
+  &quot;employee_count&quot;: &quot;10&quot;
+}</pre>
+                <div class="mt-2 text-[10px] text-gray-400">
+                  Model: <span class="font-mono">gpt-5.1-chat-2025-11-13</span> |
+                  Prompt: 881 tok |
+                  Completion: 761 tok
+                </div>
+              </div>
+
+              <!-- Column 3: LLM Output -->
+              <div>
+                <h4 class="font-semibold text-purple-700 mb-2 uppercase tracking-wide text-[11px]">LLM Output (generated content)</h4>
+                <dl class="space-y-1.5">
+                  <div><dt class="font-medium text-gray-500">Industry (inferred)</dt><dd class="text-purple-700 font-semibold">Computer Software</dd></div>
+                  <div><dt class="font-medium text-gray-500">Headline</dt><dd class="font-medium text-gray-800">Smarter AI Support and Automation for Rebelics Internet &amp; Computer Services</dd></div>
+                  <div><dt class="font-medium text-gray-500">Subheadline</dt><dd class="text-gray-700">Cut project research, document lookups, and client-response time from hours to seconds with an AI that actually understands your technical work.</dd></div>
+                  <div><dt class="font-medium text-gray-500">Pain Points (3)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Technical knowledge scattered across tools: <span class='text-gray-400'>With a 10‑person team, expertise lives in emails, PDFs, repo notes, and ticket t&hellip;</span></li><li>Clients waiting on repeat questions: <span class='text-gray-400'>Your team gets interrupted by the same configuration, hosting, or troubleshootin&hellip;</span></li><li>Small team, big documentation overhead: <span class='text-gray-400'>Maintaining up‑to‑date docs, onboarding material, and internal guides costs hour&hellip;</span></li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Use Cases (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>Technical Knowledge Base for Your Team</li><li>Client-Facing Support Agent</li><li>Faster Onboarding for New Hires</li><li>Automated Documentation Q&amp;A for Projects</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">Features (4)</dt><dd><ul class="list-disc list-inside text-gray-600 ml-1"><li>RAG Answering Grounded in Your Data</li><li>Supports 1,400+ Technical File Types</li><li>Deploy Anywhere You Work</li><li>Enterprise‑Grade Security</li></ul></dd></div>
+                  <div><dt class="font-medium text-gray-500">CTA</dt><dd class="font-medium text-gray-800">See How Rebelics Can Save Hours Each Week With an AI Built on Your Data</dd><dd class="text-gray-600">Book a free 15‑minute demo—quick, practical, and with zero commitment.</dd></div>
                 </dl>
               </div>
             </div>
@@ -682,9 +915,29 @@
       </table>
     </div>
 
+    <!-- Pipeline diagram -->
+    <div class="mt-6 bg-white rounded-lg shadow-sm border p-4">
+      <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Pipeline</h3>
+      <div class="flex items-center gap-2 text-xs text-gray-600 flex-wrap">
+        <span class="bg-gray-100 px-2 py-1 rounded font-mono">BigQuery</span>
+        <span>&rarr;</span>
+        <span class="bg-gray-100 px-2 py-1 rounded">CRM record (email, company, domain, industry, employees, country, about_us)</span>
+        <span>&rarr;</span>
+        <span class="bg-yellow-100 px-2 py-1 rounded font-mono">PII strip</span>
+        <span>&rarr;</span>
+        <span class="bg-blue-100 px-2 py-1 rounded font-mono">Azure OpenAI gpt-5.1</span>
+        <span>&rarr;</span>
+        <span class="bg-purple-100 px-2 py-1 rounded">JSON (industry, headline, pain points, use cases, features, CTA)</span>
+        <span>&rarr;</span>
+        <span class="bg-green-100 px-2 py-1 rounded font-mono">Jinja2 template</span>
+        <span>&rarr;</span>
+        <span class="bg-green-100 px-2 py-1 rounded font-mono">HTML landing page</span>
+      </div>
+    </div>
+
     <!-- Footer -->
-    <div class="mt-6 text-center text-xs text-gray-400">
-      Generated 2026-02-17 16:02 UTC | Pipeline: BigQuery &rarr; Azure OpenAI (gpt-5.1) &rarr; Jinja2 &rarr; HTML
+    <div class="mt-4 text-center text-xs text-gray-400">
+      Generated 2026-02-17 16:10 UTC
       <br>
       <a href="index.html" class="text-purple-500 hover:underline">View all landing pages</a>
     </div>
