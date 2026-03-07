@@ -183,17 +183,6 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
-  .badge-ready {
-    display: inline-block;
-    background: #fef3c7;
-    color: #92400e;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
 
   /* ── Methodology cards ── */
   .method-grid {
@@ -273,13 +262,38 @@
     transition: transform 0.2s;
   }
   details[open] summary::before { transform: rotate(90deg); }
-  .faq-list {
-    padding: 10px 16px 16px 36px;
-    font-size: 14px;
+
+  .qa-list { padding: 8px 16px 16px; }
+  .qa-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
   }
-  .faq-list li {
+  .qa-item:last-child { border-bottom: none; }
+  .qa-q {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--purple-deep);
     margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+  }
+  .qa-q .qa-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--purple-primary);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qa-a {
+    font-size: 13.5px;
     color: var(--gray-text);
+    line-height: 1.65;
+    padding-left: 30px;
   }
 
   /* ── Audit checklist ── */
@@ -384,10 +398,10 @@
 <!-- ════════════════ STATS ════════════════ -->
 <div class="container">
   <div class="stats">
-    <div class="stat-card"><div class="num-big">13</div><div class="label">Articles Touched</div></div>
+    <div class="stat-card"><div class="num-big">13</div><div class="label">Articles Deployed</div></div>
     <div class="stat-card"><div class="num-big">84</div><div class="label">Total FAQs</div></div>
-    <div class="stat-card"><div class="num-big">7</div><div class="label">Live on Site</div></div>
-    <div class="stat-card"><div class="num-big">6</div><div class="label">Schemas Ready</div></div>
+    <div class="stat-card"><div class="num-big">13/13</div><div class="label">Verified Live</div></div>
+    <div class="stat-card"><div class="num-big">5/5</div><div class="label">All Checks Pass</div></div>
   </div>
 </div>
 
@@ -461,7 +475,7 @@
 
     <div class="method-card">
       <h3>Stage 5 &mdash; Deployment &amp; Verification</h3>
-      <p>Deployed FAQs go through an automated 5-check verification:</p>
+      <p>All 13 pages passed an automated 5-check verification:</p>
       <ul>
         <li><strong>Page rendering:</strong> HTTP 200, no PHP errors, body &gt; 1K chars</li>
         <li><strong>Schema present:</strong> FAQPage node exists in JSON-LD @graph</li>
@@ -491,7 +505,7 @@
 <section>
 <div class="container">
   <h2><span class="num">2</span> The 13 Articles to Audit</h2>
-  <p class="section-sub">Click each row's link to visit the live page. Expand the accordion below the table to see the exact FAQ questions on each page.</p>
+  <p class="section-sub">Click each row's link to visit the live page. Expand the accordion below the table to see the exact FAQ questions <strong>and answers</strong> on each page.</p>
 
   <div class="table-wrap">
   <table>
@@ -567,218 +581,471 @@
         <td><a href="https://customgpt.ai/blog/custom-ai-solution/" target="_blank">Custom AI Solution</a></td>
         <td><code>custom-ai-solution</code></td>
         <td>7</td>
-        <td><span class="badge-ready">Ready</span></td>
-        <td>FAQ schema generated, pending deploy (Run Level 1)</td>
+        <td><span class="badge-deployed">Live</span></td>
+        <td>Replaced old FAQ schema with new AI-generated version (Run Level 1)</td>
       </tr>
       <tr>
         <td>9</td>
         <td><a href="https://customgpt.ai/blog/chatgpt-clone/" target="_blank">ChatGPT Clone</a></td>
         <td><code>chatgpt-clone</code></td>
         <td>7</td>
-        <td><span class="badge-ready">Ready</span></td>
-        <td>FAQ schema generated, pending deploy (Run Level 1)</td>
+        <td><span class="badge-deployed">Live</span></td>
+        <td>Replaced old FAQ schema with new AI-generated version (Run Level 1)</td>
       </tr>
       <tr>
         <td>10</td>
         <td><a href="https://customgpt.ai/blog/custom-ai-assistant/" target="_blank">Custom AI Assistant</a></td>
         <td><code>custom-ai-assistant</code></td>
         <td>7</td>
-        <td><span class="badge-ready">Ready</span></td>
-        <td>FAQ schema generated, pending deploy (Run Level 1)</td>
+        <td><span class="badge-deployed">Live</span></td>
+        <td>Replaced old FAQ schema with new AI-generated version (Run Level 1)</td>
       </tr>
       <tr>
         <td>11</td>
         <td><a href="https://customgpt.ai/blog/glean-alternatives/" target="_blank">Glean Alternatives</a></td>
         <td><code>glean-alternatives</code></td>
         <td>7</td>
-        <td><span class="badge-ready">Ready</span></td>
-        <td>FAQ schema generated, pending deploy (Run Level 2)</td>
+        <td><span class="badge-deployed">Live</span></td>
+        <td>Replaced old FAQ schema with new AI-generated version (Run Level 2)</td>
       </tr>
       <tr>
         <td>12</td>
         <td><a href="https://customgpt.ai/blog/white-label-ai-platform/" target="_blank">White Label AI Platform</a></td>
         <td><code>white-label-ai-platform</code></td>
         <td>7</td>
-        <td><span class="badge-ready">Ready</span></td>
-        <td>FAQ schema generated, pending deploy (Run Level 2)</td>
+        <td><span class="badge-deployed">Live</span></td>
+        <td>Replaced old FAQ schema with new AI-generated version (Run Level 2)</td>
       </tr>
       <tr>
         <td>13</td>
         <td><a href="https://customgpt.ai/blog/ai-agency/" target="_blank">AI Agency</a></td>
         <td><code>ai-agency</code></td>
         <td>6</td>
-        <td><span class="badge-ready">Ready</span></td>
-        <td>FAQ schema generated, pending deploy (Run Level 2)</td>
+        <td><span class="badge-deployed">Live</span></td>
+        <td>Replaced old FAQ schema with new AI-generated version (Run Level 2)</td>
       </tr>
     </tbody>
   </table>
   </div>
 
-  <!-- FAQ Questions per page -->
+  <!-- FAQ Q&A per page -->
   <div style="margin-top: 24px;">
-    <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--gray-text);">FAQ Questions by Article (expand to view)</h3>
+    <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--gray-text);">FAQ Questions &amp; Answers by Article (expand to view)</h3>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;AI Web Scraping &mdash; 6 FAQs</summary>
-      <ol class="faq-list">
-        <li>Is AI web scraping illegal?</li>
-        <li>What is the purpose of AI web scraping?</li>
-        <li>What is custom web scraping?</li>
-        <li>Can I do web scraping with ChatGPT or GPT-4o?</li>
-        <li>How much does AI web scraping cost on CustomGPT.ai?</li>
-        <li>What can I do with scraped data after extraction?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> Is AI web scraping illegal?</div>
+          <div class="qa-a">AI web scraping is legal in many cases, but not always. Legality depends on site terms, copyright, privacy rules, and how data is accessed. You should not bypass paywalls, logins, CAPTCHAs, or other technical protections, and laws like GDPR still apply.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> What is the purpose of AI web scraping?</div>
+          <div class="qa-a">The main purpose is to turn unstructured web pages into structured data you can use. Instead of raw HTML, you get fields like prices, product names, or policy clauses in consistent formats such as tables or JSON for search, monitoring, and analysis.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> What is custom web scraping?</div>
+          <div class="qa-a">Custom web scraping extracts only the data fields your business needs. It lets you define a schema, such as title, price, and date, and apply it across many URLs. You can also combine scraped pages with 1,400+ document formats including PDF, Word, audio, and video.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Can I do web scraping with ChatGPT or GPT-4o?</div>
+          <div class="qa-a">Yes, but ChatGPT or GPT-4o alone is not a full scraping pipeline. You still need crawling, page fetching, and extraction rules. After data is prepared, you can query it through an OpenAI-compatible API endpoint at /v1/chat/completions.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> How much does AI web scraping cost on CustomGPT.ai?</div>
+          <div class="qa-a">CustomGPT plans are Standard at $99/month, Premium at $499/month, and Enterprise with custom pricing. Standard includes 10 agents, 5,000 docs per agent, and 1,000 queries/month; Premium includes 25 agents, 20,000 docs per agent, and 5,000 queries/month. Annual pricing is $89 and $449.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> What can I do with scraped data after extraction?</div>
+          <div class="qa-a">You can use scraped data for searchable Q&amp;A, competitor tracking, lead research, and support automation. Deploy it in an embed widget, live chat, search bar, Slack, or via API, and connect workflows to tools like Notion, Confluence, HubSpot, Zendesk, and Shopify.</div>
+        </div>
+      </div>
     </details>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;100s of OpenAI-Compatible Tools &mdash; 5 FAQs</summary>
-      <ol class="faq-list">
-        <li>How do I connect existing OpenAI-compatible tools to the CustomGPT RAG API?</li>
-        <li>Which types of tools work with the CustomGPT RAG API?</li>
-        <li>What are the compatibility limitations of the CustomGPT RAG API?</li>
-        <li>Why should I use the CustomGPT RAG API instead of raw OpenAI?</li>
-        <li>How do I switch an existing OpenAI SDK integration to CustomGPT?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> How do I connect existing OpenAI-compatible tools to the CustomGPT RAG API?</div>
+          <div class="qa-a">You can connect any OpenAI-compatible tool to the CustomGPT RAG API with just two lines of code or two environment variables. Set OPENAI_API_KEY to your CustomGPT API key and OPENAI_API_BASE to https://app.customgpt.ai/api/v1/projects/{project_id}/. The tool will continue working exactly as before, but now returns grounded, citation-rich answers from your documents instead of generic model responses.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> Which types of tools work with the CustomGPT RAG API?</div>
+          <div class="qa-a">Over 100 tools work with the CustomGPT RAG API, organized into 11 categories: SDKs and core frameworks (LlamaIndex, LangChain, OpenAI SDKs for Python, Node, .NET, Java, Go, PHP, Ruby, Swift), visual builders (Flowise, Langflow, Dify), autonomous agents (Auto-GPT, BabyAGI, CrewAI), IDE tools (Continue, Aider, CodeGPT), voice pipelines (Pipecat, Whisper), automation platforms (n8n, Zapier), model servers (vLLM, LocalAI), knowledge front-ends (DocsGPT, Quivr), messaging bots (Discord, Telegram, Slack), browser helpers, and dashboards.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> What are the compatibility limitations of the CustomGPT RAG API?</div>
+          <div class="qa-a">The CustomGPT RAG API supports only the /v1/chat/completions endpoint. The model name field is ignored (CustomGPT routes to the model tied to your project). Parameters like temperature, stop, and max_tokens are currently ignored. Embeddings, vision, audio, and tools endpoints return 404/501. You must manage conversation history yourself by including the full messages array with each call. Token usage metrics are not returned yet.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Why should I use the CustomGPT RAG API instead of raw OpenAI?</div>
+          <div class="qa-a">The CustomGPT RAG API provides three key benefits: (1) Zero-friction upgrade with no need to rewrite prompts or pipeline code, (2) Instant RAG capability so tools that never had retrieval now inherit CustomGPT's accuracy and citation support, and (3) Same ecosystem compatibility so you can continue using LangChain, LlamaIndex, VS Code extensions, and other tools while getting grounded answers from your private documents.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> How do I switch an existing OpenAI SDK integration to CustomGPT?</div>
+          <div class="qa-a">To switch an existing OpenAI SDK integration to CustomGPT, modify your client initialization by passing base_url='https://app.customgpt.ai/api/v1/projects/{project_id}/' and using your CustomGPT API key instead of your OpenAI key. For tools that use environment variables, set OPENAI_API_KEY to your CustomGPT API key and OPENAI_API_BASE (or OPENAI_API_BASE_URL, OPENAI_HOST) to your CustomGPT project URL. The Project ID is your agent's ID from the CustomGPT platform.</div>
+        </div>
+      </div>
     </details>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;Create Custom GPT OpenAI &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>What is a custom GPT, and how is it different from regular ChatGPT?</li>
-        <li>How do I make a custom GPT in ChatGPT step by step?</li>
-        <li>How much does it cost to create and run a custom GPT for a client?</li>
-        <li>Can I upload PDFs, videos, and spreadsheets to a custom GPT?</li>
-        <li>Is creating a custom GPT worth it for quoting jobs or field sales estimates?</li>
-        <li>Can I connect a custom GPT to WhatsApp, Slack, or my website?</li>
-        <li>What is the difference between OpenAI Custom GPTs and CustomGPT.ai for business use?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> What is a custom GPT, and how is it different from regular ChatGPT?</div>
+          <div class="qa-a">A custom GPT is a chatbot set up for a specific task using your own content. With RAG, it first searches your documents, then writes an answer from those matches and can show citations. That reduces hallucinations and keeps replies grounded in your data.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> How do I make a custom GPT in ChatGPT step by step?</div>
+          <div class="qa-a">In ChatGPT, go to Explore GPTs &gt; Create, write instructions, upload knowledge files, enable tools, then save and test. For business rollout, CustomGPT.ai adds web embed, Slack deployment, and an OpenAI-compatible API at /v1/chat/completions, plus citations and analytics.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> How much does it cost to create and run a custom GPT for a client?</div>
+          <div class="qa-a">CustomGPT.ai plans are Standard at $99/month, Premium at $499/month, and Enterprise with custom pricing. Annual billing drops Standard to $89/month and Premium to $449/month. Standard includes 10 agents and 1,000 queries/month; Premium includes 25 agents and 5,000 queries/month.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Can I upload PDFs, videos, and spreadsheets to a custom GPT?</div>
+          <div class="qa-a">Yes. CustomGPT.ai supports 1,400+ formats, including PDF, Word, audio, and video. You can also connect sources like Google Drive, Notion, Confluence, and SharePoint to answer from one combined knowledge base.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Is creating a custom GPT worth it for quoting jobs or field sales estimates?</div>
+          <div class="qa-a">Yes. A custom GPT speeds up quoting by pulling from pricing sheets, past estimates, and SOPs with source citations, so answers stay consistent. Teams also get conversation analytics and support for 90+ languages for field and office use.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> Can I connect a custom GPT to WhatsApp, Slack, or my website?</div>
+          <div class="qa-a">Yes. You can deploy it on a website as an embed widget, live chat, or search bar, and connect Slack directly. WhatsApp can be connected through Zapier or the API. The API is OpenAI-compatible at /v1/chat/completions.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> What is the difference between OpenAI Custom GPTs and CustomGPT.ai for business use?</div>
+          <div class="qa-a">OpenAI Custom GPTs mainly run inside ChatGPT, while CustomGPT.ai is built for external business deployment. CustomGPT.ai adds website embeds, Slack, API access, SOC 2 Type II, and citation-based answers; Premium adds white-labeling, and Enterprise adds SSO and role-based access.</div>
+        </div>
+      </div>
     </details>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;CustomGPT Limits Explained &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>What is the limit of CustomGPT.ai on each subscription plan?</li>
-        <li>What are CustomGPT.ai file upload limits for PDFs and other documents?</li>
-        <li>Can I upload more than 20 files to a CustomGPT.ai chatbot?</li>
-        <li>Does CustomGPT.ai support audio and video file ingestion?</li>
-        <li>What happens if I hit my monthly query limit on CustomGPT.ai?</li>
-        <li>Is there a prompt length limit in CustomGPT.ai?</li>
-        <li>Which CustomGPT.ai plan should I choose for customer support or internal knowledge bots?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> What is the limit of CustomGPT.ai on each subscription plan?</div>
+          <div class="qa-a">CustomGPT.ai has three plans: Standard $99/month, Premium $499/month, and Enterprise with custom pricing. Standard includes 10 agents, 5,000 docs per agent, and 1,000 queries/month. Premium includes 25 agents, 20,000 docs per agent, and 5,000 queries/month.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> What are CustomGPT.ai file upload limits for PDFs and other documents?</div>
+          <div class="qa-a">Upload limits are plan-based, not restricted to a short file-type list. CustomGPT.ai supports 1,400+ formats, including PDF, Word, and PowerPoint. Per agent, Standard allows 5,000 documents, Premium allows 20,000, and Enterprise supports unlimited documents.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> Can I upload more than 20 files to a CustomGPT.ai chatbot?</div>
+          <div class="qa-a">Yes, you can upload far more than 20 files. Limits are set per agent: 5,000 documents on Standard, 20,000 on Premium, and unlimited on Enterprise. If one bot hits its document cap, add another agent or upgrade plans.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Does CustomGPT.ai support audio and video file ingestion?</div>
+          <div class="qa-a">Yes, CustomGPT.ai supports audio and video ingestion. It accepts 1,400+ content formats, so media files can be indexed with documents in one bot. Responses can include citations, and assistants can answer in 90+ languages.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> What happens if I hit my monthly query limit on CustomGPT.ai?</div>
+          <div class="qa-a">When you hit the monthly query cap, the chatbot stops answering until usage resets or you upgrade. Standard includes 1,000 queries/month, Premium includes 5,000, and Enterprise offers unlimited queries with custom pricing.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> Is there a prompt length limit in CustomGPT.ai?</div>
+          <div class="qa-a">CustomGPT.ai does not publish one fixed prompt-length number. Effective prompt size depends on model context and how much retrieved content is added per request. A 7-day free trial lets teams test practical limits before committing.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> Which CustomGPT.ai plan should I choose for customer support or internal knowledge bots?</div>
+          <div class="qa-a">Use Standard ($99/month) for smaller rollouts with 10 agents and 1,000 queries/month. Use Premium ($499/month) for higher volume with 25 agents and 5,000 queries/month, plus white-labeling and a PII anonymizer. Choose Enterprise for unlimited scale and custom SSO.</div>
+        </div>
+      </div>
     </details>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;Does OpenAI Have an Affiliate Program? &mdash; 5 FAQs</summary>
-      <ol class="faq-list">
-        <li>Does OpenAI have an affiliate program?</li>
-        <li>Why doesn't OpenAI offer an affiliate program?</li>
-        <li>What are the best AI affiliate program alternatives to OpenAI?</li>
-        <li>What makes CustomGPT.ai a strong AI affiliate program?</li>
-        <li>What is CustomGPT.ai and how can affiliates promote it?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> Does OpenAI have an affiliate program?</div>
+          <div class="qa-a">No. As of early 2026, OpenAI does not run a public affiliate program. It has enterprise partnerships like Frontier Alliances with BCG, McKinsey, and Accenture, but those are consulting deals, not affiliate commissions. CustomGPT.ai offers up to 20% recurring commission.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> Why doesn&rsquo;t OpenAI offer an affiliate program?</div>
+          <div class="qa-a">OpenAI has not published an official reason. As of 2026, it still has no affiliate program, and the most likely explanation is focus: model research, safety work, and enterprise operations are prioritized over running affiliate tracking, payouts, and partner support.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> What are the best AI affiliate program alternatives to OpenAI?</div>
+          <div class="qa-a">Popular options include CustomGPT.ai (up to 20% recurring), Jasper (often 25% to 30%), Writesonic (often up to 30%), and Grammarly (commonly a fixed bounty such as $20). Rates and cookie terms can change, so confirm current commissions before joining.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> What makes CustomGPT.ai a strong AI affiliate program?</div>
+          <div class="qa-a">It pays recurring commission, not only a one-time bounty: up to 20% on active referrals. It&rsquo;s also easier to convert because there&rsquo;s a 7-day free trial and paid plans start at $99/month. The product fits many buyers with 1,400+ file types and integrations like Notion and Zendesk.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> What is CustomGPT.ai and how can affiliates promote it?</div>
+          <div class="qa-a">CustomGPT.ai lets companies build AI agents on their own docs and data. It supports 1,400+ file formats, 90+ languages, and deployment via website widget, live chat, search bar, Slack, or API. Affiliates can apply at customgpt.ai/partners and earn recurring commissions on referrals.</div>
+        </div>
+      </div>
     </details>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;Best AI Contract Review Software 2026 &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>Which legal AI is best for contract review in 2026?</li>
-        <li>Can you use ChatGPT to review contracts safely for legal work?</li>
-        <li>Can AI write legal contracts, or is it only for contract review?</li>
-        <li>Who has the best software for contract data extraction in due diligence?</li>
-        <li>Is there a free AI contract review tool for lawyers?</li>
-        <li>What should legal teams measure in an AI contract review pilot?</li>
-        <li>How much does AI contract review software cost for a legal team in 2026?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> Which legal AI is best for contract review in 2026?</div>
+          <div class="qa-a">Choose based on four factors: review accuracy, source citations, security compliance, and total cost. For example, CustomGPT starts at $99/month (Standard) and $499/month (Premium), then scales to Enterprise for unlimited usage.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> Can you use ChatGPT to review contracts safely for legal work?</div>
+          <div class="qa-a">Yes, if outputs are source-backed and attorney-reviewed. Use a private RAG setup with approved playbooks, require citations for each answer, and verify controls like SOC 2 Type II, GDPR, and 256-bit AES encryption.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> Can AI write legal contracts, or is it only for contract review?</div>
+          <div class="qa-a">AI can help with both drafting and review, but lawyers should approve final language. Use approved templates and fallback clauses, and pick a platform that handles core legal files like PDF, Word, and PowerPoint; CustomGPT supports 1,400+ formats.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Who has the best software for contract data extraction in due diligence?</div>
+          <div class="qa-a">Top options are CustomGPT for RAG-based review with citations, Ironclad for CLM-centric workflows, and Kira or Luminance for large-scale due diligence extraction. The best choice depends on whether your priority is review, lifecycle control, or extraction speed.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Is there a free AI contract review tool for lawyers?</div>
+          <div class="qa-a">Most legal AI products offer a trial rather than a permanent free plan. CustomGPT includes a 7-day free trial, then Standard at $99/month with 10 agents, 1,000 queries/month, and up to 5,000 documents per agent.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> What should legal teams measure in an AI contract review pilot?</div>
+          <div class="qa-a">Track playbook adherence, citation accuracy, and reviewer time saved per contract. Run a blinded A/B pilot on one contract family, then confirm security needs such as SOC 2 Type II and GDPR before expanding to more teams.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> How much does AI contract review software cost for a legal team in 2026?</div>
+          <div class="qa-a">Pricing is usually tiered by usage and team size. CustomGPT Standard is $99/month ($89/month billed annually), Premium is $499/month ($449/month billed annually), and Enterprise is custom-priced with unlimited agents, docs, and queries.</div>
+        </div>
+      </div>
     </details>
 
     <details>
       <summary><span class="badge-deployed">Live</span>&ensp;Will AI Replace Paralegals? &mdash; 6 FAQs</summary>
-      <ol class="faq-list">
-        <li>Is AI going to get rid of paralegals?</li>
-        <li>Are paralegals becoming obsolete, or are they still in demand?</li>
-        <li>What paralegal tasks should AI automate first to reduce risk?</li>
-        <li>Should paralegals fear artificial intelligence, or learn it now?</li>
-        <li>Will AI replace attorneys and paralegals for court filings?</li>
-        <li>What is the best AI setup for a small paralegal team on a budget?</li>
-      </ol>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> Is AI going to get rid of paralegals?</div>
+          <div class="qa-a">No, AI is unlikely to eliminate paralegals in the near term. U.S. BLS projects little or no change in paralegal employment from 2024-2034, with about 39,300 openings per year. AI speeds first-pass work, while humans handle accuracy, privilege, and filings.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> Are paralegals becoming obsolete, or are they still in demand?</div>
+          <div class="qa-a">Paralegals are still in demand, but the role is shifting. Routine tasks like extraction and first drafts are increasingly automated, while QA, source-checking, and confidentiality review are growing. BLS still projects about 39,300 U.S. openings per year.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> What paralegal tasks should AI automate first to reduce risk?</div>
+          <div class="qa-a">Automate low-risk, high-volume tasks first: first-pass summaries, data extraction, repetitive formatting, and tagging. Require human sign-off for client-facing content and court filings. Keep inputs controlled, such as PDF, DOCX, and TXT; CustomGPT supports 1,400+ formats.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Should paralegals fear artificial intelligence, or learn it now?</div>
+          <div class="qa-a">Paralegals should learn AI now through a small pilot. Start with one low-risk workflow, define approved sources, and require human approval on every output. CustomGPT starts at Standard $99/month and Premium $499/month, with a 7-day free trial.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Will AI replace attorneys and paralegals for court filings?</div>
+          <div class="qa-a">No, AI should not be used alone for court filings. Courts have sanctioned lawyers for AI-fabricated citations, so every citation and quote must be verified by humans. AI helps with drafting and organization, but licensed professionals remain responsible for submissions.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> What is the best AI setup for a small paralegal team on a budget?</div>
+          <div class="qa-a">Start with Standard at $99/month ($89/month annual). It includes 10 agents, 1,000 queries/month, and 3 team members. Upgrade to Premium at $499/month ($449/month annual) for 25 agents, 5,000 queries/month, white-labeling, and a PII anonymizer.</div>
+        </div>
+      </div>
     </details>
 
     <details>
-      <summary><span class="badge-ready">Ready</span>&ensp;Custom AI Solution &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>What is a custom AI solution, and how is it different from a generic AI chatbot?</li>
-        <li>How do I build a custom AI solution for my business without hiring an ML team?</li>
-        <li>How can I reduce inaccurate or off-brand answers in a custom AI assistant?</li>
-        <li>Can a custom AI solution connect to my existing tools and workflows?</li>
-        <li>Will my company data be used to train public AI models?</li>
-        <li>How quickly can a platform-based custom AI solution go live compared with an in-house build?</li>
-        <li>How much does a custom AI solution cost?</li>
-      </ol>
+      <summary><span class="badge-deployed">Live</span>&ensp;Custom AI Solution &mdash; 7 FAQs</summary>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> What is a custom AI solution, and how is it different from a generic AI chatbot?</div>
+          <div class="qa-a">A custom AI solution answers using your business content, not just general web knowledge. It retrieves from your approved docs and policies, so responses match your domain. It supports 1,400+ file formats, including PDF, Word, and PowerPoint.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> How do I build a custom AI solution for my business without hiring an ML team?</div>
+          <div class="qa-a">Use a no-code setup and launch in minutes. Connect sources like Google Drive or Notion, set instructions, and deploy as an embed widget, live chat, search bar, Slack bot, or API. This avoids the cost of building and staffing a full ML team.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> How can I reduce inaccurate or off-brand answers in a custom AI assistant?</div>
+          <div class="qa-a">Limit answers to approved sources and require citations in every response. Then set brand rules for tone, terminology, and escalation paths. This keeps replies grounded in company knowledge and consistent across support, sales, and internal use.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Can a custom AI solution connect to my existing tools and workflows?</div>
+          <div class="qa-a">Yes. It integrates with Zapier and tools like Google Drive, Notion, Confluence, SharePoint, HubSpot, Zendesk, Shopify, and Slack. Developers can also use the OpenAI-compatible API endpoint at /v1/chat/completions.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Will my company data be used to train public AI models?</div>
+          <div class="qa-a">No. Your data is used for retrieval in your assistant, not for training public AI models. Security controls include SOC 2 Type II, GDPR compliance, and 256-bit AES encryption to protect business data.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> How quickly can a platform-based custom AI solution go live compared with an in-house build?</div>
+          <div class="qa-a">A platform-based setup can go live in minutes, while in-house AI builds often take months or longer. You can start with a 7-day free trial, connect your content, and deploy quickly to see results sooner.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> How much does a custom AI solution cost?</div>
+          <div class="qa-a">Standard starts at $99/month, or $89/month billed annually. Premium is $499/month, or $449/month annually, and includes white-labeling and a PII anonymizer. Enterprise pricing is custom, with unlimited usage and advanced controls.</div>
+        </div>
+      </div>
     </details>
 
     <details>
-      <summary><span class="badge-ready">Ready</span>&ensp;ChatGPT Clone &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>Is it possible to make an AI clone of yourself without coding?</li>
-        <li>What content should I gather first before creating an AI clone of myself?</li>
-        <li>How do I make an AI clone sound like me instead of a generic chatbot?</li>
-        <li>How can I reduce hallucinations when my AI clone gives mentoring or business advice?</li>
-        <li>Will my personal documents be used to train public AI models when building my clone?</li>
-        <li>How much does it cost to build a ChatGPT clone?</li>
-        <li>How do I keep my AI clone updated as my knowledge changes?</li>
-      </ol>
+      <summary><span class="badge-deployed">Live</span>&ensp;ChatGPT Clone &mdash; 7 FAQs</summary>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> Is it possible to make an AI clone of yourself without coding?</div>
+          <div class="qa-a">Yes. You can build and launch a clone with no code: upload files, set tone, and publish via widget, live chat, or a search bar. Standard starts at $99/month and includes 10 agents. If you want developer access later, use the OpenAI-compatible endpoint at /v1/chat/completions.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> What content should I gather first before creating an AI clone of myself?</div>
+          <div class="qa-a">Start with your highest-signal content: FAQs, articles, transcripts, slide decks, and policies. Include materials that show your real decision style. The platform supports 1,400+ file formats, including PDF, Word, and PowerPoint.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> How do I make an AI clone sound like me instead of a generic chatbot?</div>
+          <div class="qa-a">Set persona instructions first, then ground answers in your own sources. Persona settings shape tone and style, while citation-backed retrieval keeps responses tied to your material. Premium also includes white-labeling to match your brand.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> How can I reduce hallucinations when my AI clone gives mentoring or business advice?</div>
+          <div class="qa-a">Limit the clone to approved mentoring content and require citations in each response. This setup reduces inaccurate or made-up answers and makes it easy to verify claims before someone acts on advice.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Will my personal documents be used to train public AI models when building my clone?</div>
+          <div class="qa-a">No, CustomGPT does not use your documents to train public models. Your files are used for retrieval at answer time. Security includes SOC 2 Type II, GDPR alignment, and 256-bit AES encryption.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> How much does it cost to build a ChatGPT clone?</div>
+          <div class="qa-a">Plans start at $99/month on Standard ($89/month billed annually). Premium is $499/month ($449/month annually). Enterprise is custom pricing. Standard includes 10 agents; Premium includes 25 agents, white-labeling, and a PII anonymizer.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> How do I keep my AI clone updated as my knowledge changes?</div>
+          <div class="qa-a">Re-sync your sources regularly and add new documents as your work evolves. You can connect tools like Google Drive, Notion, Confluence, and SharePoint, then review chat logs to find gaps and improve answers.</div>
+        </div>
+      </div>
     </details>
 
     <details>
-      <summary><span class="badge-ready">Ready</span>&ensp;Custom AI Assistant &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>How can a solopreneur or small team create a custom AI assistant quickly without coding?</li>
-        <li>What is the fastest way to get useful answers on day one instead of spending weeks training an assistant?</li>
-        <li>Can I build a private internal AI assistant from thousands of PDFs?</li>
-        <li>How much does a custom AI assistant cost?</li>
-        <li>Do no-code RAG assistants perform as well as API-built or fine-tuned assistants?</li>
-        <li>How do I reduce irrelevant or hallucinated answers in a custom AI assistant?</li>
-        <li>How do I deploy a custom AI assistant to my website and existing workflows?</li>
-      </ol>
+      <summary><span class="badge-deployed">Live</span>&ensp;Custom AI Assistant &mdash; 7 FAQs</summary>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> How can a solopreneur or small team create a custom AI assistant quickly without coding?</div>
+          <div class="qa-a">Start with one repeat task and launch a focused assistant first. Solopreneurs and SMB teams can upload existing docs, set behavior, and go live in under an hour. Standard includes 10 agents, 1,000 monthly queries, and 3 team members.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> What is the fastest way to get useful answers on day one instead of spending weeks training an assistant?</div>
+          <div class="qa-a">Upload your highest-value content and use RAG so answers pull from it immediately. Begin with FAQs, policies, and product docs, then review early chats to fill gaps. The platform supports 1,400+ file formats and 90+ languages.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> Can I build a private internal AI assistant from thousands of PDFs?</div>
+          <div class="qa-a">Yes. You can run a private internal assistant on large PDF libraries and other files. Standard allows 5,000 docs per agent, Premium 20,000 docs per agent, and Enterprise provides unlimited agents, docs, and queries.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> How much does a custom AI assistant cost?</div>
+          <div class="qa-a">Pricing starts at $99/month on Standard ($89/month billed annually). Premium is $499/month ($449/month billed annually). Enterprise is custom pricing. A 7-day free trial is available.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Do no-code RAG assistants perform as well as API-built or fine-tuned assistants?</div>
+          <div class="qa-a">For knowledge Q&amp;A that changes often, no-code RAG usually gives strong accuracy fastest. API-built assistants provide deeper control through the OpenAI-compatible /v1/chat/completions endpoint, while fine-tuning is better for specialized style and behavior.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> How do I reduce irrelevant or hallucinated answers in a custom AI assistant?</div>
+          <div class="qa-a">Clean source data first and monitor conversations regularly. Remove outdated files, resolve conflicting docs, and add missing answers from failed chats. Responses can include citations for verification, and Premium adds a PII anonymizer.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> How do I deploy a custom AI assistant to my website and existing workflows?</div>
+          <div class="qa-a">Deploy through an embed widget, live chat, search bar, Slack, or API. Integrations include Zapier, Google Drive, Notion, Confluence, SharePoint, HubSpot, Zendesk, and Shopify, so support and automation can run from one assistant.</div>
+        </div>
+      </div>
     </details>
 
     <details>
-      <summary><span class="badge-ready">Ready</span>&ensp;Glean Alternatives &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>What is the best open-source alternative to Glean?</li>
-        <li>How is Glean different from ChatGPT for internal knowledge search?</li>
-        <li>What should I test first before switching from Glean to another enterprise search tool?</li>
-        <li>Can one AI search agent cover the whole company, or should teams use multiple agents?</li>
-        <li>Which Glean alternatives are easiest to deploy without heavy IT involvement?</li>
-        <li>How do citation-backed answers reduce hallucinations in enterprise search?</li>
-        <li>How much do Glean alternatives cost?</li>
-      </ol>
+      <summary><span class="badge-deployed">Live</span>&ensp;Glean Alternatives &mdash; 7 FAQs</summary>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> What is the best open-source alternative to Glean?</div>
+          <div class="qa-a">There isn&rsquo;t a true open-source clone of Glean with the same enterprise connectors and permission sync out of the box. Teams usually combine Elastic or OpenSearch with custom RAG pipelines. For a managed option, CustomGPT is a strong alternative.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> How is Glean different from ChatGPT for internal knowledge search?</div>
+          <div class="qa-a">Glean is workplace search software with app connectors and permission-aware indexing. It connects to tools like Slack, Google Drive, and Jira, then respects source access controls. ChatGPT is a general assistant and needs extra tooling for enterprise integrations and ACL enforcement.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> What should I test first before switching from Glean to another enterprise search tool?</div>
+          <div class="qa-a">Test 5 things first: search relevance on real docs, connector coverage, permission handling, citation quality, and security compliance. Require SOC 2 Type II and GDPR at minimum, then run a pilot with at least 2&ndash;3 teams before rollout.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> Can one AI search agent cover the whole company, or should teams use multiple agents?</div>
+          <div class="qa-a">Most companies should use multiple agents when departments have different data and access rules. Separate agents reduce noise and simplify governance. CustomGPT includes 10 agents on Standard and 25 on Premium, so teams can split HR, Sales, Support, and Engineering.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> Which Glean alternatives are easiest to deploy without heavy IT involvement?</div>
+          <div class="qa-a">The easiest options offer prebuilt integrations, no-code setup, and fast deployment channels. CustomGPT supports 1,400+ file formats and can launch via embed widget, live chat, Slack, search bar, or API, which speeds up first pilots.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> How do citation-backed answers reduce hallucinations in enterprise search?</div>
+          <div class="qa-a">Citation-backed answers reduce enterprise search hallucinations by showing the exact source document for each claim. Employees can verify policy text in seconds instead of guessing. Systems with source citations and permission checks are safer for HR, legal, and compliance workflows.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> How much do Glean alternatives cost?</div>
+          <div class="qa-a">Many Glean alternatives use per-user pricing, so spend rises as headcount grows. CustomGPT uses flat plans: Standard is $99/month ($89 annual), Premium is $499/month ($449 annual), and Enterprise has custom pricing with unlimited agents, docs, and queries.</div>
+        </div>
+      </div>
     </details>
 
     <details>
-      <summary><span class="badge-ready">Ready</span>&ensp;White Label AI Platform &mdash; 7 FAQs</summary>
-      <ol class="faq-list">
-        <li>How do I choose the right white label AI platform for different client needs?</li>
-        <li>How much does a white label AI platform cost for agencies?</li>
-        <li>What does a white label AI platform mean for agencies and resellers?</li>
-        <li>How quickly can an agency deploy a white label AI solution for a new client?</li>
-        <li>How do resellers manage multiple client AI agents without operational chaos?</li>
-        <li>What security checks should I require before choosing a white label AI platform?</li>
-        <li>What white label AI services can agencies sell to larger businesses first?</li>
-      </ol>
+      <summary><span class="badge-deployed">Live</span>&ensp;White Label AI Platform &mdash; 7 FAQs</summary>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> How do I choose the right white label AI platform for different client needs?</div>
+          <div class="qa-a">Pick the platform that matches client use cases and limits. Check white-label support, deployment options (widget, live chat, search bar, API), integrations like HubSpot or Zendesk, language coverage (90+), and query caps such as 1,000 vs 5,000 per month.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> How much does a white label AI platform cost for agencies?</div>
+          <div class="qa-a">White labeling starts on Premium at $499/month, or $449/month billed annually. Premium includes 25 agents, 20,000 docs per agent, 5,000 monthly queries, and removes &ldquo;Powered by CustomGPT&rdquo; branding. Enterprise offers unlimited usage with custom pricing.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> What does a white label AI platform mean for agencies and resellers?</div>
+          <div class="qa-a">A white label AI platform means you take an existing AI platform, remove its branding, and present it as your own product. Your brand appears on client-facing experiences, while the provider runs the infrastructure, model stack, and updates.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> How quickly can an agency deploy a white label AI solution for a new client?</div>
+          <div class="qa-a">Agencies can deploy in days, not months. You connect data, apply brand settings, and launch through an embed widget, live chat, search bar, Slack, or API without building a model from scratch.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> How do resellers manage multiple client AI agents without operational chaos?</div>
+          <div class="qa-a">Use a repeatable delivery workflow: discovery, ingestion, branding, testing, and reporting for every client. Keep each client in its own agent, standardize integrations like Notion or SharePoint, and monitor usage monthly. Premium supports up to 25 agents.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> What security checks should I require before choosing a white label AI platform?</div>
+          <div class="qa-a">Require SOC 2 Type II, GDPR compliance, and 256-bit AES encryption as baseline controls. Then verify access controls and data handling policies for client workspaces. CustomGPT includes those standards and citation-backed answers to reduce hallucination risk.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">7</span> What white label AI services can agencies sell to larger businesses first?</div>
+          <div class="qa-a">Start with services companies already budget for: customer support chatbots, internal knowledge assistants, ecommerce product recommendation bots, lead qualification assistants, and help-desk deflection in Zendesk or HubSpot. Then add training and monthly optimization retainers.</div>
+        </div>
+      </div>
     </details>
 
     <details>
-      <summary><span class="badge-ready">Ready</span>&ensp;AI Agency &mdash; 6 FAQs</summary>
-      <ol class="faq-list">
-        <li>How do I choose a profitable niche when starting an AI agency?</li>
-        <li>What services should a new AI agency offer first?</li>
-        <li>Can I start an AI agency as a solo founder with limited technical resources?</li>
-        <li>How much does it cost to start an AI agency?</li>
-        <li>How can a new AI agency prove ROI in early sales conversations?</li>
-        <li>How do I handle client objections about setup complexity and integrations?</li>
-      </ol>
+      <summary><span class="badge-deployed">Live</span>&ensp;AI Agency &mdash; 6 FAQs</summary>
+      <div class="qa-list">
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">1</span> How do I choose a profitable niche when starting an AI agency?</div>
+          <div class="qa-a">Pick one industry and one repeatable pain point. For example: law firms + contract Q&amp;A, or ecommerce + support deflection. A narrow offer usually closes faster because your demo, pricing, and delivery model stay consistent across the first 3&ndash;5 clients.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">2</span> What services should a new AI agency offer first?</div>
+          <div class="qa-a">Start with 1&ndash;2 productized services: custom chatbots, document processing, or workflow automation. Keep scope fixed, such as one knowledge source and one integration, so projects ship in about 2&ndash;4 weeks and margins stay predictable.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">3</span> Can I start an AI agency as a solo founder with limited technical resources?</div>
+          <div class="qa-a">Yes, a solo founder can launch with a lean stack. A common setup is under $300/month: one platform subscription (Standard starts at $99/month), a domain, and automation tools. Use a 7-day free trial to build a client-ready demo before spending more.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">4</span> How much does it cost to start an AI agency?</div>
+          <div class="qa-a">Most founders can start for about $150&ndash;$500/month. Typical base costs include software, a website, and outreach tools; for example, platform plans often begin at $99/month. Scale spend only after you close recurring retainers or paid pilots.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">5</span> How can a new AI agency prove ROI in early sales conversations?</div>
+          <div class="qa-a">Run a paid pilot with one workflow, one team, and a 14&ndash;30 day timeline. Compare baseline vs pilot on 3 metrics: response time, ticket deflection, and cost per case. Set a target like 20% faster handling to create a clear go/no-go decision.</div>
+        </div>
+        <div class="qa-item">
+          <div class="qa-q"><span class="qa-num">6</span> How do I handle client objections about setup complexity and integrations?</div>
+          <div class="qa-a">Start with one channel and existing connectors to reduce risk. Launch via an embed widget or Slack first, then connect systems like Google Drive, Notion, or Zendesk. For custom flows, use the OpenAI-compatible API endpoint at /v1/chat/completions.</div>
+        </div>
+      </div>
     </details>
+
   </div>
 </div>
 </section>
@@ -795,8 +1062,8 @@
       Click the link in the table above. Read the full blog post so you understand the topic and audience.
     </li>
     <li>
-      <strong>Scroll to the FAQ section.</strong>
-      On the 7 <span class="badge-deployed">Live</span> pages, the FAQs appear as an expandable Rank Math FAQ block near the bottom of the post. For the 6 <span class="badge-ready">Ready</span> pages, review the questions listed in the accordion above.
+      <strong>Review the FAQ section.</strong>
+      All 13 pages are now live. The FAQs appear as an expandable Rank Math FAQ block near the bottom of the post. You can also expand the accordion above to read the full Q&amp;A without leaving this page.
     </li>
     <li>
       <strong>Score each FAQ question on 3 dimensions</strong> using the rubric below. Use a simple 1&ndash;5 scale for each dimension.
@@ -843,7 +1110,7 @@
         </tr>
         <tr>
           <td>Usefulness</td>
-          <td>Doesn't help the reader decide or act; pure fluff</td>
+          <td>Doesn&rsquo;t help the reader decide or act; pure fluff</td>
           <td>Provides some value but could be more actionable</td>
           <td>Directly helps someone make a decision or take next step</td>
         </tr>
@@ -924,8 +1191,8 @@ OVERALL VERDICT:
       <p>Any factual errors get traced back to the data source (product KB, SERP, transcripts) to fix upstream data quality issues.</p>
     </div>
     <div class="method-card">
-      <h3>Deploy Gate</h3>
-      <p>The 6 "Ready" pages will only be deployed after this audit confirms the pipeline quality is acceptable. Your scores set the go/no-go bar.</p>
+      <h3>Scale Decision</h3>
+      <p>If audit scores are strong, we'll scale this pipeline to the next 30+ pages. If gaps are found, we'll fix the pipeline first. Your scores set the go/no-go bar for the next batch.</p>
     </div>
   </div>
 </div>
