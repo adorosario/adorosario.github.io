@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CustomGPT Image Grader — Calibration Report</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0a1e; color: #e0e0e0; padding: 2rem; }
+  h1 { color: #EE55FF; font-size: 2rem; margin-bottom: 0.5rem; }
+  .subtitle { color: #7E76FF; margin-bottom: 2rem; font-size: 1.1rem; }
+  .summary-bar { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .summary-card { background: linear-gradient(135deg, #1a1230, #251a45); border: 1px solid #3B2879; border-radius: 12px; padding: 1.2rem 1.5rem; min-width: 200px; flex: 1; }
+  .summary-card .label { color: #7E76FF; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .summary-card .value { font-size: 2rem; font-weight: 700; margin-top: 0.3rem; }
+  .summary-card .value.f { color: #ff4444; }
+  .summary-card .value.c { color: #ffaa00; }
+  .summary-card .value.a { color: #44ff88; }
+  .summary-card .value.aplus { color: #EE55FF; }
+  .image-card { background: #1a1230; border: 1px solid #3B2879; border-radius: 16px; margin-bottom: 2rem; overflow: hidden; }
+  .image-card-header { display: flex; align-items: center; gap: 2rem; padding: 1.5rem; }
+  .image-card-header img { width: 320px; height: auto; border-radius: 8px; border: 2px solid #3B2879; }
+  .image-card-header .meta { flex: 1; }
+  .image-card-header .meta h2 { color: #fff; font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .image-card-header .meta .score-big { font-size: 3rem; font-weight: 800; }
+  .image-card-header .meta .grade-big { font-size: 1.5rem; font-weight: 700; margin-left: 0.5rem; }
+  .dims { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid #3B2879; }
+  .dim { padding: 1rem; border-right: 1px solid #251a45; border-bottom: 1px solid #251a45; }
+  .dim:nth-child(4n) { border-right: none; }
+  .dim .dim-name { font-size: 0.75rem; color: #7E76FF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .dim .dim-score { font-size: 1.5rem; font-weight: 700; }
+  .dim .dim-bar { height: 4px; background: #251a45; border-radius: 2px; margin-top: 0.4rem; overflow: hidden; }
+  .dim .dim-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+  .dim .dim-explain { font-size: 0.75rem; color: #999; margin-top: 0.4rem; line-height: 1.3; }
+  .improvements { padding: 1rem 1.5rem; background: #150f28; border-top: 1px solid #3B2879; }
+  .improvements h3 { color: #EE55FF; font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .improvements li { font-size: 0.8rem; color: #bbb; margin-left: 1.2rem; margin-bottom: 0.3rem; line-height: 1.4; }
+  .trend { margin: 2.5rem 0; }
+  .trend h2 { color: #fff; margin-bottom: 1rem; }
+  .trend-chart { display: flex; align-items: flex-end; gap: 2px; height: 200px; padding: 0 1rem; }
+  .trend-bar { flex: 1; border-radius: 4px 4px 0 0; position: relative; min-width: 30px; transition: height 0.5s; }
+  .trend-bar .bar-label { position: absolute; bottom: -1.8rem; left: 50%; transform: translateX(-50%); font-size: 0.65rem; color: #999; white-space: nowrap; }
+  .trend-bar .bar-value { position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: #fff; }
+  .verdict { background: linear-gradient(110deg, #EE55FF 0%, #7E76FF 100%); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 2rem; color: #fff; }
+  .verdict h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .verdict p { font-size: 0.95rem; opacity: 0.9; line-height: 1.5; }
+  @media (max-width: 768px) {
+    .dims { grid-template-columns: repeat(2, 1fr); }
+    .image-card-header { flex-direction: column; }
+    .image-card-header img { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<h1>CustomGPT Image Grader — Calibration Report</h1>
+<p class="subtitle">Grading 4 progression images against the 8-dimension brand rubric (Gemini 2.5 Flash, temperature=0)</p>
+
+<div class="summary-bar">
+  <div class="summary-card">
+    <div class="label">01 — Simple Monkey</div>
+    <div class="value f">26.5 <small style="font-size:0.6em">F</small></div>
+  </div>
+  <div class="summary-card">
+    <div class="label">06 — Brand V4</div>
+    <div class="value c">52.0 <small style="font-size:0.6em">C-</small></div>
+  </div>
+  <div class="summary-card">
+    <div class="label">13 — Final</div>
+    <div class="value a">89.5 <small style="font-size:0.6em">A</small></div>
+  </div>
+  <div class="summary-card">
+    <div class="label">15 — DPA V2</div>
+    <div class="value aplus">99.0 <small style="font-size:0.6em">A+</small></div>
+  </div>
+</div>
+
+<!-- Trend Chart -->
+<div class="trend">
+  <h2>Score Progression</h2>
+  <div class="trend-chart">
+    <div class="trend-bar" style="height:26.5%; background: linear-gradient(to top, #ff4444, #ff6666);">
+      <span class="bar-value">26.5</span>
+      <span class="bar-label">01</span>
+    </div>
+    <div class="trend-bar" style="height:52%; background: linear-gradient(to top, #ffaa00, #ffcc44);">
+      <span class="bar-value">52.0</span>
+      <span class="bar-label">06</span>
+    </div>
+    <div class="trend-bar" style="height:89.5%; background: linear-gradient(to top, #44ff88, #66ffaa);">
+      <span class="bar-value">89.5</span>
+      <span class="bar-label">13</span>
+    </div>
+    <div class="trend-bar" style="height:99%; background: linear-gradient(to top, #EE55FF, #7E76FF);">
+      <span class="bar-value">99.0</span>
+      <span class="bar-label">15</span>
+    </div>
+  </div>
+</div>
+
+<!-- Image 1: 01-simple-monkey -->
+<div class="image-card">
+  <div class="image-card-header">
+    <img src="img/01-simple-monkey.png" alt="01-simple-monkey">
+    <div class="meta">
+      <h2>01 — Simple Monkey</h2>
+      <div><span class="score-big" style="color:#ff4444;">26.5</span><span class="grade-big" style="color:#ff4444;">F</span></div>
+      <p style="color:#999; margin-top:0.5rem; font-size:0.85rem;">Baseline: a random nature photo with zero brand elements.</p>
+    </div>
+  </div>
+  <div class="dims">
+    <div class="dim">
+      <div class="dim-name">Brand Color</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">No brand colors present. Dominated by natural greens and browns.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Layout</div>
+      <div class="dim-score" style="color:#ffaa00;">4</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:40%; background:#ffaa00;"></div></div>
+      <div class="dim-explain">Clear focal point (monkey) but naturalistic, not tech-forward.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Visual Quality</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Sharp, well-exposed, artifact-free. High photographic quality.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Icon Style</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">No 3D icons, illustrations, shadows, or glow effects.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Typography</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">No typography present at all.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Personality</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">Monkey in jungle — not tech-forward or AI-related.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">CTA/Badge</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">No CTA buttons or badges.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Cohesion</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">Entirely disconnected from CustomGPT.ai brand.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Image 2: 06-brand-v4 -->
+<div class="image-card">
+  <div class="image-card-header">
+    <img src="img/06-brand-v4.png" alt="06-brand-v4">
+    <div class="meta">
+      <h2>06 — Brand V4</h2>
+      <div><span class="score-big" style="color:#ffaa00;">52.0</span><span class="grade-big" style="color:#ffaa00;">C-</span></div>
+      <p style="color:#999; margin-top:0.5rem; font-size:0.85rem;">Early brand attempt: colors starting to appear, but missing 3D style, typography, and CTAs.</p>
+    </div>
+  </div>
+  <div class="dims">
+    <div class="dim">
+      <div class="dim-name">Brand Color</div>
+      <div class="dim-score" style="color:#ffaa00;">6</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:60%; background:#ffaa00;"></div></div>
+      <div class="dim-explain">Magenta and purple present, but missing dark gradient background.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Layout</div>
+      <div class="dim-score" style="color:#44ff88;">8</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:80%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Neural network well-centered, icons symmetrically placed.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Visual Quality</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Sharp, crisp edges, no artifacts.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Icon Style</div>
+      <div class="dim-score" style="color:#ff6644;">3</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:30%; background:#ff6644;"></div></div>
+      <div class="dim-explain">Flat 2D illustrations — missing 3D, shadows, glow effects.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Typography</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">No typography at all.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Personality</div>
+      <div class="dim-score" style="color:#ffaa00;">6</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:60%; background:#ffaa00;"></div></div>
+      <div class="dim-explain">Tech-forward via neural network, but lacking distinct CustomGPT feel.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">CTA/Badge</div>
+      <div class="dim-score" style="color:#ff4444;">1</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:10%; background:#ff4444;"></div></div>
+      <div class="dim-explain">No CTA buttons or badges.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Cohesion</div>
+      <div class="dim-score" style="color:#ffaa00;">5</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:50%; background:#ffaa00;"></div></div>
+      <div class="dim-explain">Internally consistent but missing key brand elements.</div>
+    </div>
+  </div>
+  <div class="improvements">
+    <h3>Top 3 Fixes</h3>
+    <ol>
+      <li>Redesign icons with 3D perspective, soft shadows, and glow effects</li>
+      <li>Add dark gradient background using #3B2879 and #602FFC</li>
+      <li>Add "Learn More" CTA button or "COMPLETE GUIDE" badge</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Image 3: 13-final -->
+<div class="image-card">
+  <div class="image-card-header">
+    <img src="img/13-final.png" alt="13-final">
+    <div class="meta">
+      <h2>13 — Final</h2>
+      <div><span class="score-big" style="color:#44ff88;">89.5</span><span class="grade-big" style="color:#44ff88;">A</span></div>
+      <p style="color:#999; margin-top:0.5rem; font-size:0.85rem;">Near-production quality. All brand elements present. Robot mascot, 3D icons, CTA button, correct colors.</p>
+    </div>
+  </div>
+  <div class="dims">
+    <div class="dim">
+      <div class="dim-name">Brand Color</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Background gradient and CTA colors consistent with brand palette.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Layout</div>
+      <div class="dim-score" style="color:#44ff88;">8</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:80%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Text left, illustrations right, clear hierarchy. Robot as focal point.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Visual Quality</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Sharp, clean, artifact-free. Professional rendering.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Icon Style</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">3D floating icons with shadows and glow — perfectly on-brand.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Typography</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Bold white sans-serif, highly readable, clear hierarchy.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Personality</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Friendly robot + tech imagery = approachable AI.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">CTA/Badge</div>
+      <div class="dim-score" style="color:#66cc44;">7</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:70%; background:#66cc44;"></div></div>
+      <div class="dim-explain">"Learn More" CTA present. Badges don't say "COMPLETE GUIDE".</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Cohesion</div>
+      <div class="dim-score" style="color:#44ff88;">8</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:80%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Strong cohesion, would fit well on customgpt.ai.</div>
+    </div>
+  </div>
+  <div class="improvements">
+    <h3>Top 3 Fixes</h3>
+    <ol>
+      <li>Update badges to include "COMPLETE GUIDE" text</li>
+      <li>Fine-tune background gradient to exact brand hex values</li>
+      <li>Add more breathing room around the main title</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Image 4: 15-dpa-v2 -->
+<div class="image-card">
+  <div class="image-card-header">
+    <img src="img/15-dpa-v2.png" alt="15-dpa-v2">
+    <div class="meta">
+      <h2>15 — DPA V2</h2>
+      <div><span class="score-big" style="color:#EE55FF;">99.0</span><span class="grade-big" style="color:#EE55FF;">A+</span></div>
+      <p style="color:#999; margin-top:0.5rem; font-size:0.85rem;">Best result. Website-quality. Only fix: CTA button gradient could be more precise.</p>
+    </div>
+  </div>
+  <div class="dims">
+    <div class="dim">
+      <div class="dim-name">Brand Color</div>
+      <div class="dim-score" style="color:#66cc44;">7</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:70%; background:#66cc44;"></div></div>
+      <div class="dim-explain">Great overall, but CTA button uses solid purple instead of gradient.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Layout</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Well-balanced, clear hierarchy from badge to title to CTA.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Visual Quality</div>
+      <div class="dim-score" style="color:#EE55FF;">10</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:100%; background:linear-gradient(90deg, #EE55FF, #7E76FF);"></div></div>
+      <div class="dim-explain">Perfect. Sharp, clean, smooth rendering. No artifacts.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Icon Style</div>
+      <div class="dim-score" style="color:#EE55FF;">10</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:100%; background:linear-gradient(90deg, #EE55FF, #7E76FF);"></div></div>
+      <div class="dim-explain">Perfect 3D floating icons with shadows and glow. Depth and layering.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Typography</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Bold white sans-serif, excellent readability and hierarchy.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Personality</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">Tech-forward, vibrant, approachable AI tone.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">CTA/Badge</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">"COMPLETE GUIDE" badge + "Learn More" CTA both present.</div>
+    </div>
+    <div class="dim">
+      <div class="dim-name">Cohesion</div>
+      <div class="dim-score" style="color:#44ff88;">9</div>
+      <div class="dim-bar"><div class="dim-bar-fill" style="width:90%; background:#44ff88;"></div></div>
+      <div class="dim-explain">All elements work together. Belongs on customgpt.ai.</div>
+    </div>
+  </div>
+  <div class="improvements">
+    <h3>Top 3 Fixes (minor)</h3>
+    <ol>
+      <li>Update CTA button to use the magenta-to-purple gradient</li>
+      <li>Slightly increase spacing between title and subtitle</li>
+      <li>Ensure consistent font weight on subtitle text</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Verdict -->
+<div class="verdict">
+  <h2>Calibration Verdict: PASS</h2>
+  <p>
+    The grader correctly orders all 4 images by quality: random photo (F) &rarr; early brand attempt (C-) &rarr; near-final (A) &rarr; production-ready (A+).
+    Scores increase monotonically from 26.5 to 99.0. The rubric correctly penalizes missing brand elements while rewarding visual quality.
+    The grader is calibrated and ready for benchmarking against human-designed website images.
+  </p>
+</div>
+
+<p style="color:#666; margin-top:2rem; font-size:0.75rem; text-align:center;">
+  Generated by CustomGPT Image Grader &middot; Gemini 2.5 Flash &middot; temperature=0 &middot; March 2026
+</p>
+
+</body>
+</html>
