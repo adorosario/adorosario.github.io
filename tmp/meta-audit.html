@@ -375,11 +375,115 @@
     border-top: 1px solid var(--gray-light);
   }
 
+  /* Visual methodology */
+  .visual-pipeline {
+    text-align: center;
+    margin: 20px 0 30px;
+  }
+  .visual-pipeline img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(78,35,209,0.15);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .visual-pipeline img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(78,35,209,0.25);
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .detail-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+  }
+  .detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(78,35,209,0.2);
+    border-color: var(--purple-light);
+  }
+  .detail-card img {
+    width: 100%;
+    display: block;
+  }
+  .detail-card .card-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(18,22,30,0.85));
+    color: var(--white);
+    padding: 20px 16px 12px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* Lightbox modal */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.88);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .lightbox.active {
+    display: flex;
+  }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+    object-fit: contain;
+  }
+  .lightbox .lb-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    font-weight: 300;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    z-index: 10000;
+  }
+  .lightbox .lb-close:hover { opacity: 1; }
+  .lightbox .lb-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    padding: 8px 24px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+  }
+
   @media (max-width: 768px) {
     .hero h1 { font-size: 28px; }
     .stats { flex-direction: column; align-items: center; }
     .issue-grid { grid-template-columns: 1fr; }
     .method-grid { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr 1fr; }
     table { font-size: 12px; }
     .meta-cell { min-width: 180px; }
   }
@@ -392,7 +496,7 @@
   <div class="badge">Pre-Deployment Review</div>
   <h1>Meta Description Audit</h1>
   <p>Before/after comparison of 134 meta descriptions across all FAQ-deployed blog posts. Review quality scores, CTR gap data, and proposed improvements before WordPress deployment.</p>
-  <div class="gen-date">Generated 2026-03-09 20:56 UTC</div>
+  <div class="gen-date">Generated 2026-03-09 22:30 UTC</div>
 </div>
 
 <!-- Stats -->
@@ -429,58 +533,75 @@
 <div class="container">
   <section>
     <h2><span class="num">1</span> Methodology</h2>
-    <p class="section-sub">How meta descriptions were audited, scored, and rewritten using SERP-aware AI generation.</p>
+    <p class="section-sub">How meta descriptions were audited, scored, and rewritten using SERP-aware AI generation. Click any image to enlarge.</p>
 
-    <div class="pipeline">
-      <div class="pipe-step">GSC CTR Gap<br><small>identify underperformers</small></div>
-      <span class="pipe-arrow">&rarr;</span>
-      <div class="pipe-step">Keyword Inference<br><small>primary keyword per page</small></div>
-      <span class="pipe-arrow">&rarr;</span>
-      <div class="pipe-step">SERP Competitor<br><small>top 10 competitor metas</small></div>
-      <span class="pipe-arrow">&rarr;</span>
-      <div class="pipe-step">LLM Generation<br><small>Azure GPT with context</small></div>
-      <span class="pipe-arrow">&rarr;</span>
-      <div class="pipe-step">Quality Score<br><small>8-dimension check</small></div>
+    <!-- Main pipeline overview image -->
+    <div class="visual-pipeline">
+      <img src="img/meta-pipeline-overview.png" alt="5-Step Meta Description Optimization Pipeline" onclick="openLightbox(this, 'End-to-end pipeline: CTR Gap Analysis, Keyword Inference, SERP Competitor Analysis, AI Generation, Quality Score')">
     </div>
 
-    <div class="method-grid">
-      <div class="method-card">
-        <h3>CTR Gap Analysis</h3>
-        <p>Pages ranked by "missed clicks" = impressions &times; (expected_CTR - actual_CTR). Expected CTR derived from position using industry benchmarks. 58 of 134 pages had GSC data; 76 were scored without CTR context.</p>
+    <!-- Detail drill-down cards -->
+    <div class="detail-grid">
+      <div class="detail-card" onclick="openLightbox(this.querySelector('img'), 'Step 1: CTR Gap Analysis, ranking pages by missed clicks using position-based CTR benchmarks')">
+        <img src="img/meta-ctr-gap.png" alt="CTR Gap Analysis">
+        <div class="card-label">Step 1: CTR Gap Analysis</div>
       </div>
-      <div class="method-card">
-        <h3>SERP-Aware Generation</h3>
-        <ul>
-          <li>Infer primary keyword from page title + GSC queries</li>
-          <li>Fetch top 10 competitor meta descriptions via Serper API</li>
-          <li>Query product knowledge base for accurate pricing/features</li>
-          <li>Generate with Azure OpenAI (GPT) using full context</li>
-        </ul>
+      <div class="detail-card" onclick="openLightbox(this.querySelector('img'), 'Step 2-3: SERP-Aware Generation, differentiating from competitor snippets using AI')">
+        <img src="img/meta-serp-gen.png" alt="SERP-Aware Generation">
+        <div class="card-label">Step 2-3: SERP-Aware Generation</div>
       </div>
-      <div class="method-card">
-        <h3>Quality Scoring (0-80)</h3>
-        <ul>
-          <li><strong>Length</strong> (0-30): Ideal 120-160 chars</li>
-          <li><strong>Substance</strong> (+10): 3+ words minimum</li>
-          <li><strong>Numbers/stats</strong> (+10): Contains data points</li>
-          <li><strong>Brand mention</strong> (+5): References CustomGPT</li>
-          <li><strong>Clean formatting</strong> (+5): No em/en dashes</li>
-          <li><strong>CTA language</strong> (+10): Action/benefit words</li>
-          <li><strong>No filler start</strong> (+5): Avoids generic openings</li>
-          <li><strong>Punctuation</strong> (+5): Ends with . ! ?</li>
-        </ul>
+      <div class="detail-card" onclick="openLightbox(this.querySelector('img'), 'Step 4: Quality Scoring, 8 dimensions totaling 80 points')">
+        <img src="img/meta-scoring.png" alt="Quality Scoring Rubric">
+        <div class="card-label">Step 4: Quality Scoring</div>
       </div>
-      <div class="method-card">
-        <h3>Deployment Plan</h3>
-        <ul>
-          <li>Deploy via Rank Math <code>updateMeta</code> API</li>
-          <li><code>rank_math_description</code> field on each post</li>
-          <li>Dry-run verification before live deployment</li>
-          <li>Rollback capability via stored originals</li>
-          <li>0 pages currently have empty metas</li>
-        </ul>
+      <div class="detail-card" onclick="openLightbox(this.querySelector('img'), 'Step 5: WordPress Deployment via Rank Math API with dry-run and rollback')">
+        <img src="img/meta-deploy.png" alt="Deployment Flow">
+        <div class="card-label">Step 5: Deployment Flow</div>
       </div>
     </div>
+
+    <!-- Compact methodology details (collapsed by default) -->
+    <details style="margin-top: 24px; border: 1px solid #e5e7eb; border-radius: 12px;">
+      <summary style="padding: 14px 20px; cursor: pointer; font-weight: 600; font-size: 15px; background: var(--gray-light); border-radius: 12px;">Detailed Methodology Notes</summary>
+      <div class="method-grid" style="padding: 20px;">
+        <div class="method-card">
+          <h3>CTR Gap Analysis</h3>
+          <p>Pages ranked by "missed clicks" = impressions &times; (expected_CTR - actual_CTR). Expected CTR derived from position using industry benchmarks. 58 of 134 pages had GSC data; 76 were scored without CTR context.</p>
+        </div>
+        <div class="method-card">
+          <h3>SERP-Aware Generation</h3>
+          <ul>
+            <li>Infer primary keyword from page title + GSC queries</li>
+            <li>Fetch top 10 competitor meta descriptions via Serper API</li>
+            <li>Query product knowledge base for accurate pricing/features</li>
+            <li>Generate with Azure OpenAI (GPT-5) using full context</li>
+          </ul>
+        </div>
+        <div class="method-card">
+          <h3>Quality Scoring (0-80)</h3>
+          <ul>
+            <li><strong>Length</strong> (0-30): Ideal 120-160 chars</li>
+            <li><strong>Substance</strong> (+10): 3+ words minimum</li>
+            <li><strong>Numbers/stats</strong> (+10): Contains data points</li>
+            <li><strong>Brand mention</strong> (+5): References CustomGPT.ai</li>
+            <li><strong>Clean formatting</strong> (+5): No em/en dashes</li>
+            <li><strong>CTA language</strong> (+10): Action/benefit words</li>
+            <li><strong>No filler start</strong> (+5): Avoids generic openings</li>
+            <li><strong>Punctuation</strong> (+5): Ends with . ! ?</li>
+          </ul>
+        </div>
+        <div class="method-card">
+          <h3>Deployment Plan</h3>
+          <ul>
+            <li>Deploy via Rank Math <code>updateMeta</code> API</li>
+            <li><code>rank_math_description</code> field on each post</li>
+            <li>Dry-run verification before live deployment</li>
+            <li>Rollback capability via stored originals</li>
+            <li>0 pages currently have empty metas</li>
+          </ul>
+        </div>
+      </div>
+    </details>
   </section>
 </div>
 
@@ -4070,10 +4191,38 @@
 </div>
 
 <div class="footer">
-  Meta Description Audit Dashboard &mdash; CustomGPT.ai Content Team &mdash; Generated 2026-03-09 20:56 UTC
+  Meta Description Audit Dashboard &mdash; CustomGPT.ai Content Team &mdash; Generated 2026-03-09 22:30 UTC
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lb-close" onclick="closeLightbox()">&times;</span>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-caption" id="lb-caption"></div>
 </div>
 
 <script>
+function openLightbox(imgEl, caption) {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCap = document.getElementById('lb-caption');
+  lbImg.src = imgEl.src;
+  lbImg.alt = imgEl.alt || caption;
+  lbCap.textContent = caption || '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
 function filterTable() {
   const search = document.getElementById('searchBox').value.toLowerCase();
   const filter = document.getElementById('filterSelect').value;
