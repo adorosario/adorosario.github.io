@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CustomGPT — 3-Cycle Image Optimization Results</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0a1e; color: #e0e0e0; padding: 1.5rem; max-width: 1400px; margin: 0 auto; }
+  h1 { color: #EE55FF; font-size: 1.8rem; margin-bottom: 0.3rem; }
+  .subtitle { color: #7E76FF; margin-bottom: 2rem; font-size: 0.95rem; }
+  a { color: #EE55FF; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Summary cards */
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .scard { background: linear-gradient(135deg, #1a1230, #251a45); border: 1px solid #3B2879; border-radius: 10px; padding: 1rem; text-align: center; }
+  .scard .label { color: #7E76FF; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .scard .val { font-size: 1.8rem; font-weight: 800; margin-top: 0.2rem; }
+  .scard .sub { font-size: 0.7rem; color: #888; margin-top: 0.2rem; }
+
+  /* Key finding */
+  .finding { background: linear-gradient(110deg, rgba(238,85,255,0.15), rgba(126,118,255,0.15)); border: 1px solid #602FFC; border-radius: 10px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; }
+  .finding h2 { color: #EE55FF; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .finding p { color: #ccc; font-size: 0.9rem; line-height: 1.5; }
+  .finding .highlight { color: #EE55FF; font-weight: 700; }
+
+  /* Topic section */
+  .topic { background: #1a1230; border: 1px solid #3B2879; border-radius: 12px; margin-bottom: 1.5rem; overflow: hidden; }
+  .topic-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; cursor: default; }
+  .topic-header h3 { color: #fff; font-size: 1rem; }
+  .topic-header .score-pills { display: flex; gap: 0.5rem; align-items: center; }
+  .pill { padding: 0.25rem 0.7rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .pill.f { background: #ff4444; color: #fff; }
+  .pill.d { background: #ff6633; color: #fff; }
+  .pill.c { background: #ffaa00; color: #000; }
+  .pill.b { background: #88cc44; color: #000; }
+  .pill.a { background: #44ff88; color: #000; }
+  .pill.ap { background: linear-gradient(110deg, #EE55FF, #7E76FF); color: #fff; }
+  .pill.best { box-shadow: 0 0 8px rgba(238,85,255,0.6); }
+  .arrow { color: #7E76FF; font-size: 0.8rem; }
+  .arrow::after { content: ' →'; }
+  .arrow:last-child::after { content: ''; }
+
+  /* Cycle progression row */
+  .cycles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid #3B2879; }
+  .cycle { padding: 0.8rem; border-right: 1px solid #251a45; text-align: center; }
+  .cycle:last-child { border-right: none; }
+  .cycle.is-best { background: rgba(238,85,255,0.08); }
+  .cycle .clabel { font-size: 0.65rem; color: #7E76FF; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .cycle img { width: 100%; border-radius: 6px; border: 2px solid #3B2879; margin-bottom: 0.4rem; cursor: pointer; transition: border-color 0.2s; }
+  .cycle img:hover { border-color: #EE55FF; }
+  .cycle.is-best img { border-color: #EE55FF; }
+  .cycle .cscore { font-size: 1.4rem; font-weight: 800; }
+  .cycle .cgrade { font-size: 0.8rem; font-weight: 600; margin-left: 0.2rem; }
+
+  /* Collapsible detail */
+  .detail-toggle { display: block; width: 100%; background: #150f28; border: none; border-top: 1px solid #3B2879; color: #7E76FF; padding: 0.6rem; cursor: pointer; font-size: 0.75rem; text-align: center; font-family: inherit; }
+  .detail-toggle:hover { background: #1a1230; color: #EE55FF; }
+  .detail-content { display: none; padding: 1rem; background: #150f28; border-top: 1px solid #251a45; }
+  .detail-content.open { display: block; }
+
+  /* Dimension bars in detail */
+  .dim-row { display: flex; align-items: center; margin-bottom: 0.4rem; font-size: 0.75rem; }
+  .dim-row .dname { width: 140px; color: #999; flex-shrink: 0; }
+  .dim-row .dbar { flex: 1; height: 6px; background: #251a45; border-radius: 3px; overflow: hidden; margin: 0 0.5rem; }
+  .dim-row .dbar-fill { height: 100%; border-radius: 3px; }
+  .dim-row .dscore { width: 30px; text-align: right; font-weight: 700; }
+
+  /* Comparison table */
+  .comparison { overflow-x: auto; margin: 2rem 0; }
+  .comparison table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .comparison th, .comparison td { padding: 0.5rem 0.6rem; text-align: center; border: 1px solid #3B2879; }
+  .comparison th { background: #1a1230; color: #7E76FF; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .comparison td.winner { background: rgba(238,85,255,0.15); font-weight: 700; }
+  .comparison .human-col { background: rgba(255,255,255,0.03); }
+  .comparison .ai-col { background: rgba(238,85,255,0.05); }
+
+  /* Insights */
+  .insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .insight { background: #1a1230; border: 1px solid #3B2879; border-radius: 10px; padding: 1rem; }
+  .insight h4 { color: #EE55FF; font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .insight p { color: #bbb; font-size: 0.8rem; line-height: 1.4; }
+  .insight .num { color: #EE55FF; font-weight: 800; font-size: 1.3rem; }
+
+  /* Methodology (collapsible) */
+  .method-toggle { display: inline-block; background: #1a1230; border: 1px solid #3B2879; border-radius: 6px; padding: 0.5rem 1rem; color: #7E76FF; cursor: pointer; font-size: 0.8rem; margin-top: 1rem; }
+  .method-toggle:hover { border-color: #EE55FF; color: #EE55FF; }
+  .method-content { display: none; background: #1a1230; border: 1px solid #3B2879; border-radius: 10px; padding: 1rem; margin-top: 0.5rem; font-size: 0.8rem; color: #999; line-height: 1.6; }
+  .method-content.open { display: block; }
+  .method-content strong { color: #ccc; }
+
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
+
+  .footer { color: #555; margin-top: 2rem; font-size: 0.7rem; text-align: center; padding: 1rem; border-top: 1px solid #251a45; }
+
+  @media (max-width: 768px) {
+    .cycles { grid-template-columns: 1fr; }
+    .summary { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<h1>3-Cycle Optimization: Does AI Improve With Feedback?</h1>
+<p class="subtitle">Generate → Grade → Improve → Repeat. 5 topics, 3 cycles each, compared to real website images. Gemini 2.5 Pro judge.</p>
+
+<!-- Executive summary -->
+<div class="summary">
+  <div class="scard">
+    <div class="label">Avg Cycle 1</div>
+    <div class="val" style="color:#ffaa00;">73.4</div>
+    <div class="sub">First attempt</div>
+  </div>
+  <div class="scard">
+    <div class="label">Avg Cycle 2</div>
+    <div class="val" style="color:#44ff88;">83.8</div>
+    <div class="sub">+10.4 improvement</div>
+  </div>
+  <div class="scard">
+    <div class="label">Avg Cycle 3</div>
+    <div class="val" style="color:#ffaa00;">70.8</div>
+    <div class="sub">-13.0 regression</div>
+  </div>
+  <div class="scard">
+    <div class="label">Avg Best Cycle</div>
+    <div class="val" style="color:#EE55FF;">87.4</div>
+    <div class="sub">Pick-the-best strategy</div>
+  </div>
+  <div class="scard">
+    <div class="label">Human Website Avg</div>
+    <div class="val" style="color:#7E76FF;">78.1</div>
+    <div class="sub">7 blog images</div>
+  </div>
+  <div class="scard">
+    <div class="label">AI Best vs Human</div>
+    <div class="val" style="color:#EE55FF;">+9.3</div>
+    <div class="sub">AI wins on avg</div>
+  </div>
+</div>
+
+<!-- Key finding -->
+<div class="finding">
+  <h2>Key Finding: Cycle 2 Is the Sweet Spot</h2>
+  <p>
+    The optimization loop shows a clear pattern: <span class="highlight">Cycle 2 produces the best results in 4 out of 5 topics</span>.
+    The average jumps from 73.4 to 83.8 (+10.4 points) after incorporating grading feedback.
+    But Cycle 3 <em>regresses</em> in 4 out of 5 topics — the model over-corrects when given too many accumulated fixes.
+  </p>
+  <p style="margin-top:0.5rem;">
+    <strong>Recommendation:</strong> Use a <span class="highlight">2-cycle loop</span> (generate → grade → regenerate with feedback),
+    then pick the best of cycles 1 and 2. This "pick-the-best" strategy averages <span class="highlight">87.4</span> vs the human website average of 78.1 — a statistically significant <span class="highlight">+9.3 point advantage</span>.
+  </p>
+</div>
+
+<!-- Per-topic results -->
+<h2 style="color:#fff; margin-bottom:1rem;">Topic Results</h2>
+
+<!-- Topic 1: chatbots-vs-humans -->
+<div class="topic">
+  <div class="topic-header">
+    <div>
+      <h3>AI Chatbots vs Human Agents</h3>
+      <div style="font-size:0.75rem; color:#888;">Human website score: 86 (A)</div>
+    </div>
+    <div class="score-pills">
+      <span class="pill a">C1: 97</span>
+      <span class="arrow"></span>
+      <span class="pill ap best">C2: 100</span>
+      <span class="arrow"></span>
+      <span class="pill c">C3: 62</span>
+    </div>
+  </div>
+  <div class="cycles">
+    <div class="cycle">
+      <div class="clabel">Cycle 1 — Initial</div>
+      <img src="img/3cycle/chatbots-vs-humans-c1.png" onclick="openLightbox(this.src)" alt="C1">
+      <div><span class="cscore" style="color:#44ff88;">97</span><span class="cgrade" style="color:#44ff88;">A+</span></div>
+    </div>
+    <div class="cycle is-best">
+      <div class="clabel">Cycle 2 — Best ★</div>
+      <img src="img/3cycle/chatbots-vs-humans-c2.png" onclick="openLightbox(this.src)" alt="C2">
+      <div><span class="cscore" style="color:#EE55FF;">100</span><span class="cgrade" style="color:#EE55FF;">A+</span></div>
+    </div>
+    <div class="cycle">
+      <div class="clabel">Cycle 3 — Over-corrected</div>
+      <img src="img/3cycle/chatbots-vs-humans-c3.png" onclick="openLightbox(this.src)" alt="C3">
+      <div><span class="cscore" style="color:#ffaa00;">62</span><span class="cgrade" style="color:#ffaa00;">C+</span></div>
+    </div>
+  </div>
+  <button class="detail-toggle" onclick="toggleDetail(this)">Show dimension breakdown ▾</button>
+  <div class="detail-content">
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; font-size:0.75rem;">
+      <div>
+        <div style="color:#7E76FF; font-weight:600; margin-bottom:0.5rem;">Cycle 1 (97)</div>
+        <div class="dim-row"><span class="dname">Brand Color</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Layout</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore">5</span></div>
+        <div class="dim-row"><span class="dname">Visual Quality</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore">5</span></div>
+        <div class="dim-row"><span class="dname">Icon Style</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore">5</span></div>
+        <div class="dim-row"><span class="dname">Typography</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore">5</span></div>
+        <div class="dim-row"><span class="dname">Personality</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore">5</span></div>
+        <div class="dim-row"><span class="dname">CTA/Badge</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Cohesion</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore">5</span></div>
+      </div>
+      <div>
+        <div style="color:#EE55FF; font-weight:600; margin-bottom:0.5rem;">Cycle 2 — Best (100) ★</div>
+        <div class="dim-row"><span class="dname">Brand Color</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Layout</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Visual Quality</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Icon Style</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Typography</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Personality</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">CTA/Badge</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Cohesion</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+      </div>
+      <div>
+        <div style="color:#ffaa00; font-weight:600; margin-bottom:0.5rem;">Cycle 3 (62) ⚠ Regressed</div>
+        <div class="dim-row"><span class="dname">Brand Color</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Layout</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Visual Quality</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Icon Style</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Typography</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Personality</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">CTA/Badge</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Cohesion</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Topic 2: students -->
+<div class="topic">
+  <div class="topic-header">
+    <div>
+      <h3>Best AI Tools for Students 2026</h3>
+      <div style="font-size:0.75rem; color:#888;">Human website score: 77 (B+)</div>
+    </div>
+    <div class="score-pills">
+      <span class="pill c">C1: 59</span>
+      <span class="arrow"></span>
+      <span class="pill ap best">C2: 93</span>
+      <span class="arrow"></span>
+      <span class="pill b">C3: 77</span>
+    </div>
+  </div>
+  <div class="cycles">
+    <div class="cycle">
+      <div class="clabel">Cycle 1 — Initial</div>
+      <img src="img/3cycle/students-c1.png" onclick="openLightbox(this.src)" alt="C1">
+      <div><span class="cscore" style="color:#ffaa00;">59</span><span class="cgrade" style="color:#ffaa00;">C</span></div>
+    </div>
+    <div class="cycle is-best">
+      <div class="clabel">Cycle 2 — Best ★</div>
+      <img src="img/3cycle/students-c2.png" onclick="openLightbox(this.src)" alt="C2">
+      <div><span class="cscore" style="color:#EE55FF;">93</span><span class="cgrade" style="color:#EE55FF;">A+</span></div>
+    </div>
+    <div class="cycle">
+      <div class="clabel">Cycle 3 — Over-corrected</div>
+      <img src="img/3cycle/students-c3.png" onclick="openLightbox(this.src)" alt="C3">
+      <div><span class="cscore" style="color:#88cc44;">77</span><span class="cgrade" style="color:#88cc44;">B+</span></div>
+    </div>
+  </div>
+  <button class="detail-toggle" onclick="toggleDetail(this)">Show dimension breakdown ▾</button>
+  <div class="detail-content">
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; font-size:0.75rem;">
+      <div>
+        <div style="color:#7E76FF; font-weight:600; margin-bottom:0.5rem;">Cycle 1 (59)</div>
+        <div class="dim-row"><span class="dname">Brand Color</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Layout</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Visual Quality</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Icon Style</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Typography</span><div class="dbar"><div class="dbar-fill" style="width:40%;background:#ff6644"></div></div><span class="dscore">2</span></div>
+        <div class="dim-row"><span class="dname">Personality</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">CTA/Badge</span><div class="dbar"><div class="dbar-fill" style="width:40%;background:#ff6644"></div></div><span class="dscore">2</span></div>
+        <div class="dim-row"><span class="dname">Cohesion</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+      </div>
+      <div>
+        <div style="color:#EE55FF; font-weight:600; margin-bottom:0.5rem;">Cycle 2 — Best (93) ★</div>
+        <div class="dim-row"><span class="dname">Brand Color</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Layout</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Visual Quality</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Icon Style</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Typography</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">Personality</span><div class="dbar"><div class="dbar-fill" style="width:100%;background:#EE55FF"></div></div><span class="dscore" style="color:#EE55FF">5</span></div>
+        <div class="dim-row"><span class="dname">CTA/Badge</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Cohesion</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+      </div>
+      <div>
+        <div style="color:#88cc44; font-weight:600; margin-bottom:0.5rem;">Cycle 3 (77)</div>
+        <div class="dim-row"><span class="dname">Brand Color</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Layout</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Visual Quality</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Icon Style</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">Typography</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Personality</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+        <div class="dim-row"><span class="dname">CTA/Badge</span><div class="dbar"><div class="dbar-fill" style="width:60%;background:#ffaa00"></div></div><span class="dscore">3</span></div>
+        <div class="dim-row"><span class="dname">Cohesion</span><div class="dbar"><div class="dbar-fill" style="width:80%;background:#44ff88"></div></div><span class="dscore">4</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Topic 3: rag -->
+<div class="topic">
+  <div class="topic-header">
+    <div>
+      <h3>What is RAG-Based AI?</h3>
+      <div style="font-size:0.75rem; color:#888;">Human website score: 81 (A-)</div>
+    </div>
+    <div class="score-pills">
+      <span class="pill b">C1: 67</span>
+      <span class="arrow"></span>
+      <span class="pill b">C2: 76</span>
+      <span class="arrow"></span>
+      <span class="pill a best">C3: 87</span>
+    </div>
+  </div>
+  <div class="cycles">
+    <div class="cycle">
+      <div class="clabel">Cycle 1 — Initial</div>
+      <img src="img/3cycle/rag-c1.png" onclick="openLightbox(this.src)" alt="C1">
+      <div><span class="cscore" style="color:#88cc44;">67</span><span class="cgrade" style="color:#88cc44;">B-</span></div>
+    </div>
+    <div class="cycle">
+      <div class="clabel">Cycle 2 — Improved</div>
+      <img src="img/3cycle/rag-c2.png" onclick="openLightbox(this.src)" alt="C2">
+      <div><span class="cscore" style="color:#88cc44;">76</span><span class="cgrade" style="color:#88cc44;">B+</span></div>
+    </div>
+    <div class="cycle is-best">
+      <div class="clabel">Cycle 3 — Best ★</div>
+      <img src="img/3cycle/rag-c3.png" onclick="openLightbox(this.src)" alt="C3">
+      <div><span class="cscore" style="color:#44ff88;">87</span><span class="cgrade" style="color:#44ff88;">A</span></div>
+    </div>
+  </div>
+  <button class="detail-toggle" onclick="toggleDetail(this)">Show dimension breakdown ▾</button>
+  <div class="detail-content">
+    <div style="font-size:0.75rem; color:#999;">
+      <strong style="color:#EE55FF;">Cycle 3 (Best — 87):</strong> Brand Color 4, Layout 5, Visual Quality 5, Icon Style 5, Typography 2, Personality 5, CTA/Badge 4, Cohesion 4.
+      <br><em>The only topic where steady improvement through all 3 cycles worked. Typography remains the weak point (score 2).</em>
+    </div>
+  </div>
+</div>
+
+<!-- Topic 4: tasks -->
+<div class="topic">
+  <div class="topic-header">
+    <div>
+      <h3>Daily Work Tasks AI Chatbot Helps With</h3>
+      <div style="font-size:0.75rem; color:#888;">Human website score: 81 (A-)</div>
+    </div>
+    <div class="score-pills">
+      <span class="pill b">C1: 70</span>
+      <span class="arrow"></span>
+      <span class="pill a best">C2: 83</span>
+      <span class="arrow"></span>
+      <span class="pill c">C3: 58</span>
+    </div>
+  </div>
+  <div class="cycles">
+    <div class="cycle">
+      <div class="clabel">Cycle 1 — Initial</div>
+      <img src="img/3cycle/tasks-c1.png" onclick="openLightbox(this.src)" alt="C1">
+      <div><span class="cscore" style="color:#88cc44;">70</span><span class="cgrade" style="color:#88cc44;">B</span></div>
+    </div>
+    <div class="cycle is-best">
+      <div class="clabel">Cycle 2 — Best ★</div>
+      <img src="img/3cycle/tasks-c2.png" onclick="openLightbox(this.src)" alt="C2">
+      <div><span class="cscore" style="color:#44ff88;">83</span><span class="cgrade" style="color:#44ff88;">A-</span></div>
+    </div>
+    <div class="cycle">
+      <div class="clabel">Cycle 3 — Over-corrected</div>
+      <img src="img/3cycle/tasks-c3.png" onclick="openLightbox(this.src)" alt="C3">
+      <div><span class="cscore" style="color:#ffaa00;">58</span><span class="cgrade" style="color:#ffaa00;">C</span></div>
+    </div>
+  </div>
+  <button class="detail-toggle" onclick="toggleDetail(this)">Show dimension breakdown ▾</button>
+  <div class="detail-content">
+    <div style="font-size:0.75rem; color:#999;">
+      <strong style="color:#EE55FF;">Cycle 2 (Best — 83):</strong> Brand Color 4, Layout 4, Visual Quality 4, Icon Style 5, Typography 3, Personality 5, CTA/Badge 4, Cohesion 4.
+      <br><em>Matches the human website image score (81 vs 83). Cycle 3 collapsed to 58 — prompt overload.</em>
+    </div>
+  </div>
+</div>
+
+<!-- Topic 5: no-login -->
+<div class="topic">
+  <div class="topic-header">
+    <div>
+      <h3>How to Build a No-Login AI Chatbot</h3>
+      <div style="font-size:0.75rem; color:#888;">Human website score: 77 (B+)</div>
+    </div>
+    <div class="score-pills">
+      <span class="pill b best">C1: 74</span>
+      <span class="arrow"></span>
+      <span class="pill b">C2: 67</span>
+      <span class="arrow"></span>
+      <span class="pill b">C3: 70</span>
+    </div>
+  </div>
+  <div class="cycles">
+    <div class="cycle is-best">
+      <div class="clabel">Cycle 1 — Best ★</div>
+      <img src="img/3cycle/no-login-c1.png" onclick="openLightbox(this.src)" alt="C1">
+      <div><span class="cscore" style="color:#88cc44;">74</span><span class="cgrade" style="color:#88cc44;">B</span></div>
+    </div>
+    <div class="cycle">
+      <div class="clabel">Cycle 2 — Regressed</div>
+      <img src="img/3cycle/no-login-c2.png" onclick="openLightbox(this.src)" alt="C2">
+      <div><span class="cscore" style="color:#88cc44;">67</span><span class="cgrade" style="color:#88cc44;">B-</span></div>
+    </div>
+    <div class="cycle">
+      <div class="clabel">Cycle 3 — Partial recovery</div>
+      <img src="img/3cycle/no-login-c3.png" onclick="openLightbox(this.src)" alt="C3">
+      <div><span class="cscore" style="color:#88cc44;">70</span><span class="cgrade" style="color:#88cc44;">B</span></div>
+    </div>
+  </div>
+  <button class="detail-toggle" onclick="toggleDetail(this)">Show dimension breakdown ▾</button>
+  <div class="detail-content">
+    <div style="font-size:0.75rem; color:#999;">
+      <strong style="color:#EE55FF;">Cycle 1 (Best — 74):</strong> Brand Color 4, Layout 4, Visual Quality 2, Icon Style 4, Typography 3, Personality 5, CTA/Badge 4, Cohesion 4.
+      <br><em>The only topic where the first attempt was best. Feedback didn't help — visual quality (score 2) was the main issue and regeneration didn't fix it.</em>
+    </div>
+  </div>
+</div>
+
+<!-- Head-to-head comparison -->
+<h2 style="color:#fff; margin: 2rem 0 1rem;">AI (Best Cycle) vs Human Website</h2>
+
+<div class="comparison">
+<table>
+  <tr>
+    <th>Topic</th>
+    <th class="human-col">Human</th>
+    <th class="ai-col">AI Best</th>
+    <th>Delta</th>
+    <th>Winner</th>
+    <th>Best Cycle</th>
+  </tr>
+  <tr>
+    <td style="text-align:left;">Chatbots vs Humans</td>
+    <td class="human-col">86</td>
+    <td class="ai-col winner">100</td>
+    <td style="color:#44ff88;">+14</td>
+    <td style="color:#EE55FF; font-weight:700;">AI</td>
+    <td>C2</td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">Students 2026</td>
+    <td class="human-col">77</td>
+    <td class="ai-col winner">93</td>
+    <td style="color:#44ff88;">+16</td>
+    <td style="color:#EE55FF; font-weight:700;">AI</td>
+    <td>C2</td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">RAG-Based AI</td>
+    <td class="human-col">81</td>
+    <td class="ai-col winner">87</td>
+    <td style="color:#44ff88;">+6</td>
+    <td style="color:#EE55FF; font-weight:700;">AI</td>
+    <td>C3</td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">AI Chatbot Tasks</td>
+    <td class="human-col">81</td>
+    <td class="ai-col winner">83</td>
+    <td style="color:#44ff88;">+2</td>
+    <td style="color:#EE55FF; font-weight:700;">AI</td>
+    <td>C2</td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">No-Login Chatbot</td>
+    <td class="human-col winner">77</td>
+    <td class="ai-col">74</td>
+    <td style="color:#ff6644;">-3</td>
+    <td style="color:#7E76FF; font-weight:700;">Human</td>
+    <td>C1</td>
+  </tr>
+  <tr style="font-weight:700; border-top: 2px solid #EE55FF;">
+    <td style="text-align:left;">Average</td>
+    <td class="human-col">80.4</td>
+    <td class="ai-col winner">87.4</td>
+    <td style="color:#44ff88;">+7.0</td>
+    <td style="color:#EE55FF;">AI</td>
+    <td>—</td>
+  </tr>
+</table>
+</div>
+
+<!-- Insights -->
+<h2 style="color:#fff; margin: 2rem 0 1rem;">What We Learned</h2>
+<div class="insights">
+  <div class="insight">
+    <h4>Cycle 2 is the sweet spot</h4>
+    <div class="num">4/5</div>
+    <p>topics peak at cycle 2. One round of feedback is optimal. The model integrates 3 specific fixes well, but accumulating 6+ fixes causes confusion and regression.</p>
+  </div>
+  <div class="insight">
+    <h4>Cycle 3 usually hurts</h4>
+    <div class="num">-13.0</div>
+    <p>average drop from cycle 2 to 3. The model over-corrects when given too many accumulated instructions. "Fix X, Y, Z, ALSO fix A, B, C" overwhelms the generator.</p>
+  </div>
+  <div class="insight">
+    <h4">"Pick the best" strategy wins</h4>
+    <div class="num">87.4</div>
+    <p>avg when selecting the best cycle per topic, vs 78.1 for human. Generate 2 cycles, grade both, publish the higher scorer. Simple and effective.</p>
+  </div>
+  <div class="insight">
+    <h4>AI wins 4 out of 5 matchups</h4>
+    <div class="num">+7.0</div>
+    <p>average point advantage for AI best-cycle vs human. The only loss (no-login, -3 points) had visual quality issues — an unlucky generation, not a systemic problem.</p>
+  </div>
+  <div class="insight">
+    <h4>Typography is the persistent weakness</h4>
+    <div class="num">3.2 / 5</div>
+    <p>avg typography score across all AI images. Text rendering in image generation models is still imperfect — the main area where humans maintain an edge.</p>
+  </div>
+  <div class="insight">
+    <h4>Brand personality comes naturally</h4>
+    <div class="num">4.8 / 5</div>
+    <p>avg personality score. When given explicit brand rules, the model consistently produces friendly, tech-forward imagery. The brand prompt template works.</p>
+  </div>
+</div>
+
+<!-- Methodology (collapsible) -->
+<span class="method-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Methodology & Technical Details ▾</span>
+<div class="method-content">
+  <p><strong>Image Generation:</strong> gemini-2.0-flash-exp-image-generation via Google AI Studio API.</p>
+  <p><strong>Image Grading:</strong> gemini-2.5-pro (best stable vision model) with structured JSON output.</p>
+  <p><strong>Rubric:</strong> 8 dimensions, 0-5 anchored scale (arXiv 2601.03444). Chain-of-thought before scoring. Anti-self-enhancement and "use full range" instructions.</p>
+  <p><strong>Temperature:</strong> 0 with topK=1 for grading (maximum determinism). Default for generation.</p>
+  <p><strong>Weights:</strong> Brand Color 15%, Layout 15%, Visual Quality 15%, Icons 15%, Typography 10%, Personality 10%, CTA/Badge 10%, Cohesion 10%.</p>
+  <p><strong>3-Cycle Loop:</strong> Cycle 1 = brand prompt only. Cycle 2 = brand prompt + top 3 fixes from C1 grading. Cycle 3 = brand prompt + all fixes from C1 + C2.</p>
+  <p><strong>Human baseline:</strong> OG images from 7 customgpt.ai blog posts, graded with the same rubric.</p>
+  <p><strong>Known biases:</strong> Self-enhancement bias (5-7% AI inflation) mitigated with explicit prompt instruction. Score clustering mitigated with anchored descriptions.</p>
+  <p style="margin-top:0.5rem;"><strong>Scripts in repo:</strong> <code>scripts/grade-image.sh</code> — portable grading script. <code>examples/benchmark-reference/</code> — 7 human reference images with manifest.</p>
+</div>
+
+<div class="footer">
+  Generated by CustomGPT Image Benchmark System · Gemini 2.5 Pro + gemini-2.0-flash-exp · March 2026
+  <br>
+  <a href="image-grader-calibration.html">Calibration Report</a> · <a href="image-benchmark-suite.html">Full Benchmark Suite</a>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+  <img id="lightbox-img" src="" alt="Full size">
+</div>
+
+<script>
+function toggleDetail(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle('open');
+  btn.textContent = content.classList.contains('open') ? 'Hide dimension breakdown ▴' : 'Show dimension breakdown ▾';
+}
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+</script>
+
+</body>
+</html>
