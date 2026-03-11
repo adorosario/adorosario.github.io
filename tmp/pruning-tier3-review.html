@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Pruning — Tier 3 Review (28 Pages)</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --red: #f85149;
+    --orange: #d29922;
+    --green: #3fb950;
+    --purple: #bc8cff;
+    --pink: #f778ba;
+    --yellow: #e3b341;
+    --cyan: #56d4dd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  .header { max-width: 1500px; margin: 0 auto 2rem; }
+  .header h1 { font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .header .subtitle { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .header .key-insight {
+    background: rgba(210, 153, 34, 0.1);
+    border: 1px solid rgba(210, 153, 34, 0.3);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--orange);
+  }
+  .header .key-insight strong { color: var(--yellow); }
+  .summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+  .card .label { color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .card .value { font-size: 1.6rem; font-weight: 700; }
+  .card .detail { color: var(--text-dim); font-size: 0.78rem; margin-top: 0.3rem; }
+  .cluster-section { max-width: 1500px; margin: 0 auto 2.5rem; }
+  .cluster-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .cluster-badge {
+    display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px;
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .badge-keep { background: rgba(63, 185, 80, 0.15); color: var(--green); border: 1px solid rgba(63, 185, 80, 0.3); }
+  .badge-noindex { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid rgba(248, 81, 73, 0.3); }
+  .badge-improve { background: rgba(210, 153, 34, 0.15); color: var(--orange); border: 1px solid rgba(210, 153, 34, 0.3); }
+  .badge-caution { background: rgba(86, 212, 221, 0.15); color: var(--cyan); border: 1px solid rgba(86, 212, 221, 0.3); }
+  .cluster-title { font-size: 1.15rem; font-weight: 600; }
+  .cluster-desc {
+    color: var(--text-dim); font-size: 0.88rem; margin-bottom: 1rem;
+    padding-left: 0.5rem; border-left: 3px solid var(--border);
+  }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 0.82rem;
+    background: var(--surface); border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+  }
+  thead th {
+    background: rgba(110, 118, 129, 0.1); padding: 0.65rem 0.5rem; text-align: left;
+    font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--text-dim); border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  thead th.num { text-align: right; }
+  tbody td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(110, 118, 129, 0.05); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.score { font-weight: 700; font-size: 0.95rem; text-align: center; }
+  .score-high { color: var(--red); }
+  .score-med { color: var(--orange); }
+  .score-low { color: var(--green); }
+  .slug-cell a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .slug-cell a:hover { text-decoration: underline; }
+  .date-cell { white-space: nowrap; font-size: 0.78rem; }
+  .date-fresh { color: var(--green); font-weight: 600; }
+  .date-recent { color: var(--yellow); }
+  .date-stale { color: var(--text-dim); }
+  .date-ancient { color: #484f58; }
+  .tag {
+    display: inline-block; padding: 0.12rem 0.45rem; border-radius: 4px;
+    font-size: 0.7rem; font-weight: 600; white-space: nowrap;
+  }
+  .tag-ontopic { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+  .tag-reinforces { background: rgba(86, 212, 221, 0.15); color: var(--cyan); }
+  .tag-neutral { background: rgba(139, 148, 158, 0.15); color: var(--text-dim); }
+  .reason-text { font-size: 0.78rem; color: var(--text-dim); max-width: 320px; line-height: 1.35; }
+  .zero { color: #484f58; }
+  .has-value { color: var(--green); font-weight: 600; }
+  .verdict-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem; max-width: 1500px; margin: 0 auto 2rem;
+  }
+  .verdict-box h3 { margin-bottom: 0.75rem; }
+  .verdict-box ul { padding-left: 1.5rem; color: var(--text-dim); }
+  .verdict-box li { margin-bottom: 0.4rem; }
+  .verdict-box strong { color: var(--text); }
+  .footer {
+    max-width: 1500px; margin: 3rem auto 0; padding-top: 1.5rem;
+    border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.8rem; text-align: center;
+  }
+  .legend {
+    max-width: 1500px; margin: 0 auto 1.5rem;
+    display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-dim);
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Content Pruning — Tier 3 Review</h1>
+  <p class="subtitle">28 on-topic but dead pages &middot; Both D2 (topical relevance) and D6 (entity coherence) scored low (&lt;5) — these are <em>on-brand</em> content &middot; Generated 2026-03-11</p>
+  <div class="key-insight">
+    <strong>Key difference from Tiers 1 &amp; 2:</strong> These pages are topically relevant to CustomGPT.ai. The LLM confirmed they reinforce (not dilute) the brand entity. They scored high on the pruning grader purely because of <strong>zero traffic + zero backlinks + staleness</strong>. The right treatment for many of these is <strong>improve or consolidate</strong>, not noindex. Pay close attention to publish dates — newer pages haven't had time to earn traffic.
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot" style="background: var(--green)"></span> Published &lt; 6 months (fresh — do NOT noindex)</div>
+  <div class="legend-item"><span class="legend-dot" style="background: var(--yellow)"></span> Published 6-12 months</div>
+  <div class="legend-item"><span class="legend-dot" style="background: var(--text-dim)"></span> Published 1-2 years</div>
+  <div class="legend-item"><span class="legend-dot" style="background: #484f58"></span> Published 2+ years</div>
+</div>
+
+<div class="summary-cards">
+  <div class="card">
+    <div class="label">Pages in Tier 3</div>
+    <div class="value">28</div>
+    <div class="detail">On-topic but zero traffic</div>
+  </div>
+  <div class="card">
+    <div class="label">Published &lt; 6 months</div>
+    <div class="value" style="color: var(--green)">12</div>
+    <div class="detail">Too new to noindex</div>
+  </div>
+  <div class="card">
+    <div class="label">Published 6-12 months</div>
+    <div class="value" style="color: var(--yellow)">1</div>
+    <div class="detail">Borderline</div>
+  </div>
+  <div class="card">
+    <div class="label">Published 1-2 years</div>
+    <div class="value" style="color: var(--text-dim)">8</div>
+    <div class="detail">Stale — candidates for noindex</div>
+  </div>
+  <div class="card">
+    <div class="label">Published 2+ years</div>
+    <div class="value" style="color: #6e7681)">6</div>
+    <div class="detail">Ancient — strong noindex candidates</div>
+  </div>
+  <div class="card">
+    <div class="label">No publish date</div>
+    <div class="value" style="color: var(--red)">1</div>
+    <div class="detail">what-is-an-mcp-client...</div>
+  </div>
+  <div class="card">
+    <div class="label">Total Backlinks</div>
+    <div class="value" style="color: var(--orange)">6</div>
+    <div class="detail">Across 2 pages only</div>
+  </div>
+</div>
+
+<!-- CLUSTER A: Fresh pages (< 6 months) — DO NOT NOINDEX -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-keep">Keep / Improve</span>
+    <span class="cluster-title">Cluster A: Fresh Pages — Published Within 6 Months (12 pages)</span>
+  </div>
+  <p class="cluster-desc">These pages are <strong>too new to judge</strong>. They haven't had time to earn traffic, backlinks, or impressions. The grader's safety guardrail normally catches pages &lt;90 days, but these are 3-8 months old — still too early. <strong>Do NOT noindex.</strong> Revisit in 6 months.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Published</th>
+        <th>D2</th>
+        <th>D6</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">Backlinks</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Entity Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-med">68.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-solutions-partners/" target="_blank">ai-solutions-partners</a></td>
+        <td class="date-cell date-fresh">2025-08-06</td>
+        <td><span class="tag tag-ontopic">D2=4</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,452</td>
+        <td class="reason-text">AI-related, tied to CustomGPT's partner ecosystem. More strategic than product-specific.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">64.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/how-to-build-a-chatbot/" target="_blank">how-to-build-a-chatbot</a></td>
+        <td class="date-cell date-fresh">2025-07-19</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">652</td>
+        <td class="reason-text"><strong>Core topic.</strong> No-code chatbot creation. LLM: "strongly aligned with chatbot-platform intent." Thin (652w) — needs beefing up.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">64.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/software-solution-provider/" target="_blank">software-solution-provider</a></td>
+        <td class="date-cell date-fresh">2025-07-19</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,880</td>
+        <td class="reason-text">Mentions CustomGPT.ai, broad software-to-generative-AI focus. Partner/reseller angle.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">63.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-development-services/" target="_blank">ai-development-services</a></td>
+        <td class="date-cell date-fresh">2025-08-04</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,684</td>
+        <td class="reason-text">Enterprise AI development. Supports topical authority, mildly blurs core chatbot entity.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">63.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/playbook-for-it-solution-providers/" target="_blank">playbook-for-it-solution-providers</a></td>
+        <td class="date-cell date-fresh">2025-07-25</td>
+        <td><span class="tag tag-ontopic">D2=2</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,633</td>
+        <td class="reason-text">Partner enablement playbook. Tied to CustomGPT ecosystem. Adjacent but supportive.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">62.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/which-companies-use-ai-for-customer-service/" target="_blank">which-companies-use-ai-for-customer-service</a></td>
+        <td class="date-cell date-fresh">2025-08-04</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">774</td>
+        <td class="reason-text"><strong>Strongly reinforces entity.</strong> LLM D6=0. Centers on AI customer service chatbots, positions CustomGPT among leaders. Thin (774w).</td>
+      </tr>
+      <tr>
+        <td class="score score-med">62.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/how-does-generative-ai-work/" target="_blank">how-does-generative-ai-work</a></td>
+        <td class="date-cell date-fresh">2025-08-10</td>
+        <td><span class="tag tag-ontopic">D2=2</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,101</td>
+        <td class="reason-text">Covers transformers, RAG, generation workflows. Reinforces AI chatbot platform entity.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/it-solution-provider/" target="_blank">it-solution-provider</a></td>
+        <td class="date-cell date-fresh">2025-07-03</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,751</td>
+        <td class="reason-text">Enterprise AI platform evaluation, promotes white-label/reseller. Partner-oriented.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">60.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/how-to-create-a-no-code-chatbot/" target="_blank">how-to-create-a-no-code-chatbot</a></td>
+        <td class="date-cell date-fresh">2025-07-14</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">987</td>
+        <td class="reason-text"><strong>Core product topic.</strong> LLM D6=0 — "strongly reinforces entity." No-code chatbot creation, core use case.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">60.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/what-is-mcp-server/" target="_blank">what-is-mcp-server</a></td>
+        <td class="date-cell date-fresh">2025-07-09</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-neutral">D6=3</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">6</td>
+        <td class="num">843</td>
+        <td class="reason-text">MCP servers = trending topic in AI infra. Supports topical authority. 6 inlinks shows internal linking effort.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">66.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/custom-ai-development-company/" target="_blank">custom-ai-development-company</a></td>
+        <td class="date-cell date-fresh">2025-08-06</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=5</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,323</td>
+        <td class="reason-text">Generic AI dev company page, but only 7 months old. Give it time.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">73.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/explainable-ai-for-compliance/" target="_blank">explainable-ai-for-compliance</a></td>
+        <td class="date-cell date-fresh">2025-08-21</td>
+        <td><span class="tag tag-neutral">D2=6</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">379</td>
+        <td class="reason-text">Only 7 months old. AI compliance topic. Very thin (379w) — needs content or should be merged.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CLUSTER B: Stale on-brand pages (1-2 years) — NOINDEX OR IMPROVE -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-improve">Improve or Noindex</span>
+    <span class="cluster-title">Cluster B: Stale On-Brand Content — Published 1-2 Years Ago (8 pages)</span>
+  </div>
+  <p class="cluster-desc">These are on-topic AI/chatbot content that had 1-2 years to prove themselves and didn't. Zero traffic across the board. <strong>Two options:</strong> noindex now (safe — no traffic to lose), or invest in rewriting with product tie-ins + FAQ schemas. The ones with D2=0 or D6=0-1 are the best rewrite candidates.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Published</th>
+        <th>D2</th>
+        <th>D6</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">Backlinks</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Entity Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-med">69.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-in-the-loop/" target="_blank">ai-in-the-loop</a></td>
+        <td class="date-cell date-stale">2024-07-28</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,315</td>
+        <td class="reason-text">AI strategy and human-AI collaboration. Broad paradigm focus, only indirectly tied to chatbot use cases.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">67.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/can-machines-understand-human-emotions/" target="_blank">can-machines-understand-human-emotions</a></td>
+        <td class="date-cell date-stale">2024-06-16</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">829</td>
+        <td class="reason-text">Emotion recognition in conversational AI. D6=2 — "largely supports chatbot entity." Good rewrite candidate.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">65.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-privacy-balance/" target="_blank">ai-privacy-balance</a></td>
+        <td class="date-cell date-stale">2024-07-10</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,214</td>
+        <td class="reason-text">AI privacy and ethics. Relevant to chatbot trust/deployment but generic treatment.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">64.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-revolution/" target="_blank">ai-revolution</a></td>
+        <td class="date-cell date-stale">2024-09-01</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">3</td>
+        <td class="num">1,247</td>
+        <td class="reason-text">Industry thought leadership from CustomGPT's perspective. D2=1 (on-topic), D6=2 (reinforces). 3 inlinks.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">63.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-personalized-education/" target="_blank">ai-personalized-education</a></td>
+        <td class="date-cell date-stale">2024-08-28</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">13</td>
+        <td class="num">1,824</td>
+        <td class="reason-text">EdTech + AI personalization. 13 inlinks (highest in tier). Education is a major CustomGPT use case.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ticket-deflection/" target="_blank">ticket-deflection</a></td>
+        <td class="date-cell date-stale">2024-06-10</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=1</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,873</td>
+        <td class="reason-text"><strong>Core use case.</strong> D2=1, D6=1. "Ticket deflection is a primary AI chatbot use case with clear ROI." Strong rewrite candidate.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/english-is-the-new-programming-language/" target="_blank">english-is-the-new-programming-language</a></td>
+        <td class="date-cell date-stale">2023-12-09</td>
+        <td><span class="tag tag-ontopic">D2=4</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="has-value">4</span></td>
+        <td class="num">6</td>
+        <td class="num">464</td>
+        <td class="reason-text">Natural-language programming trends. <strong>4 backlinks / 2 RD</strong> — only page in tier with real link equity. Thin (464w). Rewrite don't noindex.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/how-customgpt-is-transforming-beyond-olympus/" target="_blank">how-customgpt-is-transforming-beyond-olympus</a></td>
+        <td class="date-cell date-stale">2023-11-18</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="has-value">2</span></td>
+        <td class="num">8</td>
+        <td class="num">724</td>
+        <td class="reason-text">Amazon Olympus model + CustomGPT positioning. 2 backlinks / 1 RD. Stale news angle but has links.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CLUSTER C: Ancient pages (2+ years) — NOINDEX -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-noindex">Noindex</span>
+    <span class="cluster-title">Cluster C: Ancient On-Brand Content — Published 2+ Years Ago (6 pages)</span>
+  </div>
+  <p class="cluster-desc">On-topic content from 2023 that's had <strong>2+ years</strong> to earn traffic and didn't. Zero clicks, zero impressions, zero sessions. These are safe to noindex — if the topic matters, write a new, better page.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Published</th>
+        <th>D2</th>
+        <th>D6</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">Backlinks</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Entity Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-med">69.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/chatgpt-alternatives/" target="_blank">chatgpt-alternatives</a></td>
+        <td class="date-cell date-ancient">2023-09-25</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">2</td>
+        <td class="num">901</td>
+        <td class="reason-text">ChatGPT alternatives comparison. On-topic but 2.5 years old with zero traction. Note: chatgpt-alternatives-2 already noindexed in Tier 1.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">67.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/build-a-sitemap-from-google-results/" target="_blank">build-a-sitemap-from-google-results</a></td>
+        <td class="date-cell date-ancient">2023-07-18</td>
+        <td><span class="tag tag-ontopic">D2=2</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">875</td>
+        <td class="reason-text">Sitemap ingestion for chatbot knowledge bases. On-topic (D6=2) but 2.7 years old, zero everything.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">66.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/competitive-intelligence/" target="_blank">competitive-intelligence</a></td>
+        <td class="date-cell date-ancient">2023-04-05</td>
+        <td><span class="tag tag-ontopic">D2=0</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">2</td>
+        <td class="num">1,183</td>
+        <td class="reason-text">D2=0 — "directly about using CustomGPT for competitive intelligence." Nearly 3 years old, zero traction.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">64.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/chatgpt-startup-case-study/" target="_blank">chatgpt-startup-case-study</a></td>
+        <td class="date-cell date-ancient">2023-11-02</td>
+        <td><span class="tag tag-ontopic">D2=0</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">9</td>
+        <td class="num">852</td>
+        <td class="reason-text">D2=0 — "directly about a startup using CustomGPT's no-code platform." 9 inlinks. But 2+ years, zero traffic.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">63.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/build-a-sitemap-from-youtube-channel/" target="_blank">build-a-sitemap-from-youtube-channel</a></td>
+        <td class="date-cell date-ancient">2023-07-17</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-neutral">D6=4</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">7</td>
+        <td class="num">705</td>
+        <td class="reason-text">YouTube sitemap → chatbot knowledge base workflow. 7 inlinks. On-topic but 2.7 years with zero traction.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">63.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/build-sitemap-website-scraping/" target="_blank">build-sitemap-website-scraping</a></td>
+        <td class="date-cell date-ancient">2023-07-18</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">10</td>
+        <td class="num">950</td>
+        <td class="reason-text">Web scraping → chatbot knowledge ingestion. D6=2 (reinforces). 10 inlinks. On-topic but 2.7 years, zero traffic.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CLUSTER D: Remaining stale (mixed dates, no clear pattern) -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-caution">Case-by-case</span>
+    <span class="cluster-title">Cluster D: Remaining — Needs Individual Decision (2 pages)</span>
+  </div>
+  <p class="cluster-desc">These don't fit neatly into the other clusters.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Published</th>
+        <th>D2</th>
+        <th>D6</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">Backlinks</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Entity Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-high">70.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/what-is-an-mcp-client-in-model-context-protocol/" target="_blank">what-is-an-mcp-client-in-model-context-protocol</a></td>
+        <td class="date-cell" style="color: var(--red)">Unknown</td>
+        <td><span class="tag tag-ontopic">D2=1</span></td>
+        <td><span class="tag tag-reinforces">D6=2</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">0</td>
+        <td class="num">0</td>
+        <td class="reason-text">No post ID, no date, 0 words in data. Possibly a draft or page not in WP. <strong>MCP is trending</strong> — investigate before noindexing. D2=1, D6=2 = highly on-topic.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">62.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/trust-ai-hidden-truths-people-share-with-chatbots/" target="_blank">trust-ai-hidden-truths-people-share-with-chatbots</a></td>
+        <td class="date-cell date-stale">2024-01-10</td>
+        <td><span class="tag tag-ontopic">D2=2</span></td>
+        <td><span class="tag tag-reinforces">D6=1</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">9</td>
+        <td class="num">956</td>
+        <td class="reason-text">Chatbot trust and user behavior. D6=1 — "strongly aligns with AI chatbot platform entity." 9 inlinks. Good rewrite candidate for AI trust/safety angle.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">62.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/chatgpt-plugin-analysis/" target="_blank">chatgpt-plugin-analysis</a></td>
+        <td class="date-cell date-ancient">2023-06-24</td>
+        <td><span class="tag tag-ontopic">D2=3</span></td>
+        <td><span class="tag tag-reinforces">D6=1</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,676</td>
+        <td class="reason-text">ChatGPT plugin ecosystem trends. D6=1 — "tightly related to AI chatbot ecosystem." But plugin store is deprecated (now GPT Store). 2.7 years old.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">60.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/first-journey-with-customgpt/" target="_blank">first-journey-with-customgpt</a></td>
+        <td class="date-cell date-ancient">2023-08-10</td>
+        <td><span class="tag tag-ontopic">D2=0</span></td>
+        <td><span class="tag tag-reinforces">D6=0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">8</td>
+        <td class="num">491</td>
+        <td class="reason-text"><strong>D2=0, D6=0 — perfectly on-brand.</strong> "Beginner user building and troubleshooting a chatbot on CustomGPT." 8 inlinks. But 2.5 years old, thin (491w), zero traffic. Could be updated into a proper getting-started guide.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict-box">
+  <h3 style="color: var(--orange)">Recommended Treatment by Cluster</h3>
+  <ul>
+    <li><strong style="color: var(--green)">Cluster A (12 fresh pages): DO NOT NOINDEX.</strong> Published within 6 months. Give them time. Some are core product pages (how-to-build-a-chatbot, how-to-create-a-no-code-chatbot, what-is-mcp-server). Revisit in 6 months.</li>
+    <li><strong style="color: var(--orange)">Cluster B (8 stale pages): IMPROVE the best, NOINDEX the rest.</strong>
+      <ul>
+        <li><em>Rewrite candidates:</em> <code>ticket-deflection</code> (D2=1, D6=1, core use case), <code>english-is-the-new-programming-language</code> (4 backlinks — don't waste link equity), <code>ai-personalized-education</code> (13 inlinks, education use case)</li>
+        <li><em>Noindex candidates:</em> <code>ai-in-the-loop</code>, <code>can-machines-understand-human-emotions</code>, <code>ai-privacy-balance</code>, <code>ai-revolution</code>, <code>how-customgpt-is-transforming-beyond-olympus</code></li>
+      </ul>
+    </li>
+    <li><strong style="color: var(--red)">Cluster C (6 ancient pages): NOINDEX.</strong> 2+ years old, zero traffic. Safe to noindex. If the topic matters (e.g., competitive-intelligence, chatgpt-startup-case-study), write a new page later.</li>
+    <li><strong style="color: var(--cyan)">Cluster D (2 remaining):</strong>
+      <ul>
+        <li><code>what-is-an-mcp-client</code> — investigate (no post ID, MCP is trending)</li>
+        <li><code>trust-ai-hidden-truths</code> — good rewrite candidate (D6=1, 9 inlinks)</li>
+        <li><code>chatgpt-plugin-analysis</code> — noindex (deprecated topic, 2.7 years)</li>
+        <li><code>first-journey-with-customgpt</code> — D2=0, D6=0, 8 inlinks. Perfectly on-brand. Update into getting-started guide or noindex.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="verdict-box">
+  <h3 style="color: var(--text-dim)">Summary Counts</h3>
+  <ul>
+    <li><strong style="color: var(--green)">Do NOT noindex (fresh):</strong> 12 pages</li>
+    <li><strong style="color: var(--orange)">Rewrite candidates (keep indexed, improve):</strong> 5 pages (ticket-deflection, english-is-the-new-programming-language, ai-personalized-education, trust-ai-hidden-truths, first-journey-with-customgpt)</li>
+    <li><strong style="color: var(--red)">Safe to noindex:</strong> 8 pages (5 Cluster B stale + 6 Cluster C ancient - 3 rewrite candidates = ~8)</li>
+    <li><strong style="color: var(--cyan)">Investigate:</strong> 1 page (what-is-an-mcp-client)</li>
+    <li><strong>Net noindex from Tier 3:</strong> ~8 pages (vs 21 from Tier 1 + 20 from Tier 2 = ~49 total)</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Content Pruning Tier 3 Review &middot; CustomGPT.ai AEO Project &middot; Generated 2026-03-11 &middot; Data: prune-grades-2026-03-11.json (full LLM mode) &middot; Publish date color legend: <span style="color:var(--green)">green</span>=&lt;6mo, <span style="color:var(--yellow)">yellow</span>=6-12mo, <span style="color:var(--text-dim)">gray</span>=1-2yr, <span style="color:#484f58">dark</span>=2yr+
+</div>
+
+</body>
+</html>
