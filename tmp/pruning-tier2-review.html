@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Pruning — Tier 2 Review (20 Pages)</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --red: #f85149;
+    --orange: #d29922;
+    --green: #3fb950;
+    --purple: #bc8cff;
+    --pink: #f778ba;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  .header {
+    max-width: 1400px;
+    margin: 0 auto 2rem;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .header .subtitle {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+  .card .label {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+  .card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .card .detail {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+  .cluster-section {
+    max-width: 1400px;
+    margin: 0 auto 2.5rem;
+  }
+  .cluster-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .cluster-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .badge-noindex { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid rgba(248, 81, 73, 0.3); }
+  .badge-caution { background: rgba(210, 153, 34, 0.15); color: var(--orange); border: 1px solid rgba(210, 153, 34, 0.3); }
+  .cluster-title { font-size: 1.2rem; font-weight: 600; }
+  .cluster-desc {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  thead th {
+    background: rgba(110, 118, 129, 0.1);
+    padding: 0.7rem 0.6rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th.num { text-align: right; }
+  tbody td {
+    padding: 0.65rem 0.6rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(110, 118, 129, 0.05); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.score {
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .score-high { color: var(--red); }
+  .score-med { color: var(--orange); }
+  .slug-cell a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .slug-cell a:hover { text-decoration: underline; }
+  .slug-cell .date {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 2px;
+  }
+  .signal-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tag-d2 { background: rgba(188, 140, 255, 0.15); color: var(--purple); }
+  .tag-d6 { background: rgba(247, 120, 186, 0.15); color: var(--pink); }
+  .reason-text {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    max-width: 350px;
+    line-height: 1.4;
+  }
+  .zero { color: #484f58; }
+  .dim-bar {
+    display: inline-block;
+    height: 6px;
+    border-radius: 3px;
+    margin-right: 2px;
+    vertical-align: middle;
+  }
+  .verdict-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto 2rem;
+  }
+  .verdict-box h3 {
+    margin-bottom: 0.75rem;
+    color: var(--red);
+  }
+  .verdict-box ul {
+    padding-left: 1.5rem;
+    color: var(--text-dim);
+  }
+  .verdict-box li { margin-bottom: 0.4rem; }
+  .verdict-box strong { color: var(--text); }
+  .footer {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  .dim-detail {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2px;
+    margin-top: 4px;
+  }
+  .dim-cell {
+    text-align: center;
+    font-size: 0.65rem;
+    padding: 2px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Content Pruning — Tier 2 Review</h1>
+  <p class="subtitle">20 mixed-signal pages &middot; One of D2 (topical relevance) or D6 (entity coherence) flagged, but not both &middot; Generated 2026-03-11</p>
+</div>
+
+<div class="summary-cards">
+  <div class="card">
+    <div class="label">Pages in Tier 2</div>
+    <div class="value">20</div>
+    <div class="detail">Mixed signal (D2 OR D6 &ge; 5)</div>
+  </div>
+  <div class="card">
+    <div class="label">Total GSC Clicks</div>
+    <div class="value" style="color: var(--red)">0</div>
+    <div class="detail">All 20 pages: zero clicks</div>
+  </div>
+  <div class="card">
+    <div class="label">Total GSC Impressions</div>
+    <div class="value" style="color: var(--red)">0</div>
+    <div class="detail">All 20 pages: zero impressions</div>
+  </div>
+  <div class="card">
+    <div class="label">Total GA4 Sessions</div>
+    <div class="value" style="color: var(--red)">0</div>
+    <div class="detail">All 20 pages: zero sessions</div>
+  </div>
+  <div class="card">
+    <div class="label">Total Backlinks</div>
+    <div class="value" style="color: var(--orange)">6</div>
+    <div class="detail">Across 5 pages (max 2 per page)</div>
+  </div>
+  <div class="card">
+    <div class="label">Recommendation</div>
+    <div class="value" style="color: var(--red); font-size: 1.4rem;">NOINDEX ALL</div>
+    <div class="detail">Zero value, entity dilution risk</div>
+  </div>
+</div>
+
+<!-- CLUSTER A -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-noindex">Noindex</span>
+    <span class="cluster-title">Cluster A: ChatGPT/OpenAI Content (5 pages)</span>
+  </div>
+  <p class="cluster-desc">Content about <em>OpenAI's ChatGPT</em>, not CustomGPT.ai. Actively brand-confusing — the LLM specifically flagged these as promoting a competitor's product on your domain.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Signal</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">GA4 Conv</th>
+        <th class="num">Backlinks</th>
+        <th class="num">RD</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Reasoning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-high">73.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/chatgpt-code-interpreter-seo/" target="_blank">chatgpt-code-interpreter-seo</a><span class="date">Published 2023-07-09</span></td>
+        <td><span class="signal-tag tag-d6">D6=7 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">6</td>
+        <td class="num">832</td>
+        <td class="reason-text">Post centers on using OpenAI's ChatGPT Code Interpreter for SEO workflows and <strong>explicitly says it's not about CustomGPT</strong>. Shifts topical focus away from core entity.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">68.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/chatgpt-code-interpreter-practical-applications/" target="_blank">chatgpt-code-interpreter-practical-applications</a><span class="date">Published 2023-08-02</span></td>
+        <td><span class="signal-tag tag-d6">D6=6 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">6</td>
+        <td class="num">326</td>
+        <td class="reason-text">ChatGPT Code Interpreter tutorial. Thin content (326 words). Promotes OpenAI feature, not CustomGPT product.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">67.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/use-chatgpt-code-interpreter-to-analyze-spreadsheets/" target="_blank">use-chatgpt-code-interpreter-to-analyze-spreadsheets</a><span class="date">Published 2023-07-27</span></td>
+        <td><span class="signal-tag tag-d6">D6=6 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">7</td>
+        <td class="num">794</td>
+        <td class="reason-text">Another ChatGPT Code Interpreter how-to. Spreadsheet analysis tutorial for OpenAI's tool, not CustomGPT.ai.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/chatgpt-plugin-store-overview/" target="_blank">chatgpt-plugin-store-overview</a><span class="date">Published 2023-07-11</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">14</td>
+        <td class="num">1,202</td>
+        <td class="reason-text">Overview of ChatGPT Plugin Store — which OpenAI discontinued and replaced with GPT Store. Obsolete content about a competitor's deprecated feature.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/gpt-and-rss-feed-integration/" target="_blank">gpt-and-rss-feed-integration</a><span class="date">Published 2024-04-21</span></td>
+        <td><span class="signal-tag tag-d6">D6=6 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">8</td>
+        <td class="num">1,616</td>
+        <td class="reason-text">Generic GPT + RSS feed integration content. Stale (Apr 2024). Not tied to CustomGPT.ai product features.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CLUSTER B -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-noindex">Noindex</span>
+    <span class="cluster-title">Cluster B: Generic/Tangential Industry Content (7 pages)</span>
+  </div>
+  <p class="cluster-desc">Industry commentary, AI news, and niche verticals with <strong>no CustomGPT.ai product tie-in</strong>. Topics range from marine research to Nvidia news to sitemap tutorials. Zero traffic, zero links.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Signal</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">GA4 Conv</th>
+        <th class="num">Backlinks</th>
+        <th class="num">RD</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Reasoning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-high">73.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/explainable-ai-for-compliance/" target="_blank">explainable-ai-for-compliance</a><span class="date">Published 2025-08-21</span></td>
+        <td><span class="signal-tag tag-d2">D2=6 OFF-TOPIC</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">379</td>
+        <td class="reason-text">AI compliance/explainability topic. Thin (379w). Not about chatbots, RAG, or CustomGPT product. LLM scored D2=6 off-topic, but D6=2 (doesn't actively dilute brand).</td>
+      </tr>
+      <tr>
+        <td class="score score-high">70.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/how-to-find-a-sitemap/" target="_blank">how-to-find-a-sitemap</a><span class="date">Published 2023-07-14</span></td>
+        <td><span class="signal-tag tag-d6">D6=8 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">7</td>
+        <td class="num">629</td>
+        <td class="reason-text">"A tutorial about finding website sitemaps and competitor SEO intelligence is largely unrelated to an AI chatbot platform, so it <strong>significantly dilutes topical focus</strong>." — LLM (D6=8, highest entity dilution in tier)</td>
+      </tr>
+      <tr>
+        <td class="score score-med">68.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/sge-for-seo/" target="_blank">sge-for-seo</a><span class="date">Published 2024-08-15</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">8</td>
+        <td class="num">1,053</td>
+        <td class="reason-text">Google SGE (Search Generative Experience) commentary for SEO practitioners. Stale — SGE has since launched as AI Overviews. Not about CustomGPT product.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">66.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-assisting-marine-research/" target="_blank">ai-assisting-marine-research</a><span class="date">Published 2024-06-08</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">7</td>
+        <td class="num">976</td>
+        <td class="reason-text">AI in marine biology research. Topically adjacent (AI) but completely unrelated to CustomGPT's product domain. Stale industry filler.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">65.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-answer-accuracy-impacts-and-insights-for-business/" target="_blank">ai-answer-accuracy-impacts-and-insights-for-business</a><span class="date">Published 2024-04-03</span></td>
+        <td><span class="signal-tag tag-d6">D6=6 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">11</td>
+        <td class="num">725</td>
+        <td class="reason-text">Generic article about AI answer accuracy. Could be relevant to CustomGPT's RAG accuracy, but doesn't make that connection. D2=1 (on-topic) but D6=6 (dilutes because it's generic).</td>
+      </tr>
+      <tr>
+        <td class="score score-med">65.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/multimodal-ai-systems/" target="_blank">multimodal-ai-systems</a><span class="date">Published 2024-07-24</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">9</td>
+        <td class="num">1,552</td>
+        <td class="reason-text">Generic explainer about multimodal AI systems. Doesn't tie to CustomGPT's product capabilities. Stale (Jul 2024).</td>
+      </tr>
+      <tr>
+        <td class="score score-med">60.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/nvidia-generative-ai-as-computings-biggest-leap/" target="_blank">nvidia-generative-ai-as-computings-biggest-leap</a><span class="date">Published 2023-11-20</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">7</td>
+        <td class="num">992</td>
+        <td class="reason-text">Nvidia news commentary from Nov 2023. Timely when published, now stale and irrelevant. 1 backlink but no traffic value.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CLUSTER C -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-noindex">Noindex</span>
+    <span class="cluster-title">Cluster C: Programmatic Agency/Solutions Landing Pages (5 pages)</span>
+  </div>
+  <p class="cluster-desc">Thin, cookie-cutter pages targeting long-tail "provider" / "agency" / "solutions" queries. Schieler's DiagnosticOS flagged these as <strong>doorway page risk</strong> — scaled content that may trigger Google's quality classifiers.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Signal</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">GA4 Conv</th>
+        <th class="num">Backlinks</th>
+        <th class="num">RD</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Reasoning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-med">67.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/solutions-provider/" target="_blank">solutions-provider</a><span class="date">Published 2025-07-11</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,947</td>
+        <td class="reason-text">Generic "solutions provider" landing page. No product differentiation. Pattern suggests programmatic content generation.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">66.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/custom-ai-development-company/" target="_blank">custom-ai-development-company</a><span class="date">Published 2025-08-06</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,323</td>
+        <td class="reason-text">Generic "AI development company" page. Positioned as service agency content rather than SaaS product. Doorway page pattern.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">66.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/solution-agencies-ai/" target="_blank">solution-agencies-ai</a><span class="date">Published 2025-07-18</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,165</td>
+        <td class="reason-text">Another agency-focused landing page. Same pattern as solutions-provider. Zero differentiation.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">65.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/it-solutions-provider/" target="_blank">it-solutions-provider</a><span class="date">Published 2025-07-23</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">2</td>
+        <td class="num">1,955</td>
+        <td class="reason-text">"IT solutions provider" variant. Virtually identical purpose to solutions-provider. Scaled content pattern.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">64.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/custom-built-tools/" target="_blank">custom-built-tools</a><span class="date">Published 2025-06-02</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,697</td>
+        <td class="reason-text">Generic "custom built tools" page. Same doorway page pattern targeting broad enterprise terms.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- CLUSTER D -->
+<div class="cluster-section">
+  <div class="cluster-header">
+    <span class="cluster-badge badge-caution">Noindex (borderline)</span>
+    <span class="cluster-title">Cluster D: Borderline — Could Improve, But Not Worth It (3 pages)</span>
+  </div>
+  <p class="cluster-desc">These have a <em>tenuous</em> connection to CustomGPT.ai's product (no-code, sitemaps, AI education). But with zero traffic and no backlinks, the cost of keeping them indexed outweighs rewrite effort. Can be un-noindexed later if rewritten.</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Score</th>
+        <th>Page</th>
+        <th>Signal</th>
+        <th class="num">GSC Impr</th>
+        <th class="num">GSC Clicks</th>
+        <th class="num">GA4 Sess</th>
+        <th class="num">GA4 Conv</th>
+        <th class="num">Backlinks</th>
+        <th class="num">RD</th>
+        <th class="num">Inlinks</th>
+        <th class="num">Words</th>
+        <th>LLM Reasoning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="score score-med">67.5</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/what-is-low-code-no-code-platform/" target="_blank">what-is-low-code-no-code-platform</a><span class="date">Published 2025-07-22</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1,367</td>
+        <td class="reason-text">Tangentially related — CustomGPT is a no-code AI platform. But this is a generic explainer that doesn't mention the product. Could be rewritten to connect.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/ai-literacy-and-education/" target="_blank">ai-literacy-and-education</a><span class="date">Published 2024-09-08</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">2</td>
+        <td class="num">1</td>
+        <td class="num">11</td>
+        <td class="num">1,776</td>
+        <td class="reason-text">AI in education — relevant to CustomGPT's education use cases. Has 2 backlinks and 11 inlinks (most in this tier). Borderline keep, but zero traffic.</td>
+      </tr>
+      <tr>
+        <td class="score score-med">61.0</td>
+        <td class="slug-cell"><a href="https://customgpt.ai/generate-large-sitemaps-from-websites/" target="_blank">generate-large-sitemaps-from-websites</a><span class="date">Published 2023-07-14</span></td>
+        <td><span class="signal-tag tag-d6">D6=5 DILUTES</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num"><span class="zero">0</span></td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td class="num">8</td>
+        <td class="num">619</td>
+        <td class="reason-text">Sitemap generation tool content. CustomGPT does ingest sitemaps, but this is a generic SEO tutorial. Has 1 backlink. Stale (Jul 2023).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict-box">
+  <h3>Verdict: Noindex All 20</h3>
+  <ul>
+    <li><strong>Zero GSC clicks</strong> across all 20 pages — no organic search traffic to lose</li>
+    <li><strong>Zero GSC impressions</strong> across all 20 — Google isn't even showing these in results</li>
+    <li><strong>Zero GA4 sessions</strong> — no one visits these pages from any source</li>
+    <li><strong>Zero GA4 conversions</strong> — no revenue impact</li>
+    <li><strong>6 total backlinks</strong> across 5 pages (max 2 per page, 1 RD each) — negligible link equity</li>
+    <li><strong>Every page</strong> has at least one entity signal flagged (D2 off-topic OR D6 entity-diluting)</li>
+    <li><strong>Cluster C</strong> (5 agency pages) matches Schieler's <strong>doorway page risk</strong> pattern</li>
+    <li><strong>Cluster A</strong> (5 ChatGPT pages) actively promotes a <strong>competitor's product</strong> on your domain</li>
+    <li>Combined with Tier 1 (21 pages), this brings total noindexed to <strong>41 pages</strong></li>
+    <li>All reversible — remove noindex via Rank Math API if any page is later rewritten</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Content Pruning Tier 2 Review &middot; CustomGPT.ai AEO Project &middot; Generated 2026-03-11 &middot; Data: prune-grades-2026-03-11.json (full LLM mode)
+</div>
+
+</body>
+</html>
