@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — companies-with-affiliate-programs</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>From SaaS to Cybersecurity: Top Companies with High-Paying Affiliate Programs</strong><br>
+  <a href="https://customgpt.ai/companies-with-affiliate-programs/" target="_blank">https://customgpt.ai/companies-with-affiliate-programs/</a><br>
+  Generated: 2026-03-13 17:31 UTC &middot; WP Post ID: 55749 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#dc2626">D</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">56.7</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">1/3</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">0</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">1975</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:30%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">30</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.5</strong> / 25<br>
+    The alt text is relevant to the topic but too generic and fails to describe the actual screenshot content (CustomGPT offer, 20% commission, and CTA).
+  </div>
+<div class="dim-details">Per-image scores: [3]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:20%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">20</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>3.0</strong> / 15<br>
+    1 images / 1975 words (ideal ~5)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:40%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">40</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>9.0</strong> / 10<br>
+    {&#x27;webp&#x27;: 1}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.0</strong> / 10<br>
+    [&#x27;Missing lazy load: CustomGPT-Affiliate-Program-1024x492.webp&#x27;]
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    The image is branded, topic-specific with clear text and a relevant illustration, and the alt text accurately describes the content, making it clear even at thumbnail size.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:88%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">88</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>13.2</strong> / 15<br>
+    The image is a non-stock, directly relevant screenshot of an affiliate program offer that clearly supports the page’s focus on high-paying company affiliate programs.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 5<br>
+    1/1 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 30 &times; 0.25 = <strong>7.5</strong><br>D2: Image Coverage: 20 &times; 0.15 = <strong>3.0</strong><br>D3: Filename Quality: 40 &times; 0.1 = <strong>4.0</strong><br>D4: Format & Performance: 90 &times; 0.1 = <strong>9.0</strong><br>D5: Technical Attributes: 70 &times; 0.1 = <strong>7.0</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 88 &times; 0.15 = <strong>13.2</strong><br>D8: Schema Readiness: 100 &times; 0.05 = <strong>5.0</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 56.7 &rarr; Grade: D</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: image.webp</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/04/image.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/04/image.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1000 &times; 1000</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Loading Lazy</strong></td><td><span class="tag tag-warn">No</span></td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">icon</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>True</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Dollar sign icon on purple background with sparkles and circuitry elements</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>4/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: CustomGPT-Affiliate-Program-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>companies with affiliate programs</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>55750</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Loading Lazy</strong></td><td><span class="tag tag-warn">No</span></td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A webpage screenshot promoting the CustomGPT Affiliate Program, highlighting up to 20% commission for referrals and a call-to-action button to start earning.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT affiliate program webpage highlighting up to 20% commission for referrals</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: image.webp</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/04/image.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/04/image.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1000 &times; 1000</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Loading Lazy</strong></td><td><span class="tag tag-warn">No</span></td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">icon</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>True</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Dollar sign icon on purple background with sparkles and circuitry elements</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>4/10</td></tr>
+    </table>
+  </div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+<div class="card"><div class="card-header">No fixes generated</div></div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">nt/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp</td><td><em>CustomGPT Affiliate Program page lists referral payouts up to 20% commission with a start-earning CTA.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT Affiliate Program Commission Promo&quot;,
+    &quot;description&quot;: &quot;Screenshot of a CustomGPT.ai webpage promoting its affiliate program for companies with affiliate programs. The image highlights up to 20% referral commission and includes a call-to-action button to start earning.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  }
+]</pre></div>
+<h2>Issues Detected</h2>
+<ul style="font-size:13px;margin-left:20px">
+<li>Missing lazy load: CustomGPT-Affiliate-Program-1024x492.webp</li>
+</ul>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (image.webp)</td>
+        <td>type=icon relevance=6/10 decorative=True</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (CustomGPT-Affiliate-Program-10)</td>
+        <td>type=screenshot relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (image.webp)</td>
+        <td>type=icon relevance=6/10 decorative=True</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 30/100 — The alt text is relevant to the topic but too generic and fails to describe the </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — The image is branded, topic-specific with clear text and a relevant illustration</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 88/100 — The image is a non-stock, directly relevant screenshot of an affiliate program o</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;companies-with-affiliate-programs&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/companies-with-affiliate-programs/&quot;,
+    &quot;wp_post_id&quot;: 55749,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;From SaaS to Cybersecurity: Top Companies with High-Paying Affiliate Programs&quot;,
+    &quot;word_count&quot;: 1975,
+    &quot;image_count&quot;: 1,
+    &quot;total_image_count&quot;: 3,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/07/fom-saas-to-cybersecurity-companies-with-high-paying-ffiliate-programs-1.webp&quot;,
+    &quot;featured_image_alt&quot;: &quot;From SaaS to Cybersecurity: Top Companies with High-Paying Affiliate Programs&quot;,
+    &quot;composite_score&quot;: 56.7,
+    &quot;grade&quot;: &quot;D&quot;,
+    &quot;issues&quot;: [
+      &quot;Missing lazy load: CustomGPT-Affiliate-Program-1024x492.webp&quot;
+    ],
+    &quot;suggested_fixes&quot;: [],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 30,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;The alt text is relevant to the topic but too generic and fails to describe the actual screenshot content (CustomGPT offer, 20% commission, and CTA).&quot;,
+        &quot;per_image_scores&quot;: [
+          3
+        ],
+        &quot;weighted&quot;: 7.5
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 20,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;1 images / 1975 words (ideal ~5)&quot;,
+        &quot;weighted&quot;: 3.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 40,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 4.0
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 90,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;webp&quot;: 1
+        },
+        &quot;weighted&quot;: 9.0
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 70,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: [
+          &quot;Missing lazy load: CustomGPT-Affiliate-Program-1024x492.webp&quot;
+        ],
+        &quot;weighted&quot;: 7.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, topic-specific with clear text and a relevant illustration, and the alt text accurately describes the content, making it clear even at thumbnail size.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 88,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The image is a non-stock, directly relevant screenshot of an affiliate program offer that clearly supports the page\u2019s focus on high-paying company affiliate programs.&quot;,
+        &quot;weighted&quot;: 13.2
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;1/1 images schema-ready&quot;,
+        &quot;weighted&quot;: 5.0
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/04/image.webp&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1000,
+        &quot;height&quot;: 1000,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: true,
+          &quot;image_type&quot;: &quot;icon&quot;,
+          &quot;content_description&quot;: &quot;A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 4
+          },
+          &quot;suggested_alt_text&quot;: &quot;Dollar sign icon on purple background with sparkles and circuitry elements&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;companies with affiliate programs&quot;,
+        &quot;filename&quot;: &quot;CustomGPT-Affiliate-Program-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 55750,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A webpage screenshot promoting the CustomGPT Affiliate Program, highlighting up to 20% commission for referrals and a call-to-action button to start earning.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT affiliate program webpage highlighting up to 20% commission for referrals&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/04/image.webp&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1000,
+        &quot;height&quot;: 1000,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: true,
+          &quot;image_type&quot;: &quot;icon&quot;,
+          &quot;content_description&quot;: &quot;A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 4
+          },
+          &quot;suggested_alt_text&quot;: &quot;Dollar sign icon on purple background with sparkles and circuitry elements&quot;
+        }
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;companies-with-affiliate-programs&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 0,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT Affiliate Program Commission Promo&quot;,
+        &quot;description&quot;: &quot;Screenshot of a CustomGPT.ai webpage promoting its affiliate program for companies with affiliate programs. The image highlights up to 20% referral commission and includes a call-to-action button to start earning.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/07/CustomGPT-Affiliate-Program-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT Affiliate Program page lists referral payouts up to 20% commission with a start-earning CTA.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-13 17:31 UTC
+</div>
+</div>
+</body>
+</html>
