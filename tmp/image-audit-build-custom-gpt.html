@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — build-custom-gpt</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>Build Custom GPT: A Comprehensive Guide</strong><br>
+  <a href="https://customgpt.ai/build-custom-gpt/" target="_blank">https://customgpt.ai/build-custom-gpt/</a><br>
+  Generated: 2026-03-13 22:38 UTC &middot; WP Post ID: 52494 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#2563eb">B</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">78.6</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">6/8</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">6</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">0</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">1756</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:66%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">66</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>16.5</strong> / 25<br>
+    Most alt text is relevant and accurate, but the first three are more title/topic-like than descriptive, while the dashboard and logo alts are specific, entity-rich, and clear.
+  </div>
+<div class="dim-details">Per-image scores: [4, 5, 5, 8, 9, 9]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>15.0</strong> / 15<br>
+    6 images / 1756 words (ideal ~4)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:60%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">60</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>6.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:67%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">67</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>6.7</strong> / 10<br>
+    {&#x27;webp&#x27;: 3, &#x27;jpg&#x27;: 1, &#x27;png&#x27;: 2}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    The image is branded, topic-specific, clear at thumbnail size, and has a descriptive alt text, making it highly relevant for the blog post on building a custom GPT.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:76%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">76</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>11.4</strong> / 15<br>
+    The page is mostly reinforced by highly relevant custom screenshots and technical diagrams about building and managing Custom GPTs, but the inclusion of two unrelated university logos weakens overall 
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 5<br>
+    6/6 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 66 &times; 0.25 = <strong>16.5</strong><br>D2: Image Coverage: 100 &times; 0.15 = <strong>15.0</strong><br>D3: Filename Quality: 60 &times; 0.1 = <strong>6.0</strong><br>D4: Format & Performance: 67 &times; 0.1 = <strong>6.7</strong><br>D5: Technical Attributes (dims + srcset): 100 &times; 0.1 = <strong>10.0</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 76 &times; 0.15 = <strong>11.4</strong><br>D8: Schema Readiness: 100 &times; 0.05 = <strong>5.0</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 78.6 &rarr; Grade: B</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Build your own custom gpt today!</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 536</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a user interface with options to personalize and build a custom GPT agent, overlaid on a purple background with the title &#x27;Building a Custom GPT: A Comprehensive Guide&#x27; and a call-to-action button.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Interface for building a custom GPT with personalized settings and data upload options on purple background.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: inn.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/06/inn.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/06/inn.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT For Your Contentful Site</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1025 &times; 1025</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52496</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">diagram</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A diagram showing the functions and benefits of CustomGPT integration with Contentful sites, highlighting automation, advanced technology, and personalized content management.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Diagram illustrating how CustomGPT automates and personalizes content management for Contentful sites.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: controlling-hallucination-with-RAG.jpg</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>controlling hallucination with RAG</td></tr>
+      <tr><td><strong>Format</strong></td><td>jpg</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 444</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>51596</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">diagram</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The diagram illustrates the process of controlling hallucinations in language models using Retrieval Augmented Generation (RAG), showing how queries are processed through embedding generation, vector database retrieval, chunk ranking, and anti-hallucination algorithms to improve response quality.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Diagram showing the RAG process controlling hallucinations with embeddings, chunk ranking, and anti-hallucination algorithms.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>9/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: customer_service_page_customgpt_featured_image-1152x1536-2-7</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai displays overview, chat, and project dashboards with 1,094 queries and 905 pages crawled/indexed.</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>768 &times; 1024</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>45684</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows screenshots of a CustomGPT.ai dashboard with user engagement analytics, a chatbot interaction window explaining key features, and a project management interface displaying chatbot stats and controls.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshots showing CustomGPT.ai chatbot interface, analytics dashboard, and project management features.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: adob.svg</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/03/adob.svg" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/03/adob.svg</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>svg</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>64 &times; 35</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: Dropbox-Logo.png</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/03/Dropbox-Logo.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/03/Dropbox-Logo.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>2048 &times; 1152</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: download-29.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/03/download-29.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/03/download-29.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Massachusetts Institute of Technology logo pairs red-gray MIT monogram with full institute name in red text</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>2048 &times; 1152</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">logo</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>2/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This image shows the logo of the Massachusetts Institute of Technology, featuring stylized red letters &#x27;MIT&#x27; next to the full name of the institution.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Logo of the Massachusetts Institute of Technology with stylized red MIT letters</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>10/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>2/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 8: download-28.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/03/download-28.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/03/download-28.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>University of Virginia logo features an orange Rotunda-style dome with stars above dark teal UNIVERSITY of VIRGINIA text</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>2048 &times; 1152</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#8</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">logo</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>2/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows the University of Virginia logo, featuring an orange graphic of a building with columns and stars above the text &#x27;University of Virginia&#x27; in dark green.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>University of Virginia logo with orange building graphic and dark green text</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>10/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>3/10</td></tr>
+    </table>
+  </div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+<div class="card"><div class="card-header">No fixes generated</div></div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">https://customgpt.ai/wp-content/uploads/2025/06/inn.webp</td><td><em>Custom GPT–Contentful diagram maps three layers: workflow automation, AI processing, and personalization.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ntent/uploads/2025/05/controlling-hallucination-with-RAG.jpg</td><td><em>Custom GPT RAG pipeline adds anti-hallucination checks after vector retrieval to validate cited answers.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+    &quot;name&quot;: &quot;Custom GPT Build Guide UI and Personalization Screen&quot;,
+    &quot;description&quot;: &quot;Custom GPT promotional graphic featuring the headline \u201cBuilding a Custom GPT: A Comprehensive Guide\u201d on a purple background. It shows a Personalize/My Agent-style interface with data-source options for configuring a custom GPT agent, along with a visible call-to-action button.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 536
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/inn.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT-Contentful Integration Automation Diagram&quot;,
+    &quot;description&quot;: &quot;Diagram of a no-code CustomGPT and Contentful integration, showing how setup connects site content to automated workflows. It highlights automated tagging, routine task handling, and tailored responses powered by advanced technology for personalized content management.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1025
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1025
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg&quot;,
+    &quot;name&quot;: &quot;RAG Hallucination Control Workflow Diagram&quot;,
+    &quot;description&quot;: &quot;This flowchart shows how a Custom GPT pipeline uses Retrieval Augmented Generation (RAG) to reduce hallucinations by mapping a user query, intent, and semantic keywords into embeddings and vector database retrieval. It highlights top-K chunk ranking, citation grounding, and anti-hallucination checks that improve response quality.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 444
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT Dashboard, Chat, and Project Analytics&quot;,
+    &quot;description&quot;: &quot;Screenshot collage of the CustomGPT.ai interface showing a dashboard with engagement analytics, a chatbot response window highlighting key features, and a project management panel with controls. The project stats display 1,096 queries and 1,032 pages indexed.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 768
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-29.png&quot;,
+    &quot;name&quot;: &quot;MIT logo with full Massachusetts Institute name&quot;,
+    &quot;description&quot;: &quot;The image features the Massachusetts Institute of Technology logo, with a stylized red-and-gray MIT bar mark beside the institution\u2019s full name in red text. It presents MIT\u2019s official wordmark and emblem in a clean horizontal layout.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 2048
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1152
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28.png&quot;,
+    &quot;name&quot;: &quot;University of Virginia logo with orange rotunda&quot;,
+    &quot;description&quot;: &quot;The image displays the University of Virginia logo, featuring an orange rotunda-style building icon with stars above it. Beneath the graphic, the text reads \u201cUniversity of Virginia\u201d in dark green.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 2048
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1152
+    }
+  }
+]</pre></div>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (Build-Custom-GPT-A-Comprehensi)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (inn.webp)</td>
+        <td>type=diagram relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (controlling-hallucination-with)</td>
+        <td>type=diagram relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (customer_service_page_customgp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.7</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 7 (download-29.png)</td>
+        <td>type=logo relevance=2/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.8</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 8 (download-28.png)</td>
+        <td>type=logo relevance=2/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 66/100 — Most alt text is relevant and accurate, but the first three are more title/topic</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — The image is branded, topic-specific, clear at thumbnail size, and has a descrip</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 76/100 — The page is mostly reinforced by highly relevant custom screenshots and technica</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;build-custom-gpt&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/build-custom-gpt/&quot;,
+    &quot;wp_post_id&quot;: 52494,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;Build Custom GPT: A Comprehensive Guide&quot;,
+    &quot;word_count&quot;: 1756,
+    &quot;image_count&quot;: 6,
+    &quot;total_image_count&quot;: 8,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide.webp&quot;,
+    &quot;featured_image_alt&quot;: &quot;The image is an infographic with a purple gradient background, featuring the text &#x27;Building a Custom GPT: A Comprehensive Guide&#x27; prominently in white. Below this, there is a pink button with the text &#x27;Build Your Custom GPT Now!&#x27;. The image includes two smaller screenshots of a software interface. The overall design is modern and tech-oriented, aimed at promoting a business tool for how to make a custom GPT..&quot;,
+    &quot;composite_score&quot;: 78.6,
+    &quot;grade&quot;: &quot;B&quot;,
+    &quot;issues&quot;: [],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-29.png&quot;,
+        &quot;filename&quot;: &quot;download-29.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28.png&quot;,
+        &quot;filename&quot;: &quot;download-28.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 66,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most alt text is relevant and accurate, but the first three are more title/topic-like than descriptive, while the dashboard and logo alts are specific, entity-rich, and clear.&quot;,
+        &quot;per_image_scores&quot;: [
+          4,
+          5,
+          5,
+          8,
+          9,
+          9
+        ],
+        &quot;weighted&quot;: 16.5
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;6 images / 1756 words (ideal ~4)&quot;,
+        &quot;weighted&quot;: 15.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 60,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 6.0
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 67,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;webp&quot;: 3,
+          &quot;jpg&quot;: 1,
+          &quot;png&quot;: 2
+        },
+        &quot;weighted&quot;: 6.7
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 10.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, topic-specific, clear at thumbnail size, and has a descriptive alt text, making it highly relevant for the blog post on building a custom GPT.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 76,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The page is mostly reinforced by highly relevant custom screenshots and technical diagrams about building and managing Custom GPTs, but the inclusion of two unrelated university logos weakens overall topical alignment.&quot;,
+        &quot;weighted&quot;: 11.4
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;6/6 images schema-ready&quot;,
+        &quot;weighted&quot;: 5.0
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+        &quot;alt_text&quot;: &quot;Build your own custom gpt today!&quot;,
+        &quot;filename&quot;: &quot;Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 536,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a user interface with options to personalize and build a custom GPT agent, overlaid on a purple background with the title &#x27;Building a Custom GPT: A Comprehensive Guide&#x27; and a call-to-action button.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Interface for building a custom GPT with personalized settings and data upload options on purple background.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/inn.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT For Your Contentful Site&quot;,
+        &quot;filename&quot;: &quot;inn.webp&quot;,
+        &quot;wp_media_id&quot;: 52496,
+        &quot;width&quot;: 1025,
+        &quot;height&quot;: 1025,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;diagram&quot;,
+          &quot;content_description&quot;: &quot;A diagram showing the functions and benefits of CustomGPT integration with Contentful sites, highlighting automation, advanced technology, and personalized content management.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Diagram illustrating how CustomGPT automates and personalizes content management for Contentful sites.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg&quot;,
+        &quot;alt_text&quot;: &quot;controlling hallucination with RAG&quot;,
+        &quot;filename&quot;: &quot;controlling-hallucination-with-RAG.jpg&quot;,
+        &quot;wp_media_id&quot;: 51596,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 444,
+        &quot;format&quot;: &quot;jpg&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;diagram&quot;,
+          &quot;content_description&quot;: &quot;The diagram illustrates the process of controlling hallucinations in language models using Retrieval Augmented Generation (RAG), showing how queries are processed through embedding generation, vector database retrieval, chunk ranking, and anti-hallucination algorithms to improve response quality.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 9
+          },
+          &quot;suggested_alt_text&quot;: &quot;Diagram showing the RAG process controlling hallucinations with embeddings, chunk ranking, and anti-hallucination algorithms.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai displays overview, chat, and project dashboards with 1,094 queries and 905 pages crawled/indexed.&quot;,
+        &quot;filename&quot;: &quot;customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+        &quot;wp_media_id&quot;: 45684,
+        &quot;width&quot;: 768,
+        &quot;height&quot;: 1024,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows screenshots of a CustomGPT.ai dashboard with user engagement analytics, a chatbot interaction window explaining key features, and a project management interface displaying chatbot stats and controls.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshots showing CustomGPT.ai chatbot interface, analytics dashboard, and project management features.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/adob.svg&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;adob.svg&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 64,
+        &quot;height&quot;: 35,
+        &quot;format&quot;: &quot;svg&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/Dropbox-Logo.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;Dropbox-Logo.png&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 2048,
+        &quot;height&quot;: 1152,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-29.png&quot;,
+        &quot;alt_text&quot;: &quot;Massachusetts Institute of Technology logo pairs red-gray MIT monogram with full institute name in red text&quot;,
+        &quot;filename&quot;: &quot;download-29.png&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 2048,
+        &quot;height&quot;: 1152,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;logo&quot;,
+          &quot;content_description&quot;: &quot;This image shows the logo of the Massachusetts Institute of Technology, featuring stylized red letters &#x27;MIT&#x27; next to the full name of the institution.&quot;,
+          &quot;topic_relevance&quot;: 2,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 10,
+            &quot;information_value&quot;: 2
+          },
+          &quot;suggested_alt_text&quot;: &quot;Logo of the Massachusetts Institute of Technology with stylized red MIT letters&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28.png&quot;,
+        &quot;alt_text&quot;: &quot;University of Virginia logo features an orange Rotunda-style dome with stars above dark teal UNIVERSITY of VIRGINIA text&quot;,
+        &quot;filename&quot;: &quot;download-28.png&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 2048,
+        &quot;height&quot;: 1152,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 7,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;logo&quot;,
+          &quot;content_description&quot;: &quot;The image shows the University of Virginia logo, featuring an orange graphic of a building with columns and stars above the text &#x27;University of Virginia&#x27; in dark green.&quot;,
+          &quot;topic_relevance&quot;: 2,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 10,
+            &quot;information_value&quot;: 3
+          },
+          &quot;suggested_alt_text&quot;: &quot;University of Virginia logo with orange building graphic and dark green text&quot;
+        }
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;build-custom-gpt&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 0,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+      &quot;filename&quot;: &quot;Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT graphic shows \u201cBuilding a Custom GPT: A Comprehensive Guide\u201d beside Personalize/My Agent data-source UI.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a promotional graphic with the headline text: \&quot;Building a Custom GPT: A Comprehensive Guide\&quot; and a call-to-action button labeled \&quot;Build Your Custom GPT Now!\&quot; on a purple background. On the left side, there are partially visible screenshots of a user interface titled \&quot;Personalize/ My Agent\&quot; with tabs like General, Documents, Connections, and others, and another window titled \&quot;Pick data source for your agent\&quot; with options to upload files. The UI includes form elements, text input fields, and instructions related to customizing an agent. There are no logos or brand names clearly visible.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT graphic shows \u201cBuilding a Custom GPT: A Comprehensive Guide\u201d beside Personalize/My Agent data-source UI.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is limited descriptive specificity, since it omits notable visual context like the CTA button and purple promotional styling.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT graphic shows \u201cBuilding a Custom GPT: A Comprehensive Guide\u201d beside Personalize/My Agent data-source UI.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is limited descriptive specificity, since it omits notable visual context like the CTA button and purple promotional styling.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Build your own custom gpt today!&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/inn.webp&quot;,
+      &quot;filename&quot;: &quot;inn.webp&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT integrates with Contentful via no-code setup, automating tagging, routine tasks, and tailored responses.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a stylized infographic titled \&quot;CustomGPT For Your Contentful Site\&quot; with several labeled boxes around a central layered cube structure. The labels read: \&quot;Automates content management for Contentful Site,\&quot; \&quot;Features advanced technology against AI limitations,\&quot; \&quot;Integrates CustomGPT without coding,\&quot; \&quot;Combines GPT&#x27;s writing with Contentful&#x27;s management,\&quot; \&quot;Produces engaging, relevant content quickly,\&quot; \&quot;Delivers tailored audience content,\&quot; \&quot;Automates routine content tasks,\&quot; and \&quot;Personalizes user interactions for engagement.\&quot; The graphic elements include icons such as light bulbs, clouds, gears, books, plants, computer screens, and digital tablets, all in shades of purple and white on a purple background.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT integrates with Contentful via no-code setup, automating tagging, routine tasks, and tailored responses.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is that it adds a specific claim about \&quot;tagging\&quot; that is not clearly explicit in the image labels, which slightly reduces strict semantic accuracy.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT integrates with Contentful via no-code setup, automating tagging, routine tasks, and tailored responses.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is that it adds a specific claim about \&quot;tagging\&quot; that is not clearly explicit in the image labels, which slightly reduces strict semantic accuracy.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT For Your Contentful Site&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg&quot;,
+      &quot;filename&quot;: &quot;controlling-hallucination-with-RAG.jpg&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT RAG flowchart maps query, user intent, and semantic keywords to top-K chunks, citations, and response.&quot;,
+      &quot;vision_description&quot;: &quot;The image is a flowchart titled \&quot;Controlling Hallucinations with Retrieval Augmented Generation (RAG).\&quot; It shows a sequence where a \&quot;Query\&quot; goes into a large language model (LLM) connected to three smaller labeled elements: \&quot;Query,\&quot; \&quot;User Intent,\&quot; and \&quot;Semantic Keywords,\&quot; which then connect to \&quot;Embedding Generation Services\&quot; and a \&quot;Vector Database.\&quot; The response path includes steps such as \&quot;Citation Calculation Algorithm,\&quot; \&quot;GPT-4,\&quot; a central \&quot;Prompt,\&quot; \&quot;Anti-Hallucination Algorithm,\&quot; \&quot;Chunk Ranking Algo,\&quot; and \&quot;Top-K Chunks,\&quot; before producing a \&quot;Response.\&quot; The caption at the bottom states, \&quot;Improving response quality with query pre-processing, semantic expansion, chunk ranking, anti-hallucinations and citations.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT RAG flowchart maps query, user intent, and semantic keywords to top-K chunks, citations, and response.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 10,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.67,
+          &quot;critique&quot;: &quot;Biggest weakness: it omits key depicted steps (like embedding generation, vector database, and anti-hallucination/chunk-ranking stages), so it is slightly less complete than the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT RAG flowchart maps query, user intent, and semantic keywords to top-K chunks, citations, and response.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 10,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.67,
+        &quot;critique&quot;: &quot;Biggest weakness: it omits key depicted steps (like embedding generation, vector database, and anti-hallucination/chunk-ranking stages), so it is slightly less complete than the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;controlling hallucination with RAG&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+      &quot;filename&quot;: &quot;customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT interface shows dashboard, chat response, and project stats with 1096 queries and 1032 pages indexed.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows three separate screenshots of a software interface named CustomGPT.ai. The first screenshot is a dashboard overview with metrics such as Queries (1096), Conversations (2099), User Feedback, User Engagement (Used 96.3%, Stuck 3.7%), and various numerical data and charts including Conversations this week (323), Queries (1141), Queries/Conversations (3.346), and Avg. Story Conversations (46.14). The second screenshot shows a chat interface with a query \&quot;What is unique about CustomGPT.ai?\&quot; with a detailed text response explaining features like Anti-Hallucination Technology, Extensive Customization, and Privacy-First and Secure. The third screenshot is a project management interface with project details for \&quot;My Personal Chatbot\&quot; showing metrics such as Pages Found (905), Pages Crawled (905), Pages Indexed (1032), and Global Credits Used (905), along with buttons like \&quot;View Pages\&quot; and \&quot;Ask Me Anything,\&quot; plus navigation options including Dashboard, Create Project, My Projects, and Support on the left sidebar.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT interface shows dashboard, chat response, and project stats with 1096 queries and 1032 pages indexed.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness is mild ambiguity about the image being a three-panel composite, which could reduce precise extraction context for AI systems.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT interface shows dashboard, chat response, and project stats with 1096 queries and 1032 pages indexed.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness is mild ambiguity about the image being a three-panel composite, which could reduce precise extraction context for AI systems.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai displays overview, chat, and project dashboards with 1,094 queries and 905 pages crawled/indexed.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-29.png&quot;,
+      &quot;filename&quot;: &quot;download-29.png&quot;,
+      &quot;alt_text&quot;: &quot;Massachusetts Institute of Technology displays MIT bar logo in red and gray beside its full name in red text&quot;,
+      &quot;vision_description&quot;: &quot;The image shows the logo and name of the Massachusetts Institute of Technology (MIT). The logo consists of vertical red and gray rectangular bars arranged to form the letters \&quot;MIT.\&quot; To the right of the logo, the text \&quot;Massachusetts Institute of Technology\&quot; is written in red in three lines. There are no additional UI elements, data, or people depicted.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Massachusetts Institute of Technology displays MIT bar logo in red and gray beside its full name in red text&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 10,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.8,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits the three-line layout of the institute name, a specific structural detail visible in the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Massachusetts Institute of Technology displays MIT bar logo in red and gray beside its full name in red text&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 10,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.8,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits the three-line layout of the institute name, a specific structural detail visible in the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Massachusetts Institute of Technology logo pairs red-gray MIT monogram with full institute name in red text&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28.png&quot;,
+      &quot;filename&quot;: &quot;download-28.png&quot;,
+      &quot;alt_text&quot;: &quot;University of Virginia logo features an orange rotunda with stars above the text UNIVERSITY of VIRGINIA.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows the logo of the University of Virginia. It includes a stylized orange graphic of a rotunda with stars around the pillars. Below the graphic, the text \&quot;UNIVERSITY of VIRGINIA\&quot; is displayed, with \&quot;UNIVERSITY\&quot; and \&quot;VIRGINIA\&quot; in large uppercase letters and \&quot;of\&quot; in a smaller, cursive font. There are no other UI elements, data, or scenes depicted in the image.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;University of Virginia logo features an orange rotunda with stars above the text UNIVERSITY of VIRGINIA.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The main weakness is minor specificity loss, as it omits finer visual details like the distinctive smaller cursive \&quot;of\&quot; styling.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;University of Virginia logo features an orange rotunda with stars above the text UNIVERSITY of VIRGINIA.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The main weakness is minor specificity loss, as it omits finer visual details like the distinctive smaller cursive \&quot;of\&quot; styling.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;University of Virginia logo features an orange Rotunda-style dome with stars above dark teal UNIVERSITY of VIRGINIA text&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/Build-Custom-GPT-A-Comprehensive-Guide-1024x536.webp&quot;,
+        &quot;name&quot;: &quot;Custom GPT Build Guide UI and Personalization Screen&quot;,
+        &quot;description&quot;: &quot;Custom GPT promotional graphic featuring the headline \u201cBuilding a Custom GPT: A Comprehensive Guide\u201d on a purple background. It shows a Personalize/My Agent-style interface with data-source options for configuring a custom GPT agent, along with a visible call-to-action button.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 536
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/inn.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/inn.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT-Contentful Integration Automation Diagram&quot;,
+        &quot;description&quot;: &quot;Diagram of a no-code CustomGPT and Contentful integration, showing how setup connects site content to automated workflows. It highlights automated tagging, routine task handling, and tailored responses powered by advanced technology for personalized content management.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1025
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1025
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg&quot;,
+        &quot;name&quot;: &quot;RAG Hallucination Control Workflow Diagram&quot;,
+        &quot;description&quot;: &quot;This flowchart shows how a Custom GPT pipeline uses Retrieval Augmented Generation (RAG) to reduce hallucinations by mapping a user query, intent, and semantic keywords into embeddings and vector database retrieval. It highlights top-K chunk ranking, citation grounding, and anti-hallucination checks that improve response quality.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 444
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customer_service_page_customgpt_featured_image-1152x1536-2-768x1024.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT Dashboard, Chat, and Project Analytics&quot;,
+        &quot;description&quot;: &quot;Screenshot collage of the CustomGPT.ai interface showing a dashboard with engagement analytics, a chatbot response window highlighting key features, and a project management panel with controls. The project stats display 1,096 queries and 1,032 pages indexed.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 768
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-29.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-29.png&quot;,
+        &quot;name&quot;: &quot;MIT logo with full Massachusetts Institute name&quot;,
+        &quot;description&quot;: &quot;The image features the Massachusetts Institute of Technology logo, with a stylized red-and-gray MIT bar mark beside the institution\u2019s full name in red text. It presents MIT\u2019s official wordmark and emblem in a clean horizontal layout.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 2048
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1152
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28.png&quot;,
+        &quot;name&quot;: &quot;University of Virginia logo with orange rotunda&quot;,
+        &quot;description&quot;: &quot;The image displays the University of Virginia logo, featuring an orange rotunda-style building icon with stars above it. Beneath the graphic, the text reads \u201cUniversity of Virginia\u201d in dark green.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 2048
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1152
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/06/inn.webp&quot;,
+      &quot;caption&quot;: &quot;Custom GPT\u2013Contentful diagram maps three layers: workflow automation, AI processing, and personalization.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/controlling-hallucination-with-RAG.jpg&quot;,
+      &quot;caption&quot;: &quot;Custom GPT RAG pipeline adds anti-hallucination checks after vector retrieval to validate cited answers.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-13 22:38 UTC
+</div>
+</div>
+</body>
+</html>
