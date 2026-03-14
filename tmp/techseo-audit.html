@@ -49,6 +49,32 @@ a:hover { text-decoration: underline; }
 .tab.active { background: var(--surface); color: var(--text); font-weight: 600; }
 .tab-content { display: none; background: var(--surface); border: 1px solid var(--border); padding: 24px; border-radius: 0 6px 6px 6px; }
 .tab-content.active { display: block; }
+.dd-section { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; }
+.dd-section.dd-critical { border-color: #da3633; border-width: 2px; }
+.dd-section.dd-summary { border-color: var(--accent); border-width: 2px; }
+.dd-ok { color: #3fb950; font-weight: 600; }
+.dd-warn { color: #d29922; font-weight: 600; }
+.dd-status { font-size: 15px; margin: 8px 0; }
+.dd-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.dd-table th { background: var(--surface); padding: 8px 10px; text-align: left; border-bottom: 2px solid var(--border); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.dd-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.dd-table tr:hover { background: rgba(88,166,255,0.04); }
+.dd-owner { color: var(--muted); font-size: 13px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.dd-impact { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.2); border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: 14px; color: var(--accent); }
+.dd-metric-grid { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0; }
+.dd-metric { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px 20px; text-align: center; min-width: 120px; }
+.dd-metric-ok { border-color: #3fb950; }
+.dd-metric-warn { border-color: #d29922; }
+.dd-metric-val { font-size: 24px; font-weight: 700; }
+.dd-metric-label { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.dd-metric-note { font-size: 11px; margin-top: 2px; }
+.dd-badge-critical { background: #da3633; color: #fff; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+.dd-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.dd-action-card { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
+.dd-action-card h4 { margin-bottom: 8px; color: var(--accent); }
+.dd-action-card ol { padding-left: 20px; }
+.dd-action-card li { margin-bottom: 6px; font-size: 13px; }
+@media (max-width: 768px) { .dd-action-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -68,6 +94,7 @@ a:hover { text-decoration: underline; }
 <div class="section-tabs">
   <div class="tab active" onclick="showTab('overview')">Overview</div>
   <div class="tab" onclick="showTab('pages')">Page Table</div>
+  <div class="tab" onclick="showTab('deepdive')">Root Cause Deep Dive</div>
   <div class="tab" onclick="showTab('tasks')">Arooj's Punch List</div>
 </div>
 
@@ -2726,6 +2753,108 @@ a:hover { text-decoration: underline; }
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+
+<div id="tab-deepdive" class="tab-content">
+<h2>Root Cause Deep Dive</h2>
+<p class="subtitle">Dimension-by-dimension analysis with root causes, affected pages, owners, and projected impact of fixes.</p>
+<div class="dd-section">
+<h3>1. Indexing Coherence &mdash; <span style="color:#3fb950">100.0</span></h3>
+<p class="dd-status dd-ok">
+All 324 pages score 100.0. No action needed.
+</p></div><div class="dd-section">
+<h3>2. HTTP Health &mdash; <span style="color:#3fb950">99.9</span></h3>
+<p><strong>Root cause</strong>: Slow server response times on 2 pages.</p>
+<table class="dd-table"><thead><tr><th>Score</th><th>Slug</th><th>Response Time</th><th>Impressions</th><th>Issue</th></tr></thead><tbody><tr><td><strong>80</strong></td><td><a href='https://customgpt.ai/jasper-affiliate-program-alternative/' target='_blank'>jasper-affiliate-program-alternative</a></td><td>3223ms</td><td>7,434</td><td>Response time 3223ms (>3s)</td></tr><tr><td><strong>90</strong></td><td><a href='https://customgpt.ai/invideo-ai-affiliate-program-alternative/' target='_blank'>invideo-ai-affiliate-program-alternative</a></td><td>2651ms</td><td>8,524</td><td>Response time 2651ms (>1.5s)</td></tr></tbody></table>
+<p class="dd-owner">Owner: <strong>Ajdin</strong> &mdash; Check WP Rocket caching for these slugs, Rocket.net server logs.</p>
+</div><div class="dd-section">
+<h3>3. Core Web Vitals &mdash; <span style="color:#3fb950">86.5</span></h3>
+<p><strong>Root cause</strong>: LCP is the sole drag. CrUX data is origin-level (site-wide p75), not per-URL.</p>
+<div class="dd-metric-grid">
+  <div class="dd-metric dd-metric-warn">
+    <div class="dd-metric-val">2849ms</div><div class="dd-metric-label">CrUX LCP p75</div>
+    <div class="dd-metric-note">Needs work (>2500ms)</div>
+  </div>
+  <div class="dd-metric dd-metric-ok">
+    <div class="dd-metric-val">116ms</div><div class="dd-metric-label">CrUX INP p75</div>
+    <div class="dd-metric-note">Good</div>
+  </div>
+  <div class="dd-metric dd-metric-ok">
+    <div class="dd-metric-val">0.080</div><div class="dd-metric-label">CrUX CLS p75</div>
+    <div class="dd-metric-note">Good</div>
+  </div>
+</div>
+<p>80 pages score below 85. The variance comes from Desktop PSI lab data (40% weight in composite).</p>
+<p><strong>Two sub-problems</strong>:</p>
+<ol>
+  <li><strong>Site-wide LCP</strong> (CrUX p75 ~2849ms) &rarr; Optimize hero images, preload LCP element, reduce render-blocking resources</li>
+  <li><strong>Desktop INP on specific pages</strong> &rarr; Heavy JavaScript interactivity causing input delay</li>
+</ol>
+<h4>Bottom 10 Pages</h4>
+<table class="dd-table"><thead><tr><th>CWV Score</th><th>Desktop Comp</th><th>Desktop INP</th><th>Slug</th><th>Impressions</th></tr></thead><tbody><tr><td><span style='color:#d29922'><strong>76.4</strong></span></td><td>0 (missing)</td><td>0</td><td><a href='https://customgpt.ai/partner-programs-for-agencies/' target='_blank'>partner-programs-for-agencies</a></td><td>10,687</td></tr><tr><td><span style='color:#d29922'><strong>77.9</strong></span></td><td>70</td><td>0</td><td><a href='https://customgpt.ai/custom-gpt-moodle/' target='_blank'>custom-gpt-moodle</a></td><td>1,637</td></tr><tr><td><span style='color:#d29922'><strong>78.0</strong></span></td><td>0 (missing)</td><td>0</td><td><a href='https://customgpt.ai/build-an-ai-chatbot-with-a-custom-knowledge-base/' target='_blank'>build-an-ai-chatbot-with-a-custom-knowledge-base</a></td><td>7,190</td></tr><tr><td><span style='color:#d29922'><strong>78.3</strong></span></td><td>0 (missing)</td><td>0</td><td><a href='https://customgpt.ai/ai-partner-program/' target='_blank'>ai-partner-program</a></td><td>2,644</td></tr><tr><td><span style='color:#d29922'><strong>78.6</strong></span></td><td>80</td><td>33</td><td><a href='https://customgpt.ai/chatgpt-plugin-store-overview/' target='_blank'>chatgpt-plugin-store-overview</a></td><td>7,262</td></tr><tr><td><span style='color:#d29922'><strong>79.5</strong></span></td><td>70</td><td>0</td><td><a href='https://customgpt.ai/custom-gpt-contentful/' target='_blank'>custom-gpt-contentful</a></td><td>1,189</td></tr><tr><td><span style='color:#d29922'><strong>79.6</strong></span></td><td>78</td><td>27</td><td><a href='https://customgpt.ai/custom-gpt-intercom-help/' target='_blank'>custom-gpt-intercom-help</a></td><td>980</td></tr><tr><td><span style='color:#d29922'><strong>79.6</strong></span></td><td>78</td><td>27</td><td><a href='https://customgpt.ai/custom-bots/' target='_blank'>custom-bots</a></td><td>4,592</td></tr><tr><td><span style='color:#d29922'><strong>79.9</strong></span></td><td>80</td><td>34</td><td><a href='https://customgpt.ai/custom-gpt-hubspot/' target='_blank'>custom-gpt-hubspot</a></td><td>998</td></tr><tr><td><span style='color:#d29922'><strong>79.9</strong></span></td><td>0 (missing)</td><td>0</td><td><a href='https://customgpt.ai/build-a-custom-ai-chatbot-using-your-own-data/' target='_blank'>build-a-custom-ai-chatbot-using-your-own-data</a></td><td>24,771</td></tr></tbody></table>
+<div class="dd-impact">Getting CrUX LCP below 2,500ms would push ALL 324 pages from ~86 to ~100 on LCP, lifting CWV average from 86.5 to ~95+.</div>
+<p class="dd-owner">Owner: <strong>Ajdin</strong> &mdash; Preload hero/LCP element, optimize critical rendering path.</p>
+</div><div class="dd-section dd-critical">
+<h3>4. Mobile Performance &mdash; <span style="color:#f85149">50.0</span>
+<span class="dd-badge-critical">CRITICAL GAP</span></h3>
+<p>This is by far the worst dimension and the <strong>#1 priority</strong>. Average Mobile PSI: <strong>52.7/100</strong> (poor).</p>
+<p>Score formula: <code>Mobile_PSI &times; 0.6 + Gap_Score &times; 0.4</code></p>
+
+<h4>Score Distribution</h4>
+<table class="dd-table"><thead><tr><th>Bucket</th><th>Pages</th><th>% of Total</th></tr></thead><tbody><tr><td>0 (no data)</td><td>11</td><td>3.4%</td></tr><tr><td>26-40</td><td>8</td><td>2.5%</td></tr><tr><td>41-50</td><td>166</td><td>51.2%</td></tr><tr><td>51-60</td><td>45</td><td>13.9%</td></tr><tr><td>61-70</td><td>50</td><td>15.4%</td></tr><tr><td>71-80</td><td>5</td><td>1.5%</td></tr></tbody></table>
+
+<h4>11 Pages Scoring 0 (No Mobile PSI Data)</h4>
+<p>PSI API failed/timed out for mobile on these pages. They have desktop data but mobile didn't complete.</p>
+<table class="dd-table"><thead><tr><th>Slug</th><th>GSC Impressions</th><th>Desktop PSI?</th></tr></thead><tbody><tr><td><a href='https://customgpt.ai/rag-reranking-techniques/' target='_blank'>rag-reranking-techniques</a></td><td>30,626</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/glean-alternatives/' target='_blank'>glean-alternatives</a></td><td>18,147</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/ai-model-for-my-chatbot/' target='_blank'>ai-model-for-my-chatbot</a></td><td>16,984</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/rag-vector-database-selection/' target='_blank'>rag-vector-database-selection</a></td><td>14,232</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/make-money-with-ai/' target='_blank'>make-money-with-ai</a></td><td>12,248</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/affiliate-marketing-without-social-media/' target='_blank'>affiliate-marketing-without-social-media</a></td><td>9,115</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/customgpt-customization-qa/' target='_blank'>customgpt-customization-qa</a></td><td>3,015</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/copy-ai-affiliate-program-alternative/' target='_blank'>copy-ai-affiliate-program-alternative</a></td><td>2,824</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/ai-for-consulting-firms/' target='_blank'>ai-for-consulting-firms</a></td><td>2,090</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/referral-affiliate-program/' target='_blank'>referral-affiliate-program</a></td><td>1,541</td><td>Yes</td></tr><tr><td><a href='https://customgpt.ai/customgpt-vs-openai-agentkit/' target='_blank'>customgpt-vs-openai-agentkit</a></td><td>447</td><td>Yes</td></tr></tbody></table>
+
+<h4>Worst Performing (With Data)</h4>
+<table class="dd-table"><thead><tr><th>Score</th><th>Mobile PSI</th><th>Gap</th><th>Slug</th></tr></thead><tbody><tr><td><span style='color:#da3633'><strong>25.6</strong></span></td><td>36</td><td>62</td><td><a href='https://customgpt.ai/best-ai-tools-legal-document-drafting/' target='_blank'>best-ai-tools-legal-document-drafting</a></td></tr><tr><td><span style='color:#da3633'><strong>29.8</strong></span></td><td>43</td><td>52</td><td><a href='https://customgpt.ai/custom-gpt-gitbook/' target='_blank'>custom-gpt-gitbook</a></td></tr><tr><td><span style='color:#da3633'><strong>31.6</strong></span></td><td>46</td><td>52</td><td><a href='https://customgpt.ai/connect-mcp-to-my-chatbot/' target='_blank'>connect-mcp-to-my-chatbot</a></td></tr><tr><td><span style='color:#da3633'><strong>35.8</strong></span></td><td>33</td><td>41</td><td><a href='https://customgpt.ai/chatgpt-plugin-store-overview/' target='_blank'>chatgpt-plugin-store-overview</a></td></tr><tr><td><span style='color:#da3633'><strong>35.8</strong></span></td><td>33</td><td>42</td><td><a href='https://customgpt.ai/custom-gpt-hubspot/' target='_blank'>custom-gpt-hubspot</a></td></tr><tr><td><span style='color:#da3633'><strong>38.2</strong></span></td><td>37</td><td>41</td><td><a href='https://customgpt.ai/customgpt-troubleshooting/' target='_blank'>customgpt-troubleshooting</a></td></tr><tr><td><span style='color:#da3633'><strong>39.4</strong></span></td><td>39</td><td>45</td><td><a href='https://customgpt.ai/chatgpt-chatbot-schedule-meetings/' target='_blank'>chatgpt-chatbot-schedule-meetings</a></td></tr><tr><td><span style='color:#f85149'><strong>40.0</strong></span></td><td>40</td><td>38</td><td><a href='https://customgpt.ai/custom-gpt-weebly/' target='_blank'>custom-gpt-weebly</a></td></tr><tr><td><span style='color:#f85149'><strong>40.0</strong></span></td><td>40</td><td>46</td><td><a href='https://customgpt.ai/custom-chatbot-development/' target='_blank'>custom-chatbot-development</a></td></tr><tr><td><span style='color:#f85149'><strong>40.6</strong></span></td><td>41</td><td>33</td><td><a href='https://customgpt.ai/custom-gpt-intercom-help/' target='_blank'>custom-gpt-intercom-help</a></td></tr></tbody></table>
+
+<h4>Root Causes (Systemic)</h4>
+<ol>
+  <li><strong>JS payload too heavy for mobile</strong> &mdash; Same JS bundle regardless of device. Desktop handles it, mobile chokes.</li>
+  <li><strong>Unoptimized images</strong> &mdash; Full-size images on mobile (no responsive <code>srcset</code> or lazy loading).</li>
+  <li><strong>Render-blocking resources</strong> &mdash; CSS/JS not deferred for mobile.</li>
+  <li><strong>No mobile performance budget</strong> &mdash; Theme/plugins not optimized for 4G throttled conditions (PSI mobile simulates slow 4G).</li>
+</ol>
+
+<div class="dd-impact">Getting avg Mobile PSI from 53 &rarr; 70 would push this dimension from 50 &rarr; ~65-70.</div>
+<p class="dd-owner">Owner: <strong>Ajdin</strong> &mdash; Defer JS, responsive images with <code>srcset</code>, <code>loading="lazy"</code>, critical CSS inlining.</p>
+</div><div class="dd-section">
+<h3>5. Schema Completeness &mdash; <span style="color:#d29922">75.8</span></h3>
+<div class="dd-metric-grid">
+  <div class="dd-metric dd-metric-warn"><div class="dd-metric-val">321/324</div><div class="dd-metric-label">FAQPage</div></div>
+  <div class="dd-metric dd-metric-ok"><div class="dd-metric-val">324/324</div><div class="dd-metric-label">Person</div></div>
+  <div class="dd-metric dd-metric-ok"><div class="dd-metric-val">324/324</div><div class="dd-metric-label">Organization</div></div>
+  <div class="dd-metric dd-metric-warn"><div class="dd-metric-val">13/324</div><div class="dd-metric-label">hasCredential</div></div>
+</div>
+</div><div class="dd-section">
+<h3>6. Image Performance &mdash; <span style="color:#d29922">61.3</span></h3>
+<p>57 pages score below 50. Driven by missing alt text, oversized images, and broken URLs.</p>
+<p class="dd-owner">Owner: <strong>Arooj/Content team</strong> &mdash; Image SEO batch run in progress on 306 FAQ pages.</p>
+</div><div class="dd-section dd-summary">
+<h3>Action Items by Owner</h3>
+<div class="dd-action-grid">
+  <div class="dd-action-card">
+    <h4>Ajdin (Frontend/Performance)</h4>
+    <ol>
+      <li><strong>LCP optimization</strong> (CWV 86.5 &rarr; 95+): Preload hero/LCP element, optimize critical rendering path</li>
+      <li><strong>Mobile PSI</strong> (Mobile 50.0 &rarr; 65+): Defer JS, responsive images, lazy loading</li>
+      <li><strong>Response time</strong> on 2 slow pages (HTTP Health: trivial fix)</li>
+    </ol>
+  </div>
+  <div class="dd-action-card">
+    <h4>Alden / DevOps</h4>
+    <ol>
+      <li><strong>Re-run PSI</strong> for 11 missing-data pages with lower concurrency</li>
+      <li><strong>Cache investigation</strong> on slow-response pages (WP Rocket miss?)</li>
+    </ol>
+  </div>
+</div>
+<div class="dd-impact" style="margin-top:16px">
+  <strong>Biggest bang-for-buck</strong>: LCP fix = uniform lift across all 324 pages. Mobile optimization = larger effort but fixes the lowest-scoring dimension.
+</div>
 </div>
 </div>
 
