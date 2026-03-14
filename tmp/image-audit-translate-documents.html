@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — translate-documents-securely-using-customgpt</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>Translating Documents Securely with CustomGPT</strong><br>
+  <a href="https://customgpt.ai/translate-documents-securely-using-customgpt/" target="_blank">https://customgpt.ai/translate-documents-securely-using-customgpt/</a><br>
+  Generated: 2026-03-14 00:56 UTC &middot; WP Post ID: 52199 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#16a34a">A</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">85.0</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">11/12</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">10</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">0</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">2097</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:86%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">86</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>21.5</strong> / 25<br>
+    Most alt text entries are specific, accurate, and entity-rich with useful contextual details, though several are slightly long or UI-label-heavy rather than maximally concise.
+  </div>
+<div class="dim-details">Per-image scores: [9, 9, 8, 9, 9, 8, 8, 8, 9, 9]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>12.0</strong> / 15<br>
+    11 images / 2097 words (ideal ~5)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:72%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">72</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.2</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:76%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">76</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.6</strong> / 10<br>
+    {&#x27;png&#x27;: 3, &#x27;webp&#x27;: 8}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    The image is branded, topic-specific, clear at thumbnail size, and has a descriptive alt text matching the blog post title.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:91%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">91</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>13.7</strong> / 15<br>
+    The visuals are predominantly custom CustomGPT screenshots and security-themed graphics that directly support a secure document translation workflow, with only minor dashboard elements being more gene
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 5<br>
+    11/11 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 86 &times; 0.25 = <strong>21.5</strong><br>D2: Image Coverage: 80 &times; 0.15 = <strong>12.0</strong><br>D3: Filename Quality: 72 &times; 0.1 = <strong>7.2</strong><br>D4: Format & Performance: 76 &times; 0.1 = <strong>7.6</strong><br>D5: Technical Attributes (dims + srcset): 100 &times; 0.1 = <strong>10.0</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 91 &times; 0.15 = <strong>13.7</strong><br>D8: Schema Readiness: 100 &times; 0.05 = <strong>5.0</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 85.0 &rarr; Grade: A</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: image-2.png</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/image-2.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/image-2.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Translate documents</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 505</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52202</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>True</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>7/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>An abstract digital illustration featuring multiple stylized padlock icons and security shields with circuitry backgrounds, symbolizing data security and encryption.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Abstract digital illustration of multiple padlocks and shields representing data security.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>4/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: image-1.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/image-1.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/image-1.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT compliance robot holds a gavel above GDPR book stack, with chest checkmark UI and security icons.</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 682</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52201</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a purple robot holding a judge&#x27;s gavel surrounded by icons related to checkmarks, documents, and GDPR compliance, representing secure and verified document handling.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Purple robot with gavel symbolizing secure document verification and GDPR compliance</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: Sign-in-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai login screen shows company email field, Continue With Company Email button, and SSO option.</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>48698</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a login screen for CustomGPT.ai with options to enter a company email or use Google for sign-in, alongside icons of various integrated services.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai login screen with company email sign-in and service integration icons</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: new-agent-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai dashboard displays usage metrics, including 168.11M words stored and 2 human hours saved this week</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52062</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a dashboard interface from CustomGPT.ai highlighting metrics such as team members, total agents, words stored, queries, documents added, and processing statistics. It also includes activity summaries and location-based conversation data.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT dashboard showing agent stats, query metrics, and activity summary for document translation.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: sitemap-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai agent setup displays website sitemap validation, showing “Your sitemap is looking good!”</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>51943</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A software interface showing the process of building an agent using a website URL in CustomGPT.ai with various data source options available.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT interface to create an agent using a website URL.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: languages-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai Conversation tab shows Agent Language dropdown with English highlighted among Dogri, Dutch, and French.</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52218</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This image shows a user interface of the CustomGPT platform, specifically the &#x27;Personalize / My Agent&#x27; section where users can set the agent language and view example questions to ask the chatbot.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT interface with agent language selection and example chatbot questions.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: ask-me-anything-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai All Agents lists My Agent as Ready with 546 documents added, 1,280,219 words stored, and Ask Me Anything.</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52215</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A screenshot of the CustomGPT.ai dashboard showing the &#x27;All Agents&#x27; page, with details about documents added, read, words stored, and billing queries for different agents. A highlighted &#x27;Ask Me Anything&#x27; input bar is visible.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT.ai dashboard highlighting &#x27;Ask Me Anything&#x27; feature and agent document stats.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 8: review-1024x769.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT chat lists white-label options: logo, background, 92-language support, and custom bot behavior.</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 769</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52219</td></tr>
+      <tr><td><strong>Position</strong></td><td>#8</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This screenshot shows a chat interface where a user asks about customization options for a CustomGPT white-label chatbot. The chatbot responds with detailed customization features including brand logo, background design, language support, and behavior customization.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of chatbot conversation detailing customization options for CustomGPT white-label chatbot.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 9: Export-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai Ask/My Agent interface shows + New conversation, Users: All filter, and MCP suggested question</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52216</td></tr>
+      <tr><td><strong>Position</strong></td><td>#9</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This screenshot shows the CustomGPT.ai user interface with the &#x27;Ask / My Agent&#x27; section open, displaying suggested questions and a text input area for user queries.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai interface showing Ask/My Agent section with suggested chatbot questions and input field.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 10: data-retention-1024x492.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT Sources panel lists Upload channels and shows Data Retention plus OCR ON/OFF controls for document intake</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52220</td></tr>
+      <tr><td><strong>Position</strong></td><td>#10</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>Screenshot of the CustomGPT.ai interface showing the &#x27;Build / My Agent / Sources&#x27; tab with upload options and data retention settings.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai interface showing upload and data retention options within agent build sources.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 11: image.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/image.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/image.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT links building, ID card, and laptop icons through a lock hexagon to clustered data squares</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 508</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52200</td></tr>
+      <tr><td><strong>Position</strong></td><td>#11</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 12: image-3.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/05/image-3.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/05/image-3.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT security concept shows a robot holding a keyhole shield amid padlock, cloud, and envelope CV icons</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 526</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>52203</td></tr>
+      <tr><td><strong>Position</strong></td><td>#12</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+<div class="card"><div class="card-header">No fixes generated</div></div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">https://customgpt.ai/wp-content/uploads/2025/05/image-1.png</td><td><em>CustomGPT enforces GDPR workflows with role-based access, audit logs, and encrypted document translation.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp</td><td><em>CustomGPT sign-in supports Google OAuth and company email, gating access to 4 document sources.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">tomgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp</td><td><em>CustomGPT.ai analytics panel tracks words stored, documents added, and query processing by agent.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp</td><td><em>CustomGPT Build modal links website ingestion to agent setup, alongside file and text data source options.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">tomgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp</td><td><em>CustomGPT maps each agent language choice to Conversation prompts, keeping translation instructions consistent.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp</td><td><em>CustomGPT All Agents view links per-agent document totals with billing status and Ask Me Anything search.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp</td><td><em>CustomGPT chat reply maps 4 white-label controls used to align secure document translation UX and rules.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp</td><td><em>CustomGPT Ask/My Agent pairs MCP prompt suggestions with agent context for secure document translation.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">t.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp</td><td><em>CustomGPT Sources links upload settings to retention, OCR, and anonymization controls.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">https://customgpt.ai/wp-content/uploads/2025/05/image.png</td><td><em>CustomGPT secures document translation with role-based access, encrypted transfer, and audit logging.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">https://customgpt.ai/wp-content/uploads/2025/05/image-3.png</td><td><em>CustomGPT translates documents while keeping source and output in one encrypted workspace.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT GDPR Compliance Robot for Secure Translation&quot;,
+    &quot;description&quot;: &quot;A purple CustomGPT robot holds a judge\u2019s gavel beside a GDPR-labeled book, symbolizing legal oversight and compliant handling of translated documents. Checkmarks, document icons, and a globe reinforce secure, verified, and globally applicable document processing.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 682
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Sign-In with Email, Google, SSO&quot;,
+    &quot;description&quot;: &quot;Login screen for CustomGPT.ai showing a company email sign-in field outlined in red and a Google sign-in option. The interface highlights SSO and integrations with Google Drive, SharePoint, and Slack.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai dashboard with team and activity metrics&quot;,
+    &quot;description&quot;: &quot;CustomGPT.ai dashboard interface displaying key metrics such as team members, total agents, words stored, queries, documents added, and processing stats. The activity panel includes location-based conversation data, showing 3 conversations from the United States.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai website URL validation in agent builder&quot;,
+    &quot;description&quot;: &quot;CustomGPT.ai\u2019s Build Using Your Website modal shows a website URL being validated with the confirmation message, \u201cYour sitemap is looking good!\u201d. The interface also displays multiple data source options as part of the agent creation workflow.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT Agent Language Settings Interface&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT platform\u2019s Personalize / My Agent area, showing where users select the agent language in Conversation settings. The interface also displays example questions users can ask the chatbot based on those prompt and language preferences.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT All Agents Dashboard Metrics Overview&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai All Agents dashboard comparing My Agent usage metrics, including 546 documents added, 545 read, 1,280,219 words stored, and 0 billing queries. An \&quot;Ask Me Anything\&quot; input bar is highlighted, emphasizing interactive querying across agents.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT White-Label Chatbot Customization Options&quot;,
+    &quot;description&quot;: &quot;Screenshot of a CustomGPT chat interface where a user asks about white-label customization options. The chatbot lists configurable features such as brand logo, background design, language support, and behavior controls.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 769
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT Ask/My Agent query interface screenshot&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai \&quot;Ask / My Agent\&quot; interface showing a single query input box, MCP prompt suggestions, and a \&quot;+ New conversation\&quot; button. The layout highlights suggested questions and a text area where users can submit queries.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT Sources Tab Data Retention Settings&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai interface in Build &gt; My Agent &gt; Sources, showing document upload options and data retention controls. The Data Retention setting is set to \u201cKeep For Viewing,\u201d with OCR and Data Anonymizer toggles visible.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT Secure Translation Workflow Diagram&quot;,
+    &quot;description&quot;: &quot;Diagram illustrating CustomGPT\u2019s secure document translation workflow: a user ID and laptop connect to a central hexagon padlock, representing protected processing. Role-based file nodes appear on the right, indicating controlled access and permissions across translated documents.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 508
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT secure document translation graphic&quot;,
+    &quot;description&quot;: &quot;An illustrated CustomGPT robot is shown with a keyhole shield, surrounded by cloud, lock, and envelope icons alongside the text \u201cSEC.\u201d The visual emphasizes secure, privacy-focused document translation and protected data handling.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 526
+    }
+  }
+]</pre></div>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (image-2.png)</td>
+        <td>type=illustration relevance=7/10 decorative=True</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (image-1.png)</td>
+        <td>type=illustration relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (Sign-in-1024x492.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (new-agent-1024x492.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.5</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 5 (sitemap-1024x492.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.6</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 6 (languages-1024x492.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.7</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 7 (ask-me-anything-1024x492.webp)</td>
+        <td>type=screenshot relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.8</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 8 (review-1024x769.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.9</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 9 (Export-1024x492.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.10</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 10 (data-retention-1024x492.webp)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 86/100 — Most alt text entries are specific, accurate, and entity-rich with useful contex</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — The image is branded, topic-specific, clear at thumbnail size, and has a descrip</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 91/100 — The visuals are predominantly custom CustomGPT screenshots and security-themed g</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;translate-documents-securely-using-customgpt&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/translate-documents-securely-using-customgpt/&quot;,
+    &quot;wp_post_id&quot;: 52199,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;Translating Documents Securely with CustomGPT&quot;,
+    &quot;word_count&quot;: 2097,
+    &quot;image_count&quot;: 11,
+    &quot;total_image_count&quot;: 12,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/how-to-translate-documents-securely-using-customgpt-1.webp&quot;,
+    &quot;featured_image_alt&quot;: &quot;How to Translate Documents Securely Using CustomGPT&quot;,
+    &quot;composite_score&quot;: 85.0,
+    &quot;grade&quot;: &quot;A&quot;,
+    &quot;issues&quot;: [],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+        &quot;filename&quot;: &quot;image-1.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+        &quot;filename&quot;: &quot;image.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+        &quot;filename&quot;: &quot;image-3.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 86,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most alt text entries are specific, accurate, and entity-rich with useful contextual details, though several are slightly long or UI-label-heavy rather than maximally concise.&quot;,
+        &quot;per_image_scores&quot;: [
+          9,
+          9,
+          8,
+          9,
+          9,
+          8,
+          8,
+          8,
+          9,
+          9
+        ],
+        &quot;weighted&quot;: 21.5
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;11 images / 2097 words (ideal ~5)&quot;,
+        &quot;weighted&quot;: 12.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 72,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 7.2
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 76,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;png&quot;: 3,
+          &quot;webp&quot;: 8
+        },
+        &quot;weighted&quot;: 7.6
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 10.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, topic-specific, clear at thumbnail size, and has a descriptive alt text matching the blog post title.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 91,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The visuals are predominantly custom CustomGPT screenshots and security-themed graphics that directly support a secure document translation workflow, with only minor dashboard elements being more generally product-oriented than translation-specific.&quot;,
+        &quot;weighted&quot;: 13.65
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;11/11 images schema-ready&quot;,
+        &quot;weighted&quot;: 5.0
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-2.png&quot;,
+        &quot;alt_text&quot;: &quot;Translate documents&quot;,
+        &quot;filename&quot;: &quot;image-2.png&quot;,
+        &quot;wp_media_id&quot;: 52202,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 505,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: true,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;An abstract digital illustration featuring multiple stylized padlock icons and security shields with circuitry backgrounds, symbolizing data security and encryption.&quot;,
+          &quot;topic_relevance&quot;: 7,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 4
+          },
+          &quot;suggested_alt_text&quot;: &quot;Abstract digital illustration of multiple padlocks and shields representing data security.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT compliance robot holds a gavel above GDPR book stack, with chest checkmark UI and security icons.&quot;,
+        &quot;filename&quot;: &quot;image-1.png&quot;,
+        &quot;wp_media_id&quot;: 52201,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 682,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;The image shows a purple robot holding a judge&#x27;s gavel surrounded by icons related to checkmarks, documents, and GDPR compliance, representing secure and verified document handling.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Purple robot with gavel symbolizing secure document verification and GDPR compliance&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai login screen shows company email field, Continue With Company Email button, and SSO option.&quot;,
+        &quot;filename&quot;: &quot;Sign-in-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 48698,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a login screen for CustomGPT.ai with options to enter a company email or use Google for sign-in, alongside icons of various integrated services.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai login screen with company email sign-in and service integration icons&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai dashboard displays usage metrics, including 168.11M words stored and 2 human hours saved this week&quot;,
+        &quot;filename&quot;: &quot;new-agent-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 52062,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a dashboard interface from CustomGPT.ai highlighting metrics such as team members, total agents, words stored, queries, documents added, and processing statistics. It also includes activity summaries and location-based conversation data.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT dashboard showing agent stats, query metrics, and activity summary for document translation.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai agent setup displays website sitemap validation, showing \u201cYour sitemap is looking good!\u201d&quot;,
+        &quot;filename&quot;: &quot;sitemap-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 51943,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A software interface showing the process of building an agent using a website URL in CustomGPT.ai with various data source options available.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT interface to create an agent using a website URL.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai Conversation tab shows Agent Language dropdown with English highlighted among Dogri, Dutch, and French.&quot;,
+        &quot;filename&quot;: &quot;languages-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 52218,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;This image shows a user interface of the CustomGPT platform, specifically the &#x27;Personalize / My Agent&#x27; section where users can set the agent language and view example questions to ask the chatbot.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT interface with agent language selection and example chatbot questions.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents lists My Agent as Ready with 546 documents added, 1,280,219 words stored, and Ask Me Anything.&quot;,
+        &quot;filename&quot;: &quot;ask-me-anything-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 52215,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A screenshot of the CustomGPT.ai dashboard showing the &#x27;All Agents&#x27; page, with details about documents added, read, words stored, and billing queries for different agents. A highlighted &#x27;Ask Me Anything&#x27; input bar is visible.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT.ai dashboard highlighting &#x27;Ask Me Anything&#x27; feature and agent document stats.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT chat lists white-label options: logo, background, 92-language support, and custom bot behavior.&quot;,
+        &quot;filename&quot;: &quot;review-1024x769.webp&quot;,
+        &quot;wp_media_id&quot;: 52219,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 769,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 7,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;This screenshot shows a chat interface where a user asks about customization options for a CustomGPT white-label chatbot. The chatbot responds with detailed customization features including brand logo, background design, language support, and behavior customization.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of chatbot conversation detailing customization options for CustomGPT white-label chatbot.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai Ask/My Agent interface shows + New conversation, Users: All filter, and MCP suggested question&quot;,
+        &quot;filename&quot;: &quot;Export-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 52216,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 8,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;This screenshot shows the CustomGPT.ai user interface with the &#x27;Ask / My Agent&#x27; section open, displaying suggested questions and a text input area for user queries.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai interface showing Ask/My Agent section with suggested chatbot questions and input field.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT Sources panel lists Upload channels and shows Data Retention plus OCR ON/OFF controls for document intake&quot;,
+        &quot;filename&quot;: &quot;data-retention-1024x492.webp&quot;,
+        &quot;wp_media_id&quot;: 52220,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 9,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;Screenshot of the CustomGPT.ai interface showing the &#x27;Build / My Agent / Sources&#x27; tab with upload options and data retention settings.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai interface showing upload and data retention options within agent build sources.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT links building, ID card, and laptop icons through a lock hexagon to clustered data squares&quot;,
+        &quot;filename&quot;: &quot;image.png&quot;,
+        &quot;wp_media_id&quot;: 52200,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 508,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 10,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT security concept shows a robot holding a keyhole shield amid padlock, cloud, and envelope CV icons&quot;,
+        &quot;filename&quot;: &quot;image-3.png&quot;,
+        &quot;wp_media_id&quot;: 52203,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 526,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 11,
+        &quot;vision_analysis&quot;: null
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;translate-documents-securely-using-customgpt&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 0,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+      &quot;filename&quot;: &quot;image-1.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT compliance robot holds a gavel beside a GDPR-labeled book, with checkmarks and a globe signaling legal approval.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a purple robot holding a judge&#x27;s gavel, with a large checkmark on its chest. Surrounding the robot are various checkmark icons, a globe, and a stack of books, one of which is labeled \&quot;GDPR.\&quot; The background features additional legal and approval symbols, including a small document with a checkmark and a piece resembling a chess pawn. The overall theme appears to be related to law, compliance, or regulation.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT compliance robot holds a gavel beside a GDPR-labeled book, with checkmarks and a globe signaling legal approval.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is the interpretive phrase \&quot;signaling legal approval,\&quot; which is less strictly factual than direct visual description.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT compliance robot holds a gavel beside a GDPR-labeled book, with checkmarks and a globe signaling legal approval.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is the interpretive phrase \&quot;signaling legal approval,\&quot; which is less strictly factual than direct visual description.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT compliance robot holds a gavel above GDPR book stack, with chest checkmark UI and security icons.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;Sign-in-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai sign-in connects company email and SSO to Google Drive, SharePoint, Slack, with email field outlined red.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a login interface for \&quot;CustomGPT.ai\&quot; with the heading \&quot;Empower your business by integrating your content with AI agents\&quot; on a purple background. Below the heading, there are icons for various services including Google Drive, SharePoint, Slack, YouTube, Orange icon (possibly OrangeHRM or similar), WordPress, Shopify, Notion, and Zendesk. On the right side, there is a sign-in form with the text \&quot;Sign In,\&quot; a link for new users to create an account, and a field labeled \&quot;Enter your company email address here\&quot; outlined in red. Below the email input is a \&quot;Continue With Company Email\&quot; button, followed by an option to continue with Google, and a link for logging in with SSO for organization accounts.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai sign-in connects company email and SSO to Google Drive, SharePoint, Slack, with email field outlined red.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.8,
+          &quot;critique&quot;: &quot;Biggest weakness: it slightly over-interprets the UI as actively \&quot;connecting\&quot; services and omits several clearly visible platform icons shown in the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai sign-in connects company email and SSO to Google Drive, SharePoint, Slack, with email field outlined red.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.8,
+        &quot;critique&quot;: &quot;Biggest weakness: it slightly over-interprets the UI as actively \&quot;connecting\&quot; services and omits several clearly visible platform icons shown in the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai login screen shows company email field, Continue With Company Email button, and SSO option.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;new-agent-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai dashboard shows team, agent, and activity metrics, including 3 conversations from United States.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface of a platform named \&quot;CustomGPT.ai\&quot; with a sidebar on the left containing buttons labeled \&quot;+ New Agent,\&quot; \&quot;Dashboard,\&quot; \&quot;Agents,\&quot; \&quot;Resources,\&quot; and \&quot;Slack Community.\&quot; The main dashboard area displays statistics including \&quot;1 of 5 Team Members,\&quot; \&quot;133 of 10000 Total Agents,\&quot; \&quot;168.11M of 30B Words Stored,\&quot; \&quot;175 of 400K Queries,\&quot; \&quot;12.35K of 3M Documents Added,\&quot; and \&quot;33.99M of 900B Words Processed.\&quot; On the right side, there is an \&quot;Activity\&quot; panel showing a message, \&quot;Your agents saved you 2 human hours this week,\&quot; with metrics for \&quot;Total\&quot; (3 Conversations, 80 Queries, 26.67 Queries per conversation) and \&quot;Guests\&quot; (0 for all categories). Below that, there is a \&quot;Location\&quot; section showing \&quot;United States\&quot; with 3 conversations.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai dashboard shows team, agent, and activity metrics, including 3 conversations from United States.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits the dashboard\u2019s most distinctive numeric details (e.g., words/documents/queries totals), which would improve retrieval value for answer engines.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai dashboard shows team, agent, and activity metrics, including 3 conversations from United States.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits the dashboard\u2019s most distinctive numeric details (e.g., words/documents/queries totals), which would improve retrieval value for answer engines.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai dashboard displays usage metrics, including 168.11M words stored and 2 human hours saved this week&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;sitemap-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai validates website URL in Build Using Your Website modal, showing \u201cYour sitemap is looking good!\u201d&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface for selecting a data source to build an agent using CustomGPT.ai. The central pop-up titled \&quot;Build Using Your Website\&quot; prompts the user to enter their website&#x27;s URL or sitemap, displaying a URL starting with \&quot;https://customgpt-streamlit.s3.amazonaws.com/custom\&quot; and a confirmation message \&quot;Your sitemap is looking good!\&quot; with a purple \&quot;Create Agent\&quot; button below.\n\nOn the left sidebar, there are menu items including Dashboard, Agents, Resources, Slack Community, Developers, and My Profile. The middle section categorizes data sources into Google Drive, SharePoint, Web (Website), and Knowledge Bases including HubSpot, Confluence, Notion, ReadMe, Gitbook, and Document360.\n\nThe top left corner includes the \&quot;CustomGPT.ai\&quot; logo. The bottom section has a note about CustomGPT.ai being SOC 2 Type II certified and GDPR compliant, with a clickable \&quot;Trust Center\&quot; link.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai validates website URL in Build Using Your Website modal, showing \u201cYour sitemap is looking good!\u201d&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits the specific URL shown in the modal, which would improve extractable factual precision.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai validates website URL in Build Using Your Website modal, showing \u201cYour sitemap is looking good!\u201d&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits the specific URL shown in the modal, which would improve extractable factual precision.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai agent setup displays website sitemap validation, showing \u201cYour sitemap is looking good!\u201d&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;languages-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT Personalize/My Agent links Agent Language selection to chatbot prompts in the Conversation settings panel&quot;,
+      &quot;vision_description&quot;: &quot;The image shows the \&quot;Personalize/ My Agent\&quot; settings page of a software interface from CustomGPT.ai. The \&quot;Conversation\&quot; tab is selected, displaying a dropdown menu labeled \&quot;Agent Language\&quot; with options including \&quot;English - Worldwide(English),\&quot; \&quot;Dogri - India (\u0921\u094b\u0917\u0930\u0940),\&quot; and several others such as Dutch, Estonian, Faroese, Finnish, and French. On the right side, there is a chatbot interface with example questions such as \&quot;What customization options are available for the CustomGPT white-label chatbot?\&quot; and \&quot;What are the benefits of customizing a chatbot using the CustomGPT.ai SDK?\&quot; The left sidebar includes navigation options like \&quot;Build,\&quot; \&quot;Personalize,\&quot; \&quot;Ask,\&quot; \&quot;Deploy,\&quot; and \&quot;Analyze.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT Personalize/My Agent links Agent Language selection to chatbot prompts in the Conversation settings panel&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.17,
+          &quot;critique&quot;: &quot;The biggest weakness is that it implies a functional link between language selection and chatbot prompts that the screenshot does not explicitly demonstrate.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT Personalize/My Agent links Agent Language selection to chatbot prompts in the Conversation settings panel&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.17,
+        &quot;critique&quot;: &quot;The biggest weakness is that it implies a functional link between language selection and chatbot prompts that the screenshot does not explicitly demonstrate.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai Conversation tab shows Agent Language dropdown with English highlighted among Dogri, Dutch, and French.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;ask-me-anything-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT All Agents dashboard compares My Agent metrics: 546 docs added, 545 read, 1,280,219 words, 0 queries.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for CustomGPT.ai, specifically the \&quot;All Agents\&quot; section. On the left sidebar, there are navigation options including \&quot;Dashboard,\&quot; \&quot;Agents\&quot; (expanded to show \&quot;New Agent\&quot; and \&quot;All Agents\&quot;), \&quot;Resources,\&quot; and \&quot;Slack Community,\&quot; along with a search box labeled \&quot;CustomGPT.ai Copilot\&quot; and a \&quot;+ New Agent\&quot; button. The main content area displays two agents: \&quot;My Agent\&quot; and \&quot;My Weebly Agent,\&quot; both marked as \&quot;Ready.\&quot; For \&quot;My Agent,\&quot; there are metrics showing 546 documents added, 545 documents read, 1,280,219 words stored, and 0 queries this billing cycle, a button labeled \&quot;Ask Me Anything,\&quot; and the last updated time as \&quot;28 Seconds ago.\&quot; For \&quot;My Weebly Agent,\&quot; the last updated time is \&quot;2 Weeks ago,\&quot; with similar but unfilled data boxes and UI icons at the top right. There are filter dropdowns and a search box at the top center of the interface.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT All Agents dashboard compares My Agent metrics: 546 docs added, 545 read, 1,280,219 words, 0 queries.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 10,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;Biggest weakness: it omits the second listed agent and broader interface context, so it slightly narrows what the image shows.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT All Agents dashboard compares My Agent metrics: 546 docs added, 545 read, 1,280,219 words, 0 queries.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 10,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;Biggest weakness: it omits the second listed agent and broader interface context, so it slightly narrows what the image shows.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai All Agents lists My Agent as Ready with 546 documents added, 1,280,219 words stored, and Ask Me Anything.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp&quot;,
+      &quot;filename&quot;: &quot;review-1024x769.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT chatbot lists white-label options: Brand Logo, Background Design, Language Support, and behavior controls.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a chatbot interface with a question typed in the input box: \&quot;What customization options are available for the CustomGPT white-label chatbot?\&quot; The chatbot&#x27;s response lists four key customization features: Brand Logo Customization, Background Design, Language Support, and Custom Chatbot Behavior, each described in detail. There are small circled numbers (1, 2, 3) scattered after points in the text. Below the chatbot response is an input field with the placeholder text \&quot;Ask me anything ...\&quot; and a send button shaped like a paper airplane. At the bottom center of the interface, there is text reading \&quot;Powered by CustomGPT.ai.\&quot; Two user icons with blurred faces are visible; one is next to the input box and the other next to the chatbot response. The background is a gradient of pink and purple colors.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT chatbot lists white-label options: Brand Logo, Background Design, Language Support, and behavior controls.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits key visible context (the on-screen question/response interface details), which would make it more fully grounded for answer extraction.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT chatbot lists white-label options: Brand Logo, Background Design, Language Support, and behavior controls.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits key visible context (the on-screen question/response interface details), which would make it more fully grounded for answer extraction.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT chat lists white-label options: logo, background, 92-language support, and custom bot behavior.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;Export-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT Ask/My Agent shows a single query box with MCP prompt suggestions and a + New conversation button&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface from CustomGPT.ai with a sidebar on the left that includes menu items: My Agent, Build, Personalize, Ask (highlighted), Deploy, Analyze, Developers, and My Profile. The main section is titled \&quot;Ask / My Agent\&quot; and contains a \&quot;+ New conversation\&quot; button, along with a text input field at the bottom labeled \&quot;Ask me anything...\&quot;. To the right, there is a box suggesting questions such as \&quot;What customization options are available for the CustomGPT white-label chatbot?\&quot; and \&quot;What problems does the Model Context Protocol (MCP) aim to solve in AI application development?\&quot;. The top right corner features icons for copying and sharing. The interface is branded with the CustomGPT.ai logo in the upper left and \&quot;Powered by CustomGPT.ai\&quot; at the bottom.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT Ask/My Agent shows a single query box with MCP prompt suggestions and a + New conversation button&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits key visible context (like the Ask interface layout/sidebar), making the description slightly narrower than the full image content.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT Ask/My Agent shows a single query box with MCP prompt suggestions and a + New conversation button&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits key visible context (like the Ask interface layout/sidebar), making the description slightly narrower than the full image content.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai Ask/My Agent interface shows + New conversation, Users: All filter, and MCP suggested question&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp&quot;,
+      &quot;filename&quot;: &quot;data-retention-1024x492.webp&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT Build &gt; My Agent &gt; Sources shows Data Retention set to Keep For Viewing, with OCR and Data Anonymizer toggles.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface from CustomGPT.ai in the \&quot;Build / My Agent / Sources\&quot; section with tabs for \&quot;Sources\&quot; and \&quot;Documents.\&quot; There is an \&quot;Upload\&quot; area with options for different data sources including Website, Upload, Zapier, Confluence, Google Drive, Zendesk, and YouTube. A privacy notice is displayed above advanced options, and under \&quot;Data Retention\&quot; the options are \&quot;Keep For Viewing In Results\&quot; (selected) and \&quot;Delete Immediately After Processing.\&quot; Additional toggles for \&quot;Data Anonymizer\&quot; (OFF/ON) and \&quot;OCR\&quot; (OFF/ON) are also shown. The interface includes buttons labeled \&quot;Add Files\&quot; and \&quot;Need Help?\&quot; with a user profile picture in the bottom right corner.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT Build &gt; My Agent &gt; Sources shows Data Retention set to Keep For Viewing, with OCR and Data Anonymizer toggles.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is minor label imprecision, since it shortens the selected option text from \&quot;Keep For Viewing In Results\&quot; to \&quot;Keep For Viewing.\&quot;&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT Build &gt; My Agent &gt; Sources shows Data Retention set to Keep For Viewing, with OCR and Data Anonymizer toggles.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is minor label imprecision, since it shortens the selected option text from \&quot;Keep For Viewing In Results\&quot; to \&quot;Keep For Viewing.\&quot;&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT Sources panel lists Upload channels and shows Data Retention plus OCR ON/OFF controls for document intake&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+      &quot;filename&quot;: &quot;image.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT translation workflow links user ID and laptop to a hexagon padlock, with role-based file nodes at right&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a digital illustration with icons representing a city building on the left, a user ID card above a laptop screen in the center, and a padlock enclosed in a hexagon on the right. Blue lines connect the user ID and the laptop to the padlock, indicating a security or protection theme. There are also small square icons grouped on the far right side, linked to the padlock by another blue line. The overall style is minimalist with outlined elements in dark blue and highlights in light blue.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT translation workflow links user ID and laptop to a hexagon padlock, with role-based file nodes at right&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is the phrase \&quot;role-based,\&quot; which adds an inferred function not clearly visible in the image itself.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT translation workflow links user ID and laptop to a hexagon padlock, with role-based file nodes at right&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is the phrase \&quot;role-based,\&quot; which adds an inferred function not clearly visible in the image itself.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT links building, ID card, and laptop icons through a lock hexagon to clustered data squares&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+      &quot;filename&quot;: &quot;image-3.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT is represented by a robot with a keyhole shield, surrounded by cloud, lock, and envelope icons and SEC text.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a robotic figure holding a shield with a keyhole symbol on it. Surrounding the robot are various digital and security-related icons such as padlocks, cloud storage, an envelope, a radar, and geometric shapes. The colors are primarily purple and blue, and the design has a futuristic, tech-focused theme. Visible text includes \&quot;SEC\&quot; and \&quot;PROGUPKEU,\&quot; with the latter being part of a vertical string of alphanumeric characters.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT is represented by a robot with a keyhole shield, surrounded by cloud, lock, and envelope icons and SEC text.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is that it stays generic to security imagery and does not add anything specific about document translation, which limits query-level relevance for AEO.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT is represented by a robot with a keyhole shield, surrounded by cloud, lock, and envelope icons and SEC text.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is that it stays generic to security imagery and does not add anything specific about document translation, which limits query-level relevance for AEO.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT security concept shows a robot holding a keyhole shield amid padlock, cloud, and envelope CV icons&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT GDPR Compliance Robot for Secure Translation&quot;,
+        &quot;description&quot;: &quot;A purple CustomGPT robot holds a judge\u2019s gavel beside a GDPR-labeled book, symbolizing legal oversight and compliant handling of translated documents. Checkmarks, document icons, and a globe reinforce secure, verified, and globally applicable document processing.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 682
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Sign-In with Email, Google, SSO&quot;,
+        &quot;description&quot;: &quot;Login screen for CustomGPT.ai showing a company email sign-in field outlined in red and a Google sign-in option. The interface highlights SSO and integrations with Google Drive, SharePoint, and Slack.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai dashboard with team and activity metrics&quot;,
+        &quot;description&quot;: &quot;CustomGPT.ai dashboard interface displaying key metrics such as team members, total agents, words stored, queries, documents added, and processing stats. The activity panel includes location-based conversation data, showing 3 conversations from the United States.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai website URL validation in agent builder&quot;,
+        &quot;description&quot;: &quot;CustomGPT.ai\u2019s Build Using Your Website modal shows a website URL being validated with the confirmation message, \u201cYour sitemap is looking good!\u201d. The interface also displays multiple data source options as part of the agent creation workflow.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT Agent Language Settings Interface&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT platform\u2019s Personalize / My Agent area, showing where users select the agent language in Conversation settings. The interface also displays example questions users can ask the chatbot based on those prompt and language preferences.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT All Agents Dashboard Metrics Overview&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai All Agents dashboard comparing My Agent usage metrics, including 546 documents added, 545 read, 1,280,219 words stored, and 0 billing queries. An \&quot;Ask Me Anything\&quot; input bar is highlighted, emphasizing interactive querying across agents.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT White-Label Chatbot Customization Options&quot;,
+        &quot;description&quot;: &quot;Screenshot of a CustomGPT chat interface where a user asks about white-label customization options. The chatbot lists configurable features such as brand logo, background design, language support, and behavior controls.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 769
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT Ask/My Agent query interface screenshot&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai \&quot;Ask / My Agent\&quot; interface showing a single query input box, MCP prompt suggestions, and a \&quot;+ New conversation\&quot; button. The layout highlights suggested questions and a text area where users can submit queries.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT Sources Tab Data Retention Settings&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai interface in Build &gt; My Agent &gt; Sources, showing document upload options and data retention controls. The Data Retention setting is set to \u201cKeep For Viewing,\u201d with OCR and Data Anonymizer toggles visible.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT Secure Translation Workflow Diagram&quot;,
+        &quot;description&quot;: &quot;Diagram illustrating CustomGPT\u2019s secure document translation workflow: a user ID and laptop connect to a central hexagon padlock, representing protected processing. Role-based file nodes appear on the right, indicating controlled access and permissions across translated documents.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 508
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT secure document translation graphic&quot;,
+        &quot;description&quot;: &quot;An illustrated CustomGPT robot is shown with a keyhole shield, surrounded by cloud, lock, and envelope icons alongside the text \u201cSEC.\u201d The visual emphasizes secure, privacy-focused document translation and protected data handling.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 526
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-1.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT enforces GDPR workflows with role-based access, audit logs, and encrypted document translation.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/06/Sign-in-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT sign-in supports Google OAuth and company email, gating access to 4 document sources.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/new-agent-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai analytics panel tracks words stored, documents added, and query processing by agent.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/sitemap-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT Build modal links website ingestion to agent setup, alongside file and text data source options.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/languages-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT maps each agent language choice to Conversation prompts, keeping translation instructions consistent.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/ask-me-anything-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT All Agents view links per-agent document totals with billing status and Ask Me Anything search.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/review-1024x769.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT chat reply maps 4 white-label controls used to align secure document translation UX and rules.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/Export-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT Ask/My Agent pairs MCP prompt suggestions with agent context for secure document translation.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/data-retention-1024x492.webp&quot;,
+      &quot;caption&quot;: &quot;CustomGPT Sources links upload settings to retention, OCR, and anonymization controls.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT secures document translation with role-based access, encrypted transfer, and audit logging.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/05/image-3.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT translates documents while keeping source and output in one encrypted workspace.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 00:56 UTC
+</div>
+</div>
+</body>
+</html>

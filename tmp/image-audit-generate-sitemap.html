@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — generate-sitemap-from-rss-feed</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>How To Create A Sitemap From An RSS Feed</strong><br>
+  <a href="https://customgpt.ai/generate-sitemap-from-rss-feed/" target="_blank">https://customgpt.ai/generate-sitemap-from-rss-feed/</a><br>
+  Generated: 2026-03-13 22:47 UTC &middot; WP Post ID: 16519 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#dc2626">D</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">47.0</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">6/6</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">2</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">438</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:20%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">20</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 25<br>
+    Most images have missing or overly generic alt text, with only partial quality on the two named screenshots and no image-specific detail for the rest.
+  </div>
+<div class="dim-details">Per-image scores: [0, 4, 0, 0, 5, 3]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:60%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">60</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>9.0</strong> / 15<br>
+    6 images / 438 words (ideal ~1)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:47%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">47</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.7</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:33%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">33</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>3.3</strong> / 10<br>
+    {&#x27;unknown&#x27;: 4, &#x27;png&#x27;: 2}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:42%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">42</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.2</strong> / 10<br>
+    [&#x27;Missing dimensions: c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&#x27;, &#x27;Missing dimensions: qs8
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    The image is branded, clear at thumbnail size, and topic-specific, but it lacks alt text which would improve accessibility and SEO.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:74%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">74</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>11.1</strong> / 15<br>
+    The page includes clearly relevant custom UI screenshots about selecting and using a sitemap, but several other images lack descriptive alt/context signals, suggesting only moderate-to-strong overall 
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:33%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">33</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>1.6</strong> / 5<br>
+    2/6 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 20 &times; 0.25 = <strong>5.0</strong><br>D2: Image Coverage: 60 &times; 0.15 = <strong>9.0</strong><br>D3: Filename Quality: 47 &times; 0.1 = <strong>4.7</strong><br>D4: Format & Performance: 33 &times; 0.1 = <strong>3.3</strong><br>D5: Technical Attributes (dims + srcset): 42 &times; 0.1 = <strong>4.2</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 74 &times; 0.15 = <strong>11.1</strong><br>D8: Schema Readiness: 33 &times; 0.05 = <strong>1.7</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 47.0 &rarr; Grade: D</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: 2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsU</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh3.googleusercontent.com/2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh3.googleusercontent.com/2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>624 &times; 311</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh4.googleusercontent.com/c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh4.googleusercontent.com/c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Sitemap</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAy</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh3.googleusercontent.com/qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh3.googleusercontent.com/qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmef</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh3.googleusercontent.com/dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh3.googleusercontent.com/dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: Create-Agent-CustomGPT.ai-3-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Create Agent - CustomGPT.ai</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>46798</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A software interface screen showing options to pick a data source for an agent, highlighting the &#x27;Sitemap&#x27; option among web sources like Website and Protected Data, along with other categories such as Knowledge Bases and Content Management Systems.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Software interface showing data source options with Sitemap highlighted for creating an agent</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: Create-Agent-3-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Create Agent</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>46921</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>7/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A screenshot of a web application interface showing a popup window titled &#x27;Build Using Your Website&#x27; where users can enter a website URL or sitemap to create an agent. The background shows options for selecting data sources like Website, Zapier, API, Google Drive, and SharePoint.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of a web app popup to enter a website URL to create an agent from a sitemap or website.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 1: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh3.googleusercontent.com/2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU</td></tr>
+    <tr><td><strong>Filename</strong></td><td>2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#dc2626">RSS feed to sitemap workflow maps feed URLs into sitemap.xml entries with lastmod dates in a generator UI</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>105 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 2: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh3.googleusercontent.com/qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA</td></tr>
+    <tr><td><strong>Filename</strong></td><td>qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#dc2626">RSS feed URL is entered in a sitemap generator form, showing XML output with urlset and recent post links.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>106 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 3: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh3.googleusercontent.com/dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#dc2626">RSS feed sitemap generator displays feed URL input and XML urlset preview with loc and lastmod fields.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>102 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">ent/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png</td><td><em>CustomGPT.ai setup lists Sitemap as 1 of 3 Web ingestion options before importing RSS-derived URLs.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">pt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png</td><td><em>CustomGPT.ai website builder accepts an RSS or sitemap URL and supports 5 connected data sources.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh4.googleusercontent.com/c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+    &quot;name&quot;: &quot;Sitemap structure for RSS feed-based generation&quot;,
+    &quot;description&quot;: &quot;Image illustrating a sitemap in the context of creating one from an RSS feed. It represents the sitemap concept used in the tutorial workflow.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Sitemap Option in Data Source Picker&quot;,
+    &quot;description&quot;: &quot;A CustomGPT.ai interface screen for selecting an agent data source, with the Sitemap option highlighted under Web. Nearby choices include Website and Protected Data, along with additional source categories like Knowledge Bases and Content Management Systems.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Build Using Your Website setup modal&quot;,
+    &quot;description&quot;: &quot;CustomGPT.ai displays the \&quot;Build Using Your Website\&quot; modal, where users can enter a website URL or sitemap in a text field and click a purple Create Agent button. In the background, the interface shows additional data source options including Website, Zapier, API, Google Drive, and SharePoint.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  }
+]</pre></div>
+<h2>Issues Detected</h2>
+<ul style="font-size:13px;margin-left:20px">
+<li>Missing dimensions: c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs</li>
+<li>Missing dimensions: qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA</li>
+<li>Missing dimensions: dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw</li>
+</ul>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.5</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 5 (Create-Agent-CustomGPT.ai-3-10)</td>
+        <td>type=screenshot relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.6</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 6 (Create-Agent-3-1024x492.png)</td>
+        <td>type=screenshot relevance=7/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 20/100 — Most images have missing or overly generic alt text, with only partial quality o</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — The image is branded, clear at thumbnail size, and topic-specific, but it lacks </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 74/100 — The page includes clearly relevant custom UI screenshots about selecting and usi</td>
+      </tr>
+
+      <tr>
+        <td>3.1</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"RSS feed to sitemap workflow maps feed URLs into sitemap.xml" (105ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.2</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"RSS feed URL is entered in a sitemap generator form, showing" (106ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.3</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"RSS feed sitemap generator displays feed URL input and XML u" (102ch)</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;generate-sitemap-from-rss-feed&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/generate-sitemap-from-rss-feed/&quot;,
+    &quot;wp_post_id&quot;: 16519,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;How To Create A Sitemap From An RSS Feed&quot;,
+    &quot;word_count&quot;: 438,
+    &quot;image_count&quot;: 6,
+    &quot;total_image_count&quot;: 6,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/RSS.png&quot;,
+    &quot;featured_image_alt&quot;: &quot;&quot;,
+    &quot;composite_score&quot;: 47.0,
+    &quot;grade&quot;: &quot;D&quot;,
+    &quot;issues&quot;: [
+      &quot;Missing dimensions: c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+      &quot;Missing dimensions: qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+      &quot;Missing dimensions: dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;
+    ],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh3.googleusercontent.com/2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU&quot;,
+        &quot;filename&quot;: &quot;2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh3.googleusercontent.com/qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+        &quot;filename&quot;: &quot;qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh3.googleusercontent.com/dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;,
+        &quot;filename&quot;: &quot;dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;Create-Agent-3-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 20,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most images have missing or overly generic alt text, with only partial quality on the two named screenshots and no image-specific detail for the rest.&quot;,
+        &quot;per_image_scores&quot;: [
+          0,
+          4,
+          0,
+          0,
+          5,
+          3
+        ],
+        &quot;weighted&quot;: 5.0
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 60,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;6 images / 438 words (ideal ~1)&quot;,
+        &quot;weighted&quot;: 9.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 47,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 4.7
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 33,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;unknown&quot;: 4,
+          &quot;png&quot;: 2
+        },
+        &quot;weighted&quot;: 3.3
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 42,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: [
+          &quot;Missing dimensions: c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+          &quot;Missing dimensions: qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+          &quot;Missing dimensions: dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;
+        ],
+        &quot;weighted&quot;: 4.2
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, clear at thumbnail size, and topic-specific, but it lacks alt text which would improve accessibility and SEO.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 74,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The page includes clearly relevant custom UI screenshots about selecting and using a sitemap, but several other images lack descriptive alt/context signals, suggesting only moderate-to-strong overall visual reinforcement.&quot;,
+        &quot;weighted&quot;: 11.1
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 33,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;2/6 images schema-ready&quot;,
+        &quot;weighted&quot;: 1.65
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://lh3.googleusercontent.com/2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 624,
+        &quot;height&quot;: 311,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh4.googleusercontent.com/c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+        &quot;alt_text&quot;: &quot;Sitemap&quot;,
+        &quot;filename&quot;: &quot;c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh3.googleusercontent.com/qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh3.googleusercontent.com/dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Create Agent - CustomGPT.ai&quot;,
+        &quot;filename&quot;: &quot;Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 46798,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A software interface screen showing options to pick a data source for an agent, highlighting the &#x27;Sitemap&#x27; option among web sources like Website and Protected Data, along with other categories such as Knowledge Bases and Content Management Systems.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Software interface showing data source options with Sitemap highlighted for creating an agent&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Create Agent&quot;,
+        &quot;filename&quot;: &quot;Create-Agent-3-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 46921,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A screenshot of a web application interface showing a popup window titled &#x27;Build Using Your Website&#x27; where users can enter a website URL or sitemap to create an agent. The background shows options for selecting data sources like Website, Zapier, API, Google Drive, and SharePoint.&quot;,
+          &quot;topic_relevance&quot;: 7,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of a web app popup to enter a website URL to create an agent from a sitemap or website.&quot;
+        }
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;generate-sitemap-from-rss-feed&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh3.googleusercontent.com/2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU&quot;,
+        &quot;filename&quot;: &quot;2hPbN_dsx1urp6JWpFWJEP_6cSrRz98AikTI7BpxcnTgHH3minZFACT2IBsURW2oT9WGxkUusciHNnZMd2sjcZgqsqLdOQNwlUgLXtIPrlArzIHrb9Ux3Y_5tfj8leVYSvbissy8e-WaU4QxKFukrsU&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;RSS feed to sitemap workflow maps feed URLs into sitemap.xml entries with lastmod dates in a generator UI&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh3.googleusercontent.com/qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+        &quot;filename&quot;: &quot;qs8C7QrljYsvVpZEAkwKEsXsAfbSbl83jF1EoyD1AJ7qgy-3Ue64KGCAQEAyBUg79K-U6nmU-ljvx2C9e233hbRHXK_EGh6_wldkILmvZNqQNNnUA8nyRELlG4bHiSWL0SRUfRkyWsov_poobRXZvWA&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;RSS feed URL is entered in a sitemap generator form, showing XML output with urlset and recent post links.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh3.googleusercontent.com/dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;,
+        &quot;filename&quot;: &quot;dDSwk_8BuQWdlntsgaUfUkSilnEcoGcLmwg1e5c-u_vud4IttOnrgZIBnmefy_Ml3gm4hXpte5C8OYfpCezzb-w9vH8gKIFkj3-mh2f0SVmkCDN2bBedSrThBug5OZXHnJ41ugTQjHA1HV5JFbgZ6Fw&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;RSS feed sitemap generator displays feed URL input and XML urlset preview with loc and lastmod fields.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      }
+    ],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 3,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai data source picker highlights Sitemap under Web, alongside Website and Protected Data options.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface from CustomGPT.ai with a heading \&quot;Pick data source for your agent.\&quot; Various data source options are displayed, including Google Drive, SharePoint, Website, Sitemap (highlighted with a red box and arrow), and Protected Data under the \&quot;Web\&quot; section. Below that, there is a \&quot;Knowledge Bases\&quot; section with options like HubSpot, Confluence (marked as Beta), Notion (marked as Beta), ReadMe, Gitbook, Document360, and KnowledgeOwl. On the left sidebar, there are menu options such as Dashboard, Agents (expanded), Support, and Refer and Earn!, with a highlighted button \&quot;+ New Agent.\&quot; The logo \&quot;CustomGPT.ai\&quot; is visible in the top left corner.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai data source picker highlights Sitemap under Web, alongside Website and Protected Data options.&quot;,
+          &quot;entity_placement&quot;: 3,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 10,
+          &quot;overall&quot;: 8.7,
+          &quot;critique&quot;: &quot;The biggest weakness is entity placement: \&quot;Sitemap\&quot; (and especially \&quot;RSS feed\&quot;) does not appear in the first five words.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai data source picker highlights Sitemap under Web, alongside Website and Protected Data options.&quot;,
+        &quot;entity_placement&quot;: 3,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 10,
+        &quot;overall&quot;: 8.7,
+        &quot;critique&quot;: &quot;The biggest weakness is entity placement: \&quot;Sitemap\&quot; (and especially \&quot;RSS feed\&quot;) does not appear in the first five words.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Create Agent - CustomGPT.ai&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;Create-Agent-3-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai displays the Build Using Your Website modal with a URL field and purple Create Agent button.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for CustomGPT.ai with a pop-up window titled \&quot;Build Using Your Website.\&quot; Inside the pop-up, there is a text input field containing the placeholder text \&quot;https://example.com\&quot; and a purple button labeled \&quot;Create Agent.\&quot; Below the button, there is a smaller text line that reads, \&quot;Want to add your website data, but it\u2019s protected by a login? Please contact our sales team.\&quot; \n\nThe background interface features a sidebar with menu options including \&quot;Dashboard,\&quot; \&quot;Agents,\&quot; \&quot;+ New Agent,\&quot; \&quot;All Agents,\&quot; \&quot;Support,\&quot; and \&quot;Refer and Earn,\&quot; as well as a text entry box labeled \&quot;I need help with...\&quot; There are also data source options displayed, such as \&quot;Website,\&quot; \&quot;Zapier,\&quot; \&quot;API,\&quot; \&quot;Google Drive,\&quot; and \&quot;SharePoint.\&quot; A partial footer note mentions CustomGPT.ai&#x27;s SOC 2 Type II and GDPR compliance.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai displays the Build Using Your Website modal with a URL field and purple Create Agent button.&quot;,
+          &quot;entity_placement&quot;: 9,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The main weakness is that it doesn\u2019t connect the UI step to the RSS-to-sitemap context of the page, so retrieval engines may miss topical relevance.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai displays the Build Using Your Website modal with a URL field and purple Create Agent button.&quot;,
+        &quot;entity_placement&quot;: 9,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The main weakness is that it doesn\u2019t connect the UI step to the RSS-to-sitemap context of the page, so retrieval engines may miss topical relevance.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Create Agent&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://lh4.googleusercontent.com/c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh4.googleusercontent.com/c6oH7foV6JSY2XftmkkEpgMWod-01xef_7iSgevNUpeOT80hHI3dVpvQuIbh1MukT5qx5RKaTr7N_YJ1zUExByXKcec9aVJhOv6lCnLLjIB26liJLaAAnowKG7_rGn-JIAkPNLHfdc9Mmp86RePPIBs&quot;,
+        &quot;name&quot;: &quot;Sitemap structure for RSS feed-based generation&quot;,
+        &quot;description&quot;: &quot;Image illustrating a sitemap in the context of creating one from an RSS feed. It represents the sitemap concept used in the tutorial workflow.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Sitemap Option in Data Source Picker&quot;,
+        &quot;description&quot;: &quot;A CustomGPT.ai interface screen for selecting an agent data source, with the Sitemap option highlighted under Web. Nearby choices include Website and Protected Data, along with additional source categories like Knowledge Bases and Content Management Systems.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Build Using Your Website setup modal&quot;,
+        &quot;description&quot;: &quot;CustomGPT.ai displays the \&quot;Build Using Your Website\&quot; modal, where users can enter a website URL or sitemap in a text field and click a purple Create Agent button. In the background, the interface shows additional data source options including Website, Zapier, API, Google Drive, and SharePoint.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/05/Create-Agent-CustomGPT.ai-3-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai setup lists Sitemap as 1 of 3 Web ingestion options before importing RSS-derived URLs.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/Create-Agent-3-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai website builder accepts an RSS or sitemap URL and supports 5 connected data sources.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-13 22:47 UTC
+</div>
+</div>
+</body>
+</html>
