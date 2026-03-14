@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical SEO Audit — customgpt.ai</title>
+<style>
+:root { --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; padding: 24px; }
+h1 { font-size: 28px; margin-bottom: 4px; }
+h2 { font-size: 20px; margin: 32px 0 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+h3 { font-size: 16px; margin: 20px 0 12px; }
+.subtitle { color: var(--muted); margin-bottom: 24px; font-size: 15px; }
+.stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; text-align: center; min-width: 130px; }
+.stat-box .num { font-size: 36px; font-weight: 700; }
+.stat-box .label { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.controls { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.controls input { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 6px; font-size: 14px; width: 260px; }
+.controls select { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 6px; font-size: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--surface); padding: 10px 8px; text-align: left; border-bottom: 2px solid var(--border); cursor: pointer; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+th:hover { color: var(--accent); }
+td { padding: 8px; border-bottom: 1px solid var(--border); }
+tr:hover { background: rgba(88,166,255,0.04); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.num-cell { text-align: right; font-variant-numeric: tabular-nums; }
+.score-cell { font-weight: 700; text-align: right; font-size: 15px; }
+.grade-cell { font-weight: 700; text-align: center; font-size: 15px; }
+.slug-cell { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dim-cell { white-space: nowrap; font-size: 12px; }
+.dim-bar { display: inline-block; height: 12px; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
+.flag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; margin-left: 4px; }
+.flag-p0 { background: #da3633; color: #fff; }
+.dim-avg-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.dim-avg-label { width: 160px; font-size: 13px; color: var(--muted); }
+.dim-avg-bar-bg { flex: 1; height: 20px; background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+.dim-avg-bar { height: 100%; border-radius: 3px; transition: width 0.3s; }
+.dim-avg-score { width: 50px; text-align: right; font-weight: 700; font-size: 15px; }
+.task-group { margin-bottom: 24px; }
+.task-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; }
+.task-desc { font-weight: 600; margin-bottom: 4px; }
+.task-fix { color: var(--accent); font-size: 13px; margin-bottom: 4px; }
+.task-pages { color: var(--muted); font-size: 12px; }
+.section-tabs { display: flex; gap: 0; margin-bottom: 0; }
+.tab { padding: 10px 20px; cursor: pointer; border: 1px solid var(--border); border-bottom: none; background: var(--bg); color: var(--muted); font-size: 14px; border-radius: 6px 6px 0 0; }
+.tab.active { background: var(--surface); color: var(--text); font-weight: 600; }
+.tab-content { display: none; background: var(--surface); border: 1px solid var(--border); padding: 24px; border-radius: 0 6px 6px 6px; }
+.tab-content.active { display: block; }
+</style>
+</head>
+<body>
+<h1>Technical SEO Audit</h1>
+<p class="subtitle">customgpt.ai &mdash; 2026-03-14T16-10-24 &mdash; 10 pages audited</p>
+
+<div class="stats">
+  <div class="stat-box"><div class="num" style="color:#d29922">66.7</div><div class="label">Site Score</div></div>
+  <div class="stat-box"><div class="num" style="color:#d29922">C</div><div class="label">Grade</div></div>
+  <div class="stat-box"><div class="num">10</div><div class="label">Pages</div></div>
+  <div class="stat-box"><div class="num" style="color:#da3633">11</div><div class="label">P0 Critical</div></div>
+  <div class="stat-box"><div class="num" style="color:#f85149">21</div><div class="label">P1 High</div></div>
+  <div class="stat-box"><div class="num" style="color:#d29922">11</div><div class="label">P2 Medium</div></div>
+  <div class="stat-box"><div class="num" style="color:#8b949e">0</div><div class="label">P3 Low</div></div>
+</div>
+
+<div class="section-tabs">
+  <div class="tab active" onclick="showTab('overview')">Overview</div>
+  <div class="tab" onclick="showTab('pages')">Page Table</div>
+  <div class="tab" onclick="showTab('tasks')">Ajdin's Task List</div>
+</div>
+
+<div id="tab-overview" class="tab-content active">
+<h2>Dimension Averages</h2>
+<div class="dim-avg-row">
+  <span class="dim-avg-label">CWV (25%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:84.2%;background:#3fb950"></div></div>
+  <span class="dim-avg-score" style="color:#3fb950">84.2</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">Canonical (15%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:19.0%;background:#da3633"></div></div>
+  <span class="dim-avg-score" style="color:#da3633">19.0</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">Schema (15%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:40.0%;background:#f85149"></div></div>
+  <span class="dim-avg-score" style="color:#f85149">40.0</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">HTTP (10%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:86.0%;background:#3fb950"></div></div>
+  <span class="dim-avg-score" style="color:#3fb950">86.0</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">Indexing (15%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:96.0%;background:#3fb950"></div></div>
+  <span class="dim-avg-score" style="color:#3fb950">96.0</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">Mobile (10%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:55.0%;background:#f85149"></div></div>
+  <span class="dim-avg-score" style="color:#f85149">55.0</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">Server (5%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:100.0%;background:#3fb950"></div></div>
+  <span class="dim-avg-score" style="color:#3fb950">100.0</span>
+</div><div class="dim-avg-row">
+  <span class="dim-avg-label">Image (5%)</span>
+  <div class="dim-avg-bar-bg"><div class="dim-avg-bar" style="width:51.2%;background:#f85149"></div></div>
+  <span class="dim-avg-score" style="color:#f85149">51.2</span>
+</div>
+</div>
+
+<div id="tab-pages" class="tab-content">
+<h2>Per-Page Scores</h2>
+<div class="controls">
+  <input type="text" id="search" placeholder="Filter by slug..." oninput="filterTable()">
+  <select id="grade-filter" onchange="filterTable()">
+    <option value="">All grades</option>
+    <option value="F">F only</option>
+    <option value="D">D and below</option>
+    <option value="C">C and below</option>
+  </select>
+</div>
+<div style="overflow-x:auto">
+<table id="page-table">
+<thead><tr>
+  <th>#</th>
+  <th onclick="sortTable(1)">Score</th>
+  <th onclick="sortTable(2)">Grade</th>
+  <th onclick="sortTable(3)">Slug</th>
+  <th onclick="sortTable(4)">Impr</th>
+  <th onclick="sortTable(5)">CWV</th><th onclick="sortTable(6)">Canonical</th><th onclick="sortTable(7)">Schema</th><th onclick="sortTable(8)">HTTP</th><th onclick="sortTable(9)">Indexing</th><th onclick="sortTable(10)">Mobile</th><th onclick="sortTable(11)">Server</th><th onclick="sortTable(12)">Image</th>
+  <th onclick="sortTable(13)">Issues</th>
+</tr></thead>
+<tbody>
+<tr data-score="49.7" data-slug="login">
+  <td class="num-cell">1</td>
+  <td class="score-cell" style="color:#f85149">49.7</td>
+  <td class="grade-cell" style="color:#f85149">F</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/login/" target="_blank">login</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">127,011</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:56px;background:#d29922"></span> 79</td><td class="dim-cell"><span class="dim-bar" style="width:7px;background:#da3633"></span> 10</td><td class="dim-cell"><span class="dim-bar" style="width:2px;background:#da3633"></span> 0</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:56px;background:#3fb950"></span> 80</td><td class="dim-cell"><span class="dim-bar" style="width:27px;background:#da3633"></span> 39</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td>
+  <td class="num-cell">5</td>
+</tr><tr data-score="62.0" data-slug="pricing">
+  <td class="num-cell">2</td>
+  <td class="score-cell" style="color:#d29922">62.0</td>
+  <td class="grade-cell" style="color:#d29922">C</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/pricing/" target="_blank">pricing</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">105,715</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:62px;background:#3fb950"></span> 88</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:2px;background:#da3633"></span> 0</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:45px;background:#d29922"></span> 65</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:21px;background:#da3633"></span> 30</td>
+  <td class="num-cell">6</td>
+</tr><tr data-score="65.2" data-slug="are-custom-gpts-private">
+  <td class="num-cell">3</td>
+  <td class="score-cell" style="color:#d29922">65.2</td>
+  <td class="grade-cell" style="color:#d29922">C</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/are-custom-gpts-private/" target="_blank">are-custom-gpts-private</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">149,426</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:52px;background:#d29922"></span> 74</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:32px;background:#f85149"></span> 46</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:36px;background:#f85149"></span> 51</td>
+  <td class="num-cell">4</td>
+</tr><tr data-score="66.7" data-slug="customgpt.ai">
+  <td class="num-cell">4</td>
+  <td class="score-cell" style="color:#d29922">66.7</td>
+  <td class="grade-cell" style="color:#d29922">C</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/customgpt.ai/" target="_blank">customgpt.ai</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">1,030,599</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:57px;background:#3fb950"></span> 82</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:56px;background:#3fb950"></span> 80</td><td class="dim-cell"><span class="dim-bar" style="width:51px;background:#d29922"></span> 73</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td>
+  <td class="num-cell">4</td>
+</tr><tr data-score="66.7" data-slug="chatgpt-plus-limits-2026">
+  <td class="num-cell">5</td>
+  <td class="score-cell" style="color:#d29922">66.7</td>
+  <td class="grade-cell" style="color:#d29922">C</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/chatgpt-plus-limits-2026/" target="_blank">chatgpt-plus-limits-2026</a> <span class="flag flag-p0">P0×2</span></td>
+  <td class="num-cell">135,063</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:61px;background:#3fb950"></span> 87</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:7px;background:#da3633"></span> 10</td>
+  <td class="num-cell">5</td>
+</tr><tr data-score="67.9" data-slug="make-money-with-ai-bots">
+  <td class="num-cell">6</td>
+  <td class="score-cell" style="color:#d29922">67.9</td>
+  <td class="grade-cell" style="color:#d29922">C</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/make-money-with-ai-bots/" target="_blank">make-money-with-ai-bots</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">172,697</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:59px;background:#3fb950"></span> 84</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:31px;background:#f85149"></span> 44</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:40px;background:#f85149"></span> 58</td>
+  <td class="num-cell">5</td>
+</tr><tr data-score="69.1" data-slug="top-10-ai-affiliate-programs">
+  <td class="num-cell">7</td>
+  <td class="score-cell" style="color:#d29922">69.1</td>
+  <td class="grade-cell" style="color:#d29922">C</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/top-10-ai-affiliate-programs/" target="_blank">top-10-ai-affiliate-programs</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">230,166</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:58px;background:#3fb950"></span> 84</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:40px;background:#f85149"></span> 57</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:41px;background:#f85149"></span> 59</td>
+  <td class="num-cell">4</td>
+</tr><tr data-score="70.5" data-slug="what-are-alphanumeric-characters">
+  <td class="num-cell">8</td>
+  <td class="score-cell" style="color:#d29922">70.5</td>
+  <td class="grade-cell" style="color:#58a6ff">B</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/what-are-alphanumeric-characters/" target="_blank">what-are-alphanumeric-characters</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">333,967</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:62px;background:#3fb950"></span> 88</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:55px;background:#d29922"></span> 78</td>
+  <td class="num-cell">4</td>
+</tr><tr data-score="70.9" data-slug="create-custom-gpt-openai">
+  <td class="num-cell">9</td>
+  <td class="score-cell" style="color:#d29922">70.9</td>
+  <td class="grade-cell" style="color:#58a6ff">B</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/create-custom-gpt-openai/" target="_blank">create-custom-gpt-openai</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">119,328</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:61px;background:#3fb950"></span> 88</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:44px;background:#d29922"></span> 63</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:43px;background:#d29922"></span> 62</td>
+  <td class="num-cell">3</td>
+</tr><tr data-score="71.0" data-slug="chatgpt-custom-instructions-template">
+  <td class="num-cell">10</td>
+  <td class="score-cell" style="color:#d29922">71.0</td>
+  <td class="grade-cell" style="color:#58a6ff">B</td>
+  <td class="slug-cell"><a href="https://customgpt.ai/blog/chatgpt-custom-instructions-template/" target="_blank">chatgpt-custom-instructions-template</a> <span class="flag flag-p0">P0×1</span></td>
+  <td class="num-cell">106,685</td>
+  <td class="dim-cell"><span class="dim-bar" style="width:62px;background:#3fb950"></span> 88</td><td class="dim-cell"><span class="dim-bar" style="width:14px;background:#da3633"></span> 20</td><td class="dim-cell"><span class="dim-bar" style="width:35px;background:#f85149"></span> 50</td><td class="dim-cell"><span class="dim-bar" style="width:63px;background:#3fb950"></span> 90</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:44px;background:#d29922"></span> 62</td><td class="dim-cell"><span class="dim-bar" style="width:70px;background:#3fb950"></span> 100</td><td class="dim-cell"><span class="dim-bar" style="width:45px;background:#d29922"></span> 64</td>
+  <td class="num-cell">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="tab-tasks" class="tab-content">
+<h2>Ajdin's Task List</h2>
+<p class="subtitle">Issues grouped by severity and type. Fix P0s first.</p>
+<h3><span style="background:#da3633;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600">P0</span> P0 Issues (11 total)</h3><div class="task-group"><div class="task-item">
+  <div class="task-desc">Page returns HTTP 404</div>
+  <div class="task-fix">Fix or remove broken page, update links</div>
+  <div class="task-pages">Pages: login</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/pricing/, canonical=https://customgpt.ai/pricing/</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: pricing</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/are-custom-gpts-private/, canonical=https://custo</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: are-custom-gpts-private</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/customgpt.ai/, canonical=https://customgpt.ai/cus</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: customgpt.ai</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/chatgpt-plus-limits-2026/, canonical=https://cust</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: chatgpt-plus-limits-2026</div>
+</div><div class="task-item">
+  <div class="task-desc">Low image audit score: 10/100</div>
+  <div class="task-fix">Run image audit and fix missing alt text, oversized images, broken URLs</div>
+  <div class="task-pages">Pages: chatgpt-plus-limits-2026</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/make-money-with-ai-bots/, canonical=https://custo</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: make-money-with-ai-bots</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/top-10-ai-affiliate-programs/, canonical=https://</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: top-10-ai-affiliate-programs</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/what-are-alphanumeric-characters/, canonical=http</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: what-are-alphanumeric-characters</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/create-custom-gpt-openai/, canonical=https://cust</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: create-custom-gpt-openai</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical mismatch: page=https://customgpt.ai/blog/chatgpt-custom-instructions-template/, canonical=</div>
+  <div class="task-fix">Fix canonical to point to self, or redirect if this is a duplicate</div>
+  <div class="task-pages">Pages: chatgpt-custom-instructions-template</div>
+</div></div><h3><span style="background:#f85149;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600">P1</span> P1 Issues (21 total)</h3><div class="task-group"><div class="task-item">
+  <div class="task-desc">FAQPage schema missing</div>
+  <div class="task-fix">Deploy FAQ JSON-LD via Rank Math FAQ block</div>
+  <div class="task-pages">Pages: pricing, are-custom-gpts-private, customgpt.ai, chatgpt-plus-limits-2026, make-money-with-ai-bots, top-10-ai-affiliate-programs, what-are-alphanumeric-characters, create-custom-gpt-openai, chatgpt-custom-instructions-template</div>
+</div><div class="task-item">
+  <div class="task-desc">Canonical audit error: 404 Client Error: Not Found for url: https://customgpt.ai/blog/login/</div>
+  <div class="task-fix">Investigate canonical tag — may be malformed or unreachable</div>
+  <div class="task-pages">Pages: login</div>
+</div><div class="task-item">
+  <div class="task-desc">Mobile-desktop performance gap: 37 points</div>
+  <div class="task-fix">Optimize mobile: lazy-load below-fold images, reduce CSS</div>
+  <div class="task-pages">Pages: login</div>
+</div><div class="task-item">
+  <div class="task-desc">Low mobile PSI score: 38/100</div>
+  <div class="task-fix">Run Lighthouse audit, address top opportunities</div>
+  <div class="task-pages">Pages: login</div>
+</div><div class="task-item">
+  <div class="task-desc">Person/author schema missing</div>
+  <div class="task-fix">Add Person schema via wp_author_schema.py</div>
+  <div class="task-pages">Pages: pricing</div>
+</div><div class="task-item">
+  <div class="task-desc">Organization schema missing</div>
+  <div class="task-fix">Ensure Rank Math Organization schema is configured</div>
+  <div class="task-pages">Pages: pricing</div>
+</div><div class="task-item">
+  <div class="task-desc">Low image audit score: 30/100</div>
+  <div class="task-fix">Run image audit and fix missing alt text, oversized images, broken URLs</div>
+  <div class="task-pages">Pages: pricing</div>
+</div><div class="task-item">
+  <div class="task-desc">Low mobile PSI score: 46/100</div>
+  <div class="task-fix">Run Lighthouse audit, address top opportunities</div>
+  <div class="task-pages">Pages: are-custom-gpts-private</div>
+</div><div class="task-item">
+  <div class="task-desc">Mobile-desktop performance gap: 33 points</div>
+  <div class="task-fix">Optimize mobile: lazy-load below-fold images, reduce CSS</div>
+  <div class="task-pages">Pages: chatgpt-plus-limits-2026</div>
+</div><div class="task-item">
+  <div class="task-desc">Mobile-desktop performance gap: 42 points</div>
+  <div class="task-fix">Optimize mobile: lazy-load below-fold images, reduce CSS</div>
+  <div class="task-pages">Pages: make-money-with-ai-bots</div>
+</div><div class="task-item">
+  <div class="task-desc">Low mobile PSI score: 47/100</div>
+  <div class="task-fix">Run Lighthouse audit, address top opportunities</div>
+  <div class="task-pages">Pages: make-money-with-ai-bots</div>
+</div><div class="task-item">
+  <div class="task-desc">Low mobile PSI score: 49/100</div>
+  <div class="task-fix">Run Lighthouse audit, address top opportunities</div>
+  <div class="task-pages">Pages: top-10-ai-affiliate-programs</div>
+</div><div class="task-item">
+  <div class="task-desc">Mobile-desktop performance gap: 34 points</div>
+  <div class="task-fix">Optimize mobile: lazy-load below-fold images, reduce CSS</div>
+  <div class="task-pages">Pages: what-are-alphanumeric-characters</div>
+</div></div><h3><span style="background:#d29922;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600">P2</span> P2 Issues (11 total)</h3><div class="task-group"><div class="task-item">
+  <div class="task-desc">hasCredential not present in Person schema</div>
+  <div class="task-fix">Add hasCredential to author profiles in wp_author_schema.py</div>
+  <div class="task-pages">Pages: pricing, are-custom-gpts-private, customgpt.ai, chatgpt-plus-limits-2026, make-money-with-ai-bots, top-10-ai-affiliate-programs, what-are-alphanumeric-characters, create-custom-gpt-openai, chatgpt-custom-instructions-template</div>
+</div><div class="task-item">
+  <div class="task-desc">Page not in sitemap</div>
+  <div class="task-fix">Add page to XML sitemap</div>
+  <div class="task-pages">Pages: login, customgpt.ai</div>
+</div></div>
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function filterTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const gf = document.getElementById('grade-filter').value;
+  const gradeOrder = {'F': 0, 'D': 1, 'C': 2, 'B': 3, 'A': 4, 'A+': 5};
+  document.querySelectorAll('#page-table tbody tr').forEach(tr => {
+    const slug = tr.dataset.slug || '';
+    const score = parseFloat(tr.dataset.score || 100);
+    let show = slug.includes(q);
+    if (gf === 'F') show = show && score < 50;
+    else if (gf === 'D') show = show && score < 60;
+    else if (gf === 'C') show = show && score < 70;
+    tr.style.display = show ? '' : 'none';
+  });
+}
+
+let sortDir = 1;
+let lastCol = -1;
+function sortTable(col) {
+  if (lastCol === col) sortDir *= -1;
+  else { sortDir = 1; lastCol = col; }
+  const tbody = document.querySelector('#page-table tbody');
+  const rows = Array.from(tbody.rows);
+  rows.sort((a, b) => {
+    let va = a.cells[col].textContent.trim().replace(/,/g, '');
+    let vb = b.cells[col].textContent.trim().replace(/,/g, '');
+    const na = parseFloat(va), nb = parseFloat(vb);
+    if (!isNaN(na) && !isNaN(nb)) return (na - nb) * sortDir;
+    return va.localeCompare(vb) * sortDir;
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+</script>
+</body>
+</html>
