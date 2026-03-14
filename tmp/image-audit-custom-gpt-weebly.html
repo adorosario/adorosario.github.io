@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — custom-gpt-weebly</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>Custom GPT For Your Weebly Site: Ultimate AI Assistant Guide</strong><br>
+  <a href="https://customgpt.ai/custom-gpt-weebly/" target="_blank">https://customgpt.ai/custom-gpt-weebly/</a><br>
+  Generated: 2026-03-14 01:33 UTC &middot; WP Post ID: 28562 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#d97706">C</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">69.1</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">19/19</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">10</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">2</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3526</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:39%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">39</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>9.8</strong> / 25<br>
+    Most alt text is generic heading-style or too vague (with one empty alt), and only a few screenshots are described with enough specific detail to be moderately useful.
+  </div>
+<div class="dim-details">Per-image scores: [4, 4, 4, 6, 4, 0, 3, 3, 5, 6]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>12.0</strong> / 15<br>
+    19 images / 3526 words (ideal ~9)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:78%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">78</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.8</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:40%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">40</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.0</strong> / 10<br>
+    {&#x27;png&#x27;: 19}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.0</strong> / 10<br>
+    The image is custom and relevant showing a tech environment with AI elements, has a good aspect ratio, and includes alt text, though it lacks strong branding or a clear depiction of Weebly specificall
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:94%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">94</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>14.1</strong> / 15<br>
+    The visuals strongly reinforce the guide’s Weebly + CustomGPT workflow with step-by-step platform screenshots and relevant AI-themed illustrations, with only a slight drop for a few more generic conce
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:89%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">89</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.5</strong> / 5<br>
+    17/19 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 39 &times; 0.25 = <strong>9.8</strong><br>D2: Image Coverage: 80 &times; 0.15 = <strong>12.0</strong><br>D3: Filename Quality: 78 &times; 0.1 = <strong>7.8</strong><br>D4: Format & Performance: 40 &times; 0.1 = <strong>4.0</strong><br>D5: Technical Attributes (dims + srcset): 100 &times; 0.1 = <strong>10.0</strong><br>D6: Featured Image: 70 &times; 0.1 = <strong>7.0</strong><br>D7: Entity Coherence: 94 &times; 0.15 = <strong>14.1</strong><br>D8: Schema Readiness: 89 &times; 0.05 = <strong>4.5</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 69.1 &rarr; Grade: C</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: image-94-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>The Rise of AI in Web Development</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28564</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows people standing in front of a Weebly store with a large, glowing AI figure above it surrounded by speech bubbles and icons symbolizing conversation and AI assistance.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Illustration of AI assistant interacting with visitors outside a Weebly store</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: image-95-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Understanding GPT and Its Capabilities</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28565</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A silhouette of a person sitting at a desk working on a laptop, facing an abstract digital face composed of data streams and glowing elements symbolizing AI and technology interaction.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Silhouette of person using laptop facing an abstract AI face made of data and light streams</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: image-96-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Step-by-Step Guide to Integrate Custom GPT into Your Weebly Site</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28566</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A woman seated at a desk is depicted interacting with glowing digital symbols and code, while her digital AI counterpart appears next to her surrounded by flowing streams of data and icons representing technology and AI concepts.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Woman interacting with digital AI elements and code, depicting human and AI collaboration.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: customgpt-sign-up-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>customgpt sign in</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>45275</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a login interface for CustomGPT.ai, with a prompt to integrate business content with AI agents, and includes icons for various platforms like Google Drive, Slack, YouTube, WordPress, Shopify, and others.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Login screen for CustomGPT.ai showing AI integration with apps like Google Drive, Slack, and YouTube</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: weebly-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>weebly integration</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47197</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A user interface screen showing options to pick a data source for an AI agent, highlighting the Weebly platform among other content management systems and customer support options.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT.ai interface highlighting Weebly as a data source for AI agent creation.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: weebly-link-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47199</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a software interface for creating a custom agent by integrating a Weebly website URL, with a pop-up window prompting the user to enter the URL and create the agent.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT.ai interface for Weebly integration with URL input and Create Agent button.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: deploy-agent-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>deploy agent</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47306</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a user interface of the CustomGPT.ai platform with a dashboard displaying an AI agent&#x27;s statistics, including documents added, read, words stored, and query count, along with various navigation options.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai dashboard showing AI agent stats including documents added, read, words stored, and queries.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 8: embed-agent-blur-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>embed agent
+</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47582</td></tr>
+      <tr><td><strong>Position</strong></td><td>#8</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A screenshot of the CustomGPT.ai platform showing the &#x27;Deploy Your Agent&#x27; section with code snippets for embedding a custom AI agent into a website.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai dashboard showing how to deploy and embed a custom AI agent on a website.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 9: copy-embed-code-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>copy the embed code
+</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47584</td></tr>
+      <tr><td><strong>Position</strong></td><td>#9</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows the &#x27;Deploy Your Agent&#x27; interface of CustomGPT.ai with instructions and code snippets to embed a chat widget on a website.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT.ai deploy page showing embed code and deployment options</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 10: image-97-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Weebly Login</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28568</td></tr>
+      <tr><td><strong>Position</strong></td><td>#10</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A login page screenshot showing fields for email and password to log in to Weebly using a Square account, with a blue Log In button and a &#x27;Forgot Password?&#x27; link.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of Weebly login page for Square account with email and password fields and log in button.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 11: image-98-1024x497.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Edit site</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 497</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28569</td></tr>
+      <tr><td><strong>Position</strong></td><td>#11</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 12: image-99-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Click on embed code</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28570</td></tr>
+      <tr><td><strong>Position</strong></td><td>#12</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 13: image-100-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Paste your code</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28571</td></tr>
+      <tr><td><strong>Position</strong></td><td>#13</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 14: image-101-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Custom GPT Chatbot </td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28572</td></tr>
+      <tr><td><strong>Position</strong></td><td>#14</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 15: models-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47210</td></tr>
+      <tr><td><strong>Position</strong></td><td>#15</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 16: image-102-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Best Practices for Using GPT on Your Weebly Site</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28573</td></tr>
+      <tr><td><strong>Position</strong></td><td>#16</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 17: image-103-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Real-World Examples of GPT on Weebly Sites</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28574</td></tr>
+      <tr><td><strong>Position</strong></td><td>#17</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 18: Custom-GPT-For-Your-Weebly-Site-1.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>custom gpt weebly</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1025 &times; 1025</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>29042</td></tr>
+      <tr><td><strong>Position</strong></td><td>#18</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 19: image-104-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>custom gpt weebly</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28575</td></tr>
+      <tr><td><strong>Position</strong></td><td>#19</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 1: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.3/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png</td></tr>
+    <tr><td><strong>Filename</strong></td><td>weebly-link-1024x492.png</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT.ai Weebly Integration modal confirms sitemap detection and shows Create Agent button after URL entry</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>110 chars <span class="tag tag-fix">80-125</span></td></tr>
+    <tr><td><strong>Caption</strong></td><td><em>CustomGPT.ai Weebly setup modal validates a submitted sitemap URL before initializing the agent.</em></td></tr>
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.3/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>The biggest weakness is slight interpretive phrasing (&quot;confirms&quot;) instead of purely observable wording like &quot;displays green sitemap-found message.&quot;</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+  &quot;name&quot;: &quot;CustomGPT.ai Weebly Integration URL Setup Modal&quot;,
+  &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai interface showing a Weebly integration modal where a user enters a website URL to generate an agent. The pop-up confirms sitemap detection and displays a prominent Create Agent button after the URL is provided.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  },
+  &quot;width&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 1024
+  },
+  &quot;height&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 492
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 2: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.5/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png</td></tr>
+    <tr><td><strong>Filename</strong></td><td>models-1024x492.png</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">Custom GPT agent settings show AI Intelligence with Optimal Choice, My Data Only, GPT-4o, and Save Settings.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>108 chars <span class="tag tag-fix">80-125</span></td></tr>
+    <tr><td><strong>Caption</strong></td><td><em>Custom GPT for Weebly: pre-deployment config ties model behavior to site-only data access.</em></td></tr>
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.5/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is that it omits key contextual entities visible in the image (e.g., HubSpot Agent/chat UI), which would make the caption more precise for retrieval and citation.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+  &quot;name&quot;: &quot;Custom GPT Agent Settings for Weebly Assistant&quot;,
+  &quot;description&quot;: &quot;Screenshot of the Custom GPT agent settings interface highlighting AI Intelligence options and model configuration. The panel shows selections such as Optimal Choice, My Data Only, GPT-4o, and a Save Settings action.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  },
+  &quot;width&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 1024
+  },
+  &quot;height&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 492
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png</td><td><em>Custom GPT for Weebly maps one user prompt to three intent tags—staking, insurance, and anomaly detection.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png</td><td><em>Custom GPT for Weebly maps site FAQs and code blocks into a single chat widget for on-page support.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png</td><td><em>CustomGPT.ai authentication precedes Weebly assistant setup and connector authorization for source apps.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">/customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png</td><td><em>CustomGPT.ai shows Weebly as one connector, letting one agent index site pages and support tickets.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">omgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png</td><td><em>CustomGPT.ai Weebly setup modal validates a submitted sitemap URL before initializing the agent.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">mgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png</td><td><em>CustomGPT.ai ties document ingestion, read totals, and query counts to each Weebly AI agent profile.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png</td><td><em>CustomGPT.ai deploy workflow shows how one agent is embedded across Weebly pages via API code.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">t.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png</td><td><em>CustomGPT Deploy Your Agent provides a one-line widget script for adding AI chat to Weebly pages.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png</td><td><em>Weebly uses Square SSO, a prerequisite account step before adding a Custom GPT assistant to site pages.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png</td><td><em>Custom GPT setup on Weebly begins in Edit Site, where chatbot code is added to site pages.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png</td><td><em>Custom GPT on Weebly is inserted as a single Embed Code block, then activated site-wide at publish.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png</td><td><em>Custom GPT for Weebly can be deployed sitewide by placing one embed block in a global footer section.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png</td><td><em>Custom GPT for Weebly uses one embed snippet with theme-matched styling for consistent sitewide chat.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">/customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png</td><td><em>Custom GPT for Weebly: pre-deployment config ties model behavior to site-only data access.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png</td><td><em>Custom GPT on Weebly centralizes FAQ, product, and support queries into one on-site chat workflow.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png</td><td><em>Weebly Custom GPT maps page FAQs, product data, and contact forms to intent-based replies and actions.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ontent/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png</td><td><em>Custom GPT for Weebly maps page FAQs to intent categories and logs unanswered queries for admin review.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png</td><td><em>Custom GPT for Weebly integrates a site chat widget, mapping visitor queries to page-specific answers.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Weebly storefront AI assistant scene&quot;,
+    &quot;description&quot;: &quot;An illustration of a Weebly storefront with a large glowing AI figure labeled Custom GPT hovering above it. Eight users stand below with speech bubbles and chat icons, conveying AI-powered conversations and on-site assistance to transform your site.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT Weebly AI assistant concept illustration&quot;,
+    &quot;description&quot;: &quot;A silhouetted user sits at a desk working on a laptop while facing a glowing, abstract digital head made of data-like streams and light effects. Terms such as \&quot;staking,\&quot; \&quot;insurance,\&quot; and \&quot;anomaly\&quot; appear around the figure, emphasizing AI-driven analysis and assistant capabilities.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Weebly AI Assistant Interface Concept&quot;,
+    &quot;description&quot;: &quot;A woman at a desk interacts with glowing code snippets, cloud icons, and AI-themed symbols while a holographic assistant appears beside her. Flowing data streams and interface elements, including \u201cAI, -1\u201d text, visualize how Custom GPT for Weebly connects users with an intelligent digital assistant.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Sign-In and Integration Options Screen&quot;,
+    &quot;description&quot;: &quot;CustomGPT.ai login interface showing company email sign-in, a Google login button, and an SSO link. The screen also highlights integration app icons such as Google Drive, Slack, YouTube, WordPress, and Shopify to connect business content with AI agents.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Weebly Data Source Selection Screen&quot;,
+    &quot;description&quot;: &quot;The CustomGPT.ai setup interface shows the \u201cPick data source for your agent\u201d step, with Weebly highlighted among available CMS and support platform options. The screen emphasizes choosing Weebly as a content source for configuring an AI assistant.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Weebly Integration URL Setup Modal&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai interface showing a Weebly integration modal where a user enters a website URL to generate an agent. The pop-up confirms sitemap detection and displays a prominent Create Agent button after the URL is provided.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai AI Agent Dashboard Status Overview&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai All Agents dashboard showing an AI agent\u2019s status panel with metrics such as 12 documents added, words stored (6201), read count, and query activity. The interface also includes navigation options and an edit icon for managing the agent.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Deploy Panel for Website Embed&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai platform\u2019s \u201cDeploy Your Agent\u201d interface, showing Share, Integrations, Advanced, and API tabs. The panel includes website embed code snippets and a \u201c+ New Agent\u201d button for deploying a custom AI assistant.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Deploy Your Agent embed code panel&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai \&quot;Deploy Your Agent\&quot; page displaying instructions and script snippets for embedding a chat widget on a website. A red arrow points to the copy icon next to the embed code to highlight where users can copy the script.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Weebly Login Page with Square Account Sign-In&quot;,
+    &quot;description&quot;: &quot;Screenshot of the Weebly login page prompting users to sign in with a Square account. The interface includes email and password fields, a blue \&quot;Log In\&quot; button, and a \&quot;Forgot Password?\&quot; link.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+    &quot;name&quot;: &quot;Weebly Dashboard Sidebar with Edit Site Highlight&quot;,
+    &quot;description&quot;: &quot;Screenshot of the Weebly dashboard sidebar with an arrow pointing to the \u201cEdit Site\u201d option. Nearby navigation items include SEO, Domains, and Form Submissions, emphasizing key site-management settings.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 497
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Weebly Editor Embed Code Menu for Custom GPT&quot;,
+    &quot;description&quot;: &quot;Screenshot of the Weebly editor showing where to add Custom GPT using the highlighted Embed Code option. The interface includes a Skin Gorge page header and a visible Publish button in the top-right area.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Weebly Custom GPT Embed Code Panel Setup&quot;,
+    &quot;description&quot;: &quot;Screenshot of Weebly\u2019s Embed Code panel used to place a Custom GPT widget on a page. The interface shows layout and alignment options along with Preview and Publish controls for finalizing placement.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT Weebly Chat Widget Embed Settings Panel&quot;,
+    &quot;description&quot;: &quot;Screenshot of the Custom GPT embed panel for a Weebly site, showing chat widget installation code along with layout and color customization options. A live preview on the right includes the label \u201cPowered by CustomGPT.ai.\u201d&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT Agent Settings for Weebly Assistant&quot;,
+    &quot;description&quot;: &quot;Screenshot of the Custom GPT agent settings interface highlighting AI Intelligence options and model configuration. The panel shows selections such as Optimal Choice, My Data Only, GPT-4o, and a Save Settings action.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Weebly crowd with digital icon swirl&quot;,
+    &quot;description&quot;: &quot;Illustration for Custom GPT on a Weebly site showing a crowd of people represented on smartphone screens. Icons, tablets, planets, and doves swirl overhead to suggest connected AI-driven communication and reach.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Weebly Laptop in Cosmic AI Interface Scene&quot;,
+    &quot;description&quot;: &quot;A Weebly-branded laptop floats above a crowd in a stylized cosmic environment. Neon code panels and small rockets orbit around it, evoking an AI-powered website assistant and futuristic automation theme.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Weebly: Tone, Answers, Security&quot;,
+    &quot;description&quot;: &quot;Promotional graphic for a Weebly-integrated Custom GPT assistant that matches a site\u2019s unique tone while delivering instant answers to visitor questions. It highlights personalized responses and built-in security modules for safer interactions.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1025
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1025
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT interface concept with holographic timer&quot;,
+    &quot;description&quot;: &quot;A conceptual Custom GPT scene shows a hoodie-clad user beside a window while a holographic UI floats nearby. The display includes a prominent 02:15 readout and a 9-second timer, emphasizing an AI assistant workflow.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  }
+]</pre></div>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (image-94-1024x585.png)</td>
+        <td>type=illustration relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (image-95-1024x585.png)</td>
+        <td>type=illustration relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (image-96-1024x585.png)</td>
+        <td>type=illustration relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (customgpt-sign-up-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.5</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 5 (weebly-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.6</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 6 (weebly-link-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.7</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 7 (deploy-agent-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.8</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 8 (embed-agent-blur-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.9</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 9 (copy-embed-code-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.10</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 10 (image-97-1024x492.png)</td>
+        <td>type=screenshot relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 39/100 — Most alt text is generic heading-style or too vague (with one empty alt), and on</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 70/100 — The image is custom and relevant showing a tech environment with AI elements, ha</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 94/100 — The visuals strongly reinforce the guide’s Weebly + CustomGPT workflow with step</td>
+      </tr>
+
+      <tr>
+        <td>3.1</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT.ai Weebly Integration modal confirms sitemap detec" (110ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.2</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"Custom GPT agent settings show AI Intelligence with Optimal " (108ch)</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;custom-gpt-weebly&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/custom-gpt-weebly/&quot;,
+    &quot;wp_post_id&quot;: 28562,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;Custom GPT For Your Weebly Site: Ultimate AI Assistant Guide&quot;,
+    &quot;word_count&quot;: 3526,
+    &quot;image_count&quot;: 19,
+    &quot;total_image_count&quot;: 19,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/CustomGPT-11.png&quot;,
+    &quot;featured_image_alt&quot;: &quot;custom gpt weebly&quot;,
+    &quot;composite_score&quot;: 69.1,
+    &quot;grade&quot;: &quot;C&quot;,
+    &quot;issues&quot;: [],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;weebly-link-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47199,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;models-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47210,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-94-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-95-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-96-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;customgpt-sign-up-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;weebly-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;weebly-link-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;deploy-agent-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;embed-agent-blur-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;copy-embed-code-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;image-97-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+        &quot;filename&quot;: &quot;image-98-1024x497.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;image-99-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;image-100-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;image-101-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;models-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-102-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-103-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+        &quot;filename&quot;: &quot;Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-104-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 39,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most alt text is generic heading-style or too vague (with one empty alt), and only a few screenshots are described with enough specific detail to be moderately useful.&quot;,
+        &quot;per_image_scores&quot;: [
+          4,
+          4,
+          4,
+          6,
+          4,
+          0,
+          3,
+          3,
+          5,
+          6
+        ],
+        &quot;weighted&quot;: 9.75
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;19 images / 3526 words (ideal ~9)&quot;,
+        &quot;weighted&quot;: 12.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 78,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 7.8
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 40,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;png&quot;: 19
+        },
+        &quot;weighted&quot;: 4.0
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 10.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 70,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is custom and relevant showing a tech environment with AI elements, has a good aspect ratio, and includes alt text, though it lacks strong branding or a clear depiction of Weebly specifically.&quot;,
+        &quot;weighted&quot;: 7.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 94,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The visuals strongly reinforce the guide\u2019s Weebly + CustomGPT workflow with step-by-step platform screenshots and relevant AI-themed illustrations, with only a slight drop for a few more generic conceptual graphics.&quot;,
+        &quot;weighted&quot;: 14.1
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 89,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;17/19 images schema-ready&quot;,
+        &quot;weighted&quot;: 4.45
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;The Rise of AI in Web Development&quot;,
+        &quot;filename&quot;: &quot;image-94-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28564,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;The image shows people standing in front of a Weebly store with a large, glowing AI figure above it surrounded by speech bubbles and icons symbolizing conversation and AI assistance.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Illustration of AI assistant interacting with visitors outside a Weebly store&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Understanding GPT and Its Capabilities&quot;,
+        &quot;filename&quot;: &quot;image-95-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28565,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A silhouette of a person sitting at a desk working on a laptop, facing an abstract digital face composed of data streams and glowing elements symbolizing AI and technology interaction.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Silhouette of person using laptop facing an abstract AI face made of data and light streams&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Step-by-Step Guide to Integrate Custom GPT into Your Weebly Site&quot;,
+        &quot;filename&quot;: &quot;image-96-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28566,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A woman seated at a desk is depicted interacting with glowing digital symbols and code, while her digital AI counterpart appears next to her surrounded by flowing streams of data and icons representing technology and AI concepts.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Woman interacting with digital AI elements and code, depicting human and AI collaboration.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;customgpt sign in&quot;,
+        &quot;filename&quot;: &quot;customgpt-sign-up-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 45275,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a login interface for CustomGPT.ai, with a prompt to integrate business content with AI agents, and includes icons for various platforms like Google Drive, Slack, YouTube, WordPress, Shopify, and others.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Login screen for CustomGPT.ai showing AI integration with apps like Google Drive, Slack, and YouTube&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;weebly integration&quot;,
+        &quot;filename&quot;: &quot;weebly-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47197,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A user interface screen showing options to pick a data source for an AI agent, highlighting the Weebly platform among other content management systems and customer support options.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT.ai interface highlighting Weebly as a data source for AI agent creation.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;weebly-link-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47199,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a software interface for creating a custom agent by integrating a Weebly website URL, with a pop-up window prompting the user to enter the URL and create the agent.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT.ai interface for Weebly integration with URL input and Create Agent button.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;deploy agent&quot;,
+        &quot;filename&quot;: &quot;deploy-agent-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47306,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a user interface of the CustomGPT.ai platform with a dashboard displaying an AI agent&#x27;s statistics, including documents added, read, words stored, and query count, along with various navigation options.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai dashboard showing AI agent stats including documents added, read, words stored, and queries.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;embed agent\n&quot;,
+        &quot;filename&quot;: &quot;embed-agent-blur-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47582,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 7,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A screenshot of the CustomGPT.ai platform showing the &#x27;Deploy Your Agent&#x27; section with code snippets for embedding a custom AI agent into a website.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai dashboard showing how to deploy and embed a custom AI agent on a website.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;copy the embed code\n&quot;,
+        &quot;filename&quot;: &quot;copy-embed-code-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47584,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 8,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows the &#x27;Deploy Your Agent&#x27; interface of CustomGPT.ai with instructions and code snippets to embed a chat widget on a website.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT.ai deploy page showing embed code and deployment options&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Weebly Login&quot;,
+        &quot;filename&quot;: &quot;image-97-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 28568,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 9,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;A login page screenshot showing fields for email and password to log in to Weebly using a Square account, with a blue Log In button and a &#x27;Forgot Password?&#x27; link.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of Weebly login page for Square account with email and password fields and log in button.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+        &quot;alt_text&quot;: &quot;Edit site&quot;,
+        &quot;filename&quot;: &quot;image-98-1024x497.png&quot;,
+        &quot;wp_media_id&quot;: 28569,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 497,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 10,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Click on embed code&quot;,
+        &quot;filename&quot;: &quot;image-99-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 28570,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 11,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Paste your code&quot;,
+        &quot;filename&quot;: &quot;image-100-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 28571,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 12,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Custom GPT Chatbot &quot;,
+        &quot;filename&quot;: &quot;image-101-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 28572,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 13,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;models-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47210,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 14,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Best Practices for Using GPT on Your Weebly Site&quot;,
+        &quot;filename&quot;: &quot;image-102-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28573,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 15,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Real-World Examples of GPT on Weebly Sites&quot;,
+        &quot;filename&quot;: &quot;image-103-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28574,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 16,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+        &quot;alt_text&quot;: &quot;custom gpt weebly&quot;,
+        &quot;filename&quot;: &quot;Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+        &quot;wp_media_id&quot;: 29042,
+        &quot;width&quot;: 1025,
+        &quot;height&quot;: 1025,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 17,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;custom gpt weebly&quot;,
+        &quot;filename&quot;: &quot;image-104-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28575,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 18,
+        &quot;vision_analysis&quot;: null
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;custom-gpt-weebly&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;weebly-link-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47199,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT.ai Weebly Integration modal confirms sitemap detection and shows Create Agent button after URL entry&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;models-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47210,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;Custom GPT agent settings show AI Intelligence with Optimal Choice, My Data Only, GPT-4o, and Save Settings.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      }
+    ],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 2,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-94-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Weebly is depicted above a WEEBLY storefront, with eight users and speech bubbles saying Tranfor your site.&quot;,
+      &quot;vision_description&quot;: &quot;1. Visible text includes speech bubbles with the following phrases: \&quot;Tunsform your sjtte spore, pucied,\&quot; \&quot;Your sjoue ine bonier?,\&quot; \&quot;Done your antentierid sin eyuinfec. duimcene yore?,\&quot; \&quot;Tranfor your site into a -smart, imorgri, conversational partn,er,\&quot; and \&quot;Your cnovanakim?\&quot; The text on the building reads \&quot;WEEBLY.\&quot;\n\n2. There are no numerical data, charts, or metrics shown in the image.\n\n3. The visible brand name is \&quot;WEEBLY\&quot; on the store front of the building in the center.\n\n4. The image includes UI elements such as a computer screen or browser window with a search bar and multiple abstract digital elements and icons resembling interface components surrounding a large glowing humanoid figure.\n\n5. The scene depicts a group of eight people standing in front of a building labeled \&quot;WEEBLY.\&quot; Above them is a large glowing humanoid figure, surrounded by floating heads and speech bubbles, birds, and various technological and abstract decorative elements.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Weebly is depicted above a WEEBLY storefront, with eight users and speech bubbles saying Tranfor your site.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 7,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 7,
+          &quot;overall&quot;: 8.5,
+          &quot;critique&quot;: &quot;The biggest weakness is unclear/typo-heavy quoted text (e.g., \&quot;Tranfor\&quot;), which reduces precision and extractable factual clarity.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Weebly is depicted above a WEEBLY storefront, with eight users and speech bubbles saying Tranfor your site.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 7,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 7,
+        &quot;overall&quot;: 8.5,
+        &quot;critique&quot;: &quot;The biggest weakness is unclear/typo-heavy quoted text (e.g., \&quot;Tranfor\&quot;), which reduces precision and extractable factual clarity.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;The Rise of AI in Web Development&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-95-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT concept shows a laptop user facing a glowing digital head with words like staking, insurance, and anomaly.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows the silhouette of a person seated at a desk using a laptop, facing a glowing, large ethereal profile of a human head with technological and digital elements integrated into it. The human head is composed of luminous blue light and surrounded by various alphanumeric characters, symbols, and words such as \&quot;staking,\&quot; \&quot;insurance,\&quot; \&quot;anomaly,\&quot; and \&quot;RGP.\&quot; The background features a dramatic sky with clouds and rays of light emanating from the horizon, creating a dynamic contrast between natural and digital elements. There are no visible UI elements, buttons, logos, or brand names in the image.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT concept shows a laptop user facing a glowing digital head with words like staking, insurance, and anomaly.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.2,
+          &quot;critique&quot;: &quot;The biggest weakness is vagueness in phrasing (e.g., \&quot;words like\&quot;) and no explicit mention of Weebly/site context, which slightly reduces extractable precision.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT concept shows a laptop user facing a glowing digital head with words like staking, insurance, and anomaly.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.2,
+        &quot;critique&quot;: &quot;The biggest weakness is vagueness in phrasing (e.g., \&quot;words like\&quot;) and no explicit mention of Weebly/site context, which slightly reduces extractable precision.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Understanding GPT and Its Capabilities&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-96-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Weebly links a desk user with a holographic assistant, amid code snippets, cloud icons, and \u201cAI, -1\u201d text.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a woman sitting on an office chair at a desk with a computer monitor, holding a glowing orb of light in her hands. The left side of the image features elements such as hanging light bulbs, floating code snippets, and icons representing AI, connected nodes, and cloud computing, with the text \&quot;AI, -1.\&quot; On the right side, a digital, semi-transparent figure of a woman is composed of light and data streams, holding a laptop with floating icons representing emails, documents, and technological symbols around her. The scene combines a realistic office environment with a futuristic, abstract digital interface.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Weebly links a desk user with a holographic assistant, amid code snippets, cloud icons, and \u201cAI, -1\u201d text.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is slightly vague phrasing (e.g., \&quot;links a desk user\&quot;) that is less directly extractable than concrete subject-action descriptions.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Weebly links a desk user with a holographic assistant, amid code snippets, cloud icons, and \u201cAI, -1\u201d text.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is slightly vague phrasing (e.g., \&quot;links a desk user\&quot;) that is less directly extractable than concrete subject-action descriptions.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Step-by-Step Guide to Integrate Custom GPT into Your Weebly Site&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;customgpt-sign-up-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai sign-in page shows company email login, Google button, and SSO link beside integration app icons.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a login interface for CustomGPT.ai, with the heading \&quot;Empower your business by integrating your content with AI agents\&quot; on the left side, accompanied by the CustomGPT.ai logo and icons for Google Drive, Microsoft SharePoint, Slack, YouTube, Zapier, WordPress, Shopify, Notion, and Zendesk. On the right side, there is a sign-in form with the label \&quot;Sign In\&quot; and a prompt for new users to create an account, an email input box outlined in red with placeholder text \&quot;Enter your company email address here,\&quot; a purple button labeled \&quot;Continue With Company Email,\&quot; and an alternative sign-in option with a button labeled \&quot;Google.\&quot; Below that, there is a link for users with an organization account to \&quot;Login using SSO.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai sign-in page shows company email login, Google button, and SSO link beside integration app icons.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;Biggest weakness: it omits a key visible text cue (the AI-integration heading), which could improve retrievability for answer engines.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai sign-in page shows company email login, Google button, and SSO link beside integration app icons.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;Biggest weakness: it omits a key visible text cue (the AI-integration heading), which could improve retrievability for answer engines.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;customgpt sign in&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;weebly-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai setup screen highlights Weebly in CMS data sources, under \u201cPick data source for your agent.\u201d&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface from CustomGPT.ai with a section titled \&quot;Pick data source for your agent.\&quot; Below the title, there are selectable options under \&quot;Content Management Systems\&quot; including WordPress, Wix, WebFlow, Framer, SquareSpace, and Weebly (highlighted with a red border and arrow). Under \&quot;Customer Support,\&quot; there is an option for Zendesk. On the left sidebar, the menu includes \&quot;Dashboard,\&quot; \&quot;Agents\&quot; with a dropdown showing \&quot;+ New Agent\&quot; and \&quot;All Agents,\&quot; \&quot;Support,\&quot; and \&quot;Refer and Earn!\&quot; A text box labeled \&quot;CustomGPT.ai Copilot\&quot; with placeholder text \&quot;I need help with...\&quot; is also visible. At the bottom, there is a compliance note about SOC 2 Type II certification and GDPR compliance with a clickable \&quot;Trust Center\&quot; link.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai setup screen highlights Weebly in CMS data sources, under \u201cPick data source for your agent.\u201d&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness is limited contextual detail (e.g., other CMS options) that would make the screenshot\u2019s exact UI state more uniquely identifiable.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai setup screen highlights Weebly in CMS data sources, under \u201cPick data source for your agent.\u201d&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness is limited contextual detail (e.g., other CMS options) that would make the screenshot\u2019s exact UI state more uniquely identifiable.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;weebly integration&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;weebly-link-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai Weebly Integration modal confirms sitemap detection and shows Create Agent button after URL entry&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for CustomGPT.ai with a modal titled \&quot;Weebly Integration.\&quot; The modal prompts the user to enter a Weebly website URL and has a text box prefilled with \&quot;https://\&quot;. Below the URL input, there is a message in green text stating, \&quot;We have found a sitemap(s) on your page!\&quot; A blue button labeled \&quot;Create Agent\&quot; is centered below the message. The main screen behind the modal displays options under headings \&quot;Pick data source for your agent,\&quot; \&quot;Content Management System,\&quot; and \&quot;Customer Support,\&quot; with logos and names such as WordPress, SquareSpace, Weebly, and Zendesk visible on cards. The sidebar on the left includes navigation options like Dashboard, Agents, New Agent, and Support, along with the CustomGPT.ai logo at the top.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai Weebly Integration modal confirms sitemap detection and shows Create Agent button after URL entry&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is slight interpretive phrasing (\&quot;confirms\&quot;) instead of purely observable wording like \&quot;displays green sitemap-found message.\&quot;&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai Weebly Integration modal confirms sitemap detection and shows Create Agent button after URL entry&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is slight interpretive phrasing (\&quot;confirms\&quot;) instead of purely observable wording like \&quot;displays green sitemap-found message.\&quot;&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;deploy-agent-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents dashboard shows AI Agent status with 12 documents added, 6201 words stored, and edit icon&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface from a platform called CustomGPT.ai, specifically the \&quot;All Agents\&quot; section under the \&quot;Agents\&quot; menu. Visible text includes labels such as \&quot;AI Agent,\&quot; \&quot;Ready,\&quot; \&quot;12 Documents Added,\&quot; \&quot;5 Documents Read,\&quot; \&quot;6201 Words Stored,\&quot; and \&quot;0 Queries this Billing Cycle.\&quot; UI elements include a search bar, filter dropdowns for time and sorting order, buttons for grid/list view, and icons for various actions including an edit icon highlighted with an arrow pointing at it. The interface has navigation options on the left sidebar, a \&quot;+ New Agent\&quot; button at the top right, and a purple banner at the bottom with the text \&quot;Ask Me Anything.\&quot; A small user profile photo appears in the lower right corner.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents dashboard shows AI Agent status with 12 documents added, 6201 words stored, and edit icon&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits a few key visible details (like &#x27;5 Documents Read&#x27; and billing-cycle queries), which slightly limits extractable context.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents dashboard shows AI Agent status with 12 documents added, 6201 words stored, and edit icon&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits a few key visible details (like &#x27;5 Documents Read&#x27; and billing-cycle queries), which slightly limits extractable context.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;deploy agent&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;embed-agent-blur-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT deploy interface shows Share, Integrations, Advanced, API tabs with website embed code and + New Agent button&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for CustomGPT.ai with a sidebar on the left containing menu options like Dashboard, Agents, Agent, Deploy, Support, and Refer and Earn!. The main section is titled \&quot;Deploy Your Agent\&quot; and includes tabs for Share, Integrations, Advanced, and API. There are code snippets displayed for embedding a chat widget and an agent into a website, with some parts of the code blurred or redacted. A button labeled \&quot;+ New Agent\&quot; appears in the top right corner, and the user interface includes icons such as an eye and a settings gear next to the text \&quot;Embed an agent into your website.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT deploy interface shows Share, Integrations, Advanced, API tabs with website embed code and + New Agent button&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits key contextual UI details (like the left navigation and &#x27;Deploy Your Agent&#x27; heading) that would make the description more complete for retrieval.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT deploy interface shows Share, Integrations, Advanced, API tabs with website embed code and + New Agent button&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits key contextual UI details (like the left navigation and &#x27;Deploy Your Agent&#x27; heading) that would make the description more complete for retrieval.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;embed agent\n&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;copy-embed-code-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai Deploy Your Agent page shows embed script code and a red arrow highlighting the copy icon.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface from \&quot;CustomGPT.ai\&quot; with a navigation sidebar on the left containing menu items such as Dashboard, Agents, Agent, Analytics, Data, Ask Me Anything, Appearance, Agent Persona, Agent Settings, Deploy, Event Log, Support, and Refer and Earn!. The main section is titled \&quot;Deploy Your Agent\&quot; and includes tabs labeled Share, Integrations, Advanced, and API. There are two code blocks displayed: one for adding a chat widget and another for embedding an agent into a website, with partial script code visible. A red arrow points to a clipboard copy icon next to the second code block. A \&quot;+ New Agent\&quot; button is at the top right, and a small circular user avatar is at the bottom right corner.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai Deploy Your Agent page shows embed script code and a red arrow highlighting the copy icon.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits a key specific detail visible in the image (the two distinct code blocks/tabs), which would make it more uniquely citable.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai Deploy Your Agent page shows embed script code and a red arrow highlighting the copy icon.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits a key specific detail visible in the image (the two distinct code blocks/tabs), which would make it more uniquely citable.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;copy the embed code\n&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;image-97-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Weebly login page shows Square account sign-in with \u201cLog in to Weebly with your Square account\u201d and blue Log In button.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a login page for Weebly with a Square account. The visible text includes the heading \&quot;Log in to Weebly with your Square account\&quot; and a subtext \&quot;Weebly joined forces with Square and is now part of the Square suite of products.\&quot; There are input fields labeled \&quot;Email Address\&quot; and \&quot;Password,\&quot; as well as links and buttons such as \&quot;Forgot Password?\&quot; and a blue \&quot;Log In\&quot; button. The page includes the Square logo at the top center and a language option labeled \&quot;English\&quot; at the bottom.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Weebly login page shows Square account sign-in with \u201cLog in to Weebly with your Square account\u201d and blue Log In button.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits a few concrete visual facts (e.g., email/password fields and Square logo) that could improve extractable detail.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Weebly login page shows Square account sign-in with \u201cLog in to Weebly with your Square account\u201d and blue Log In button.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits a few concrete visual facts (e.g., email/password fields and Square logo) that could improve extractable detail.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Weebly Login&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+      &quot;filename&quot;: &quot;image-98-1024x497.png&quot;,
+      &quot;alt_text&quot;: &quot;Weebly dashboard sidebar highlights Edit Site with arrow, plus SEO, Domains, and Form Submissions&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a website dashboard interface with a sidebar menu on the left. The sidebar contains navigation options including \&quot;Overview,\&quot; \&quot;Website,\&quot; \&quot;Edit Site\&quot; (which is highlighted with a red box and pointed to by an arrow), \&quot;Domains,\&quot; \&quot;SEO,\&quot; \&quot;Form Submissions,\&quot; \&quot;Site Preferences,\&quot; \&quot;Items,\&quot; \&quot;Orders,\&quot; \&quot;Fulfillment,\&quot; \&quot;Reports,\&quot; \&quot;Marketing,\&quot; \&quot;Communications,\&quot; and \&quot;Settings.\&quot; At the top right corner, there are options labeled \&quot;Upgrade,\&quot; \&quot;Support,\&quot; \&quot;Setup Guide,\&quot; and a username \&quot;Skin Gorge.\&quot; There is a small \&quot;W\&quot; logo in the top left corner. The layout features a clean, minimalistic design with a white background.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Weebly dashboard sidebar highlights Edit Site with arrow, plus SEO, Domains, and Form Submissions&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is that it captures only a subset of visible navigation elements, limiting completeness for retrieval and citation.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Weebly dashboard sidebar highlights Edit Site with arrow, plus SEO, Domains, and Form Submissions&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is that it captures only a subset of visible navigation elements, limiting completeness for retrieval and citation.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Edit site&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;image-99-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Weebly is added via highlighted Embed code menu in editor showing Skin Gorge header and Publish button.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a website design interface with a sidebar on the left containing menu options such as \&quot;Main banner,\&quot; \&quot;Embed code,\&quot; \&quot;Featured items,\&quot; \&quot;Email newsletter,\&quot; \&quot;Footer,\&quot; and \&quot;Footer branding.\&quot; The \&quot;Embed code\&quot; option is highlighted with a red border and black arrow pointing to it. The main preview area to the right displays a simple webpage header \&quot;Skin Gorge,\&quot; a tagline reading \&quot;Designs that reflect your inner light.,\&quot; and a black \&quot;Shop now\&quot; button. The top right corner of the interface contains buttons labeled \&quot;Preview\&quot; and \&quot;Publish.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Weebly is added via highlighted Embed code menu in editor showing Skin Gorge header and Publish button.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.8,
+          &quot;critique&quot;: &quot;The biggest weakness is the inferred claim \&quot;is added via\&quot;\u2014the image shows a highlighted Embed code option, but not the actual add action occurring.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Weebly is added via highlighted Embed code menu in editor showing Skin Gorge header and Publish button.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.8,
+        &quot;critique&quot;: &quot;The biggest weakness is the inferred claim \&quot;is added via\&quot;\u2014the image shows a highlighted Embed code option, but not the actual add action occurring.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Click on embed code&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;image-100-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT on Weebly uses Embed code panel with layout/alignment options and Preview-Publish controls.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface with a section titled \&quot;Embed code\&quot; on the left, featuring a red-outlined text box labeled \&quot;Paste embed code here\&quot; and a link below it reading \&quot;Explore all the ways you can embed code Learn more.\&quot; Below that is a \&quot;Customize\&quot; section with options for \&quot;Layout and color,\&quot; specifically \&quot;Layout,\&quot; showing three selectable layout icons and an \&quot;Alignment\&quot; option. On the right is a preview area bordered in blue with the heading \&quot;Have a look!\&quot; and subtext \&quot;Get access to useful tools and information.\&quot; At the top right, there are buttons labeled \&quot;Upgrade,\&quot; \&quot;Preview,\&quot; and \&quot;Publish.\&quot; The interface indicates autosaved status and contains typical formatting and editing toolbar icons above the preview area.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT on Weebly uses Embed code panel with layout/alignment options and Preview-Publish controls.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness: it infers \&quot;Custom GPT\&quot; rather than describing explicit on-screen labels/text, which slightly weakens citation precision.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT on Weebly uses Embed code panel with layout/alignment options and Preview-Publish controls.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness: it infers \&quot;Custom GPT\&quot; rather than describing explicit on-screen labels/text, which slightly weakens citation precision.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Paste your code&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;image-101-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT embed panel shows Weebly chat widget code, layout/color options, and \u201cPowered by CustomGPT.ai\u201d preview&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface for embedding a chat widget with the header \&quot;Embed code\&quot; and a \&quot;Done\&quot; button at the top left. On the left side, there is a section labeled \&quot;Code\&quot; with a snippet of HTML and script code, and below it is a \&quot;Customize\&quot; section with options for \&quot;Layout and color,\&quot; featuring layout variations, alignment choices, and color style presets. The main central area displays a preview of the chat widget containing a heading \&quot;Have a look!\&quot; and subheader \&quot;Get access to useful tools and information.\&quot; The widget has a gradient background with an avatar image, a text input box labeled \&quot;Ask Me Anything ...\&quot; with a note \&quot;Shift + Enter to add new line,\&quot; and a \&quot;Powered by CustomGPT.ai\&quot; footer. There are also UI controls like preview, publish buttons, and toolbar icons visible at the top.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT embed panel shows Weebly chat widget code, layout/color options, and \u201cPowered by CustomGPT.ai\u201d preview&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is mild vagueness around on-screen labels (e.g., \u201cEmbed code\u201d and \u201cDone\u201d), which would make it even more verifiable for extraction.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT embed panel shows Weebly chat widget code, layout/color options, and \u201cPowered by CustomGPT.ai\u201d preview&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is mild vagueness around on-screen labels (e.g., \u201cEmbed code\u201d and \u201cDone\u201d), which would make it even more verifiable for extraction.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Custom GPT Chatbot &quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;models-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT agent settings show AI Intelligence with Optimal Choice, My Data Only, GPT-4o, and Save Settings.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface for \&quot;Agent Settings / My HubSpot Agent\&quot; with tabs labeled Conversation, Citations, AI Intelligence (selected), Advanced, and Security. Under \&quot;Agent&#x27;s Capability,\&quot; four options are displayed: Fastest Responses, Optimal Choice (selected), Highest Relevance, and Complex Reasoning. There are dropdown menus for \&quot;Generate Responses From\&quot; set to \&quot;My Data Only\&quot; and \&quot;AI Model\&quot; set to \&quot;GPT-4o.\&quot; A \&quot;Save Settings\&quot; button is visible below these options. On the right side, there is a chat window with a prompt field that says \&quot;Ask me anything ...\&quot; and a note \&quot;Shift + Enter to add a new line,\&quot; with a small avatar and a send button. The interface includes a sidebar on the left with various icons and a top bar with a \&quot;+ New Agent\&quot; button and a user avatar circle. The footer of the chat window says \&quot;Powered by CustomGPT.ai.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT agent settings show AI Intelligence with Optimal Choice, My Data Only, GPT-4o, and Save Settings.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits key contextual entities visible in the image (e.g., HubSpot Agent/chat UI), which would make the caption more precise for retrieval and citation.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT agent settings show AI Intelligence with Optimal Choice, My Data Only, GPT-4o, and Save Settings.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits key contextual entities visible in the image (e.g., HubSpot Agent/chat UI), which would make the caption more precise for retrieval and citation.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-102-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Weebly site concept shows a crowd on smartphones as icons, tablets, planets, and doves swirl overhead&quot;,
+      &quot;vision_description&quot;: &quot;The image depicts a large group of people densely arranged in the center, with their faces blurred or pixelated, all seemingly engaged with smartphones or small devices in their hands. Surrounding them is a dynamic burst of numerous floating digital and physical objects, such as smartphones, tablets, icons, gadgets, butterflies, planets, doves, and various abstract elements. There is no visible text, labels, UI copy, logos, or brand names discernible in the image. The overall composition conveys a swirling, energetic scene filled with connectivity and digital communication elements.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Weebly site concept shows a crowd on smartphones as icons, tablets, planets, and doves swirl overhead&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.2,
+          &quot;critique&quot;: &quot;Biggest weakness: it front-loads a conceptual label (&#x27;Custom GPT for Weebly site&#x27;) that is not directly visible in the image, reducing pure visual factuality.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Weebly site concept shows a crowd on smartphones as icons, tablets, planets, and doves swirl overhead&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.2,
+        &quot;critique&quot;: &quot;Biggest weakness: it front-loads a conceptual label (&#x27;Custom GPT for Weebly site&#x27;) that is not directly visible in the image, reducing pure visual factuality.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Best Practices for Using GPT on Your Weebly Site&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-103-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Weebly-branded laptop hovers over crowds as neon code panels and small rockets orbit in a cosmic interface scene&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a futuristic scene with numerous people walking towards a large floating laptop screen displaying the text \&quot;Weebly.\&quot; The laptop has colorful, flowing lines extending from its base, and small rocket ships are flying near it. Surrounding the laptop are floating balconies, each with bright orange and purple illuminated screens that appear to display lines of text or code. The setting has a vibrant, glowing, and cosmic atmosphere with bright lights and planet-like objects in the background.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Weebly-branded laptop hovers over crowds as neon code panels and small rockets orbit in a cosmic interface scene&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.8,
+          &quot;critique&quot;: &quot;The biggest weakness is slightly stylized wording (e.g., \&quot;cosmic interface\&quot; and \&quot;orbit\&quot;) that reduces factual precision for citation-oriented AI extraction.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Weebly-branded laptop hovers over crowds as neon code panels and small rockets orbit in a cosmic interface scene&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.8,
+        &quot;critique&quot;: &quot;The biggest weakness is slightly stylized wording (e.g., \&quot;cosmic interface\&quot; and \&quot;orbit\&quot;) that reduces factual precision for citation-oriented AI extraction.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Real-World Examples of GPT on Weebly Sites&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+      &quot;filename&quot;: &quot;Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Weebly links personalized site tone with instant visitor answers and enhanced security modules.&quot;,
+      &quot;vision_description&quot;: &quot;The image is titled \&quot;CustomGPT For Your Weebly Site\&quot; with a central illustration of a person surrounded by a circular band that reads \&quot;Making Weebly sites more intuitive &amp; personalized.\&quot; Around the band, there are various boxes with text: \&quot;Turns Weebly sites into dynamic, interactive hubs,\&quot; \&quot;Answers &amp; guides visitors instantly,\&quot; \&quot;Personalizes recommendations, refreshes content,\&quot; \&quot;Technology that understands &amp; predicts text,\&quot; \&quot;Enhanced Security,\&quot; \&quot;Tailor GPT to site\u2019s tone and style,\&quot; and \&quot;Instant, interactive visitor responses.\&quot; The image also contains small icons representing shopping, delivery, communication, and security. The layout is a purple square with rounded corners containing various interconnected UI and e-commerce elements.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Weebly links personalized site tone with instant visitor answers and enhanced security modules.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 7,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.7,
+          &quot;critique&quot;: &quot;Biggest weakness is the slightly promotional phrasing, which makes it less purely descriptive of the visual elements for citation-style extraction.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Weebly links personalized site tone with instant visitor answers and enhanced security modules.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 7,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.7,
+        &quot;critique&quot;: &quot;Biggest weakness is the slightly promotional phrasing, which makes it less purely descriptive of the visual elements for citation-style extraction.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;custom gpt weebly&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-104-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT concept shows a hoodie-clad user beside a window, with holographic UI showing 02:15 and a 9-second timer.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a young person wearing a hoodie sitting indoors by a window with a futuristic cityscape visible outside. Various holographic user interfaces are projected in front of the person, including circular icons, a digital timer showing \&quot;9\&quot; with \&quot;5 seconds\&quot; beneath it, and a time display reading \&quot;02:15.\&quot; The text visible in the holographic UI includes \&quot;Enpaginry seconnd,\&quot; \&quot;Of aieparing,\&quot; and \&quot;Ettjin eoming so unne,\&quot; though some text appears nonsensical or scrambled. The holograms feature figures of humans and icons with heart symbols, arrows, and digital interface elements, suggesting some kind of augmented reality or data visualization system.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT concept shows a hoodie-clad user beside a window, with holographic UI showing 02:15 and a 9-second timer.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness is minor semantic drift: it states a clear &#x27;9-second timer&#x27; even though the on-screen timer text appears partially ambiguous/scrambled in the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT concept shows a hoodie-clad user beside a window, with holographic UI showing 02:15 and a 9-second timer.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness is minor semantic drift: it states a clear &#x27;9-second timer&#x27; even though the on-screen timer text appears partially ambiguous/scrambled in the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;custom gpt weebly&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-94-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Weebly storefront AI assistant scene&quot;,
+        &quot;description&quot;: &quot;An illustration of a Weebly storefront with a large glowing AI figure labeled Custom GPT hovering above it. Eight users stand below with speech bubbles and chat icons, conveying AI-powered conversations and on-site assistance to transform your site.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT Weebly AI assistant concept illustration&quot;,
+        &quot;description&quot;: &quot;A silhouetted user sits at a desk working on a laptop while facing a glowing, abstract digital head made of data-like streams and light effects. Terms such as \&quot;staking,\&quot; \&quot;insurance,\&quot; and \&quot;anomaly\&quot; appear around the figure, emphasizing AI-driven analysis and assistant capabilities.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Weebly AI Assistant Interface Concept&quot;,
+        &quot;description&quot;: &quot;A woman at a desk interacts with glowing code snippets, cloud icons, and AI-themed symbols while a holographic assistant appears beside her. Flowing data streams and interface elements, including \u201cAI, -1\u201d text, visualize how Custom GPT for Weebly connects users with an intelligent digital assistant.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Sign-In and Integration Options Screen&quot;,
+        &quot;description&quot;: &quot;CustomGPT.ai login interface showing company email sign-in, a Google login button, and an SSO link. The screen also highlights integration app icons such as Google Drive, Slack, YouTube, WordPress, and Shopify to connect business content with AI agents.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Weebly Data Source Selection Screen&quot;,
+        &quot;description&quot;: &quot;The CustomGPT.ai setup interface shows the \u201cPick data source for your agent\u201d step, with Weebly highlighted among available CMS and support platform options. The screen emphasizes choosing Weebly as a content source for configuring an AI assistant.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Weebly Integration URL Setup Modal&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai interface showing a Weebly integration modal where a user enters a website URL to generate an agent. The pop-up confirms sitemap detection and displays a prominent Create Agent button after the URL is provided.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai AI Agent Dashboard Status Overview&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai All Agents dashboard showing an AI agent\u2019s status panel with metrics such as 12 documents added, words stored (6201), read count, and query activity. The interface also includes navigation options and an edit icon for managing the agent.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Deploy Panel for Website Embed&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai platform\u2019s \u201cDeploy Your Agent\u201d interface, showing Share, Integrations, Advanced, and API tabs. The panel includes website embed code snippets and a \u201c+ New Agent\u201d button for deploying a custom AI assistant.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Deploy Your Agent embed code panel&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai \&quot;Deploy Your Agent\&quot; page displaying instructions and script snippets for embedding a chat widget on a website. A red arrow points to the copy icon next to the embed code to highlight where users can copy the script.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Weebly Login Page with Square Account Sign-In&quot;,
+        &quot;description&quot;: &quot;Screenshot of the Weebly login page prompting users to sign in with a Square account. The interface includes email and password fields, a blue \&quot;Log In\&quot; button, and a \&quot;Forgot Password?\&quot; link.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+        &quot;name&quot;: &quot;Weebly Dashboard Sidebar with Edit Site Highlight&quot;,
+        &quot;description&quot;: &quot;Screenshot of the Weebly dashboard sidebar with an arrow pointing to the \u201cEdit Site\u201d option. Nearby navigation items include SEO, Domains, and Form Submissions, emphasizing key site-management settings.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 497
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Weebly Editor Embed Code Menu for Custom GPT&quot;,
+        &quot;description&quot;: &quot;Screenshot of the Weebly editor showing where to add Custom GPT using the highlighted Embed Code option. The interface includes a Skin Gorge page header and a visible Publish button in the top-right area.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Weebly Custom GPT Embed Code Panel Setup&quot;,
+        &quot;description&quot;: &quot;Screenshot of Weebly\u2019s Embed Code panel used to place a Custom GPT widget on a page. The interface shows layout and alignment options along with Preview and Publish controls for finalizing placement.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT Weebly Chat Widget Embed Settings Panel&quot;,
+        &quot;description&quot;: &quot;Screenshot of the Custom GPT embed panel for a Weebly site, showing chat widget installation code along with layout and color customization options. A live preview on the right includes the label \u201cPowered by CustomGPT.ai.\u201d&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT Agent Settings for Weebly Assistant&quot;,
+        &quot;description&quot;: &quot;Screenshot of the Custom GPT agent settings interface highlighting AI Intelligence options and model configuration. The panel shows selections such as Optimal Choice, My Data Only, GPT-4o, and a Save Settings action.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Weebly crowd with digital icon swirl&quot;,
+        &quot;description&quot;: &quot;Illustration for Custom GPT on a Weebly site showing a crowd of people represented on smartphone screens. Icons, tablets, planets, and doves swirl overhead to suggest connected AI-driven communication and reach.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Weebly Laptop in Cosmic AI Interface Scene&quot;,
+        &quot;description&quot;: &quot;A Weebly-branded laptop floats above a crowd in a stylized cosmic environment. Neon code panels and small rockets orbit around it, evoking an AI-powered website assistant and futuristic automation theme.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Weebly: Tone, Answers, Security&quot;,
+        &quot;description&quot;: &quot;Promotional graphic for a Weebly-integrated Custom GPT assistant that matches a site\u2019s unique tone while delivering instant answers to visitor questions. It highlights personalized responses and built-in security modules for safer interactions.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1025
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1025
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT interface concept with holographic timer&quot;,
+        &quot;description&quot;: &quot;A conceptual Custom GPT scene shows a hoodie-clad user beside a window while a holographic UI floats nearby. The display includes a prominent 02:15 readout and a 9-second timer, emphasizing an AI assistant workflow.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-95-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly maps one user prompt to three intent tags\u2014staking, insurance, and anomaly detection.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-96-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly maps site FAQs and code blocks into a single chat widget for on-page support.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai authentication precedes Weebly assistant setup and connector authorization for source apps.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai shows Weebly as one connector, letting one agent index site pages and support tickets.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/weebly-link-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai Weebly setup modal validates a submitted sitemap URL before initializing the agent.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai ties document ingestion, read totals, and query counts to each Weebly AI agent profile.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/embed-agent-blur-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai deploy workflow shows how one agent is embedded across Weebly pages via API code.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/copy-embed-code-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT Deploy Your Agent provides a one-line widget script for adding AI chat to Weebly pages.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-97-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Weebly uses Square SSO, a prerequisite account step before adding a Custom GPT assistant to site pages.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-98-1024x497.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT setup on Weebly begins in Edit Site, where chatbot code is added to site pages.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-99-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT on Weebly is inserted as a single Embed Code block, then activated site-wide at publish.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-100-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly can be deployed sitewide by placing one embed block in a global footer section.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-101-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly uses one embed snippet with theme-matched styling for consistent sitewide chat.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/models-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly: pre-deployment config ties model behavior to site-only data access.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-102-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT on Weebly centralizes FAQ, product, and support queries into one on-site chat workflow.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-103-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Weebly Custom GPT maps page FAQs, product data, and contact forms to intent-based replies and actions.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Weebly-Site-1.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly maps page FAQs to intent categories and logs unanswered queries for admin review.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/image-104-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Weebly integrates a site chat widget, mapping visitor queries to page-specific answers.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 01:33 UTC
+</div>
+</div>
+</body>
+</html>

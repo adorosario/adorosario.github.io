@@ -9,48 +9,40 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; padding: 24px; }
   .container { max-width: 1200px; margin: 0 auto; }
   h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; color: #f8fafc; }
-  h2 { font-size: 18px; margin: 32px 0 16px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; }
+  h2 { margin: 32px 0 16px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; }
   .subtitle { color: #64748b; font-size: 14px; margin-bottom: 24px; }
-  .subtitle a { color: #60a5fa; }
 
-  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 32px; }
   .kpi { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; text-align: center; }
   .kpi .value { font-size: 36px; font-weight: 800; line-height: 1.1; }
   .kpi .label { font-size: 12px; color: #94a3b8; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
   .delta-up { color: #4ade80; }
 
-  .table-wrap { background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+  .table-wrap { background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow-x: auto; margin-bottom: 32px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th { text-align: left; padding: 12px 16px; background: #0f172a; color: #94a3b8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #334155; }
-  td { padding: 12px 16px; border-bottom: 1px solid #1e293b; vertical-align: middle; }
+  th { text-align: left; padding: 10px 12px; background: #0f172a; color: #94a3b8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #334155; white-space: nowrap; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1e293b; vertical-align: middle; }
   tr:hover td { background: #1e293b88; }
   tbody tr { background: #1e293b; }
   tbody tr:nth-child(even) { background: #162032; }
 
-  .grade-badge { display: inline-block; width: 36px; height: 36px; line-height: 36px; text-align: center; border-radius: 8px; font-weight: 800; font-size: 16px; color: #fff; }
+  .grade-badge { display: inline-block; width: 32px; height: 32px; line-height: 32px; text-align: center; border-radius: 6px; font-weight: 800; font-size: 14px; color: #fff; }
+  .grade-sm { width: 26px; height: 26px; line-height: 26px; font-size: 12px; border-radius: 5px; }
   .grade-A { background: #16a34a; }
   .grade-B { background: #2563eb; }
   .grade-C { background: #d97706; }
   .grade-D { background: #dc2626; }
   .grade-F { background: #7f1d1d; }
 
-  .arrow { font-size: 18px; color: #64748b; }
-  .score { font-weight: 700; font-size: 15px; }
-  .score-delta { font-weight: 700; font-size: 14px; padding: 2px 8px; border-radius: 6px; }
+  .arrow { font-size: 16px; color: #475569; }
+  .score { font-weight: 700; font-size: 14px; }
+  .score-delta { font-weight: 700; font-size: 13px; padding: 2px 8px; border-radius: 6px; }
   .score-delta.positive { background: #16a34a22; color: #4ade80; }
-  .score-delta.negative { background: #dc262622; color: #f87171; }
   .score-delta.neutral { background: #33415522; color: #94a3b8; }
+  .score-delta.big { background: #16a34a33; color: #22c55e; font-size: 14px; }
 
-  .slug-link { color: #60a5fa; text-decoration: none; font-weight: 500; }
+  .slug-link { color: #60a5fa; text-decoration: none; font-weight: 500; font-size: 12px; }
   .slug-link:hover { text-decoration: underline; }
-
-  .page-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 20px; }
-  .page-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; }
-  .page-card h3 { font-size: 15px; color: #f8fafc; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
-  .alt-item { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 8px; font-size: 12px; }
-  .alt-item .old { color: #f87171; text-decoration: line-through; margin-bottom: 4px; }
-  .alt-item .new { color: #4ade80; font-weight: 500; }
-  .alt-item .meta { color: #64748b; font-size: 11px; margin-top: 4px; }
 
   .projection { background: linear-gradient(135deg, #1e3a5f, #1e293b); border: 1px solid #2563eb44; border-radius: 12px; padding: 24px; margin-bottom: 32px; }
   .projection h3 { color: #60a5fa; font-size: 16px; margin-bottom: 12px; }
@@ -59,9 +51,17 @@
   .projection .stat .num { font-size: 28px; font-weight: 800; color: #f8fafc; }
   .projection .stat .lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
 
+  .grade-dist { display: flex; gap: 8px; margin-bottom: 32px; }
+  .grade-dist .bar-group { text-align: center; flex: 1; }
+  .grade-dist .bar { border-radius: 6px 6px 0 0; margin: 0 auto; width: 48px; min-height: 4px; }
+  .grade-dist .bar-label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+  .grade-dist .bar-count { font-size: 20px; font-weight: 800; color: #f8fafc; margin-bottom: 4px; }
+
   .pipeline-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; margin-bottom: 32px; }
   code { background: #334155; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
   .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #334155; text-align: center; color: #475569; font-size: 12px; }
+  .note { background: #1e293b; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 24px; font-size: 13px; color: #94a3b8; }
+  .note strong { color: #f59e0b; }
 </style>
 </head>
 <body>
@@ -69,30 +69,34 @@
 
 <h1>Image SEO/AEO Optimization Dashboard</h1>
 <div class="subtitle">
-  CustomGPT.ai Blog &mdash; Vision + LLM-as-Judge Pipeline (V3+) &mdash; Run: 2026-03-13
+  CustomGPT.ai Blog &mdash; Vision + LLM-as-Judge Pipeline (V3+) &mdash; 14 Pages &mdash; 2026-03-13
 </div>
 
 <!-- KPI Cards -->
 <div class="kpi-row">
   <div class="kpi">
-    <div class="value" style="color:#4ade80">4</div>
+    <div class="value" style="color:#4ade80">14</div>
     <div class="label">Pages Optimized</div>
   </div>
   <div class="kpi">
-    <div class="value" style="color:#60a5fa">22</div>
+    <div class="value" style="color:#60a5fa">102</div>
     <div class="label">Alt Texts Replaced</div>
   </div>
   <div class="kpi">
-    <div class="value" style="color:#a78bfa">23</div>
+    <div class="value" style="color:#a78bfa">102</div>
     <div class="label">ImageObject Schemas</div>
   </div>
   <div class="kpi">
-    <div class="value" style="color:#f59e0b">17</div>
+    <div class="value" style="color:#f59e0b">72</div>
     <div class="label">Captions Added</div>
   </div>
   <div class="kpi">
-    <div class="value delta-up">+7.8</div>
+    <div class="value delta-up">+12.0</div>
     <div class="label">Avg Score Lift</div>
+  </div>
+  <div class="kpi">
+    <div class="value" style="color:#4ade80">13/14</div>
+    <div class="label">Grade Upgrades</div>
   </div>
   <div class="kpi">
     <div class="value" style="color:#4ade80">9.3</div>
@@ -100,8 +104,31 @@
   </div>
 </div>
 
+<!-- Grade Distribution Before/After -->
+<h2>Grade Distribution: Before vs After</h2>
+<div style="display:flex;gap:40px;margin-bottom:32px">
+  <div style="flex:1">
+    <div style="text-align:center;color:#94a3b8;font-size:12px;margin-bottom:8px;text-transform:uppercase">Before</div>
+    <div class="grade-dist">
+      <div class="bar-group"><div class="bar-count">0</div><div class="bar grade-A" style="height:4px"></div><div class="bar-label">A</div></div>
+      <div class="bar-group"><div class="bar-count">2</div><div class="bar grade-B" style="height:28px"></div><div class="bar-label">B</div></div>
+      <div class="bar-group"><div class="bar-count">4</div><div class="bar grade-C" style="height:56px"></div><div class="bar-label">C</div></div>
+      <div class="bar-group"><div class="bar-count">8</div><div class="bar grade-D" style="height:112px"></div><div class="bar-label">D</div></div>
+    </div>
+  </div>
+  <div style="flex:1">
+    <div style="text-align:center;color:#94a3b8;font-size:12px;margin-bottom:8px;text-transform:uppercase">After</div>
+    <div class="grade-dist">
+      <div class="bar-group"><div class="bar-count">2</div><div class="bar grade-A" style="height:28px"></div><div class="bar-label">A</div></div>
+      <div class="bar-group"><div class="bar-count">6</div><div class="bar grade-B" style="height:84px"></div><div class="bar-label">B</div></div>
+      <div class="bar-group"><div class="bar-count">5</div><div class="bar grade-C" style="height:70px"></div><div class="bar-label">C</div></div>
+      <div class="bar-group"><div class="bar-count">1</div><div class="bar grade-D" style="height:14px"></div><div class="bar-label">D</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- Summary Table -->
-<h2>Page-Level Results</h2>
+<h2>Page-Level Results (sorted by score lift)</h2>
 <div class="table-wrap">
 <table>
   <thead>
@@ -110,182 +137,197 @@
       <th style="text-align:center">Before</th>
       <th></th>
       <th style="text-align:center">After</th>
-      <th style="text-align:center">Delta</th>
-      <th style="text-align:center">Images</th>
+      <th style="text-align:center">Lift</th>
       <th style="text-align:center">Alts</th>
       <th style="text-align:center">Schemas</th>
-      <th style="text-align:center">Captions</th>
-      <th style="text-align:center">Avg Grade</th>
-      <th>Trace</th>
+      <th style="text-align:center">Caps</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><a class="slug-link" href="https://customgpt.ai/build-custom-gpt/" target="_blank">build-custom-gpt</a></td>
-      <td style="text-align:center"><span class="grade-badge grade-C">C</span> <span class="score">65.8</span></td>
+      <td><a class="slug-link" href="https://customgpt.ai/what-are-alphanumeric-characters/" target="_blank">what-are-alphanumeric-characters</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">52.7</span></td>
       <td class="arrow">&rarr;</td>
-      <td style="text-align:center"><span class="grade-badge grade-B">B</span> <span class="score">78.6</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">78.2</span></td>
+      <td style="text-align:center"><span class="score-delta big">+25.5</span></td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">3</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/custom-gpt-for-hr-human-resources-onboarding/" target="_blank">custom-gpt-for-hr-human-resources-onboarding</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">58.1</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">78.8</span></td>
+      <td style="text-align:center"><span class="score-delta big">+20.7</span></td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center">5</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/chatgpt-api/" target="_blank">chatgpt-api</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">44.7</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">62.7</span></td>
+      <td style="text-align:center"><span class="score-delta big">+18.0</span></td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">0</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/customgptai-api-json-integration/" target="_blank">customgptai-api-json-integration</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">46.0</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">63.3</span></td>
+      <td style="text-align:center"><span class="score-delta big">+17.3</span></td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">7</td>
+      <td style="text-align:center">2</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/get-messages-for-a-conversation-using-rag-api/" target="_blank">get-messages-for-a-conversation-using-rag-api</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">46.2</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">63.0</span></td>
+      <td style="text-align:center"><span class="score-delta big">+16.8</span></td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">1</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/writesonic-affiliate-program-alternative/" target="_blank">writesonic-affiliate-program-alternative</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">53.8</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">66.7</span></td>
+      <td style="text-align:center"><span class="score-delta positive">+12.9</span></td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:center">0</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/build-custom-gpt/" target="_blank">build-custom-gpt</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">65.8</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">78.6</span></td>
       <td style="text-align:center"><span class="score-delta positive">+12.8</span></td>
       <td style="text-align:center">6</td>
       <td style="text-align:center">6</td>
-      <td style="text-align:center">6</td>
       <td style="text-align:center">2</td>
-      <td style="text-align:center">9.5</td>
-      <td><a class="slug-link" href="https://adorosario.github.io/tmp/image-audit-build-custom-gpt.html" target="_blank">view</a></td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/custom-gpt-mattermost/" target="_blank">custom-gpt-mattermost</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">73.9</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-A">A</span> <span class="score">84.2</span></td>
+      <td style="text-align:center"><span class="score-delta positive">+10.3</span></td>
+      <td style="text-align:center">13</td>
+      <td style="text-align:center">12</td>
+      <td style="text-align:center">12</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/custom-gpt-weebly/" target="_blank">custom-gpt-weebly</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">70.0</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-A">A</span> <span class="score">80.2</span></td>
+      <td style="text-align:center"><span class="score-delta positive">+10.2</span></td>
+      <td style="text-align:center">19</td>
+      <td style="text-align:center">19</td>
+      <td style="text-align:center">18</td>
     </tr>
     <tr>
       <td><a class="slug-link" href="https://customgpt.ai/translate-documents-securely-using-customgpt/" target="_blank">translate-documents-securely-using-customgpt</a></td>
-      <td style="text-align:center"><span class="grade-badge grade-C">C</span> <span class="score">69.2</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">69.2</span></td>
       <td class="arrow">&rarr;</td>
-      <td style="text-align:center"><span class="grade-badge grade-B">B</span> <span class="score">78.1</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">78.1</span></td>
       <td style="text-align:center"><span class="score-delta positive">+8.9</span></td>
-      <td style="text-align:center">12</td>
       <td style="text-align:center">11</td>
       <td style="text-align:center">11</td>
       <td style="text-align:center">11</td>
-      <td style="text-align:center">9.3</td>
-      <td><a class="slug-link" href="https://adorosario.github.io/tmp/image-audit-translate-documents.html" target="_blank">view</a></td>
     </tr>
     <tr>
       <td><a class="slug-link" href="https://customgpt.ai/best-saas-partner-programs/" target="_blank">best-saas-partner-programs</a></td>
-      <td style="text-align:center"><span class="grade-badge grade-D">D</span> <span class="score">57.0</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">57.0</span></td>
       <td class="arrow">&rarr;</td>
-      <td style="text-align:center"><span class="grade-badge grade-C">C</span> <span class="score">64.7</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">64.7</span></td>
       <td style="text-align:center"><span class="score-delta positive">+7.7</span></td>
-      <td style="text-align:center">5</td>
       <td style="text-align:center">3</td>
       <td style="text-align:center">3</td>
       <td style="text-align:center">2</td>
-      <td style="text-align:center">9.3</td>
-      <td><a class="slug-link" href="https://adorosario.github.io/tmp/image-audit-best-saas-partner.html" target="_blank">view</a></td>
     </tr>
     <tr>
-      <td><a class="slug-link" href="https://customgpt.ai/generate-sitemap-from-rss-feed/" target="_blank">generate-sitemap-from-rss-feed</a></td>
-      <td style="text-align:center"><span class="grade-badge grade-D">D</span> <span class="score">42.1</span></td>
+      <td><a class="slug-link" href="https://customgpt.ai/customgpt-vs-chatbase/" target="_blank">customgpt-vs-chatbase</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">69.4</span></td>
       <td class="arrow">&rarr;</td>
-      <td style="text-align:center"><span class="grade-badge grade-D">D</span> <span class="score">43.9</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">72.2</span></td>
+      <td style="text-align:center"><span class="score-delta positive">+2.8</span></td>
+      <td style="text-align:center">12</td>
+      <td style="text-align:center">12</td>
+      <td style="text-align:center">10</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/ai-for-consulting-firms/" target="_blank">ai-for-consulting-firms</a></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-C">C</span> <span class="score">67.2</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-B">B</span> <span class="score">70.0</span></td>
+      <td style="text-align:center"><span class="score-delta positive">+2.8</span></td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">4</td>
+    </tr>
+    <tr>
+      <td><a class="slug-link" href="https://customgpt.ai/generate-sitemap-from-rss-feed/" target="_blank">generate-sitemap-from-rss-feed</a> <span style="color:#f87171;font-size:10px">4 dead images</span></td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">42.1</span></td>
+      <td class="arrow">&rarr;</td>
+      <td style="text-align:center"><span class="grade-badge grade-sm grade-D">D</span> <span class="score">43.9</span></td>
       <td style="text-align:center"><span class="score-delta neutral">+1.8</span></td>
-      <td style="text-align:center">6</td>
       <td style="text-align:center">2</td>
       <td style="text-align:center">3</td>
       <td style="text-align:center">2</td>
-      <td style="text-align:center">9.1</td>
-      <td><a class="slug-link" href="https://adorosario.github.io/tmp/image-audit-generate-sitemap.html" target="_blank">view</a></td>
     </tr>
   </tbody>
 </table>
 </div>
 
+<div class="note">
+  <strong>Note:</strong> <code>generate-sitemap-from-rss-feed</code> is NOT a FAQ-deployed page (included accidentally in pilot). 4 of 6 images are dead Google-hosted URLs (404). Excluded from projections below.
+</div>
+
 <!-- At-Scale Projection -->
 <div class="projection">
-  <h3>At-Scale Projection: 325 Deployed FAQ Pages</h3>
+  <h3>At-Scale Projection: 300 Remaining FAQ Pages</h3>
   <p style="color:#94a3b8;font-size:13px;margin-bottom:16px">
-    Based on the 4-page pilot, extrapolating to the full 325-page FAQ corpus:
+    Based on 13 FAQ-deployed pages (excl. non-FAQ outlier). Avg 7.3 images/page, avg +12.5 pts lift:
   </p>
   <div class="stat-row">
     <div class="stat">
-      <div class="num">~1,950</div>
+      <div class="num">~2,190</div>
       <div class="lbl">Alt Texts to Replace</div>
     </div>
     <div class="stat">
-      <div class="num">~1,950</div>
+      <div class="num">~2,190</div>
       <div class="lbl">ImageObject Schemas</div>
     </div>
     <div class="stat">
-      <div class="num">~1,400</div>
+      <div class="num">~1,540</div>
       <div class="lbl">Captions to Add</div>
     </div>
     <div class="stat">
-      <div class="num">+7.8 pts</div>
-      <div class="lbl">Avg Score Lift</div>
+      <div class="num">+12.5 pts</div>
+      <div class="lbl">Projected Avg Lift</div>
     </div>
     <div class="stat">
-      <div class="num">~6 hrs</div>
+      <div class="num">~8 hrs</div>
       <div class="lbl">Est. Pipeline Runtime</div>
     </div>
     <div class="stat">
-      <div class="num">~$45</div>
+      <div class="num">~$50</div>
       <div class="lbl">Est. Azure OpenAI Cost</div>
     </div>
   </div>
   <p style="color:#64748b;font-size:12px;margin-top:16px">
-    Estimates: avg 6 images/page, ~3 min/page pipeline time, ~$0.14/page Azure cost (vision + LLM grading + schema + caption).
-    Pages with broken images (e.g. dead Google-hosted URLs) will have lower lifts &mdash; flag for content fix first.
+    Based on avg ~$0.17/page Azure cost across 14 pages. Biggest lifts on D-grade pages (+17.2 avg). B-grade pages still lift +10.3 avg.
+    Pages with broken external images should be content-fixed first for maximum ROI.
   </p>
-</div>
-
-<!-- Per-Page Detail Cards -->
-<h2>Alt Text Before &rarr; After (Sample)</h2>
-<div class="page-cards">
-
-  <div class="page-card">
-    <h3>
-      <span>build-custom-gpt</span>
-      <span><span class="grade-badge grade-C" style="width:28px;height:28px;line-height:28px;font-size:13px">C</span> &rarr; <span class="grade-badge grade-B" style="width:28px;height:28px;line-height:28px;font-size:13px">B</span></span>
-    </h3>
-    <div class="alt-item">
-      <div class="old">"Build your own custom gpt today!"</div>
-      <div class="new">"Custom GPT graphic shows 'Building a Custom GPT: A Comprehensive Guide' beside personalization controls"</div>
-      <div class="meta">Build-Custom-GPT-A-Comprehensive-Guide.webp &mdash; Grade: 9.3/10</div>
-    </div>
-    <div class="alt-item">
-      <div class="old">"CustomGPT For Your Contentful Site"</div>
-      <div class="new">"Custom GPT integrates with Contentful via no-code setup, automating tagging, routing, and personalization"</div>
-      <div class="meta">inn.webp &mdash; Grade: 9.0/10</div>
-    </div>
-    <div class="alt-item">
-      <div class="old">"controlling hallucination with RAG"</div>
-      <div class="new">"Custom GPT RAG flowchart maps query, user intent, and semantic keywords to top-K chunk retrieval"</div>
-      <div class="meta">controlling-hallucination-with-RAG.jpg &mdash; Grade: 9.7/10</div>
-    </div>
-  </div>
-
-  <div class="page-card">
-    <h3>
-      <span>translate-documents-securely-using-customgpt</span>
-      <span><span class="grade-badge grade-C" style="width:28px;height:28px;line-height:28px;font-size:13px">C</span> &rarr; <span class="grade-badge grade-B" style="width:28px;height:28px;line-height:28px;font-size:13px">B</span></span>
-    </h3>
-    <div class="alt-item">
-      <div class="old">"CustomGPT compliance robot holds a gavel above GDP..."</div>
-      <div class="new">"CustomGPT compliance robot holds a gavel beside a GDPR-labeled shield, signaling legal approval"</div>
-      <div class="meta">image-1.png &mdash; Grade: 9.0/10</div>
-    </div>
-    <div class="alt-item">
-      <div class="old">"CustomGPT.ai login screen shows company email fiel..."</div>
-      <div class="new">"CustomGPT.ai sign-in connects company email and SSO to Google, Dropbox, OneDrive, and Notion"</div>
-      <div class="meta">Sign-in-1024x492.webp &mdash; Grade: 8.8/10</div>
-    </div>
-    <div class="alt-item">
-      <div class="old">"CustomGPT.ai dashboard displays usage metrics, inc..."</div>
-      <div class="new">"CustomGPT.ai dashboard shows team, agent, and activity metrics with real-time document ingestion stats"</div>
-      <div class="meta">new-agent-1024x492.webp &mdash; Grade: 9.3/10</div>
-    </div>
-    <div class="alt-item" style="text-align:center;border:none;background:transparent"><span style="color:#64748b;font-size:12px">+ 8 more images optimized (all 9.0+/10)</span></div>
-  </div>
-
-  <div class="page-card">
-    <h3>
-      <span>best-saas-partner-programs</span>
-      <span><span class="grade-badge grade-D" style="width:28px;height:28px;line-height:28px;font-size:13px">D</span> &rarr; <span class="grade-badge grade-C" style="width:28px;height:28px;line-height:28px;font-size:13px">C</span></span>
-    </h3>
-    <div class="alt-item">
-      <div class="meta">3 alt texts replaced, 3 ImageObject schemas, 2 figcaptions &mdash; Avg alt grade: 9.3/10</div>
-    </div>
-  </div>
-
-  <div class="page-card">
-    <h3>
-      <span>generate-sitemap-from-rss-feed</span>
-      <span><span class="grade-badge grade-D" style="width:28px;height:28px;line-height:28px;font-size:13px">D</span> &rarr; <span class="grade-badge grade-D" style="width:28px;height:28px;line-height:28px;font-size:13px">D</span></span>
-    </h3>
-    <div class="alt-item">
-      <div class="meta" style="color:#f87171">4 of 6 images are dead Google-hosted URLs (404) &mdash; content fix required before image SEO can improve</div>
-    </div>
-    <div class="alt-item">
-      <div class="meta">2 alt texts on working images, 3 schemas, 2 captions &mdash; Avg grade: 9.1/10</div>
-    </div>
-  </div>
-
 </div>
 
 <!-- Pipeline Architecture -->
@@ -296,65 +338,23 @@
       <tr><th style="width:50px">Pass</th><th style="width:200px">Component</th><th style="width:120px">Model</th><th>Input</th><th>Output</th></tr>
     </thead>
     <tbody>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">1</td>
-        <td>Vision Classifier</td>
-        <td><code style="color:#f59e0b">gpt-4.1-mini</code></td>
-        <td>Raw image (base64)</td>
-        <td>type, decorative flag, relevance, description</td>
-      </tr>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">2</td>
-        <td>Vision OCR + Describe</td>
-        <td><code style="color:#f59e0b">gpt-5.3-codex</code></td>
-        <td>Raw image (base64)</td>
-        <td>2-4 sentence factual description with OCR</td>
-      </tr>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">3</td>
-        <td>Entity-First AEO Alt Text</td>
-        <td><code style="color:#f59e0b">gpt-5.3-codex</code></td>
-        <td>Vision desc + page context</td>
-        <td>[Entity] + [relationship] + [detail] (80-125 chars)</td>
-      </tr>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">4</td>
-        <td>LLM-as-Judge Grader</td>
-        <td><code style="color:#f59e0b">gpt-5.3-codex</code></td>
-        <td>Alt text + vision desc</td>
-        <td>6-dim rubric score &rarr; overall /10</td>
-      </tr>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">4b</td>
-        <td>Remediation Loop</td>
-        <td><code style="color:#f59e0b">gpt-5.3-codex</code></td>
-        <td>Previous alt + critique</td>
-        <td>Improved alt (max 3x until &ge; 8/10)</td>
-      </tr>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">5</td>
-        <td>ImageObject Schema</td>
-        <td><code style="color:#f59e0b">gpt-5.3-codex</code></td>
-        <td>Alt text + vision + URL</td>
-        <td>schema.org/ImageObject JSON-LD</td>
-      </tr>
-      <tr>
-        <td style="color:#a78bfa;font-weight:700">6</td>
-        <td>Figcaption Generator</td>
-        <td><code style="color:#f59e0b">gpt-5.3-codex</code></td>
-        <td>Alt text + vision + title</td>
-        <td>Visible caption (60-120 chars)</td>
-      </tr>
+      <tr><td style="color:#a78bfa;font-weight:700">1</td><td>Vision Classifier</td><td><code style="color:#f59e0b">gpt-4.1-mini</code></td><td>Raw image (base64)</td><td>type, decorative flag, relevance, description</td></tr>
+      <tr><td style="color:#a78bfa;font-weight:700">2</td><td>Vision OCR + Describe</td><td><code style="color:#f59e0b">gpt-5.3-codex</code></td><td>Raw image (base64)</td><td>2-4 sentence factual description with OCR</td></tr>
+      <tr><td style="color:#a78bfa;font-weight:700">3</td><td>Entity-First AEO Alt Text</td><td><code style="color:#f59e0b">gpt-5.3-codex</code></td><td>Vision desc + page context</td><td>[Entity] + [relationship] + [detail] (80-125 chars)</td></tr>
+      <tr><td style="color:#a78bfa;font-weight:700">4</td><td>LLM-as-Judge Grader</td><td><code style="color:#f59e0b">gpt-5.3-codex</code></td><td>Alt text + vision desc</td><td>6-dim rubric &rarr; overall /10</td></tr>
+      <tr><td style="color:#a78bfa;font-weight:700">4b</td><td>Remediation Loop</td><td><code style="color:#f59e0b">gpt-5.3-codex</code></td><td>Previous alt + critique</td><td>Improved alt (max 3x until &ge; 8/10)</td></tr>
+      <tr><td style="color:#a78bfa;font-weight:700">5</td><td>ImageObject Schema</td><td><code style="color:#f59e0b">gpt-5.3-codex</code></td><td>Alt text + vision + URL</td><td>schema.org/ImageObject JSON-LD</td></tr>
+      <tr><td style="color:#a78bfa;font-weight:700">6</td><td>Figcaption Generator</td><td><code style="color:#f59e0b">gpt-5.3-codex</code></td><td>Alt text + vision + title</td><td>Visible caption (60-120 chars)</td></tr>
     </tbody>
   </table>
   <div style="margin-top:16px;font-size:12px;color:#64748b">
-    <strong>Caption exclusions:</strong> Featured/hero (pos 0) &bull; CTA components (<code>blog-cta--container</code>) &bull; CTA-linked images (<code>&lt;a href="register"&gt;</code>) &bull; Logos &bull; Icons &bull; Width &lt; 400px<br>
-    <strong>Quality gate:</strong> All alt text must score &ge; 8/10 on 6-dimension rubric (entity placement, information gain, semantic accuracy, factual tone, length, citation quality)
+    <strong>Caption exclusions:</strong> Featured/hero (pos 0) &bull; CTA components (<code>blog-cta--container</code>) &bull; CTA-linked images &bull; Logos &bull; Icons &bull; Width &lt; 400px<br>
+    <strong>Quality gate:</strong> All alt text must score &ge; 8/10 on 6-dim rubric (entity placement, information gain, semantic accuracy, factual tone, length, citation quality)
   </div>
 </div>
 
 <div class="footer">
-  Image SEO/AEO V3+ &mdash; Vision + LLM-as-Judge Pipeline &mdash; CustomGPT.ai &mdash; 2026-03-13
+  Image SEO/AEO V3+ &mdash; Vision + LLM-as-Judge Pipeline &mdash; CustomGPT.ai &mdash; 14 pages deployed &mdash; 2026-03-13
 </div>
 
 </div>

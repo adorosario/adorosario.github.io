@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — ai-for-consulting-firms</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>AI for Consulting Firms: Strategic Implementation Guide for Professional Services</strong><br>
+  <a href="https://customgpt.ai/ai-for-consulting-firms/" target="_blank">https://customgpt.ai/ai-for-consulting-firms/</a><br>
+  Generated: 2026-03-14 01:25 UTC &middot; WP Post ID: 57920 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#d97706">C</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">67.5</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">5/8</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">8</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">0</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3485</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:42%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">42</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.5</strong> / 25<br>
+    Most alt text entries are headline-like and topical rather than concrete visual descriptions, so they lack the specific, image-level detail needed for higher accessibility and SEO scores.
+  </div>
+<div class="dim-details">Per-image scores: [5, 3, 5, 4, 4]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.5</strong> / 15<br>
+    5 images / 3485 words (ideal ~9)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:82%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">82</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.2</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:40%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">40</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.0</strong> / 10<br>
+    {&#x27;png&#x27;: 5}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    [&#x27;Missing dimensions: image-37-1024x675.png&#x27;]
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    Branded, topic-specific image with clear text and descriptive alt text that conveys the strategic AI guide for consulting firms.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:95%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">95</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>14.2</strong> / 15<br>
+    All five visuals are highly relevant, custom strategic infographics/diagrams and product UI that directly support AI implementation guidance for consulting firms with no obvious stock filler.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.0</strong> / 5<br>
+    4/5 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 42 &times; 0.25 = <strong>10.5</strong><br>D2: Image Coverage: 70 &times; 0.15 = <strong>10.5</strong><br>D3: Filename Quality: 82 &times; 0.1 = <strong>8.2</strong><br>D4: Format & Performance: 40 &times; 0.1 = <strong>4.0</strong><br>D5: Technical Attributes (dims + srcset): 80 &times; 0.1 = <strong>8.0</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 95 &times; 0.15 = <strong>14.2</strong><br>D8: Schema Readiness: 80 &times; 0.05 = <strong>4.0</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 67.5 &rarr; Grade: C</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: image.webp</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/04/image.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/04/image.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1000 &times; 1000</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">icon</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>True</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Dollar sign icon on purple background with sparkles and circuitry elements</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>4/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: image-39-1024x497.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>consulting in the age of AI: an industry reinventing itself</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 497</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>57924</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">infographic</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image is an infographic outlining how AI is transforming the consulting industry, highlighting the shift from traditional methods to AI-augmented approaches, client demands, and future outlook.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Infographic showing AI&#x27;s impact on consulting, transformation stages, client demands, and future outlook</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: image-36-1024x576.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>strategic alignment</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 576</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>57921</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">infographic</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image presents key aspects of strategic alignment for AI implementation in consulting firms, detailing objectives, value quantification, and AI roadmap development with a practical insight section.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Infographic on strategic alignment for AI in consulting, covering objectives, value, roadmap, and practical insights.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: image-37-1024x675.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>AI disruption of the consulting industry</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">diagram</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The diagram illustrates AI&#x27;s impact on the consulting industry, showing how AI drives efficiency gains, cost reduction, enhanced data analysis, strategic decision-making, and competitive advantage.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Diagram showing AI&#x27;s disruption in consulting, highlighting efficiency, cost, data analysis, decisions, and competitive advantage.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: image-38.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-38.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-38.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>top tools for building custom ai model</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 536</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows various UI elements and screens from a tool called Dr. CustomGPT, highlighting options for building and deploying custom AI models with a call to action button.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of Dr. CustomGPT UI showcasing tools for building and deploying custom AI models.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: image-40-1024x576.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>your organization ai journey</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 576</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>57925</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">diagram</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The diagram illustrates an organization&#x27;s AI journey divided into three stages: Current State, Prepare/Launch, and Iterate, focusing on technical and people sides leading to successful outcomes.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Diagram showing stages of an organization&#x27;s AI journey from roadmap to success via technical and people sides.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: image.webp</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/04/image.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/04/image.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1000 &times; 1000</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">icon</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>True</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Dollar sign icon on purple background with sparkles and circuitry elements</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>4/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 8: image.webp</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/04/image.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/04/image.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1000 &times; 1000</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#8</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">icon</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>True</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Dollar sign icon on purple background with sparkles and circuitry elements</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>4/10</td></tr>
+    </table>
+  </div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+<div class="card"><div class="card-header">No fixes generated</div></div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png</td><td><em>AI for Consulting Firms infographic maps shift from hourly projects to AI-augmented, continuous advisory.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png</td><td><em>AI for Consulting Firms links strategic goals to KPI baselines, phased pilots, and quarterly ROI reviews.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">https://customgpt.ai/wp-content/uploads/2025/09/image-38.png</td><td><em>Dr. CustomGPT maps consulting-firm workflow from GPT-4o model selection to deployment in one dashboard.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png</td><td><em>AI for consulting firms uses a 3-phase model—Current State, Prepare/Launch, Iterate—across technical and people tracks.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+    &quot;name&quot;: &quot;Consulting Firms AI Transformation Market Infographic&quot;,
+    &quot;description&quot;: &quot;Infographic showing how AI is reshaping consulting firms from traditional service delivery to AI-augmented advisory models. It highlights key client demand signals, including that 86% seek AI-augmented advisors and 73% prefer outcome-based pricing, alongside a forward-looking industry outlook.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 497
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+    &quot;name&quot;: &quot;AI for Consulting Firms Strategic Alignment Slide&quot;,
+    &quot;description&quot;: &quot;This slide for AI in consulting firms highlights strategic alignment through clear objectives, value quantification, and structured AI roadmap planning. It also includes a practical insight section to guide implementation decisions in professional services contexts.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 576
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png&quot;,
+    &quot;name&quot;: &quot;AI for Consulting Firms: Five Strategic Outcomes&quot;,
+    &quot;description&quot;: &quot;This diagram shows how AI is reshaping consulting firms across five key outcomes: efficiency gains, cost reduction, enhanced data analysis, strategic decision-making, and competitive advantage. It maps AI-driven disruption into practical business impacts for professional services.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+    &quot;name&quot;: &quot;Dr. CustomGPT UI for Custom AI Model Deployment&quot;,
+    &quot;description&quot;: &quot;This image showcases the Dr. CustomGPT interface for consulting-focused AI workflows, including the highlighted section \&quot;Top Tools for Building &amp; Deploying Custom AI Models\&quot; and GPT-4o tab options. Multiple product screens and UI elements are shown alongside a clear call-to-action button for getting started.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 536
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+    &quot;name&quot;: &quot;AI Journey Framework for Consulting Firms Teams&quot;,
+    &quot;description&quot;: &quot;This diagram maps \&quot;Your Organization\u2019s AI Journey\&quot; for consulting firms across three stages: Current State, Prepare/Launch, and Iterate. It highlights parallel technical and people workstreams that turn AI use cases into successful outcomes through continuous iteration.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 576
+    }
+  }
+]</pre></div>
+<h2>Issues Detected</h2>
+<ul style="font-size:13px;margin-left:20px">
+<li>Missing dimensions: image-37-1024x675.png</li>
+</ul>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (image.webp)</td>
+        <td>type=icon relevance=6/10 decorative=True</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (image-39-1024x497.png)</td>
+        <td>type=infographic relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (image-36-1024x576.png)</td>
+        <td>type=infographic relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (image-37-1024x675.png)</td>
+        <td>type=diagram relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.5</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 5 (image-38.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.6</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 6 (image-40-1024x576.png)</td>
+        <td>type=diagram relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.7</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 7 (image.webp)</td>
+        <td>type=icon relevance=6/10 decorative=True</td>
+      </tr>
+
+      <tr>
+        <td>1.8</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 8 (image.webp)</td>
+        <td>type=icon relevance=6/10 decorative=True</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 42/100 — Most alt text entries are headline-like and topical rather than concrete visual </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — Branded, topic-specific image with clear text and descriptive alt text that conv</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 95/100 — All five visuals are highly relevant, custom strategic infographics/diagrams and</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;ai-for-consulting-firms&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/ai-for-consulting-firms/&quot;,
+    &quot;wp_post_id&quot;: 57920,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;AI for Consulting Firms: Strategic Implementation Guide for Professional Services&quot;,
+    &quot;word_count&quot;: 3485,
+    &quot;image_count&quot;: 5,
+    &quot;total_image_count&quot;: 8,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/ai-for-consulting-firms-scaled.webp&quot;,
+    &quot;featured_image_alt&quot;: &quot;AI for Consulting Firms: Strategic Implementation Guide for Professional Services&quot;,
+    &quot;composite_score&quot;: 67.5,
+    &quot;grade&quot;: &quot;C&quot;,
+    &quot;issues&quot;: [
+      &quot;Missing dimensions: image-37-1024x675.png&quot;
+    ],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+        &quot;filename&quot;: &quot;image-39-1024x497.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+        &quot;filename&quot;: &quot;image-36-1024x576.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png&quot;,
+        &quot;filename&quot;: &quot;image-37-1024x675.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+        &quot;filename&quot;: &quot;image-38.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+        &quot;filename&quot;: &quot;image-40-1024x576.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 42,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most alt text entries are headline-like and topical rather than concrete visual descriptions, so they lack the specific, image-level detail needed for higher accessibility and SEO scores.&quot;,
+        &quot;per_image_scores&quot;: [
+          5,
+          3,
+          5,
+          4,
+          4
+        ],
+        &quot;weighted&quot;: 10.5
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 70,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;5 images / 3485 words (ideal ~9)&quot;,
+        &quot;weighted&quot;: 10.5
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 82,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 8.2
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 40,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;png&quot;: 5
+        },
+        &quot;weighted&quot;: 4.0
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: [
+          &quot;Missing dimensions: image-37-1024x675.png&quot;
+        ],
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;Branded, topic-specific image with clear text and descriptive alt text that conveys the strategic AI guide for consulting firms.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 95,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;All five visuals are highly relevant, custom strategic infographics/diagrams and product UI that directly support AI implementation guidance for consulting firms with no obvious stock filler.&quot;,
+        &quot;weighted&quot;: 14.25
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;4/5 images schema-ready&quot;,
+        &quot;weighted&quot;: 4.0
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/04/image.webp&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1000,
+        &quot;height&quot;: 1000,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: true,
+          &quot;image_type&quot;: &quot;icon&quot;,
+          &quot;content_description&quot;: &quot;A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 4
+          },
+          &quot;suggested_alt_text&quot;: &quot;Dollar sign icon on purple background with sparkles and circuitry elements&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+        &quot;alt_text&quot;: &quot;consulting in the age of AI: an industry reinventing itself&quot;,
+        &quot;filename&quot;: &quot;image-39-1024x497.png&quot;,
+        &quot;wp_media_id&quot;: 57924,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 497,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;infographic&quot;,
+          &quot;content_description&quot;: &quot;The image is an infographic outlining how AI is transforming the consulting industry, highlighting the shift from traditional methods to AI-augmented approaches, client demands, and future outlook.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Infographic showing AI&#x27;s impact on consulting, transformation stages, client demands, and future outlook&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+        &quot;alt_text&quot;: &quot;strategic alignment&quot;,
+        &quot;filename&quot;: &quot;image-36-1024x576.png&quot;,
+        &quot;wp_media_id&quot;: 57921,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 576,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;infographic&quot;,
+          &quot;content_description&quot;: &quot;The image presents key aspects of strategic alignment for AI implementation in consulting firms, detailing objectives, value quantification, and AI roadmap development with a practical insight section.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Infographic on strategic alignment for AI in consulting, covering objectives, value, roadmap, and practical insights.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png&quot;,
+        &quot;alt_text&quot;: &quot;AI disruption of the consulting industry&quot;,
+        &quot;filename&quot;: &quot;image-37-1024x675.png&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;diagram&quot;,
+          &quot;content_description&quot;: &quot;The diagram illustrates AI&#x27;s impact on the consulting industry, showing how AI drives efficiency gains, cost reduction, enhanced data analysis, strategic decision-making, and competitive advantage.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Diagram showing AI&#x27;s disruption in consulting, highlighting efficiency, cost, data analysis, decisions, and competitive advantage.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+        &quot;alt_text&quot;: &quot;top tools for building custom ai model&quot;,
+        &quot;filename&quot;: &quot;image-38.png&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 536,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows various UI elements and screens from a tool called Dr. CustomGPT, highlighting options for building and deploying custom AI models with a call to action button.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of Dr. CustomGPT UI showcasing tools for building and deploying custom AI models.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+        &quot;alt_text&quot;: &quot;your organization ai journey&quot;,
+        &quot;filename&quot;: &quot;image-40-1024x576.png&quot;,
+        &quot;wp_media_id&quot;: 57925,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 576,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;diagram&quot;,
+          &quot;content_description&quot;: &quot;The diagram illustrates an organization&#x27;s AI journey divided into three stages: Current State, Prepare/Launch, and Iterate, focusing on technical and people sides leading to successful outcomes.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Diagram showing stages of an organization&#x27;s AI journey from roadmap to success via technical and people sides.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/04/image.webp&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1000,
+        &quot;height&quot;: 1000,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: true,
+          &quot;image_type&quot;: &quot;icon&quot;,
+          &quot;content_description&quot;: &quot;A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 4
+          },
+          &quot;suggested_alt_text&quot;: &quot;Dollar sign icon on purple background with sparkles and circuitry elements&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/04/image.webp&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1000,
+        &quot;height&quot;: 1000,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 7,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: true,
+          &quot;image_type&quot;: &quot;icon&quot;,
+          &quot;content_description&quot;: &quot;A stylized dollar sign on a purple circular background with sparkles and circuit-like lines, symbolizing earnings or financial technology.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 4
+          },
+          &quot;suggested_alt_text&quot;: &quot;Dollar sign icon on purple background with sparkles and circuitry elements&quot;
+        }
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;ai-for-consulting-firms&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 0,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+      &quot;filename&quot;: &quot;image-39-1024x497.png&quot;,
+      &quot;alt_text&quot;: &quot;Consulting firms in the age of AI infographic reports 86% seek AI-augmented advisors and 73% want outcome pricing&quot;,
+      &quot;vision_description&quot;: &quot;The image is an infographic titled \&quot;Consulting in the Age of AI: An Industry Reinventing Itself,\&quot; based on analysis of \&quot;50+ Blogs + 2,294 Comments.\&quot; It is divided into five sections: \&quot;The Verdict,\&quot; \&quot;The Great Transformation,\&quot; \&quot;Client Demands,\&quot; \&quot;What Remains Uniquely Human,\&quot; and \&quot;The Future.\&quot;\n\n\&quot;The Verdict\&quot; states \&quot;NOT Dying But Transforming\&quot; with a note that \&quot;AI = Force Multiplier\&quot; and \&quot;90% See AI as tool, not threat.\&quot; \&quot;The Great Transformation\&quot; contrasts traditional consulting practices like \&quot;Billable Hours,\&quot; \&quot;Pyramid Hierarchy,\&quot; \&quot;Weeks of Analysis,\&quot; and \&quot;Junior-Heavy Teams\&quot; (all in red) with new approaches such as \&quot;Value-Based Pricing,\&quot; \&quot;Agile AI Pods,\&quot; \&quot;Real-Time Insights,\&quot; and \&quot;AI-Augmented Experts\&quot; (all in green). \n\n\&quot;Client Demands\&quot; shows statistics: \&quot;86% seek AI-augmented advisors,\&quot; \&quot;73% want outcome-based pricing,\&quot; plus quotes \&quot;Speed: &#x27;Tomorrow, not next week&#x27;\&quot; and \&quot;Impact: &#x27;What are you building?&#x27;\&quot; The section \&quot;What Remains Uniquely Human\&quot; lists \&quot;Trust &amp; Relationships,\&quot; \&quot;Judgment &amp; Wisdom,\&quot; and \&quot;Ethics &amp; Empathy,\&quot; each with brief descriptions. \&quot;The Future\&quot; encourages \&quot;Bold Reinvention Not extinction\&quot; with the quote, \&quot;Consulting as we know it is dead; long live consulting as we are coming to know it.\&quot; There are no logos or brand names visible.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Consulting firms in the age of AI infographic reports 86% seek AI-augmented advisors and 73% want outcome pricing&quot;,
+          &quot;entity_placement&quot;: 9,
+          &quot;information_gain&quot;: 10,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is slightly awkward phrasing (&#x27;in the age of AI infographic&#x27;) that reduces clarity even though the facts are accurate.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Consulting firms in the age of AI infographic reports 86% seek AI-augmented advisors and 73% want outcome pricing&quot;,
+        &quot;entity_placement&quot;: 9,
+        &quot;information_gain&quot;: 10,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is slightly awkward phrasing (&#x27;in the age of AI infographic&#x27;) that reduces clarity even though the facts are accurate.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;consulting in the age of AI: an industry reinventing itself&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+      &quot;filename&quot;: &quot;image-36-1024x576.png&quot;,
+      &quot;alt_text&quot;: &quot;AI for Consulting Firms slide shows Strategic Alignment: objectives, value quantification, and an AI roadmap.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a slide titled \&quot;STRATEGIC ALIGNMENT\&quot; with two main sections: \&quot;Key Aspects\&quot; on the left and \&quot;Practical Insight\&quot; on the right. The left side lists three numbered points: 1) Define Clear Business Objectives, 2) Quantify Value, and 3) Develop a Strategic AI Roadmap, each with corresponding explanatory text. The right side, within a bordered box, provides a practical insight statement about starting with low-hanging fruits and quick wins to build momentum and secure further investment. The design uses purple and pink gradient colors and a lightbulb icon above the \&quot;Practical Insight\&quot; heading.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;AI for Consulting Firms slide shows Strategic Alignment: objectives, value quantification, and an AI roadmap.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits the slide\u2019s distinct practical-insight takeaway about quick wins/low-hanging fruit, which would add stronger extractable specificity.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;AI for Consulting Firms slide shows Strategic Alignment: objectives, value quantification, and an AI roadmap.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits the slide\u2019s distinct practical-insight takeaway about quick wins/low-hanging fruit, which would add stronger extractable specificity.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;strategic alignment&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png&quot;,
+      &quot;filename&quot;: &quot;image-37-1024x675.png&quot;,
+      &quot;alt_text&quot;: &quot;AI for consulting firms maps disruption into five outcomes: Efficiency Gains, Cost Reduction, and Strategic Decision-Making.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a diagram titled \&quot;AI&#x27;s Disruption of the Consulting Industry.\&quot; On the left, there is the label \&quot;AI&#x27;s Impact on Consulting\&quot; next to a gear icon. Lines emerge from a prism shape and point to five labeled outcomes on the right: \&quot;Efficiency Gains\&quot; with a connected nodes icon, \&quot;Cost Reduction\&quot; with a downward arrow icon, \&quot;Enhanced Data Analysis\&quot; with a bar chart icon, \&quot;Strategic Decision-Making\&quot; with a diamond icon, and \&quot;Competitive Advantage\&quot; with a balance scale icon. The layout is minimal with hand-drawn style text and symbols.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;AI for consulting firms maps disruption into five outcomes: Efficiency Gains, Cost Reduction, and Strategic Decision-Making.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 7,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.8,
+          &quot;critique&quot;: &quot;Biggest weakness: it claims five outcomes but only names three, so it is not fully faithful to the image content.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;AI for consulting firms maps disruption into five outcomes: Efficiency Gains, Cost Reduction, and Strategic Decision-Making.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 7,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.8,
+        &quot;critique&quot;: &quot;Biggest weakness: it claims five outcomes but only names three, so it is not fully faithful to the image content.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;AI disruption of the consulting industry&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+      &quot;filename&quot;: &quot;image-38.png&quot;,
+      &quot;alt_text&quot;: &quot;AI for Consulting Firms interface highlights &#x27;Top Tools for Building &amp; Deploying Custom AI Models&#x27; with GPT-4o tab options&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a promotional interface with the heading \&quot;Top Tools for Building &amp; Deploying Custom AI Models\&quot; and a prominent pink button labeled \&quot;Start Building Now!\&quot; On the left side, there is a UI displaying a section titled \&quot;Personalize/ Dr. CustomGPT,\&quot; with tabs like \&quot;General,\&quot; \&quot;Prompts,\&quot; \&quot;Collaboration,\&quot; \&quot;Chatbots,\&quot; \&quot;AI Intelligence,\&quot; \&quot;Advanced,\&quot; and \&quot;Security.\&quot; Various UI elements show options such as model selection (e.g., GPT-4o, GPT-3.5, GPT-4-8k), a login screen, and possibly AI agent integrations. The background is a gradient of purple shades with circular highlights.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;AI for Consulting Firms interface highlights &#x27;Top Tools for Building &amp; Deploying Custom AI Models&#x27; with GPT-4o tab options&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.2,
+          &quot;critique&quot;: &quot;The biggest weakness is slightly promotional wording (e.g., \&quot;highlights\&quot;) instead of a fully neutral, purely descriptive caption.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;AI for Consulting Firms interface highlights &#x27;Top Tools for Building &amp; Deploying Custom AI Models&#x27; with GPT-4o tab options&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.2,
+        &quot;critique&quot;: &quot;The biggest weakness is slightly promotional wording (e.g., \&quot;highlights\&quot;) instead of a fully neutral, purely descriptive caption.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;top tools for building custom ai model&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+      &quot;filename&quot;: &quot;image-40-1024x576.png&quot;,
+      &quot;alt_text&quot;: &quot;AI for consulting firms maps \u201cYour Organization\u2019s AI Journey\u201d from use cases to technical/people tracks and iterate.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a visual flowchart titled \&quot;Your Organization&#x27;s AI Journey\&quot; with three main sections: Current State (Roadmap), Prepare / Launch, and Iterate. The Current State section lists tasks: \&quot;Define 1-2 Use Cases,\&quot; \&quot;Tech Assessment,\&quot; and \&quot;AI Safety.\&quot; The flow splits into two paths labeled \&quot;Technical Side\&quot; with the subheading \&quot;Design | Develop | Deliver,\&quot; containing tasks \&quot;Security/Governance,\&quot; \&quot;Data Migration,\&quot; and \&quot;Licensing,\&quot; and \&quot;People Side\&quot; with the subheading \&quot;Embrace | Adopt | Use,\&quot; containing tasks \&quot;Workshops,\&quot; \&quot;Training,\&quot; and \&quot;Communication.\&quot; Both paths converge into the Iterate phase labeled with \&quot;Results,\&quot; \&quot;Outcomes,\&quot; and \&quot;Success.\&quot; The logo \&quot;PROSERVEIT\&quot; appears at the bottom right.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;AI for consulting firms maps \u201cYour Organization\u2019s AI Journey\u201d from use cases to technical/people tracks and iterate.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 7,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.7,
+          &quot;critique&quot;: &quot;The biggest weakness is vagueness: it omits key concrete labels in the diagram (Current State, Prepare/Launch, specific task nodes) and ends with awkward phrasing (&#x27;and iterate&#x27;).&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;AI for consulting firms maps \u201cYour Organization\u2019s AI Journey\u201d from use cases to technical/people tracks and iterate.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 7,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.7,
+        &quot;critique&quot;: &quot;The biggest weakness is vagueness: it omits key concrete labels in the diagram (Current State, Prepare/Launch, specific task nodes) and ends with awkward phrasing (&#x27;and iterate&#x27;).&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;your organization ai journey&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+        &quot;name&quot;: &quot;Consulting Firms AI Transformation Market Infographic&quot;,
+        &quot;description&quot;: &quot;Infographic showing how AI is reshaping consulting firms from traditional service delivery to AI-augmented advisory models. It highlights key client demand signals, including that 86% seek AI-augmented advisors and 73% prefer outcome-based pricing, alongside a forward-looking industry outlook.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 497
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+        &quot;name&quot;: &quot;AI for Consulting Firms Strategic Alignment Slide&quot;,
+        &quot;description&quot;: &quot;This slide for AI in consulting firms highlights strategic alignment through clear objectives, value quantification, and structured AI roadmap planning. It also includes a practical insight section to guide implementation decisions in professional services contexts.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 576
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-37-1024x675.png&quot;,
+        &quot;name&quot;: &quot;AI for Consulting Firms: Five Strategic Outcomes&quot;,
+        &quot;description&quot;: &quot;This diagram shows how AI is reshaping consulting firms across five key outcomes: efficiency gains, cost reduction, enhanced data analysis, strategic decision-making, and competitive advantage. It maps AI-driven disruption into practical business impacts for professional services.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+        &quot;name&quot;: &quot;Dr. CustomGPT UI for Custom AI Model Deployment&quot;,
+        &quot;description&quot;: &quot;This image showcases the Dr. CustomGPT interface for consulting-focused AI workflows, including the highlighted section \&quot;Top Tools for Building &amp; Deploying Custom AI Models\&quot; and GPT-4o tab options. Multiple product screens and UI elements are shown alongside a clear call-to-action button for getting started.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 536
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+        &quot;name&quot;: &quot;AI Journey Framework for Consulting Firms Teams&quot;,
+        &quot;description&quot;: &quot;This diagram maps \&quot;Your Organization\u2019s AI Journey\&quot; for consulting firms across three stages: Current State, Prepare/Launch, and Iterate. It highlights parallel technical and people workstreams that turn AI use cases into successful outcomes through continuous iteration.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 576
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-39-1024x497.png&quot;,
+      &quot;caption&quot;: &quot;AI for Consulting Firms infographic maps shift from hourly projects to AI-augmented, continuous advisory.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-36-1024x576.png&quot;,
+      &quot;caption&quot;: &quot;AI for Consulting Firms links strategic goals to KPI baselines, phased pilots, and quarterly ROI reviews.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-38.png&quot;,
+      &quot;caption&quot;: &quot;Dr. CustomGPT maps consulting-firm workflow from GPT-4o model selection to deployment in one dashboard.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-40-1024x576.png&quot;,
+      &quot;caption&quot;: &quot;AI for consulting firms uses a 3-phase model\u2014Current State, Prepare/Launch, Iterate\u2014across technical and people tracks.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 01:25 UTC
+</div>
+</div>
+</body>
+</html>

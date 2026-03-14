@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — what-are-alphanumeric-characters</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>What Are Alphanumeric Characters, and Why AI Struggles to Search Them</strong><br>
+  <a href="https://customgpt.ai/what-are-alphanumeric-characters/" target="_blank">https://customgpt.ai/what-are-alphanumeric-characters/</a><br>
+  Generated: 2026-03-14 01:25 UTC &middot; WP Post ID: 57973 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#dc2626">D</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">54.5</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">5/8</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">5</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">4</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">2758</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:10%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">10</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>2.5</strong> / 25<br>
+    Only the first image has non-empty alt text but it reads like the article title rather than a concrete visual description, while the other four are missing alt text entirely.
+  </div>
+<div class="dim-details">Per-image scores: [5, 0, 0, 0, 0]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.5</strong> / 15<br>
+    5 images / 2758 words (ideal ~7)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:50%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">50</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 10<br>
+    {&#x27;webp&#x27;: 1, &#x27;png&#x27;: 4}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    The image is branded, topic-specific, clear at thumbnail size, and has a descriptive alt text, making it highly relevant for the blog post.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:63%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">63</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>9.4</strong> / 15<br>
+    The page has a few strong, topic-specific visuals (the numeric search comparison and AI process diagram), but generic tech imagery and an unrelated university logo weaken overall visual alignment.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:20%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">20</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>1.0</strong> / 5<br>
+    1/5 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 10 &times; 0.25 = <strong>2.5</strong><br>D2: Image Coverage: 70 &times; 0.15 = <strong>10.5</strong><br>D3: Filename Quality: 80 &times; 0.1 = <strong>8.0</strong><br>D4: Format & Performance: 50 &times; 0.1 = <strong>5.0</strong><br>D5: Technical Attributes (dims + srcset): 100 &times; 0.1 = <strong>10.0</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 63 &times; 0.15 = <strong>9.4</strong><br>D8: Schema Readiness: 20 &times; 0.05 = <strong>1.0</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 54.5 &rarr; Grade: D</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: what-are-alphanumeric-characters-and-why-ai-struggles-to-sea</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>What Are Alphanumeric Characters, and Why AI Struggles to Search Them</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 536</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image compares AI responses to a query with and without numeric search, showing detailed source referencing in the numeric search example and a lack of information in the non-numeric search example, alongside a title and call to action.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Comparison of AI search results with and without numeric search, highlighting difficulties in searching alphanumeric characters.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: image-55-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>57976</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">photo</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A futuristic tech workspace with multiple screens displaying neon-lit graphs, codes, and geometric patterns, illuminated with purple-pink ambient lighting.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Futuristic desk setup with neon screens showing graphs, code, and patterns in purple hue.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>5/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: image-54-1024x683.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 683</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>57975</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>6/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A stylized digital illustration of a person working at a computer with the words &#x27;NO-CODE&#x27; on the main screen and &#x27;NO-CODE DEVELOPMENT&#x27; in the corner, conveying no-code software development.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Illustration of a person coding on a computer screen displaying &#x27;NO-CODE&#x27; development theme in purple hues.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>5/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: image-53-1024x471.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 471</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>57974</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">diagram</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A flowchart illustrating the process of improving response quality in AI systems using query pre-processing, semantic expansion, chunk ranking, anti-hallucination algorithms, and citation calculation.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Diagram showing AI query processing flow with embedding, chunk ranking, and anti-hallucination steps.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>9/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: adobe-logo.svg</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/12/adobe-logo.svg" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/12/adobe-logo.svg</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>svg</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>64 &times; 35</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>39658</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: Dropbox-300x61.png</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/04/Dropbox-300x61.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/04/Dropbox-300x61.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>300 &times; 61</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>49564</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: MIT-Logo-300x169.png</span>
+    <span>
+      
+      <span class="tag tag-warn">DECORATIVE</span>
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2023/11/MIT-Logo-300x169.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2023/11/MIT-Logo-300x169.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Red and grey logo of Massachusetts Institute of Technology</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>300 &times; 169</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>23263</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 8: download-28-300x169.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>300 &times; 169</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>46560</td></tr>
+      <tr><td><strong>Position</strong></td><td>#8</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">logo</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>1/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows the University of Virginia logo featuring an orange graphic of an academic rotunda and the text &#x27;University of Virginia&#x27; in dark blue.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>University of Virginia logo with orange rotunda graphic and dark blue text</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>10/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>2/10</td></tr>
+    </table>
+  </div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 1: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 8.5/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png</td></tr>
+    <tr><td><strong>Filename</strong></td><td>image-55-1024x585.png</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">Alphanumeric characters in AI search appear on dual screens with code snippets, radial charts, and hex grids.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>109 chars <span class="tag tag-fix">80-125</span></td></tr>
+    <tr><td><strong>Caption</strong></td><td><em>Alphanumeric characters combine 26 letters and 10 digits, a mix that raises token ambiguity in AI search.</em></td></tr>
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> 8/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> 7/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> 7/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">8.5/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is mild semantic overreach: it implies alphanumeric characters are visibly shown, while the image more clearly depicts a futuristic multi-screen workstation interface.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+  &quot;name&quot;: &quot;Alphanumeric AI Search Visualization on Dual Screens&quot;,
+  &quot;description&quot;: &quot;A futuristic workspace scene shows dual monitors filled with alphanumeric code snippets, radial data charts, and hex-grid geometric overlays. Purple-pink ambient lighting and neon interface elements emphasize the challenge of interpreting mixed character patterns in AI search contexts.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  },
+  &quot;width&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 1024
+  },
+  &quot;height&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 585
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 2: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 8.0/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png</td></tr>
+    <tr><td><strong>Filename</strong></td><td>image-54-1024x683.png</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">AI search workflow on a three-monitor desk setup, with &#x27;NO-CODE&#x27; sphere and &#x27;NO-CODE DEVELOPMENT&#x27; text.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>103 chars <span class="tag tag-fix">80-125</span></td></tr>
+    <tr><td><strong>Caption</strong></td><td><em>Alphanumeric characters in no-code labels can split into multiple tokens, reducing AI search precision.</em></td></tr>
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> 7/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:60%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">60</div></div> 6/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> 7/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">8.0/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>The biggest weakness is topical alignment: it accurately describes visible elements but does not mention alphanumeric characters or AI search limitations from the page context.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+  &quot;name&quot;: &quot;No-Code Development AI Search Workflow Illustration&quot;,
+  &quot;description&quot;: &quot;A stylized digital illustration shows a person working at a three-monitor desk setup in an AI search workflow context. The central display features a prominent &#x27;NO-CODE&#x27; sphere, while &#x27;NO-CODE DEVELOPMENT&#x27; appears in the corner, emphasizing no-code software development.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  },
+  &quot;width&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 1024
+  },
+  &quot;height&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 683
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 3: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.3/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png</td></tr>
+    <tr><td><strong>Filename</strong></td><td>image-53-1024x471.png</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">AI response pipeline maps Query to Response through GPT-4, vector database, chunk ranking, anti-hallucination, citations.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>121 chars <span class="tag tag-fix">80-125</span></td></tr>
+    <tr><td><strong>Caption</strong></td><td><em>Alphanumeric characters often require exact-match scoring, since semantic retrieval misses mixed letter-number IDs.</em></td></tr>
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> 8/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.3/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness: it is slightly misaligned with the page’s alphanumeric-search topic and omits explicit mention of query pre-processing/semantic expansion shown in the diagram.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+  &quot;name&quot;: &quot;AI response pipeline flowchart for answer quality&quot;,
+  &quot;description&quot;: &quot;Flowchart showing how an AI query is transformed into a final response through GPT-4 and a vector database pipeline. It highlights query pre-processing, semantic expansion, chunk ranking, anti-hallucination checks, and citation calculation to improve response reliability.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  },
+  &quot;width&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 1024
+  },
+  &quot;height&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 471
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 4: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.3/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png</td></tr>
+    <tr><td><strong>Filename</strong></td><td>download-28-300x169.png</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">University of Virginia logo displays orange Rotunda emblem above dark blue text &#x27;UNIVERSITY of VIRGINIA&#x27;.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>105 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> 8/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.3/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is limited descriptive specificity, as it omits the stylized classical building detail that could improve retrievability.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+  &quot;name&quot;: &quot;University of Virginia logo with Rotunda emblem&quot;,
+  &quot;description&quot;: &quot;The image displays the University of Virginia logo, with an orange Rotunda emblem positioned above the words \&quot;UNIVERSITY of VIRGINIA\&quot; in dark blue text. It is a clean, official-style institutional wordmark and symbol.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  },
+  &quot;width&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 300
+  },
+  &quot;height&quot;: {
+    &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+    &quot;value&quot;: 169
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png</td><td><em>Alphanumeric characters combine 26 letters and 10 digits, a mix that raises token ambiguity in AI search.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png</td><td><em>Alphanumeric characters in no-code labels can split into multiple tokens, reducing AI search precision.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ustomgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png</td><td><em>Alphanumeric characters often require exact-match scoring, since semantic retrieval misses mixed letter-number IDs.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+    &quot;name&quot;: &quot;Alphanumeric Search: AI Results With vs Without Numbers&quot;,
+    &quot;description&quot;: &quot;This image compares AI output for the same query with numeric search enabled versus disabled. The numeric-search side shows a detailed answer with GPT-4 source citations, while the non-numeric side returns \&quot;I&#x27;m sorry, I don&#x27;t know,\&quot; alongside a title and call-to-action framing the contrast.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 536
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Alphanumeric AI Search Visualization on Dual Screens&quot;,
+    &quot;description&quot;: &quot;A futuristic workspace scene shows dual monitors filled with alphanumeric code snippets, radial data charts, and hex-grid geometric overlays. Purple-pink ambient lighting and neon interface elements emphasize the challenge of interpreting mixed character patterns in AI search contexts.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+    &quot;name&quot;: &quot;No-Code Development AI Search Workflow Illustration&quot;,
+    &quot;description&quot;: &quot;A stylized digital illustration shows a person working at a three-monitor desk setup in an AI search workflow context. The central display features a prominent &#x27;NO-CODE&#x27; sphere, while &#x27;NO-CODE DEVELOPMENT&#x27; appears in the corner, emphasizing no-code software development.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 683
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+    &quot;name&quot;: &quot;AI response pipeline flowchart for answer quality&quot;,
+    &quot;description&quot;: &quot;Flowchart showing how an AI query is transformed into a final response through GPT-4 and a vector database pipeline. It highlights query pre-processing, semantic expansion, chunk ranking, anti-hallucination checks, and citation calculation to improve response reliability.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 471
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+    &quot;name&quot;: &quot;University of Virginia logo with Rotunda emblem&quot;,
+    &quot;description&quot;: &quot;The image displays the University of Virginia logo, with an orange Rotunda emblem positioned above the words \&quot;UNIVERSITY of VIRGINIA\&quot; in dark blue text. It is a clean, official-style institutional wordmark and symbol.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 300
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 169
+    }
+  }
+]</pre></div>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (what-are-alphanumeric-characte)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (image-55-1024x585.png)</td>
+        <td>type=photo relevance=6/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (image-54-1024x683.png)</td>
+        <td>type=illustration relevance=6/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (image-53-1024x471.png)</td>
+        <td>type=diagram relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.8</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 8 (download-28-300x169.png)</td>
+        <td>type=logo relevance=1/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 10/100 — Only the first image has non-empty alt text but it reads like the article title </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — The image is branded, topic-specific, clear at thumbnail size, and has a descrip</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 63/100 — The page has a few strong, topic-specific visuals (the numeric search comparison</td>
+      </tr>
+
+      <tr>
+        <td>3.1</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"Alphanumeric characters in AI search appear on dual screens " (109ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.2</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"AI search workflow on a three-monitor desk setup, with &#x27;NO-C" (103ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.3</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"AI response pipeline maps Query to Response through GPT-4, v" (121ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.4</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"University of Virginia logo displays orange Rotunda emblem a" (105ch)</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;what-are-alphanumeric-characters&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/what-are-alphanumeric-characters/&quot;,
+    &quot;wp_post_id&quot;: 57973,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;What Are Alphanumeric Characters, and Why AI Struggles to Search Them&quot;,
+    &quot;word_count&quot;: 2758,
+    &quot;image_count&quot;: 5,
+    &quot;total_image_count&quot;: 8,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-scaled.webp&quot;,
+    &quot;featured_image_alt&quot;: &quot;What Are Alphanumeric Characters, and Why AI Struggles to Search Them&quot;,
+    &quot;composite_score&quot;: 54.5,
+    &quot;grade&quot;: &quot;D&quot;,
+    &quot;issues&quot;: [],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-55-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 57976,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+        &quot;filename&quot;: &quot;image-54-1024x683.png&quot;,
+        &quot;wp_media_id&quot;: 57975,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+        &quot;filename&quot;: &quot;image-53-1024x471.png&quot;,
+        &quot;wp_media_id&quot;: 57974,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+        &quot;filename&quot;: &quot;download-28-300x169.png&quot;,
+        &quot;wp_media_id&quot;: 46560,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-55-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+        &quot;filename&quot;: &quot;image-54-1024x683.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+        &quot;filename&quot;: &quot;image-53-1024x471.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+        &quot;filename&quot;: &quot;download-28-300x169.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 10,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Only the first image has non-empty alt text but it reads like the article title rather than a concrete visual description, while the other four are missing alt text entirely.&quot;,
+        &quot;per_image_scores&quot;: [
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        &quot;weighted&quot;: 2.5
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 70,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;5 images / 2758 words (ideal ~7)&quot;,
+        &quot;weighted&quot;: 10.5
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 50,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;webp&quot;: 1,
+          &quot;png&quot;: 4
+        },
+        &quot;weighted&quot;: 5.0
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 10.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, topic-specific, clear at thumbnail size, and has a descriptive alt text, making it highly relevant for the blog post.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 63,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The page has a few strong, topic-specific visuals (the numeric search comparison and AI process diagram), but generic tech imagery and an unrelated university logo weaken overall visual alignment.&quot;,
+        &quot;weighted&quot;: 9.45
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 20,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;1/5 images schema-ready&quot;,
+        &quot;weighted&quot;: 1.0
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+        &quot;alt_text&quot;: &quot;What Are Alphanumeric Characters, and Why AI Struggles to Search Them&quot;,
+        &quot;filename&quot;: &quot;what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 536,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image compares AI responses to a query with and without numeric search, showing detailed source referencing in the numeric search example and a lack of information in the non-numeric search example, alongside a title and call to action.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Comparison of AI search results with and without numeric search, highlighting difficulties in searching alphanumeric characters.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image-55-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 57976,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;photo&quot;,
+          &quot;content_description&quot;: &quot;A futuristic tech workspace with multiple screens displaying neon-lit graphs, codes, and geometric patterns, illuminated with purple-pink ambient lighting.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 5
+          },
+          &quot;suggested_alt_text&quot;: &quot;Futuristic desk setup with neon screens showing graphs, code, and patterns in purple hue.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image-54-1024x683.png&quot;,
+        &quot;wp_media_id&quot;: 57975,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 683,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A stylized digital illustration of a person working at a computer with the words &#x27;NO-CODE&#x27; on the main screen and &#x27;NO-CODE DEVELOPMENT&#x27; in the corner, conveying no-code software development.&quot;,
+          &quot;topic_relevance&quot;: 6,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 5
+          },
+          &quot;suggested_alt_text&quot;: &quot;Illustration of a person coding on a computer screen displaying &#x27;NO-CODE&#x27; development theme in purple hues.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;image-53-1024x471.png&quot;,
+        &quot;wp_media_id&quot;: 57974,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 471,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;diagram&quot;,
+          &quot;content_description&quot;: &quot;A flowchart illustrating the process of improving response quality in AI systems using query pre-processing, semantic expansion, chunk ranking, anti-hallucination algorithms, and citation calculation.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 9
+          },
+          &quot;suggested_alt_text&quot;: &quot;Diagram showing AI query processing flow with embedding, chunk ranking, and anti-hallucination steps.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/12/adobe-logo.svg&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;adobe-logo.svg&quot;,
+        &quot;wp_media_id&quot;: 39658,
+        &quot;width&quot;: 64,
+        &quot;height&quot;: 35,
+        &quot;format&quot;: &quot;svg&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/04/Dropbox-300x61.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;Dropbox-300x61.png&quot;,
+        &quot;wp_media_id&quot;: 49564,
+        &quot;width&quot;: 300,
+        &quot;height&quot;: 61,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/11/MIT-Logo-300x169.png&quot;,
+        &quot;alt_text&quot;: &quot;Red and grey logo of Massachusetts Institute of Technology&quot;,
+        &quot;filename&quot;: &quot;MIT-Logo-300x169.png&quot;,
+        &quot;wp_media_id&quot;: 23263,
+        &quot;width&quot;: 300,
+        &quot;height&quot;: 169,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: true,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;download-28-300x169.png&quot;,
+        &quot;wp_media_id&quot;: 46560,
+        &quot;width&quot;: 300,
+        &quot;height&quot;: 169,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 7,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;logo&quot;,
+          &quot;content_description&quot;: &quot;The image shows the University of Virginia logo featuring an orange graphic of an academic rotunda and the text &#x27;University of Virginia&#x27; in dark blue.&quot;,
+          &quot;topic_relevance&quot;: 1,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 10,
+            &quot;information_value&quot;: 2
+          },
+          &quot;suggested_alt_text&quot;: &quot;University of Virginia logo with orange rotunda graphic and dark blue text&quot;
+        }
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;what-are-alphanumeric-characters&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-55-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 57976,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;Alphanumeric characters in AI search appear on dual screens with code snippets, radial charts, and hex grids.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+        &quot;filename&quot;: &quot;image-54-1024x683.png&quot;,
+        &quot;wp_media_id&quot;: 57975,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;AI search workflow on a three-monitor desk setup, with &#x27;NO-CODE&#x27; sphere and &#x27;NO-CODE DEVELOPMENT&#x27; text.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+        &quot;filename&quot;: &quot;image-53-1024x471.png&quot;,
+        &quot;wp_media_id&quot;: 57974,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;AI response pipeline maps Query to Response through GPT-4, vector database, chunk ranking, anti-hallucination, citations.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+        &quot;filename&quot;: &quot;download-28-300x169.png&quot;,
+        &quot;wp_media_id&quot;: 46560,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;University of Virginia logo displays orange Rotunda emblem above dark blue text &#x27;UNIVERSITY of VIRGINIA&#x27;.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      }
+    ],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 4,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+      &quot;filename&quot;: &quot;what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+      &quot;alt_text&quot;: &quot;Alphanumeric characters comparison shows With Numeric Search citing GPT-4 sources; Without returns I&#x27;m sorry I don&#x27;t know!&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a purple background with two UI window mockups labeled \&quot;With Numeric Search\&quot; and \&quot;Without Numeric Search.\&quot; The \&quot;With Numeric Search\&quot; window displays a chat output listing sources referencing GPT-4, including URLs and titles such as \&quot;ChatGPT-4 Live\&quot; and \&quot;CustomGPT vs Insert ChatGPT.\&quot; The \&quot;Without Numeric Search\&quot; window shows a response of \&quot;I&#x27;m sorry I don&#x27;t know!\&quot; to the same query. On the right side, white text reads \&quot;What Are Alphanumeric Characters, and Why AI Struggles to Search Them\&quot; with a pink button labeled \&quot;Learn more &gt;.\&quot; There are no people or specific logos visible.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Alphanumeric characters comparison shows With Numeric Search citing GPT-4 sources; Without returns I&#x27;m sorry I don&#x27;t know!&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 7,
+          &quot;overall&quot;: 8.8,
+          &quot;critique&quot;: &quot;The biggest weakness is compressed, ungrammatical phrasing that makes the comparison harder for answer engines to reliably parse and cite.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Alphanumeric characters comparison shows With Numeric Search citing GPT-4 sources; Without returns I&#x27;m sorry I don&#x27;t know!&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 7,
+        &quot;overall&quot;: 8.8,
+        &quot;critique&quot;: &quot;The biggest weakness is compressed, ungrammatical phrasing that makes the comparison harder for answer engines to reliably parse and cite.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;What Are Alphanumeric Characters, and Why AI Struggles to Search Them&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-55-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Alphanumeric characters in AI search appear on dual screens with code snippets, radial charts, and hex grids.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a computer workstation with a large central monitor and a laptop on the desk, both displaying complex futuristic digital interfaces with neon purple and pink elements, including graphs, hexagonal grids, circular data visuals, and code snippets. Surrounding the main monitor are multiple framed digital wall displays featuring similar high-tech user interfaces, with charts, radial diagrams, and flowing light tunnel visuals. The desk also contains a potted plant, two closed books, several pens and pencils in containers, and a keyboard and mouse placed on a mouse pad. The room is illuminated with purple-pink ambient lighting, highlighting the modern, tech-centric setup.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Alphanumeric characters in AI search appear on dual screens with code snippets, radial charts, and hex grids.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 7,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 7,
+          &quot;overall&quot;: 8.5,
+          &quot;critique&quot;: &quot;Biggest weakness is mild semantic overreach: it implies alphanumeric characters are visibly shown, while the image more clearly depicts a futuristic multi-screen workstation interface.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Alphanumeric characters in AI search appear on dual screens with code snippets, radial charts, and hex grids.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 7,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 7,
+        &quot;overall&quot;: 8.5,
+        &quot;critique&quot;: &quot;Biggest weakness is mild semantic overreach: it implies alphanumeric characters are visibly shown, while the image more clearly depicts a futuristic multi-screen workstation interface.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+      &quot;filename&quot;: &quot;image-54-1024x683.png&quot;,
+      &quot;alt_text&quot;: &quot;AI search workflow on a three-monitor desk setup, with &#x27;NO-CODE&#x27; sphere and &#x27;NO-CODE DEVELOPMENT&#x27; text.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a person sitting at a desk and working on a computer setup with three screens, one of which prominently displays the text \&quot;NO-CODE\&quot; on a glowing sphere. The left screen has a pie chart labeled \&quot;USEN INTERSAGE\&quot; and some other UI elements including a flower icon. The bottom right corner of the image also displays the text \&quot;NO-CODE DEVELOPMENT.\&quot; The color scheme is predominantly purple with a neon glow effect.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;AI search workflow on a three-monitor desk setup, with &#x27;NO-CODE&#x27; sphere and &#x27;NO-CODE DEVELOPMENT&#x27; text.&quot;,
+          &quot;entity_placement&quot;: 7,
+          &quot;information_gain&quot;: 6,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 7,
+          &quot;overall&quot;: 8.0,
+          &quot;critique&quot;: &quot;The biggest weakness is topical alignment: it accurately describes visible elements but does not mention alphanumeric characters or AI search limitations from the page context.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;AI search workflow on a three-monitor desk setup, with &#x27;NO-CODE&#x27; sphere and &#x27;NO-CODE DEVELOPMENT&#x27; text.&quot;,
+        &quot;entity_placement&quot;: 7,
+        &quot;information_gain&quot;: 6,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 7,
+        &quot;overall&quot;: 8.0,
+        &quot;critique&quot;: &quot;The biggest weakness is topical alignment: it accurately describes visible elements but does not mention alphanumeric characters or AI search limitations from the page context.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+      &quot;filename&quot;: &quot;image-53-1024x471.png&quot;,
+      &quot;alt_text&quot;: &quot;AI response pipeline maps Query to Response through GPT-4, vector database, chunk ranking, anti-hallucination, citations.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a flow diagram illustrating a process for improving response quality with query pre-processing, semantic expansion, chunk ranking, anti-hallucinations, and citations. It includes labeled components such as \&quot;Query,\&quot; \&quot;Response,\&quot; \&quot;LLM,\&quot; \&quot;Embedding Generation Services,\&quot; \&quot;Vector Database,\&quot; \&quot;Citation Calculation Algorithm,\&quot; \&quot;GPT-4,\&quot; \&quot;Prompt,\&quot; \&quot;Anti-Hallucination Algorithm,\&quot; \&quot;Chunk Ranking Algo,\&quot; and \&quot;Top-K Chunks.\&quot; The flow connects these components with arrows, indicating the data path from user query input to response output. The caption at the bottom reads: \&quot;Improving response quality with query pre-processing, semantic expansion, chunk ranking, anti-hallucinations and citations.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;AI response pipeline maps Query to Response through GPT-4, vector database, chunk ranking, anti-hallucination, citations.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness: it is slightly misaligned with the page\u2019s alphanumeric-search topic and omits explicit mention of query pre-processing/semantic expansion shown in the diagram.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;AI response pipeline maps Query to Response through GPT-4, vector database, chunk ranking, anti-hallucination, citations.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness: it is slightly misaligned with the page\u2019s alphanumeric-search topic and omits explicit mention of query pre-processing/semantic expansion shown in the diagram.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+      &quot;filename&quot;: &quot;download-28-300x169.png&quot;,
+      &quot;alt_text&quot;: &quot;University of Virginia logo displays orange Rotunda emblem above dark blue text &#x27;UNIVERSITY of VIRGINIA&#x27;.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows the logo of the University of Virginia. It features an orange circular design at the top, with a stylized classical building or structure in the center. Below the design, the text reads \&quot;UNIVERSITY of VIRGINIA\&quot; in uppercase letters, with \&quot;UNIVERSITY\&quot; and \&quot;VIRGINIA\&quot; in a larger font and \&quot;of\&quot; in a smaller, italicized font placed between them. The text color is dark blue. There are no UI elements, people, or additional scene components visible.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;University of Virginia logo displays orange Rotunda emblem above dark blue text &#x27;UNIVERSITY of VIRGINIA&#x27;.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness is limited descriptive specificity, as it omits the stylized classical building detail that could improve retrievability.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;University of Virginia logo displays orange Rotunda emblem above dark blue text &#x27;UNIVERSITY of VIRGINIA&#x27;.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness is limited descriptive specificity, as it omits the stylized classical building detail that could improve retrievability.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/what-are-alphanumeric-characters-and-why-ai-struggles-to-search-them-1024x536.webp&quot;,
+        &quot;name&quot;: &quot;Alphanumeric Search: AI Results With vs Without Numbers&quot;,
+        &quot;description&quot;: &quot;This image compares AI output for the same query with numeric search enabled versus disabled. The numeric-search side shows a detailed answer with GPT-4 source citations, while the non-numeric side returns \&quot;I&#x27;m sorry, I don&#x27;t know,\&quot; alongside a title and call-to-action framing the contrast.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 536
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Alphanumeric AI Search Visualization on Dual Screens&quot;,
+        &quot;description&quot;: &quot;A futuristic workspace scene shows dual monitors filled with alphanumeric code snippets, radial data charts, and hex-grid geometric overlays. Purple-pink ambient lighting and neon interface elements emphasize the challenge of interpreting mixed character patterns in AI search contexts.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+        &quot;name&quot;: &quot;No-Code Development AI Search Workflow Illustration&quot;,
+        &quot;description&quot;: &quot;A stylized digital illustration shows a person working at a three-monitor desk setup in an AI search workflow context. The central display features a prominent &#x27;NO-CODE&#x27; sphere, while &#x27;NO-CODE DEVELOPMENT&#x27; appears in the corner, emphasizing no-code software development.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 683
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+        &quot;name&quot;: &quot;AI response pipeline flowchart for answer quality&quot;,
+        &quot;description&quot;: &quot;Flowchart showing how an AI query is transformed into a final response through GPT-4 and a vector database pipeline. It highlights query pre-processing, semantic expansion, chunk ranking, anti-hallucination checks, and citation calculation to improve response reliability.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 471
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/03/download-28-300x169.png&quot;,
+        &quot;name&quot;: &quot;University of Virginia logo with Rotunda emblem&quot;,
+        &quot;description&quot;: &quot;The image displays the University of Virginia logo, with an orange Rotunda emblem positioned above the words \&quot;UNIVERSITY of VIRGINIA\&quot; in dark blue text. It is a clean, official-style institutional wordmark and symbol.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 300
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 169
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-55-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Alphanumeric characters combine 26 letters and 10 digits, a mix that raises token ambiguity in AI search.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-54-1024x683.png&quot;,
+      &quot;caption&quot;: &quot;Alphanumeric characters in no-code labels can split into multiple tokens, reducing AI search precision.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/09/image-53-1024x471.png&quot;,
+      &quot;caption&quot;: &quot;Alphanumeric characters often require exact-match scoring, since semantic retrieval misses mixed letter-number IDs.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 01:25 UTC
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — chatgpt-api</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>CustomGPT RAG API: Build ChatGPT Bots With Your Data</strong><br>
+  <a href="https://customgpt.ai/chatgpt-api/" target="_blank">https://customgpt.ai/chatgpt-api/</a><br>
+  Generated: 2026-03-14 01:26 UTC &middot; WP Post ID: 16524 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#dc2626">D</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">45.9</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">7/7</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">1</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">6</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">1498</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:24%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">24</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>6.0</strong> / 25<br>
+    Only one image has a somewhat relevant alt text (&#x27;API key&#x27;), while the rest use generic placeholder labels (&#x27;image XX&#x27;) that provide almost no descriptive value for accessibility or SEO.
+  </div>
+<div class="dim-details">Per-image scores: [5, 2, 2, 2, 2, 2, 2]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>12.0</strong> / 15<br>
+    7 images / 1498 words (ideal ~4)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:50%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">50</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:31%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">31</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>3.1</strong> / 10<br>
+    {&#x27;png&#x27;: 1, &#x27;unknown&#x27;: 6}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:14%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">14</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>1.4</strong> / 10<br>
+    [&#x27;Missing dimensions: AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&#x27;, &#x27;Missing dimensi
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>9.0</strong> / 10<br>
+    The image is branded, topic-specific, visually clear, and the alt text is descriptive, though it could be slightly more dynamic for a perfect score.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:58%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">58</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.7</strong> / 15<br>
+    The clearly relevant CustomGPT API-key dashboard screenshot strongly matches the RAG API topic, but the remaining images lack descriptive alt text/context so their topical reinforcement appears uncert
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:14%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">14</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>0.7</strong> / 5<br>
+    1/7 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 24 &times; 0.25 = <strong>6.0</strong><br>D2: Image Coverage: 80 &times; 0.15 = <strong>12.0</strong><br>D3: Filename Quality: 50 &times; 0.1 = <strong>5.0</strong><br>D4: Format & Performance: 31 &times; 0.1 = <strong>3.1</strong><br>D5: Technical Attributes (dims + srcset): 14 &times; 0.1 = <strong>1.4</strong><br>D6: Featured Image: 90 &times; 0.1 = <strong>9.0</strong><br>D7: Entity Coherence: 58 &times; 0.15 = <strong>8.7</strong><br>D8: Schema Readiness: 14 &times; 0.05 = <strong>0.7</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 45.9 &rarr; Grade: D</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: API-key.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2023/07/API-key.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2023/07/API-key.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>API key</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1920 &times; 922</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>46791</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows the &#x27;API&#x27; tab of the &#x27;My Profile&#x27; page on the CustomGPT.ai platform where users can manage their API keys, including options to create, edit, and delete keys.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai profile API tab showing API key management and create API key button</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0D</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>image 55</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>image 53</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>image 60</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDq</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>image 56</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313q</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>image 57</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5U</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>image 58</td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 1: <span class="tag tag-fix">bad_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.67/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td>image 55</td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT RAG API demo shows ChatMTC on MIT Orbit, with 0/8000 input counter and Explore Orbit button.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>102 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.67/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>The biggest weakness is that it omits a key visible text element (the sample user question), which would improve extractable context for answer engines.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+  &quot;name&quot;: &quot;CustomGPT RAG API demo of ChatMTC on MIT Orbit&quot;,
+  &quot;description&quot;: &quot;Screenshot of the CustomGPT RAG API demo interface featuring ChatMTC on the MIT Orbit context. The UI shows a 0/8000 input counter and an \&quot;Explore Orbit\&quot; call-to-action button.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 2: <span class="tag tag-fix">bad_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.5/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td>image 53</td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT RAG API GitHub notebook shows Python cells installing customgpt-client and sitemap URL small-sitemap.xml</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>114 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.5/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>The biggest weakness is that it omits key on-screen identifiers (repo path/file name) that would make the caption even more uniquely citable.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+  &quot;name&quot;: &quot;CustomGPT RAG API GitHub Notebook Setup in Python&quot;,
+  &quot;description&quot;: &quot;Screenshot of a GitHub notebook demonstrating CustomGPT RAG API setup with Python code cells. The notebook includes installation of the customgpt-client package and references a sitemap URL named small-sitemap.xml for data ingestion.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 3: <span class="tag tag-fix">bad_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.8/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td>image 60</td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT RAG API docs show Shell-selected cURL POST example with Bearer/JWT auth toggle and Try It button</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>106 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.8/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is slight compression/ambiguity in phrasing (e.g., &#x27;Shell-selected&#x27;) that could be clearer for machine extraction.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+  &quot;name&quot;: &quot;CustomGPT RAG API docs cURL auth toggle interface&quot;,
+  &quot;description&quot;: &quot;Screenshot of the CustomGPT RAG API documentation interface showing a Shell-selected cURL POST request example. The panel includes an authorization selector with Bearer/JWT options and a visible \&quot;Try It\&quot; button for testing the endpoint.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 4: <span class="tag tag-fix">bad_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.7/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td>image 56</td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT RAG API notebook shows customgpt-client install and Project.create call using a sitemap_path URL.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>107 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.7/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>The biggest weakness is that it omits the explicit Jupyter/Python context, which would make the extracted fact slightly more precise for answer engines.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+  &quot;name&quot;: &quot;CustomGPT RAG API notebook setup with Project.create&quot;,
+  &quot;description&quot;: &quot;Screenshot of a CustomGPT RAG API notebook showing installation of the customgpt-client package and a Project.create call. The code example uses a sitemap_path URL to initialize data ingestion for a bot project.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 5: <span class="tag tag-fix">bad_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.8/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td>image 57</td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT RAG API notebook installs customgpt-client, sets API token, and creates a project from an uploaded sitemap file</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>121 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.8/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is that it omits visible structural context (three Jupyter/Colab code cells), which could improve retrievability precision.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+  &quot;name&quot;: &quot;CustomGPT RAG API notebook setup and project creation&quot;,
+  &quot;description&quot;: &quot;A notebook-based workflow for the CustomGPT RAG API showing steps to install the customgpt-client package, configure an API token, and initialize a project. The process includes creating the project from an uploaded sitemap file.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 6: <span class="tag tag-fix">bad_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.3/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw</td></tr>
+    <tr><td><strong>Filename</strong></td><td>AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td>image 58</td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT RAG API integration map links LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>109 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> 8/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.3/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is coverage: it names only a small subset of visible platforms, so it underrepresents the image’s broader integration network.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+  &quot;name&quot;: &quot;CustomGPT RAG API Integration Map Across Platforms&quot;,
+  &quot;description&quot;: &quot;Illustration of a CustomGPT RAG API integration map connecting LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines. The graphic emphasizes how a single CustomGPT setup can unify multiple external platforms and data sources.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai API tab showing managed API keys&quot;,
+    &quot;description&quot;: &quot;Screenshot of the API tab in the CustomGPT.ai My Profile page, where users can manage API credentials. It shows two keys, including a Researcher API Key, with created and last-used dates plus controls to create, edit, and delete keys.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1920
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 922
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+    &quot;name&quot;: &quot;CustomGPT RAG API demo of ChatMTC on MIT Orbit&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT RAG API demo interface featuring ChatMTC on the MIT Orbit context. The UI shows a 0/8000 input counter and an \&quot;Explore Orbit\&quot; call-to-action button.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+    &quot;name&quot;: &quot;CustomGPT RAG API GitHub Notebook Setup in Python&quot;,
+    &quot;description&quot;: &quot;Screenshot of a GitHub notebook demonstrating CustomGPT RAG API setup with Python code cells. The notebook includes installation of the customgpt-client package and references a sitemap URL named small-sitemap.xml for data ingestion.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+    &quot;name&quot;: &quot;CustomGPT RAG API docs cURL auth toggle interface&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT RAG API documentation interface showing a Shell-selected cURL POST request example. The panel includes an authorization selector with Bearer/JWT options and a visible \&quot;Try It\&quot; button for testing the endpoint.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+    &quot;name&quot;: &quot;CustomGPT RAG API notebook setup with Project.create&quot;,
+    &quot;description&quot;: &quot;Screenshot of a CustomGPT RAG API notebook showing installation of the customgpt-client package and a Project.create call. The code example uses a sitemap_path URL to initialize data ingestion for a bot project.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+    &quot;name&quot;: &quot;CustomGPT RAG API notebook setup and project creation&quot;,
+    &quot;description&quot;: &quot;A notebook-based workflow for the CustomGPT RAG API showing steps to install the customgpt-client package, configure an API token, and initialize a project. The process includes creating the project from an uploaded sitemap file.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+    &quot;name&quot;: &quot;CustomGPT RAG API Integration Map Across Platforms&quot;,
+    &quot;description&quot;: &quot;Illustration of a CustomGPT RAG API integration map connecting LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines. The graphic emphasizes how a single CustomGPT setup can unify multiple external platforms and data sources.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  }
+]</pre></div>
+<h2>Issues Detected</h2>
+<ul style="font-size:13px;margin-left:20px">
+<li>Missing dimensions: AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4</li>
+<li>Missing dimensions: AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-</li>
+<li>Missing dimensions: AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB</li>
+<li>Missing dimensions: AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe</li>
+<li>Missing dimensions: AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs</li>
+</ul>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (API-key.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 24/100 — Only one image has a somewhat relevant alt text (&#x27;API key&#x27;), while the rest use </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 90/100 — The image is branded, topic-specific, visually clear, and the alt text is descri</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 58/100 — The clearly relevant CustomGPT API-key dashboard screenshot strongly matches the</td>
+      </tr>
+
+      <tr>
+        <td>3.1</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT RAG API demo shows ChatMTC on MIT Orbit, with 0/80" (102ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.2</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT RAG API GitHub notebook shows Python cells install" (114ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.3</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT RAG API docs show Shell-selected cURL POST example" (106ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.4</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT RAG API notebook shows customgpt-client install an" (107ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.5</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT RAG API notebook installs customgpt-client, sets A" (121ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.6</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT RAG API integration map links LinkedIn, WordPress," (109ch)</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;chatgpt-api&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/chatgpt-api/&quot;,
+    &quot;wp_post_id&quot;: 16524,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;CustomGPT RAG API: Build ChatGPT Bots With Your Data&quot;,
+    &quot;word_count&quot;: 1498,
+    &quot;image_count&quot;: 7,
+    &quot;total_image_count&quot;: 7,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API.png&quot;,
+    &quot;featured_image_alt&quot;: &quot;Introducing CustomGPT API : Build And Query ChatGPT-4 Chatbots With Your Own Data&quot;,
+    &quot;composite_score&quot;: 45.9,
+    &quot;grade&quot;: &quot;D&quot;,
+    &quot;issues&quot;: [
+      &quot;Missing dimensions: AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&quot;,
+      &quot;Missing dimensions: AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-&quot;,
+      &quot;Missing dimensions: AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB&quot;,
+      &quot;Missing dimensions: AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe&quot;,
+      &quot;Missing dimensions: AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs&quot;
+    ],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 55&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 53&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 60&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 56&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 57&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 58&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key.png&quot;,
+        &quot;filename&quot;: &quot;API-key.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 24,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Only one image has a somewhat relevant alt text (&#x27;API key&#x27;), while the rest use generic placeholder labels (&#x27;image XX&#x27;) that provide almost no descriptive value for accessibility or SEO.&quot;,
+        &quot;per_image_scores&quot;: [
+          5,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        &quot;weighted&quot;: 6.0
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;7 images / 1498 words (ideal ~4)&quot;,
+        &quot;weighted&quot;: 12.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 50,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 5.0
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 31,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;png&quot;: 1,
+          &quot;unknown&quot;: 6
+        },
+        &quot;weighted&quot;: 3.1
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 14,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: [
+          &quot;Missing dimensions: AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&quot;,
+          &quot;Missing dimensions: AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-&quot;,
+          &quot;Missing dimensions: AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB&quot;,
+          &quot;Missing dimensions: AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe&quot;,
+          &quot;Missing dimensions: AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs&quot;
+        ],
+        &quot;weighted&quot;: 1.4
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 90,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, topic-specific, visually clear, and the alt text is descriptive, though it could be slightly more dynamic for a perfect score.&quot;,
+        &quot;weighted&quot;: 9.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 58,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The clearly relevant CustomGPT API-key dashboard screenshot strongly matches the RAG API topic, but the remaining images lack descriptive alt text/context so their topical reinforcement appears uncertain and likely mixed.&quot;,
+        &quot;weighted&quot;: 8.7
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 14,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;1/7 images schema-ready&quot;,
+        &quot;weighted&quot;: 0.7
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key.png&quot;,
+        &quot;alt_text&quot;: &quot;API key&quot;,
+        &quot;filename&quot;: &quot;API-key.png&quot;,
+        &quot;wp_media_id&quot;: 46791,
+        &quot;width&quot;: 1920,
+        &quot;height&quot;: 922,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows the &#x27;API&#x27; tab of the &#x27;My Profile&#x27; page on the CustomGPT.ai platform where users can manage their API keys, including options to create, edit, and delete keys.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai profile API tab showing API key management and create API key button&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;alt_text&quot;: &quot;image 55&quot;,
+        &quot;filename&quot;: &quot;AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;alt_text&quot;: &quot;image 53&quot;,
+        &quot;filename&quot;: &quot;AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;alt_text&quot;: &quot;image 60&quot;,
+        &quot;filename&quot;: &quot;AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;alt_text&quot;: &quot;image 56&quot;,
+        &quot;filename&quot;: &quot;AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;alt_text&quot;: &quot;image 57&quot;,
+        &quot;filename&quot;: &quot;AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;alt_text&quot;: &quot;image 58&quot;,
+        &quot;filename&quot;: &quot;AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: null
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;chatgpt-api&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 55&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT RAG API demo shows ChatMTC on MIT Orbit, with 0/8000 input counter and Explore Orbit button.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 53&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT RAG API GitHub notebook shows Python cells installing customgpt-client and sitemap URL small-sitemap.xml&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 60&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT RAG API docs show Shell-selected cURL POST example with Bearer/JWT auth toggle and Try It button&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 56&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT RAG API notebook shows customgpt-client install and Project.create call using a sitemap_path URL.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 57&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT RAG API notebook installs customgpt-client, sets API token, and creates a project from an uploaded sitemap file&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;bad_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;filename&quot;: &quot;AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;image 58&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT RAG API integration map links LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      }
+    ],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 6,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key.png&quot;,
+      &quot;filename&quot;: &quot;API-key.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai API tab lists two keys, including Researcher API Key, with created and last used dates.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface of CustomGPT.ai under the \&quot;My Profile\&quot; section with the \&quot;API\&quot; tab highlighted at the top. It displays information about the CustomGPT.ai API, a Quickstart Guide link, and an API Key table with columns for Name, Secret Key, Created date, and Last Used date. Two API keys are listed: \&quot;CustomGPT.ai Researcher API Key\&quot; created on 25 Jan 2025 and last used on 6 Mar 2025, and \&quot;My API\&quot; created on 29 Jan 2025 with \&quot;Never\&quot; last used. There is a purple button labeled \&quot;Create API Key\&quot; at the bottom left of the API Key section. The left sidebar includes UI elements such as Dashboard, Agents, Support, Refer and Earn!, and a CustomGPT.ai Copilot input box.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai API tab lists two keys, including Researcher API Key, with created and last used dates.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The main weakness is incompleteness: it omits the second key name and other visible UI details that could improve retrieval specificity.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai API tab lists two keys, including Researcher API Key, with created and last used dates.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The main weakness is incompleteness: it omits the second key name and other visible UI details that could improve retrieval specificity.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;API key&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;filename&quot;: &quot;AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT RAG API demo shows ChatMTC on MIT Orbit, with 0/8000 input counter and Explore Orbit button.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a webpage from \&quot;MIT orbit\&quot; with the text \&quot;The one for MIT\&quot; and \&quot;Find opportunities, classes and connec\&quot; partially visible. There is a button labeled \&quot;Explore Orbit\&quot; on the left side. A chatbot interface is open in the center with the message, \&quot;Hi, I&#x27;m ChatMTC from the Martin Trust Center for MIT Entrepreneurship. How can I help you?\&quot; and a placeholder input box indicating \&quot;0/8000.\&quot; Below this, a question \&quot;What is MIT&#x27;s Martin Trust Center for Entrepreneurship?\&quot; is displayed within a dark translucent box with navigation arrows on either side. The top right corner contains \&quot;CLASSES\&quot; and a \&quot;Login\&quot; button. A \&quot;Help\&quot; button is visible at the bottom left of the screen.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT RAG API demo shows ChatMTC on MIT Orbit, with 0/8000 input counter and Explore Orbit button.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.67,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits a key visible text element (the sample user question), which would improve extractable context for answer engines.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT RAG API demo shows ChatMTC on MIT Orbit, with 0/8000 input counter and Explore Orbit button.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.67,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits a key visible text element (the sample user question), which would improve extractable context for answer engines.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;image 55&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;filename&quot;: &quot;AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT RAG API GitHub notebook shows Python cells installing customgpt-client and sitemap URL small-sitemap.xml&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a section of a GitHub repository file named \&quot;SDK_Create_Bot_By_Sitemap.ipynb\&quot; located in \&quot;customgpt-cookbook/examples\&quot; by the user \&quot;authentichamza\&quot;. It displays code cells of a Jupyter notebook with Python commands for installing the \&quot;customgpt-client\&quot; package and creating a custom chatbot using a sitemap. Visible code includes importing CustomGPT, setting an API key placeholder \&quot;YOUR_API_TOKEN\&quot;, and defining a project name and sitemap URL &#x27;https://adorosario.github.io/small-sitemap.xml&#x27;. The interface includes tabs labeled \&quot;Preview\&quot;, \&quot;Code\&quot;, and \&quot;Blame\&quot;, along with buttons for raw file view, copying, downloading, and editing the file.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT RAG API GitHub notebook shows Python cells installing customgpt-client and sitemap URL small-sitemap.xml&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits key on-screen identifiers (repo path/file name) that would make the caption even more uniquely citable.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT RAG API GitHub notebook shows Python cells installing customgpt-client and sitemap URL small-sitemap.xml&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits key on-screen identifiers (repo path/file name) that would make the caption even more uniquely citable.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;image 53&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;filename&quot;: &quot;AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT RAG API docs show Shell-selected cURL POST example with Bearer/JWT auth toggle and Try It button&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface with a section labeled \&quot;LANGUAGE\&quot; that includes selectable options for Shell (highlighted), Node, Ruby, PHP, and Python, each represented by their respective icons. Below it, in the \&quot;AUTHORIZATION\&quot; section, there is an input field labeled \&quot;Bearer\&quot; with blurred content and an option to choose between \&quot;Bearer\&quot; and \&quot;JWT.\&quot; The main area displays a \&quot;CURL\&quot; code snippet example, starting with \&quot;curl --request POST ...\&quot;, specifying URL, headers for accept, authorization, and content-type in JSON format. At the bottom right of the code snippet section, there is a black button labeled \&quot;Try It!\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT RAG API docs show Shell-selected cURL POST example with Bearer/JWT auth toggle and Try It button&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 10,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.8,
+          &quot;critique&quot;: &quot;Biggest weakness is slight compression/ambiguity in phrasing (e.g., &#x27;Shell-selected&#x27;) that could be clearer for machine extraction.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT RAG API docs show Shell-selected cURL POST example with Bearer/JWT auth toggle and Try It button&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 10,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.8,
+        &quot;critique&quot;: &quot;Biggest weakness is slight compression/ambiguity in phrasing (e.g., &#x27;Shell-selected&#x27;) that could be clearer for machine extraction.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;image 60&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;filename&quot;: &quot;AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT RAG API notebook shows customgpt-client install and Project.create call using a sitemap_path URL.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a Jupyter notebook interface with Python code snippets related to installing and using the \&quot;customgpt-client\&quot; library. The visible text includes:\n\n1. \&quot;!pip install customgpt-client\&quot;\n2. \&quot;Create your custom chat bot using a sitemap.\&quot;\n3. \&quot;from customgpt_client import CustomGPT\&quot;\n4. \&quot;CustomGPT.api_key = &#x27;YOUR_API_TOKEN&#x27;\&quot;\n5. \&quot;An example for to create a project with a sitemap\&quot;\n6. \&quot;# Give a name to your project\&quot;\n7. \&quot;project_name = &#x27;Example ChatBot using Sitemap&#x27;\&quot;\n8. \&quot;sitemap_path = &#x27;https://adorosario.github.io/small-sitemap.xml&#x27;\&quot;\n9. \&quot;create_project = CustomGPT.Project.create(project_name=project_name, sitemap_path=sitemap_path)\&quot;\n10. \&quot;print(create_project)\&quot;\n\nThe UI includes code cells with Python syntax highlighting, showing imports, variable assignments, and function calls for creating a project using CustomGPT with a sitemap URL.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT RAG API notebook shows customgpt-client install and Project.create call using a sitemap_path URL.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits the explicit Jupyter/Python context, which would make the extracted fact slightly more precise for answer engines.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT RAG API notebook shows customgpt-client install and Project.create call using a sitemap_path URL.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits the explicit Jupyter/Python context, which would make the extracted fact slightly more precise for answer engines.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;image 56&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;filename&quot;: &quot;AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT RAG API notebook installs customgpt-client, sets API token, and creates a project from an uploaded sitemap file&quot;,
+      &quot;vision_description&quot;: &quot;The image shows three code cells from a Jupyter notebook interface, each beginning with \&quot;In [ ]:\&quot;. The first cell contains the command `!pip install customgpt-client` to install a Python package. The second cell imports the `CustomGPT` class from the `customgpt_client` module and sets the `CustomGPT.api_key` variable to \&quot;YOUR_API_TOKEN\&quot;. The third cell imports `files` from `google.colab` and `File` from `customgpt_client.types`, sets a project name variable to &#x27;Example ChatBot using Sitemap&#x27;, uploads a file using `files.upload()`, processes the uploaded file, creates a project with `CustomGPT.Project.create()` using the uploaded file, and prints the created project. The code is written in Python and includes comments and variable assignments.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT RAG API notebook installs customgpt-client, sets API token, and creates a project from an uploaded sitemap file&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 10,
+          &quot;overall&quot;: 9.8,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits visible structural context (three Jupyter/Colab code cells), which could improve retrievability precision.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT RAG API notebook installs customgpt-client, sets API token, and creates a project from an uploaded sitemap file&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 10,
+        &quot;overall&quot;: 9.8,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits visible structural context (three Jupyter/Colab code cells), which could improve retrievability precision.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;image 57&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;filename&quot;: &quot;AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT RAG API integration map links LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a network of interconnected logos of various software, applications, and platforms, linked by dotted red lines. The visible logos include LinkedIn, WordPress, Slack, Google Sheets, Gmail, Trello, GitHub, Mailchimp, Facebook, Twitter, Google Calendar, Asana, Salesforce, Dropbox, Instagram, PayPal, Shopify, and many more. There are no text labels, headings, buttons, or UI copy other than the logos themselves. This is a visual map or diagram depicting potential integrations or connections among these digital tools.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT RAG API integration map links LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness is coverage: it names only a small subset of visible platforms, so it underrepresents the image\u2019s broader integration network.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT RAG API integration map links LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness is coverage: it names only a small subset of visible platforms, so it underrepresents the image\u2019s broader integration network.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;image 58&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai API tab showing managed API keys&quot;,
+        &quot;description&quot;: &quot;Screenshot of the API tab in the CustomGPT.ai My Profile page, where users can manage API credentials. It shows two keys, including a Researcher API Key, with created and last-used dates plus controls to create, edit, and delete keys.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1920
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 922
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqixUdjZYvPt8R_ghipYc9AN3uTMaK9cHg1xCYqCydlGUoxq9Sh_0DwuAjuCinMdMfeYoc-QhZHFYBs4iuGVgllckG5lAQO_WdwGAHOPKBe6-Kns5SpQ7t5uuH9Q47gWdvNjo67e_lyybVuUt1nRIYIX4?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;name&quot;: &quot;CustomGPT RAG API demo of ChatMTC on MIT Orbit&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT RAG API demo interface featuring ChatMTC on the MIT Orbit context. The UI shows a 0/8000 input counter and an \&quot;Explore Orbit\&quot; call-to-action button.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXd3KrIB_YI05E9VMj6Ts-yC99WDoL8FF_5oVHAyhyzugPjHdlIo17Mpmq6qZNlJkxKDnwwp1GNXqY8TnJ5Kdka9dXlDj5Ucwxvs2zZ17KnEuJ7bGWdjzDuEwuDzMBj4lDXGCctRNgav4YPmBaJo1b-2ARp-?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;name&quot;: &quot;CustomGPT RAG API GitHub Notebook Setup in Python&quot;,
+        &quot;description&quot;: &quot;Screenshot of a GitHub notebook demonstrating CustomGPT RAG API setup with Python code cells. The notebook includes installation of the customgpt-client package and references a sitemap URL named small-sitemap.xml for data ingestion.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXfWzQSLdgdFnTeOTK7WrNT7MQu_uaWQ0jSLWTJUU9ZEVSn0ucx1iq-G4GqFOJoyL9nVP70qcDyaL19kzP2LMkNdTpeN-A-RdKPYOR9C3x9teoUME1u2G_KYYDQWLV2R5yOPhUosE_Hgt2PVBNPQiPwl_qAB?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;name&quot;: &quot;CustomGPT RAG API docs cURL auth toggle interface&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT RAG API documentation interface showing a Shell-selected cURL POST request example. The panel includes an authorization selector with Bearer/JWT options and a visible \&quot;Try It\&quot; button for testing the endpoint.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkiEOS23fY3I7E5ur0rCgDrgwBFMJh5sVOUB-4bfb3vhk0SgPQfLDqmUY1yCg5qpV152-izUe4rdfQ0wEOtMCHmpb0n4DMIsG0q7lEhsCQrtNjwW1H_RB48H7hJr-LM1wV23avgDAT0ciyvNf8klKksSZe?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;name&quot;: &quot;CustomGPT RAG API notebook setup with Project.create&quot;,
+        &quot;description&quot;: &quot;Screenshot of a CustomGPT RAG API notebook showing installation of the customgpt-client package and a Project.create call. The code example uses a sitemap_path URL to initialize data ingestion for a bot project.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXc8TsKL-S0YxQsTkVKlQcQgd0VUyKBPrfHHZPmc5wsoWqT0IkXK313qC1dw8DaurY9f-rr9Pj8YqZWAa_xwzx-4T2aTlySrqWm-zU9UcwxiXRFGBCiuhg5qN1j-68c5WQIRDsfCxG-7MJ-wcPBs7XkPoPHs?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;name&quot;: &quot;CustomGPT RAG API notebook setup and project creation&quot;,
+        &quot;description&quot;: &quot;A notebook-based workflow for the CustomGPT RAG API showing steps to install the customgpt-client package, configure an API token, and initialize a project. The process includes creating the project from an uploaded sitemap file.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOhJOXqSJEdG1GQXX3_PMJx7vD2KhMsrHVCpuOn-MaAyMchHl_tM5Uak2I9ujMQF38tBz3ZZNAh2W9kAR_t1oFACRr3MxV6vbIkvH7Tl-Fm5Uwsu9k-kc6GVlPzhQ8tYbA6PFmFXcbd7MMBEmbI5X2nDY?key=6_1X_JXzXVgq7yg9ak8Atw&quot;,
+        &quot;name&quot;: &quot;CustomGPT RAG API Integration Map Across Platforms&quot;,
+        &quot;description&quot;: &quot;Illustration of a CustomGPT RAG API integration map connecting LinkedIn, WordPress, Slack, GitHub, and Shopify with dotted red lines. The graphic emphasizes how a single CustomGPT setup can unify multiple external platforms and data sources.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: []
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 01:26 UTC
+</div>
+</div>
+</body>
+</html>

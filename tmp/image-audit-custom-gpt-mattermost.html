@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — custom-gpt-mattermost</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>Custom GPT For Your Mattermost Site: Ultimate AI Assistant Guide</strong><br>
+  <a href="https://customgpt.ai/custom-gpt-mattermost/" target="_blank">https://customgpt.ai/custom-gpt-mattermost/</a><br>
+  Generated: 2026-03-14 01:30 UTC &middot; WP Post ID: 28092 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#d97706">C</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">68.8</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">13/13</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">10</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">0</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3407</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:40%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">40</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.0</strong> / 25<br>
+    Most alt text is section-title or keyword style rather than concrete visual descriptions, with only a few UI screenshots described specifically enough to be moderately useful.
+  </div>
+<div class="dim-details">Per-image scores: [4, 3, 3, 6, 6, 4, 4, 4, 3, 3]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>12.0</strong> / 15<br>
+    13 images / 3407 words (ideal ~9)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:72%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">72</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.2</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:40%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">40</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.0</strong> / 10<br>
+    {&#x27;png&#x27;: 13}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>10.0</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:70%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">70</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>7.0</strong> / 10<br>
+    The image is custom and visually appealing with a good aspect ratio and relevant elements related to technology and knowledge, but it lacks clear Mattermost branding or explicit GPT AI elements, and t
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:91%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">91</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>13.7</strong> / 15<br>
+    The images strongly support the Mattermost Custom GPT guide with highly relevant product screenshots and matching AI-themed custom illustrations, with only a few visuals being somewhat generic concept
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.0</strong> / 5<br>
+    13/13 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 40 &times; 0.25 = <strong>10.0</strong><br>D2: Image Coverage: 80 &times; 0.15 = <strong>12.0</strong><br>D3: Filename Quality: 72 &times; 0.1 = <strong>7.2</strong><br>D4: Format & Performance: 40 &times; 0.1 = <strong>4.0</strong><br>D5: Technical Attributes (dims + srcset): 100 &times; 0.1 = <strong>10.0</strong><br>D6: Featured Image: 70 &times; 0.1 = <strong>7.0</strong><br>D7: Entity Coherence: 91 &times; 0.15 = <strong>13.7</strong><br>D8: Schema Readiness: 100 &times; 0.05 = <strong>5.0</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 68.8 &rarr; Grade: C</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: CustomGPT-2-1-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>custom gpt mattermost</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28104</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A futuristic office setting with multiple people working on computers, featuring a central digital hologram of a humanoid figure labeled &#x27;Custom GPT&#x27; with various technology and communication icons surrounding it.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Office scene with holographic humanoid figure representing Custom GPT AI assistant.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: image-136-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Understanding GPT and Its Capabilities</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28101</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A futuristic digital representation of a robotic head surrounded by various technology and communication icons with a glowing cityscape in the background.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Futuristic robotic head with tech icons and glowing cityscape background</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: image-135-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Setting Up Your Custom GPT AI for Mattermost</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28100</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A group of professionals is engaged in a presentation or discussion in front of a large digital screen displaying an abstract humanoid AI figure connected to user icons and data elements.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Professionals discussing AI assistant concept with digital humanoid figure and user data on large screen</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: customgpt-sign-up-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>customgpt sign in</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>45275</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a login page for CustomGPT.ai with a sign-in form and icons representing integration with various platforms like Google Drive, Slack, YouTube, and others.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai login page with AI integration platform icons and sign-in form.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: website-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>select website integration
+</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47215</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a user interface for selecting a data source for an AI agent, featuring options like Website, WordPress, File Upload, YouTube, Zapier, and API.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of data source selection interface for AI agent with options like Website, WordPress, YouTube, and API.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: wesbite-url-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Website url</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47216</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a web interface for selecting a data source to build a custom AI agent, with an active popup for entering a website URL to create an agent using sitemap data.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of interface to pick data source and create AI agent using website URL and sitemap</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: deploy-agent-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>deploy agent</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>47306</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This image shows a user interface for managing AI agents on CustomGPT.ai, including agent stats like documents added, read, words stored, and query count.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT.ai dashboard showing AI agent stats and management options.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 8: API-Deployment-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>API Deployment</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>46881</td></tr>
+      <tr><td><strong>Position</strong></td><td>#8</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This screenshot shows the &#x27;Deploy Your Agent&#x27; section of the CustomGPT.ai interface, highlighting the API tab and the &#x27;Create API Key&#x27; button for integrations.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai dashboard showing Deploy Your Agent API tab with Create API Key button highlighted</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 9: image-134-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Best Practices for Using GPT in Mattermost</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28099</td></tr>
+      <tr><td><strong>Position</strong></td><td>#9</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A futuristic office scene with people working on laptops at desks, focused on a glowing key with a smiley face surrounded by various digital and technological icons symbolizing innovation and knowledge.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Illustration of office workers focusing on a glowing key surrounded by digital icons symbolizing AI and innovation.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 10: image-130-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Advanced Customizations and Features</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28095</td></tr>
+      <tr><td><strong>Position</strong></td><td>#10</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>A person fitting a puzzle piece into a large light switch labeled &#x27;Advanced Customization&#x27;, with a head silhouette made of circuit-like puzzle pieces in the background, symbolizing AI and customization concepts.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Illustration of advanced AI customization with puzzle pieces and a glowing light switch.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 11: image-129-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Real-World Applications and Success Stories</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28094</td></tr>
+      <tr><td><strong>Position</strong></td><td>#11</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 12: Custom-GPT-For-Your-Mattermost-Site.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>custom gpt mattermost</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1025 &times; 1025</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28999</td></tr>
+      <tr><td><strong>Position</strong></td><td>#12</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 13: image-128-1024x585.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>custom gpt mattermost</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 585</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>28093</td></tr>
+      <tr><td><strong>Position</strong></td><td>#13</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+<div class="card"><div class="card-header">No fixes generated</div></div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png</td><td><em>Custom GPT for Mattermost maps assistant workflows across five domains: chat, code, docs, search, alerts.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png</td><td><em>Custom GPT for Mattermost links meeting participants with channel history and action-item extraction.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png</td><td><em>CustomGPT.ai provides 3 sign-in options before linking a Mattermost GPT to external knowledge apps.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png</td><td><em>Mattermost Custom GPT setup maps six ingestion connectors, with Website as the primary crawl source.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">omgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png</td><td><em>Mattermost custom GPT setup uses a Website source modal, then maps sitemap pages into one agent.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">mgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png</td><td><em>CustomGPT.ai All Agents dashboard tracks ingestion and query metrics for a Mattermost support assistant.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">pt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png</td><td><em>Mattermost integration in CustomGPT.ai uses Agent ID and Agent Key from Deploy &gt; API for bot authentication.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png</td><td><em>Custom GPT for Mattermost links channel history, docs, and tickets through a 3-step RAG workflow.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png</td><td><em>Custom GPT for Mattermost links workspace data to role-based prompts, with channel-level controls.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png</td><td><em>Custom GPT for Mattermost workshop maps channel Q&amp;A to team knowledge with permission-aware responses.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">tent/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png</td><td><em>Custom GPT for Mattermost links channel threads and docs to generate context-aware answers in one workspace.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">stomgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png</td><td><em>Custom GPT for Mattermost links team channels to one assistant with role-based access controls.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT Mattermost Office Hologram Interface&quot;,
+    &quot;description&quot;: &quot;A futuristic Mattermost office scene shows several people working at computers while a central humanoid hologram labeled \&quot;Custom GPT\&quot; appears in the foreground. Around it are floating technology and communication icons, including email, cloud, gear, and user profile symbols.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Mattermost AI Assistant Concept Cybernetic Head&quot;,
+    &quot;description&quot;: &quot;A blue cybernetic head symbolizes a Mattermost AI assistant, encircled by speech-bubble and technology icons. The scene is set against a neon grid and glowing futuristic cityscape, emphasizing digital communication and automation.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Mattermost Meeting Assistant UI&quot;,
+    &quot;description&quot;: &quot;Custom GPT for Mattermost is shown within a meeting interface, with \u201cGPT\u201d and \u201cA meeting\u201d labels around a central avatar. A team of professionals appears to be in a presentation setting in front of a large digital display featuring an abstract humanoid AI connected to user icons and data elements.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Mattermost Sign-In and Integrations&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai login page for Mattermost users, showing sign-in options with company email, Google, and SSO. The interface also highlights app integration icons such as Google Drive, Slack, YouTube, and other connected platforms.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT data source selection interface view&quot;,
+    &quot;description&quot;: &quot;Screenshot of the Custom GPT agent setup screen on the \u201cPick data source\u201d step, with Website selected. The interface also shows available source options including WordPress, File Upload, YouTube, Zapier, and API.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Mattermost sitemap URL setup&quot;,
+    &quot;description&quot;: &quot;The screenshot shows the CustomGPT.ai interface for building a Mattermost-focused AI agent using a website as the data source. A popup modal is active for entering a website URL, where the platform auto-detects sitemap data before proceeding to Create Agent.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai AI Agent Dashboard with Usage Stats&quot;,
+    &quot;description&quot;: &quot;The screenshot shows the CustomGPT.ai All Agents panel with an AI Agent marked as Ready. It displays key metrics including 12 documents added, words stored (6201), and sorting set to Newest First, alongside additional agent activity stats.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai Deploy Tab API Key Setup Interface&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai \&quot;Deploy Your Agent\&quot; section with the API tab selected, showing the Create API Key button for integration setup. The interface also displays Agent ID, Agent Key, and a + New Agent option.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Mattermost Custom GPT assistant concept illustration&quot;,
+    &quot;description&quot;: &quot;A futuristic office scene shows teams working on laptops while a glowing key with a smiley face is highlighted at the center. Cloud, analytics graph, and gear icons surround it, visualizing a Custom GPT assistant for Mattermost focused on productivity, innovation, and knowledge access.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Custom GPT for Mattermost advanced customization&quot;,
+    &quot;description&quot;: &quot;An illustration shows Custom GPT for Mattermost as a puzzle-piece integration beneath a large light switch labeled \u201cAdvanced Customization.\u201d In the background, a human head silhouette made of circuit-like puzzle pieces symbolizes AI-driven personalization and modular configuration.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Mattermost Custom GPT Workshop Dashboard View&quot;,
+    &quot;description&quot;: &quot;A workshop screen for Custom GPT on Mattermost shows a prominent heading and multiple circular data charts. In the foreground, attendees are seated and working on laptops, suggesting a hands-on training session.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+    &quot;name&quot;: &quot;Mattermost Custom GPT AI capabilities overview&quot;,
+    &quot;description&quot;: &quot;This graphic promotes a Custom GPT for Mattermost and highlights nine AI capabilities available in the assistant. It specifically calls out features such as discussion summaries and support for 93+ languages.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1025
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1025
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+    &quot;name&quot;: &quot;Mattermost Custom GPT collaboration guide illustration&quot;,
+    &quot;description&quot;: &quot;Illustration for a Custom GPT for Mattermost guide featuring a figure seated in a nest-like setting, teams collaborating, and floating data charts. The visual emphasizes AI-assisted teamwork, communication, and analytics within a Mattermost workflow.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 585
+    }
+  }
+]</pre></div>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (CustomGPT-2-1-1024x585.png)</td>
+        <td>type=illustration relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (image-136-1024x585.png)</td>
+        <td>type=illustration relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.3</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 3 (image-135-1024x585.png)</td>
+        <td>type=illustration relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (customgpt-sign-up-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.5</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 5 (website-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.6</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 6 (wesbite-url-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.7</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 7 (deploy-agent-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.8</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 8 (API-Deployment-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.9</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 9 (image-134-1024x585.png)</td>
+        <td>type=illustration relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.10</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 10 (image-130-1024x585.png)</td>
+        <td>type=illustration relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 40/100 — Most alt text is section-title or keyword style rather than concrete visual desc</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 70/100 — The image is custom and visually appealing with a good aspect ratio and relevant</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 91/100 — The images strongly support the Mattermost Custom GPT guide with highly relevant</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;custom-gpt-mattermost&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/custom-gpt-mattermost/&quot;,
+    &quot;wp_post_id&quot;: 28092,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;Custom GPT For Your Mattermost Site: Ultimate AI Assistant Guide&quot;,
+    &quot;word_count&quot;: 3407,
+    &quot;image_count&quot;: 13,
+    &quot;total_image_count&quot;: 13,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-137.png&quot;,
+    &quot;featured_image_alt&quot;: &quot;custom gpt mattermost&quot;,
+    &quot;composite_score&quot;: 68.8,
+    &quot;grade&quot;: &quot;C&quot;,
+    &quot;issues&quot;: [],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;CustomGPT-2-1-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-136-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-135-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;customgpt-sign-up-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;website-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;wesbite-url-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;deploy-agent-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;API-Deployment-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-134-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-130-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-129-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+        &quot;filename&quot;: &quot;Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+        &quot;filename&quot;: &quot;image-128-1024x585.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 40,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most alt text is section-title or keyword style rather than concrete visual descriptions, with only a few UI screenshots described specifically enough to be moderately useful.&quot;,
+        &quot;per_image_scores&quot;: [
+          4,
+          3,
+          3,
+          6,
+          6,
+          4,
+          4,
+          4,
+          3,
+          3
+        ],
+        &quot;weighted&quot;: 10.0
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;13 images / 3407 words (ideal ~9)&quot;,
+        &quot;weighted&quot;: 12.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 72,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 7.2
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 40,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;png&quot;: 13
+        },
+        &quot;weighted&quot;: 4.0
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 10.0
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 70,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is custom and visually appealing with a good aspect ratio and relevant elements related to technology and knowledge, but it lacks clear Mattermost branding or explicit GPT AI elements, and the alt text could be more descriptive.&quot;,
+        &quot;weighted&quot;: 7.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 91,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The images strongly support the Mattermost Custom GPT guide with highly relevant product screenshots and matching AI-themed custom illustrations, with only a few visuals being somewhat generic concept art.&quot;,
+        &quot;weighted&quot;: 13.65
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 100,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;13/13 images schema-ready&quot;,
+        &quot;weighted&quot;: 5.0
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;custom gpt mattermost&quot;,
+        &quot;filename&quot;: &quot;CustomGPT-2-1-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28104,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A futuristic office setting with multiple people working on computers, featuring a central digital hologram of a humanoid figure labeled &#x27;Custom GPT&#x27; with various technology and communication icons surrounding it.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Office scene with holographic humanoid figure representing Custom GPT AI assistant.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Understanding GPT and Its Capabilities&quot;,
+        &quot;filename&quot;: &quot;image-136-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28101,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A futuristic digital representation of a robotic head surrounded by various technology and communication icons with a glowing cityscape in the background.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Futuristic robotic head with tech icons and glowing cityscape background&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Setting Up Your Custom GPT AI for Mattermost&quot;,
+        &quot;filename&quot;: &quot;image-135-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28100,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A group of professionals is engaged in a presentation or discussion in front of a large digital screen displaying an abstract humanoid AI figure connected to user icons and data elements.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Professionals discussing AI assistant concept with digital humanoid figure and user data on large screen&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;customgpt sign in&quot;,
+        &quot;filename&quot;: &quot;customgpt-sign-up-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 45275,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a login page for CustomGPT.ai with a sign-in form and icons representing integration with various platforms like Google Drive, Slack, YouTube, and others.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai login page with AI integration platform icons and sign-in form.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;select website integration\n&quot;,
+        &quot;filename&quot;: &quot;website-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47215,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a user interface for selecting a data source for an AI agent, featuring options like Website, WordPress, File Upload, YouTube, Zapier, and API.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of data source selection interface for AI agent with options like Website, WordPress, YouTube, and API.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;Website url&quot;,
+        &quot;filename&quot;: &quot;wesbite-url-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47216,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image shows a web interface for selecting a data source to build a custom AI agent, with an active popup for entering a website URL to create an agent using sitemap data.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of interface to pick data source and create AI agent using website URL and sitemap&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;deploy agent&quot;,
+        &quot;filename&quot;: &quot;deploy-agent-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 47306,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;This image shows a user interface for managing AI agents on CustomGPT.ai, including agent stats like documents added, read, words stored, and query count.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT.ai dashboard showing AI agent stats and management options.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;API Deployment&quot;,
+        &quot;filename&quot;: &quot;API-Deployment-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 46881,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 7,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;This screenshot shows the &#x27;Deploy Your Agent&#x27; section of the CustomGPT.ai interface, highlighting the API tab and the &#x27;Create API Key&#x27; button for integrations.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai dashboard showing Deploy Your Agent API tab with Create API Key button highlighted&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Best Practices for Using GPT in Mattermost&quot;,
+        &quot;filename&quot;: &quot;image-134-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28099,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 8,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A futuristic office scene with people working on laptops at desks, focused on a glowing key with a smiley face surrounded by various digital and technological icons symbolizing innovation and knowledge.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Illustration of office workers focusing on a glowing key surrounded by digital icons symbolizing AI and innovation.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Advanced Customizations and Features&quot;,
+        &quot;filename&quot;: &quot;image-130-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28095,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 9,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;A person fitting a puzzle piece into a large light switch labeled &#x27;Advanced Customization&#x27;, with a head silhouette made of circuit-like puzzle pieces in the background, symbolizing AI and customization concepts.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;Illustration of advanced AI customization with puzzle pieces and a glowing light switch.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;Real-World Applications and Success Stories&quot;,
+        &quot;filename&quot;: &quot;image-129-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28094,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 10,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+        &quot;alt_text&quot;: &quot;custom gpt mattermost&quot;,
+        &quot;filename&quot;: &quot;Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+        &quot;wp_media_id&quot;: 28999,
+        &quot;width&quot;: 1025,
+        &quot;height&quot;: 1025,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 11,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+        &quot;alt_text&quot;: &quot;custom gpt mattermost&quot;,
+        &quot;filename&quot;: &quot;image-128-1024x585.png&quot;,
+        &quot;wp_media_id&quot;: 28093,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 585,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: true,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 12,
+        &quot;vision_analysis&quot;: null
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;custom-gpt-mattermost&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 0,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;CustomGPT-2-1-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT labeled hologram overlays a Mattermost office, with email, cloud, gear, and user profile icons.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a modern office workspace with many people working at desks with multiple computer screens; a translucent digital figure labeled \&quot;Custom GPT\&quot; is superimposed in the center. The holographic figure is surrounded by icons representing technology and communication, such as email, gears, clouds, and user profiles. The office is brightly lit with large windows and has a clean, organized layout with desks arranged in rows. Several people are wearing business attire, and the scene conveys a high-tech, collaborative environment.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT labeled hologram overlays a Mattermost office, with email, cloud, gear, and user profile icons.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is the phrase \&quot;Mattermost office,\&quot; which may over-assert brand-specific context not directly visible in the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT labeled hologram overlays a Mattermost office, with email, cloud, gear, and user profile icons.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is the phrase \&quot;Mattermost office,\&quot; which may over-assert brand-specific context not directly visible in the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;custom gpt mattermost&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-136-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT visualizes a Mattermost AI assistant as a blue cybernetic head ringed by icon speech bubbles over neon grid&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a futuristic digital representation of a human head composed of mechanical and electronic components, emitting a blue light. Around the head, there are multiple colorful speech bubbles containing various icons, such as a light bulb, Wi-Fi symbol, sun, speech bubble, musical note, gear, pin, magnifying glass, message, and smiley face. The background features a glowing cityscape with vertical neon lines and a grid-like surface with reflections, creating a high-tech, cybernetic atmosphere. There is no visible text, buttons, UI copy, logos, or brand names in the image.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT visualizes a Mattermost AI assistant as a blue cybernetic head ringed by icon speech bubbles over neon grid&quot;,
+          &quot;entity_placement&quot;: 9,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is that \&quot;Custom GPT\&quot; and \&quot;Mattermost AI assistant\&quot; are inferred context rather than directly visible entities in the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT visualizes a Mattermost AI assistant as a blue cybernetic head ringed by icon speech bubbles over neon grid&quot;,
+        &quot;entity_placement&quot;: 9,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is that \&quot;Custom GPT\&quot; and \&quot;Mattermost AI assistant\&quot; are inferred context rather than directly visible entities in the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Understanding GPT and Its Capabilities&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-135-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost is presented in a meeting UI, with \u201cGPT\u201d and \u201cA meeting\u201d labels around a central avatar.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a group of people seated around a large conference table while three individuals are standing and pointing towards a large digital screen. The screen displays a central glowing humanoid figure surrounded by multiple user interface elements, including icons of people, graphs, and text boxes. Visible text includes \&quot;GPT\&quot; in the upper right corner and \&quot;A meeting\&quot; in a small text box below it. The UI layout has a futuristic and tech-oriented design with circuit-like lines connecting elements around the humanoid figure.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost is presented in a meeting UI, with \u201cGPT\u201d and \u201cA meeting\u201d labels around a central avatar.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 7,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.8,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits key visual context (people around a conference table and presenters), making the description less specific than the image.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost is presented in a meeting UI, with \u201cGPT\u201d and \u201cA meeting\u201d labels around a central avatar.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 7,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.8,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits key visual context (people around a conference table and presenters), making the description less specific than the image.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Setting Up Your Custom GPT AI for Mattermost&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;customgpt-sign-up-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost shows CustomGPT.ai sign-in with company email, Google, and SSO plus app integrations.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a two-panel interface. The left panel has a purple background with the text \&quot;Empower your business by integrating your content with AI agents\&quot; above a logo of a brain with circuits labeled \&quot;CustomGPT.ai.\&quot; Below this are icons for various platforms, including Google Drive, SharePoint, Slack, YouTube, Zapier, WordPress, Shopify, Notion, and Zendesk.\n\nThe right panel is a login form with the heading \&quot;Sign In\&quot; and a link for \&quot;New User? Create an account.\&quot; There is a text box outlined in red with the placeholder text \&quot;Enter your company email address here.\&quot; Below that is a purple button labeled \&quot;Continue With Company Email,\&quot; followed by \&quot;OR CONTINUE WITH\&quot; and a \&quot;Google\&quot; button. At the bottom, it reads, \&quot;Have an organization account? Login using SSO.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost shows CustomGPT.ai sign-in with company email, Google, and SSO plus app integrations.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;The biggest weakness is that it compresses the layout and misses specific UI details (like the two-panel structure and highlighted email field) that would improve precision.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost shows CustomGPT.ai sign-in with company email, Google, and SSO plus app integrations.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;The biggest weakness is that it compresses the layout and misses specific UI details (like the two-panel structure and highlighted email field) that would improve precision.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;customgpt sign in&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;website-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT agent setup shows &#x27;Pick data source&#x27; with Website selected, plus WordPress, YouTube, Zapier, API.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface for selecting a data source for an agent with the heading \&quot;Pick data source for your agent.\&quot; There is a search bar with the placeholder text \&quot;Find the source you need quickly.\&quot; Below, under the heading \&quot;Most Popular,\&quot; there are six options with icons and labels: Website, WordPress, File Upload, YouTube, Zapier, and API. The \&quot;Website\&quot; option is highlighted with a red border and arrow. On the left side, there is a vertical toolbar with icons including a brain, a lock, a plus sign, a folder, and a settings or tools icon. At the bottom, there is a compliance note stating CustomGPT.ai is SOC 2 Type II certified and GDPR compliant, with a link labeled \&quot;Trust Center.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT agent setup shows &#x27;Pick data source&#x27; with Website selected, plus WordPress, YouTube, Zapier, API.&quot;,
+          &quot;entity_placement&quot;: 8,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.2,
+          &quot;critique&quot;: &quot;Biggest weakness: it omits one visible option (File Upload) and other concrete UI elements that could make the description more complete.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT agent setup shows &#x27;Pick data source&#x27; with Website selected, plus WordPress, YouTube, Zapier, API.&quot;,
+        &quot;entity_placement&quot;: 8,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.2,
+        &quot;critique&quot;: &quot;Biggest weakness: it omits one visible option (File Upload) and other concrete UI elements that could make the description more complete.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;select website integration\n&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;wesbite-url-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost shows Build Using Your Website, auto-detecting a sitemap before Create Agent.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface titled \&quot;Pick data source for your agent\&quot; with a search bar labeled \&quot;Find the source you need quickly.\&quot; A pop-up window titled \&quot;Build Using Your Website\&quot; is open, containing a field to enter a website&#x27;s URL or sitemap, starting with \&quot;https://\&quot;. Below this field, a green check icon and text state, \&quot;We have found a sitemap(s) on your page!\&quot; with a purple button labeled \&quot;Create Agent.\&quot; \n\nVisible data sources include icons labeled \&quot;Website,\&quot; \&quot;WordPress,\&quot; \&quot;Zapier,\&quot; and \&quot;API\&quot; under the \&quot;Most Popular\&quot; section. Further down, under \&quot;Drives,\&quot; icons for Google Drive and SharePoint are partially visible. The interface also includes a footer note about CustomGPT.ai\u2019s SOC 2 Type II certification and GDPR compliance, with a hyperlink labeled \&quot;Trust Center.\&quot;&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost shows Build Using Your Website, auto-detecting a sitemap before Create Agent.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness: it omits key UI context (the &#x27;Pick data source for your agent&#x27; screen and available source options), which would make the caption more fully descriptive for retrieval and citation.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost shows Build Using Your Website, auto-detecting a sitemap before Create Agent.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness: it omits key UI context (the &#x27;Pick data source for your agent&#x27; screen and available source options), which would make the caption more fully descriptive for retrieval and citation.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Website url&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;deploy-agent-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents panel shows AI Agent Ready with 12 documents added, 6201 words stored, and Newest First.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for \&quot;CustomGPT.ai\&quot; with a sidebar on the left containing menu options: Dashboard, Agents (expanded to show \&quot;+ New Agent\&quot; and \&quot;All Agents\&quot; selected), Support, and Refer and Earn. The main section displays the heading \&quot;All Agents\&quot; with a search bar, view mode toggle buttons, a time filter set to \&quot;All Time,\&quot; and a sorting option set to \&quot;Newest First.\&quot; Below, there is a profile labeled \&quot;AI Agent\&quot; with a \&quot;Ready\&quot; status and four data cards showing \&quot;12 Documents Added,\&quot; \&quot;5 Documents Read,\&quot; \&quot;6201 Words Stored,\&quot; and \&quot;0 Queries this Billing Cycle,\&quot; each with small icons and some with a \&quot;View\&quot; link. A toolbar with icons for different actions is visible in the top right of the agent&#x27;s section, with one icon highlighted by an arrow. The top right corner includes a \&quot;+ New Agent\&quot; button. The bottom section has a purple bar with \&quot;Ask Me Anything\&quot; centered. There is also a small circular profile picture in the bottom right corner.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents panel shows AI Agent Ready with 12 documents added, 6201 words stored, and Newest First.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;Biggest weakness is minor incompleteness: it omits other visible quantitative fields (e.g., documents read and billing-cycle queries) that could improve extractable context.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai All Agents panel shows AI Agent Ready with 12 documents added, 6201 words stored, and Newest First.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;Biggest weakness is minor incompleteness: it omits other visible quantitative fields (e.g., documents read and billing-cycle queries) that could improve extractable context.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;deploy agent&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;API-Deployment-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai Agent Deploy tab shows API setup with Create API Key button, Agent ID, Agent Key, and + New Agent&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface of CustomGPT.ai with the \&quot;Agent\&quot; section expanded, highlighting the \&quot;Deploy\&quot; tab on the left sidebar. The main content area is titled \&quot;Deploy Your Agent\&quot; and presents an API deployment option with informational text about integrating CustomGPT.ai via API. There are visible buttons labeled \&quot;API\&quot; at the top and \&quot;Create API Key\&quot; in the content area. Additional UI elements include a top-right button labeled \&quot;+ New Agent,\&quot; an Agent ID, and an Agent Key displayed. The left sidebar has various navigation options like Dashboard, Agents, Analytics, Data, and others.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai Agent Deploy tab shows API setup with Create API Key button, Agent ID, Agent Key, and + New Agent&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits key on-screen context like the \u201cDeploy Your Agent\u201d heading and left-nav location, which would make the description more uniquely grounded.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai Agent Deploy tab shows API setup with Create API Key button, Agent ID, Agent Key, and + New Agent&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits key on-screen context like the \u201cDeploy Your Agent\u201d heading and left-nav location, which would make the description more uniquely grounded.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;API Deployment&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-134-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost site visualized as a glowing key over a boardroom, with cloud, graph, and gear icons.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a business meeting in a high-rise office with a panoramic cityscape view through floor-to-ceiling windows. At the center, a large glowing key with a smiling face is surrounded by floating icons representing data, technology, lightbulbs, clouds, graphs, and gears. Two rows of people, each using laptops, sit facing each other along long wooden tables. The scene combines realistic elements with vibrant, colorful digital and symbolic imagery above the meeting participants.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost site visualized as a glowing key over a boardroom, with cloud, graph, and gear icons.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is limited information gain, since it closely mirrors the page title and omits distinctive scene details like the meeting participants and cityscape office setting.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost site visualized as a glowing key over a boardroom, with cloud, graph, and gear icons.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is limited information gain, since it closely mirrors the page title and omits distinctive scene details like the meeting participants and cityscape office setting.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Best Practices for Using GPT in Mattermost&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-130-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost is depicted as puzzle-piece integration beneath an ADVANCED CUSTOMIZATION switch.&quot;,
+      &quot;vision_description&quot;: &quot;The image depicts a large light switch labeled \&quot;ADVANCED CUSTOMIZATION\&quot; with a glowing light bulb symbol featuring an \&quot;A\&quot; on it. To the left, there is a large profile of a human head filled with circuit-like patterns and a puzzle piece with eyes inside the brain area. In the foreground, a large hand holds a puzzle piece being offered to a standing figure who is integrating puzzle pieces into the scene. The background is a collage of puzzle pieces, charts, a plant, drawers, light fixtures, and technological elements arranged on a wall.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost is depicted as puzzle-piece integration beneath an ADVANCED CUSTOMIZATION switch.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits key visible elements (human head/circuit motif and collaborative figures), making the scene slightly under-specified.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost is depicted as puzzle-piece integration beneath an ADVANCED CUSTOMIZATION switch.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits key visible elements (human head/circuit motif and collaborative figures), making the scene slightly under-specified.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Advanced Customizations and Features&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-129-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost workshop screen displays heading and circular data charts as attendees work on laptops&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a group of people seated around a large table in a modern, spacious room with high windows. On the wall in front of them is a large digital screen displaying the heading \&quot;Custom GPT for Mattermost\&quot; alongside multiple futuristic data visualizations, including a glowing humanoid figure at the center, circular diagrams, and charts with labels like \&quot;Aarllien,\&quot; \&quot;Approxes,\&quot; and \&quot;Avifod.\&quot; Several individuals are looking at or interacting with laptops on the table, and one person is standing, pointing toward the digital display. Wooden boxes with partial text, such as \&quot;Automatic,\&quot; \&quot;EDblian Dekis,\&quot; and \&quot;Cursti Ceurt,\&quot; serve as seating.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost workshop screen displays heading and circular data charts as attendees work on laptops&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;The biggest weakness is that it stays somewhat generic and omits distinctive visual details (like the presenter pointing and central humanoid graphic) that could improve specificity.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost workshop screen displays heading and circular data charts as attendees work on laptops&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;The biggest weakness is that it stays somewhat generic and omits distinctive visual details (like the presenter pointing and central humanoid graphic) that could improve specificity.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;Real-World Applications and Success Stories&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+      &quot;filename&quot;: &quot;Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost site graphic lists nine AI capabilities, including discussion summaries and 93+ language support.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a grid layout titled \&quot;CustomGPT For Your Mattermost Site.\&quot; It contains nine sections, each featuring an icon and text describing various AI features. The texts include \&quot;Enhancing workplace efficiency with AI assistants,\&quot; \&quot;AI aids in summarizing discussions &amp; suggesting replies,\&quot; \&quot;Deep workflow integration with unique commands,\&quot; \&quot;Supports over 93 languages for diverse teams,\&quot; \&quot;Global adoption streamlines communication,\&quot; \&quot;AI that interacts with human-like understanding,\&quot; \&quot;Data encryption &amp; access control for safety,\&quot; \&quot;Quick connection via trigger app &amp; data settings,\&quot; and \&quot;Future-ready digital environments with AI.\&quot; The color scheme primarily uses purple, white, yellow, and black.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost site graphic lists nine AI capabilities, including discussion summaries and 93+ language support.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 9,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.3,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits the infographic\u2019s grid structure and broader feature range, so it captures only part of the visual content.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost site graphic lists nine AI capabilities, including discussion summaries and 93+ language support.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 9,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.3,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits the infographic\u2019s grid structure and broader feature range, so it captures only part of the visual content.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;custom gpt mattermost&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+      &quot;filename&quot;: &quot;image-128-1024x585.png&quot;,
+      &quot;alt_text&quot;: &quot;Custom GPT for Mattermost guide illustration shows a nest-seated figure, teams collaborating, and floating data charts&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a large abstract figure holding a magnifying glass and a stick, sitting in a giant nest made of straw in the center. Surrounding the nest are many people in business attire, some standing, some walking, and some sitting with laptops or tablets, all engaged in various activities. In the background, numerous floating digital screens display graphs, charts, and data visualizations such as pie charts and line graphs. The scene is set on a wooden floor with a dark backdrop, emphasizing the glowing data screens and the interaction between the people and the central figure. There is no visible text or brand names, just graphical data elements.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost anchors a central nest scene as teams work below floating dashboards and chart screens&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 7,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 6,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 6,
+          &quot;overall&quot;: 7.8,
+          &quot;critique&quot;: &quot;The biggest weakness is that it frames an invisible concept (&#x27;Custom GPT for Mattermost anchors&#x27;) instead of stating only directly observable image facts, which reduces citation reliability.&quot;
+        },
+        {
+          &quot;attempt&quot;: 2,
+          &quot;alt_text&quot;: &quot;Custom GPT for Mattermost guide illustration shows a nest-seated figure, teams collaborating, and floating data charts&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness is that it omits a key concrete detail (the central figure with magnifying glass in a straw nest), which would improve precision for AI extraction.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 2,
+        &quot;alt_text&quot;: &quot;Custom GPT for Mattermost guide illustration shows a nest-seated figure, teams collaborating, and floating data charts&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness is that it omits a key concrete detail (the central figure with magnifying glass in a straw nest), which would improve precision for AI extraction.&quot;
+      },
+      &quot;attempts&quot;: 2,
+      &quot;previous_alt&quot;: &quot;custom gpt mattermost&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/CustomGPT-2-1-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT Mattermost Office Hologram Interface&quot;,
+        &quot;description&quot;: &quot;A futuristic Mattermost office scene shows several people working at computers while a central humanoid hologram labeled \&quot;Custom GPT\&quot; appears in the foreground. Around it are floating technology and communication icons, including email, cloud, gear, and user profile symbols.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Mattermost AI Assistant Concept Cybernetic Head&quot;,
+        &quot;description&quot;: &quot;A blue cybernetic head symbolizes a Mattermost AI assistant, encircled by speech-bubble and technology icons. The scene is set against a neon grid and glowing futuristic cityscape, emphasizing digital communication and automation.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Mattermost Meeting Assistant UI&quot;,
+        &quot;description&quot;: &quot;Custom GPT for Mattermost is shown within a meeting interface, with \u201cGPT\u201d and \u201cA meeting\u201d labels around a central avatar. A team of professionals appears to be in a presentation setting in front of a large digital display featuring an abstract humanoid AI connected to user icons and data elements.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Mattermost Sign-In and Integrations&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai login page for Mattermost users, showing sign-in options with company email, Google, and SSO. The interface also highlights app integration icons such as Google Drive, Slack, YouTube, and other connected platforms.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT data source selection interface view&quot;,
+        &quot;description&quot;: &quot;Screenshot of the Custom GPT agent setup screen on the \u201cPick data source\u201d step, with Website selected. The interface also shows available source options including WordPress, File Upload, YouTube, Zapier, and API.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Mattermost sitemap URL setup&quot;,
+        &quot;description&quot;: &quot;The screenshot shows the CustomGPT.ai interface for building a Mattermost-focused AI agent using a website as the data source. A popup modal is active for entering a website URL, where the platform auto-detects sitemap data before proceeding to Create Agent.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai AI Agent Dashboard with Usage Stats&quot;,
+        &quot;description&quot;: &quot;The screenshot shows the CustomGPT.ai All Agents panel with an AI Agent marked as Ready. It displays key metrics including 12 documents added, words stored (6201), and sorting set to Newest First, alongside additional agent activity stats.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai Deploy Tab API Key Setup Interface&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai \&quot;Deploy Your Agent\&quot; section with the API tab selected, showing the Create API Key button for integration setup. The interface also displays Agent ID, Agent Key, and a + New Agent option.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Mattermost Custom GPT assistant concept illustration&quot;,
+        &quot;description&quot;: &quot;A futuristic office scene shows teams working on laptops while a glowing key with a smiley face is highlighted at the center. Cloud, analytics graph, and gear icons surround it, visualizing a Custom GPT assistant for Mattermost focused on productivity, innovation, and knowledge access.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Custom GPT for Mattermost advanced customization&quot;,
+        &quot;description&quot;: &quot;An illustration shows Custom GPT for Mattermost as a puzzle-piece integration beneath a large light switch labeled \u201cAdvanced Customization.\u201d In the background, a human head silhouette made of circuit-like puzzle pieces symbolizes AI-driven personalization and modular configuration.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Mattermost Custom GPT Workshop Dashboard View&quot;,
+        &quot;description&quot;: &quot;A workshop screen for Custom GPT on Mattermost shows a prominent heading and multiple circular data charts. In the foreground, attendees are seated and working on laptops, suggesting a hands-on training session.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+        &quot;name&quot;: &quot;Mattermost Custom GPT AI capabilities overview&quot;,
+        &quot;description&quot;: &quot;This graphic promotes a Custom GPT for Mattermost and highlights nine AI capabilities available in the assistant. It specifically calls out features such as discussion summaries and support for 93+ languages.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1025
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1025
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+        &quot;name&quot;: &quot;Mattermost Custom GPT collaboration guide illustration&quot;,
+        &quot;description&quot;: &quot;Illustration for a Custom GPT for Mattermost guide featuring a figure seated in a nest-like setting, teams collaborating, and floating data charts. The visual emphasizes AI-assisted teamwork, communication, and analytics within a Mattermost workflow.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 585
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-136-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost maps assistant workflows across five domains: chat, code, docs, search, alerts.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-135-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost links meeting participants with channel history and action-item extraction.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2025/02/customgpt-sign-up-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai provides 3 sign-in options before linking a Mattermost GPT to external knowledge apps.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/website-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Mattermost Custom GPT setup maps six ingestion connectors, with Website as the primary crawl source.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/wesbite-url-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Mattermost custom GPT setup uses a Website source modal, then maps sitemap pages into one agent.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/deploy-agent-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai All Agents dashboard tracks ingestion and query metrics for a Mattermost support assistant.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/10/API-Deployment-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;Mattermost integration in CustomGPT.ai uses Agent ID and Agent Key from Deploy &gt; API for bot authentication.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-134-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost links channel history, docs, and tickets through a 3-step RAG workflow.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-130-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost links workspace data to role-based prompts, with channel-level controls.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-129-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost workshop maps channel Q&amp;A to team knowledge with permission-aware responses.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/Custom-GPT-For-Your-Mattermost-Site.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost links channel threads and docs to generate context-aware answers in one workspace.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/03/image-128-1024x585.png&quot;,
+      &quot;caption&quot;: &quot;Custom GPT for Mattermost links team channels to one assistant with role-based access controls.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 01:30 UTC
+</div>
+</div>
+</body>
+</html>

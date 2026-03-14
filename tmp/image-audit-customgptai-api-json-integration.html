@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Audit Trace — customgptai-api-json-integration</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; }
+  h3 { font-size: 15px; margin: 16px 0 8px; color: #475569; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 20px; }
+  .meta a { color: #2563eb; }
+  .grade-badge { display: inline-block; padding: 4px 14px; border-radius: 6px; color: #fff; font-weight: 700; font-size: 18px; margin-right: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .card-header { font-weight: 600; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 10px; background: #f1f5f9; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #f8fafc; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px 2px; }
+  .tag-llm { background: #dbeafe; color: #1e40af; }
+  .tag-vision { background: #fae8ff; color: #86198f; }
+  .tag-heuristic { background: #f1f5f9; color: #475569; }
+  .tag-fix { background: #dcfce7; color: #166534; }
+  .tag-warn { background: #fef3c7; color: #92400e; }
+  .tag-err { background: #fee2e2; color: #991b1b; }
+  .img-thumb { max-width: 80px; max-height: 60px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .llm-box { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .llm-box .label { font-weight: 600; color: #0369a1; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .vision-box { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .vision-box .label { font-weight: 600; color: #7e22ce; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .fix-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin: 8px 0; font-size: 13px; }
+  .fix-box .label { font-weight: 600; color: #166534; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .dim-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; }
+  .dim-name { font-weight: 600; font-size: 13px; }
+  .dim-weight { color: #94a3b8; font-size: 12px; }
+  .dim-details { font-size: 12px; color: #64748b; margin-top: 6px; }
+  pre { background: #1e293b; color: #e2e8f0; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 12px; white-space: pre-wrap; }
+  .summary-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .summary-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 20px; text-align: center; }
+  .summary-stat .value { font-size: 24px; font-weight: 700; }
+  .summary-stat .label { font-size: 12px; color: #64748b; }
+  .collapsible { cursor: pointer; user-select: none; }
+  .collapsible::before { content: '\25B6 '; font-size: 10px; }
+  .collapsible.open::before { content: '\25BC '; }
+  .collapse-content { display: none; }
+  .collapse-content.show { display: block; }
+</style>
+<script>
+function toggle(id) {
+  var el = document.getElementById(id);
+  var btn = document.querySelector('[data-target="'+id+'"]');
+  if (el.classList.contains('show')) {
+    el.classList.remove('show');
+    btn.classList.remove('open');
+  } else {
+    el.classList.add('show');
+    btn.classList.add('open');
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<h1>Image Audit Trace Report</h1>
+<div class="meta">
+  <strong>Custom GPT RAG API + JSON: Integrating CustomGPT.ai&amp;#8217;s AI Features with JSON Data Format</strong><br>
+  <a href="https://customgpt.ai/customgptai-api-json-integration/" target="_blank">https://customgpt.ai/customgptai-api-json-integration/</a><br>
+  Generated: 2026-03-14 01:27 UTC &middot; WP Post ID: 28226 &middot; Endpoint: posts
+</div>
+
+
+<div class="summary-row">
+  <div class="summary-stat">
+    <div class="value" style="color:#dc2626">D</div>
+    <div class="label">Grade</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">51.8</div>
+    <div class="label">Composite Score</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">7/7</div>
+    <div class="label">Content / Total Images</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">Vision Analyzed</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">3</div>
+    <div class="label">LLM-Scored Dims</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">4</div>
+    <div class="label">Fixes Generated</div>
+  </div>
+  <div class="summary-stat">
+    <div class="value">1148</div>
+    <div class="label">Word Count</div>
+  </div>
+</div>
+
+<h2>Scoring Breakdown (8 Dimensions)</h2>
+<div class="score-breakdown">
+
+<div class="dim-card">
+  <div class="dim-name">D1: Alt Text Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#dc2626;height:100%;width:17%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">17</div></div> <span class="tag tag-llm">llm</span>
+    <span class="dim-weight">weight: 0.25</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.2</strong> / 25<br>
+    Most images have empty alt text and the non-empty ones are either keyword-like or too generic rather than specific, concise visual descriptions.
+  </div>
+<div class="dim-details">Per-image scores: [4, 5, 0, 3, 0, 0, 0]</div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D2: Image Coverage</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>12.0</strong> / 15<br>
+    7 images / 1148 words (ideal ~3)
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D3: Filename Quality</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:53%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">53</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>5.3</strong> / 10<br>
+    OK
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D4: Format & Performance</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:41%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">41</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.1</strong> / 10<br>
+    {&#x27;webp&#x27;: 1, &#x27;png&#x27;: 2, &#x27;unknown&#x27;: 4}
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D5: Technical Attributes (dims + srcset)</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:43%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">43</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>4.3</strong> / 10<br>
+    [&#x27;Missing dimensions: hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&#x27;, &#x27;Missing dimensions: yuJ
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D6: Featured Image</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:80%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">80</div></div> <span class="tag tag-llm">llm_vision</span>
+    <span class="dim-weight">weight: 0.1</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>8.0</strong> / 10<br>
+    The image is branded, topic-specific with clear text and relevant server imagery, but it lacks alt text.
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D7: Entity Coherence</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#2563eb;height:100%;width:78%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">78</div></div> <span class="tag tag-vision">vision</span>
+    <span class="dim-weight">weight: 0.15</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>11.7</strong> / 15<br>
+    The page includes several highly relevant CustomGPT-specific screenshots and one on-topic infrastructure illustration, but multiple unlabeled/empty-context images reduce overall visual clarity and top
+  </div>
+</div>
+
+<div class="dim-card">
+  <div class="dim-name">D8: Schema Readiness</div>
+  <div style="margin:6px 0"><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#d97706;height:100%;width:43%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">43</div></div> <span class="tag tag-heuristic">heuristic</span>
+    <span class="dim-weight">weight: 0.05</span></div>
+  <div class="dim-details">
+    Weighted contribution: <strong>2.1</strong> / 5<br>
+    3/7 images schema-ready
+  </div>
+</div>
+</div>
+<div class="card" style="margin-top:16px">
+<div class="card-header">Composite Score Calculation</div>
+<div style="font-size:13px">D1: Alt Text Quality: 17 &times; 0.25 = <strong>4.2</strong><br>D2: Image Coverage: 80 &times; 0.15 = <strong>12.0</strong><br>D3: Filename Quality: 53 &times; 0.1 = <strong>5.3</strong><br>D4: Format & Performance: 41 &times; 0.1 = <strong>4.1</strong><br>D5: Technical Attributes (dims + srcset): 43 &times; 0.1 = <strong>4.3</strong><br>D6: Featured Image: 80 &times; 0.1 = <strong>8.0</strong><br>D7: Entity Coherence: 78 &times; 0.15 = <strong>11.7</strong><br>D8: Schema Readiness: 43 &times; 0.05 = <strong>2.1</strong></div>
+<div style="margin-top:8px;font-size:14px;font-weight:700">Total: 51.8 &rarr; Grade: D</div>
+</div>
+<h2>Image Analysis (Per-Image Detail)</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 1: customgpt-rag-api-and-json.webp</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>Custom GPT RAG API and JSON</td></tr>
+      <tr><td><strong>Format</strong></td><td>webp</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1280 &times; 720</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>49182</td></tr>
+      <tr><td><strong>Position</strong></td><td>#1</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">illustration</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image shows a stylized data center with server racks emitting purple glowing light effects, representing high-tech or AI infrastructure.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Illustrated server racks glowing with purple light in a futuristic data center environment</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>False</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>6/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 2: CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>CustomGPT.ai Custom GPTs From Your Content For Business</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>45797</td></tr>
+      <tr><td><strong>Position</strong></td><td>#2</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>The image displays a web page from CustomGPT.ai showcasing their service to build custom GPTs from user content with a call-to-action for a free start, demo option, and an illustration of AI agent interaction with various platforms.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>CustomGPT.ai homepage screenshot showing custom GPT creation from user content and platform integration.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>8/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>7/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 3: hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZz</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#3</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 4: API-key-1024x492.png</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td>API key</td></tr>
+      <tr><td><strong>Format</strong></td><td>png</td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>1024 &times; 492</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>46791</td></tr>
+      <tr><td><strong>Position</strong></td><td>#4</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="vision-box">
+    <div class="label">Vision Classification (gpt-4.1-mini)</div>
+    <table>
+      <tr><td style="width:140px"><strong>Image Type</strong></td><td><span class="tag tag-vision">screenshot</span></td></tr>
+      <tr><td><strong>Decorative?</strong></td><td>False</td></tr>
+      <tr><td><strong>Topic Relevance</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Content Description</strong></td><td>This screenshot shows the &#x27;API&#x27; tab in the CustomGPT.ai user profile interface, highlighting options to create and manage API keys.</td></tr>
+      <tr><td><strong>Suggested Alt Text</strong></td><td><em>Screenshot of CustomGPT.ai profile API tab showing API key creation and management options.</em></td></tr>
+      <tr><td><strong>Stock Photo?</strong></td><td>False</td></tr>
+      <tr><td><strong>Branded?</strong></td><td>True</td></tr>
+      <tr><td><strong>Visual Clarity</strong></td><td>9/10</td></tr>
+      <tr><td><strong>Info Value</strong></td><td>8/10</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 5: yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#5</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 6: WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#6</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Image 7: KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzz</span>
+    <span>
+      
+      
+    </span>
+  </div>
+  <div style="display:flex;gap:16px;align-items:flex-start">
+    <img src="https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18" class="img-thumb" alt="thumbnail" loading="lazy" onerror="this.style.display='none'">
+    <table style="flex:1">
+      <tr><td style="width:140px"><strong>Source</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18</td></tr>
+      <tr><td><strong>Alt Text</strong></td><td><span class="tag tag-err">MISSING</span></td></tr>
+      <tr><td><strong>Format</strong></td><td></td></tr>
+      <tr><td><strong>Dimensions</strong></td><td>None &times; None</td></tr>
+      <tr><td><strong>WP Media ID</strong></td><td>None</td></tr>
+      <tr><td><strong>Position</strong></td><td>#7</td></tr>
+      <tr><td><strong>Srcset</strong></td><td>No</td></tr>
+    </table>
+  </div>
+<div class="llm-box"><div class="label">No vision data</div>Vision analysis was not performed for this image.</div>
+</div>
+<h2>Alt Text Generation + Remediation Loop</h2>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 1: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 10.0/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE</td></tr>
+    <tr><td><strong>Filename</strong></td><td>hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT.ai API Reference shows DELETE /api/v1/projects/{projectId}/pages/{pageId} with Bearer auth and no JSON body.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>118 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">10.0/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness is minor: it omits the full absolute URL shown in the screenshot, which could slightly improve standalone context.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+  &quot;name&quot;: &quot;CustomGPT.ai API DELETE endpoint reference screenshot&quot;,
+  &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai API Reference highlighting the DELETE /api/v1/projects/{projectId}/pages/{pageId} endpoint. It indicates Bearer authentication is required and shows no JSON request body for this operation.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 2: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.7/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4</td></tr>
+    <tr><td><strong>Filename</strong></td><td>yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT.ai API docs show DELETE page endpoint with projectId 24425, pageId 17076631, and no JSON body.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>104 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.7/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>It omits additional visible context such as the Bearer auth field and listed HTTP response codes.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+  &quot;name&quot;: &quot;CustomGPT.ai DELETE endpoint API documentation view&quot;,
+  &quot;description&quot;: &quot;Screenshot of CustomGPT.ai API documentation highlighting the DELETE page endpoint, with projectId 24425 and pageId 17076631 shown in the request path. The request body is empty, indicating no JSON payload is required for this operation.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 3: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.7/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64</td></tr>
+    <tr><td><strong>Filename</strong></td><td>WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with required IDs 24425 and 17076631, no JSON body</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>121 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.7/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>The biggest weakness is that it omits the broader API-docs UI context (authorization and response codes), which could make retrieval less robust for multi-fact queries.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+  &quot;name&quot;: &quot;CustomGPT.ai API DELETE page endpoint requirements&quot;,
+  &quot;description&quot;: &quot;This image shows CustomGPT.ai API documentation for the DELETE /projects/{projectId}/pages/{pageId} endpoint. It indicates required projectId (24425) and pageId (17076631) path parameters and that no JSON request body is needed.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <span>Fix 4: <span class="tag tag-fix">missing_alt</span></span>
+    <span>
+      <span class="tag tag-fix" style="font-size:13px">AEO Grade: 9.7/10</span>
+      
+    </span>
+  </div>
+  <table>
+    <tr><td style="width:140px"><strong>Image</strong></td><td style="word-break:break-all;font-size:12px">https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18</td></tr>
+    <tr><td><strong>Filename</strong></td><td>KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18</td></tr>
+    <tr><td><strong>Current Alt</strong></td><td><span class="tag tag-err">EMPTY</span></td></tr>
+    <tr><td><strong>Generated Alt</strong></td><td style="font-weight:600;color:#16a34a">CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with 200 JSON response deleted:true.</td></tr>
+    <tr><td><strong>Alt Length</strong></td><td>107 chars <span class="tag tag-fix">80-125</span></td></tr>
+    
+  </table>
+
+  <div class="llm-box">
+    <div class="label">Final AEO Quality Grade (LLM-as-Judge)</div>
+    <table>
+      <tr><td style="width:180px"><strong>Entity Placement</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Information Gain</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Semantic Accuracy</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Factual Tone</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Length (80-125 chars)</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:100%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">100</div></div> 10/10</td></tr>
+      <tr><td><strong>Citation Quality</strong></td><td><div style="background:#e5e7eb;border-radius:4px;height:18px;width:120px;display:inline-block;vertical-align:middle"><div style="background:#16a34a;height:100%;width:90%;border-radius:4px;text-align:center;color:#fff;font-size:11px;line-height:18px">90</div></div> 9/10</td></tr>
+      <tr><td><strong>Overall</strong></td><td><strong style="color:#16a34a;font-size:16px">9.7/10</strong></td></tr>
+      <tr><td><strong>Critique</strong></td><td><em>Biggest weakness: it omits one high-value factual detail visible in the image (e.g., full endpoint context like project/page scope or the status field) that could improve extractability.</em></td></tr>
+    </table>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">ImageObject Structured Data (JSON-LD)</div>
+    <pre>{
+  &quot;@type&quot;: &quot;ImageObject&quot;,
+  &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+  &quot;name&quot;: &quot;CustomGPT.ai API DELETE endpoint JSON result&quot;,
+  &quot;description&quot;: &quot;Screenshot of CustomGPT.ai API documentation showing the DELETE /projects/{projectId}/pages/{pageId} endpoint. The example response displays HTTP 200 with a JSON payload indicating \&quot;deleted\&quot;: true.&quot;,
+  &quot;author&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai&quot;
+  }
+}</pre>
+  </div>
+
+  <div class="fix-box">
+    <div class="label">Entity-First AEO Pipeline (V3+)</div>
+    <p><strong>Pass 1 (Vision + OCR):</strong> Image sent to gpt-4.1-mini for literal description.</p>
+    <p><strong>Pass 2 (Entity-First AEO):</strong> Vision desc + context &rarr; [Entity] + [relationship] + [detail].</p>
+    <p><strong>Pass 3 (Grade + Remediate):</strong> LLM-as-judge grades on 6 dims. If &lt; 8/10, critique fed back for regeneration (max 3 attempts).</p>
+    <p><strong>Pass 4 (Schema + Caption):</strong> ImageObject JSON-LD + visible &lt;figcaption&gt; for entity reinforcement.</p>
+  </div>
+</div>
+<h2>Generated Captions (figcaption)</h2>
+<div class="card"><table><thead><tr><th>Image</th><th>Caption</th></tr></thead><tbody>
+<tr><td style="font-size:12px;word-break:break-all">T.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png</td><td><em>CustomGPT.ai landing page links its custom GPT builder to API-based RAG workflows using JSON data sources.</em></td></tr>
+<tr><td style="font-size:12px;word-break:break-all">customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png</td><td><em>CustomGPT.ai API settings show key lifecycle metadata used to authenticate JSON RAG API calls.</em></td></tr>
+</tbody></table></div>
+<h2>ImageObject Schemas (JSON-LD)</h2>
+<div class="card"><pre>[
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai RAG API Backend in Purple Data Center&quot;,
+    &quot;description&quot;: &quot;A stylized data center scene shows four black server racks glowing with purple light, representing CustomGPT.ai&#x27;s RAG API backend infrastructure. The reflective grid floor and neon lighting emphasize a high-tech AI environment.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1280
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 720
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai homepage: Build GPTs from your content&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai homepage featuring the headline \u201cBuild custom GPTs from your content.\u201d The page includes calls to action such as \u201cStart for free\u201d and \u201cDemo,\u201d along with app icons and an illustration of an AI agent connecting with multiple platforms.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai API DELETE endpoint reference screenshot&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai API Reference highlighting the DELETE /api/v1/projects/{projectId}/pages/{pageId} endpoint. It indicates Bearer authentication is required and shows no JSON request body for this operation.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai API tab with key management options&quot;,
+    &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai user profile API tab showing two API keys with masked secrets and creation dates in Jan 2025. The interface prominently includes a visible \&quot;Create API Key\&quot; button for generating new keys.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    },
+    &quot;width&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 1024
+    },
+    &quot;height&quot;: {
+      &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+      &quot;value&quot;: 492
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai DELETE endpoint API documentation view&quot;,
+    &quot;description&quot;: &quot;Screenshot of CustomGPT.ai API documentation highlighting the DELETE page endpoint, with projectId 24425 and pageId 17076631 shown in the request path. The request body is empty, indicating no JSON payload is required for this operation.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai API DELETE page endpoint requirements&quot;,
+    &quot;description&quot;: &quot;This image shows CustomGPT.ai API documentation for the DELETE /projects/{projectId}/pages/{pageId} endpoint. It indicates required projectId (24425) and pageId (17076631) path parameters and that no JSON request body is needed.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  },
+  {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+    &quot;name&quot;: &quot;CustomGPT.ai API DELETE endpoint JSON result&quot;,
+    &quot;description&quot;: &quot;Screenshot of CustomGPT.ai API documentation showing the DELETE /projects/{projectId}/pages/{pageId} endpoint. The example response displays HTTP 200 with a JSON payload indicating \&quot;deleted\&quot;: true.&quot;,
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;CustomGPT.ai&quot;
+    }
+  }
+]</pre></div>
+<h2>Issues Detected</h2>
+<ul style="font-size:13px;margin-left:20px">
+<li>Missing dimensions: hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE</li>
+<li>Missing dimensions: yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4</li>
+<li>Missing dimensions: WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64</li>
+<li>Missing dimensions: KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18</li>
+</ul>
+<h2>LLM Decision Trace</h2>
+
+<div class="card">
+  <div class="card-header">Decision Pipeline</div>
+  <table>
+    <thead>
+      <tr><th>Step</th><th>Component</th><th>Method</th><th>Input</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>1.1</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 1 (customgpt-rag-api-and-json.web)</td>
+        <td>type=illustration relevance=8/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.2</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 2 (CustomGPT.ai-Custom-GPTs-From-)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>1.4</td>
+        <td>Vision Classifier</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Image 4 (API-key-1024x492.png)</td>
+        <td>type=screenshot relevance=9/10 decorative=False</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D1: Alt Text Quality</td>
+        <td><span class="tag tag-llm">llm</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 17/100 — Most images have empty alt text and the non-empty ones are either keyword-like o</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D6: Featured Image</td>
+        <td><span class="tag tag-llm">llm_vision</span></td>
+        <td>Rubric prompt + image data</td>
+        <td>Score: 80/100 — The image is branded, topic-specific with clear text and relevant server imagery</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>D7: Entity Coherence</td>
+        <td><span class="tag tag-vision">vision</span></td>
+        <td>Rubric prompt + vision data</td>
+        <td>Score: 78/100 — The page includes several highly relevant CustomGPT-specific screenshots and one</td>
+      </tr>
+
+      <tr>
+        <td>3.1</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT.ai API Reference shows DELETE /api/v1/projects/{pr" (118ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.2</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT.ai API docs show DELETE page endpoint with project" (104ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.3</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT.ai API docs show DELETE /projects/{projectId}/page" (121ch)</td>
+      </tr>
+
+      <tr>
+        <td>3.4</td>
+        <td>Alt Text Generator</td>
+        <td><span class="tag tag-llm">vision+llm</span></td>
+        <td>Two-pass: vision desc → SEO alt</td>
+        <td>"CustomGPT.ai API docs show DELETE /projects/{projectId}/page" (107ch)</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<h2>Raw Trace Data</h2>
+<div class="collapsible" data-target="raw-json" onclick="toggle('raw-json')">Show full JSON trace</div>
+<div id="raw-json" class="collapse-content">
+<pre>{
+  &quot;audit&quot;: {
+    &quot;slug&quot;: &quot;customgptai-api-json-integration&quot;,
+    &quot;url&quot;: &quot;https://customgpt.ai/customgptai-api-json-integration/&quot;,
+    &quot;wp_post_id&quot;: 28226,
+    &quot;endpoint_type&quot;: &quot;posts&quot;,
+    &quot;page_title&quot;: &quot;Custom GPT RAG API + JSON: Integrating CustomGPT.ai&amp;#8217;s AI Features with JSON Data Format&quot;,
+    &quot;word_count&quot;: 1148,
+    &quot;image_count&quot;: 7,
+    &quot;total_image_count&quot;: 7,
+    &quot;has_featured_image&quot;: true,
+    &quot;featured_image_url&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/json.png&quot;,
+    &quot;featured_image_alt&quot;: &quot;&quot;,
+    &quot;composite_score&quot;: 51.8,
+    &quot;grade&quot;: &quot;D&quot;,
+    &quot;issues&quot;: [
+      &quot;Missing dimensions: hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+      &quot;Missing dimensions: yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+      &quot;Missing dimensions: WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+      &quot;Missing dimensions: KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;
+    ],
+    &quot;suggested_fixes&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;filename&quot;: &quot;hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;filename&quot;: &quot;yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;filename&quot;: &quot;WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;filename&quot;: &quot;KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      },
+      {
+        &quot;type&quot;: &quot;format_upgrade&quot;,
+        &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+        &quot;filename&quot;: &quot;API-key-1024x492.png&quot;,
+        &quot;current_format&quot;: &quot;png&quot;,
+        &quot;suggested_format&quot;: &quot;webp&quot;,
+        &quot;automatable&quot;: false
+      }
+    ],
+    &quot;scores&quot;: {
+      &quot;alt_text_quality&quot;: {
+        &quot;raw&quot;: 17,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm&quot;,
+        &quot;details&quot;: &quot;Most images have empty alt text and the non-empty ones are either keyword-like or too generic rather than specific, concise visual descriptions.&quot;,
+        &quot;per_image_scores&quot;: [
+          4,
+          5,
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        &quot;weighted&quot;: 4.25
+      },
+      &quot;image_coverage&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;7 images / 1148 words (ideal ~3)&quot;,
+        &quot;weighted&quot;: 12.0
+      },
+      &quot;filename_quality&quot;: {
+        &quot;raw&quot;: 53,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;OK&quot;,
+        &quot;weighted&quot;: 5.3
+      },
+      &quot;format_performance&quot;: {
+        &quot;raw&quot;: 41,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: {
+          &quot;webp&quot;: 1,
+          &quot;png&quot;: 2,
+          &quot;unknown&quot;: 4
+        },
+        &quot;weighted&quot;: 4.1
+      },
+      &quot;technical_attrs&quot;: {
+        &quot;raw&quot;: 43,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: [
+          &quot;Missing dimensions: hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+          &quot;Missing dimensions: yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+          &quot;Missing dimensions: WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+          &quot;Missing dimensions: KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;
+        ],
+        &quot;weighted&quot;: 4.3
+      },
+      &quot;featured_image&quot;: {
+        &quot;raw&quot;: 80,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;llm_vision&quot;,
+        &quot;details&quot;: &quot;The image is branded, topic-specific with clear text and relevant server imagery, but it lacks alt text.&quot;,
+        &quot;weighted&quot;: 8.0
+      },
+      &quot;entity_coherence&quot;: {
+        &quot;raw&quot;: 78,
+        &quot;max&quot;: 100,
+        &quot;method&quot;: &quot;vision&quot;,
+        &quot;details&quot;: &quot;The page includes several highly relevant CustomGPT-specific screenshots and one on-topic infrastructure illustration, but multiple unlabeled/empty-context images reduce overall visual clarity and topical reinforcement.&quot;,
+        &quot;weighted&quot;: 11.7
+      },
+      &quot;schema_readiness&quot;: {
+        &quot;raw&quot;: 43,
+        &quot;max&quot;: 100,
+        &quot;details&quot;: &quot;3/7 images schema-ready&quot;,
+        &quot;weighted&quot;: 2.15
+      }
+    },
+    &quot;images&quot;: [
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp&quot;,
+        &quot;alt_text&quot;: &quot;Custom GPT RAG API and JSON&quot;,
+        &quot;filename&quot;: &quot;customgpt-rag-api-and-json.webp&quot;,
+        &quot;wp_media_id&quot;: 49182,
+        &quot;width&quot;: 1280,
+        &quot;height&quot;: 720,
+        &quot;format&quot;: &quot;webp&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 0,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;illustration&quot;,
+          &quot;content_description&quot;: &quot;The image shows a stylized data center with server racks emitting purple glowing light effects, representing high-tech or AI infrastructure.&quot;,
+          &quot;topic_relevance&quot;: 8,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: false,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 6
+          },
+          &quot;suggested_alt_text&quot;: &quot;Illustrated server racks glowing with purple light in a futuristic data center environment&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai Custom GPTs From Your Content For Business&quot;,
+        &quot;filename&quot;: &quot;CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 45797,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 1,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;The image displays a web page from CustomGPT.ai showcasing their service to build custom GPTs from user content with a call-to-action for a free start, demo option, and an illustration of AI agent interaction with various platforms.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 8,
+            &quot;information_value&quot;: 7
+          },
+          &quot;suggested_alt_text&quot;: &quot;CustomGPT.ai homepage screenshot showing custom GPT creation from user content and platform integration.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 2,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+        &quot;alt_text&quot;: &quot;API key&quot;,
+        &quot;filename&quot;: &quot;API-key-1024x492.png&quot;,
+        &quot;wp_media_id&quot;: 46791,
+        &quot;width&quot;: 1024,
+        &quot;height&quot;: 492,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: true,
+        &quot;has_dimensions&quot;: true,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 3,
+        &quot;vision_analysis&quot;: {
+          &quot;is_decorative&quot;: false,
+          &quot;image_type&quot;: &quot;screenshot&quot;,
+          &quot;content_description&quot;: &quot;This screenshot shows the &#x27;API&#x27; tab in the CustomGPT.ai user profile interface, highlighting options to create and manage API keys.&quot;,
+          &quot;topic_relevance&quot;: 9,
+          &quot;quality_assessment&quot;: {
+            &quot;is_stock_photo&quot;: false,
+            &quot;is_branded&quot;: true,
+            &quot;visual_clarity&quot;: 9,
+            &quot;information_value&quot;: 8
+          },
+          &quot;suggested_alt_text&quot;: &quot;Screenshot of CustomGPT.ai profile API tab showing API key creation and management options.&quot;
+        }
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 4,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 5,
+        &quot;vision_analysis&quot;: null
+      },
+      {
+        &quot;src&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;alt_text&quot;: &quot;&quot;,
+        &quot;filename&quot;: &quot;KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;width&quot;: null,
+        &quot;height&quot;: null,
+        &quot;format&quot;: &quot;&quot;,
+        &quot;has_loading_lazy&quot;: false,
+        &quot;has_srcset&quot;: false,
+        &quot;has_dimensions&quot;: false,
+        &quot;is_featured&quot;: false,
+        &quot;is_decorative&quot;: false,
+        &quot;position_index&quot;: 6,
+        &quot;vision_analysis&quot;: null
+      }
+    ]
+  },
+  &quot;fix_result&quot;: {
+    &quot;slug&quot;: &quot;customgptai-api-json-integration&quot;,
+    &quot;dry_run&quot;: true,
+    &quot;backup_path&quot;: null,
+    &quot;fixes_applied&quot;: [
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;filename&quot;: &quot;hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT.ai API Reference shows DELETE /api/v1/projects/{projectId}/pages/{pageId} with Bearer auth and no JSON body.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;filename&quot;: &quot;yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT.ai API docs show DELETE page endpoint with projectId 24425, pageId 17076631, and no JSON body.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;filename&quot;: &quot;WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with required IDs 24425 and 17076631, no JSON body&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      },
+      {
+        &quot;type&quot;: &quot;missing_alt&quot;,
+        &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;filename&quot;: &quot;KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;wp_media_id&quot;: null,
+        &quot;current&quot;: &quot;&quot;,
+        &quot;automatable&quot;: true,
+        &quot;new_alt&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with 200 JSON response deleted:true.&quot;,
+        &quot;action&quot;: &quot;generate_alt_text&quot;
+      }
+    ],
+    &quot;fixes_skipped&quot;: [],
+    &quot;errors&quot;: [],
+    &quot;applied_count&quot;: 4,
+    &quot;skipped_count&quot;: 0,
+    &quot;error_count&quot;: 0
+  },
+  &quot;alt_text_results&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp&quot;,
+      &quot;filename&quot;: &quot;customgpt-rag-api-and-json.webp&quot;,
+      &quot;alt_text&quot;: &quot;Four black server racks represent CustomGPT.ai RAG API backend, glowing purple in a reflective grid-floor data center&quot;,
+      &quot;vision_description&quot;: &quot;The image shows four tall, black server racks with transparent doors, revealing multiple servers inside. The servers and surrounding environment are illuminated with vibrant purple lights, creating a glowing effect. The scene appears to be a futuristic or digitally enhanced data center room with a grid-patterned floor reflecting the purple glow. There are no visible text, labels, logos, or UI elements in the image.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai RAG API infrastructure features four black server racks under purple lighting in a reflective data center&quot;,
+          &quot;entity_placement&quot;: 4,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 7,
+          &quot;overall&quot;: 7.7,
+          &quot;critique&quot;: &quot;The biggest weakness is that it leads with a non-visible branded concept (&#x27;CustomGPT.ai RAG API infrastructure&#x27;) instead of the actual visual subject in the opening words.&quot;
+        },
+        {
+          &quot;attempt&quot;: 2,
+          &quot;alt_text&quot;: &quot;Four black server racks represent CustomGPT.ai RAG API backend, glowing purple in a reflective grid-floor data center&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 8,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 8,
+          &quot;overall&quot;: 8.7,
+          &quot;critique&quot;: &quot;The biggest weakness is the inferred claim that the racks &#x27;represent CustomGPT.ai RAG API backend,&#x27; which is not directly verifiable from the image itself.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 2,
+        &quot;alt_text&quot;: &quot;Four black server racks represent CustomGPT.ai RAG API backend, glowing purple in a reflective grid-floor data center&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 8,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 8,
+        &quot;overall&quot;: 8.7,
+        &quot;critique&quot;: &quot;The biggest weakness is the inferred claim that the racks &#x27;represent CustomGPT.ai RAG API backend,&#x27; which is not directly verifiable from the image itself.&quot;
+      },
+      &quot;attempts&quot;: 2,
+      &quot;previous_alt&quot;: &quot;Custom GPT RAG API and JSON&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai homepage displays \&quot;Build custom GPTs from your content\&quot; with Start for free, Demo, and app icons.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a website header and landing section for \&quot;CustomGPT.ai\&quot; with a navigation menu containing \&quot;Use cases,\&quot; \&quot;Industries,\&quot; \&quot;Pricing,\&quot; \&quot;Resources,\&quot; \&quot;Company,\&quot; \&quot;Enterprise,\&quot; \&quot;Login,\&quot; and a prominent \&quot;Try for free\&quot; button. The main headline reads \&quot;Build custom GPTs from your content\&quot; followed by a description about creating custom AI agents with no code needed and full data security. There are two buttons below the description: a purple \&quot;Start for free\&quot; button and a white \&quot;Demo\&quot; button. To the right, there is an illustration showing a chat interface with the question \&quot;I need to put a shed in my backyard. What regulations govern this?\&quot; and icons for various platforms below it, such as Shopify, Notion, Magento, HubSpot, and Dropbox.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai homepage displays \&quot;Build custom GPTs from your content\&quot; with Start for free, Demo, and app icons.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 8,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 8,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.0,
+          &quot;critique&quot;: &quot;The biggest weakness is that it stays somewhat generic and omits concrete visual details (like the navigation items and chat example) that would improve extractable factual value.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai homepage displays \&quot;Build custom GPTs from your content\&quot; with Start for free, Demo, and app icons.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 8,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 8,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.0,
+        &quot;critique&quot;: &quot;The biggest weakness is that it stays somewhat generic and omits concrete visual details (like the navigation items and chat example) that would improve extractable factual value.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;CustomGPT.ai Custom GPTs From Your Content For Business&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+      &quot;filename&quot;: &quot;hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai API Reference shows DELETE /api/v1/projects/{projectId}/pages/{pageId} with Bearer auth and no JSON body.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a webpage from CustomGPT.ai API documentation under the \&quot;API Reference\&quot; tab explaining how to \&quot;Delete a certain page that belongs to a certain project\&quot; using the DELETE HTTP method on the endpoint URL: https://app.customgpt.ai/api/v1/projects/{projectId}/pages/{pageId}. The page includes a description of the endpoint\u2019s purpose, a code section for authorization with Bearer token input, and a \&quot;Try It!\&quot; button to execute the request with a JSON body noting \&quot;No JSON body\&quot; required. The interface has language tabs for different code examples (Shell, Node, Ruby, PHP, JSON) and a section for response examples along with the sidebar menu containing other API endpoints.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai API Reference shows DELETE /api/v1/projects/{projectId}/pages/{pageId} with Bearer auth and no JSON body.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 10,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 10,
+          &quot;overall&quot;: 10.0,
+          &quot;critique&quot;: &quot;Biggest weakness is minor: it omits the full absolute URL shown in the screenshot, which could slightly improve standalone context.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai API Reference shows DELETE /api/v1/projects/{projectId}/pages/{pageId} with Bearer auth and no JSON body.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 10,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 10,
+        &quot;overall&quot;: 10.0,
+        &quot;critique&quot;: &quot;Biggest weakness is minor: it omits the full absolute URL shown in the screenshot, which could slightly improve standalone context.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+      &quot;filename&quot;: &quot;API-key-1024x492.png&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai API tab displays two API keys with masked secrets, created Jan 2025, and a visible Create API Key button.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a user interface of a webpage titled \&quot;My Profile\&quot; under the \&quot;API\&quot; tab, as highlighted by a red box and arrow at the top. The page belongs to a service called CustomGPT.ai, indicated by the logo and name on the top left. There is a section titled \&quot;CustomGPT.ai API\&quot; describing integration and linking to a quickstart tutorial and API documentation. Below that, an \&quot;API Key\&quot; table lists two keys named \&quot;CustomGPT.ai Researcher API Key\&quot; and \&quot;My API,\&quot; displaying partially masked secret keys, creation dates (25 Jan 2025 and 29 Jan 2025), and last used dates (\&quot;6 Mar 2025\&quot; and \&quot;Never\&quot;). On the left side navigation, there are menu options including Dashboard, Agents, Support, Refer and Earn!, and a search box for \&quot;CustomGPT.ai Copilot.\&quot; A purple button labeled \&quot;Create API Key\&quot; is located under the API Key table. There is also a \&quot;+ New Agent\&quot; button at the top right.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai API tab displays two API keys with masked secrets, created Jan 2025, and a visible Create API Key button.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 9,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.5,
+          &quot;critique&quot;: &quot;Biggest weakness is slight loss of precision: it generalizes creation dates to Jan 2025 and omits the table\u2019s specific per-key metadata (exact dates and last-used status).&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai API tab displays two API keys with masked secrets, created Jan 2025, and a visible Create API Key button.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 9,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.5,
+        &quot;critique&quot;: &quot;Biggest weakness is slight loss of precision: it generalizes creation dates to Jan 2025 and omits the table\u2019s specific per-key metadata (exact dates and last-used status).&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;API key&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+      &quot;filename&quot;: &quot;yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE page endpoint with projectId 24425, pageId 17076631, and no JSON body.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for an API documentation page titled \&quot;Delete a certain page that belongs to a certain project.\&quot; The left sidebar contains a navigation menu with categories such as \&quot;GETTING STARTED,\&quot; \&quot;SUPPORT,\&quot; and \&quot;CUSTOMGPT.AI,\&quot; listing options like \&quot;Delete a certain page that belongs to a certain project\&quot; marked with a red \&quot;DELETE\&quot; label. The main content on the right details the DELETE request with path parameters `projectId` (24425) and `pageId` (17076631). The top right section shows an \&quot;AUTHORIZATION\&quot; input field labeled \&quot;Bearer\&quot; with a JWT token partially visible and a request box below it showing \&quot;1 No JSON body\&quot; with a \&quot;Try It!\&quot; button. The response area instructs users to click \&quot;Try It!\&quot; to see responses, with HTTP status codes 200, 400, 401, 404, and 500 indicated.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE page endpoint with projectId 24425, pageId 17076631, and no JSON body.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;It omits additional visible context such as the Bearer auth field and listed HTTP response codes.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE page endpoint with projectId 24425, pageId 17076631, and no JSON body.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;It omits additional visible context such as the Bearer auth field and listed HTTP response codes.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+      &quot;filename&quot;: &quot;WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with required IDs 24425 and 17076631, no JSON body&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a web interface for an API documentation page related to deleting a specific page within a project using a DELETE request. On the left sidebar, under \&quot;CUSTOMGPT.AI\&quot; and \&quot;Pages,\&quot; the \&quot;Delete a certain page that belongs to a certain project\&quot; option is selected and marked with a red DELETE label. The main panel describes the endpoint URL (https://app.customgpt.ai/api/v1/projects/{projectId}/pages/{pageId}) and explains the endpoint usage with example API SDK code linked. Path parameters include \&quot;projectId\&quot; with value 24425 and \&quot;pageId\&quot; with value 17076631, both marked as required integers. The top right section features an \&quot;AUTHORIZATION\&quot; input with a Bearer token and a \&quot;REQUEST\&quot; box indicating \&quot;No JSON body\&quot; and a \&quot;Try It!\&quot; button. The \&quot;RESPONSE\&quot; area below shows example response codes (200, 400, 401, 404, 500) in colored dots. The left sidebar also has navigation items under sections like GETTING STARTED, SUPPORT, and other categories.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with required IDs 24425 and 17076631, no JSON body&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;The biggest weakness is that it omits the broader API-docs UI context (authorization and response codes), which could make retrieval less robust for multi-fact queries.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with required IDs 24425 and 17076631, no JSON body&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;The biggest weakness is that it omits the broader API-docs UI context (authorization and response codes), which could make retrieval less robust for multi-fact queries.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+      &quot;filename&quot;: &quot;KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+      &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with 200 JSON response deleted:true.&quot;,
+      &quot;vision_description&quot;: &quot;The image shows a webpage from CustomGPT.ai&#x27;s API documentation for deleting a specific page within a project using the endpoint DELETE https://app.customgpt.ai/api/v1/projects/{projectId}/pages/{pageId}. The interface has a left navigation menu with sections including Getting Started, Support, CustomGPT.ai sections like Projects and Pages, where the current selection is \&quot;Delete a certain page that belongs to a certain project\&quot; marked with a red DELETE badge. The main content area details the endpoint usage, showing required path parameters \&quot;projectId\&quot; (24425) and \&quot;pageId\&quot; (17076631). On the right, there&#x27;s an authorization section with a Bearer JWT token partially visible, and below it a request panel noting \&quot;No JSON body\&quot; with a \&quot;Try It!\&quot; button. The response panel displays a successful JSON response with status 200, indicating \&quot;deleted\&quot;: true and \&quot;status\&quot;: \&quot;success\&quot;.&quot;,
+      &quot;grade_history&quot;: [
+        {
+          &quot;attempt&quot;: 1,
+          &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with 200 JSON response deleted:true.&quot;,
+          &quot;entity_placement&quot;: 10,
+          &quot;information_gain&quot;: 9,
+          &quot;semantic_accuracy&quot;: 10,
+          &quot;factual_tone&quot;: 10,
+          &quot;length&quot;: 10,
+          &quot;citation_quality&quot;: 9,
+          &quot;overall&quot;: 9.7,
+          &quot;critique&quot;: &quot;Biggest weakness: it omits one high-value factual detail visible in the image (e.g., full endpoint context like project/page scope or the status field) that could improve extractability.&quot;
+        }
+      ],
+      &quot;final_grade&quot;: {
+        &quot;attempt&quot;: 1,
+        &quot;alt_text&quot;: &quot;CustomGPT.ai API docs show DELETE /projects/{projectId}/pages/{pageId} with 200 JSON response deleted:true.&quot;,
+        &quot;entity_placement&quot;: 10,
+        &quot;information_gain&quot;: 9,
+        &quot;semantic_accuracy&quot;: 10,
+        &quot;factual_tone&quot;: 10,
+        &quot;length&quot;: 10,
+        &quot;citation_quality&quot;: 9,
+        &quot;overall&quot;: 9.7,
+        &quot;critique&quot;: &quot;Biggest weakness: it omits one high-value factual detail visible in the image (e.g., full endpoint context like project/page scope or the status field) that could improve extractability.&quot;
+      },
+      &quot;attempts&quot;: 1,
+      &quot;previous_alt&quot;: &quot;&quot;
+    }
+  ],
+  &quot;image_schemas&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/04/customgpt-rag-api-and-json.webp&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai RAG API Backend in Purple Data Center&quot;,
+        &quot;description&quot;: &quot;A stylized data center scene shows four black server racks glowing with purple light, representing CustomGPT.ai&#x27;s RAG API backend infrastructure. The reflective grid floor and neon lighting emphasize a high-tech AI environment.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1280
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 720
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai homepage: Build GPTs from your content&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai homepage featuring the headline \u201cBuild custom GPTs from your content.\u201d The page includes calls to action such as \u201cStart for free\u201d and \u201cDemo,\u201d along with app icons and an illustration of an AI agent connecting with multiple platforms.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/hiu2Vty2YMt7Td6IkwYqD-H9DS_lQ39ElXcF78GpbG1ZV8lkmHvnJwsBcXZzOEZl1wStkT98d1K8shEcKOgN2Lav1INEN_OpPhuWPnNVgxOT4ez4TEqxGKmPDepSPmA-NeZ3j8aVHYTvZk279M8iLfE&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai API DELETE endpoint reference screenshot&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai API Reference highlighting the DELETE /api/v1/projects/{projectId}/pages/{pageId} endpoint. It indicates Bearer authentication is required and shows no JSON request body for this operation.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai API tab with key management options&quot;,
+        &quot;description&quot;: &quot;Screenshot of the CustomGPT.ai user profile API tab showing two API keys with masked secrets and creation dates in Jan 2025. The interface prominently includes a visible \&quot;Create API Key\&quot; button for generating new keys.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        },
+        &quot;width&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 1024
+        },
+        &quot;height&quot;: {
+          &quot;@type&quot;: &quot;QuantitativeValue&quot;,
+          &quot;value&quot;: 492
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/yuJmg7Jj-ITETfgmQQylw6eyHqwm9rj2qAmzjjW6b0ZhL6TH9FDq0BFss3Mt9WiQ99aavji-ij3iyHIY-pgbHuWy3Fw1pe2n9iHzymTEuWw7IVL0Ez9fFQ6_aUMiWhGb9tK-zUqHEm3AaKdvf27DFt4&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai DELETE endpoint API documentation view&quot;,
+        &quot;description&quot;: &quot;Screenshot of CustomGPT.ai API documentation highlighting the DELETE page endpoint, with projectId 24425 and pageId 17076631 shown in the request path. The request body is empty, indicating no JSON payload is required for this operation.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/WxUVgBiSAlfgJdwI0KIjmd_-Kbfxg51KpK_94ermBc2W9_3pWd4-NhhMY3gg3g0Tzo_XnMh6glPUneNzzJfFOl9JcZlDGhj83uk1DML_6OA6HyNIIBdyTbUkEoEJPDbw7kNqkaIIei8uulKp72sFa64&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai API DELETE page endpoint requirements&quot;,
+        &quot;description&quot;: &quot;This image shows CustomGPT.ai API documentation for the DELETE /projects/{projectId}/pages/{pageId} endpoint. It indicates required projectId (24425) and pageId (17076631) path parameters and that no JSON request body is needed.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    },
+    {
+      &quot;image_src&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+      &quot;schema&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;contentUrl&quot;: &quot;https://lh7-us.googleusercontent.com/KZJRf-AbYybletCba7KZMsD6GGL3Rq3d_CecKogKdoVpFYZ_qSjcUwJnMhzzw7r-4V9LPB2IvkAsmnZA-drbhaFb9RGfoRpUsjodNt__H86zoZ8wMmnegUpTdneXZT6eEYnEDSDQdvc-SP1J0Cf-O18&quot;,
+        &quot;name&quot;: &quot;CustomGPT.ai API DELETE endpoint JSON result&quot;,
+        &quot;description&quot;: &quot;Screenshot of CustomGPT.ai API documentation showing the DELETE /projects/{projectId}/pages/{pageId} endpoint. The example response displays HTTP 200 with a JSON payload indicating \&quot;deleted\&quot;: true.&quot;,
+        &quot;author&quot;: {
+          &quot;@type&quot;: &quot;Organization&quot;,
+          &quot;name&quot;: &quot;CustomGPT.ai&quot;
+        }
+      }
+    }
+  ],
+  &quot;captions&quot;: [
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2024/07/CustomGPT.ai-Custom-GPTs-From-Your-Content-For-Business-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai landing page links its custom GPT builder to API-based RAG workflows using JSON data sources.&quot;
+    },
+    {
+      &quot;image_src&quot;: &quot;https://customgpt.ai/wp-content/uploads/2023/07/API-key-1024x492.png&quot;,
+      &quot;caption&quot;: &quot;CustomGPT.ai API settings show key lifecycle metadata used to authenticate JSON RAG API calls.&quot;
+    }
+  ]
+}</pre>
+</div>
+
+<div style="margin-top:32px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;color:#94a3b8;font-size:12px">
+  Image Audit V2 — Vision + LLM-as-Judge &middot; 2026-03-14 01:27 UTC
+</div>
+</div>
+</body>
+</html>
