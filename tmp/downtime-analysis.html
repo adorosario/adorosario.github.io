@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CustomGPT.ai Website Reliability Analysis</title>
+<style>
+:root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #e6edf3; --text2: #8b949e; --green: #3fb950;
+    --red: #f85149; --orange: #d29922; --blue: #58a6ff;
+    --purple: #6e40c9; --dark-red: #da3633;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; padding: 20px; }
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 28px; margin-bottom: 8px; }
+h2 { font-size: 20px; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+h3 { font-size: 16px; margin: 20px 0 12px; }
+.subtitle { color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; text-align: center; }
+.kpi-value { font-size: 32px; font-weight: 700; line-height: 1.2; }
+.kpi-label { font-size: 12px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.alert { padding: 16px 20px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
+.alert-red { background: rgba(218,54,51,0.15); border: 1px solid var(--dark-red); color: #ff7b72; }
+.alert-yellow { background: rgba(210,153,34,0.15); border: 1px solid var(--orange); color: #e3b341; }
+.alert-blue { background: rgba(88,166,255,0.15); border: 1px solid var(--blue); color: var(--blue); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 10px 12px; background: rgba(110,118,129,0.1); border-bottom: 2px solid var(--border); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text2); }
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: rgba(110,118,129,0.05); }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.badge-web { background: rgba(88,166,255,0.2); color: var(--blue); }
+.badge-app { background: rgba(63,185,80,0.2); color: var(--green); }
+.bar-row { display: flex; align-items: center; margin-bottom: 8px; }
+.bar-label { width: 240px; font-size: 13px; flex-shrink: 0; }
+.bar-track { flex: 1; background: rgba(110,118,129,0.1); border-radius: 4px; height: 28px; overflow: hidden; }
+.bar-fill { height: 100%; display: flex; align-items: center; padding: 0 10px; color: #fff; font-size: 12px; font-weight: 600; border-radius: 4px; min-width: 30px; }
+.comparison-table { font-size: 13px; }
+.comparison-table th { white-space: nowrap; }
+.comparison-table td:first-child { font-weight: 600; }
+.highlight { background: rgba(63,185,80,0.1); }
+.current-row { background: rgba(210,153,34,0.15); }
+.raci-table td, .raci-table th { text-align: center; font-size: 13px; }
+.raci-table td:first-child { text-align: left; font-weight: 600; }
+.action-item { display: flex; gap: 12px; margin-bottom: 12px; padding: 12px 16px; background: rgba(110,118,129,0.05); border-radius: 6px; border-left: 3px solid var(--blue); }
+.action-num { font-size: 18px; font-weight: 700; color: var(--blue); min-width: 28px; }
+.action-body { flex: 1; }
+.action-title { font-weight: 600; margin-bottom: 4px; }
+.action-detail { font-size: 13px; color: var(--text2); }
+.priority-p0 { border-left-color: var(--dark-red); }
+.priority-p0 .action-num { color: var(--dark-red); }
+.priority-p1 { border-left-color: var(--red); }
+.priority-p1 .action-num { color: var(--red); }
+.priority-p2 { border-left-color: var(--orange); }
+.priority-p2 .action-num { color: var(--orange); }
+.people-option { margin-bottom: 16px; padding: 16px; border-radius: 8px; border: 1px solid var(--border); }
+.people-option h4 { margin-bottom: 8px; }
+.footer { text-align: center; color: var(--text2); font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); }
+@media (max-width: 768px) {
+    .bar-label { width: 120px; font-size: 11px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>CustomGPT.ai Website Reliability Analysis</h1>
+<p class="subtitle">Generated March 19, 2026 at 12:21 UTC &mdash; Monitoring period: 430 days (Jan 2025 &ndash; Mar 2026)</p>
+
+<!-- ═══ EXECUTIVE SUMMARY ═══ -->
+<h2>1. Executive Summary</h2>
+
+<div class="kpi-grid">
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--orange)">99.980%</div>
+        <div class="kpi-label">Overall Uptime</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--red)">10</div>
+        <div class="kpi-label">Total Incidents</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--orange)">13 min</div>
+        <div class="kpi-label">MTTR (Avg Resolution)</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value">48 days</div>
+        <div class="kpi-label">MTBF (Avg Between Failures)</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--red)">127 min</div>
+        <div class="kpi-label">Total Downtime</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--orange)">99.966%</div>
+        <div class="kpi-label">Website Uptime (90d)</div>
+    </div>
+</div>
+
+<div class="alert alert-blue">
+    <strong>Status page cross-check:</strong> UptimeRobot status page reports <strong>99.966%</strong> website uptime over 90 days.
+    Our computed website-only 90d uptime: <strong>99.966%</strong>.
+    Values are consistent.
+</div>
+
+<!-- ═══ TREND ALERT ═══ -->
+<div class="alert alert-red">
+            <strong>TREND ALERT:</strong> 2 incidents in the last 7 days.
+            Frequency is accelerating. The site had only 8 incidents
+            in the previous 423 days.
+        </div>
+
+<h2>2. Incident Trend</h2>
+<div class="card">
+    <h3>Incidents per Month</h3>
+    <div class="bar-row">
+            <div class="bar-label">2025-01</div>
+            <div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#da3633">3</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">2025-02</div>
+            <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#d29922">1</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">2025-04</div>
+            <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#d29922">1</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">2025-05</div>
+            <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#d29922">1</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">2025-07</div>
+            <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#d29922">1</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">2025-12</div>
+            <div class="bar-track"><div class="bar-fill" style="width:33.33333333333333%;background:#d29922">1</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">2026-03</div>
+            <div class="bar-track"><div class="bar-fill" style="width:66.66666666666666%;background:#f85149">2</div></div>
+        </div>
+</div>
+
+<div class="alert alert-yellow">
+    <strong>Pattern:</strong> 2025 averaged ~0.6 incidents/month across both services.
+    March 2026 already has 2 incidents in the first 19 days &mdash;
+    a <strong>3.3x</strong> increase over the monthly average.
+</div>
+
+<!-- ═══ INCIDENT TIMELINE ═══ -->
+<h2>3. Incident Timeline</h2>
+<div class="card" style="overflow-x:auto">
+    <table>
+        <thead><tr>
+            <th>#</th><th>Started</th><th>Service</th><th>Root Cause</th><th style="text-align:right">Duration</th><th>Resolved</th>
+        </tr></thead>
+        <tbody><tr>
+            <td>1</td>
+            <td>Jan 13, 2025 14:57 UTC</td>
+            <td><span class="badge badge-web">website</span></td>
+            <td><span style="color:#d29922;font-weight:600">Connection Timeout</span></td>
+            <td style="text-align:right"><span style="color:#8b949e;font-weight:700">1.0 min</span></td>
+            <td>Jan 13, 2025 14:58 UTC</td>
+        </tr><tr>
+            <td>2</td>
+            <td>Jan 21, 2025 20:34 UTC</td>
+            <td><span class="badge badge-app">app</span></td>
+            <td><span style="color:#f85149;font-weight:600">HTTP 502 - Bad Gateway</span></td>
+            <td style="text-align:right"><span style="color:#f85149;font-weight:700">10.0 min</span></td>
+            <td>Jan 21, 2025 20:44 UTC</td>
+        </tr><tr>
+            <td>3</td>
+            <td>Jan 22, 2025 17:03 UTC</td>
+            <td><span class="badge badge-app">app</span></td>
+            <td><span style="color:#f85149;font-weight:600">HTTP 502 - Bad Gateway</span></td>
+            <td style="text-align:right"><span style="color:#f85149;font-weight:700">10.4 min</span></td>
+            <td>Jan 22, 2025 17:13 UTC</td>
+        </tr><tr>
+            <td>4</td>
+            <td>Feb 25, 2025 19:32 UTC</td>
+            <td><span class="badge badge-web">website</span></td>
+            <td><span style="color:#d29922;font-weight:600">Connection Timeout</span></td>
+            <td style="text-align:right"><span style="color:#8b949e;font-weight:700">1.2 min</span></td>
+            <td>Feb 25, 2025 19:33 UTC</td>
+        </tr><tr>
+            <td>5</td>
+            <td>Apr 03, 2025 17:54 UTC</td>
+            <td><span class="badge badge-app">app</span></td>
+            <td><span style="color:#f85149;font-weight:600">HTTP 502 - Bad Gateway</span></td>
+            <td style="text-align:right"><span style="color:#8b949e;font-weight:700">2.3 min</span></td>
+            <td>Apr 03, 2025 17:56 UTC</td>
+        </tr><tr>
+            <td>6</td>
+            <td>May 27, 2025 08:07 UTC</td>
+            <td><span class="badge badge-app">app</span></td>
+            <td><span style="color:#d29922;font-weight:600">Connection Timeout</span></td>
+            <td style="text-align:right"><span style="color:#8b949e;font-weight:700">1.1 min</span></td>
+            <td>May 27, 2025 08:08 UTC</td>
+        </tr><tr>
+            <td>7</td>
+            <td>Jul 30, 2025 15:59 UTC</td>
+            <td><span class="badge badge-app">app</span></td>
+            <td><span style="color:#d29922;font-weight:600">Connection Timeout</span></td>
+            <td style="text-align:right"><span style="color:#da3633;font-weight:700">55.9 min</span></td>
+            <td>Jul 30, 2025 16:55 UTC</td>
+        </tr><tr>
+            <td>8</td>
+            <td>Dec 04, 2025 01:59 UTC</td>
+            <td><span class="badge badge-web">website</span></td>
+            <td><span style="color:#da3633;font-weight:600">HTTP 500 - Internal Server Error</span></td>
+            <td style="text-align:right"><span style="color:#8b949e;font-weight:700">1.1 min</span></td>
+            <td>Dec 04, 2025 02:00 UTC</td>
+        </tr><tr>
+            <td>9</td>
+            <td>Mar 17, 2026 05:22 UTC</td>
+            <td><span class="badge badge-web">website</span></td>
+            <td><span style="color:#da3633;font-weight:600">HTTP 500 - Internal Server Error</span></td>
+            <td style="text-align:right"><span style="color:#da3633;font-weight:700">34.4 min</span></td>
+            <td>Mar 17, 2026 05:57 UTC</td>
+        </tr><tr>
+            <td>10</td>
+            <td>Mar 19, 2026 11:37 UTC</td>
+            <td><span class="badge badge-web">website</span></td>
+            <td><span style="color:#6e40c9;font-weight:600">HTTP 403 - Forbidden</span></td>
+            <td style="text-align:right"><span style="color:#d29922;font-weight:700">9.7 min</span></td>
+            <td>Mar 19, 2026 11:47 UTC</td>
+        </tr></tbody>
+    </table>
+</div>
+
+<!-- ═══ ROOT CAUSE BREAKDOWN ═══ -->
+<h2>4. Root Cause Breakdown</h2>
+<div class="card">
+    <div class="bar-row">
+            <div class="bar-label">Connection Timeout</div>
+            <div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#d29922">4</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">HTTP 502 - Bad Gateway</div>
+            <div class="bar-track"><div class="bar-fill" style="width:75.0%;background:#f85149">3</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">HTTP 500 - Internal Server Error</div>
+            <div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#da3633">2</div></div>
+        </div><div class="bar-row">
+            <div class="bar-label">HTTP 403 - Forbidden</div>
+            <div class="bar-track"><div class="bar-fill" style="width:25.0%;background:#6e40c9">1</div></div>
+        </div>
+</div>
+
+<div class="card">
+    <h3>Root Cause Analysis</h3>
+    <table>
+        <thead><tr><th>Root Cause</th><th>Count</th><th>Total Downtime</th><th>Analysis</th></tr></thead>
+        <tbody>
+            <tr>
+                <td style="color:var(--orange)">Connection Timeout</td>
+                <td>4</td>
+                <td>59.2 min</td>
+                <td>Network-level failures. Could be DNS, origin server overload, or Cloudflare edge issues. The Jul 30 timeout lasted 56 min &mdash; suggests origin server crash, not transient network.</td>
+            </tr>
+            <tr>
+                <td style="color:var(--red)">HTTP 502 Bad Gateway</td>
+                <td>3</td>
+                <td>22.7 min</td>
+                <td>Reverse proxy (Cloudflare/Rocket.net) couldn&rsquo;t reach the origin. All 3 hit the app (app.customgpt.ai) within 2 days in Jan 2025 &mdash; likely a deployment or infrastructure event.</td>
+            </tr>
+            <tr>
+                <td style="color:var(--dark-red)">HTTP 500 Internal Server Error</td>
+                <td>2</td>
+                <td>35.5 min</td>
+                <td>Application-level crashes on the website (WordPress). The Mar 17 incident was the <strong>worst website outage</strong> (34 min). Dec 2025 was brief (1 min, likely transient PHP error).</td>
+            </tr>
+            <tr>
+                <td style="color:var(--purple)">HTTP 403 Forbidden</td>
+                <td>1</td>
+                <td>9.7 min</td>
+                <td>Cloudflare WAF blocked the site. Same pattern as <a href="#" style="color:var(--blue)">Claude.ai 403 blocking</a> (ticket #100139). WAF rule likely triggered by bot traffic or a new rule deployment.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ═══ BUSINESS IMPACT ═══ -->
+<h2>5. Business Impact</h2>
+
+<div class="kpi-grid">
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--red)">~292</div>
+        <div class="kpi-label">Est. Lost Visitors (Total)</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value" style="color:var(--red)">$2,415&ndash;$12,074</div>
+        <div class="kpi-label">Est. Revenue at Risk (Total)</div>
+    </div>
+</div>
+
+<div class="card" style="overflow-x:auto">
+    <p style="font-size:13px;color:var(--text2);margin-bottom:12px">
+        Estimates based on ~100K monthly visitors (~2.3/min) and 8-figure annual revenue ($10&ndash;50M = $19&ndash;95/min).
+    </p>
+    <table>
+        <thead><tr><th>Date</th><th>Root Cause</th><th style="text-align:right">Duration</th><th style="text-align:right">Lost Visitors</th><th style="text-align:right">Revenue at Risk</th></tr></thead>
+        <tbody><tr>
+            <td>2025-01-13</td>
+            <td>Connection Timeout</td>
+            <td style="text-align:right">1.0 min</td>
+            <td style="text-align:right">~2</td>
+            <td style="text-align:right">$19&ndash;$95</td>
+        </tr><tr>
+            <td>2025-01-21</td>
+            <td>HTTP 502 - Bad Gateway</td>
+            <td style="text-align:right">10.0 min</td>
+            <td style="text-align:right">~23</td>
+            <td style="text-align:right">$190&ndash;$950</td>
+        </tr><tr>
+            <td>2025-01-22</td>
+            <td>HTTP 502 - Bad Gateway</td>
+            <td style="text-align:right">10.4 min</td>
+            <td style="text-align:right">~24</td>
+            <td style="text-align:right">$198&ndash;$988</td>
+        </tr><tr>
+            <td>2025-02-25</td>
+            <td>Connection Timeout</td>
+            <td style="text-align:right">1.2 min</td>
+            <td style="text-align:right">~3</td>
+            <td style="text-align:right">$23&ndash;$114</td>
+        </tr><tr>
+            <td>2025-04-03</td>
+            <td>HTTP 502 - Bad Gateway</td>
+            <td style="text-align:right">2.3 min</td>
+            <td style="text-align:right">~5</td>
+            <td style="text-align:right">$44&ndash;$218</td>
+        </tr><tr>
+            <td>2025-05-27</td>
+            <td>Connection Timeout</td>
+            <td style="text-align:right">1.1 min</td>
+            <td style="text-align:right">~3</td>
+            <td style="text-align:right">$21&ndash;$105</td>
+        </tr><tr>
+            <td>2025-07-30</td>
+            <td>Connection Timeout</td>
+            <td style="text-align:right">55.9 min</td>
+            <td style="text-align:right">~129</td>
+            <td style="text-align:right">$1,062&ndash;$5,310</td>
+        </tr><tr>
+            <td>2025-12-04</td>
+            <td>HTTP 500 - Internal Server Error</td>
+            <td style="text-align:right">1.1 min</td>
+            <td style="text-align:right">~3</td>
+            <td style="text-align:right">$21&ndash;$105</td>
+        </tr><tr>
+            <td>2026-03-17</td>
+            <td>HTTP 500 - Internal Server Error</td>
+            <td style="text-align:right">34.4 min</td>
+            <td style="text-align:right">~79</td>
+            <td style="text-align:right">$654&ndash;$3,268</td>
+        </tr><tr>
+            <td>2026-03-19</td>
+            <td>HTTP 403 - Forbidden</td>
+            <td style="text-align:right">9.7 min</td>
+            <td style="text-align:right">~22</td>
+            <td style="text-align:right">$184&ndash;$921</td>
+        </tr></tbody>
+        <tfoot><tr style="font-weight:700;border-top:2px solid var(--border)">
+            <td colspan="2">TOTAL</td>
+            <td style="text-align:right">127 min</td>
+            <td style="text-align:right">~292</td>
+            <td style="text-align:right">$2,415&ndash;$12,074</td>
+        </tr></tfoot>
+    </table>
+</div>
+
+<!-- ═══ INDUSTRY COMPARISON ═══ -->
+<h2>6. Industry Comparison</h2>
+<div class="card">
+    <table class="comparison-table">
+        <thead><tr><th>Tier</th><th>Target Uptime</th><th>Allowed Downtime/Month</th><th>Allowed Downtime/Year</th><th>CustomGPT.ai Status</th></tr></thead>
+        <tbody>
+            <tr><td>Hobbyist</td><td>99.0%</td><td>7.3 hours</td><td>87.6 hours</td><td style="color:var(--green)">Above</td></tr>
+            <tr><td>Small Business</td><td>99.9%</td><td>43.8 min</td><td>8.8 hours</td><td style="color:var(--green)">Above</td></tr>
+            <tr class="current-row"><td>SaaS Standard</td><td>99.95%</td><td>21.9 min</td><td>4.4 hours</td><td style="color:var(--orange)">Borderline &mdash; 127 min / 430 days</td></tr>
+            <tr><td>Enterprise</td><td>99.99%</td><td>4.3 min</td><td>52.6 min</td><td style="color:var(--red)">Well Below</td></tr>
+            <tr><td>Mission Critical</td><td>99.999%</td><td>26 sec</td><td>5.3 min</td><td style="color:var(--red)">N/A</td></tr>
+        </tbody>
+    </table>
+    <p style="margin-top:12px;font-size:13px;color:var(--text2)">
+        An 8-figure SaaS company should target <strong>99.95%</strong> minimum (SaaS Standard).
+        CustomGPT.ai is currently at <strong>99.980%</strong> overall, which is
+        above the SaaS standard.
+        However, the <strong>accelerating trend</strong> (3 incidents in 7 days) threatens to breach this threshold rapidly.
+    </p>
+</div>
+
+<!-- ═══ CURRENT STATE ASSESSMENT ═══ -->
+<h2>7. Current State Assessment &mdash; RACI Matrix</h2>
+<div class="card" style="overflow-x:auto">
+    <table class="raci-table">
+        <thead><tr><th style="text-align:left">Responsibility</th><th>Alden (CEO)</th><th>Luke (???)</th><th>Ajdin ($450/mo)</th><th>Anupam (CTO)</th><th>UptimeRobot</th></tr></thead>
+        <tbody>
+            <tr><td>Uptime monitoring</td><td>&mdash;</td><td>?</td><td>?</td><td>?</td><td style="color:var(--green)">Automated</td></tr>
+            <tr><td>Alert recipient</td><td style="color:var(--red)">No access</td><td>?</td><td>?</td><td>ops@ group</td><td>&mdash;</td></tr>
+            <tr><td>Incident response</td><td>&mdash;</td><td>?</td><td>?</td><td>?</td><td>&mdash;</td></tr>
+            <tr><td>Root cause analysis</td><td>&mdash;</td><td>?</td><td>?</td><td>?</td><td>&mdash;</td></tr>
+            <tr><td>WordPress maintenance</td><td>&mdash;</td><td>?</td><td style="color:var(--orange)">Assumed</td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td>Hosting management</td><td>&mdash;</td><td style="color:var(--orange)">Card on file</td><td style="color:var(--orange)">Has creds</td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td>On-call rotation</td><td colspan="5" style="color:var(--red);font-weight:700">NOBODY &mdash; No on-call exists</td></tr>
+        </tbody>
+    </table>
+    <p style="margin-top:12px;font-size:13px;color:var(--text2)">
+        <strong>Key gaps:</strong> (1) Alden has no UptimeRobot access despite being CEO.
+        (2) Luke&rsquo;s role is undefined &mdash; he holds the Rocket.net billing card but hasn&rsquo;t clarified scope.
+        (3) Ajdin&rsquo;s Upwork milestones have zero descriptions &mdash; impossible to tell if site reliability is in scope.
+        (4) No single person owns incident response or on-call.
+    </p>
+</div>
+
+<!-- ═══ IMMEDIATE ACTION PLAN ═══ -->
+<h2>8. Immediate Action Plan</h2>
+
+<div class="action-item priority-p0">
+    <div class="action-num">1</div>
+    <div class="action-body">
+        <div class="action-title">Get Alden on UptimeRobot</div>
+        <div class="action-detail">Add Alden as team member. UptimeRobot Team plan is $34/mo. CEO must have direct visibility into site health, not find out via forwarded emails. Currently alerts go only to ops@ Google Group.</div>
+    </div>
+</div>
+
+<div class="action-item priority-p0">
+    <div class="action-num">2</div>
+    <div class="action-body">
+        <div class="action-title">Clarify Ajdin&rsquo;s scope in writing</div>
+        <div class="action-detail">Luke must answer: Is Ajdin on retainer or hourly? What does he own? What&rsquo;s his response SLA? Current contract: ~$450/mo on Upwork with <strong>zero milestone descriptions</strong> &mdash; no accountability trail for what each payment covers. Also clarify Luke&rsquo;s own role and who owns what.</div>
+    </div>
+</div>
+
+<div class="action-item priority-p0">
+    <div class="action-num">3</div>
+    <div class="action-body">
+        <div class="action-title">Investigate Mar 17 HTTP 500 (34 min outage)</div>
+        <div class="action-detail">Worst website incident ever. Check Rocket.net error logs, PHP error log, wp-content/debug.log. Was there a plugin update, WP core update, or PHP version change that triggered this? At 5:22 AM UTC (1:22 AM ET) &mdash; suggests automated maintenance or cron-triggered event.</div>
+    </div>
+</div>
+
+<div class="action-item priority-p1">
+    <div class="action-num">4</div>
+    <div class="action-body">
+        <div class="action-title">Investigate Mar 19 HTTP 403 (10 min outage)</div>
+        <div class="action-detail">Likely Cloudflare WAF false positive &mdash; same pattern as the Claude.ai bot blocking (Rocket.net ticket #100139). Check Cloudflare WAF event log for the 11:37&ndash;11:47 UTC window. If a WAF rule auto-deployed, disable or tune it.</div>
+    </div>
+</div>
+
+<div class="action-item priority-p1">
+    <div class="action-num">5</div>
+    <div class="action-body">
+        <div class="action-title">Enable WP debug logging</div>
+        <div class="action-detail">Add <code>define('WP_DEBUG_LOG', true);</code> to wp-config.php. This captures PHP errors, fatal crashes, and plugin conflicts that cause 500 errors. Rotate weekly to prevent disk fill. Currently flying blind on application errors.</div>
+    </div>
+</div>
+
+<div class="action-item priority-p1">
+    <div class="action-num">6</div>
+    <div class="action-body">
+        <div class="action-title">Enable Cloudflare alerting</div>
+        <div class="action-detail">Set up Cloudflare notifications for: 5xx spike (threshold: &gt;5/min), WAF block surge, origin unreachable. This provides faster signal than UptimeRobot&rsquo;s 5-min polling on the free plan. Cloudflare alerting is free.</div>
+    </div>
+</div>
+
+<div class="action-item priority-p2">
+    <div class="action-num">7</div>
+    <div class="action-body">
+        <div class="action-title">Add SMS/phone escalation</div>
+        <div class="action-detail">UptimeRobot supports phone alerts for incidents lasting &gt;5 min. Configure escalation: email immediately, SMS at 5 min, phone at 15 min. Cost: included in Team plan ($34/mo) or Pro plan ($13/mo per monitor).</div>
+    </div>
+</div>
+
+<div class="action-item priority-p2">
+    <div class="action-num">8</div>
+    <div class="action-body">
+        <div class="action-title">Define an on-call owner</div>
+        <div class="action-detail">Someone must be the single throat to choke for reliability. Options: expand Ajdin&rsquo;s scope (cheapest), hire a fractional SRE (best), or use managed hosting with proactive monitoring (easiest). See People &amp; Process section below.</div>
+    </div>
+</div>
+
+<!-- ═══ STRATEGIC HOSTING COMPARISON ═══ -->
+<h2>9. Strategic Hosting Assessment</h2>
+
+<div class="alert alert-red">
+    <strong>$100/mo hosting for 8-figure revenue is underinvestment.</strong>
+    Rocket.net Business is a fine host for a blog &mdash; but CustomGPT.ai is the primary sales channel
+    for a company doing $10&ndash;50M/year. The hosting budget should be 2&ndash;4x higher ($225&ndash;$400/mo)
+    with enterprise-grade support, auto-scaling, and proactive monitoring.
+</div>
+
+<div class="card" style="overflow-x:auto">
+    <table class="comparison-table">
+        <thead><tr><th>Provider</th><th>Plan</th><th>$/mo</th><th>Auto-Scale</th><th>WAF</th><th>Support SLA</th><th>DDoS</th><th>Proactive Monitoring</th></tr></thead>
+        <tbody>
+            <tr class="current-row">
+                <td>Rocket.net</td><td>Business (current)</td><td>$100</td><td>No</td><td>Basic CF</td><td>Email</td><td>CF basic</td><td>No</td>
+            </tr>
+            <tr class="highlight">
+                <td>Rocket.net</td><td>Enterprise 1</td><td>$250</td><td>Dedicated</td><td>Enhanced</td><td>Priority</td><td>CF Enterprise</td><td>No</td>
+            </tr>
+            <tr class="highlight">
+                <td>Kinsta</td><td>Business 2</td><td>$225</td><td>Container</td><td>CF Enterprise</td><td>Chat 24/7</td><td>CF Enterprise</td><td>Yes</td>
+            </tr>
+            <tr>
+                <td>WP Engine</td><td>Professional</td><td>$400</td><td>Burst</td><td>Enhanced</td><td>Phone 24/7</td><td>Yes</td><td>Yes</td>
+            </tr>
+            <tr>
+                <td>Pagely</td><td>VPS-1</td><td>$499</td><td>AWS auto-scale</td><td>AWS WAF</td><td>Slack/Phone</td><td>AWS Shield</td><td>Yes</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top:12px;font-size:13px">
+        <strong>Recommendation:</strong> Lowest-friction upgrade: <span style="color:var(--green)">Rocket.net Enterprise 1 ($250/mo)</span> &mdash; same provider, minimal migration risk.
+        Best overall value: <span style="color:var(--green)">Kinsta Business 2 ($225/mo)</span> &mdash; container-based, CF Enterprise WAF, 24/7 chat support, proactive monitoring included.
+        Premium option: <span style="color:var(--blue)">WP Engine Professional ($400/mo)</span> &mdash; phone support, dedicated account manager.
+    </p>
+</div>
+
+<!-- ═══ PEOPLE & PROCESS ═══ -->
+<h2>10. People &amp; Process Recommendation</h2>
+
+<div class="people-option" style="border-color:var(--green)">
+    <h4 style="color:var(--green)">Option A: Expand Ajdin&rsquo;s Retainer ($800&ndash;$1,200/mo)</h4>
+    <p style="font-size:13px">
+        Increase Ajdin&rsquo;s scope from ad-hoc web dev to include: on-call for site incidents, weekly health check report,
+        response SLA (&lt;30 min during business hours, &lt;2 hours off-hours). Requires clear written scope and milestone descriptions on Upwork.
+    </p>
+    <p style="font-size:13px;color:var(--text2);margin-top:8px">
+        <strong>Pros:</strong> Cheapest option, existing relationship. <strong>Cons:</strong> Single point of failure, unclear if Ajdin has SRE skills,
+        current zero-accountability contract pattern is a red flag.
+    </p>
+</div>
+
+<div class="people-option" style="border-color:var(--blue)">
+    <h4 style="color:var(--blue)">Option B: Fractional WordPress SRE via GoWP/Jetrails ($1,500&ndash;$2,500/mo)</h4>
+    <p style="font-size:13px">
+        Hire a managed WordPress operations service. They handle: monitoring, incident response, updates, security patches,
+        performance optimization. Some include hosting migration.
+    </p>
+    <p style="font-size:13px;color:var(--text2);margin-top:8px">
+        <strong>Pros:</strong> Professional-grade ops, SLA-backed, multiple engineers (no SPOF). <strong>Cons:</strong> Higher cost, external dependency.
+    </p>
+</div>
+
+<div class="people-option" style="border-color:var(--orange)">
+    <h4 style="color:var(--orange)">Option C: Managed Hosting with Proactive Monitoring ($225&ndash;$499/mo)</h4>
+    <p style="font-size:13px">
+        Switch to a host that includes proactive monitoring (Kinsta, WP Engine, or Pagely). Their ops team monitors your site
+        and escalates issues before you notice. Reduces need for dedicated SRE.
+    </p>
+    <p style="font-size:13px;color:var(--text2);margin-top:8px">
+        <strong>Pros:</strong> Simplest to implement, hosting + ops in one vendor. <strong>Cons:</strong> Less customizable, migration effort.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Recommended Path</h3>
+    <p style="font-size:14px">
+        <strong>Short-term (this week):</strong> Actions 1&ndash;6 above. Get Alden on UptimeRobot, clarify Ajdin&rsquo;s scope,
+        investigate the two recent incidents, enable debug logging and Cloudflare alerts.
+    </p>
+    <p style="font-size:14px;margin-top:8px">
+        <strong>Medium-term (30 days):</strong> Upgrade to Rocket.net Enterprise ($250/mo) or migrate to Kinsta ($225/mo).
+        Define on-call owner with written SLA.
+    </p>
+    <p style="font-size:14px;margin-top:8px">
+        <strong>Long-term (90 days):</strong> Establish incident response playbook, post-mortem process,
+        and quarterly reliability review. Target 99.95% uptime SLA.
+    </p>
+</div>
+
+<div class="footer">
+    CustomGPT.ai Website Reliability Analysis &mdash; Generated by Claude Code &mdash; Data source: UptimeRobot alert emails (10 incidents, 430 day monitoring window)
+</div>
+
+</div>
+</body>
+</html>
