@@ -69,7 +69,7 @@ tr:hover td { background: rgba(110,118,129,0.05); }
 <div class="container">
 
 <h1>CustomGPT.ai Website Reliability Analysis</h1>
-<p class="subtitle">Generated March 19, 2026 at 12:21 UTC &mdash; Monitoring period: 430 days (Jan 2025 &ndash; Mar 2026)</p>
+<p class="subtitle">Generated March 19, 2026 at 13:31 UTC &mdash; Monitoring period: 430 days (Jan 2025 &ndash; Mar 2026)</p>
 
 <!-- ═══ EXECUTIVE SUMMARY ═══ -->
 <h2>1. Executive Summary</h2>
@@ -483,38 +483,34 @@ tr:hover td { background: rgba(110,118,129,0.05); }
 <!-- ═══ STRATEGIC HOSTING COMPARISON ═══ -->
 <h2>9. Strategic Hosting Assessment</h2>
 
-<div class="alert alert-red">
-    <strong>$100/mo hosting for 8-figure revenue is underinvestment.</strong>
-    Rocket.net Business is a fine host for a blog &mdash; but CustomGPT.ai is the primary sales channel
-    for a company doing $10&ndash;50M/year. The hosting budget should be 2&ndash;4x higher ($225&ndash;$400/mo)
-    with enterprise-grade support, auto-scaling, and proactive monitoring.
+<div class="alert alert-blue">
+    <strong>Key finding: DDoS is already covered.</strong>
+    ALL Rocket.net plans include Cloudflare Enterprise CDN, WAF, and DDoS protection.
+    Upgrading plans does NOT improve security. The real risk is <strong>disk fill</strong> (31.6/40GB = 79%)
+    and <strong>lack of monitoring/alerting</strong> &mdash; both fixable for ~$29/mo.
 </div>
 
 <div class="card" style="overflow-x:auto">
+    <h3>Rocket.net Plan Comparison (Corrected Pricing)</h3>
     <table class="comparison-table">
-        <thead><tr><th>Provider</th><th>Plan</th><th>$/mo</th><th>Auto-Scale</th><th>WAF</th><th>Support SLA</th><th>DDoS</th><th>Proactive Monitoring</th></tr></thead>
+        <thead><tr><th>Plan</th><th>$/mo</th><th>Disk</th><th>Bandwidth</th><th>Support</th><th>DDoS / WAF</th><th>Worth Upgrading?</th></tr></thead>
         <tbody>
             <tr class="current-row">
-                <td>Rocket.net</td><td>Business (current)</td><td>$100</td><td>No</td><td>Basic CF</td><td>Email</td><td>CF basic</td><td>No</td>
-            </tr>
-            <tr class="highlight">
-                <td>Rocket.net</td><td>Enterprise 1</td><td>$250</td><td>Dedicated</td><td>Enhanced</td><td>Priority</td><td>CF Enterprise</td><td>No</td>
-            </tr>
-            <tr class="highlight">
-                <td>Kinsta</td><td>Business 2</td><td>$225</td><td>Container</td><td>CF Enterprise</td><td>Chat 24/7</td><td>CF Enterprise</td><td>Yes</td>
+                <td>Business (current)</td><td>$100</td><td>40 GB</td><td>300 GB</td><td>Live chat + tickets 24/7</td><td>CF Enterprise</td><td>&mdash;</td>
             </tr>
             <tr>
-                <td>WP Engine</td><td>Professional</td><td>$400</td><td>Burst</td><td>Enhanced</td><td>Phone 24/7</td><td>Yes</td><td>Yes</td>
+                <td>Expert</td><td>$200</td><td>50 GB</td><td>500 GB</td><td>Same as Business</td><td>CF Enterprise (same)</td><td style="color:var(--red)">No &mdash; $100/mo for +10GB is worse than cleanup</td>
             </tr>
             <tr>
-                <td>Pagely</td><td>VPS-1</td><td>$499</td><td>AWS auto-scale</td><td>AWS WAF</td><td>Slack/Phone</td><td>AWS Shield</td><td>Yes</td>
+                <td>Enterprise 1</td><td>$649</td><td>1 TB</td><td>1 TB</td><td>Private Slack + Phone 24/7</td><td>CF Enterprise (same)</td><td style="color:var(--red)">No &mdash; overkill for single WP site</td>
             </tr>
         </tbody>
     </table>
     <p style="margin-top:12px;font-size:13px">
-        <strong>Recommendation:</strong> Lowest-friction upgrade: <span style="color:var(--green)">Rocket.net Enterprise 1 ($250/mo)</span> &mdash; same provider, minimal migration risk.
-        Best overall value: <span style="color:var(--green)">Kinsta Business 2 ($225/mo)</span> &mdash; container-based, CF Enterprise WAF, 24/7 chat support, proactive monitoring included.
-        Premium option: <span style="color:var(--blue)">WP Engine Professional ($400/mo)</span> &mdash; phone support, dedicated account manager.
+        <strong>Recommendation: Stay on Business ($100/mo).</strong> Add UptimeRobot Team ($29/mo) for 60-second monitoring,
+        Slack/SMS alerts, and 3 login seats. Configure free Cloudflare alerts for 5xx spikes and WAF events.
+        Total: <span style="color:var(--green)">$129/mo</span> (saves $71 vs. the $200 budget).
+        Clean up disk bloat with <code>scripts/wp_disk_cleanup.py</code> instead of buying more storage.
     </p>
 </div>
 
