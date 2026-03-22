@@ -303,30 +303,39 @@ body{font-family:var(--font-display);background:var(--dark);color:var(--text);li
     <button class="tab" onclick="switchTab(event,'tab-repo')">From Repo</button>
   </div>
   <div id="tab-quick" class="tab-content active">
-    <div class="code-block" id="code-quick">mkdir -p ~/.claude/skills/linkedin-image-pro
-curl -sL https://raw.githubusercontent.com/anthropics/claude-code-skills-community/main/skills/linkedin-image-pro/SKILL.md \
+    <div class="code-block" id="code-quick">mkdir -p ~/.claude/skills/linkedin-image-pro && \
+curl -sL https://adorosario.github.io/linkedin-image-generator/SKILL.md \
   -o ~/.claude/skills/linkedin-image-pro/SKILL.md
 <button class="copy-btn" onclick="copyCode('code-quick',this)">Copy</button></div>
-    <p style="color:var(--text-dim);font-size:0.85rem;margin-top:12px">Then restart Claude Code and type <code>/linkedin-image-pro</code> with your post text.</p>
+    <p style="color:var(--text-dim);font-size:0.85rem;margin-top:12px">Then restart Claude Code and type <code>/linkedin-image-pro</code> with your post text. Requires <code>GEMINI_API_KEY</code> in your env.</p>
   </div>
   <div id="tab-manual" class="tab-content">
     <div class="code-block" id="code-manual">1. Create the skill directory:
    mkdir -p ~/.claude/skills/linkedin-image-pro
 
-2. Copy SKILL.md from the repo (or write your own):
-   cp path/to/SKILL.md ~/.claude/skills/linkedin-image-pro/
+2. Download SKILL.md:
+   curl -sL https://adorosario.github.io/linkedin-image-generator/SKILL.md \
+     -o ~/.claude/skills/linkedin-image-pro/SKILL.md
 
-3. Set your Gemini API key in Claude Code settings:
-   Add GEMINI_API_KEY to your env block in settings.json
+3. Add GEMINI_API_KEY to your Claude Code settings.json env block:
+   "env": { "GEMINI_API_KEY": "your-key-here" }
 
 4. Restart Claude Code and invoke:
    /linkedin-image-pro
 <button class="copy-btn" onclick="copyCode('code-manual',this)">Copy</button></div>
   </div>
   <div id="tab-repo" class="tab-content">
-    <div class="code-block" id="code-repo">git clone https://github.com/anthropics/claude-code-skills-community.git
-cp -r claude-code-skills-community/skills/linkedin-image-pro \
-  ~/.claude/skills/linkedin-image-pro
+    <div class="code-block" id="code-repo"># Or view the raw skill file:
+# https://adorosario.github.io/linkedin-image-generator/SKILL.md
+
+# Prerequisites:
+# 1. Claude Code CLI installed
+# 2. Gemini API key (free at ai.google.dev)
+# 3. curl, jq, base64 available in your shell
+
+mkdir -p ~/.claude/skills/linkedin-image-pro && \
+curl -sL https://adorosario.github.io/linkedin-image-generator/SKILL.md \
+  -o ~/.claude/skills/linkedin-image-pro/SKILL.md
 <button class="copy-btn" onclick="copyCode('code-repo',this)">Copy</button></div>
   </div>
 </section>
