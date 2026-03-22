@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthetic Viewer Panel — AI Creative Director for LinkedIn</title>
+<meta name="description" content="Generate 5 radically different LinkedIn post image concepts using AI-powered creative director personas. Open source Claude Code skill.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --magenta:#E930FF;--purple:#7B2FBE;--coral:#E8562A;
+  --dark:#0D0B1A;--card-bg:#16112B;--card-border:#2A2145;
+  --text:#E8E4F0;--text-dim:#9A93B0;--text-bright:#FFFFFF;
+  --bg:#F9F5FF;--bg-tint:#F0E6FF;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-display);background:var(--dark);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* --- NAV --- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;gap:16px;backdrop-filter:blur(12px);background:rgba(13,11,26,0.75);border-bottom:1px solid var(--card-border)}
+.nav-logo{font-weight:700;font-size:18px;color:var(--text-bright);letter-spacing:-0.02em}
+.nav-sep{width:1px;height:20px;background:var(--card-border)}
+.nav-label{font-size:13px;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase}
+.nav-links{margin-left:auto;display:flex;gap:24px}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:14px;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--magenta)}
+
+/* --- HERO --- */
+.hero{position:relative;padding:140px 32px 100px;text-align:center;overflow:hidden}
+.hero-glow{position:absolute;top:50%;left:55%;width:500px;height:500px;background:radial-gradient(circle,rgba(233,48,255,0.15) 0%,transparent 70%);border-radius:50%;transform:translate(-50%,-50%);animation:glow-drift 8s ease-in-out infinite}
+@keyframes glow-drift{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-45%,-55%) scale(1.15)}}
+.hero-label{display:inline-block;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:16px;opacity:0;animation:fade-up 0.6s 0.2s forwards}
+.hero h1{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:20px;opacity:0;animation:fade-up 0.6s 0.4s forwards}
+.hero h1 .grad{background:linear-gradient(110deg,var(--magenta),var(--purple));-webkit-background-clip:text;-webkit-text-color:transparent;background-clip:text;color:transparent}
+.hero .tagline{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-dim);max-width:640px;margin:0 auto 32px;opacity:0;animation:fade-up 0.6s 0.6s forwards}
+.hero .cta{display:inline-block;padding:14px 32px;background:var(--coral);color:#fff;font-weight:600;font-size:15px;border-radius:8px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;opacity:0;animation:fade-up 0.6s 0.8s forwards}
+.hero .cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,86,42,0.35)}
+@keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* --- STATS --- */
+.stats{display:flex;justify-content:center;gap:48px;padding:40px 32px;border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border)}
+.stat{text-align:center}
+.stat-val{font-size:2rem;font-weight:700;background:linear-gradient(110deg,var(--magenta),var(--purple));-webkit-background-clip:text;-webkit-text-color:transparent;background-clip:text;color:transparent}
+.stat-label{font-size:13px;color:var(--text-dim);margin-top:4px}
+
+/* --- SECTIONS --- */
+.section{padding:80px 32px;max-width:1200px;margin:0 auto}
+.section-label{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:12px}
+.section h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
+.section .subtitle{color:var(--text-dim);font-size:1.05rem;max-width:600px;margin-bottom:40px}
+
+/* --- CARDS GRID --- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:28px;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(110deg,var(--magenta),var(--purple));opacity:0;transition:opacity 0.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 12px 32px rgba(123,47,190,0.15)}
+.card:hover::before{opacity:1}
+.card-icon{font-size:28px;margin-bottom:16px}
+.card h3{font-size:1.15rem;font-weight:600;margin-bottom:8px}
+.card p{color:var(--text-dim);font-size:0.9rem;line-height:1.6}
+
+/* --- TERMINAL --- */
+.terminal{background:#0D1117;border:1px solid #30363D;border-radius:12px;overflow:hidden;max-width:800px;margin:0 auto}
+.terminal-header{background:#161B22;padding:12px 16px;display:flex;align-items:center;gap:8px}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-dot.r{background:#FF5F57}.terminal-dot.y{background:#FEBC2E}.terminal-dot.g{background:#28C840}
+.terminal-title{margin-left:8px;font-size:13px;color:#8B949E;font-family:var(--font-mono)}
+.terminal-body{padding:20px;font-family:var(--font-mono);font-size:0.82rem;line-height:1.8;color:#C9D1D9}
+.terminal-body .comment{color:#8B949E}
+.terminal-body .keyword{color:#FF7B72}
+.terminal-body .string{color:#A5D6FF}
+.terminal-body .func{color:#D2A8FF}
+.terminal-body .num{color:#79C0FF}
+.terminal-body .arrow{color:var(--magenta)}
+
+/* --- GALLERY --- */
+.gallery-section{background:linear-gradient(180deg,var(--dark) 0%,#120E24 100%);padding:80px 32px}
+.gallery-inner{max-width:1200px;margin:0 auto}
+.post-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;margin-bottom:32px;overflow:hidden}
+.post-header{padding:24px 28px 16px;display:flex;align-items:center;gap:16px;cursor:pointer}
+.post-num{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--magenta),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;flex-shrink:0}
+.post-meta{flex:1}
+.post-meta h3{font-size:1.1rem;font-weight:600;margin-bottom:2px}
+.post-meta .date{font-size:13px;color:var(--text-dim)}
+.post-toggle{font-size:24px;color:var(--text-dim);transition:transform 0.3s}
+.post-card.open .post-toggle{transform:rotate(180deg)}
+.post-text{padding:0 28px;max-height:0;overflow:hidden;transition:max-height 0.4s ease;font-size:0.88rem;color:var(--text-dim);line-height:1.7}
+.post-card.open .post-text{max-height:400px;padding-bottom:20px}
+.panel-scroll{display:flex;gap:16px;padding:0 28px 24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.panel-scroll::-webkit-scrollbar{height:6px}
+.panel-scroll::-webkit-scrollbar-track{background:transparent}
+.panel-scroll::-webkit-scrollbar-thumb{background:var(--card-border);border-radius:3px}
+.persona-card{flex:0 0 280px;scroll-snap-align:start;background:var(--dark);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;transition:border-color 0.2s}
+.persona-card:hover{border-color:var(--purple)}
+.persona-card.winner{border-color:var(--magenta);box-shadow:0 0 20px rgba(233,48,255,0.15)}
+.persona-img{width:100%;height:158px;object-fit:cover;display:block}
+.persona-info{padding:12px 14px}
+.persona-name{font-size:0.85rem;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.persona-name .badge{font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(233,48,255,0.15);color:var(--magenta);font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+.persona-desc{font-size:0.78rem;color:var(--text-dim);line-height:1.5}
+
+/* --- INSTALL --- */
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--card-border);padding-bottom:0}
+.tab{padding:10px 20px;font-size:14px;font-weight:500;color:var(--text-dim);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;transition:all 0.2s;font-family:var(--font-display)}
+.tab.active{color:var(--magenta);border-bottom-color:var(--magenta)}
+.tab:hover{color:var(--text-bright)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.code-block{background:#0D1117;border:1px solid #30363D;border-radius:8px;padding:16px 20px;font-family:var(--font-mono);font-size:0.82rem;color:#C9D1D9;position:relative;overflow-x:auto;white-space:pre}
+.copy-btn{position:absolute;top:10px;right:10px;background:var(--card-border);color:var(--text-dim);border:none;padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-family:var(--font-display);transition:all 0.2s}
+.copy-btn:hover{background:var(--purple);color:#fff}
+.copy-btn.copied{background:#16A34A;color:#fff}
+
+/* --- FAQ --- */
+.faq-item{border:1px solid var(--card-border);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.faq-q{padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;font-size:0.95rem;transition:background 0.2s}
+.faq-q:hover{background:rgba(123,47,190,0.08)}
+.faq-icon{font-size:18px;color:var(--text-dim);transition:transform 0.3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 20px 18px;color:var(--text-dim);font-size:0.9rem;line-height:1.7}
+
+/* --- COMPARISON --- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.compare-side{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:24px;text-align:center}
+.compare-side h4{font-size:1rem;font-weight:600;margin-bottom:8px}
+.compare-side p{font-size:0.85rem;color:var(--text-dim);margin-bottom:16px}
+.compare-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.compare-grid img{width:100%;border-radius:4px;aspect-ratio:16/9;object-fit:cover}
+.compare-side.old .compare-grid img{filter:sepia(0.3) saturate(0.5);opacity:0.7}
+.compare-side.new{border-color:var(--magenta)}
+
+/* --- FOOTER --- */
+.footer{text-align:center;padding:48px 32px;border-top:1px solid var(--card-border);color:var(--text-dim);font-size:14px}
+.footer a{color:var(--magenta);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.footer .powered{margin-top:8px;font-size:12px;opacity:0.7}
+
+/* --- REVEAL ANIMATION --- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* --- RESPONSIVE --- */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .stats{flex-wrap:wrap;gap:24px}
+  .cards{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .persona-card{flex:0 0 240px}
+  .hero h1{font-size:2rem}
+}
+@media(max-width:480px){
+  .hero{padding:120px 20px 60px}
+  .section{padding:60px 20px}
+  .gallery-section{padding:60px 16px}
+  .panel-scroll{padding:0 16px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-logo">SVP</span>
+  <span class="nav-sep"></span>
+  <span class="nav-label">Synthetic Viewer Panel</span>
+  <div class="nav-links">
+    <a href="#method">Method</a>
+    <a href="#how">How It Works</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#install">Install</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-label">Claude Code Skill</div>
+  <h1><span class="grad">Synthetic Viewer Panel</span></h1>
+  <p class="tagline">5 AI Creative Directors. 5 Radically Different Concepts. 1 LinkedIn Post. Stop getting 5 variations of the same idea.</p>
+  <a href="#gallery" class="cta">View the Gallery</a>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-val">5</div><div class="stat-label">Creative Personas</div></div>
+  <div class="stat"><div class="stat-val">7</div><div class="stat-label">API Calls Total</div></div>
+  <div class="stat"><div class="stat-val">8</div><div class="stat-label">Posts Tested</div></div>
+  <div class="stat"><div class="stat-val">40</div><div class="stat-label">Images Generated</div></div>
+</div>
+
+<!-- METHOD -->
+<section class="section reveal" id="method">
+  <div class="section-label">Methodology</div>
+  <h2>Why 5 variations of the same concept isn't enough</h2>
+  <p class="subtitle">Current AI image tools generate variations. We generate perspectives.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">&#x1F6AB;</div>
+      <h3>The Problem</h3>
+      <p>Ask any AI tool for "5 LinkedIn images" and you get 5 variations of the same visual concept. Same composition, same color palette, same metaphor. It feels like progress, but it's creative tunnel vision.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#x1F3AD;</div>
+      <h3>The Innovation</h3>
+      <p>The Synthetic Viewer Panel generates 5 creative director personas &mdash; each with a unique philosophy, scene type, composition style, and color mood. Every persona interprets the same post differently, like a real agency pitch.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#x2728;</div>
+      <h3>The Result</h3>
+      <p>5 genuinely different visual directions. A minimalist might use stark negative space while a cinematographer creates an epic landscape &mdash; for the exact same post. You choose the direction, not just the variation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section reveal" id="how">
+  <div class="section-label">How It Works</div>
+  <h2>From post to panel in 7 API calls</h2>
+  <p class="subtitle">The skill runs inside Claude Code. No external services needed beyond a Gemini API key.</p>
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="terminal-dot r"></div>
+      <div class="terminal-dot y"></div>
+      <div class="terminal-dot g"></div>
+      <span class="terminal-title">linkedin-image-pro</span>
+    </div>
+    <div class="terminal-body">
+<span class="comment"># Step 1: Analyze the post</span>
+<span class="arrow">&gt;</span> <span class="func">analyze</span>(<span class="string">"Your LinkedIn post text..."</span>)
+  theme: <span class="string">"transformation"</span>  tone: <span class="string">"provocative"</span>
+
+<span class="comment"># Step 2: Generate 5 creative director personas (dynamic, not hardcoded)</span>
+<span class="arrow">&gt;</span> <span class="func">generate_panel</span>(post, diversity_rules)
+  <span class="num">1.</span> <span class="string">"The Cartographer"</span>  &mdash; aerial landscape, bird's eye, golden dawn
+  <span class="num">2.</span> <span class="string">"The Minimalist"</span>   &mdash; single object, negative space, monochrome
+  <span class="num">3.</span> <span class="string">"The Satirist"</span>     &mdash; absurd scene, rule of thirds, vibrant
+  <span class="num">4.</span> <span class="string">"The Architect"</span>    &mdash; blueprint, layered depth, cool blue
+  <span class="num">5.</span> <span class="string">"The Old Master"</span>   &mdash; classical painting, center focal, warm amber
+
+<span class="comment"># Step 3: Generate 5 images (one per persona)</span>
+<span class="arrow">&gt;</span> <span class="keyword">for</span> persona <span class="keyword">in</span> panel:
+    <span class="func">gemini.generate</span>(persona.prompt)  <span class="comment"># 5 calls</span>
+
+<span class="comment"># Step 4: Review, rank, refine top 2</span>
+<span class="arrow">&gt;</span> <span class="func">refine</span>(top_2, fix_prompts)      <span class="comment"># 2 calls</span>
+
+<span class="comment"># Total: 7 Gemini API calls per post</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-label">Gallery</div>
+    <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">8 Real LinkedIn Posts. 40 Unique Concepts.</h2>
+    <p style="color:var(--text-dim);font-size:1.05rem;margin-bottom:40px">Every image was generated by a different AI creative director persona. Click a post to expand.</p>
+
+    <!-- POST CARDS WILL BE POPULATED BY JAVASCRIPT -->
+    <div id="gallery-container"></div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section reveal" id="compare">
+  <div class="section-label">Before vs After</div>
+  <h2>Standard approach vs Synthetic Panel</h2>
+  <p class="subtitle">Same post, fundamentally different outputs.</p>
+  <div class="compare">
+    <div class="compare-side old">
+      <h4>Standard: 5 Variations</h4>
+      <p>Same concept repeated with minor tweaks &mdash; composition, angle, and color palette stay consistent.</p>
+      <div style="background:var(--dark);border-radius:8px;padding:24px;text-align:center;color:var(--text-dim);font-size:0.85rem">
+        5 images that all look the same
+      </div>
+    </div>
+    <div class="compare-side new">
+      <h4>Panel: 5 Perspectives</h4>
+      <p>Each persona brings a unique scene, composition, color mood, and visual metaphor.</p>
+      <div style="background:var(--dark);border-radius:8px;padding:24px;text-align:center;color:var(--text-dim);font-size:0.85rem">
+        5 images that look nothing alike
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section class="section reveal" id="install">
+  <div class="section-label">Get Started</div>
+  <h2>Install in 30 seconds</h2>
+  <p class="subtitle">Add the skill to your Claude Code setup. Requires a Gemini API key.</p>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab(event,'tab-quick')">Quick Start</button>
+    <button class="tab" onclick="switchTab(event,'tab-manual')">Manual</button>
+    <button class="tab" onclick="switchTab(event,'tab-repo')">From Repo</button>
+  </div>
+  <div id="tab-quick" class="tab-content active">
+    <div class="code-block" id="code-quick">mkdir -p ~/.claude/skills/linkedin-image-pro
+curl -sL https://raw.githubusercontent.com/anthropics/claude-code-skills-community/main/skills/linkedin-image-pro/SKILL.md \
+  -o ~/.claude/skills/linkedin-image-pro/SKILL.md
+<button class="copy-btn" onclick="copyCode('code-quick',this)">Copy</button></div>
+    <p style="color:var(--text-dim);font-size:0.85rem;margin-top:12px">Then restart Claude Code and type <code>/linkedin-image-pro</code> with your post text.</p>
+  </div>
+  <div id="tab-manual" class="tab-content">
+    <div class="code-block" id="code-manual">1. Create the skill directory:
+   mkdir -p ~/.claude/skills/linkedin-image-pro
+
+2. Copy SKILL.md from the repo (or write your own):
+   cp path/to/SKILL.md ~/.claude/skills/linkedin-image-pro/
+
+3. Set your Gemini API key in Claude Code settings:
+   Add GEMINI_API_KEY to your env block in settings.json
+
+4. Restart Claude Code and invoke:
+   /linkedin-image-pro
+<button class="copy-btn" onclick="copyCode('code-manual',this)">Copy</button></div>
+  </div>
+  <div id="tab-repo" class="tab-content">
+    <div class="code-block" id="code-repo">git clone https://github.com/anthropics/claude-code-skills-community.git
+cp -r claude-code-skills-community/skills/linkedin-image-pro \
+  ~/.claude/skills/linkedin-image-pro
+<button class="copy-btn" onclick="copyCode('code-repo',this)">Copy</button></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section reveal" id="faq">
+  <div class="section-label">FAQ</div>
+  <h2>Common questions</h2>
+  <div style="max-width:700px">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How are the personas generated?<span class="faq-icon">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Dynamically by Claude, based on the specific post content. The skill analyzes your post's theme, tone, and audience, then generates 5 creative director personas &mdash; each with a unique scene type, composition style, and color mood. No two runs produce the same set of personas. The diversity rules ensure genuine creative range.</div></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How many API calls does this use?<span class="faq-icon">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">7 Gemini API calls per post: 5 for the initial panel (one per persona) and 2 for refining the top picks. The persona generation itself happens inside Claude's reasoning &mdash; no additional API calls needed for that step.</div></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Can I customize the persona archetypes?<span class="faq-icon">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Edit the SKILL.md file to add your own example persona sets, modify the diversity rules, or change the style guidelines. The examples in the skill are calibration references, not hardcoded templates.</div></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What Gemini model does it use?<span class="faq-icon">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner"><code>gemini-3.1-flash-image-preview</code> by default for the best balance of speed and quality. For high-stakes posts, you can switch to <code>gemini-3-pro-image-preview</code> for maximum quality.</div></div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Does this work with Claude Code only?<span class="faq-icon">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes, it is a Claude Code skill (.claude/skills/ directory). It requires Claude Code's ability to execute bash commands and use the Read tool for image review. It will not work in the Claude web interface or API directly.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Built by <a href="https://www.linkedin.com/in/aldendorosario/" target="_blank">Alden Do Rosario</a> &mdash; CEO, <a href="https://customgpt.ai" target="_blank">CustomGPT.ai</a></p>
+  <p class="powered">Powered by Claude Code + Google Gemini</p>
+</footer>
+
+<script>
+// --- GALLERY DATA (populated after image generation) ---
+const posts = [
+  {
+    title: "AI for Your Laptop vs AI for Your Business",
+    date: "March 20, 2026",
+    text: "Claude Code just shipped Channels — Anthropic's answer to Openclaw. For individual builders, this feels magical. But business is a very different game. The hard part is making AI usable by non-technical teams, grounding it in company knowledge, and doing all of that in a secure, compliant way. That next layer is where the real opportunity is.",
+    personas: [
+      {name:"The Bridge Builder",image:"persona-1.png",desc:"Two islands connected by a glowing suspension bridge — laptop island vs enterprise city.",winner:false},
+      {name:"The Minimalist",image:"persona-2.png",desc:"Single laptop on dark surface with enterprise cityscape reflected in its glowing screen.",winner:true},
+      {name:"The Iceberg",image:"persona-3.png",desc:"Cross-section: laptop above water, massive enterprise infrastructure hidden below.",winner:false},
+      {name:"The Cartographer",image:"persona-4.png",desc:"Person at a campfire drawing a map that extends into vast enterprise territory.",winner:false},
+      {name:"The Cinematographer",image:"persona-5.png",desc:"Lone figure on cliff edge with laptop, looking out at a vast enterprise landscape below.",winner:false}
+    ]
+  },
+  {
+    title: "Vibe Code Gone Wrong",
+    date: "March 19, 2026",
+    text: "This is what happens when companies try to vibe code. After embarrassingly going viral for generating Python code in their support bot, Chipotle responds by basically nuking their bot to 2015 standards — phone-tree style 'Click 1 for support, Click 2 for sales.'",
+    personas: [
+      {name:"The Time Traveler",image:"persona-1.png",desc:"Split future/past — golden AI restaurant crumbles into gray 1990s office.",winner:false},
+      {name:"The Minimalist",image:"persona-2.png",desc:"Stark black background, vintage rotary phone with code dissolving from its cord.",winner:true},
+      {name:"The Satirist",image:"persona-3.png",desc:"Luxury restaurant staffed by ancient 1990s computers. 'PRESS 1 FOR GUAC.'",winner:false},
+      {name:"The Architect",image:"persona-4.png",desc:"Aerial circuit board pipelines collapsing into a crude Y-fork labeled 1 and 2.",winner:false},
+      {name:"The Cinematographer",image:"persona-5.png",desc:"Team on a hill watching a glass tower crumble into an old brick telephone exchange.",winner:false}
+    ]
+  },
+  {
+    title: "Solved in 2023",
+    date: "March 17, 2026",
+    text: "Love Chipotle — now with added python sauce. I cannot believe companies in March 2026 are not using RAG for their support bots. These problems were solved by CustomGPT.ai in 2023. Someone could have literally set up their bot in 1 day — without all these rookie mistakes.",
+    personas: [
+      {name:"The Chef",image:"persona-1.png",desc:"Luxury kitchen, chef bewildered by Python code served on an elegant plate.",winner:false},
+      {name:"The Minimalist",image:"persona-2.png",desc:"Giant burrito cut open to reveal glowing Python code instead of filling.",winner:true},
+      {name:"The Timeline",image:"persona-3.png",desc:"Winding road from golden 2023 triumph archway to crashed vehicle at 2026.",winner:false},
+      {name:"The Museum Curator",image:"persona-4.png",desc:"Elegant solution in a glass case labeled 'Solved 2023' while workers struggle outside.",winner:false},
+      {name:"The Split Screen",image:"persona-5.png",desc:"Calm green control room (2023) vs chaotic red error-filled room (2026).",winner:false}
+    ]
+  },
+  {
+    title: "Your AI Has ADHD",
+    date: "March 16, 2026",
+    text: "When Claude Code is running and you interrupt it, it abandons the current task and goes off the rails. This is terrible for long-running tasks. The fix: type '/btw' (by the way) — it handles the side task without affecting the original.",
+    personas: [
+      {name:"The Neuroscientist",image:"persona-1.png",desc:"Glowing brain with scattered attention beams converging into a focused golden ray.",winner:false},
+      {name:"The Air Traffic Controller",image:"persona-2.png",desc:"Radar screen with scattered blips and one golden organized runway path.",winner:false},
+      {name:"The Minimalist",image:"persona-3.png",desc:"Terminal window with /btw glowing golden, creating a protective circle against ghost tasks.",winner:true},
+      {name:"The Puppeteer",image:"persona-4.png",desc:"Marionette pulled by tangled strings, one golden thread keeping it upright.",winner:false},
+      {name:"The Highway",image:"persona-5.png",desc:"Chaotic gridlocked highway with one smooth express lane separated by golden barrier.",winner:false}
+    ]
+  },
+  {
+    title: "Your AI Has Amnesia",
+    date: "March 15, 2026",
+    text: "Claude Code knows nothing about your company — unless you give it that information. The easy fix: create a RAG with your website, docs, and Google/Sharepoint folders in CustomGPT.ai. Copy the MCP server URL and add it to Claude Code. This dramatically improves output quality.",
+    personas: [
+      {name:"The Memory Palace",image:"persona-1.png",desc:"Grand corridor with empty dark rooms progressively filling with golden knowledge.",winner:true},
+      {name:"The Minimalist",image:"persona-2.png",desc:"Hollow brain outline being filled by a glowing MCP connector cable.",winner:false},
+      {name:"The Librarian",image:"persona-3.png",desc:"Vast library with empty shelves, books flying in through windows from data sources.",winner:false},
+      {name:"The Puzzle Master",image:"persona-4.png",desc:"Aerial jigsaw puzzle with golden pieces streaming in to complete the picture.",winner:false},
+      {name:"The Awakening",image:"persona-5.png",desc:"Split: dark confused AI figure vs same figure illuminated by knowledge streams.",winner:false}
+    ]
+  },
+  {
+    title: "I Built an AEO Agent This Weekend",
+    date: "March 10, 2026",
+    text: "If you are in Marketing, and not using Claude Code for your AEO, you are already behind. This weekend I built a Claude-Code powered AEO Agent. First connect to all your data sources. Then run a full analysis. Create a Task Scorer. Then execute the remediation plan.",
+    personas: [
+      {name:"The Diagnostician",image:"persona-1.png",desc:"Medical command center with diagnostic monitors showing a website's vitals transitioning from critical red to stable green.",winner:true},
+      {name:"The Cartographer",image:"persona-2.png",desc:"Navigator at a map table in a captain's quarters, fog parting to reveal clear coastline.",winner:false},
+      {name:"The Chess Master",image:"persona-3.png",desc:"Overhead chess match on walnut board, hand poised for the decisive strategic move.",winner:false},
+      {name:"The Architect",image:"persona-4.png",desc:"Architect at a drafting table, building rising through the windows in morning light.",winner:false},
+      {name:"The Lighthouse Keeper",image:"persona-5.png",desc:"Lighthouse beam cutting through dense fog, ships finding safe passage below.",winner:false}
+    ]
+  },
+  {
+    title: "The 3-Month Impossibility Test",
+    date: "March 10, 2026",
+    text: "What are 3 things in your role that were next-to-impossible in December 2025, but are magically possible now in March 2026? Use this question to test candidates (shows if they're cutting-edge) or impress prospects (shows why you're amazing at your job). It filters OUT the outdated and filters IN the capability unlockers.",
+    personas: [
+      {name:"The Alchemist",image:"persona-1.png",desc:"Renaissance workshop with overturned hourglass pouring molten gold that transforms lead into gleaming objects.",winner:false},
+      {name:"The Sieve Maker",image:"persona-2.png",desc:"Cosmic crystalline sieve floating in space, filtering luminous gold particles from dull grey ones.",winner:false},
+      {name:"The Minimalist Provocateur",image:"persona-3.png",desc:"Two doors: chained rusted steel 'DEC 2025' beside wide-open golden-lit 'MAR 2026'.",winner:true},
+      {name:"The Stage Director",image:"persona-4.png",desc:"Grand theater with single spotlight on an empty chair — the audition hot seat moment of truth.",winner:false},
+      {name:"The Contrarian Cartographer",image:"persona-5.png",desc:"Antique parchment map with compass and pen actively redrawing the 'Impossible/Possible' boundaries.",winner:false}
+    ]
+  },
+  {
+    title: "Managers Are Flying Blind",
+    date: "March 7, 2026",
+    text: "Anthropic just exposed every role in existence. Management of people, product and processes is about to get a dramatic change. Managers spend a ton of time dealing with useless friction and are mostly blind. AI agents change this — when a manager can access every commit, Slack message, Jira ticket, and call transcript with an AI agent analyzing it all.",
+    personas: [
+      {name:"The Iceberg",image:"persona-1.png",desc:"Executive on tiny visible tip while massive glowing data network lies hidden underwater below.",winner:true},
+      {name:"The Blindfold",image:"persona-2.png",desc:"Ultra-minimalist: floating silk blindfold unraveling against pure black, golden light bursting from behind.",winner:false},
+      {name:"The Cockpit",image:"persona-3.png",desc:"Silhouetted figure surrounded by semicircular holographic dashboards with converging data streams.",winner:false},
+      {name:"The Puppet Theater",image:"persona-4.png",desc:"Blindfolded puppeteer with tangled strings, one puppet holding a glowing AI orb that illuminates everything.",winner:false},
+      {name:"The Infographer",image:"persona-5.png",desc:"Isometric split: 'Before AI' disconnected fog vs 'After AI' connected golden data pipelines.",winner:false}
+    ]
+  }
+];
+
+// --- RENDER GALLERY ---
+function renderGallery() {
+  const container = document.getElementById('gallery-container');
+  if (!posts || !posts.length) {
+    container.innerHTML = '<p style="color:var(--text-dim);text-align:center;padding:40px">Gallery images loading...</p>';
+    return;
+  }
+  container.innerHTML = posts.map((post, i) => `
+    <div class="post-card${i === 0 ? ' open' : ''}" onclick="togglePost(this)">
+      <div class="post-header">
+        <div class="post-num">${i + 1}</div>
+        <div class="post-meta">
+          <h3>${post.title}</h3>
+          <div class="date">${post.date}</div>
+        </div>
+        <div class="post-toggle">&#x25BC;</div>
+      </div>
+      <div class="post-text"><p>${post.text}</p></div>
+      <div class="panel-scroll">
+        ${post.personas.map((p, j) => `
+          <div class="persona-card${p.winner ? ' winner' : ''}">
+            <img class="persona-img" src="images/post-${String(i+1).padStart(2,'0')}/${p.image}" alt="${p.name}" loading="lazy">
+            <div class="persona-info">
+              <div class="persona-name">${p.name}${p.winner ? '<span class="badge">Winner</span>' : ''}</div>
+              <div class="persona-desc">${p.desc}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// --- INTERACTIONS ---
+function togglePost(el) {
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+  } else {
+    el.classList.add('open');
+  }
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+}
+
+function switchTab(e, id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+function copyCode(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.textContent.replace('Copy', '').replace('Copied!', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// --- SCROLL REVEAL ---
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// --- INIT ---
+renderGallery();
+</script>
+
+</body>
+</html>
