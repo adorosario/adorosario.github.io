@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiverr Contractor Enrichment Leaderboard</title>
+<style>
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #eab308;
+    --orange: #f97316;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:var(--bg); color:var(--text); padding:2rem; line-height:1.5; }
+h1 { text-align:center; font-size:2rem; margin-bottom:0.5rem; }
+.subtitle { text-align:center; color:var(--muted); margin-bottom:2rem; font-size:0.9rem; }
+.leaderboard { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:3rem; }
+.card { background:var(--card); border:2px solid var(--border); border-radius:12px; padding:1.5rem; width:320px; position:relative; }
+.card.rank-1 { border-color:#FFD700; box-shadow:0 0 20px rgba(255,215,0,0.15); }
+.card.rank-2 { border-color:#C0C0C0; }
+.card.rank-3 { border-color:#CD7F32; }
+.medal { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--card); border:2px solid; border-radius:20px; padding:2px 14px; font-weight:bold; font-size:0.85rem; }
+.medal-1 { border-color:#FFD700; color:#FFD700; }
+.medal-2 { border-color:#C0C0C0; color:#C0C0C0; }
+.medal-3 { border-color:#CD7F32; color:#CD7F32; }
+.card h2 { text-align:center; margin-top:0.5rem; font-size:1.3rem; }
+.card .handle { text-align:center; color:var(--muted); font-size:0.8rem; margin-bottom:1rem; }
+.big-score { text-align:center; font-size:3rem; font-weight:bold; margin:0.5rem 0; }
+.big-score.rank-1 { color:#FFD700; }
+.big-score.rank-2 { color:#C0C0C0; }
+.big-score.rank-3 { color:#CD7F32; }
+.card-meta { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; font-size:0.85rem; margin-top:1rem; }
+.card-meta dt { color:var(--muted); }
+.card-meta dd { font-weight:600; text-align:right; }
+.section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:2rem; margin-bottom:2rem; }
+.section h3 { font-size:1.2rem; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.5rem; }
+table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+th, td { padding:0.5rem 0.75rem; text-align:left; border-bottom:1px solid var(--border); }
+th { color:var(--muted); font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.5px; }
+.bar-container { width:100%; height:20px; background:#1a1a2e; border-radius:4px; overflow:hidden; }
+.bar { height:100%; border-radius:4px; transition:width 0.5s; }
+.bar-green { background:var(--green); }
+.bar-yellow { background:var(--yellow); }
+.bar-red { background:var(--red); }
+.bar-accent { background:var(--accent); }
+.pill { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.75rem; font-weight:600; }
+.pill-green { background:rgba(34,197,94,0.15); color:var(--green); }
+.pill-yellow { background:rgba(234,179,8,0.15); color:var(--yellow); }
+.pill-red { background:rgba(239,68,68,0.15); color:var(--red); }
+.pill-blue { background:rgba(56,189,248,0.15); color:var(--accent); }
+.heatmap { overflow-x:auto; }
+.heatmap table { min-width:600px; }
+.heatmap td.filled { background:rgba(34,197,94,0.2); color:var(--green); text-align:center; }
+.heatmap td.empty { background:rgba(239,68,68,0.1); color:var(--red); text-align:center; }
+.heatmap td.na { background:transparent; color:var(--muted); text-align:center; }
+.heatmap td.partial { background:rgba(234,179,8,0.15); color:var(--yellow); text-align:center; }
+.recommendation { background:linear-gradient(135deg, rgba(34,197,94,0.1), rgba(56,189,248,0.1)); border:1px solid var(--green); }
+.recommendation h3 { color:var(--green); border-bottom-color:var(--green); }
+.flex-row { display:flex; gap:1rem; flex-wrap:wrap; }
+.flex-row > div { flex:1; min-width:280px; }
+.dim-table td:nth-child(2), .dim-table td:nth-child(3) { text-align:right; }
+.issues-list { font-size:0.8rem; color:var(--muted); padding-left:1.2rem; }
+.issues-list li { margin-bottom:0.25rem; }
+footer { text-align:center; color:var(--muted); font-size:0.75rem; margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<h1>Fiverr Contractor Enrichment Leaderboard</h1>
+<p class="subtitle">28 customer testimonial records enriched on Mar 20, 2026 | Total spend: $84.35</p>
+
+<div class="leaderboard">
+
+    <div class="card rank-1">
+        <div class="medal medal-1">1st</div>
+        <h2>Sana Fatima</h2>
+        <div class="handle">@ranakhalid414</div>
+        <div class="big-score rank-1">85.8</div>
+        <div style="text-align:center;color:var(--muted);font-size:0.85rem;">out of 100</div>
+        <dl class="card-meta">
+            <dt>Cost</dt><dd>$35.15</dd>
+            <dt>$/Point</dt><dd>$0.41</dd>
+            <dt>Turnaround</dt><dd>1.5h</dd>
+            <dt>Coverage</dt><dd>28/28</dd>
+            <dt>Extra Records</dt><dd>0</dd>
+        </dl>
+    </div>
+    <div class="card rank-2">
+        <div class="medal medal-2">2nd</div>
+        <h2>Shahid Va</h2>
+        <div class="handle">@shahidmalik7</div>
+        <div class="big-score rank-2">81.8</div>
+        <div style="text-align:center;color:var(--muted);font-size:0.85rem;">out of 100</div>
+        <dl class="card-meta">
+            <dt>Cost</dt><dd>$24.60</dd>
+            <dt>$/Point</dt><dd>$0.30</dd>
+            <dt>Turnaround</dt><dd>21.0h</dd>
+            <dt>Coverage</dt><dd>27/28</dd>
+            <dt>Extra Records</dt><dd>1</dd>
+        </dl>
+    </div>
+    <div class="card rank-3">
+        <div class="medal medal-3">3rd</div>
+        <h2>Xpert Pro</h2>
+        <div class="handle">@xpert_pro0</div>
+        <div class="big-score rank-3">75.8</div>
+        <div style="text-align:center;color:var(--muted);font-size:0.85rem;">out of 100</div>
+        <dl class="card-meta">
+            <dt>Cost</dt><dd>$24.60</dd>
+            <dt>$/Point</dt><dd>$0.32</dd>
+            <dt>Turnaround</dt><dd>1.6h</dd>
+            <dt>Coverage</dt><dd>28/28</dd>
+            <dt>Extra Records</dt><dd>0</dd>
+        </dl>
+    </div>
+</div>
+<div class="section">
+    <h3>Rubric Breakdown (6 Dimensions)</h3>
+    <table class="dim-table">
+        <thead>
+            <tr><th>Dimension</th><th>Max</th><th>Sana Fatima</th><th>Shahid Va</th><th>Xpert Pro</th></tr></thead><tbody><tr><td>Field Completion</td><td style='text-align:right'>25</td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:91.2%"></div>
+                    </div>
+                    <span class="pill pill-green">22.8/25</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:85.6%"></div>
+                    </div>
+                    <span class="pill pill-green">21.4/25</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:91.2%"></div>
+                    </div>
+                    <span class="pill pill-green">22.8/25</span>
+                </div>
+            </td></tr><tr><td>LinkedIn URL Quality</td><td style='text-align:right'>20</td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:86.5%"></div>
+                    </div>
+                    <span class="pill pill-green">17.3/20</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:100.0%"></div>
+                    </div>
+                    <span class="pill pill-green">20.0/20</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:88.5%"></div>
+                    </div>
+                    <span class="pill pill-green">17.7/20</span>
+                </div>
+            </td></tr><tr><td>Company Website Quality</td><td style='text-align:right'>15</td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:92.66666666666666%"></div>
+                    </div>
+                    <span class="pill pill-green">13.9/15</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:78.66666666666667%"></div>
+                    </div>
+                    <span class="pill pill-green">11.8/15</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-yellow" style="width:63.33333333333333%"></div>
+                    </div>
+                    <span class="pill pill-yellow">9.5/15</span>
+                </div>
+            </td></tr><tr><td>Company Description Quality</td><td style='text-align:right'>15</td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:91.33333333333333%"></div>
+                    </div>
+                    <span class="pill pill-green">13.7/15</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:70.0%"></div>
+                    </div>
+                    <span class="pill pill-green">10.5/15</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:79.33333333333333%"></div>
+                    </div>
+                    <span class="pill pill-green">11.9/15</span>
+                </div>
+            </td></tr><tr><td>Extra Value / Initiative</td><td style='text-align:right'>15</td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-yellow" style="width:54.666666666666664%"></div>
+                    </div>
+                    <span class="pill pill-yellow">8.2/15</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-yellow" style="width:53.99999999999999%"></div>
+                    </div>
+                    <span class="pill pill-yellow">8.1/15</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-yellow" style="width:46.0%"></div>
+                    </div>
+                    <span class="pill pill-yellow">6.9/15</span>
+                </div>
+            </td></tr><tr><td>Data Cleanliness</td><td style='text-align:right'>10</td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:100.0%"></div>
+                    </div>
+                    <span class="pill pill-green">10.0/10</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:100.0%"></div>
+                    </div>
+                    <span class="pill pill-green">10.0/10</span>
+                </div>
+            </td><td style="text-align:right">
+                <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem">
+                    <div class="bar-container" style="width:80px">
+                        <div class="bar bar-green" style="width:70.0%"></div>
+                    </div>
+                    <span class="pill pill-green">7.0/10</span>
+                </div>
+            </td></tr><tr style='border-top:2px solid var(--border);font-weight:bold'><td>TOTAL</td><td style='text-align:right'>100</td><td style='text-align:right'><span class='pill pill-blue'>85.8/100</span></td><td style='text-align:right'><span class='pill pill-blue'>81.8/100</span></td><td style='text-align:right'><span class='pill pill-blue'>75.8/100</span></td></tr></tbody></table></div>
+<div class="section heatmap">
+    <h3>Per-Record Field Completion Heatmap</h3>
+    <p style="color:var(--muted);font-size:0.8rem;margin-bottom:1rem">
+        Shows whether each contractor filled the fields that were listed as missing in the baseline.
+        Green = filled, Red = still missing, Gray = not required.
+    </p>
+    <table>
+        <thead><tr><th>Person</th><th>Company</th><th>Missing Fields</th><th colspan='1' style='text-align:center'>Sana Fatima</th><th colspan='1' style='text-align:center'>Shahid Va</th><th colspan='1' style='text-align:center'>Xpert Pro</th></tr></thead><tbody><tr><td>Dr. Korbinian Weisser</td><td style='font-size:0.8rem'>VdW Bayern DigiSol</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Org Website URL</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Doug Williams</td><td style='font-size:0.8rem'>MIT (Martin Trust Center)</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Nina Cialone</td><td style='font-size:0.8rem'>Lehigh University</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Job Title</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Toyon Nurul Huda</td><td style='font-size:0.8rem'>Biamp</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>George Dlubal</td><td style='font-size:0.8rem'>Dlubal Software</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='empty' title='Record not found'>N/F</td><td class='filled'>1/1</td></tr><tr><td>Kenneth Edward Scott Jr</td><td style='font-size:0.8rem'>BernCo (Bernalillo County)</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Leon Niederberger</td><td style='font-size:0.8rem'>AI Ace</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Org Website URL</td><td class='filled'>2/2</td><td class='partial'>1/2</td><td class='partial'>1/2</td></tr><tr><td>Conor Sullivan</td><td style='font-size:0.8rem'>Endurance Group</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL, Org Description</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Rachel Chen</td><td style='font-size:0.8rem'>Tumble Living</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Sebastien Laye</td><td style='font-size:0.8rem'>Aslan AI</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Dr. Michael Levin</td><td style='font-size:0.8rem'>Levin Lab (Tufts University)</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Org Website URL</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Elizabeth Planet</td><td style='font-size:0.8rem'>Elizabeth Planet / NonprofitAMA</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL, Org Description</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Edward Everett</td><td style='font-size:0.8rem'>Johns Hopkins School of Education</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Job Title</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Luis Salazar</td><td style='font-size:0.8rem'>LJ Salazar Consulting</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Job Title, Org Website URL, Org Description</td><td class='filled'>4/4</td><td class='filled'>4/4</td><td class='filled'>4/4</td></tr><tr><td>David Share</td><td style='font-size:0.8rem'>Amazing Support</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Patrick Forbes</td><td style='font-size:0.8rem'>Patrick Forbes</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL, Org Description</td><td class='filled'>2/2</td><td class='empty'>0/2</td><td class='empty'>0/2</td></tr><tr><td>Tom Franse</td><td style='font-size:0.8rem'>TMI</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Job Title, Org Website URL, Org Description</td><td class='partial'>2/4</td><td class='filled'>4/4</td><td class='empty'>0/4</td></tr><tr><td>Ed Phillips</td><td style='font-size:0.8rem'>Red Snapper</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Job Title, Org Website URL, Org Description</td><td class='filled'>4/4</td><td class='filled'>4/4</td><td class='filled'>4/4</td></tr><tr><td>Robert Duquette</td><td style='font-size:0.8rem'>Connection Model</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL, Job Title</td><td class='filled'>2/2</td><td class='partial'>1/2</td><td class='filled'>2/2</td></tr><tr><td>Jack Brown</td><td style='font-size:0.8rem'>3mData.ai</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL, Org Description</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Matthew Karp</td><td style='font-size:0.8rem'>PeopleXBot</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL, Org Description</td><td class='filled'>2/2</td><td class='filled'>2/2</td><td class='filled'>2/2</td></tr><tr><td>Daniel Filipe</td><td style='font-size:0.8rem'>Ecom Advertisers</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Josh Anderson</td><td style='font-size:0.8rem'>Kazi</td><td style='font-size:0.75rem;color:var(--muted)'>Org Description</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Scott Kirsner</td><td style='font-size:0.8rem'>InnoLead</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>David DeSchoolmeester</td><td style='font-size:0.8rem'>D14 Coaching LLC</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL</td><td class='empty'>0/1</td><td class='empty'>0/1</td><td class='filled'>1/1</td></tr><tr><td>Faiyazuddin Mohammed</td><td style='font-size:0.8rem'>Business Pilot</td><td style='font-size:0.75rem;color:var(--muted)'>Job Title, Org Website URL, Org Description</td><td class='filled'>3/3</td><td class='filled'>3/3</td><td class='filled'>3/3</td></tr><tr><td>Greg Stewart</td><td style='font-size:0.8rem'>54blue</td><td style='font-size:0.75rem;color:var(--muted)'>LinkedIn URL</td><td class='empty'>0/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr><tr><td>Jon Peters</td><td style='font-size:0.8rem'>The Institute for Management Studies | AthenaOnline.com</td><td style='font-size:0.75rem;color:var(--muted)'>Org Website URL</td><td class='filled'>1/1</td><td class='filled'>1/1</td><td class='filled'>1/1</td></tr></tbody></table></div>
+<div class="section">
+    <h3>Detailed Scoring Notes</h3>
+    <div class="flex-row"><div>
+        <h4 style="margin-bottom:0.5rem">Sana Fatima</h4>
+        <table style="font-size:0.8rem">
+            <tr><td>Company LinkedIn pages found</td><td style="text-align:right">25</td></tr>
+            <tr><td>QA notes provided</td><td style="text-align:right">5</td></tr>
+            <tr><td>Extra records (beyond 28)</td><td style="text-align:right">0</td></tr>
+            <tr><td>Baseline records covered</td><td style="text-align:right">28/28</td></tr>
+        </table><p style='margin-top:0.5rem;font-size:0.75rem;color:var(--green)'>No cleanliness issues found.</p></div><div>
+        <h4 style="margin-bottom:0.5rem">Shahid Va</h4>
+        <table style="font-size:0.8rem">
+            <tr><td>Company LinkedIn pages found</td><td style="text-align:right">21</td></tr>
+            <tr><td>QA notes provided</td><td style="text-align:right">6</td></tr>
+            <tr><td>Extra records (beyond 28)</td><td style="text-align:right">1</td></tr>
+            <tr><td>Baseline records covered</td><td style="text-align:right">27/28</td></tr>
+        </table><p style='margin-top:0.5rem;font-size:0.75rem;color:var(--green)'>No cleanliness issues found.</p><p style='margin-top:0.5rem;font-size:0.75rem;color:var(--yellow)'>Missing records: george-dlubal</p></div><div>
+        <h4 style="margin-bottom:0.5rem">Xpert Pro</h4>
+        <table style="font-size:0.8rem">
+            <tr><td>Company LinkedIn pages found</td><td style="text-align:right">22</td></tr>
+            <tr><td>QA notes provided</td><td style="text-align:right">0</td></tr>
+            <tr><td>Extra records (beyond 28)</td><td style="text-align:right">0</td></tr>
+            <tr><td>Baseline records covered</td><td style="text-align:right">28/28</td></tr>
+        </table><p style='margin-top:0.5rem;font-size:0.75rem;color:var(--red)'>Cleanliness issues:</p><ul class='issues-list'><li>Dr. Korbinian Weisser: truncated/invalid URL: ttps://www.vdwbayern-digisol.de/</li><li>Faiyazuddin Mohammed: truncated/invalid URL: business-pilot.ai</li><li>Jack Brown: truncated/invalid URL: 3mData.ai</li></ul></div></div></div>
+<div class="section">
+    <h3>Cost Efficiency Analysis</h3>
+    <table>
+        <thead><tr><th>Contractor</th><th>Score</th><th>Cost</th><th>$/Point</th><th>Turnaround</th><th>Points/Hour</th><th>ROI Rating</th></tr></thead>
+        <tbody><tr>
+            <td>Sana Fatima</td>
+            <td><span class="pill pill-blue">85.8</span></td>
+            <td>$35.15</td>
+            <td>$0.41</td>
+            <td>1.5h</td>
+            <td>57.2</td>
+            <td><span class="pill pill-yellow">Good</span></td>
+        </tr><tr>
+            <td>Shahid Va</td>
+            <td><span class="pill pill-blue">81.8</span></td>
+            <td>$24.60</td>
+            <td>$0.30</td>
+            <td>21.0h</td>
+            <td>3.9</td>
+            <td><span class="pill pill-green">Excellent</span></td>
+        </tr><tr>
+            <td>Xpert Pro</td>
+            <td><span class="pill pill-blue">75.8</span></td>
+            <td>$24.60</td>
+            <td>$0.32</td>
+            <td>1.6h</td>
+            <td>47.4</td>
+            <td><span class="pill pill-green">Excellent</span></td>
+        </tr></tbody></table></div>
+<div class="section recommendation">
+    <h3>Hiring Recommendation</h3>
+    <p style="font-size:1.05rem;margin-bottom:1rem">
+        <strong>Sana Fatima</strong> is the clear winner with a score of <strong>85.8/100</strong>
+        at <strong>$0.41/point</strong>.
+    </p>
+    <table style="font-size:0.9rem">
+        <tr>
+            <td style="width:180px"><strong>Best Overall:</strong></td>
+            <td><strong>Sana Fatima</strong> &mdash; highest score (85.8), best value ($0.41/pt)</td>
+        </tr>
+        <tr>
+            <td><strong>Best Budget Pick:</strong></td>
+            <td>Shahid Va &mdash; lowest cost ($24.60)</td>
+        </tr>
+        <tr>
+            <td><strong>Fastest Turnaround:</strong></td>
+            <td>Sana Fatima &mdash; 1.5 hours</td>
+        </tr>
+    </table>
+    <p style="margin-top:1rem;color:var(--muted);font-size:0.85rem">
+        For future enrichment tasks of this type, prioritize <strong>Sana Fatima</strong>.
+        Shahid Va is a solid backup option.
+    </p>
+</div>
+
+<footer>
+    Generated 2026-03-23 15:51 | Scoring rubric: 6 dimensions, 100 points total |
+    Data: 28 baseline records from enrichment-gaps-for-arooj.csv
+</footer>
+</body>
+</html>
