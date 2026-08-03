@@ -1,0 +1,128 @@
+./82.htm|BARRETO|Fatima, /BARRETO/|||||
+./42.htm|CARVALHO|Carole, /CARVALHO/|||||
+./112.htm|CLEMENTE|Arup, /CLEMENTE/|||||
+./113.htm|CLEMENTE|Arvind, /CLEMENTE/|||||
+./111.htm|CLEMENTE|Assis, /CLEMENTE/|||||
+./114.htm|CLEMENTE|Leslie, /CLEMENTE/|||||
+./52.htm|COELHO|Michelle, /COELHO/|17 Dec 1976|Manama, Bahrain|||
+./103.htm|COLACO|Clevero, /COLACO/|||||
+./104.htm|CONCEICAO|Alvin, /CONCEICAO/|||||
+./98.htm|CONCEICAO|Blasco, /CONCEICAO/|11 Jun 1943|Margao, Goa, India|||
+./96.htm|CONCEICAO|Claudio, /CONCEICAO/|||||
+./109.htm|CONCEICAO|Dolritch, /CONCEICAO/|||||
+./108.htm|CONCEICAO|Gritson, /CONCEICAO/|||||
+./110.htm|CONCEICAO|Hennessy, /CONCEICAO/|||||
+./99.htm|CONCEICAO|Imelda, /CONCEICAO/|||||
+./106.htm|CONCEICAO|Jessica, /CONCEICAO/|||||
+./102.htm|CONCEICAO|Lumen, /CONCEICAO/|||||
+./105.htm|CONCEICAO|Marie Fatima, /CONCEICAO/|||||
+./101.htm|CONCEICAO|Nilfa, /CONCEICAO/|||||
+./97.htm|CONCEICAO|Olavito, /CONCEICAO/|||||
+./100.htm|CONCEICAO|Terezinha, /CONCEICAO/|||||
+./8.htm|COSTA|Antonio, /COSTA/|||1905||
+./4.htm|COSTA|Rachel, /COSTA/|29 Nov 1906|Vasco-da-Gama, Goa, India|23 Mar 1956|Vasco-da-Gama, Goa, India|
+./116.htm|COTTA|Shirley, /COTTA/|||||
+./66.htm|CRUZ|, /CRUZ/|||||
+./9.htm|DANTAS|Leopoldinha, /DANTAS/|||1965|Vasco-da-Gama, Goa, India|
+./37.htm|DIAS|Michael, /DIAS/|21 Jun 1952||||
+./62.htm|DO ROSARIO|Abel, /DO ROSARIO/ Sr|5 May 1919|Loutolim, Goa, India|||
+./36.htm|DO ROSARIO|Alden, /DO ROSARIO/|17 Aug 1973|Margao, Goa, India|||
+./53.htm|DO ROSARIO|Anna Francesca, /DO ROSARIO/|22 Nov 2001|Concord, Massachusetts, USA|||
+./1.htm|DO ROSARIO|Caetano, /DO ROSARIO/|28 Nov 1921|Loutolim, Goa, India|17 Oct 1986|Margao, Goa, India|
+./54.htm|DO ROSARIO|Caetano Baptista, /DO ROSARIO/|||||
+./33.htm|DO ROSARIO|Carmo, /DO ROSARIO/|16 Apr 1967|Margao, Goa, India|||
+./32.htm|DO ROSARIO|Celeste, /DO ROSARIO/|2 Aug 1965|Margao, Goa, India|||
+./41.htm|DO ROSARIO|Chloe, /DO ROSARIO/|5 Mar 1995|Sydney, Australia|||
+./46.htm|DO ROSARIO|Eleanor, /DO ROSARIO/|||||
+./30.htm|DO ROSARIO|Erlick, /DO ROSARIO/|11 Dec 1962|Margao, Goa, India|||
+./58.htm|DO ROSARIO|Francis Xavier, /DO ROSARIO/ Fr|1911|Loutolim, Goa, India|||
+./56.htm|DO ROSARIO|Henriquetta, /DO ROSARIO/|1908|Loutolim, Goa, India|||
+./59.htm|DO ROSARIO|Humberto, /DO ROSARIO/ Fr|9 Jan 1913|Loutolim, Goa, India|||
+./40.htm|DO ROSARIO|Jocelyn, /DO ROSARIO/|16 Jul 1990|Peekskill, New York|||
+./34.htm|DO ROSARIO|Lenie, /DO ROSARIO/|22 May 1969|Margao, Goa, India|||
+./61.htm|DO ROSARIO|Lucille, /DO ROSARIO/|1917|Loutolim, Goa, India|||
+./35.htm|DO ROSARIO|Mylra, /DO ROSARIO/|15 Dec 1971|Margao, Goa, India|||
+./57.htm|DO ROSARIO|Olinda, /DO ROSARIO/|1909||1910||
+./60.htm|DO ROSARIO|Olinda, /DO ROSARIO/|1 Mar 1915|Loutolim, Goa, India|||
+./39.htm|DO ROSARIO|Oscar, /DO ROSARIO/|26 Oct 1988|Peekskill, New York|||
+./31.htm|DO ROSARIO|Roy, /DO ROSARIO/|29 Jun 1964|Margao, Goa, India|||
+./29.htm|DO ROSARIO|Suzette, /DO ROSARIO/|27 Oct 1960|Margao, Goa, India|||
+./47.htm|DO ROSARIO|Wesley, /DO ROSARIO/|Jan 2002||||
+./55.htm|DO ROSARIO PEREIRA|Esmeralda, /DO ROSARIO PEREIRA/|||||
+./123.htm|D'SOUZA|Laurence, /D'SOUZA/|||||
+./124.htm|D'SOUZA|Marlene, /D'SOUZA/|||||
+./92.htm|FERNANDES|Aninha, /FERNANDES/|||||
+./13.htm|FERNANDES|Arvind, /FERNANDES/|19 Jan 1967|Vasco-da-Gama, Goa, India|9 Jan 1995|Vasco-da-Gama, Goa, India|
+./11.htm|FERNANDES|Avinash, /FERNANDES/|18 Oct 1959|Margao, Goa, India|||
+./93.htm|FERNANDES|Bernadette, /FERNANDES/|||||
+./94.htm|FERNANDES|Candide, /FERNANDES/|||||
+./89.htm|FERNANDES|Domingo, /FERNANDES/|||||
+./91.htm|FERNANDES|Effigenia, /FERNANDES/|||||
+./90.htm|FERNANDES|Eliza, /FERNANDES/|||||
+./45.htm|FERNANDES|Jacqueline, /FERNANDES/|1968|Dar-e-Salaam, Tanzania|||
+./2.htm|FERNANDES|Lindarifa, /FERNANDES/|11 Oct 1929|Vasco-da-Gama, Goa, India|||
+./14.htm|FERNANDES|Louzinha, /FERNANDES/|||||
+./3.htm|FERNANDES|Manuel, /FERNANDES/|4 Feb 1888|Assolna, Goa, India|1960|Vasco-da-Gama, Goa, India|
+./7.htm|FERNANDES|Maria Lindarifa, /FERNANDES/|||||
+./6.htm|FERNANDES|Minguel Vicente, /FERNANDES/|||||
+./95.htm|FERNANDES|Roque, /FERNANDES/|||||
+./12.htm|FERNANDES|Savita, /FERNANDES/|21 Jun 1962|Vasco-da-Gama, Goa, India|||
+./5.htm|FERNANDES|Teotonio, /FERNANDES/|18 Jun 1931|Vasco-da-Gama, Goa, India|||
+./77.htm|GOMES|Xantipa, /GOMES/|||||
+./64.htm|GRACIAS FLOR|Filomena, /GRACIAS FLOR/|||||
+./21.htm|MARSHALL|Derek, /MARSHALL/|||||
+./119.htm|MASCARENHAS|Custodio, /MASCARENHAS/|||||
+./120.htm|MASCARENHAS|Ninette, /MASCARENHAS/|||||
+./121.htm|MASCARENHAS|Norma, /MASCARENHAS/|||||
+./43.htm|MAVANY|Anzar, /MAVANY/|7 Mar 1962|Margao, Goa, India|||
+./24.htm|MONTEIRO|Deolinda, /MONTEIRO/|14 Aug 1922|Loutolim, Goa, India|||
+./22.htm|MONTEIRO|Joao, /MONTEIRO/||||Karachi, Pakistan|
+./15.htm|MONTEIRO|Maria, /MONTEIRO/||||Loutolim, Goa, India|
+./23.htm|MONTEIRO|Ricardo, /MONTEIRO/||||Loutolim, Goa, India|
+./49.htm|NORONHA|Aaron, /NORONHA/|||||
+./48.htm|NORONHA|Anacleto, /NORONHA/|||||
+./50.htm|NORONHA|Lionel, /NORONHA/|||||
+./51.htm|NORONHA|Warren, /NORONHA/|||||
+./38.htm|PACHECO|Janet, /PACHECO/|29 Jul 1956|Margao, Goa, India|||
+./44.htm|PAUL|Henri, /PAUL/|||||
+./65.htm|PEREIRA|, /PEREIRA/|||||
+./67.htm|PEREIRA|Lourenco, /PEREIRA/|||||
+./63.htm|PEREIRA|Reglado, /PEREIRA/|||||
+./68.htm|PIMENTA|Quiteria, /PIMENTA/|||||
+./70.htm|PIMENTA PEREIRA|Alda, /PIMENTA PEREIRA/|||||
+./74.htm|PIMENTA PEREIRA|Angelica, /PIMENTA PEREIRA/|||||
+./73.htm|PIMENTA PEREIRA|Chiquito, /PIMENTA PEREIRA/ Fr||Margao, Goa, India|||
+./71.htm|PIMENTA PEREIRA|Martha, /PIMENTA PEREIRA/|||||
+./75.htm|PIMENTA PEREIRA|Olivia, /PIMENTA PEREIRA/|||||
+./72.htm|PIMENTA PEREIRA|Palmira, /PIMENTA PEREIRA/|22 Aug 1928|Margao, Goa, India|||
+./69.htm|PIMENTA PEREIRA|Philip Neri, /PIMENTA PEREIRA/|23 Apr 1923|Margao, Goa, India|||
+./76.htm|PIMENTA PEREIRA|Zezito, /PIMENTA PEREIRA/|||||
+./79.htm|PINTO|Felizardo, /PINTO/|||||
+./83.htm|QUADROS|Antonio, /QUADROS/|||||
+./87.htm|QUADROS|Filomena, /QUADROS/|||||
+./84.htm|QUADROS|Lourdes, /QUADROS/|||||
+./86.htm|QUADROS|Lubertino, /QUADROS/|||||
+./88.htm|QUADROS|Maria Adelia, /QUADROS/|||||
+./85.htm|QUADROS|Zulema, /QUADROS/|||||
+./122.htm|REGO|Silvester, /REGO/|||||
+./10.htm|SILVA|Virginia, /SILVA/|19 Jul 1934|Benaulim, Goa, India|||
+./26.htm|SOUZA|Angelo, /SOUZA/|||||
+./27.htm|SOUZA|Carlos, /SOUZA/|||||
+./25.htm|SOUZA|Leopold, /SOUZA/||||Tivim, Goa, India|
+./28.htm|SOUZA|Melba, /SOUZA/|||||
+./81.htm|SOUZA|Remedos, /SOUZA/|||||
+./126.htm|VAZ|Alex, /VAZ/|||||
+./20.htm|VAZ|Derek, /VAZ/|||||
+./107.htm|VAZ|Gloria, /VAZ/|||||
+./127.htm|VAZ|Ida, /VAZ/|||||
+./16.htm|VAZ|Jose Philip, /VAZ/||Curtorim, Goa, India||Bombay, India|
+./128.htm|VAZ|Julia, /VAZ/|||||
+./19.htm|VAZ|Muriel, /VAZ/||Bombay, India|||
+./125.htm|VAZ|Napoleon, /VAZ/|||||
+./18.htm|VAZ|Olivia, /VAZ/||Bombay, India|||
+./117.htm|VAZ|Sheena, /VAZ/|||||
+./118.htm|VAZ|Sherwin, /VAZ/|||||
+./115.htm|VAZ|Victor, /VAZ/|||||
+./17.htm|VAZ|Victoria, /VAZ/|||||
+./80.htm|VIEGAS|Joseph, /VIEGAS/|||||
+./78.htm|VIEGAS|William, /VIEGAS/|||||
