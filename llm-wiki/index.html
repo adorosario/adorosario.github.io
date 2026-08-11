@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The LLM wiki got a spec before it got a benchmark — 14 models × 16 documents</title>
+<meta name="description" content="Karpathy shipped the LLM-wiki pattern. Google turned it into a spec. I could not find published numbers, so here are 14 models on 16 gold-labelled documents, with a cross-vendor judge and a per-call cost ledger — including what the benchmark cannot prove.">
+<meta property="og:title" content="The LLM wiki got a spec before it got a benchmark. So I ran one.">
+<meta property="og:description" content="14 models, 16 gold-labelled documents, $6.73 of metered API spend. The most expensive model won by 0.019, with a 95% paired interval of [-0.0100, +0.0480] that spans zero.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://adorosario.github.io/llm-wiki/">
+<meta property="og:image" content="https://adorosario.github.io/llm-wiki/opengraph.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#fafafa; --panel:#ffffff; --deep:#f3f4f6; --border:#e5e7eb; --border-hi:#d1d5db;
+    --fg:#111418; --fg-strong:#000; --muted:#6b7280; --muted-hi:#4b5563;
+    --accent:#0d9488; --accent-bg:rgba(13,148,136,.10);
+    /* Teal-600 on a near-white page is 3.6:1 — fine for a 26px number, short of AA
+       for 11px uppercase eyebrows. Small accent text gets teal-700 instead. */
+    --accent-ink:#0f766e;
+    --ok:#047857; --warn:#b45309; --err:#b91c1c;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b0c0e; --panel:#14161a; --deep:#0a0b0d; --border:#2a2d33; --border-hi:#3a3e45;
+      --fg:#e7e8ea; --fg-strong:#fff; --muted:#9aa0a6; --muted-hi:#bcc1c7;
+      --accent:#14b8a6; --accent-bg:rgba(20,184,166,.12); --accent-ink:#14b8a6;
+      --ok:#10b981; --warn:#f59e0b; --err:#ef4444;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0c0e; --panel:#14161a; --deep:#0a0b0d; --border:#2a2d33; --border-hi:#3a3e45;
+    --fg:#e7e8ea; --fg-strong:#fff; --muted:#9aa0a6; --muted-hi:#bcc1c7;
+    --accent:#14b8a6; --accent-bg:rgba(20,184,166,.12); --accent-ink:#14b8a6;
+    --ok:#10b981; --warn:#f59e0b; --err:#ef4444;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 22px 96px}
+  a{color:var(--accent-ink)}
+  code{font-family:var(--mono);font-size:.92em;background:var(--deep);
+    border:1px solid var(--border);border-radius:4px;padding:1px 5px}
+  .nav{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:26px;font:600 12px var(--mono)}
+  .nav a{color:var(--muted);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent}
+  .nav a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:34px}
+  .eyebrow{font:600 11px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+    color:var(--accent-ink);margin-bottom:14px}
+  h1{font-size:clamp(26px,4.4vw,34px);line-height:1.16;margin:0 0 14px;letter-spacing:-.022em;
+    color:var(--fg-strong);font-weight:660}
+  .sub{color:var(--muted-hi);max-width:68ch;margin:0}
+  .dateline{font:400 12px/1.6 var(--mono);color:var(--muted);max-width:74ch;margin:16px 0 0;
+    padding-top:14px;border-top:1px solid var(--border)}
+  .scope{font:400 12.5px/1.65 var(--mono);color:var(--muted);max-width:80ch;
+    margin:16px 0 0;padding-top:14px;border-top:1px solid var(--border)}
+  h2{font-size:19px;margin:46px 0 6px;letter-spacing:-.01em;color:var(--fg-strong);font-weight:620;
+    padding-bottom:8px;border-bottom:1px solid var(--border)}
+  h2 + .note{margin-top:12px;margin-bottom:18px}
+  .note{color:var(--muted);font-size:14px;max-width:76ch}
+  .timeline{list-style:none;margin:0 0 4px;padding:0;
+    border:1px solid var(--border);border-radius:10px;background:var(--panel);overflow:hidden}
+  .timeline li{display:flex;gap:16px;padding:13px 18px;border-bottom:1px solid var(--border);
+    align-items:baseline;flex-wrap:wrap}
+  .timeline li:last-child{border-bottom:none}
+  .timeline .when{font:600 11px var(--mono);color:var(--accent-ink);
+    letter-spacing:.05em;flex:none;min-width:92px}
+  .timeline .what{color:var(--muted-hi);max-width:74ch}
+  .timeline li.gap{background:var(--accent-bg)}
+  .timeline li.gap .what{color:var(--fg);font-weight:560}
+  .verdict{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);
+    border-radius:10px;padding:22px 24px;margin-bottom:8px}
+  .verdict h3{margin:0 0 9px;font-size:17px;color:var(--fg-strong);font-weight:620}
+  .verdict p{margin:0 0 10px;color:var(--muted-hi);max-width:76ch}
+  .verdict p:last-child{margin-bottom:0}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:22px 0 4px}
+  .kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:15px 17px}
+  .kpi .lab{font:600 10px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:8px}
+  .kpi .val{font:650 26px/1 var(--mono);color:var(--fg-strong);letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums}
+  .kpi .val.acc{color:var(--accent)}
+  .kpi .cap{font-size:12px;line-height:1.5;color:var(--muted);margin-top:7px}
+  .chartbox{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+    padding:18px 16px 6px;overflow-x:auto}
+  /* min-width belongs to the plot alone. Applied to every svg it also inflates the
+     three legend swatches to 640px each and the page scrolls sideways on a phone. */
+  .chartbox svg{display:block;max-width:100%;height:auto;min-width:640px}
+  .legend svg{display:block;width:auto;height:auto}
+  .gl{stroke:var(--border);stroke-width:1}
+  .axl{fill:var(--muted);font:11px var(--mono)}
+  .axt{fill:var(--muted-hi);font:600 11px var(--mono)}
+  .dot{fill:var(--muted-hi);stroke:var(--panel);stroke-width:1.5}
+  .dot.hollow{fill:var(--panel);stroke:var(--muted);stroke-width:1.6}
+  .halo{fill:none;stroke:var(--accent);stroke-width:2}
+  .dotlab{fill:var(--fg);font:600 11.5px ui-sans-serif,system-ui,sans-serif}
+  .dotlab.dim{fill:var(--muted);font-weight:500}
+  .dotlab.star{fill:var(--accent)}
+  .lead{stroke:var(--border-hi);stroke-width:1;fill:none}
+  .whisk{stroke:var(--muted);stroke-width:1.6;fill:none}
+  .legend{display:flex;flex-wrap:wrap;gap:9px 22px;margin:12px 2px 4px;
+    font:500 12px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--muted-hi)}
+  /* min-width:0 is load-bearing: without it these flex items keep their intrinsic
+     width, the text refuses to wrap, and the page scrolls sideways on a phone. */
+  .legend span{display:flex;align-items:flex-start;gap:7px;min-width:0;flex:0 1 auto;max-width:100%}
+  .legend span svg{flex:none;margin-top:4px}
+  .tblwrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:820px}
+  th{font:600 10px/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);
+    text-align:right;padding:13px 13px;border-bottom:1px solid var(--border);white-space:nowrap}
+  th:first-child{text-align:left}
+  td{padding:11px 13px;border-bottom:1px solid var(--border);text-align:right;font-family:var(--mono);
+    font-size:13px;color:var(--fg);white-space:nowrap;font-variant-numeric:tabular-nums}
+  td:first-child{text-align:left;font-family:inherit}
+  tr:last-child td{border-bottom:none}
+  tr.win td{background:var(--accent-bg)}
+  tr.win td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+  tr.partial td:first-child{box-shadow:inset 3px 0 0 var(--warn)}
+  .mdl{font-weight:600;color:var(--fg-strong)}
+  .mdl + small{display:block;font:400 11px/1.45 var(--mono);color:var(--muted);
+    margin-top:3px;white-space:normal;max-width:34ch}
+  .pill{display:inline-block;font:600 10px/1 var(--mono);padding:4px 7px;border-radius:5px;border:1px solid}
+  .p-ok{color:var(--ok);border-color:var(--ok)}
+  .p-no{color:var(--warn);border-color:var(--warn)}
+  .p-bad{color:var(--err);border-color:var(--err)}
+  .na{color:var(--muted)}
+  .fnote{font:400 11.5px/1.65 var(--mono);color:var(--muted);margin:10px 2px 0;max-width:92ch}
+  .fnote b{color:var(--fg)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px;margin-top:18px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+  .card h4{margin:0 0 9px;font-size:14.5px;color:var(--fg-strong);font-weight:620;line-height:1.35}
+  .card p{margin:0;font-size:13.5px;color:var(--muted-hi);line-height:1.6}
+  .limits{background:var(--deep);border:1px solid var(--border);border-radius:10px;padding:18px 24px}
+  .limits ul{margin:0;padding-left:20px}
+  .limits li{margin:11px 0;color:var(--muted-hi);max-width:80ch}
+  .limits b{color:var(--fg)}
+  footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--border);
+    color:var(--muted);font:12px/1.8 var(--mono)}
+  @media (max-width:620px){
+    .wrap{padding:26px 16px 72px}
+    .timeline li{flex-direction:column;gap:4px}
+    /* The headline break balances two long lines on a wide screen and only adds a
+       ragged orphan once the text is already wrapping. */
+    h1 br{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="nav">
+  <a href="https://adorosario.github.io/">← adorosario.github.io</a>
+  <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">Karpathy's gist</a>
+  <a href="https://github.com/GoogleCloudPlatform/knowledge-catalog">Google's OKF spec</a>
+</nav>
+
+<header>
+  <div class="eyebrow">14 models · 16 gold-labelled documents · cross-vendor judge · $6.73 of metered API spend</div>
+  <h1>The LLM wiki got a spec<br>before it got a benchmark.</h1>
+  <p class="sub">The pattern went from a viral post to a Google specification in ten weeks, and produced
+  a pile of build-guides along the way. I went looking for a published comparison of which model to
+  generate one with, what that costs, and how it fails, and did not find one — if you know of one I
+  would genuinely like to read it. So this is the measurement I ran instead, including the part where
+  the benchmark turns on itself.</p>
+  <p class="dateline">Measured 2026-08-07, one arm re-measured 2026-08-10. Prices from a rate book
+  verified 2026-08-06 to 2026-08-07. Model versions and prices move — everything here is a snapshot,
+  not a standing claim.</p>
+</header>
+
+<ul class="timeline">
+  <li><span class="when">2026-04-03</span>
+      <span class="what">Andrej Karpathy describes the LLM wiki: instead of an agent re-reading raw
+      documents on every question, a model compiles them once into structured markdown pages and keeps
+      them updated. The post goes wide and the follow-up
+      <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">gist</a> spreads with it.</span></li>
+  <li><span class="when">Apr – Jun</span>
+      <span class="what">Tutorials, ports and generated-wiki products follow. The ones I found explain
+      how to build one.</span></li>
+  <li><span class="when">2026-06-12</span>
+      <span class="what">Google Cloud publishes the <b>Open Knowledge Format v0.1</b>
+      (<a href="https://github.com/GoogleCloudPlatform/knowledge-catalog">GoogleCloudPlatform/knowledge-catalog</a>),
+      crediting Karpathy's gist and describing itself as
+      “an open specification that formalizes the LLM-wiki pattern into a portable, interoperable format”. The pattern is now a spec: markdown
+      files with YAML frontmatter, vendor-neutral, no SDK required.</span></li>
+  <li class="gap"><span class="when">the gap</span>
+      <span class="what">A format everybody agrees on, produced by a generator whose model choice was
+      still being argued from reputation. That generator is the entire product: the pattern is only as
+      good as the pages it writes.</span></li>
+</ul>
+
+<h2>What we ran</h2>
+<p class="note">One document in, one structured page out: YAML frontmatter plus a markdown body, produced
+by a four-step loop (survey, extract, relate, compose). Fourteen candidate models generated the same
+16 gold-labelled documents through the same loop and were scored by an
+identical judge prompt (sha256 <code>12d7ddaa…</code> on every arm) against a
+seven-criterion weighted rubric. The judge is <code>anthropic:claude-sonnet-4-5-20250929</code> — a different
+vendor from every arm it scores, so no model grades its own homework. Cost and latency come from a
+per-call ledger, not from a price list.</p>
+<p class="note"><b>Before any of the numbers below: that judge has never been calibrated against a
+human.</b> No kappa exists, it carries 0.5 of the rubric weight, and every
+scorecard behind this page reports <code>citable: false</code>. What that does and does not invalidate is
+in <a href="#limits">What this does not tell you</a>, and you should read it before you quote anything
+here.</p>
+
+<div class="verdict">
+  <h3>The expensive model won by 0.019, and this instrument cannot tell you that is a win.</h3>
+  <p><code>gpt-5.5</code> scores 0.9366 at $0.2100 per document.
+  <code>gpt-5.6-luna</code> scores 0.9176 at $0.0147 —
+  <b>14.3× cheaper, twice as fast, and not separated by this measurement</b>.
+  Paired across the same 16 documents the difference is
+  +0.0190 with a 95% confidence interval of
+  <b>[-0.0100, +0.0480]</b>. The interval spans zero. With one trial per document
+  and an uncalibrated judge, that is not a narrow victory — it is a difference this instrument cannot
+  resolve.</p>
+  <p>That is the practical finding: on this task, above a certain floor, <b>the quality axis flattens and
+  the cost axis does not</b>. 8 of the fourteen arms have comparable means and land within
+  0.06 of the top score, and the spend across those 8 varies by
+  48×. If you picked your generator by reputation, you probably paid a multiple for
+  a difference this benchmark cannot resolve.</p>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="lab">Cheapest viable</div><div class="val acc">$0.0044</div>
+    <div class="cap">per document, at 0.9173 — statistically level with the top arm</div></div>
+  <div class="kpi"><div class="lab">Cheapest to dearest</div><div class="val">58×</div>
+    <div class="cap">on cost — but those two arms are only 0.137 apart in score. Cost and quality are barely related here</div></div>
+  <div class="kpi"><div class="lab">Fastest</div><div class="val">11.5<span style="font-size:15px">s</span></div>
+    <div class="cap">per document — the slowest arm takes 33× longer</div></div>
+  <div class="kpi"><div class="lab">Empty artefacts</div><div class="val" style="color:var(--err)">16</div>
+    <div class="cap">files produced with zero content while the pipeline reported success</div></div>
+</div>
+
+<h2>Quality against cost</h2>
+<p class="note">Cost is a log scale — the spread is two orders of magnitude. Up and to the left is
+better. Models that failed to produce a usable page on every document are drawn hollow and faint: they
+are not viable at any price. Two arms crashed on documents the others completed, so their cost is a
+<b>proven floor, not a total</b> — those carry a right-pointing whisker, and their true position lies
+somewhere to the right of the marker.</p>
+
+<div class="chartbox">
+<svg viewBox="0 0 900 500" role="img" aria-label="Scatter plot of rubric score against measured cost per document for fourteen models. Cost runs on a logarithmic axis from $0.003 to $0.30; score runs from 0.50 to 0.95. gpt-5.6-luna sits at $0.0147 and 0.9176, and gpt-5.5 at $0.2100 and 0.9366 — a 0.019 difference for 14 times the money.">
+<g class="gl">
+<line x1="78" y1="34.0" x2="872" y2="34.0"/>
+<line x1="78" y1="112.0" x2="872" y2="112.0"/>
+<line x1="78" y1="190.0" x2="872" y2="190.0"/>
+<line x1="78" y1="268.0" x2="872" y2="268.0"/>
+<line x1="78" y1="346.0" x2="872" y2="346.0"/>
+<line x1="78" y1="424.0" x2="872" y2="424.0"/>
+</g>
+<g class="axl">
+<text x="68" y="38.0" text-anchor="end">0.95</text>
+<text x="68" y="116.0" text-anchor="end">0.86</text>
+<text x="68" y="194.0" text-anchor="end">0.77</text>
+<text x="68" y="272.0" text-anchor="end">0.68</text>
+<text x="68" y="350.0" text-anchor="end">0.59</text>
+<text x="68" y="428.0" text-anchor="end">0.50</text>
+<text x="78.0" y="448" text-anchor="middle">$0.003</text>
+<text x="285.6" y="448" text-anchor="middle">$0.01</text>
+<text x="475.0" y="448" text-anchor="middle">$0.03</text>
+<text x="682.6" y="448" text-anchor="middle">$0.10</text>
+<text x="872.0" y="448" text-anchor="middle">$0.30</text>
+</g>
+<text class="axt" x="475.0" y="474" text-anchor="middle">measured cost per document (log scale)</text><text class="axt" x="18" y="229.0" text-anchor="middle" transform="rotate(-90 18 229.0)">rubric score</text>
+<circle cx="810.5" cy="45.6" r="6" class="dot"/>
+<line class="lead" x1="810.5" y1="45.6" x2="820.5" y2="46.6"/><text class="dotlab" x="824.5" y="50.6" text-anchor="start">gpt-5.5</text>
+<circle cx="352.0" cy="62.1" r="11" class="halo"/>
+<circle cx="352.0" cy="62.1" r="6" class="dot"/>
+<line class="lead" x1="352.0" y1="62.1" x2="362.0" y2="63.1"/><text class="dotlab star" x="366.0" y="67.1" text-anchor="start">gpt-5.6-luna  ← 14× cheaper, tied</text>
+<circle cx="144.0" cy="62.3" r="6" class="dot"/>
+<line class="lead" x1="144.0" y1="62.3" x2="154.0" y2="49.3"/><text class="dotlab" x="158.0" y="53.3" text-anchor="start">qwen3.7-flash</text>
+<circle cx="159.0" cy="68.5" r="6" class="dot"/>
+<line class="lead" x1="159.0" y1="68.5" x2="169.0" y2="29.5"/><text class="dotlab" x="173.0" y="33.5" text-anchor="start">deepseek-v4-flash</text>
+<circle cx="605.6" cy="79.2" r="6" class="dot"/>
+<line class="lead" x1="605.6" y1="79.2" x2="615.6" y2="80.2"/><text class="dotlab" x="619.6" y="84.2" text-anchor="start">gpt-4.1</text>
+<circle cx="251.4" cy="86.3" r="6" class="dot hollow"/>
+<line class="lead" x1="251.4" y1="86.3" x2="261.4" y2="73.3"/><text class="dotlab dim" x="265.4" y="77.3" text-anchor="start">qwen3-32b</text>
+<circle cx="332.1" cy="93.3" r="6" class="dot"/>
+<line class="lead" x1="332.1" y1="93.3" x2="342.1" y2="80.3"/><text class="dotlab" x="346.1" y="84.3" text-anchor="start">gemini-3.1-flash-lite</text>
+<path class="whisk" d="M228.1 94.8 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="219.1" cy="94.8" r="6" class="dot hollow"/>
+<line class="lead" x1="219.1" y1="94.8" x2="261.1" y2="121.8"/><text class="dotlab dim" x="265.1" y="125.8" text-anchor="start">gemini-2.5-flash-lite</text>
+<circle cx="360.0" cy="97.5" r="6" class="dot hollow"/>
+<line class="lead" x1="360.0" y1="97.5" x2="370.0" y2="98.5"/><text class="dotlab dim" x="374.0" y="102.5" text-anchor="start">gpt-5.4-nano</text>
+<path class="whisk" d="M140.9 155.5 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="131.9" cy="155.5" r="6" class="dot hollow"/>
+<line class="lead" x1="131.9" y1="155.5" x2="173.9" y2="208.5"/><text class="dotlab dim" x="177.9" y="212.5" text-anchor="start">seed-1.6-flash</text>
+<circle cx="109.4" cy="164.6" r="6" class="dot hollow"/>
+<line class="lead" x1="109.4" y1="164.6" x2="119.4" y2="125.6"/><text class="dotlab dim" x="123.4" y="129.6" text-anchor="start">gpt-4.1-nano</text>
+<circle cx="176.1" cy="190.7" r="6" class="dot hollow"/>
+<line class="lead" x1="176.1" y1="190.7" x2="186.1" y2="191.7"/><text class="dotlab dim" x="190.1" y="195.7" text-anchor="start">gpt-4o-mini</text>
+<circle cx="261.6" cy="273.2" r="6" class="dot hollow"/>
+<line class="lead" x1="261.6" y1="273.2" x2="271.6" y2="274.2"/><text class="dotlab dim" x="275.6" y="278.2" text-anchor="start">gpt-5-nano</text>
+<circle cx="587.2" cy="401.6" r="6" class="dot hollow"/>
+<line class="lead" x1="587.2" y1="401.6" x2="597.2" y2="402.6"/><text class="dotlab dim" x="601.2" y="406.6" text-anchor="start">kimi-k2.6</text>
+</svg>
+</div>
+<div class="legend">
+  <span><svg width="13" height="13" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" fill="currentColor"/></svg>
+    clears the document gate on all 16 — viable</span>
+  <span><svg width="13" height="13" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    fails the gate — not viable at any price</span>
+  <span><svg width="30" height="13" aria-hidden="true"><path d="M2 6.5h22 m-6,-4 l6,4 -6,4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    cost is a proven floor — true point lies right</span>
+</div>
+
+<h2>All fourteen</h2>
+<p class="note">Sorted by rubric score. Two rules apply to every row with no exceptions: the
+<b>document gate</b> is the number of documents scoring ≥ 0.75 divided by
+16 — the whole corpus, never the survivors — and cost per document is
+total ledger spend divided by 16. An arm that cannot clear the gate
+consistently is not viable at any price, which is why the cheap end of this table is mostly unusable.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr>
+  <th>Model</th><th>Score</th><th>Doc gate</th><th>$/doc</th><th>Score per $</th>
+  <th>Latency</th><th>Output tok</th><th>Docs scored</th><th>Empty</th>
+</tr></thead>
+<tbody>
+<tr class=""><td><span class="mdl">gpt-5.5</span><small>premium baseline</small></td><td>0.9366</td><td><span class="pill p-ok">100%</span></td><td>$0.2100</td><td>4</td><td>84.8s</td><td>113,055</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="win"><td><span class="mdl">gpt-5.6-luna</span><small>tied with the top arm at 1/14th the cost</small></td><td>0.9176</td><td><span class="pill p-ok">100%</span></td><td>$0.0147</td><td>62</td><td>39.6s</td><td>127,370</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">qwen3.7-flash</span><small>ties luna, 3.3x cheaper, 2.6x slower · one OpenRouter route · rate triples above 32,000 input tokens</small></td><td>0.9173</td><td><span class="pill p-ok">100%</span></td><td>$0.0044</td><td>208</td><td>102.1s</td><td>248,993</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">deepseek-v4-flash</span><small>one OpenRouter route, DeepInfra fp4 — quantisation is a real variable here</small></td><td>0.9102</td><td><span class="pill p-ok">100%</span></td><td>$0.0048</td><td>190</td><td>218.1s</td><td>204,947</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-4.1</span><small>extract gpt-4.1-mini</small></td><td>0.8979</td><td><span class="pill p-ok">100%</span></td><td>$0.0640</td><td>14</td><td>68.4s</td><td>99,030</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">qwen3-32b</span><small>the only arm given more than one attempt — two earlier routes failed on 2026-08-10, this is the third; slowest arm</small></td><td>0.8896</td><td><span class="pill p-no">94%</span></td><td>$0.0082</td><td>108</td><td>386.5s</td><td>116,028</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gemini-3.1-flash-lite</span><small>fastest arm</small></td><td>0.8816</td><td><span class="pill p-ok">100%</span></td><td>$0.0131</td><td>67</td><td>11.5s</td><td>55,950</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">gemini-2.5-flash-lite</span><small>2 crashes</small></td><td>0.8798 †</td><td><span class="pill p-no">81%</span></td><td>≥$0.0068</td><td><span class="na">—</span></td><td>32.3s</td><td>155,863</td><td>14/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-5.4-nano</span></td><td>0.8767</td><td><span class="pill p-no">88%</span></td><td>$0.0154</td><td>57</td><td>62.2s</td><td>127,299</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">seed-1.6-flash</span><small>JSON top-level was a string; 2 crashes · one OpenRouter route · output rate more than doubles above 128,000 input tokens</small></td><td>0.8098 †</td><td><span class="pill p-bad">44%</span></td><td>≥$0.0041</td><td><span class="na">—</span></td><td>54.2s</td><td>103,651</td><td>14/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-4.1-nano</span><small>retires 2026-10-23</small></td><td>0.7993</td><td><span class="pill p-no">75%</span></td><td>$0.0036</td><td>222</td><td>24.2s</td><td>37,454</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-4o-mini</span><small>widely deployed default</small></td><td>0.7692</td><td><span class="pill p-no">69%</span></td><td>$0.0053</td><td>145</td><td>26.5s</td><td>38,827</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-5-nano</span><small>5 of 16 artefacts came back EMPTY · scheduled shutdown 2026-12-11</small></td><td>0.6740</td><td><span class="pill p-no">62%</span></td><td>$0.0087</td><td>77</td><td>120.3s</td><td>294,753</td><td>16/16</td><td><span class="pill p-bad">5 EMPTY</span></td></tr>
+<tr class=""><td><span class="mdl">kimi-k2.6</span><small>11 of 16 artefacts came back EMPTY · one OpenRouter route; rate includes a 39% promotional discount, non-promotional routes run ~39% higher on output</small></td><td>0.5259</td><td><span class="pill p-bad">31%</span></td><td>$0.0575</td><td>9</td><td>298.4s</td><td>325,667</td><td>16/16</td><td><span class="pill p-bad">11 EMPTY</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="fnote">†&nbsp;<b>This arm's score is a mean over a self-selected subset.</b> It crashed on
+documents the other arms completed, so the surviving documents are an easier corpus than the one everybody
+else was measured on. These means are not comparable to the rest of the table <b>in either direction</b> —
+the crashes may have removed the hardest documents or the easiest, and nothing here distinguishes the two.</p>
+<p class="fnote">≥&nbsp;<b>The run crashed mid-document, so a total cost does not exist.</b> The figure
+shown is what the ledger proves was already billed, divided by all 16 documents —
+a floor, never a total. <b>Score per $</b> is — rather than a number, because a ratio built on a floor
+would read as a measurement.</p>
+<p class="fnote"><b>Output tok</b> counts only documents that completed. Crashed documents burned tokens
+too — a further 3,049 for <code>gemini-2.5-flash-lite</code> and 1,174 for
+<code>seed-1.6-flash</code> — and produced nothing.</p>
+
+<h2>Three things the price list cannot tell you</h2>
+<p class="note">Every one of these was invisible until the models actually ran. None of them is
+derivable from a rate card, a context-window number, or a public leaderboard.</p>
+
+<div class="cards">
+  <div class="card">
+    <h4>Cheap can mean lazy</h4>
+    <p><code>gpt-4o-mini</code> emitted 38,827 output tokens across the corpus and
+    <code>gpt-4.1-nano</code> emitted 37,454, against
+    <code>gpt-5.6-luna</code>'s 127,370 on the identical documents — roughly a
+    third. They are cheaper partly because <b>the artefact is thinner</b>, and they miss the document
+    gate 31% and 25% of the time. Cost per token
+    is not cost per usable page.</p>
+  </div>
+  <div class="card">
+    <h4>Reasoning tokens break the rate card</h4>
+    <p><code>gpt-5-nano</code> lists at a fraction of the recommended model's rate and emitted
+    <b>294,753 output tokens</b> — 2.3× as
+    many as <code>gpt-5.6-luna</code>, all billed at the output rate. It ended up the
+    lowest-scoring OpenAI arm at 0.6740 and among the slowest at 120.3s per
+    document. A published price is an arithmetic input, not a forecast.</p>
+  </div>
+  <div class="card">
+    <h4>A big window is not structured output</h4>
+    <p><code>gemini-2.5-flash-lite</code> advertises a million-token window and failed on two of sixteen
+    documents — for two <b>different</b> reasons. One was size: JSON truncated at character 211,025 on
+    the largest document. The other was not: on a roughly 1,000-token blog post it returned well-formed
+    JSON using a <code>claim_type</code> value outside our schema's enum, and our validator rejected it.
+    Call that the model's fault or our schema's — window size explains neither.</p>
+  </div>
+</div>
+
+<h2>Two models were priced and live, and still would not return an object</h2>
+<p class="note">Both appear in the public price book. Both accept requests. Neither returned a structured
+artefact, which is the entire job. Both refused models were probed through one broker, in one mode, on 2026-08-07. Neither was tested against its vendor&#x27;s own API, so this is a statement about those routes on that date and not about the models in general.</p>
+<div class="cards">
+  <div class="card">
+    <h4><code>ling-3.0-flash</code> — the cheapest row in the book</h4>
+    <p>&#x27;does not support feature: structured-outputs&#x27;. response_format is absent from supported_parameters on both its endpoints.</p>
+  </div>
+  <div class="card">
+    <h4><code>qwen3.5-flash</code> — answers, but not with an object</h4>
+    <p>In JSON mode it returns the bare float <code>-1.0000000000000002e+308</code> instead of an
+    object. Five attempts out of five, two system prompts, two user messages,
+    <code>finish_reason: "stop"</code>, billed in full. A single endpoint, so there is no other route
+    to try.</p>
+  </div>
+</div>
+<p class="fnote">The rule these produced, in order: <b>a rate row proves arithmetic, not
+availability</b> — then <b>availability does not prove usability</b> — then <b>an endpoint that
+answers is not an endpoint that works</b>.</p>
+
+<h2>The failure mode a green build will not catch</h2>
+<p class="note">This is the one that would have shipped, and it is the reason a benchmark has to check
+the artefact and not just the exit code.</p>
+
+<div class="verdict" style="border-left-color:var(--err)">
+  <h3>16 artefacts came back with an empty body — and every single row said <code>ok</code>.</h3>
+  <p><code>kimi-k2.6</code> produced <b>11 of 16</b>.
+  <code>gpt-5-nano</code> — from a major lab, not an exotic endpoint — produced
+  <b>5 of 16</b>. These are not zero-byte files, which is what makes them
+  dangerous: they carry valid YAML frontmatter and score <b>1.0 on schema validity</b>, 1.0 on citation
+  validity and up to 0.89 on metadata accuracy, with
+  <code>init_md_token_count: 0</code> and nothing whatsoever in the body. A downstream indexer accepts
+  them precisely because the envelope is well-formed.</p>
+  <p>Each burned 19,592 to 30,364 output tokens of output. So the failure is not
+  merely silent, it is <b>expensive and silent</b>: real money spent, an empty-bodied artefact indexed,
+  and no error, no warning and no non-zero exit to say so. The only trace is a token count of zero on a
+  field nothing was checking.</p>
+  <p><b>One layer did catch it, and it is worth being precise about which.</b> The row status lied and
+  the error count lied, but the aggregate document gate held —
+  <code>suite_passed: false</code> on both arms — and only because this benchmark happens to score the
+  artefact itself. A pipeline checking exit codes and token counts would have shipped all
+  16. The fix belongs in every generator of this kind: assert the artefact is non-empty
+  before recording the step as successful, in the worker <b>and</b> in the benchmark, because a
+  benchmark-only fix leaves the product broken.</p>
+  <p class="scope">Both arms ran one configuration, one trial per document, on 2026-08-07: gpt-5-nano on its listed deployment, kimi-k2.6 through a single OpenRouter route. This benchmark cannot separate model behaviour from route or broker behaviour, and neither arm was re-tested on an alternate endpoint.</p>
+</div>
+
+<h2 id="limits">What this does not tell you</h2>
+<p class="note">The section that earns the rest of the page. Everything below is a limit we found in our
+own instrument, and the first item cost us a headline number.</p>
+
+<div class="limits">
+<ul>
+  <li><b>Our <code>faithfulness</code> score does not measure faithfulness.</b> It is the harmonic mean
+  of judged precision (are the summary's claims supported?) and judged recall (are the source's salient
+  facts present?). Precision sits on the ceiling — mean 0.9724, exactly 1.00 on
+  159/205 cells — so recall does all the moving. The criterion therefore
+  tracks recall at Spearman <b>+0.99</b> and precision at only
+  <b>+0.30</b>, and <b>17 cells scored
+  below 0.50 while fabricating nothing at all</b>. It carries 0.25 of the rubric weight,
+  so it shapes every mean on this page. A low score there means the summary left things out. It does not
+  mean the model made things up. We left the weights alone rather than silently redefine the unit every
+  historical number was measured in.</li>
+
+  <li><b>"Zero hallucinations" is a narrow, deterministic claim.</b> It is one <code>must_not_contain</code>
+  scan for 27 author-curated landmine phrases — plausible-but-false statements a
+  fabricating generator might emit. Not one was tripped anywhere. But 16 documents
+  with zero failures bounds the true rate only at <b>≤17.1%</b>
+  (exact one-sided 95% Clopper–Pearson). That is not evidence of a general absence of fabrication.</li>
+
+  <li><b>The judge is uncalibrated.</b> No human-versus-judge kappa has ever been computed — not
+  omitted from this page, never computed — so the 0.5 of rubric weight
+  the judge carries is unvalidated against any person. Every scorecard behind this page reports
+  <code>citable: false</code>. The deterministic criteria, the cost ledger and the latency numbers are
+  unaffected.</li>
+
+  <li><b>Half the rubric weight measures the same thing twice.</b> <code>coverage</code> is also a
+  completeness measure and saturates at 1.0 on the strong arms. So 0.50 of the weight sits on two
+  correlated completeness measures, and 0.10 on the only deterministic hallucination check.</li>
+
+  <li><b>Single trial per document, and the top of the table is unresolved.</b> Per-document judge noise
+  is roughly 0.067, which is a bound on <em>per-document</em> deltas and not
+  on differences between 16-document means — dividing one by the other is a mistake, and an earlier
+  version of this page made it. The right test is paired: across the same 16 documents the top two arms
+  differ by +0.0190 with a 95% interval of [-0.0100, +0.0480],
+  and <code>gpt-5.6-luna</code> versus <code>qwen3.7-flash</code> differs by
+  +0.0003. Both intervals span zero. Decide on cost, speed or
+  operational risk, because quality is not deciding it for you.</li>
+
+  <li><b>Five arms measure a route, not a model.</b> Five arms ran through a single broker route, so they measure a model-as-served-by-that-route, not the model. deepseek-v4-flash is pinned to a DeepInfra fp4 endpoint; qwen3-32b to SiliconFlow; kimi-k2.6, qwen3.7-flash and seed-1.6-flash likewise to one route each. Quantization, JSON-mode handling and reasoning behaviour are all mediated by the broker. The names in
+  the table are model names because that is what people search for, but every one of those rows is a
+  statement about one endpoint on one date. The empty-artefact arms in particular were never re-tested
+  elsewhere, so nothing here separates model behaviour from broker behaviour.</li>
+
+  <li><b>One arm's price is promotional, and one arm got three attempts.</b>
+  The kimi-k2.6 cost is the cheapest of 23 endpoints and carries a 39% promotional discount. The cheapest non-promotional route is about 39% higher on output, so the published figure understates what a reader would pay. Separately:
+  qwen3-32b is the only arm that got more than one attempt. Two earlier routes were abandoned on 2026-08-10 — one served a 40,960-token window and failed the two longest documents, one returned empty HTTP 200s — and the published figure is from the third. Every other arm was measured on a single route. That is defensible engineering and it is also an
+  inconsistency in protocol, so it is stated rather than buried.</li>
+
+  <li><b>Costs generalise even worse than scores.</b> Several arms are context-tier priced and every document here sits in the cheapest tier. qwen3.7-flash triples above 32,000 input tokens; seed-1.6-flash more than doubles its output rate above 128,000; gpt-5.6-luna doubles above 272,000. At a median document of 3,662 tokens none of that binds, so the cost ranking can invert on larger documents and every multiple quoted here is a small-document number.</li>
+
+  <li><b>The construct-validity analysis is missing its worst cases.</b> 205 of a possible 220 judged cells produced a precision/recall pair. The missing 15 are concentrated in the worst arms — kimi-k2.6 contributed 6 of 16 and gpt-5-nano 12 of 16 — because an empty body yields nothing to judge. So the construct-validity finding describes the artefacts that had content, which makes it conservative rather than wrong.</li>
+
+  <li><b>The landmine sweep counted artefacts that could not fail it.</b>
+  16 of the artefacts in the clean landmine sweep had empty bodies and were structurally incapable of tripping it. The zero result stands for the artefacts that contained text.</li>
+
+  <li><b>The code that produced these runs was not committed.</b> All 14 runs report git_dirty true and provenance.complete false: the recorded commit does not fully describe the code that ran. Nine arms ran on one working tree and five on a later one. What is identical across all 14 is the judge prompt, sha256 12d7ddaa, which is the part that governs score comparability.</li>
+
+  <li><b>Nothing here tests long context.</b> The largest document is
+  39,433 tokens, comfortably inside every candidate's window —
+  including the smallest at 128K. This benchmark cannot adjudicate any million-token-context argument,
+  in either direction.</li>
+
+  <li><b>The corpus is small and public.</b> 16 documents,
+  143,114 source tokens, median
+  3,662. Materially smaller than the enterprise documents this
+  pattern gets pointed at in practice, and results do not generalise on size without re-measurement.</li>
+
+  <li><b>Two arms scored a self-selected subset.</b> They crashed on documents the others completed, so
+  their means describe an easier corpus and their costs are floors. Marked † and ≥ in the table.</li>
+</ul>
+</div>
+
+<h2>Reproduction</h2>
+<p class="note">Every figure on this page is emitted by a build script from committed run scorecards, and a
+verifier recomputes each one from the raw judged cells before publication — including the statistics,
+which are derived from the per-document rows rather than copied from a stored aggregate. Prose and
+framing are hand-written and are not covered by that verifier, which is how the two errors listed in the
+correction note below got in.</p>
+<p class="note"><b>Corrections.</b> An earlier version of this page said the empty-artefact runs
+"passed their own suite" — they did not, <code>suite_passed</code> is <code>false</code> on both — and
+argued the top-two tie by comparing a 16-document mean difference against a per-document noise floor,
+which is the wrong denominator. Both are fixed above, and the verifier now checks the first and computes
+the second. Kept here because a page arguing that unverifiable numbers are not evidence does not get to
+edit its own history quietly.</p>
+
+<div class="tblwrap">
+<table style="min-width:520px">
+<tbody>
+  <tr><td style="text-align:left;font-family:inherit"><b>Arms</b></td><td style="text-align:left">14 models, 16 documents each</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Judge</b></td><td style="text-align:left">anthropic:claude-sonnet-4-5-20250929 — cross-vendor, no arm judges itself</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Judged criteria</b></td><td style="text-align:left">faithfulness, coverage (0.5 of rubric weight)</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Rubric weights</b></td><td style="text-align:left">faithfulness 0.25, coverage 0.25, metadata_accuracy 0.2, anti_hallucination 0.1, format_compliance 0.1, citation_validity 0.05, token_efficiency 0.05</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Trials</b></td><td style="text-align:left">1 per document per arm</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Metered spend</b></td><td style="text-align:left">$6.7306 across all 14 arms (two are floors)</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Judge calibration</b></td><td style="text-align:left">never computed — kappa gate 0.6 unmet, <code>citable: false</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<footer>
+Measured August 2026 · one model's re-pinned route re-measured 2026-08-10 ·
+14 arms × 16 documents · judge anthropic:claude-sonnet-4-5-20250929 ·
+$6.73 metered API spend<br>
+Generated from run scorecards — not hand-written, not rounded by hand, not reconciled after the fact.<br>
+<a href="https://adorosario.github.io/">adorosario.github.io</a>
+</footer>
+
+</div>
+</body>
+</html>
