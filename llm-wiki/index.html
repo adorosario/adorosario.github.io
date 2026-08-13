@@ -143,7 +143,8 @@
     .wrap{padding:26px 16px 72px}
     .timeline li{flex-direction:column;gap:4px}
     /* The headline break balances two long lines on a wide screen and only adds a
-       ragged orphan once the text is already wrapping. */
+       ragged orphan once the text is already wrapping. The markup keeps a space
+       before the <br> so hiding it here leaves a word gap, not "specbefore". */
     h1 br{display:none}
   }
 </style>
@@ -159,7 +160,7 @@
 
 <header>
   <div class="eyebrow">14 models · 16 gold-labelled documents · cross-vendor judge · $6.73 of metered API spend</div>
-  <h1>The LLM wiki got a spec<br>before it got a benchmark.</h1>
+  <h1>The LLM wiki got a spec <br>before it got a benchmark.</h1>
   <p class="sub">The pattern went from a viral post to a Google specification in ten weeks, and produced
   a pile of build-guides along the way. I went looking for a published comparison of which model to
   generate one with, what that costs, and how it fails, and did not find one — if you know of one I
