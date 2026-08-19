@@ -6,7 +6,7 @@
 <title>The LLM wiki got a spec before it got a benchmark — 14 models × 16 documents</title>
 <meta name="description" content="Karpathy shipped the LLM-wiki pattern. Google turned it into a spec. I could not find published numbers, so here are 14 models on 16 gold-labelled documents, with a cross-vendor judge and a per-call cost ledger — including what the benchmark cannot prove.">
 <meta property="og:title" content="The LLM wiki got a spec before it got a benchmark. So I ran one.">
-<meta property="og:description" content="14 models, 16 gold-labelled documents, $6.73 of metered API spend. The most expensive model won by 0.019, with a 95% paired interval of [-0.0100, +0.0480] that spans zero.">
+<meta property="og:description" content="14 models, 16 gold-labelled documents, $6.69 of metered API spend. The most expensive model won by 0.012, with a 95% paired interval of [-0.0353, +0.0593] that spans zero.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://adorosario.github.io/llm-wiki/">
 <meta property="og:image" content="https://adorosario.github.io/llm-wiki/opengraph.png">
@@ -159,16 +159,15 @@
 </nav>
 
 <header>
-  <div class="eyebrow">14 models · 16 gold-labelled documents · cross-vendor judge · $6.73 of metered API spend</div>
+  <div class="eyebrow">14 models · 16 gold-labelled documents · cross-vendor judge · $6.69 of metered API spend</div>
   <h1>The LLM wiki got a spec <br>before it got a benchmark.</h1>
   <p class="sub">The pattern went from a viral post to a Google specification in ten weeks, and produced
   a pile of build-guides along the way. I went looking for a published comparison of which model to
   generate one with, what that costs, and how it fails, and did not find one — if you know of one I
   would genuinely like to read it. So this is the measurement I ran instead, including the part where
   the benchmark turns on itself.</p>
-  <p class="dateline">Measured 2026-08-07, one arm re-measured 2026-08-10. Prices from a rate book
-  verified 2026-08-06 to 2026-08-07. Model versions and prices move — everything here is a snapshot,
-  not a standing claim.</p>
+  <p class="dateline">Measured 2026-08-17. Model versions and prices move; these are snapshots, and the rate book is versioned in the repo alongside the scorecards. Everything here is a snapshot, not a
+  standing claim.</p>
 </header>
 
 <ul class="timeline">
@@ -207,42 +206,44 @@ in <a href="#limits">What this does not tell you</a>, and you should read it bef
 here.</p>
 
 <div class="verdict">
-  <h3>The expensive model won by 0.019, and this instrument cannot tell you that is a win.</h3>
-  <p><code>gpt-5.5</code> scores 0.9366 at $0.2100 per document.
-  <code>gpt-5.6-luna</code> scores 0.9176 at $0.0147 —
-  <b>14.3× cheaper, twice as fast, and not separated by this measurement</b>.
+  <h3>The expensive model won by 0.012, and this instrument cannot tell you that is a win.</h3>
+  <p><code>gpt-5.5</code> scores 0.9073 at $0.2152 per document.
+  <code>gpt-5.6-luna</code> scores 0.8953 at $0.0153 —
+  <b>14.1× cheaper, 1.4× faster, and not
+  separated by this measurement</b>.
   Paired across the same 16 documents the difference is
-  +0.0190 with a 95% confidence interval of
-  <b>[-0.0100, +0.0480]</b>. The interval spans zero. With one trial per document
+  +0.0120 with a 95% confidence interval of
+  <b>[-0.0353, +0.0593]</b>. The interval spans zero. With one trial per document
   and an uncalibrated judge, that is not a narrow victory — it is a difference this instrument cannot
   resolve.</p>
   <p>That is the practical finding: on this task, above a certain floor, <b>the quality axis flattens and
-  the cost axis does not</b>. 8 of the fourteen arms have comparable means and land within
-  0.06 of the top score, and the spend across those 8 varies by
-  48×. If you picked your generator by reputation, you probably paid a multiple for
+  the cost axis does not</b>. 6 of the fourteen arms have comparable means and land within
+  0.06 of the top score, and the spend across those 6 varies by
+  44×. If you picked your generator by reputation, you probably paid a multiple for
   a difference this benchmark cannot resolve.</p>
 </div>
 
 <div class="kpis">
-  <div class="kpi"><div class="lab">Cheapest viable</div><div class="val acc">$0.0044</div>
-    <div class="cap">per document, at 0.9173 — statistically level with the top arm</div></div>
+  <div class="kpi"><div class="lab">Cheapest viable</div><div class="val acc">$0.0049</div>
+    <div class="cap">per document, at 0.8740 — statistically level with the top arm</div></div>
   <div class="kpi"><div class="lab">Cheapest to dearest</div><div class="val">58×</div>
-    <div class="cap">on cost — but those two arms are only 0.137 apart in score. Cost and quality are barely related here</div></div>
-  <div class="kpi"><div class="lab">Fastest</div><div class="val">11.5<span style="font-size:15px">s</span></div>
-    <div class="cap">per document — the slowest arm takes 33× longer</div></div>
-  <div class="kpi"><div class="lab">Empty artefacts</div><div class="val" style="color:var(--err)">16</div>
-    <div class="cap">files produced with zero content while the pipeline reported success</div></div>
+    <div class="cap">on cost — but those two arms are only 0.113 apart in score. Cost and quality are barely related here</div></div>
+  <div class="kpi"><div class="lab">Fastest</div><div class="val">12.0<span style="font-size:15px">s</span></div>
+    <div class="cap">per document — the slowest arm takes 26× longer</div></div>
+  <div class="kpi"><div class="lab">Empty artefacts</div><div class="val" style="color:var(--err)">19</div>
+    <div class="cap">generations that returned a valid envelope with nothing in the body — now rejected
+    before scoring, and scored as successes in the previous run</div></div>
 </div>
 
 <h2>Quality against cost</h2>
 <p class="note">Cost is a log scale — the spread is two orders of magnitude. Up and to the left is
 better. Models that failed to produce a usable page on every document are drawn hollow and faint: they
-are not viable at any price. Two arms crashed on documents the others completed, so their cost is a
+are not viable at any price. 7 arms crashed on documents the others completed, so their cost is a
 <b>proven floor, not a total</b> — those carry a right-pointing whisker, and their true position lies
 somewhere to the right of the marker.</p>
 
 <div class="chartbox">
-<svg viewBox="0 0 900 500" role="img" aria-label="Scatter plot of rubric score against measured cost per document for fourteen models. Cost runs on a logarithmic axis from $0.003 to $0.30; score runs from 0.50 to 0.95. gpt-5.6-luna sits at $0.0147 and 0.9176, and gpt-5.5 at $0.2100 and 0.9366 — a 0.019 difference for 14 times the money.">
+<svg viewBox="0 0 900 500" role="img" aria-label="Scatter plot of rubric score against measured cost per document for 13 models. Cost runs on a logarithmic axis from $0.0030 to $0.3000; score runs from 0.50 to 0.95. gpt-5.6-luna sits at $0.0153 and 0.8953, and gpt-5.5 at $0.2152 and 0.9073 — a +0.0120 difference for 14.1 times the money.">
 <g class="gl">
 <line x1="78" y1="34.0" x2="872" y2="34.0"/>
 <line x1="78" y1="112.0" x2="872" y2="112.0"/>
@@ -265,37 +266,39 @@ somewhere to the right of the marker.</p>
 <text x="872.0" y="448" text-anchor="middle">$0.30</text>
 </g>
 <text class="axt" x="475.0" y="474" text-anchor="middle">measured cost per document (log scale)</text><text class="axt" x="18" y="229.0" text-anchor="middle" transform="rotate(-90 18 229.0)">rubric score</text>
-<circle cx="810.5" cy="45.6" r="6" class="dot"/>
-<line class="lead" x1="810.5" y1="45.6" x2="820.5" y2="46.6"/><text class="dotlab" x="824.5" y="50.6" text-anchor="start">gpt-5.5</text>
-<circle cx="352.0" cy="62.1" r="11" class="halo"/>
-<circle cx="352.0" cy="62.1" r="6" class="dot"/>
-<line class="lead" x1="352.0" y1="62.1" x2="362.0" y2="63.1"/><text class="dotlab star" x="366.0" y="67.1" text-anchor="start">gpt-5.6-luna  ← 14× cheaper, tied</text>
-<circle cx="144.0" cy="62.3" r="6" class="dot"/>
-<line class="lead" x1="144.0" y1="62.3" x2="154.0" y2="49.3"/><text class="dotlab" x="158.0" y="53.3" text-anchor="start">qwen3.7-flash</text>
-<circle cx="159.0" cy="68.5" r="6" class="dot"/>
-<line class="lead" x1="159.0" y1="68.5" x2="169.0" y2="29.5"/><text class="dotlab" x="173.0" y="33.5" text-anchor="start">deepseek-v4-flash</text>
-<circle cx="605.6" cy="79.2" r="6" class="dot"/>
-<line class="lead" x1="605.6" y1="79.2" x2="615.6" y2="80.2"/><text class="dotlab" x="619.6" y="84.2" text-anchor="start">gpt-4.1</text>
-<circle cx="251.4" cy="86.3" r="6" class="dot hollow"/>
-<line class="lead" x1="251.4" y1="86.3" x2="261.4" y2="73.3"/><text class="dotlab dim" x="265.4" y="77.3" text-anchor="start">qwen3-32b</text>
-<circle cx="332.1" cy="93.3" r="6" class="dot"/>
-<line class="lead" x1="332.1" y1="93.3" x2="342.1" y2="80.3"/><text class="dotlab" x="346.1" y="84.3" text-anchor="start">gemini-3.1-flash-lite</text>
-<path class="whisk" d="M228.1 94.8 h26 m-7,-5 l7,5 -7,5"/>
-<circle cx="219.1" cy="94.8" r="6" class="dot hollow"/>
-<line class="lead" x1="219.1" y1="94.8" x2="261.1" y2="121.8"/><text class="dotlab dim" x="265.1" y="125.8" text-anchor="start">gemini-2.5-flash-lite</text>
-<circle cx="360.0" cy="97.5" r="6" class="dot hollow"/>
-<line class="lead" x1="360.0" y1="97.5" x2="370.0" y2="98.5"/><text class="dotlab dim" x="374.0" y="102.5" text-anchor="start">gpt-5.4-nano</text>
-<path class="whisk" d="M140.9 155.5 h26 m-7,-5 l7,5 -7,5"/>
-<circle cx="131.9" cy="155.5" r="6" class="dot hollow"/>
-<line class="lead" x1="131.9" y1="155.5" x2="173.9" y2="208.5"/><text class="dotlab dim" x="177.9" y="212.5" text-anchor="start">seed-1.6-flash</text>
-<circle cx="109.4" cy="164.6" r="6" class="dot hollow"/>
-<line class="lead" x1="109.4" y1="164.6" x2="119.4" y2="125.6"/><text class="dotlab dim" x="123.4" y="129.6" text-anchor="start">gpt-4.1-nano</text>
-<circle cx="176.1" cy="190.7" r="6" class="dot hollow"/>
-<line class="lead" x1="176.1" y1="190.7" x2="186.1" y2="191.7"/><text class="dotlab dim" x="190.1" y="195.7" text-anchor="start">gpt-4o-mini</text>
-<circle cx="261.6" cy="273.2" r="6" class="dot hollow"/>
-<line class="lead" x1="261.6" y1="273.2" x2="271.6" y2="274.2"/><text class="dotlab dim" x="275.6" y="278.2" text-anchor="start">gpt-5-nano</text>
-<circle cx="587.2" cy="401.6" r="6" class="dot hollow"/>
-<line class="lead" x1="587.2" y1="401.6" x2="597.2" y2="402.6"/><text class="dotlab dim" x="601.2" y="406.6" text-anchor="start">kimi-k2.6</text>
+<circle cx="814.7" cy="71.0" r="6" class="dot"/>
+<line class="lead" x1="814.7" y1="71.0" x2="804.7" y2="72.0"/><text class="dotlab" x="800.7" y="76.0" text-anchor="end">gpt-5.5</text>
+<circle cx="358.9" cy="81.4" r="11" class="halo"/>
+<circle cx="358.9" cy="81.4" r="6" class="dot hollow"/>
+<line class="lead" x1="358.9" y1="81.4" x2="368.9" y2="42.4"/><text class="dotlab star" x="372.9" y="46.4" text-anchor="start">gpt-5.6-luna  &lt;-- 14x cheaper, tied</text>
+<circle cx="162.6" cy="99.9" r="6" class="dot hollow"/>
+<line class="lead" x1="162.6" y1="99.9" x2="172.6" y2="34.9"/><text class="dotlab dim" x="176.6" y="38.9" text-anchor="start">qwen3.7-flash</text>
+<circle cx="605.9" cy="71.6" r="6" class="dot"/>
+<line class="lead" x1="605.9" y1="71.6" x2="615.9" y2="98.6"/><text class="dotlab" x="619.9" y="102.6" text-anchor="start">gpt-4.1</text>
+<path class="whisk" d="M214.9 99.4 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="205.9" cy="99.4" r="6" class="dot hollow"/>
+<line class="lead" x1="205.9" y1="99.4" x2="247.9" y2="73.4"/><text class="dotlab dim" x="251.9" y="77.4" text-anchor="start">qwen3-32b</text>
+<circle cx="334.8" cy="104.8" r="6" class="dot hollow"/>
+<line class="lead" x1="334.8" y1="104.8" x2="344.8" y2="105.8"/><text class="dotlab dim" x="348.8" y="109.8" text-anchor="start">gemini-3.1-flash-lite</text>
+<path class="whisk" d="M209.4 127.3 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="200.4" cy="127.3" r="6" class="dot hollow"/>
+<line class="lead" x1="200.4" y1="127.3" x2="242.4" y2="154.3"/><text class="dotlab dim" x="246.4" y="158.3" text-anchor="start">gemini-2.5-flash-lite</text>
+<circle cx="360.0" cy="76.5" r="6" class="dot"/>
+<line class="lead" x1="360.0" y1="76.5" x2="370.0" y2="77.5"/><text class="dotlab" x="374.0" y="81.5" text-anchor="start">gpt-5.4-nano</text>
+<path class="whisk" d="M149.1 120.2 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="140.1" cy="120.2" r="6" class="dot hollow"/>
+<line class="lead" x1="140.1" y1="120.2" x2="182.1" y2="55.2"/><text class="dotlab dim" x="186.1" y="59.2" text-anchor="start">seed-1.6-flash</text>
+<path class="whisk" d="M123.2 168.6 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="114.2" cy="168.6" r="6" class="dot hollow"/>
+<line class="lead" x1="114.2" y1="168.6" x2="156.2" y2="208.6"/><text class="dotlab dim" x="160.2" y="212.6" text-anchor="start">gpt-4.1-nano</text>
+<circle cx="182.5" cy="184.1" r="6" class="dot hollow"/>
+<line class="lead" x1="182.5" y1="184.1" x2="192.5" y2="185.1"/><text class="dotlab dim" x="196.5" y="189.1" text-anchor="start">gpt-4o-mini</text>
+<path class="whisk" d="M264.5 102.6 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="255.5" cy="102.6" r="6" class="dot hollow"/>
+<line class="lead" x1="255.5" y1="102.6" x2="297.5" y2="129.6"/><text class="dotlab dim" x="301.5" y="133.6" text-anchor="start">gpt-5-nano</text>
+<path class="whisk" d="M589.8 75.3 h26 m-7,-5 l7,5 -7,5"/>
+<circle cx="580.8" cy="75.3" r="6" class="dot hollow"/>
+<line class="lead" x1="580.8" y1="75.3" x2="622.8" y2="49.3"/><text class="dotlab dim" x="626.8" y="53.3" text-anchor="start">kimi-k2.6</text>
 </svg>
 </div>
 <div class="legend">
@@ -321,20 +324,20 @@ consistently is not viable at any price, which is why the cheap end of this tabl
   <th>Latency</th><th>Output tok</th><th>Docs scored</th><th>Empty</th>
 </tr></thead>
 <tbody>
-<tr class=""><td><span class="mdl">gpt-5.5</span><small>premium baseline</small></td><td>0.9366</td><td><span class="pill p-ok">100%</span></td><td>$0.2100</td><td>4</td><td>84.8s</td><td>113,055</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class="win"><td><span class="mdl">gpt-5.6-luna</span><small>tied with the top arm at 1/14th the cost</small></td><td>0.9176</td><td><span class="pill p-ok">100%</span></td><td>$0.0147</td><td>62</td><td>39.6s</td><td>127,370</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">qwen3.7-flash</span><small>ties luna, 3.3x cheaper, 2.6x slower · one OpenRouter route · rate triples above 32,000 input tokens</small></td><td>0.9173</td><td><span class="pill p-ok">100%</span></td><td>$0.0044</td><td>208</td><td>102.1s</td><td>248,993</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">deepseek-v4-flash</span><small>one OpenRouter route, DeepInfra fp4 — quantisation is a real variable here</small></td><td>0.9102</td><td><span class="pill p-ok">100%</span></td><td>$0.0048</td><td>190</td><td>218.1s</td><td>204,947</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">gpt-4.1</span><small>extract gpt-4.1-mini</small></td><td>0.8979</td><td><span class="pill p-ok">100%</span></td><td>$0.0640</td><td>14</td><td>68.4s</td><td>99,030</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">qwen3-32b</span><small>the only arm given more than one attempt — two earlier routes failed on 2026-08-10, this is the third; slowest arm</small></td><td>0.8896</td><td><span class="pill p-no">94%</span></td><td>$0.0082</td><td>108</td><td>386.5s</td><td>116,028</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">gemini-3.1-flash-lite</span><small>fastest arm</small></td><td>0.8816</td><td><span class="pill p-ok">100%</span></td><td>$0.0131</td><td>67</td><td>11.5s</td><td>55,950</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class="partial"><td><span class="mdl">gemini-2.5-flash-lite</span><small>2 crashes</small></td><td>0.8798 †</td><td><span class="pill p-no">81%</span></td><td>≥$0.0068</td><td><span class="na">—</span></td><td>32.3s</td><td>155,863</td><td>14/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">gpt-5.4-nano</span></td><td>0.8767</td><td><span class="pill p-no">88%</span></td><td>$0.0154</td><td>57</td><td>62.2s</td><td>127,299</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class="partial"><td><span class="mdl">seed-1.6-flash</span><small>JSON top-level was a string; 2 crashes · one OpenRouter route · output rate more than doubles above 128,000 input tokens</small></td><td>0.8098 †</td><td><span class="pill p-bad">44%</span></td><td>≥$0.0041</td><td><span class="na">—</span></td><td>54.2s</td><td>103,651</td><td>14/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">gpt-4.1-nano</span><small>retires 2026-10-23</small></td><td>0.7993</td><td><span class="pill p-no">75%</span></td><td>$0.0036</td><td>222</td><td>24.2s</td><td>37,454</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">gpt-4o-mini</span><small>widely deployed default</small></td><td>0.7692</td><td><span class="pill p-no">69%</span></td><td>$0.0053</td><td>145</td><td>26.5s</td><td>38,827</td><td>16/16</td><td><span class="na">—</span></td></tr>
-<tr class=""><td><span class="mdl">gpt-5-nano</span><small>5 of 16 artefacts came back EMPTY · scheduled shutdown 2026-12-11</small></td><td>0.6740</td><td><span class="pill p-no">62%</span></td><td>$0.0087</td><td>77</td><td>120.3s</td><td>294,753</td><td>16/16</td><td><span class="pill p-bad">5 EMPTY</span></td></tr>
-<tr class=""><td><span class="mdl">kimi-k2.6</span><small>11 of 16 artefacts came back EMPTY · one OpenRouter route; rate includes a 39% promotional discount, non-promotional routes run ~39% higher on output</small></td><td>0.5259</td><td><span class="pill p-bad">31%</span></td><td>$0.0575</td><td>9</td><td>298.4s</td><td>325,667</td><td>16/16</td><td><span class="pill p-bad">11 EMPTY</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-5.5</span><small>premium baseline</small></td><td>0.9073</td><td><span class="pill p-ok">100%</span></td><td>$0.2152</td><td>4</td><td>71.7s</td><td>117,261</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-4.1</span><small>extract gpt-4.1-mini</small></td><td>0.9066</td><td><span class="pill p-ok">100%</span></td><td>$0.0641</td><td>14</td><td>60.8s</td><td>98,369</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">kimi-k2.6</span><small>11 of 16 generations returned an empty body · scored on 5 of 16 documents, so its mean describes an easier corpus than the arms that completed all of them · one OpenRouter route; rate includes a 39% promotional discount, non-promotional routes run ~39% higher on output</small></td><td>0.9023 †</td><td><span class="pill p-bad">25%</span></td><td>≥$0.0554</td><td><span class="na">—</span></td><td>206.2s</td><td>56,556</td><td>5/16</td><td><span class="pill p-bad">11 EMPTY</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-5.4-nano</span></td><td>0.9010</td><td><span class="pill p-ok">100%</span></td><td>$0.0154</td><td>59</td><td>52.9s</td><td>126,731</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="win"><td><span class="mdl">gpt-5.6-luna</span><small>tied with the top arm at 1/14th the cost</small></td><td>0.8953</td><td><span class="pill p-no">94%</span></td><td>$0.0153</td><td>59</td><td>52.6s</td><td>133,300</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">qwen3-32b</span><small>3 failed on malformed output or schema validation · scored on 13 of 16 documents, so its mean describes an easier corpus than the arms that completed all of them · the only arm given more than one attempt — two earlier routes failed on 2026-08-10, this is the third; slowest arm</small></td><td>0.8745 †</td><td><span class="pill p-no">81%</span></td><td>≥$0.0063</td><td><span class="na">—</span></td><td>306.7s</td><td>79,162</td><td>13/16</td><td><span class="na">—</span></td></tr>
+<tr class=""><td><span class="mdl">qwen3.7-flash</span><small>one OpenRouter route · rate triples above 32,000 input tokens</small></td><td>0.8740</td><td><span class="pill p-no">81%</span></td><td>$0.0049</td><td>178</td><td>91.8s</td><td>282,766</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">gpt-5-nano</span><small>7 of 16 generations returned an empty body · scored on 9 of 16 documents, so its mean describes an easier corpus than the arms that completed all of them · scheduled shutdown 2026-12-11</small></td><td>0.8708 †</td><td><span class="pill p-bad">56%</span></td><td>≥$0.0084</td><td><span class="na">—</span></td><td>91.0s</td><td>128,413</td><td>9/16</td><td><span class="pill p-bad">7 EMPTY</span></td></tr>
+<tr class=""><td><span class="mdl">gemini-3.1-flash-lite</span><small>fastest arm</small></td><td>0.8683</td><td><span class="pill p-no">94%</span></td><td>$0.0133</td><td>65</td><td>12.0s</td><td>57,374</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">seed-1.6-flash</span><small>4 failed on malformed output or schema validation · scored on 12 of 16 documents, so its mean describes an easier corpus than the arms that completed all of them · one OpenRouter route · output rate more than doubles above 128,000 input tokens</small></td><td>0.8505 †</td><td><span class="pill p-bad">50%</span></td><td>≥$0.0043</td><td><span class="na">—</span></td><td>69.0s</td><td>112,760</td><td>12/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">gemini-2.5-flash-lite</span><small>4 failed on malformed output or schema validation · scored on 12 of 16 documents, so its mean describes an easier corpus than the arms that completed all of them</small></td><td>0.8423 †</td><td><span class="pill p-no">62%</span></td><td>≥$0.0061</td><td><span class="na">—</span></td><td>34.8s</td><td>143,871</td><td>12/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">gpt-4.1-nano</span><small>1 of 16 generations returned an empty body · 1 failed on malformed output or schema validation · scored on 14 of 16 documents, so its mean describes an easier corpus than the arms that completed all of them · retires 2026-10-23</small></td><td>0.7947 †</td><td><span class="pill p-no">62%</span></td><td>≥$0.0037</td><td><span class="na">—</span></td><td>22.9s</td><td>33,885</td><td>14/16</td><td><span class="pill p-bad">1 EMPTY</span></td></tr>
+<tr class=""><td><span class="mdl">gpt-4o-mini</span><small>widely deployed default</small></td><td>0.7768</td><td><span class="pill p-no">62%</span></td><td>$0.0055</td><td>141</td><td>31.6s</td><td>43,127</td><td>16/16</td><td><span class="na">—</span></td></tr>
+<tr class="partial"><td><span class="mdl">deepseek-v4-flash</span><small>NO MEASUREMENT - every document failed at the provider (HTTP 404, no route available for this model id) · one OpenRouter route, DeepInfra fp4 — quantisation is a real variable here</small></td><td>0.0000 †</td><td><span class="pill p-bad">0%</span></td><td>≥$0.0000</td><td><span class="na">—</span></td><td>0.0s</td><td>0</td><td>0/16</td><td><span class="na">—</span></td></tr>
 </tbody>
 </table>
 </div>
@@ -358,19 +361,19 @@ derivable from a rate card, a context-window number, or a public leaderboard.</p
 <div class="cards">
   <div class="card">
     <h4>Cheap can mean lazy</h4>
-    <p><code>gpt-4o-mini</code> emitted 38,827 output tokens across the corpus and
-    <code>gpt-4.1-nano</code> emitted 37,454, against
-    <code>gpt-5.6-luna</code>'s 127,370 on the identical documents — roughly a
+    <p><code>gpt-4o-mini</code> emitted 43,127 output tokens across the corpus and
+    <code>gpt-4.1-nano</code> emitted 33,885, against
+    <code>gpt-5.6-luna</code>'s 133,300 on the identical documents — roughly a
     third. They are cheaper partly because <b>the artefact is thinner</b>, and they miss the document
-    gate 31% and 25% of the time. Cost per token
+    gate 38% and 38% of the time. Cost per token
     is not cost per usable page.</p>
   </div>
   <div class="card">
     <h4>Reasoning tokens break the rate card</h4>
     <p><code>gpt-5-nano</code> lists at a fraction of the recommended model's rate and emitted
-    <b>294,753 output tokens</b> — 2.3× as
+    <b>128,413 output tokens</b> — 1.0× as
     many as <code>gpt-5.6-luna</code>, all billed at the output rate. It ended up the
-    lowest-scoring OpenAI arm at 0.6740 and among the slowest at 120.3s per
+    lowest-scoring OpenAI arm at 0.8708 and among the slowest at 91.0s per
     document. A published price is an arithmetic input, not a forecast.</p>
   </div>
   <div class="card">
@@ -408,26 +411,18 @@ answers is not an endpoint that works</b>.</p>
 the artefact and not just the exit code.</p>
 
 <div class="verdict" style="border-left-color:var(--err)">
-  <h3>16 artefacts came back with an empty body — and every single row said <code>ok</code>.</h3>
-  <p><code>kimi-k2.6</code> produced <b>11 of 16</b>.
-  <code>gpt-5-nano</code> — from a major lab, not an exotic endpoint — produced
-  <b>5 of 16</b>. These are not zero-byte files, which is what makes them
-  dangerous: they carry valid YAML frontmatter and score <b>1.0 on schema validity</b>, 1.0 on citation
-  validity and up to 0.89 on metadata accuracy, with
-  <code>init_md_token_count: 0</code> and nothing whatsoever in the body. A downstream indexer accepts
-  them precisely because the envelope is well-formed.</p>
-  <p>Each burned 19,592 to 30,364 output tokens of output. So the failure is not
-  merely silent, it is <b>expensive and silent</b>: real money spent, an empty-bodied artefact indexed,
-  and no error, no warning and no non-zero exit to say so. The only trace is a token count of zero on a
-  field nothing was checking.</p>
-  <p><b>One layer did catch it, and it is worth being precise about which.</b> The row status lied and
-  the error count lied, but the aggregate document gate held —
-  <code>suite_passed: false</code> on both arms — and only because this benchmark happens to score the
-  artefact itself. A pipeline checking exit codes and token counts would have shipped all
-  16. The fix belongs in every generator of this kind: assert the artefact is non-empty
-  before recording the step as successful, in the worker <b>and</b> in the benchmark, because a
-  benchmark-only fix leaves the product broken.</p>
-  <p class="scope">Both arms ran one configuration, one trial per document, on 2026-08-07: gpt-5-nano on its listed deployment, kimi-k2.6 through a single OpenRouter route. This benchmark cannot separate model behaviour from route or broker behaviour, and neither arm was re-tested on an alternate endpoint.</p>
+  <h3>An artefact can be valid, billed, indexed — and empty.</h3>
+  <p>19 generations returned a well-formed envelope with an EMPTY body (kimi-k2.6 11, gpt-5-nano 7, gpt-4.1-nano 1), across 11 distinct documents. They are not zero-byte files - the frontmatter parses, which is exactly why a downstream indexer would accept them. Between them they burned 417,388 output tokens (7,004 to 28,714 each) producing nothing. In the previous run these were scored as SUCCESSFUL documents; a guard now rejects an empty body before it can be scored, which is why they appear here as errors and why the affected arms report a lower completed-document count rather than a quietly lower score.</p>
+  <p><b>The previous version of this benchmark scored every one of them as a successful
+  document.</b> The row said <code>ok</code>, the error count said zero, and the only trace was a
+  token count of zero on a field nothing was checking. A pipeline watching exit codes would have
+  indexed all 19 and billed for them.</p>
+  <p>The fix is a guard that rejects an empty body <em>before</em> it can be scored, and it belongs in
+  the worker as well as the benchmark — a benchmark-only fix leaves the product broken. That is why
+  these appear here as errors rather than as quietly low scores, and why the affected arms report
+  fewer completed documents instead of a slightly worse mean. <b>Read the gate column, not the
+  mean:</b> an arm that fails a document is not scored on it, so failing more can look like scoring
+  higher.</p>
 </div>
 
 <h2 id="limits">What this does not tell you</h2>
@@ -438,17 +433,17 @@ own instrument, and the first item cost us a headline number.</p>
 <ul>
   <li><b>Our <code>faithfulness</code> score does not measure faithfulness.</b> It is the harmonic mean
   of judged precision (are the summary's claims supported?) and judged recall (are the source's salient
-  facts present?). Precision sits on the ceiling — mean 0.9724, exactly 1.00 on
-  159/205 cells — so recall does all the moving. The criterion therefore
+  facts present?). Precision sits on the ceiling — mean 0.9640, exactly 1.00 on
+  141/174 cells — so recall does all the moving. The criterion therefore
   tracks recall at Spearman <b>+0.99</b> and precision at only
-  <b>+0.30</b>, and <b>17 cells scored
+  <b>+0.35</b>, and <b>23 cells scored
   below 0.50 while fabricating nothing at all</b>. It carries 0.25 of the rubric weight,
   so it shapes every mean on this page. A low score there means the summary left things out. It does not
   mean the model made things up. We left the weights alone rather than silently redefine the unit every
   historical number was measured in.</li>
 
   <li><b>"Zero hallucinations" is a narrow, deterministic claim.</b> It is one <code>must_not_contain</code>
-  scan for 27 author-curated landmine phrases — plausible-but-false statements a
+  scan for 28 author-curated landmine phrases — plausible-but-false statements a
   fabricating generator might emit. Not one was tripped anywhere. But 16 documents
   with zero failures bounds the true rate only at <b>≤17.1%</b>
   (exact one-sided 95% Clopper–Pearson). That is not evidence of a general absence of fabrication.</li>
@@ -467,9 +462,9 @@ own instrument, and the first item cost us a headline number.</p>
   is roughly 0.067, which is a bound on <em>per-document</em> deltas and not
   on differences between 16-document means — dividing one by the other is a mistake, and an earlier
   version of this page made it. The right test is paired: across the same 16 documents the top two arms
-  differ by +0.0190 with a 95% interval of [-0.0100, +0.0480],
+  differ by +0.0120 with a 95% interval of [-0.0353, +0.0593],
   and <code>gpt-5.6-luna</code> versus <code>qwen3.7-flash</code> differs by
-  +0.0003. Both intervals span zero. Decide on cost, speed or
+  +0.0214. Both intervals span zero. Decide on cost, speed or
   operational risk, because quality is not deciding it for you.</li>
 
   <li><b>Five arms measure a route, not a model.</b> Five arms ran through a single broker route, so they measure a model-as-served-by-that-route, not the model. deepseek-v4-flash is pinned to a DeepInfra fp4 endpoint; qwen3-32b to SiliconFlow; kimi-k2.6, qwen3.7-flash and seed-1.6-flash likewise to one route each. Quantization, JSON-mode handling and reasoning behaviour are all mediated by the broker. The names in
@@ -482,26 +477,26 @@ own instrument, and the first item cost us a headline number.</p>
   qwen3-32b is the only arm that got more than one attempt. Two earlier routes were abandoned on 2026-08-10 — one served a 40,960-token window and failed the two longest documents, one returned empty HTTP 200s — and the published figure is from the third. Every other arm was measured on a single route. That is defensible engineering and it is also an
   inconsistency in protocol, so it is stated rather than buried.</li>
 
-  <li><b>Costs generalise even worse than scores.</b> Several arms are context-tier priced and every document here sits in the cheapest tier. qwen3.7-flash triples above 32,000 input tokens; seed-1.6-flash more than doubles its output rate above 128,000; gpt-5.6-luna doubles above 272,000. At a median document of 3,662 tokens none of that binds, so the cost ranking can invert on larger documents and every multiple quoted here is a small-document number.</li>
+  <li><b>Costs generalise even worse than scores.</b> Several arms are priced in context tiers and every document here sits in the cheapest one. At a median document of 3,849 source tokens none of those thresholds bind, so the rates on this page are the bottom-tier rates. Feed these models longer documents and the cost column moves against you, in some cases steeply - which is a reason to re-measure on your own corpus rather than adopt this table.</li>
 
-  <li><b>The construct-validity analysis is missing its worst cases.</b> 205 of a possible 220 judged cells produced a precision/recall pair. The missing 15 are concentrated in the worst arms — kimi-k2.6 contributed 6 of 16 and gpt-5-nano 12 of 16 — because an empty body yields nothing to judge. So the construct-validity finding describes the artefacts that had content, which makes it conservative rather than wrong.</li>
+  <li><b>The construct-validity analysis is missing its worst cases.</b> 174 of a possible 224 judged cells produced a precision/recall pair. The rest are concentrated in the arms that failed most - a document that errors is never judged - so the construct-validity statistics below describe the arms that worked better than the ones that did not.</li>
 
   <li><b>The landmine sweep counted artefacts that could not fail it.</b>
-  16 of the artefacts in the clean landmine sweep had empty bodies and were structurally incapable of tripping it. The zero result stands for the artefacts that contained text.</li>
+  The landmine sweep only tests artefacts that contain text. 19 generations produced an empty body and are structurally incapable of tripping a forbidden-phrase check, so the zero result stands for the artefacts that had a body, not for every generation attempted.</li>
 
-  <li><b>The code that produced these runs was not committed.</b> All 14 runs report git_dirty true and provenance.complete false: the recorded commit does not fully describe the code that ran. Nine arms ran on one working tree and five on a later one. What is identical across all 14 is the judge prompt, sha256 12d7ddaa, which is the part that governs score comparability.</li>
+  <li><b>Provenance of the code that produced these runs.</b> All 14 runs were produced at one commit against a clean working tree, with a single judge prompt hash (12d7ddaa) across every arm. That commit (bc376e1) is NOT in this repository&#x27;s history: documentation that could not be published was removed afterwards, which rewrote every commit id. The code and corpus were untouched by that edit, and you can verify it rather than take my word for it - git tree hashes are content-addressed, and these are the ones the runs used: src = c822ae57da43; bench/dataset = 323cc843ac66; config = f14b58c79ed5. Check with `git rev-parse HEAD:src`.</li>
 
   <li><b>Nothing here tests long context.</b> The largest document is
   39,433 tokens, comfortably inside every candidate's window —
   including the smallest at 128K. This benchmark cannot adjudicate any million-token-context argument,
   in either direction.</li>
 
-  <li><b>The corpus is small and public.</b> 16 documents,
-  143,114 source tokens, median
-  3,662. Materially smaller than the enterprise documents this
+  <li><b>The corpus is small and public - every document and its licence is listed in <a href="https://github.com/adorosario/okf-model-bakeoff/blob/main/CORPUS.md">CORPUS.md</a>, and it is not uniformly public domain.</b> 16 documents,
+  146,041 source tokens, median
+  3,849. Materially smaller than the enterprise documents this
   pattern gets pointed at in practice, and results do not generalise on size without re-measurement.</li>
 
-  <li><b>Two arms scored a self-selected subset.</b> They crashed on documents the others completed, so
+  <li><b>7 arms scored a self-selected subset.</b> They crashed on documents the others completed, so
   their means describe an easier corpus and their costs are floors. Marked † and ≥ in the table.</li>
 </ul>
 </div>
@@ -509,15 +504,18 @@ own instrument, and the first item cost us a headline number.</p>
 <h2>Reproduction</h2>
 <p class="note">Every figure on this page is emitted by a build script from committed run scorecards, and a
 verifier recomputes each one from the raw judged cells before publication — including the statistics,
-which are derived from the per-document rows rather than copied from a stored aggregate. Prose and
-framing are hand-written and are not covered by that verifier, which is how the two errors listed in the
-correction note below got in.</p>
-<p class="note"><b>Corrections.</b> An earlier version of this page said the empty-artefact runs
-"passed their own suite" — they did not, <code>suite_passed</code> is <code>false</code> on both — and
-argued the top-two tie by comparing a 16-document mean difference against a per-document noise floor,
-which is the wrong denominator. Both are fixed above, and the verifier now checks the first and computes
-the second. Kept here because a page arguing that unverifiable numbers are not evidence does not get to
-edit its own history quietly.</p>
+which are derived from the per-document rows rather than copied from a stored aggregate.</p>
+<p class="note">Prose is the weak point and it is worth being explicit about it. A verifier that checks
+numbers cannot check a <em>sentence</em>, and an earlier draft of this page carried a whole narrative
+from a previous run underneath a correct table. The generator now rebuilds any sentence that restates
+a figure, and refuses to write a ledger where a superseded number survives in prose — but a claim whose
+premise has quietly stopped being true is still something only a reader can catch.</p>
+<p class="note"><b>Supersession.</b> This publication SUPERSEDES an earlier one measured on a different corpus. The earlier numbers do not carry over and should not be compared to these. What changed:</p>
+<ul class="note"><li>Two of the sixteen documents were replaced. The originals were internal meeting records and could not be published, so the corpus now contains only documents anyone can obtain.</li><li>An empty generated body is now rejected before scoring instead of being recorded as a successful document. Arms that previously scored on empty output now report fewer completed documents.</li><li>A scalar metadata field answered with a list used to crash the document. It now degrades to a default, so those documents are scored rather than dropped.</li><li>Every run here was produced at one commit against a clean tree, judged by anthropic:claude-sonnet-4-5-20250929 with a single prompt hash.</li></ul>
+<p class="note">Said plainly because a page arguing that unverifiable numbers are not evidence does not
+get to edit its own history quietly. If you saw the earlier figures, they were measured on a corpus
+that included two documents this repository does not contain, which is why they are not reproducible
+here and are not repeated.</p>
 
 <div class="tblwrap">
 <table style="min-width:520px">
@@ -527,7 +525,7 @@ edit its own history quietly.</p>
   <tr><td style="text-align:left;font-family:inherit"><b>Judged criteria</b></td><td style="text-align:left">faithfulness, coverage (0.5 of rubric weight)</td></tr>
   <tr><td style="text-align:left;font-family:inherit"><b>Rubric weights</b></td><td style="text-align:left">faithfulness 0.25, coverage 0.25, metadata_accuracy 0.2, anti_hallucination 0.1, format_compliance 0.1, citation_validity 0.05, token_efficiency 0.05</td></tr>
   <tr><td style="text-align:left;font-family:inherit"><b>Trials</b></td><td style="text-align:left">1 per document per arm</td></tr>
-  <tr><td style="text-align:left;font-family:inherit"><b>Metered spend</b></td><td style="text-align:left">$6.7306 across all 14 arms (two are floors)</td></tr>
+  <tr><td style="text-align:left;font-family:inherit"><b>Metered spend</b></td><td style="text-align:left">$6.6882 across all 14 arms (two are floors)</td></tr>
   <tr><td style="text-align:left;font-family:inherit"><b>Judge calibration</b></td><td style="text-align:left">never computed — kappa gate 0.6 unmet, <code>citable: false</code></td></tr>
 </tbody>
 </table>
@@ -536,7 +534,7 @@ edit its own history quietly.</p>
 <footer>
 Measured August 2026 · one model's re-pinned route re-measured 2026-08-10 ·
 14 arms × 16 documents · judge anthropic:claude-sonnet-4-5-20250929 ·
-$6.73 metered API spend<br>
+$6.69 metered API spend<br>
 Generated from run scorecards — not hand-written, not rounded by hand, not reconciled after the fact.<br>
 <a href="https://adorosario.github.io/">adorosario.github.io</a>
 </footer>
